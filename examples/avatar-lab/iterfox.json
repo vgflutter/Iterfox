@@ -1,0 +1,10 @@
+{
+  "goal": "Make avatar labels robust, then repair the two-avatar conversation without changing the approved tests.",
+  "criteria": [
+    { "id": "render", "title": "Avatar labels handle empty input", "command": ["node", "--test", "render.test.mjs"], "scope": ["avatar.mjs", "render.test.mjs"] },
+    { "id": "dialogue", "title": "Two avatars exchange distinct turns", "command": ["node", "--test", "dialogue.test.mjs"], "scope": ["avatar.mjs", "dialogue.test.mjs"] }
+  ],
+  "allowedPaths": ["avatar.mjs"],
+  "protectedPaths": ["render.test.mjs", "dialogue.test.mjs", "iterfox.json"],
+  "limits": { "maxTurns": 12, "maxAttempts": 3, "maxDurationMs": 900000, "maxTokens": 500000, "turnTimeoutMs": 180000, "maxNoProgress": 3 }
+}

@@ -1,0 +1,21 @@
+import { mkdtemp } from 'node:fs/promises';
+import { join } from 'node:path';
+import { tmpdir } from 'node:os';
+import { createDemoRepository, createRun, loadContract, openStore } from '../../src/service.js';
+import { Engine } from '../../src/core/engine.js';
+import { DemoProvider } from '../../src/providers/demo.js';
+import { serve } from '../../src/server.js';
+import { launchWorker } from '../../src/cli.js';
+
+const dir = await mkdtemp(join(tmpdir(), 'iterfox-browser-'));
+const repo = await createDemoRepository(dir);
+const store = openStore(dir);
+const state = await createRun(
+  store,
+  dir,
+  repo,
+  await loadContract(join(repo, 'iterfox.json')),
+  'demo',
+);
+await new Engine(store, state.id, new DemoProvider()).run();
+await serve(store, dir, 4311, (id) => launchWorker(id, dir));

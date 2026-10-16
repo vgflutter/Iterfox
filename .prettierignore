@@ -1,0 +1,7 @@
+node_modules
+dist
+.iterfox
+package-lock.json
+docs/screenshots
+docs/validation
+test-results
