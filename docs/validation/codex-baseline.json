@@ -1,0 +1,57 @@
+{
+  "measuredAt": "2026-10-16T21:46:28.035Z",
+  "method": "One Codex SDK build turn followed by independent approved command checks. No external replanning.",
+  "model": "local Codex default (not pinned)",
+  "elapsedMs": 32031,
+  "reportedTokens": 65569,
+  "threadId": "redacted-session-1",
+  "operatorInterventionsAfterStart": 0,
+  "verified": 2,
+  "claim": {
+    "summary": "Updated only avatar.mjs: empty or missing names return '?', and conversation replies address the previous avatar. Both approved tests pass unchanged; git diff --check passes.",
+    "blocked": false,
+    "reason": ""
+  },
+  "checks": [
+    {
+      "criterionId": "render",
+      "fingerprint": {
+        "head": "e800b42999d467b67b758221039b539caaae603d",
+        "files": {
+          "avatar.mjs": "a9138a91f6b3ed4acccf2813606b5439f9166c056b07321171d86497440def24",
+          "render.test.mjs": "9057d779a08ee810160fab51115bae2fcd85625f3624dc49ca9e48aa0944609d"
+        },
+        "fingerprint": "117878ee43fcd7086a1b5d6bb0fe41ce57355a582c3cd47926b13b135a09ad4e"
+      },
+      "exitCode": 0,
+      "output": "TAP version 13\n# Subtest: avatar rendering handles empty and missing names\nok 1 - avatar rendering handles empty and missing names\n  ---\n  duration_ms: 0.235542\n  type: 'test'\n  ...\n1..1\n# tests 1\n# suites 0\n# pass 1\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 27.791375\n",
+      "durationMs": 49,
+      "timedOut": false
+    },
+    {
+      "criterionId": "dialogue",
+      "fingerprint": {
+        "head": "e800b42999d467b67b758221039b539caaae603d",
+        "files": {
+          "avatar.mjs": "a9138a91f6b3ed4acccf2813606b5439f9166c056b07321171d86497440def24",
+          "dialogue.test.mjs": "defe6717306f099f7ce97429a38102bed90283bd06d289ccf96fce2395a1572f"
+        },
+        "fingerprint": "b816cbce785d2c7873348e416bc6a31b634ec871f79404cb1c9a8ad4cbe06470"
+      },
+      "exitCode": 0,
+      "output": "TAP version 13\n# Subtest: conversation has two identifiable, distinct turns\nok 1 - conversation has two identifiable, distinct turns\n  ---\n  duration_ms: 0.229833\n  type: 'test'\n  ...\n1..1\n# tests 1\n# suites 0\n# pass 1\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 25.811041\n",
+      "durationMs": 44,
+      "timedOut": false
+    }
+  ],
+  "worktree": "<local-fixture>/worktrees/20261016T214555-80419a14",
+  "caveats": [
+    "Single small fixture; not statistically meaningful.",
+    "Iterfox integration test uses an explicit initial inspection task and is not a matched timing benchmark.",
+    "Codex Goals and third-party orchestrators are not measured by this script."
+  ],
+  "redactions": [
+    "Local fixture paths replaced.",
+    "Codex session identifiers replaced; event ordering, metrics, outputs and content fingerprints preserved."
+  ]
+}
