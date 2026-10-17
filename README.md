@@ -109,6 +109,11 @@ whole-repository fingerprint. Include all relevant inputs when narrowing it.
 Commands run as trusted local programs with exact argv, without an implicit shell.
 Review commands and repository code before approving them.
 
+The scheduler groups adjacent steps sharing a check and defers corrections until
+planned implementation is finished. Current deterministic evidence can skip already
+covered tasks; stale evidence reopens them. Preliminary negative observations are
+recorded without spending corrective retries.
+
 The runtime owns acceptance state, checks, retry limits and scheduling. Codex can
 propose work but cannot change the contract or certify its own implementation.
 Test/config/secret edits and out-of-scope changes block further certification.

@@ -155,6 +155,7 @@ export interface Evidence {
   contractVersion: number;
   kind: 'deterministic' | 'observed' | 'ai-assessed' | 'unverified';
   status: 'passed' | 'assessed' | 'failed' | 'stale' | 'unverified' | 'recorded';
+  purpose?: 'probe';
   createdAt: string;
   command?: string[];
   exitCode?: number | null;
@@ -257,9 +258,11 @@ export type EventType =
   | 'task.completed'
   | 'task.failed'
   | 'task.interrupted'
+  | 'task.skipped'
   | 'verification.started'
   | 'verification.passed'
   | 'verification.failed'
+  | 'verification.deferred'
   | 'verification.assessed'
   | 'evidence.recorded'
   | 'assessment.started'
@@ -295,14 +298,14 @@ export interface RunEvent {
 const transitions: Record<NodeStatus, NodeStatus[]> = {
   PENDING: ['RUNNING', 'VERIFYING', 'BLOCKED', 'SKIPPED'],
   RUNNING: ['UNVERIFIED', 'PASSED', 'FAILED', 'BLOCKED'],
-  VERIFYING: ['PASSED', 'ASSESSED', 'FAILED', 'BLOCKED'],
+  VERIFYING: ['PASSED', 'ASSESSED', 'FAILED', 'BLOCKED', 'UNVERIFIED'],
   UNVERIFIED: ['PASSED', 'ASSESSED', 'STALE', 'BLOCKED'],
   PASSED: ['STALE'],
   ASSESSED: ['STALE'],
   FAILED: ['PENDING'],
   BLOCKED: ['PENDING', 'SKIPPED'],
   STALE: ['PENDING', 'PASSED', 'ASSESSED'],
-  SKIPPED: [],
+  SKIPPED: ['PENDING'],
 };
 export function transition(node: TaskNode, status: NodeStatus): void {
   if (!transitions[node.status].includes(status))
@@ -393,6 +396,58 @@ export function reduce(previous: RunState | undefined, event: RunEvent): RunStat
       n.endedAt = event.at;
       n.files = (d.files as string[]) ?? [];
       if (d.result) n.result = structuredClone(d.result as Record<string, unknown>);
+      break;
+    }
+    case 'task.skipped': {
+      const n = node();
+      const c = s.criteria.find((c) => c.id === n.criterionId);
+      const e = s.evidence.find((e) => e.id === d.evidenceId);
+      if (
+        n.kind !== 'task' ||
+        n.status !== 'PENDING' ||
+        c?.status !== 'PASSED' ||
+        c.evidenceId !== e?.id ||
+        e?.kind !== 'deterministic' ||
+        e.status !== 'passed' ||
+        e.contractVersion !== s.contractVersion ||
+        e.criterionId !== n.criterionId
+      )
+        throw new Error('Skipping requires current deterministic acceptance evidence');
+      transition(n, 'SKIPPED');
+      n.summary = event.message;
+      n.endedAt = event.at;
+      n.evidenceIds.push(e.id);
+      break;
+    }
+    case 'verification.deferred': {
+      const n = node();
+      const e = structuredClone(d.evidence as Evidence);
+      const policy = s.contract.criteria.find((c) => c.id === n.criterionId);
+      if (
+        n.kind !== 'verification' ||
+        n.status !== 'VERIFYING' ||
+        policy?.verification ||
+        e.purpose !== 'probe' ||
+        e.kind !== 'deterministic' ||
+        e.status !== 'recorded' ||
+        e.exitCode === 0 ||
+        e.nodeId !== n.id ||
+        e.criterionId !== n.criterionId ||
+        e.contractVersion !== s.contractVersion ||
+        s.evidence.some((x) => x.id === e.id) ||
+        !s.nodes.some((t) => t.kind === 'task' && t.status === 'PENDING')
+      )
+        throw new Error(
+          'A deferred check requires unfinished planned work and a non-passing probe',
+        );
+      transition(n, 'UNVERIFIED');
+      n.summary = event.message;
+      n.endedAt = event.at;
+      n.evidenceIds.push(e.id);
+      s.evidence.push(e);
+      const c = s.criteria.find((c) => c.id === n.criterionId)!;
+      c.status = 'UNVERIFIED';
+      c.evidenceId = e.id;
       break;
     }
     case 'task.failed':
@@ -524,6 +579,18 @@ export function reduce(previous: RunState | undefined, event: RunEvent): RunStat
       if (c) c.status = 'STALE';
       for (const n of s.nodes.filter((n) => n.evidenceIds.includes(e.id) && satisfied(n.status)))
         transition(n, 'STALE');
+      for (const n of s.nodes.filter(
+        (n) =>
+          n.kind === 'task' &&
+          n.status === 'SKIPPED' &&
+          n.evidenceIds.includes(e.id) &&
+          e.contractVersion === s.contractVersion,
+      )) {
+        transition(n, 'PENDING');
+        n.summary =
+          'Previous skip revoked because its acceptance evidence is stale; original planned work is pending again.';
+        n.endedAt = undefined;
+      }
       break;
     }
     case 'contract.proposed':

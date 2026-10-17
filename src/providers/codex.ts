@@ -1,11 +1,17 @@
-import { Codex } from '@openai/codex-sdk';
+import { Codex, type ModelReasoningEffort } from '@openai/codex-sdk';
 import { z } from 'zod';
 import { resultSchema, type AgentProvider, type AgentRequest } from './provider.js';
 import { codexPolicy } from './codex-policy.js';
 
 export class CodexProvider implements AgentProvider {
   readonly name = 'codex' as const;
-  constructor(private options: { model?: string; codexPath?: string } = {}) {}
+  constructor(
+    private options: {
+      model?: string;
+      codexPath?: string;
+      reasoningEffort?: ModelReasoningEffort;
+    } = {},
+  ) {}
   async invoke(r: AgentRequest): Promise<unknown> {
     const policy = await codexPolicy(r.state.worktree, r.signal, this.options.codexPath);
     const sdk = new Codex({
@@ -20,6 +26,9 @@ export class CodexProvider implements AgentProvider {
       networkAccessEnabled: false,
       webSearchMode: 'disabled' as const,
       ...(this.options.model ? { model: this.options.model } : {}),
+      ...(this.options.reasoningEffort
+        ? { modelReasoningEffort: this.options.reasoningEffort }
+        : {}),
     };
     const thread = r.node.threadId
       ? sdk.resumeThread(r.node.threadId, options)
@@ -78,7 +87,7 @@ Work only in the current isolated worktree. Allowed edits: ${r.state.contract.al
 Do not edit tests, checks, thresholds, config, secrets, dependencies, lockfiles or the acceptance contract.
 Do not commit, push, merge, deploy, use network, delete unrelated files, or request elevated permissions.
 If blocked by permissions or the protected contract, return blocked=true and explain the required operator action.
-${r.mode === 'plan' ? 'Inspect the repository read-only. Propose at most 8 small tasks, each linked to an existing criterionId. Do not implement anything.' : ''}
+${r.mode === 'plan' ? 'Inspect the repository read-only. Propose at most 8 cohesive implementation units, each linked to an existing criterionId. Keep steps required by the same check together, with prerequisites before consumers. The runtime executes checks itself: do not add verification-only or redundant final-audit tasks. Do not implement anything.' : ''}
 ${r.mode === 'build' ? 'Implement only this task. Your summary is an unverified claim; the runtime independently runs the approved checks. Do not alter checks to make them pass.' : ''}
 ${r.mode === 'diagnose' ? 'Inspect the failure read-only. Return a concrete hypothesis and one small corrective task for this criterion, or blocked=true. Do not implement the fix yet.' : ''}
 Return only the JSON object matching the supplied output schema. Do not disclose private reasoning.`;

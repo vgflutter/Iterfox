@@ -131,7 +131,10 @@ test('builder cannot rewrite protected tests or approved acceptance configuratio
   assert.equal(s.status, 'BLOCKED');
   assert.match(s.reason!, /protected/);
   assert.equal(s.contract.criteria.length, 2);
-  assert.equal(s.evidence.length, 0);
+  assert(
+    s.evidence.every((e) => e.status === 'recorded' && e.purpose === 'probe'),
+    'only pre-build negative observations may remain; the violating build cannot certify acceptance',
+  );
   assert(s.criteria.every((c) => c.status !== 'PASSED'));
   assert(!s.nodes.some((n) => n.status === 'RUNNING' || n.status === 'VERIFYING'));
 });

@@ -64,7 +64,10 @@ The duration includes paused time. Resume does not silently reset limits or retr
 Only an explicitly approved revision can change the contract's limits.
 
 Reported tokens include input plus output, including cached input. Token limits are
-checked between reported turns; they are not a hard in-flight spend cap. An
+checked before starting another model turn; they are not a hard in-flight spend cap.
+After a reported-token/turn boundary, runtime-only checks can still certify already
+implemented work within the original duration limit. Further model work, including
+qualitative assessment or diagnosis, remains blocked. An
 interrupted turn may not report usage. Monetary cost is not estimated. A coding
 model may require substantial context even for a small task.
 

@@ -968,6 +968,13 @@ function EvidenceCard({
       </summary>
       <div className="evidence-body">
         <code>{JSON.stringify(e.command)}</code>
+        {e.purpose === 'probe' && (
+          <p className="muted small-text">
+            {e.status === 'recorded'
+              ? 'Preliminary check: not yet satisfied while planned implementation remains. No corrective retry consumed.'
+              : 'Runtime coverage check on the recorded inputs.'}
+          </p>
+        )}
         <div className="evidence-meta">
           <span>
             Exit <strong>{e.exitCode ?? '?'}</strong>

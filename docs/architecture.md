@@ -27,9 +27,20 @@ The browser never schedules work. Closing it does not stop the worker.
 
 ## Loop
 
-Approve preflight → isolated Git worktree → read-only Codex plan → one build task
-→ runtime check → (failure → Codex diagnosis → corrective build → original check)
-→ audit all criteria and fingerprints → Morning Brief.
+Approve preflight → isolated Git worktree → read-only Codex plan → group adjacent
+steps sharing a gate → probe existing deterministic coverage → execute remaining
+planned implementation → runtime acceptance → (remaining failure → diagnosis →
+corrective build → original check) → freshness audit → Morning Brief.
+
+Failed preliminary command probes are recorded as deferred observations while
+planned implementation remains. They do not consume failure retries or trigger
+model diagnosis. Negative probes are cached only within the current worker for
+unchanged declared inputs. Browser/qualitative policies are not speculatively probed.
+A current deterministic PASS can skip an already-covered pending task, with the
+receipt linked to the skip. Invalidating that receipt reopens the original task.
+Adjacent steps are combined without reordering, retaining every proposed objective;
+nonadjacent contributions keep their execution order. Legacy partial plans remain
+replayable. The original planner result stays in the ledger.
 
 Builder completion is an unverified claim. Only a runtime verification can earn a
 green check. Qualitative policies can earn ASSESSED, a separate probabilistic

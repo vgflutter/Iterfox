@@ -11,7 +11,15 @@ import {
   type AgentProvider,
   type AgentRequest,
 } from '../providers/provider.js';
-import type { Contract, Edge, EventType, Evidence, RunState, TaskNode } from './model.js';
+import type {
+  Contract,
+  Criterion,
+  Edge,
+  EventType,
+  Evidence,
+  RunState,
+  TaskNode,
+} from './model.js';
 
 export function node(
   input: Pick<TaskNode, 'title' | 'objective' | 'reason' | 'criterionId' | 'role' | 'kind'> &
@@ -57,6 +65,7 @@ export class Engine {
   private abort = new AbortController();
   private requested?: 'pause' | 'stop';
   private active = false;
+  private probes = new Map<string, string>();
   constructor(
     readonly store: Store,
     readonly id: string,
@@ -74,12 +83,13 @@ export class Engine {
     this.requested = action;
     this.abort.abort(new Error(`Operator requested ${action}`));
   }
-  private boundary(): void {
+  private boundary(requireModelBudget = false): void {
     this.abort.signal.throwIfAborted();
     const s = this.state;
     if (Date.now() - Date.parse(s.startedAt ?? s.createdAt) >= s.contract.limits.maxDurationMs)
       throw new Error('Run duration limit reached');
-    if (s.tokens >= s.contract.limits.maxTokens) throw new Error('Reported token budget reached');
+    if (requireModelBudget && s.tokens >= s.contract.limits.maxTokens)
+      throw new Error('Reported token budget reached');
   }
   async run(): Promise<RunState> {
     this.store.acquire(this.id, this.owner);
@@ -111,10 +121,21 @@ export class Engine {
       if (!this.state.planReady) await this.plan();
       while (true) {
         this.boundary();
-        const task = this.state.nodes.find((n) => n.kind === 'task' && n.status === 'PENDING');
+        await this.refreshEvidence();
+        let task = this.state.nodes.find((n) => n.kind === 'task' && n.status === 'PENDING');
+        if (task?.reason.startsWith('Corrective')) {
+          await this.satisfy(task.criterionId);
+          continue;
+        }
+        if (task) {
+          await this.probePlannedWork();
+          this.skipSatisfiedTasks();
+          task = this.state.nodes.find((n) => n.kind === 'task' && n.status === 'PENDING');
+        }
         if (task) {
           await this.build(task);
-          await this.satisfy(task.criterionId);
+          // A criterion may span several planned activities. Diagnose only once
+          // the approved plan has no remaining implementation work.
           continue;
         }
         await this.refreshEvidence();
@@ -178,7 +199,7 @@ export class Engine {
     activity: TaskNode,
     failure?: string,
   ): Promise<unknown> {
-    this.boundary();
+    this.boundary(true);
     if (this.state.turns >= this.state.contract.limits.maxTurns)
       throw new Error('Agent turn limit reached');
     const previous = [...this.state.nodes]
@@ -257,22 +278,165 @@ export class Engine {
         summary: 'Structured plan validated; no acceptance result is implied.',
         result,
       });
-    let previous = planner.id;
+    // Adjacent steps behind the same gate are one verifiable implementation unit.
+    // Retain the raw planner result and every objective; never reorder dependencies.
+    const legacy = this.state.nodes.some(
+      (n) =>
+        n.id.startsWith(`task-${planner.id}-`) &&
+        n.reason === 'Validated initial plan for the accepted goal.',
+    );
+    const units: { index: number; tasks: typeof result.tasks }[] = [];
     for (const [index, t] of result.tasks.entries()) {
+      const last = units.at(-1);
+      if (!legacy && last?.tasks[0].criterionId === t.criterionId) last.tasks.push(t);
+      else units.push({ index, tasks: [t] });
+    }
+    if (
+      units.length < result.tasks.length &&
+      !this.store
+        .events(this.id)
+        .some(
+          (e) =>
+            e.type === 'decision.recorded' &&
+            e.data.nodeId === planner.id &&
+            e.data.kind === 'plan.coalesced',
+        )
+    )
+      this.emit(
+        'decision.recorded',
+        `${result.tasks.length} proposed steps grouped into ${units.length} acceptance units; adjacent steps share their original criterion and retain every objective.`,
+        {
+          nodeId: planner.id,
+          kind: 'plan.coalesced',
+          originalSteps: result.tasks.length,
+          executionUnits: units.length,
+        },
+      );
+    let previous = planner.id;
+    for (const { index, tasks } of units) {
+      const t = tasks[0];
       const planned = node({
         ...t,
+        title:
+          tasks.length === 1
+            ? t.title
+            : this.state.contract.criteria.find((c) => c.id === t.criterionId)!.title,
+        objective:
+          tasks.length === 1
+            ? t.objective
+            : tasks.map((step, i) => `${i + 1}. ${step.title}\n${step.objective}`).join('\n\n'),
         id: `task-${planner.id}-${index}`,
         kind: 'task',
         role: 'builder',
-        reason: 'Validated initial plan for the accepted goal.',
+        reason: legacy
+          ? 'Validated initial plan for the accepted goal.'
+          : `Validated acceptance unit with ${tasks.length} planned step(s).`,
       });
       if (!this.state.nodes.some((n) => n.id === planned.id))
-        this.emit('task.planned', t.title, { node: planned, edges: [edge(previous, planned.id)] });
+        this.emit('task.planned', planned.title, {
+          node: planned,
+          edges: [edge(previous, planned.id)],
+        });
       previous = planned.id;
     }
     this.emit(
       'plan.accepted',
       'Runtime accepted the execution plan. Acceptance criteria are unchanged.',
+    );
+  }
+  private skipSatisfiedTasks(): void {
+    for (const task of this.state.nodes.filter(
+      (n) => n.kind === 'task' && n.status === 'PENDING',
+    )) {
+      const criterion = this.state.criteria.find((c) => c.id === task.criterionId)!;
+      const proof = this.state.evidence.find((e) => e.id === criterion.evidenceId);
+      if (
+        criterion.status === 'PASSED' &&
+        proof?.kind === 'deterministic' &&
+        proof.status === 'passed'
+      )
+        this.emit(
+          'task.skipped',
+          `No model call: ${task.title} is already covered by current deterministic acceptance evidence.`,
+          { nodeId: task.id, evidenceId: proof.id },
+        );
+    }
+  }
+  private async probePlannedWork(): Promise<void> {
+    // Cheap approved command probes can discover already-covered future work.
+    // Never add speculative browser captures or model assessments to this phase.
+    for (const c of this.state.contract.criteria.filter((c) => !c.verification)) {
+      this.boundary();
+      if (this.state.criteria.find((a) => a.id === c.id)!.status === 'PASSED') continue;
+      const now = await stamp(this.state.worktree, c.scope);
+      const cacheKey = `${this.state.contractVersion}:${now.head}:${now.fingerprint}`;
+      if (this.probes.get(c.id) === cacheKey) continue;
+      const verifier = this.verifier(
+        c,
+        'Probe while planned implementation remains; a negative observation defers correction.',
+      );
+      const prior = [...this.state.nodes].filter((n) => n.endedAt && n.id !== verifier.id).at(-1);
+      this.emit('verification.started', `Checking existing coverage: ${c.title}`, {
+        nodeId: verifier.id,
+        node: verifier,
+        edges: prior ? [edge(prior.id, verifier.id)] : [],
+      });
+      await auditChanges(this.state);
+      const signal = AbortSignal.any([this.abort.signal, AbortSignal.timeout(c.timeoutMs)]);
+      const evidence = await verify(
+        this.state,
+        verifier.id,
+        c,
+        artifactRoot(this.store.path),
+        signal,
+        () => {
+          throw new Error('Plain command probes cannot record policy artifacts');
+        },
+        async () => {
+          throw new Error('Plain command probes cannot invoke an assessor');
+        },
+      );
+      signal.throwIfAborted();
+      evidence.purpose = 'probe';
+      const after = await stamp(this.state.worktree, c.scope);
+      if (evidence.stamp.head !== after.head || evidence.stamp.fingerprint !== after.fingerprint)
+        throw new Error(
+          'An approved probe changed its inputs; inspect the check before continuing.',
+        );
+      if (evidence.status === 'passed')
+        this.emit(
+          'verification.passed',
+          `${c.title}: approved command already passes on the recorded inputs.`,
+          { nodeId: verifier.id, evidence },
+        );
+      else {
+        evidence.status = 'recorded';
+        this.emit(
+          'verification.deferred',
+          `${c.title}: not yet satisfied; planned implementation remains. No failure retry or corrective model call consumed.`,
+          { nodeId: verifier.id, evidence },
+        );
+        this.probes.set(c.id, cacheKey);
+      }
+    }
+  }
+  private verifier(c: Criterion, reason: string): TaskNode {
+    return (
+      this.state.nodes.find(
+        (n) => n.kind === 'verification' && n.criterionId === c.id && n.status === 'PENDING',
+      ) ??
+      node({
+        kind: 'verification',
+        role: 'verifier',
+        title: c.title,
+        objective: `Run approved check: ${JSON.stringify(c.command)}`,
+        criterionId: c.id,
+        reason,
+        attempt:
+          this.state.nodes.filter(
+            (n) => n.kind === 'verification' && n.criterionId === c.id && n.status !== 'BLOCKED',
+          ).length + 1,
+      })
     );
   }
   private async build(task: TaskNode): Promise<void> {
@@ -415,7 +579,7 @@ export class Engine {
             evidence: e,
           }),
         async (input) => {
-          this.boundary();
+          this.boundary(true);
           if (this.state.turns >= this.state.contract.limits.maxTurns)
             throw new Error('Agent turn limit reached');
           this.emit(

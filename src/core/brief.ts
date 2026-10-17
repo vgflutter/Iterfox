@@ -34,6 +34,7 @@ export function brief(state: RunState, events: RunEvent[]) {
           'evidence.invalidated',
           'contract.approved',
           'workflow.recovered',
+          'task.skipped',
         ].includes(e.type),
       )
       .map((e) => ({ seq: e.seq, at: e.at, message: e.message })),
@@ -42,10 +43,20 @@ export function brief(state: RunState, events: RunEvent[]) {
       passed: state.evidence.filter((e) => e.status === 'passed').length,
       failed: state.evidence.filter((e) => e.status === 'failed').length,
       stale: state.evidence.filter((e) => e.status === 'stale').length,
+      deferred: state.evidence.filter((e) => e.purpose === 'probe' && e.status === 'recorded')
+        .length,
     },
+    skippedTasks: state.nodes
+      .filter((n) => n.kind === 'task' && n.status === 'SKIPPED' && n.evidenceIds.length)
+      .map((n) => ({
+        nodeId: n.id,
+        title: n.title,
+        reason: n.summary,
+        evidenceIds: n.evidenceIds,
+      })),
     evidence: state.evidence,
     assessments: state.nodes
-      .filter((n) => n.kind === 'task')
+      .filter((n) => n.kind === 'task' && n.startedAt)
       .map((n) => ({
         nodeId: n.id,
         summary: n.summary,
@@ -111,6 +122,15 @@ export function markdownBrief(state: RunState, events: RunEvent[]): string {
     '',
     ...b.corrections.map((c) => `- ${c.message}`),
     ...(b.corrections.length ? [] : ['No corrective tasks recorded.']),
+    ...b.skippedTasks.map(
+      (t) =>
+        `- Skipped model call: ${t.title} — current deterministic acceptance evidence already covers this task.`,
+    ),
+    ...(b.checks.deferred
+      ? [
+          `- ${b.checks.deferred} preliminary command observations were not yet satisfied while implementation remained; these did not consume corrective retries.`,
+        ]
+      : []),
     '',
     '## Problems and decisions',
     '',
