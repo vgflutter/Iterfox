@@ -2,7 +2,7 @@
 
 **Delegate the work. Wake up to evidence.**
 
-Iterfox is a local, acceptance-driven supervisor for Codex. Give it a goal and
+Iterfox is an acceptance-driven supervisor for Codex. Give it a goal and
 checks you trust. It builds a plan, runs work sequentially, verifies results itself,
 and inserts corrective tasks when checks fail. Return to an evidence ledger and a
 Morning Brief instead of a long conversation.
@@ -121,8 +121,8 @@ Fingerprints make affected proofs STALE; unrelated scoped evidence remains valid
   reduced-motion support. Planner, builder and diagnosis are sequential roles of
   the same Codex integration, not independent reviewers.
 - **Proof Ledger:** command, exit code, output, elapsed time, contract version,
-  Git HEAD and input fingerprints. Deterministic evidence is separated from agent
-  claims. Historical failed/stale checks remain visible.
+  Git HEAD and input fingerprints, plus screenshot/diff artifacts and scored
+  qualitative rubrics. Deterministic PASS and AI-assessed results remain separate. Historical failed/stale checks remain visible.
 - **Morning Brief:** accomplished criteria, open work, failures, corrections,
   plan decisions, resources, uncertainty and the worktree diff. Export Markdown or JSON.
 - **Decision replay:** rebuild any recorded event boundary without rerunning an
@@ -148,7 +148,7 @@ iterfox contract RUN_ID --propose revised.json
 iterfox contract RUN_ID --approve --yes
 ```
 
-All commands accept `--data /absolute/path/to/.iterfox`. Use the same directory
+Local commands accept `--data /absolute/path/to/.iterfox`. Use the same directory
 across terminals. Contract revisions require a paused/stopped/blocked run and an
 explicit operator approval; old versions and invalidated proofs remain in history.
 
@@ -163,7 +163,9 @@ across resumes. Read [safety and recovery](docs/safety.md) before unattended use
 ```sh
 npm run check                  # type checks, deterministic tests, production build
 npx playwright install chromium
-npm run test:ui                # real browser checks against a local fixture
+npm run test:visual            # real screenshot mismatch/correction and artifact checks
+npm run test:ui                # graph, evidence gallery, rubric and mobile browser checks
+npm run test:assessor          # OPT IN: one real Codex qualitative assessment
 npm run test:codex             # OPT IN: real Codex, tokens and authentication required
 npm run compare:codex          # OPT IN: single-turn Codex reference measurement
 ```
@@ -178,11 +180,21 @@ fixture does **not** establish a competitive advantage. Codex alone completed it
 with less time and reported usage in the recorded sample. Goals and Fabro remain
 unmeasured practical comparisons; a reproducible protocol is documented.
 
-Available acceptance gates are command checks. Observed artifacts and qualitative
-AI review are not implemented as acceptance verifiers. No automated visual/avatar
-assessment, cloud runner, workflow editor, parallel agents, automatic test-change
-approval, hard in-flight spend ceiling or monetary cost estimation is claimed.
-Passing configured checks does not prove the absence of other bugs.
+Command gates, real browser screenshot comparison and explicit qualitative rubrics
+are available. AI judgments use a separate **ASSESSED** status, never deterministic
+PASS. See [visual/qualitative verification](docs/verification.md), with runnable
+`examples/visual-lab` and `examples/qualitative-lab` fixtures. Baselines require
+operator review; screenshot similarity does not establish design quality.
+
+An SSH runner for an existing Linux host is implemented with systemd user services,
+preflight commit/contract pinning, a localhost UI tunnel and checked result downloads.
+See [cloud runner setup](docs/cloud-runner.md) and `deploy/cloud.example.json`.
+No paid server is created. Remote-agent protocol/detachment was tested locally;
+**a real SSH host and Linux service lifecycle have not yet been validated**.
+
+No workflow editor, parallel agents, automatic test-change approval, hard in-flight
+spend ceiling or monetary cost estimation is claimed. Passing configured checks
+does not prove the absence of other bugs.
 
 See [architecture](docs/architecture.md), [product decisions and sources](docs/product-decisions.md),
 [safety](docs/safety.md), [roadmap](docs/roadmap.md) and [contributing](CONTRIBUTING.md).

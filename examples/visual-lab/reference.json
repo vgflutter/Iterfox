@@ -1,0 +1,9 @@
+{
+  "goal": "Capture an operator-reviewed candidate from the approved round avatar page.",
+  "allowedPaths": ["index.html"],
+  "criteria": [{
+    "id": "reference", "title": "Approved avatar reference capture",
+    "command": ["node", "--check", "server.mjs"], "timeoutMs":60000,
+    "verification": {"kind":"visual","server":["node","server.mjs"],"url":"http://127.0.0.1:4357/approved","selector":"#avatar","baseline":"baseline.png","viewport":{"width":800,"height":600}}
+  }]
+}

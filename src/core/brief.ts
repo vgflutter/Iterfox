@@ -1,8 +1,8 @@
-import type { RunEvent, RunState } from './model.js';
+import { satisfied, type RunEvent, type RunState } from './model.js';
 
 export function brief(state: RunState, events: RunEvent[]) {
   const verified = state.criteria.filter((c) => c.status === 'PASSED');
-  const open = state.criteria.filter((c) => c.status !== 'PASSED');
+  const open = state.criteria.filter((c) => !satisfied(c.status));
   const effectiveStatus = state.status === 'COMPLETED' && open.length ? 'PARTIAL' : state.status;
   return {
     runId: state.id,
@@ -19,6 +19,7 @@ export function brief(state: RunState, events: RunEvent[]) {
       ...state.criteria.find((a) => a.id === c.id)!,
     })),
     verified: verified.length,
+    assessed: state.criteria.filter((c) => c.status === 'ASSESSED').length,
     open: open.length,
     problems: events
       .filter((e) => ['verification.failed', 'task.failed', 'workflow.blocked'].includes(e.type))
@@ -37,6 +38,7 @@ export function brief(state: RunState, events: RunEvent[]) {
       )
       .map((e) => ({ seq: e.seq, at: e.at, message: e.message })),
     checks: {
+      assessed: state.evidence.filter((e) => e.status === 'assessed').length,
       passed: state.evidence.filter((e) => e.status === 'passed').length,
       failed: state.evidence.filter((e) => e.status === 'failed').length,
       stale: state.evidence.filter((e) => e.status === 'stale').length,
@@ -80,7 +82,7 @@ export function brief(state: RunState, events: RunEvent[]) {
     diff: state.diff ?? '',
     limits: [
       'Local execution pauses during sleep or shutdown.',
-      'AI summaries are probabilistic claims.',
+      'AI summaries and qualitative assessments are probabilistic claims from the same integration, not independent review.',
       'Only configured checks are covered; passing checks do not prove absence of defects.',
     ],
   };
@@ -98,11 +100,11 @@ export function markdownBrief(state: RunState, events: RunEvent[]): string {
     '',
     `Current contract: v${b.contractVersion} — ${b.goal}`,
     '',
-    `${b.verified}/${b.acceptance.length} acceptance criteria verified. ${b.open} still open.`,
+    `${b.verified}/${b.acceptance.length} criteria deterministically verified; ${b.assessed} AI-assessed. ${b.open} still open.`,
     '',
     ...b.acceptance.map(
       (c) =>
-        `- [${c.status === 'PASSED' ? 'x' : ' '}] ${c.title} — ${c.status}${c.evidenceId ? ` ([evidence](#evidence-${c.evidenceId}))` : ''}`,
+        `- [${satisfied(c.status) ? 'x' : ' '}] ${c.title} — ${c.status}${c.evidenceId ? ` ([evidence](#evidence-${c.evidenceId}))` : ''}`,
     ),
     '',
     '## What changed',
@@ -141,6 +143,24 @@ export function markdownBrief(state: RunState, events: RunEvent[]): string {
       `Git: ${e.stamp.head}; fingerprint: ${e.stamp.fingerprint}`,
       `Scope: ${e.scope.join(', ') || 'all repository files'}`,
       '',
+      ...(e.visual
+        ? [
+            `Pixel difference: ${(e.visual.diffRatio * 100).toFixed(3)}%; allowed: ${(e.visual.maxDiffRatio * 100).toFixed(3)}%. Browser: ${e.visual.browser}; platform: ${e.visual.platform}.`,
+            '',
+          ]
+        : []),
+      ...(e.assessment
+        ? [
+            'AI-assessed; same integration, not independent review.',
+            ...e.assessment.ratings.map((r) => `- ${r.id}: ${r.score}/5 — ${r.explanation}`),
+            ...e.assessment.limitations.map((l) => `- Limitation: ${l}`),
+            '',
+          ]
+        : []),
+      ...(e.artifacts ?? []).map(
+        (a) =>
+          `Artifact: ${a.name}; SHA-256: ${a.sha256}; ${a.bytes} bytes; stored path: ${a.path}`,
+      ),
       ...(e.invalidatedReason ? [e.invalidatedReason, ''] : []),
       '```text',
       e.output.replaceAll('```', '~~~'),

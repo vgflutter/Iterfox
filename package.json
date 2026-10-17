@@ -17,7 +17,8 @@
     "examples",
     "docs",
     "README.md",
-    "LICENSE"
+    "LICENSE",
+    "deploy"
   ],
   "engines": {
     "node": ">=22.13.0"
@@ -34,11 +35,16 @@
     "compare:codex": "node --import tsx scripts/compare-codex.ts",
     "format": "prettier --write src tests scripts docs *.json *.ts *.md .github/workflows/*.yml",
     "prepack": "npm run build",
-    "check": "npm run typecheck && npm test && npm run build"
+    "check": "npm run typecheck && npm test && npm run build",
+    "test:visual": "ITERFOX_VISUAL_TESTS=1 node --import tsx --test tests/visual.test.ts",
+    "test:assessor": "ITERFOX_REAL_ASSESSOR=1 node --import tsx --test tests/assessment-codex.test.ts"
   },
   "dependencies": {
     "@openai/codex-sdk": "0.163.0",
     "@xyflow/react": "12.12.0",
+    "pixelmatch": "8.0.0",
+    "playwright": "1.64.1",
+    "pngjs": "7.0.0",
     "react": "19.3.1",
     "react-dom": "19.3.1",
     "zod": "4.6.7"
@@ -46,6 +52,7 @@
   "devDependencies": {
     "@playwright/test": "1.64.1",
     "@types/node": "22.20.5",
+    "@types/pngjs": "6.0.5",
     "@types/react": "19.3.0",
     "@types/react-dom": "19.3.0",
     "@vitejs/plugin-react": "6.1.2",

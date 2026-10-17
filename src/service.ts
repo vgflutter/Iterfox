@@ -36,12 +36,12 @@ export function recoverDeadWorkers(store: Store): void {
 export async function auditStoredEvidence(store: Store, id: string): Promise<void> {
   const lease = store.lease(id);
   if (lease && alive(lease.pid)) return; // the active runtime owns freshness
-  if (!store.get(id).evidence.some((e) => e.status === 'passed')) return;
+  if (!store.get(id).evidence.some((e) => ['passed', 'assessed'].includes(e.status))) return;
   const engine = new Engine(store, id, providerFor(store.get(id)));
   try {
     await engine.refreshEvidence();
   } catch {
-    for (const e of store.get(id).evidence.filter((e) => e.status === 'passed'))
+    for (const e of store.get(id).evidence.filter((e) => ['passed', 'assessed'].includes(e.status)))
       store.append(
         id,
         'evidence.invalidated',
@@ -71,6 +71,18 @@ export async function preflight(
       'isolated worktree edits within approved paths',
       'runtime executes exact approved check argv',
       'Codex workspace-write; network disabled; escalation denied',
+      ...contract.criteria
+        .filter((c) => c.verification?.kind === 'visual')
+        .map(
+          (c) =>
+            `Visual ${c.id}: browser capture of approved loopback target; baseline is protected; optional server argv runs on this host`,
+        ),
+      ...contract.criteria
+        .filter((c) => c.verification?.kind === 'qualitative')
+        .map(
+          (c) =>
+            `Qualitative ${c.id}: sends selected text/PNG evidence to Codex for a scored rubric; probabilistic, same integration`,
+        ),
     ],
     requiresOperator: [
       'test/config/secret changes',
@@ -92,11 +104,12 @@ export async function createRun(
   repository: string,
   contract: Contract,
   provider: 'codex' | 'demo',
+  expectedHead?: string,
 ): Promise<RunState> {
   contract = contractSchema.parse(contract);
   const id =
     new Date().toISOString().replace(/[-:.]/g, '').slice(0, 15) + '-' + randomUUID().slice(0, 8);
-  const workspace = await isolate(repository, dataDir, id);
+  const workspace = await isolate(repository, dataDir, id, expectedHead);
   const state = initialState(id, contract, workspace, provider);
   store.append(id, 'workflow.created', 'Isolated workflow created from committed Git HEAD.', {
     state,
@@ -202,7 +215,7 @@ export function approveContract(store: Store, id: string): void {
     throw new Error('Wait for worker exit before approving a revision');
   if (!s.revisionProposal || ['RUNNING', 'PREFLIGHT', 'COMPLETED', 'FAILED'].includes(s.status))
     throw new Error('Pause or stop and propose a revision first');
-  for (const e of s.evidence.filter((e) => e.status === 'passed'))
+  for (const e of s.evidence.filter((e) => ['passed', 'assessed'].includes(e.status)))
     store.append(
       id,
       'evidence.invalidated',

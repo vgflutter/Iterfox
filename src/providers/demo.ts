@@ -22,6 +22,10 @@ export class DemoProvider implements AgentProvider {
         r.signal.addEventListener('abort', abort, { once: true });
       });
     r.signal.throwIfAborted();
+    if (r.mode === 'assess')
+      throw new Error(
+        'The avatar DEMO fixture does not assess qualitative criteria. Use Codex or an explicitly labeled test assessor.',
+      );
     if (r.mode === 'plan')
       return {
         tasks: [

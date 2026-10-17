@@ -4,7 +4,7 @@ export default defineConfig({
   timeout: 30_000,
   fullyParallel: false,
   use: {
-    baseURL: 'http://127.0.0.1:4311',
+    baseURL: `http://127.0.0.1:${process.env.ITERFOX_UI_TEST_PORT ?? 4311}`,
     headless: true,
     channel: process.env.ITERFOX_BROWSER_CHANNEL,
     viewport: { width: 1440, height: 1080 },
@@ -12,7 +12,7 @@ export default defineConfig({
   },
   webServer: {
     command: 'node --import tsx tests/browser/server.ts',
-    url: 'http://127.0.0.1:4311',
+    url: `http://127.0.0.1:${process.env.ITERFOX_UI_TEST_PORT ?? 4311}`,
     reuseExistingServer: false,
     timeout: 30_000,
   },

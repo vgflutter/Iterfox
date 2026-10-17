@@ -1,0 +1,14 @@
+{
+  "goal": "Make the short avatar dialogue natural, responsive and easy to understand while retaining both named speakers.",
+  "allowedPaths": ["dialogue.txt"],
+  "criteria": [{
+    "id": "dialogue", "title": "Dialogue is responsive and clear",
+    "command": ["node", "-e", "const s=require('fs').readFileSync('dialogue.txt','utf8'); if(!s.includes('Mira:')||!s.includes('Rowan:')) process.exit(1); console.log(s)"],
+    "scope": ["dialogue.txt"], "timeoutMs": 180000,
+    "verification": { "kind": "qualitative", "files": ["dialogue.txt"], "rubric": [
+      {"id":"responsive","description":"The second speaker directly responds to the first, and the next turn acknowledges the stated preference.","minScore":4},
+      {"id":"clear","description":"Language is concise, easy to understand, and free of confusing or repetitive dialogue.","minScore":4}
+    ], "instructions":"Assess only the supplied three-turn transcript. A score of 4 means clearly sufficient; 5 requires unusually strong evidence. State the limits of judging naturalness from a short text sample." }
+  }],
+  "limits": { "maxTurns": 8, "maxAttempts": 2, "maxDurationMs":900000, "maxTokens":500000 }
+}

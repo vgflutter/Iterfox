@@ -4,12 +4,14 @@ import { tmpdir } from 'node:os';
 import { createDemoRepository, createRun, loadContract, openStore } from '../../src/service.js';
 import { Engine } from '../../src/core/engine.js';
 import { DemoProvider } from '../../src/providers/demo.js';
+import { evidenceFixtures } from './evidence-fixtures.js';
 import { serve } from '../../src/server.js';
 import { launchWorker } from '../../src/cli.js';
 
 const dir = await mkdtemp(join(tmpdir(), 'iterfox-browser-'));
 const repo = await createDemoRepository(dir);
 const store = openStore(dir);
+await evidenceFixtures(dir, store);
 const state = await createRun(
   store,
   dir,
@@ -18,4 +20,6 @@ const state = await createRun(
   'demo',
 );
 await new Engine(store, state.id, new DemoProvider()).run();
-await serve(store, dir, 4311, (id) => launchWorker(id, dir));
+await serve(store, dir, Number(process.env.ITERFOX_UI_TEST_PORT ?? 4311), (id) =>
+  launchWorker(id, dir),
+);

@@ -2,7 +2,7 @@ import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
 import { createHash } from 'node:crypto';
 import { lstat, readFile, readlink, realpath, mkdir } from 'node:fs/promises';
-import { join, resolve } from 'node:path';
+import { join, resolve, posix } from 'node:path';
 import type { CodeStamp, Contract, RunState } from './model.js';
 
 const exec = promisify(execFile);
@@ -22,14 +22,18 @@ export function matches(path: string, prefixes: string[]): boolean {
     )
   );
 }
-export async function stamp(cwd: string, scope: string[] = []): Promise<CodeStamp> {
+export async function stamp(
+  cwd: string,
+  scope: string[] = [],
+  inputs: string[] = [],
+): Promise<CodeStamp> {
   const head = await git(cwd, ['rev-parse', 'HEAD']);
   const names = (await git(cwd, ['ls-files', '-z', '--cached', '--others', '--exclude-standard']))
     .split('\0')
     .filter(Boolean);
   const files: Record<string, string> = {};
-  for (const name of [...new Set(names)].sort()) {
-    if (!matches(name, scope)) continue;
+  for (const name of [...new Set([...names, ...inputs])].sort()) {
+    if (!matches(name, scope) && !inputs.includes(name)) continue;
     try {
       const stat = await lstat(join(cwd, name));
       const bytes = stat.isSymbolicLink()
@@ -81,6 +85,12 @@ export async function worktreeDiff(cwd: string, baseHead: string): Promise<strin
 }
 export function protectedFile(path: string, contract: Contract): boolean {
   return (
+    contract.criteria.some(
+      (c) =>
+        c.verification?.kind === 'visual' &&
+        posix.normalize(c.verification.baseline).toLowerCase() ===
+          posix.normalize(path).toLowerCase(),
+    ) ||
     matches(
       path,
       contract.protectedPaths.length ? contract.protectedPaths : ['__no_explicit_protection__'],
@@ -119,11 +129,13 @@ export async function isolate(
   repository: string,
   dataDir: string,
   id: string,
+  expectedHead?: string,
 ): Promise<{ repository: string; worktree: string; branch: string; baseHead: string }> {
   const repo = await realpath(repository);
   const top = await git(repo, ['rev-parse', '--show-toplevel']);
   if (top !== repo) throw new Error('Run from the Git repository root');
-  const baseHead = await git(repo, ['rev-parse', 'HEAD']);
+  const baseHead = expectedHead ?? (await git(repo, ['rev-parse', 'HEAD']));
+  if (!/^[a-f0-9]{40,64}$/.test(baseHead)) throw new Error('Invalid source commit');
   const branch = `iterfox/${id}`;
   const worktree = resolve(dataDir, 'worktrees', id);
   await mkdir(resolve(dataDir, 'worktrees'), { recursive: true });

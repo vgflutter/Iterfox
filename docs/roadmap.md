@@ -5,14 +5,16 @@
 1. Validate with developers returning to real overnight runs. Measure time to
    answer the three product questions, missed checks and manual interventions.
    Compare directly with Codex Goals and Fabro before expanding scope.
-2. Add observed artifact ingestion and explicit probabilistic review rubrics.
-   Keep deterministic acceptance separate. Add screenshot capture only with a
-   real browser verifier and recorded code provenance.
+2. Validate the implemented screenshot/artifact and rubric verifiers on larger
+   projects. Measure false accepts/rejects and baseline portability. Preserve
+   deterministic versus probabilistic provenance.
 3. Strengthen verifier isolation, orphan ownership/recovery and audited test-change
    approvals. Add an optional OS service guide after validating process behavior.
 4. Improve large-graph grouping/layout and incremental projections using evidence
    from larger runs. Add cost accounting only where reliable usage/pricing exists.
 5. Consider another coding provider after Codex workflows demonstrate usefulness.
 
-No parallel execution, cloud runner, workflow editor or autonomous deployment is
-promised in this release.
+The SSH runner is implemented and its protocol is locally tested. Validate a real
+Linux host, user lingering, disconnect/recovery and artifact fetch before production
+use. No parallel execution, cloud provisioning, workflow editor or autonomous
+deployment is promised in this release.

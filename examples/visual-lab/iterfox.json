@@ -1,0 +1,11 @@
+{
+  "goal": "Restore the round avatar to the operator-approved visual reference without altering checks or the reference.",
+  "allowedPaths": ["index.html"],
+  "protectedPaths": ["server.mjs", "approved.html", "baseline.png", "reference.json"],
+  "criteria": [{
+    "id": "avatar", "title": "Avatar matches the approved round reference",
+    "command": ["node", "--check", "server.mjs"], "scope": ["index.html", "server.mjs"], "timeoutMs": 60000,
+    "verification": { "kind": "visual", "server": ["node", "server.mjs"], "url": "http://127.0.0.1:4357/", "selector": "#avatar", "baseline": "baseline.png", "viewport": {"width":800,"height":600}, "maxDiffRatio": 0.001 }
+  }],
+  "limits": { "maxTurns": 8, "maxAttempts": 2, "maxDurationMs": 900000, "maxTokens": 500000 }
+}

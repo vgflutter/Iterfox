@@ -1,6 +1,6 @@
 # Architecture and decisions
 
-Iterfox 0.1 is local and headless first. A single worker owns one run at a time.
+Iterfox 0.1 is headless first, with a local worker or SSH host. A single worker owns one run at a time.
 The browser never schedules work. Closing it does not stop the worker.
 
 ## Ownership
@@ -32,24 +32,37 @@ Approve preflight → isolated Git worktree → read-only Codex plan → one bui
 → audit all criteria and fingerprints → Morning Brief.
 
 Builder completion is an unverified claim. Only a runtime verification can earn a
-green check. Planner, builder and diagnosis are roles of the same sequential
-Codex integration, not independent reviewers. Qualitative assessments cannot
-substitute for required deterministic checks in this slice.
+green check. Qualitative policies can earn ASSESSED, a separate probabilistic
+result with rubric scores and limitations. Planner, builder, diagnosis and assessor
+are roles of the same sequential Codex integration, not independent reviewers.
+Qualitative assessments cannot substitute for required deterministic checks.
 
 ## Small dependencies
 
 TypeScript/Node 22.13+, official Codex TypeScript SDK, built-in SQLite, Zod,
-React, React Flow, Vite. No cloud service, queue, ORM or generic adapter framework.
+React, React Flow, Vite, Playwright, pixelmatch and pngjs. The SSH runner uses
+existing host services; no vendor SDK, queue, ORM or generic adapter framework.
 The demo provider is only an explicitly labeled test fixture. Runtime interfaces
 leave room for future providers without implementing unused adapters.
 
 ## Scope
 
-Available: command checks, dynamic bounded correction, durable history, isolated
-worktrees, pause/resume/stop, local detached worker, graph, evidence panel,
-contract revision approvals, replay and Markdown/JSON brief export.
+Available: command checks, real browser capture/pixel comparison, explicit qualitative
+rubrics, bounded correction, durable history, isolated worktrees, pause/resume/stop,
+detached workers, graph, artifact panel, contract revision approvals, replay and briefs.
 
-Deferred: automatic screenshot capture, qualitative acceptance gates, editing the
-graph, parallelism, remote runners, OS service installation and cost estimation.
-The ledger can label observed and AI-assessed artifacts, but these do not certify
-acceptance in 0.1. A local runner stops during sleep/shutdown.
+Artifacts live outside the code worktree and are addressed by recorded IDs and
+SHA-256. Final PASS/ASSESSED receipts bind their input scope and artifact hashes;
+changed/missing proof becomes STALE. Supporting observed/command receipts remain
+historical snapshots. See [verification](verification.md).
+
+The [SSH runner](cloud-runner.md) sends bounded JSON requests to the installed CLI
+on an existing host. A preflight pins source commit and parsed-contract hash.
+Remote user services own workers independently of the client connection; a same-port
+localhost tunnel preserves HTTP Host/Origin checks. Downloaded bundles validate
+artifact paths and hashes before writing into a fresh local directory. The remote
+host remains trusted. Live SSH/Linux/systemd behavior is pending validation.
+
+Deferred: graph editing, parallelism, provisioning, automatic reboot continuation,
+adversarial verifier isolation and cost estimation. A local runner stops during
+sleep/shutdown; a remote runner needs its host awake and correctly configured.

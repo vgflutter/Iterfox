@@ -70,3 +70,52 @@ test('mobile layout, reduced motion, and explicit Night Run preflight are usable
     true,
   );
 });
+
+test('actual screenshot artifacts and explicit qualitative provenance are inspectable on desktop and mobile', async ({
+  page,
+}) => {
+  await page.goto('/');
+  await page
+    .locator('.run-item')
+    .filter({ hasText: 'TEST FIXTURE visual avatar evidence' })
+    .click();
+  await page.getByRole('button', { name: 'Proof Ledger' }).click();
+  const images = page.locator('.evidence-card[open] .artifact-gallery img');
+  await expect(images.first()).toBeVisible();
+  await expect
+    .poll(() =>
+      images.evaluateAll((nodes) =>
+        nodes.every(
+          (n) => (n as HTMLImageElement).complete && (n as HTMLImageElement).naturalWidth > 0,
+        ),
+      ),
+    )
+    .toBe(true);
+  await expect(page.locator('.proof-view')).toContainText('Pixel difference 0.000%');
+  await page.screenshot({ path: 'test-results/visual-evidence.png', fullPage: true });
+  await page
+    .locator('.run-item')
+    .filter({ hasText: 'TEST FIXTURE qualitative dialogue assessment' })
+    .click();
+  await expect(page.locator('.assessment-report')).toContainText('not independent review');
+  await expect(page.locator('.assessment-report')).toContainText('TEST FIXTURE');
+  await expect(page.locator('.assessment-report th')).toContainText([
+    'Rubric',
+    'Score / 5',
+    'Required',
+    'Evidence',
+  ]);
+  await expect(page.locator('.proof-view')).toContainText('ASSESSED');
+  await page.screenshot({ path: 'test-results/qualitative-rubric.png', fullPage: true });
+  await page.getByRole('button', { name: 'Morning Brief' }).click();
+  await expect(page.locator('.brief-criterion')).toContainText('ASSESSED');
+  await expect(page.locator('.brief-view')).toContainText(
+    '0 criteria verified. 1 AI-assessed. 0 still need attention.',
+  );
+  await page.screenshot({ path: 'test-results/qualitative-evidence.png', fullPage: true });
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.getByRole('button', { name: 'Proof Ledger' }).click();
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(
+    true,
+  );
+});

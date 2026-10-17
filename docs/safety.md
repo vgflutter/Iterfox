@@ -15,7 +15,7 @@ Prepare dependencies in the isolated worktree yourself when required by your che
 The builder uses Codex `workspace-write`, no command network access and
 `approvalPolicy: never`. Here `never` denies escalation; it does not grant permission
 or disable the sandbox. A denied operation must be reported as blocked. Planning and
-diagnosis use `read-only`. Managed Codex requirements still apply; incompatible
+diagnosis and qualitative assessment use `read-only`. Managed Codex requirements still apply; incompatible
 requirements block the run rather than being overridden with broader permissions.
 
 Codex apps, plugins, hooks, browser/computer/image tools and sub-agents are disabled
@@ -111,6 +111,21 @@ records. Session data contains local paths, code diffs and test output. Keep it 
 
 The HTTP server binds only `127.0.0.1`, validates Host and Origin, and requires an
 unguessable same-origin token for mutation. It has no remote authentication and must
-not be exposed through a public proxy or port forward. Trusted same-user processes
+not be exposed through a public proxy or public port forward. The SSH runner
+uses a loopback-only tunnel to the same port; see [cloud setup](cloud-runner.md). Trusted same-user processes
 can access the ledger. Windows process-tree cancellation and unattended operation
 have not been validated; macOS is locally validated and Linux is covered by CI configuration.
+
+## Additional verification policies
+
+Visual policies start only the approved argv server and capture only a loopback HTTP
+origin in a real browser, with the browser sandbox enabled. Baselines are protected
+operator inputs and never auto-approved. Screenshots, baseline copies, diffs and
+reports have immutable receipts. Qualitative policies use an explicit bounded rubric
+and selected text/PNG files. They can satisfy their own criterion as ASSESSED, not
+deterministic PASS; uncertainty blocks. The same integration performs assessment.
+
+Declared baseline/assessment files are always fingerprinted, including ignored
+files; symlinked selected inputs are refused. Current evidence also depends on
+artifact size/hash integrity. This does not freeze system libraries, browser versions
+or every transitive dependency. See [verification](verification.md) for exact limits.

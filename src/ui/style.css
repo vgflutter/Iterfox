@@ -1838,3 +1838,113 @@ blockquote small {
     display: none;
   }
 }
+
+.assessed {
+  color: #c2b0e9;
+}
+.trail-node.assessed {
+  border-color: #8c77b0;
+}
+.proof-dot.assessed {
+  background: #c2b0e9;
+}
+.artifact-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  margin: 16px 0;
+}
+.artifact-gallery a {
+  min-width: 0;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow-wrap: anywhere;
+}
+.artifact-gallery img {
+  width: 100%;
+  max-height: 250px;
+  object-fit: contain;
+  background: #fff;
+}
+.artifact-gallery span,
+.artifact-gallery small {
+  display: block;
+  margin-top: 6px;
+}
+.assessment-report {
+  overflow-x: auto;
+  padding: 12px 0;
+}
+.assessment-report table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 12px;
+}
+.assessment-report th,
+.assessment-report td {
+  text-align: left;
+  padding: 8px;
+  border-bottom: 1px solid #40463d;
+  vertical-align: top;
+}
+
+.evidence-grid {
+  align-items: start;
+}
+.evidence-card.with-images,
+.evidence-card.assessment-evidence {
+  grid-column: 1 / -1;
+}
+.evidence-card.recorded {
+  background: #171d16;
+  border-color: #3a4237;
+  color: #b4bdb0;
+}
+.evidence-card.assessed {
+  background: #211d29;
+  border-color: #5d4f72;
+}
+.evidence-card.failed {
+  background: #2a2019;
+  border-color: #765038;
+}
+.evidence-card.stale {
+  background: #27251b;
+  border-color: #655e3e;
+}
+.proof-dot.recorded {
+  background: #969e90;
+}
+.evidence-card summary {
+  font-size: 11px;
+}
+.evidence-card summary strong {
+  font-size: 12px;
+}
+.evidence-kind,
+.evidence-card summary > span {
+  font-size: 9px;
+}
+.evidence-body > code,
+.evidence-body pre {
+  font-size: 11px;
+}
+.evidence-meta {
+  font-size: 10px;
+}
+.raw-proof {
+  margin-top: 16px;
+  border-top: 1px solid #3a4237;
+}
+.raw-proof summary {
+  font-size: 11px;
+  padding-left: 0;
+}
+.artifact-gallery small {
+  font-size: 10px;
+}
+
+.assessed-progress i {
+  background: #b5a1d9;
+}

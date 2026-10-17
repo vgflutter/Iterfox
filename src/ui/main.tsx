@@ -20,6 +20,7 @@ import {
   type RunState,
   type TaskNode,
   type Evidence,
+  type Criterion,
 } from '../core/model.js';
 import { brief } from '../core/brief.js';
 import { graphFor, type TrailData } from './graph.js';
@@ -30,6 +31,7 @@ const icons: Record<string, string> = {
   RUNNING: '◉',
   VERIFYING: '◎',
   PASSED: '✓',
+  ASSESSED: '◇',
   FAILED: '×',
   BLOCKED: '!',
   STALE: '↻',
@@ -126,6 +128,7 @@ function App() {
   const [runId, setRunId] = useState<string>();
   const [events, setEvents] = useState<RunEvent[]>([]);
   const [token, setToken] = useState('');
+  const [executionHost, setExecutionHost] = useState('Runtime host');
   const [view, setView] = useState('trail');
   const [selected, setSelected] = useState<string>();
   const [error, setError] = useState('');
@@ -143,7 +146,10 @@ function App() {
   };
   useEffect(() => {
     api('/api/meta')
-      .then((m) => setToken(m.token))
+      .then((m) => {
+        setToken(m.token);
+        setExecutionHost(m.executionHost ?? 'Runtime host');
+      })
       .catch((e) => setError(e.message));
     refresh().catch((e) => setError(e.message));
   }, []);
@@ -301,8 +307,8 @@ function App() {
         </button>
         <div className="local-note">
           <span className="local-icon">⌂</span>
-          <strong>On your machine.</strong>
-          <p>Your runtime stays local. Codex requests use your configured authentication.</p>
+          <strong title={executionHost}>{executionHost}</strong>
+          <p>This host owns the run. Codex requests use its configured authentication.</p>
           <span className="mono">
             v0.1.0 <span>•</span> Early release
           </span>
@@ -333,7 +339,7 @@ function App() {
             </span>
           </div>
           <div className="topbar-right">
-            <span className="local-pill">⌂ Local runtime</span>
+            <span className="local-pill">⌂ {executionHost}</span>
             <a
               href="https://github.com/vgflutter/Iterfox"
               target="_blank"
@@ -429,11 +435,19 @@ function App() {
                   {b?.verified}
                   <em> / {state.criteria.length}</em>
                   <small className="sage">
-                    {b?.open === 0 ? 'All criteria met' : `${b?.open} still open`}
+                    {b?.assessed
+                      ? `${b.assessed} AI-assessed · ${b.open} open`
+                      : b?.open === 0
+                        ? 'All criteria met'
+                        : `${b?.open} still open`}
                   </small>
                 </strong>
-                <div className="progress-track">
-                  <i style={{ width: `${((b?.verified ?? 0) / state.criteria.length) * 100}%` }} />
+                <div className={`progress-track ${b?.assessed ? 'assessed-progress' : ''}`}>
+                  <i
+                    style={{
+                      width: `${(((b?.verified ?? 0) + (b?.assessed ?? 0)) / state.criteria.length) * 100}%`,
+                    }}
+                  />
                 </div>
               </div>
               <div>
@@ -559,6 +573,7 @@ function App() {
                       'RUNNING',
                       'VERIFYING',
                       'PASSED',
+                      'ASSESSED',
                       'FAILED',
                       'BLOCKED',
                       'STALE',
@@ -668,7 +683,16 @@ function App() {
                       Evidence <span>{selectedProofs?.length ?? 0}</span>
                     </h3>
                     {selectedProofs?.length ? (
-                      selectedProofs.map((e) => <EvidenceCard key={e.id} evidence={e} />)
+                      selectedProofs.map((e) => (
+                        <EvidenceCard
+                          key={e.id}
+                          criterion={state.contracts[e.contractVersion - 1]?.criteria.find(
+                            (c) => c.id === e.criterionId,
+                          )}
+                          runId={state.id}
+                          evidence={e}
+                        />
+                      ))
                     ) : (
                       <p className="muted small-text">
                         No runtime evidence attached. An agent claim alone does not verify
@@ -744,8 +768,8 @@ function App() {
                         : 'Here’s where the work stands.'}
                     </h2>
                     <p>
-                      {b?.verified} criteria verified. {b?.open} still need attention.{' '}
-                      {b?.corrections.length} corrective tasks added.
+                      {b?.verified} criteria verified. {b?.assessed ?? 0} AI-assessed. {b?.open}{' '}
+                      still need attention. {b?.corrections.length} corrective tasks added.
                     </p>
                   </div>
                   <a className="button" href={`/api/runs/${state.id}/brief?format=markdown`}>
@@ -776,8 +800,8 @@ function App() {
                       b.attention.map((a) => <p key={a}>{a}</p>)
                     ) : (
                       <p>
-                        All configured checks passed on the recorded code state. Review the worktree
-                        diff before integrating changes.
+                        All configured acceptance policies are satisfied on the recorded inputs.
+                        Review the worktree diff before integrating changes.
                       </p>
                     )}
                     <div className="quiet-rule" />
@@ -810,7 +834,10 @@ function App() {
                   <article className="surface">
                     <h3>Claims, checks & uncertainty</h3>
                     <p>
-                      <strong>{b?.checks.passed} current deterministic checks.</strong>{' '}
+                      <strong>
+                        {b?.checks.passed} current deterministic checks; {b?.assessed ?? 0}{' '}
+                        AI-assessed criteria.
+                      </strong>{' '}
                       {b?.checks.failed} failures and {b?.checks.stale} stale proofs remain in the
                       historical ledger.
                     </p>
@@ -821,8 +848,8 @@ function App() {
                       </blockquote>
                     ))}
                     <p className="muted small-text">
-                      No independent AI reviewer or visual assessment ran. Only the configured
-                      acceptance surface has been verified.
+                      Qualitative judgments use the same integration. Pixel comparisons measure
+                      reference similarity. Only configured checks and rubric inputs are covered.
                     </p>
                   </article>
                 </div>
@@ -838,7 +865,15 @@ function App() {
                 </div>
                 <div className="evidence-grid">
                   {state.evidence.map((e) => (
-                    <EvidenceCard key={e.id} evidence={e} expanded />
+                    <EvidenceCard
+                      key={e.id}
+                      criterion={state.contracts[e.contractVersion - 1]?.criteria.find(
+                        (c) => c.id === e.criterionId,
+                      )}
+                      runId={state.id}
+                      evidence={e}
+                      expanded
+                    />
                   ))}
                 </div>
                 {!state.evidence.length && <p>No checks have produced evidence yet.</p>}
@@ -907,13 +942,20 @@ function App() {
 }
 function EvidenceCard({
   evidence: e,
+  runId,
+  criterion,
   expanded = false,
 }: {
   evidence: Evidence;
+  runId: string;
+  criterion?: Criterion;
   expanded?: boolean;
 }) {
   return (
-    <details className="evidence-card" open={expanded || undefined}>
+    <details
+      className={`evidence-card ${e.status} ${e.artifacts?.some((a) => a.mime === 'image/png') ? 'with-images' : ''} ${e.assessment ? 'assessment-evidence' : ''}`}
+      open={(expanded && e.status !== 'recorded') || undefined}
+    >
       <summary>
         <div>
           <span className={`proof-dot ${e.status}`} />
@@ -942,7 +984,72 @@ function EvidenceCard({
           <dt>Scope</dt>
           <dd>{e.scope.join(', ') || 'All repository files'}</dd>
         </dl>
-        <pre>{e.output || '(no output)'}</pre>
+        {e.visual && (
+          <p>
+            Pixel difference {(e.visual.diffRatio * 100).toFixed(3)}% · limit{' '}
+            {(e.visual.maxDiffRatio * 100).toFixed(3)}%<br />
+            <small>
+              {e.visual.browser} · {e.visual.platform}
+            </small>
+          </p>
+        )}
+        {e.assessment && (
+          <section className="assessment-report" aria-label="Qualitative assessment">
+            <strong>AI-assessed · same integration, not independent review</strong>
+            <p>{e.assessment.summary}</p>
+            <table>
+              <thead>
+                <tr>
+                  <th>Rubric</th>
+                  <th>Score / 5</th>
+                  <th>Required</th>
+                  <th>Evidence</th>
+                </tr>
+              </thead>
+              <tbody>
+                {e.assessment.ratings.map((r) => (
+                  <tr key={r.id}>
+                    <td>{r.id}</td>
+                    <td>{r.score}</td>
+                    <td>
+                      {criterion?.verification?.kind === 'qualitative'
+                        ? criterion.verification.rubric.find((v) => v.id === r.id)?.minScore
+                        : '?'}
+                    </td>
+                    <td>{r.explanation}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <p>Limitations: {e.assessment.limitations.join(' · ')}</p>
+          </section>
+        )}
+        {!!e.artifacts?.length && (
+          <div className="artifact-gallery">
+            {[...e.artifacts]
+              .sort((a, b) => Number(b.mime === 'image/png') - Number(a.mime === 'image/png'))
+              .map((a) => {
+                const url = `/api/runs/${encodeURIComponent(runId)}/artifacts/${encodeURIComponent(a.id)}`;
+                return (
+                  <a key={a.id} href={url} target="_blank" rel="noreferrer">
+                    {a.mime === 'image/png' && <img src={url} alt={a.name} loading="lazy" />}
+                    <span>{a.name} ↗</span>
+                    <small title={a.sha256}>
+                      SHA-256 {a.sha256.slice(0, 12)} · {a.bytes} bytes
+                    </small>
+                  </a>
+                );
+              })}
+          </div>
+        )}
+        {e.visual || e.assessment ? (
+          <details className="raw-proof">
+            <summary>Raw verifier output</summary>
+            <pre>{e.output || '(no output)'}</pre>
+          </details>
+        ) : (
+          <pre>{e.output || '(no output)'}</pre>
+        )}
       </div>
     </details>
   );

@@ -1,0 +1,11 @@
+{
+  "host": "runner@your-ssh-host",
+  "sshPort": 22,
+  "node": "/usr/bin/node",
+  "entry": "/home/runner/iterfox/dist/cli.js",
+  "repository": "/home/runner/project",
+  "contract": "/home/runner/project/iterfox.json",
+  "data": "/home/runner/iterfox-data",
+  "serviceManager": "systemd",
+  "port": 4320
+}

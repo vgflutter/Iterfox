@@ -1,8 +1,10 @@
 import { createServer, type IncomingMessage, type ServerResponse } from 'node:http';
+import { hostname } from 'node:os';
 import { randomBytes, timingSafeEqual } from 'node:crypto';
 import { readFile } from 'node:fs/promises';
 import { resolve, extname, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { artifactRoot, readArtifact } from './core/artifacts.js';
 import { contractSchema } from './core/model.js';
 import { brief, markdownBrief } from './core/brief.js';
 import { Store } from './core/store.js';
@@ -20,7 +22,7 @@ export async function serve(
   store: Store,
   dataDir: string,
   port: number,
-  launch: (id: string) => number,
+  launch: (id: string) => number | Promise<unknown>,
 ) {
   if (!Number.isInteger(port) || port < 0 || port > 65535) throw new Error('Invalid port');
   const token = randomBytes(32).toString('hex');
@@ -55,7 +57,7 @@ export async function serve(
       }
       if (parts[0] === 'api') {
         if (req.method === 'GET' && parts[1] === 'meta')
-          return json(res, 200, { token, dataDir, localOnly: true });
+          return json(res, 200, { token, dataDir, localOnly: true, executionHost: hostname() });
         if (req.method === 'POST' && parts[1] === 'preflight') {
           const b = await body(req);
           const contract = await loadContract(String(b.configPath));
@@ -77,7 +79,7 @@ export async function serve(
             contractSchema.parse(b.contract),
             'codex',
           );
-          launch(state.id);
+          await launch(state.id);
           return json(res, 201, state);
         }
         const id = parts[2];
@@ -85,6 +87,19 @@ export async function serve(
         await auditStoredEvidence(store, id);
         const state = store.get(id);
         if (parts.length === 3 && req.method === 'GET') return json(res, 200, state);
+        if (parts[3] === 'artifacts' && parts.length === 5 && req.method === 'GET') {
+          const artifact = state.evidence
+            .flatMap((e) => e.artifacts ?? [])
+            .find((a) => a.id === parts[4]);
+          if (!artifact) return json(res, 404, { error: 'Artifact not found' });
+          const bytes = await readArtifact(artifactRoot(store.path), artifact);
+          res.setHeader('Content-Type', artifact.mime);
+          res.setHeader(
+            'Content-Disposition',
+            `${artifact.mime === 'image/png' ? 'inline' : 'attachment'}; filename="${artifact.id}"`,
+          );
+          return res.end(bytes);
+        }
         if (parts[3] === 'events' && req.method === 'GET') return json(res, 200, store.events(id));
         if (parts[3] === 'brief' && req.method === 'GET') {
           if (url.searchParams.get('format') === 'markdown') {
@@ -98,7 +113,7 @@ export async function serve(
           const b = await body(req);
           if (b.action === 'resume') {
             resumeRun(store, id);
-            launch(id);
+            await launch(id);
           } else if (b.action === 'pause' || b.action === 'stop') controlRun(store, id, b.action);
           else throw new Error('Unknown control action');
           return json(res, 202, { requested: b.action });
@@ -182,7 +197,7 @@ export async function serve(
   });
   console.log(`Iterfox UI: http://127.0.0.1:${(server.address() as { port: number }).port}`);
   console.log(
-    'Local worker state persists independently of this page. Keep the computer awake for Night Runs.',
+    'Worker state persists independently of this page. Keep the execution host awake for Night Runs.',
   );
   server.on('close', () => {
     for (const stream of streams) stream.end();

@@ -1,7 +1,9 @@
 import { randomUUID } from 'node:crypto';
 import { Store } from './store.js';
 import { auditChanges, changedFiles, stamp, worktreeDiff } from './workspace.js';
-import { check } from './check.js';
+import { artifactRoot, readArtifact } from './artifacts.js';
+import { verify } from '../verifiers/runtime.js';
+import { satisfied } from './model.js';
 import {
   buildSchema,
   diagnosisSchema,
@@ -116,7 +118,7 @@ export class Engine {
           continue;
         }
         await this.refreshEvidence();
-        const open = this.state.criteria.find((c) => c.status !== 'PASSED');
+        const open = this.state.criteria.find((c) => !satisfied(c.status));
         if (open) {
           await this.satisfy(open.id);
           continue;
@@ -125,7 +127,7 @@ export class Engine {
         this.boundary();
         this.emit(
           'workflow.completed',
-          'All approved acceptance criteria have current deterministic evidence.',
+          'All approved acceptance policies are satisfied. Consult evidence for deterministic checks and AI assessments.',
         );
         return this.state;
       }
@@ -136,7 +138,9 @@ export class Engine {
       try {
         await this.refreshEvidence();
       } catch {
-        for (const e of this.state.evidence.filter((e) => e.status === 'passed'))
+        for (const e of this.state.evidence.filter((e) =>
+          ['passed', 'assessed'].includes(e.status),
+        ))
           this.emit(
             'evidence.invalidated',
             'Current code could not be fingerprinted after interruption. Evidence validity is unknown.',
@@ -144,7 +148,9 @@ export class Engine {
           );
       }
       if (message.includes('protected/out-of-scope') || message.includes('Git HEAD changed'))
-        for (const e of this.state.evidence.filter((e) => e.status === 'passed'))
+        for (const e of this.state.evidence.filter((e) =>
+          ['passed', 'assessed'].includes(e.status),
+        ))
           this.emit(
             'evidence.invalidated',
             'Verification integrity was violated. Review the worktree before certifying any further result.',
@@ -297,9 +303,16 @@ export class Engine {
     );
   }
   async refreshEvidence(): Promise<void> {
-    for (const e of this.state.evidence.filter((e) => e.status === 'passed')) {
-      const now = await stamp(this.state.worktree, e.scope);
+    for (const e of this.state.evidence.filter((e) => ['passed', 'assessed'].includes(e.status))) {
+      const now = await stamp(this.state.worktree, e.scope, e.inputs);
+      let artifactsIntact = true;
+      try {
+        for (const a of e.artifacts ?? []) await readArtifact(artifactRoot(this.store.path), a);
+      } catch {
+        artifactsIntact = false;
+      }
       if (
+        !artifactsIntact ||
         e.contractVersion !== this.state.contractVersion ||
         now.fingerprint !== e.stamp.fingerprint ||
         now.head !== e.stamp.head
@@ -307,7 +320,7 @@ export class Engine {
         const changed = changedFiles(e.stamp, now);
         this.emit(
           'evidence.invalidated',
-          `Evidence is STALE: ${changed.join(', ') || 'Git HEAD or acceptance version changed'}. Scope: ${e.scope.join(', ') || 'all repository files'}.`,
+          `Evidence is STALE: ${changed.join(', ') || 'Git HEAD, acceptance version or evidence artifact changed'}. Scope: ${e.scope.join(', ') || 'all repository files'}.`,
           { evidenceId: e.id, changed },
         );
       }
@@ -381,7 +394,7 @@ export class Engine {
           attempt: attempts + 1,
           reason: failures
             ? 'Repeat the original acceptance check after correction.'
-            : 'Acceptance requires runtime-owned deterministic evidence.',
+            : 'Acceptance requires runtime-owned evidence for the approved verification policy.',
         });
       this.emit('verification.started', `Verifying: ${criterion.title}`, {
         nodeId: verifier.id,
@@ -389,34 +402,73 @@ export class Engine {
         edges: prior ? [edge(prior.id, verifier.id, failures ? 'retry' : 'next')] : [],
       });
       await auditChanges(this.state);
-      const before = await stamp(this.state.worktree, criterion.scope);
-      const result = await check(this.state.worktree, criterion, this.abort.signal);
-      const after = await stamp(this.state.worktree, criterion.scope);
-      await auditChanges(this.state);
-      const stable = before.fingerprint === after.fingerprint && before.head === after.head;
-      const passed = result.exitCode === 0 && stable;
-      const evidence: Evidence = {
-        id: randomUUID(),
-        nodeId: verifier.id,
-        criterionId,
-        contractVersion: this.state.contractVersion,
-        kind: 'deterministic',
-        status: passed ? 'passed' : 'failed',
-        createdAt: new Date().toISOString(),
-        command: criterion.command,
-        exitCode: stable ? result.exitCode : null,
-        output:
-          result.output +
-          (stable ? '' : '\nCheck inputs changed during execution; result cannot be certified.'),
-        durationMs: result.durationMs,
-        stamp: before,
-        scope: criterion.scope,
-      };
+      const signal = AbortSignal.any([this.abort.signal, AbortSignal.timeout(criterion.timeoutMs)]);
+      const evidence = await verify(
+        this.state,
+        verifier.id,
+        criterion,
+        artifactRoot(this.store.path),
+        signal,
+        (e) =>
+          this.emit('evidence.recorded', 'Runtime captured supporting evidence.', {
+            nodeId: verifier!.id,
+            evidence: e,
+          }),
+        async (input) => {
+          this.boundary();
+          if (this.state.turns >= this.state.contract.limits.maxTurns)
+            throw new Error('Agent turn limit reached');
+          this.emit(
+            'assessment.started',
+            'Assessing the approved rubric; same integration, not independent review.',
+            { nodeId: verifier!.id },
+          );
+          const assessmentSignal = AbortSignal.any([
+            signal,
+            AbortSignal.timeout(this.state.contract.limits.turnTimeoutMs),
+          ]);
+          const answer = await this.provider.invoke({
+            mode: 'assess',
+            state: this.state,
+            node: this.state.nodes.find((n) => n.id === verifier!.id)!,
+            signal: assessmentSignal,
+            assessmentInput: input,
+            onThread: (threadId) =>
+              this.emit('agent.thread', 'Assessor session recorded.', {
+                nodeId: verifier!.id,
+                threadId,
+              }),
+            onUsage: (tokens) => {
+              if (!Number.isFinite(tokens) || tokens < 0) throw new Error('Invalid provider usage');
+              this.emit('agent.usage', `${tokens} tokens reported by assessor.`, { tokens });
+            },
+          });
+          assessmentSignal.throwIfAborted();
+          return answer;
+        },
+      );
+      signal.throwIfAborted();
+      if (evidence.status === 'unverified') {
+        this.emit('evidence.recorded', 'Assessor is uncertain; operator attention is required.', {
+          nodeId: verifier.id,
+          evidence,
+        });
+        throw new Error(
+          'Qualitative assessment uncertain. Review captured inputs and rubric before resuming.',
+        );
+      }
+      const passed = evidence.status === 'passed' || evidence.status === 'assessed';
       this.emit(
-        passed ? 'verification.passed' : 'verification.failed',
-        passed
-          ? `${criterion.title}: exit 0 on recorded file fingerprint.`
-          : `${criterion.title}: check failed (exit ${evidence.exitCode ?? 'unknown'}).`,
+        evidence.status === 'assessed'
+          ? 'verification.assessed'
+          : passed
+            ? 'verification.passed'
+            : 'verification.failed',
+        evidence.status === 'assessed'
+          ? `${criterion.title}: AI-assessed against the approved rubric; not a deterministic PASS.`
+          : passed
+            ? `${criterion.title}: approved deterministic check satisfied on recorded inputs.`
+            : `${criterion.title}: verification failed.`,
         { nodeId: verifier.id, evidence },
       );
       if (passed) return;

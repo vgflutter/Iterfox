@@ -1,0 +1,29 @@
+{
+  "status": "BLOCKED",
+  "evidenceStatus": "unverified",
+  "assessor": "real Codex SDK",
+  "otherRoles": "no-edit test fixtures",
+  "durationMs": 22487,
+  "reportedTokens": 12201,
+  "assessment": {
+    "outcome": "uncertain",
+    "ratings": [
+      {
+        "id": "responsive",
+        "score": 3,
+        "explanation": "Rowan directly answers Mira. Mira’s turn-back offer accommodates a shorter outing, but acknowledgment of the shade preference is unclear."
+      },
+      {
+        "id": "clear",
+        "score": 4,
+        "explanation": "The dialogue is concise, understandable, and free of confusing or unnecessary repetition."
+      }
+    ],
+    "summary": "Clarity is sufficient; acknowledgment of the stated route preference remains ambiguous.",
+    "limitations": [
+      "Three written turns provide limited evidence of naturalness; delivery and broader conversational context are unavailable."
+    ],
+    "reviewer": "codex",
+    "independent": false
+  }
+}

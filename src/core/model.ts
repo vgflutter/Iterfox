@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-const pathPrefix = z
+export const pathPrefix = z
   .string()
   .min(1)
   .refine(
@@ -8,6 +8,59 @@ const pathPrefix = z
       !p.startsWith('/') && !p.split('/').includes('..') && !p.includes('\\') && !p.includes('\0'),
     'Use relative, literal file or directory paths',
   );
+export const visualSchema = z
+  .object({
+    kind: z.literal('visual'),
+    url: z
+      .string()
+      .url()
+      .refine((value) => {
+        const u = new URL(value);
+        return (
+          u.protocol === 'http:' &&
+          ['127.0.0.1', 'localhost', '[::1]'].includes(u.hostname) &&
+          !u.username &&
+          !u.password
+        );
+      }, 'Visual targets must be local HTTP origins without credentials'),
+    server: z.array(z.string().min(1)).min(1).max(50).optional(),
+    selector: z.string().min(1).max(500).optional(),
+    baseline: pathPrefix,
+    viewport: z
+      .object({
+        width: z.number().int().min(100).max(2560),
+        height: z.number().int().min(100).max(2560),
+      })
+      .strict()
+      .default({ width: 1280, height: 800 }),
+    maxDiffRatio: z.number().min(0).max(0.2).default(0.005),
+    pixelThreshold: z.number().min(0).max(1).default(0.1),
+    colorScheme: z.enum(['light', 'dark']).default('light'),
+  })
+  .strict();
+export const qualitativeSchema = z
+  .object({
+    kind: z.literal('qualitative'),
+    rubric: z
+      .array(
+        z
+          .object({
+            id: z.string().regex(/^[a-z][a-z0-9-]{0,39}$/),
+            description: z.string().min(5).max(2000),
+            minScore: z.number().int().min(1).max(5),
+          })
+          .strict(),
+      )
+      .min(1)
+      .max(12),
+    files: z.array(pathPrefix).max(8).default([]),
+    instructions: z.string().max(4000).default(''),
+  })
+  .strict()
+  .superRefine((v, ctx) => {
+    if (new Set(v.rubric.map((r) => r.id)).size !== v.rubric.length)
+      ctx.addIssue({ code: 'custom', message: 'Rubric IDs must be unique' });
+  });
 export const criterionSchema = z
   .object({
     id: z.string().regex(/^[a-z][a-z0-9-]{0,39}$/),
@@ -15,6 +68,7 @@ export const criterionSchema = z
     command: z.array(z.string().min(1)).min(1).max(50),
     scope: z.array(pathPrefix).default([]),
     timeoutMs: z.number().int().min(100).max(3_600_000).default(60_000),
+    verification: z.union([visualSchema, qualitativeSchema]).optional(),
   })
   .strict();
 export const contractSchema = z
@@ -54,11 +108,13 @@ export type NodeStatus =
   | 'RUNNING'
   | 'VERIFYING'
   | 'PASSED'
+  | 'ASSESSED'
   | 'FAILED'
   | 'BLOCKED'
   | 'STALE'
   | 'SKIPPED'
   | 'UNVERIFIED';
+export type SatisfiedStatus = 'PASSED' | 'ASSESSED';
 export type RunStatus =
   'PREFLIGHT' | 'RUNNING' | 'PAUSED' | 'COMPLETED' | 'PARTIAL' | 'BLOCKED' | 'FAILED' | 'STOPPED';
 export type Role = 'planner' | 'builder' | 'verifier';
@@ -98,7 +154,7 @@ export interface Evidence {
   criterionId: string;
   contractVersion: number;
   kind: 'deterministic' | 'observed' | 'ai-assessed' | 'unverified';
-  status: 'passed' | 'failed' | 'stale' | 'unverified';
+  status: 'passed' | 'assessed' | 'failed' | 'stale' | 'unverified' | 'recorded';
   createdAt: string;
   command?: string[];
   exitCode?: number | null;
@@ -106,7 +162,58 @@ export interface Evidence {
   durationMs: number;
   stamp: CodeStamp;
   scope: string[];
+  inputs?: string[];
   invalidatedReason?: string;
+  artifacts?: ArtifactRef[];
+  assessment?: Assessment;
+  visual?: {
+    diffPixels: number;
+    totalPixels: number;
+    diffRatio: number;
+    maxDiffRatio: number;
+    dimensionsMatch: boolean;
+    pageErrorCount: number;
+    blockedRequestCount: number;
+    baselineHash: string;
+    browser: string;
+    platform: string;
+    viewport: { width: number; height: number };
+  };
+}
+export interface ArtifactRef {
+  id: string;
+  name: string;
+  path: string;
+  sha256: string;
+  bytes: number;
+  mime: 'image/png' | 'application/json' | 'text/plain';
+}
+export interface Assessment {
+  outcome: 'sufficient' | 'insufficient' | 'uncertain';
+  ratings: { id: string; score: number; explanation: string }[];
+  summary: string;
+  limitations: string[];
+  reviewer: 'codex' | 'demo';
+  independent: false;
+}
+export function satisfied(status: string): boolean {
+  return status === 'PASSED' || status === 'ASSESSED';
+}
+export function assessmentSufficient(a: Assessment | undefined, c: Criterion): boolean {
+  const policy = c.verification;
+  return (
+    policy?.kind === 'qualitative' &&
+    !!a &&
+    a.independent === false &&
+    a.outcome === 'sufficient' &&
+    a.ratings.length === policy.rubric.length &&
+    new Set(a.ratings.map((r) => r.id)).size === a.ratings.length &&
+    policy.rubric.every((r) =>
+      a.ratings.some(
+        (v) => v.id === r.id && Number.isInteger(v.score) && v.score >= r.minScore && v.score <= 5,
+      ),
+    )
+  );
 }
 export interface AcceptanceState {
   id: string;
@@ -153,6 +260,9 @@ export type EventType =
   | 'verification.started'
   | 'verification.passed'
   | 'verification.failed'
+  | 'verification.assessed'
+  | 'evidence.recorded'
+  | 'assessment.started'
   | 'diagnosis.proposed'
   | 'corrective.inserted'
   | 'decision.recorded'
@@ -185,12 +295,13 @@ export interface RunEvent {
 const transitions: Record<NodeStatus, NodeStatus[]> = {
   PENDING: ['RUNNING', 'VERIFYING', 'BLOCKED', 'SKIPPED'],
   RUNNING: ['UNVERIFIED', 'PASSED', 'FAILED', 'BLOCKED'],
-  VERIFYING: ['PASSED', 'FAILED', 'BLOCKED'],
-  UNVERIFIED: ['PASSED', 'STALE', 'BLOCKED'],
+  VERIFYING: ['PASSED', 'ASSESSED', 'FAILED', 'BLOCKED'],
+  UNVERIFIED: ['PASSED', 'ASSESSED', 'STALE', 'BLOCKED'],
   PASSED: ['STALE'],
+  ASSESSED: ['STALE'],
   FAILED: ['PENDING'],
   BLOCKED: ['PENDING', 'SKIPPED'],
-  STALE: ['PENDING', 'PASSED'],
+  STALE: ['PENDING', 'PASSED', 'ASSESSED'],
   SKIPPED: [],
 };
 export function transition(node: TaskNode, status: NodeStatus): void {
@@ -294,21 +405,78 @@ export function reduce(previous: RunState | undefined, event: RunEvent): RunStat
         s.criteria.find((c) => c.id === n.criterionId)!.status = 'BLOCKED';
       break;
     }
+    case 'evidence.recorded': {
+      const n = node();
+      const e = structuredClone(d.evidence as Evidence);
+      if (
+        n.status !== 'VERIFYING' ||
+        e.nodeId !== n.id ||
+        e.criterionId !== n.criterionId ||
+        e.contractVersion !== s.contractVersion ||
+        s.evidence.some((x) => x.id === e.id)
+      )
+        throw new Error('Invalid supporting evidence');
+      s.evidence.push(e);
+      n.evidenceIds.push(e.id);
+      break;
+    }
+    case 'assessment.started':
+      if (
+        node().status !== 'VERIFYING' ||
+        s.nodes.filter((n) => ['RUNNING', 'VERIFYING'].includes(n.status)).length !== 1
+      )
+        throw new Error('Assessment must belong to the active verifier');
+      s.turns++;
+      break;
     case 'verification.passed':
+    case 'verification.assessed':
     case 'verification.failed': {
       const n = node();
       const e = d.evidence as Evidence;
       if (
-        e.kind !== 'deterministic' ||
+        !['deterministic', 'ai-assessed'].includes(e.kind) ||
         e.nodeId !== n.id ||
         e.criterionId !== n.criterionId ||
         e.contractVersion !== s.contractVersion
       )
         throw new Error('Invalid verification evidence');
-      const passed = event.type === 'verification.passed';
-      if (passed !== (e.exitCode === 0 && e.status === 'passed'))
+      const policy = s.contract.criteria.find((c) => c.id === n.criterionId)!;
+      const assessed = event.type === 'verification.assessed';
+      const passed = event.type === 'verification.passed' || assessed;
+      if (
+        s.evidence.some((x) => x.id === e.id) ||
+        (event.type === 'verification.failed' && e.status !== 'failed')
+      )
+        throw new Error('Invalid final evidence status or duplicate ID');
+      if (
+        assessed &&
+        (e.kind !== 'ai-assessed' ||
+          e.exitCode !== 0 ||
+          e.assessment?.reviewer !== s.provider ||
+          e.status !== 'assessed' ||
+          !assessmentSufficient(e.assessment, policy))
+      )
+        throw new Error('Assessment does not satisfy the approved rubric');
+      if (
+        event.type === 'verification.passed' &&
+        (e.kind !== 'deterministic' || policy.verification?.kind === 'qualitative')
+      )
+        throw new Error('AI assessment cannot become deterministic PASS');
+      if (
+        event.type === 'verification.passed' &&
+        policy.verification?.kind === 'visual' &&
+        (!e.visual ||
+          !e.artifacts?.length ||
+          e.visual.diffRatio > policy.verification.maxDiffRatio ||
+          !e.visual.dimensionsMatch ||
+          e.visual.pageErrorCount !== 0 ||
+          e.visual.blockedRequestCount !== 0 ||
+          e.visual.maxDiffRatio !== policy.verification.maxDiffRatio)
+      )
+        throw new Error('Visual PASS requires comparison receipts');
+      if (!assessed && passed !== (e.exitCode === 0 && e.status === 'passed'))
         throw new Error('Evidence does not support result');
-      transition(n, passed ? 'PASSED' : 'FAILED');
+      transition(n, assessed ? 'ASSESSED' : passed ? 'PASSED' : 'FAILED');
       n.evidenceIds.push(e.id);
       n.summary = event.message;
       n.endedAt = event.at;
@@ -324,7 +492,7 @@ export function reduce(previous: RunState | undefined, event: RunEvent): RunStat
             t.criterionId === n.criterionId &&
             ['UNVERIFIED', 'STALE'].includes(t.status),
         )) {
-          transition(task, 'PASSED');
+          transition(task, assessed ? 'ASSESSED' : 'PASSED');
           task.evidenceIds.push(e.id);
         }
       break;
@@ -343,7 +511,8 @@ export function reduce(previous: RunState | undefined, event: RunEvent): RunStat
       break;
     case 'evidence.invalidated': {
       const e = s.evidence.find((e) => e.id === d.evidenceId);
-      if (!e || e.status !== 'passed') throw new Error('Cannot invalidate evidence');
+      if (!e || !['passed', 'assessed'].includes(e.status))
+        throw new Error('Cannot invalidate evidence');
       e.status = 'stale';
       e.invalidatedReason = event.message;
       if (s.status === 'COMPLETED') {
@@ -353,7 +522,7 @@ export function reduce(previous: RunState | undefined, event: RunEvent): RunStat
       }
       const c = s.criteria.find((c) => c.evidenceId === e.id);
       if (c) c.status = 'STALE';
-      for (const n of s.nodes.filter((n) => n.evidenceIds.includes(e.id) && n.status === 'PASSED'))
+      for (const n of s.nodes.filter((n) => n.evidenceIds.includes(e.id) && satisfied(n.status)))
         transition(n, 'STALE');
       break;
     }
@@ -363,7 +532,7 @@ export function reduce(previous: RunState | undefined, event: RunEvent): RunStat
     case 'contract.approved':
       if (!s.revisionProposal || ['RUNNING', 'PREFLIGHT', 'COMPLETED', 'FAILED'].includes(s.status))
         throw new Error('Pause or stop before approving a revision');
-      if (s.evidence.some((e) => e.status === 'passed'))
+      if (s.evidence.some((e) => ['passed', 'assessed'].includes(e.status)))
         throw new Error('Invalidate old evidence before revision');
       s.contract = s.revisionProposal;
       s.goal = s.contract.goal;
@@ -380,7 +549,7 @@ export function reduce(previous: RunState | undefined, event: RunEvent): RunStat
       break;
     case 'workflow.completed':
       if (
-        s.criteria.some((c) => c.status !== 'PASSED') ||
+        s.criteria.some((c) => !satisfied(c.status)) ||
         s.nodes.some((n) => ['RUNNING', 'VERIFYING', 'PENDING'].includes(n.status))
       )
         throw new Error('Acceptance is incomplete');

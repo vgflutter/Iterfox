@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { parseArgs } from 'node:util';
-import { resolve, join } from 'node:path';
+import { resolve, join, dirname, basename } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { spawn } from 'node:child_process';
 import { mkdirSync, openSync, closeSync, realpathSync, existsSync } from 'node:fs';
@@ -33,6 +33,8 @@ const help = `Iterfox — Delegate the work. Wake up to evidence.
   iterfox events <run-id>
   iterfox contract <run-id> --propose contract.json
   iterfox contract <run-id> --approve --yes
+  iterfox capture <criterion-id> --config iterfox.json --out candidate.png
+  iterfox cloud doctor|run|status|pause|resume|stop|brief|fetch|ui --target cloud.json
 
 All commands accept --data <directory> (default: .iterfox in current directory).
 --yes explicitly authorizes the printed preflight or proposed contract revision.
@@ -56,6 +58,25 @@ export function launchWorker(id: string, dataDir: string): number {
   if (!child.pid) throw new Error('Could not launch detached worker');
   return child.pid;
 }
+export function launchUi(dataDir: string, port: number): number {
+  mkdirSync(join(dataDir, 'logs'), { recursive: true });
+  const log = openSync(join(dataDir, 'logs', `ui-${port}.log`), 'a', 0o600);
+  const entry = fileURLToPath(import.meta.url);
+  const loader = entry.endsWith('.ts') ? ['--import', import.meta.resolve('tsx')] : [];
+  const child = spawn(
+    process.execPath,
+    [...loader, entry, 'ui', '--data', dataDir, '--port', String(port)],
+    {
+      detached: true,
+      stdio: ['ignore', log, log],
+      env: process.env,
+    },
+  );
+  closeSync(log);
+  child.unref();
+  if (!child.pid) throw new Error('Could not launch UI service');
+  return child.pid;
+}
 async function authorize(yes: boolean, text: string): Promise<void> {
   console.log(text);
   if (yes) return;
@@ -72,6 +93,14 @@ async function authorize(yes: boolean, text: string): Promise<void> {
   }
 }
 async function main() {
+  if (process.argv[2] === 'cloud') {
+    const { cloudCli } = await import('./cloud.js');
+    return cloudCli(process.argv.slice(3), authorize);
+  }
+  if (process.argv[2] === 'remote-agent') {
+    const { remoteAgent } = await import('./cloud.js');
+    return remoteAgent();
+  }
   const { positionals, values: v } = parseArgs({
     allowPositionals: true,
     options: {
@@ -87,6 +116,7 @@ async function main() {
       help: { type: 'boolean' },
       propose: { type: 'string' },
       approve: { type: 'boolean' },
+      'remote-target': { type: 'string' },
     },
   });
   const [command = 'help', requestedId] = positionals;
@@ -94,12 +124,58 @@ async function main() {
     console.log(help);
     return;
   }
+  if (command === 'capture') {
+    if (!requestedId || !v.config || !v.out)
+      throw new Error('capture <criterion-id> requires --config and --out');
+    const contract = await loadContract(v.config);
+    const criterion = contract.criteria.find((c) => c.id === requestedId);
+    if (criterion?.verification?.kind !== 'visual')
+      throw new Error('Select an approved visual criterion');
+    const { captureVisual } = await import('./verifiers/visual.js');
+    const { writeFile } = await import('node:fs/promises');
+    const requestedOutput = resolve(v.out);
+    const output = join(realpathSync(dirname(requestedOutput)), basename(requestedOutput));
+    const repo = realpathSync(resolve(v.repo!));
+    if (output === repo || output.startsWith(repo + '/'))
+      throw new Error(
+        'Capture a candidate outside the repository; review it before copying to the baseline path.',
+      );
+    await authorize(
+      Boolean(v.yes),
+      JSON.stringify(
+        {
+          candidate: output,
+          server: criterion.verification.server,
+          url: criterion.verification.url,
+          viewport: criterion.verification.viewport,
+        },
+        null,
+        2,
+      ),
+    );
+    const capture = await captureVisual(repo, criterion, AbortSignal.timeout(criterion.timeoutMs));
+    if (capture.errors.length || capture.blockedRequests.length)
+      throw new Error('Capture encountered page errors or blocked external requests');
+    await writeFile(output, capture.screenshot, { flag: 'wx', mode: 0o600 });
+    console.log(
+      `Candidate saved: ${output}. Browser ${capture.browser}, ${capture.platform}. Review visually before approving a committed baseline.`,
+    );
+    return;
+  }
   const dataDir = resolve(v.data!);
   const store = openStore(dataDir);
   try {
     if (command === 'ui') {
       const { serve } = await import('./server.js');
-      await serve(store, dataDir, Number(v.port), (id) => launchWorker(id, dataDir));
+      let launch: (id: string) => number | Promise<unknown> = (id) => launchWorker(id, dataDir);
+      if (v['remote-target']) {
+        const { targetSchema, launchRemote } = await import('./cloud.js');
+        const target = targetSchema.parse(JSON.parse(v['remote-target']));
+        if (resolve(target.data) !== dataDir)
+          throw new Error('Remote UI target must use the same ledger directory');
+        launch = (id) => launchRemote(target, 'worker', id);
+      }
+      await serve(store, dataDir, Number(v.port), launch);
       return; // server owns the store until it closes
     }
     if (command === 'run' || command === 'demo') {
@@ -138,7 +214,7 @@ async function main() {
           : runs
               .map(
                 (s) =>
-                  `${s.id}  ${s.status.padEnd(10)}  ${s.criteria.filter((c) => c.status === 'PASSED').length}/${s.criteria.length} verified  ${s.provider.toUpperCase()}  ${s.goal}`,
+                  `${s.id}  ${s.status.padEnd(10)}  ${s.criteria.filter((c) => c.status === 'PASSED').length}/${s.criteria.length} deterministic; ${s.criteria.filter((c) => c.status === 'ASSESSED').length} AI-assessed  ${s.provider.toUpperCase()}  ${s.goal}`,
               )
               .join('\n') || 'No runs. Start with iterfox demo.',
       );
