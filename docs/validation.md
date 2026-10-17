@@ -199,3 +199,85 @@ npm run test:assessor`. This confirms image transport and rubric handling, not
 independent design review or general visual reasoning accuracy.
 
 See [verifier behavior/setup](verification.md) and the [cloud deployment procedure](cloud-runner.md).
+
+## Relaybox scheduling follow-up — 2026-10-17
+
+The separate complex assessment found a real coordination defect: the old engine
+verified a combined persistence/CLI gate before its already-planned CLI work, then
+paid for a diagnosis and duplicate correction. It also executed a second projector
+task even after that criterion already passed. The original sample produced correct
+code but blocked at its reported-token boundary with only 3/5 criteria certified.
+
+Commit `5c3fbd2` changes planning/scheduling, keeping the contract and tool policy:
+
+- Adjacent steps sharing a gate become one implementation unit, preserving every
+  objective and execution order. The planner is asked for cohesive units.
+- Approved command probes discover current coverage. Negative observations while
+  implementation remains are explicitly deferred, without diagnosis or retry use.
+- Current deterministic receipts can skip already-covered planned work. Stale
+  receipts revoke those skips and reopen the original tasks. No agent claim or
+  qualitative assessment can authorize such a skip.
+- Reported-token/turn boundaries prevent new model calls. Local deterministic
+  checks can certify existing work within the unchanged duration limit.
+
+Six new regression scenarios exercise these cases with real command checks,
+including nonadjacent contributions, invalid skip attempts and interrupted probes.
+The full suite passed **34 tests**, with **3 optional tests skipped**; type checks,
+production build and **3 browser tests** passed. The original real-Codex archive
+still replays unchanged. Tests/configuration of the challenge were not modified.
+
+One prospective real-Codex follow-up was frozen before execution. It cloned the
+same initial fixture commit `29e92ea423932a7194e51f1eeb5c1c3e43865fca`, preserved
+the five commands and scopes, pinned `gpt-6.1-sol`/`xhigh`, retained the 600-second,
+800,000 reported-token, 12-turn limits, and checked the original holdout hash.
+No intervention, prompt edit, budget increase or selective rerun occurred.
+
+| Observation                | Direct Codex, historical | Iterfox before, historical | Iterfox follow-up |
+| -------------------------- | ------------------------ | -------------------------- | ----------------- |
+| Independent approved tests | 48/48                    | 48/48                      | 48/48             |
+| Additional holdout groups  | 4/4                      | 4/4                        | 4/4               |
+| Runtime status             | Agent finished           | BLOCKED                    | COMPLETED         |
+| Runtime-certified criteria | N/A                      | 3/5                        | 5/5               |
+| Solver elapsed             | 176.73 s                 | 497.01 s                   | 421.865 s         |
+| Reported tokens            | 147,146                  | 817,009                    | 424,826           |
+| Model turns                | 1                        | 9                          | 5                 |
+
+The follow-up was about **15% faster** and used **48% fewer reported tokens** than
+the earlier Iterfox sample. It still took **2.39×** the elapsed time and **2.89×**
+the reported tokens of the historical direct-Codex reference. These were not a new
+contemporaneous/randomized pair; model variability and service conditions can affect
+times and plans. Do not infer a general speed or monetary-cost advantage.
+
+The new planner proposed four cohesive units, so this sample needed no runtime
+coalescing or task skips; those paths are covered by the regression tests. The
+runtime recorded **12 preliminary negative observations**, followed by **5 current
+passing receipts**, with **0 corrective tasks**. Preliminary negatives are retained
+as real observations, rather than relabeled as unexpected failures. All protected
+inputs remained unchanged. The same four black-box holdout groups passed afterward.
+
+The production UI was also checked against this actual completed Codex ledger:
+5/5 acceptance nodes passed, all 17 receipts were visible, preliminary observations
+were labeled separately, grouping reduced 27 graph nodes to 15, and a 390-pixel
+viewport had no horizontal overflow or page errors. The primary snapshot was not
+modified for this read-only audit. No post-completion fault injection/recovery
+trial was performed in this follow-up.
+
+The measured improvement is successful certification and reduced orchestration
+overhead in one new sample. **A net value advantage remains unproven.** Developer
+review-time savings, sustained unattended operation and native Goals/Fabro comparisons
+remain unmeasured. Further feature breadth does not resolve that evidence gap.
+
+[Machine-readable summary and artifact hashes](validation/relaybox-scheduling.json)
+preserve the measurements without private paths or session IDs. Full events,
+commands, diff, protocol and independent audit outputs remain in the local follow-up
+artifact directory. Reproduce from the original assessment inputs with:
+
+```sh
+node --import tsx scripts/retest-relaybox.ts \
+  --assessment /path/to/iterfox-value-assessment-20261017 \
+  --out /path/to/new-followup-directory
+```
+
+This is an explicit real-Codex opt-in. The harness refuses a dirty runtime, an
+existing output directory, changed fixture/contract/holdout, or a different model
+protocol. It clones the fixture, leaving the original assessment unchanged.

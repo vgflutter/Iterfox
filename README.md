@@ -185,6 +185,13 @@ fixture does **not** establish a competitive advantage. Codex alone completed it
 with less time and reported usage in the recorded sample. Goals and Fabro remain
 unmeasured practical comparisons; a reproducible protocol is documented.
 
+A later complex Relaybox follow-up passed 48 protected tests and four additional
+holdout groups, and certified all five criteria after a scheduling fix. It still
+used 2.39× the elapsed time and 2.89× the reported tokens of the earlier direct-Codex
+sample. This was a single follow-up with historical references, not a new matched
+pair. Net value and developer review-time savings remain unproven; see the
+[measured follow-up](docs/validation.md#relaybox-scheduling-follow-up--2026-10-17).
+
 Command gates, real browser screenshot comparison and explicit qualitative rubrics
 are available. AI judgments use a separate **ASSESSED** status, never deterministic
 PASS. See [visual/qualitative verification](docs/verification.md), with runnable
