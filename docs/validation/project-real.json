@@ -1,0 +1,119 @@
+{
+  "measuredAt": "2026-10-18T11:15:30.680Z",
+  "model": "gpt-6.1-sol",
+  "reasoningEffort": "high",
+  "elapsedMs": 157762,
+  "status": "COMPLETED",
+  "operatorMessages": 0,
+  "faultInjected": true,
+  "modelModes": [
+    "plan",
+    "build",
+    "build",
+    "oversee",
+    "build",
+    "oversee"
+  ],
+  "verifiedCriteria": 2,
+  "projectReviews": [
+    {
+      "outcome": "continue",
+      "summary": "Empty-name handling and distinct dialogue turns work, and both acceptance tests pass. Unicode labels remain broken for emoji and supplementary-plane letters.",
+      "findings": [
+        {
+          "id": "unicode-label",
+          "gap": "avatarLabel uses text[0], which selects one UTF-16 code unit instead of the complete first Unicode code point. '😀 Zoe' returns an isolated high surrogate, and '𐐨ara' fails to produce uppercase '𐐀'. Dialogue inherits these malformed labels.",
+          "files": [
+            "avatar.mjs"
+          ]
+        }
+      ],
+      "decisions": [
+        {
+          "choice": "Preserve trimming, nullish fallback, exports, and dialogue format; extract the first complete code point before uppercasing.",
+          "basis": "This fixes the remaining explicit goal gap within avatar.mjs while preserving the existing API and protected tests."
+        }
+      ],
+      "tasks": [
+        {
+          "title": "Preserve complete Unicode avatar initials",
+          "objective": "Replace UTF-16 indexing with code-point-aware extraction in avatarLabel. Verify emoji preservation, supplementary-plane uppercasing, and missing or whitespace-only fallback using transient checks; rerun both existing acceptance commands without modifying protected files.",
+          "criterionId": "render",
+          "findingIds": [
+            "unicode-label"
+          ],
+          "waitsFor": []
+        }
+      ]
+    },
+    {
+      "outcome": "ready",
+      "summary": "The implementation meets the full goal: missing and whitespace-only names yield ?, complete Unicode code points are preserved and uppercased, and two presenters exchange distinct turns. Current acceptance receipts 414c3fd3-4ab3-4125-90e4-acdcc100be07 and 433d94d8-b543-461f-bddb-240c3355744e pass. Source inspection and transient Unicode/dialogue checks support readiness. Protected files and the existing API are preserved.",
+      "findings": [],
+      "decisions": [
+        {
+          "choice": "Accept the current code-point extraction, normalization, and dialogue behavior.",
+          "basis": "avatar.mjs handles emoji, supplementary-plane letters, whitespace, and missing names correctly. No concrete goal gap remains."
+        }
+      ],
+      "tasks": []
+    }
+  ],
+  "discoveredTasks": [
+    {
+      "title": "Preserve complete Unicode avatar initials",
+      "status": "PASSED"
+    }
+  ],
+  "independentUnicodeHoldout": {
+    "passed": 6,
+    "cases": [
+      "emoji fox",
+      "emoji smile",
+      "supplementary-plane uppercasing",
+      "trimmed ASCII",
+      "empty",
+      "null"
+    ]
+  },
+  "checks": {
+    "assessed": 0,
+    "passed": 2,
+    "failed": 0,
+    "stale": 5,
+    "deferred": 3
+  },
+  "protectedInputs": "unchanged",
+  "replay": "matches final state",
+  "primaryReportSha256": "3dd758e5c793e4371a6035e510b055fd47f4d0c2f3af73a90d5afa9470b7ff4b",
+  "runtimeSources": {
+    "src/core/engine.ts": "48811e266e1c24df86698e402a3b74e212b340a9af9e07cb2d18d4549ac110c1",
+    "src/core/model.ts": "ecd8a5e423b23300687116c819ada69d11bd43a7314db7840037b19511d0d008",
+    "src/core/supervision.ts": "f0ddeefa38d1e5f8f394e1a939b3c5c5f09babf5fd2368b9f9714f2b546b6b1e",
+    "src/providers/codex.ts": "254c63cadababb6e144fb5c2358df1f8ca3101b59366e2563c9affd84734e554",
+    "tests/project-codex.test.ts": "4e7c70609c374ff6ff2f2671c10bc760b84992c897193d2215cc55f496d60484"
+  },
+  "limitations": [
+    "One bounded fault-injection trial, not an overnight soak or a user-time comparison.",
+    "All planner, builder, diagnosis and supervisor responses use the real SDK. The harness injects one source regression; it does not script the review or repair.",
+    "Supervisor judgments use the same integration and are probabilistic. Independent holdout cases check the specific Unicode behavior."
+  ],
+  "deliveredImplementationCommit": "a740d22",
+  "finalVerification": {
+    "typecheck": "passed",
+    "build": "passed",
+    "deterministicPassed": 50,
+    "optionalSkipped": 5,
+    "browserPassed": 5,
+    "realProjectPassed": 1
+  },
+  "liveUI": {
+    "provider": "real Codex",
+    "status": "COMPLETED",
+    "projectReviews": 2,
+    "discoveredUnits": 1,
+    "operatorMessages": 0,
+    "mobileOverflow": false,
+    "pageErrors": []
+  }
+}

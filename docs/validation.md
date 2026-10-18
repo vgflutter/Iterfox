@@ -350,3 +350,53 @@ Reproduce the real trial, with Codex authentication and model usage:
 ```sh
 ITERFOX_COMPASS_OUT=/tmp/compass-report.json npm run test:compass
 ```
+
+## Autonomous project development — 2026-10-18
+
+This trial tests the corrected product goal: advance project development without
+requiring the operator to supply the next prompt. The new `--project` mode reviews
+a verified milestone against the complete goal, discovers concrete remaining work
+and executes it. Ordinary regression gates can stay green while the goal still
+needs development.
+
+A real SDK session used gpt-6.1-sol / high on the isolated avatar fixture. The goal
+included correct missing-name handling, distinct dialogue and complete Unicode
+code points. After a verified milestone, the harness injected one controlled
+Unicode-splitting regression into the allowed implementation file. Existing
+protected gates still passed. No new operator note, task or model response was
+scripted. All planner, builder and supervisor responses used the real SDK.
+
+Observed sequence:
+
+1. Initial planning and two implementation units completed.
+2. The supervisor inspected the check-green implementation and found that UTF-16
+   indexing broke emoji and supplementary-plane letters.
+3. It created a new implementation unit tied to `avatar.mjs` and the original
+   rendering gate, chose a reversible code-point extraction approach and continued
+   without an operator prompt.
+4. The builder repaired it. Runtime gates passed again; a second supervisor
+   checkpoint considered the complete goal ready for operator review.
+5. Six separate harness holdout cases passed: two emoji, supplementary-plane
+   uppercasing, trimmed ASCII, empty and null inputs. Protected inputs stayed intact
+   and replay reconstructed the final state.
+
+Result: **COMPLETED**, 2/2 current regression gates, two project checkpoints, one
+new implementation unit discovered autonomously, **zero incoming operator
+messages**, 157.762 seconds. Model sequence: plan → build → build → oversee →
+build → oversee. These measurements demonstrate one continuation beyond the
+initial plan, not an overnight reliability result or a user-time comparison.
+
+The [redacted result](validation/project-real.json) includes the source hashes from
+the recorded runtime and the full local report hash. Raw report:
+`/private/tmp/iterfox-project-real-20261018.json`. Runtime capture:
+`/private/tmp/iterfox-project-runtime-20261018`. Subsequent deterministic hardening
+makes a ready review stale after a whole-project/context change, including changes
+outside command scopes; the real trial was not repeated after that addition and
+formatting. Project judgments remain probabilistic and from the same integration.
+The controlled fault and narrow holdouts are explicit limits of this evidence.
+
+Delivered-version checks: typecheck/build passed, 50 deterministic tests passed,
+five optional integrations were skipped in the ordinary suite, five browser tests
+passed, and the separate real project trial passed. A browser audit of the actual
+ledger showed both checkpoints and the discovered unit, with no page errors or
+mobile overflow. The redacted summary records the implementation commit and audit.
