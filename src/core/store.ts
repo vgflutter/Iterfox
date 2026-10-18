@@ -9,7 +9,9 @@ export class Store {
   constructor(readonly path: string) {
     mkdirSync(dirname(path), { recursive: true, mode: 0o700 });
     this.db = new DatabaseSync(path);
-    this.db.exec(`PRAGMA journal_mode=WAL; PRAGMA synchronous=FULL; PRAGMA busy_timeout=5000;
+    // A worker and its UI can open the same ledger concurrently. Install the
+    // lock wait before journal-mode/schema setup, which itself needs a lock.
+    this.db.exec(`PRAGMA busy_timeout=5000; PRAGMA journal_mode=WAL; PRAGMA synchronous=FULL;
       CREATE TABLE IF NOT EXISTS events (run_id TEXT NOT NULL, seq INTEGER NOT NULL, id TEXT NOT NULL UNIQUE, body TEXT NOT NULL, PRIMARY KEY(run_id,seq));
       CREATE TABLE IF NOT EXISTS leases (run_id TEXT PRIMARY KEY, owner TEXT NOT NULL, pid INTEGER NOT NULL);
       CREATE TABLE IF NOT EXISTS controls (run_id TEXT PRIMARY KEY, action TEXT NOT NULL);`);
