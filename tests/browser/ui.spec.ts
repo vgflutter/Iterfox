@@ -119,3 +119,55 @@ test('actual screenshot artifacts and explicit qualitative provenance are inspec
     true,
   );
 });
+
+test('Project Compass accounts for instructions, persists a new thought, and resumes dependent work after a linked answer', async ({
+  page,
+}) => {
+  const errors: string[] = [];
+  page.on('pageerror', (e) => errors.push(e.message));
+  await page.goto('/');
+  await page.locator('.run-item').filter({ hasText: 'TEST FIXTURE project direction' }).click();
+  await page.getByRole('button', { name: 'Project Compass', exact: true }).click();
+  await expect(page.getByRole('region', { name: 'Project Compass' })).toBeVisible();
+  await expect(page.locator('.compass-state')).toContainText('Direction recorded');
+  await expect(page.getByRole('article', { name: 'Operator decisions' })).toContainText(
+    'Which label style',
+  );
+  await expect(page.locator('.compass-overview')).toContainText('1 criterion on hold');
+  await expect(page.locator('.run-controls')).toContainText('BLOCKED');
+  await page.screenshot({ path: 'test-results/compass-decision.png', fullPage: true });
+  await page
+    .getByLabel('Handoff note', { exact: true })
+    .fill('TEST FIXTURE: review the complete prototype before adding more features.');
+  await page.getByRole('button', { name: 'Save to handoff' }).click();
+  await expect(page.getByRole('status')).toContainText('Saved. Resume');
+  await expect(page.getByRole('article', { name: 'Handoff history' })).toContainText(
+    'review the complete prototype',
+  );
+  await page.reload();
+  await page.getByRole('button', { name: 'Project Compass', exact: true }).click();
+  await expect(page.locator('.compass-state')).toContainText('Awaiting reconciliation');
+  await page.getByRole('button', { name: 'Answer this question' }).click();
+  await expect(page.getByLabel('Type of context')).toHaveValue('decision');
+  await page
+    .getByLabel('Handoff note', { exact: true })
+    .fill('TEST FIXTURE: Use initials, and a question mark for missing names.');
+  await page.getByRole('button', { name: 'Save to handoff' }).click();
+  await expect(page.getByRole('status')).toContainText('Saved. Resume');
+  await expect(page.getByRole('article', { name: 'Handoff history' })).toContainText(
+    'LINKED REPLY',
+  );
+  await page.setViewportSize({ width: 390, height: 844 });
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(
+    true,
+  );
+  await page.screenshot({ path: 'test-results/compass-mobile.png', fullPage: true });
+  await page.setViewportSize({ width: 1440, height: 1080 });
+  await page.getByRole('button', { name: 'Resume', exact: false }).click();
+  await expect(page.locator('.run-controls')).toContainText('COMPLETED');
+  await expect(page.locator('.compass-state')).toContainText('Direction recorded');
+  await expect(page.getByRole('article', { name: 'Operator decisions' })).toHaveCount(0);
+  await page.getByRole('button', { name: 'Morning Brief', exact: true }).click();
+  await expect(page.locator('.brief-view')).toContainText('2 criteria verified');
+  expect(errors).toEqual([]);
+});

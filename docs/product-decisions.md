@@ -26,3 +26,19 @@ merge, push or deployment. A builder claim always remains unverified.
 
 See [validation](validation.md) for measured results and an honest comparison
 protocol. User comprehension and competitive advantage remain unmeasured.
+
+## 2026-10-18: evolving handoff before more execution infrastructure
+
+The operator's actual workflow mixes product direction, implementation, design,
+innovation and naming in incoming messages while an agent already implements.
+A fixed-task throughput comparison does not measure this coordination burden.
+The product hypothesis is reduced operator attention and rework during absence,
+not a claim that a larger orchestration loop is cheaper than direct Codex.
+
+Project Compass preserves all incoming instructions, asks the existing planner to
+reconcile them in batches and holds only work dependent on operator decisions.
+Planning context remains separate from approved acceptance. We chose one read-only
+turn per changed batch, within the original budget, rather than periodic model
+supervision. The Mac can own unattended execution; an optional server is unnecessary
+for this workflow. This design is an implemented product hypothesis, not a claim of
+technical novelty or a measured user-time advantage.

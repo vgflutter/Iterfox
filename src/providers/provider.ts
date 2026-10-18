@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import type { RunState, TaskNode } from '../core/model.js';
+import { directionSchema } from '../core/compass.js';
 
 export const planSchema = z
   .object({
@@ -52,7 +53,7 @@ export const assessmentSchema = z
   })
   .strict();
 export interface AgentRequest {
-  mode: 'plan' | 'build' | 'diagnose' | 'assess';
+  mode: 'plan' | 'orient' | 'build' | 'diagnose' | 'assess';
   state: RunState;
   node: TaskNode;
   signal: AbortSignal;
@@ -66,11 +67,13 @@ export interface AgentProvider {
   invoke(request: AgentRequest): Promise<unknown>;
 }
 export function resultSchema(mode: AgentRequest['mode']) {
-  return mode === 'plan'
-    ? planSchema
-    : mode === 'build'
-      ? buildSchema
-      : mode === 'assess'
-        ? assessmentSchema
-        : diagnosisSchema;
+  return mode === 'orient'
+    ? directionSchema
+    : mode === 'plan'
+      ? planSchema
+      : mode === 'build'
+        ? buildSchema
+        : mode === 'assess'
+          ? assessmentSchema
+          : diagnosisSchema;
 }

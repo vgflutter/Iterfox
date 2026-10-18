@@ -18,3 +18,9 @@ The SSH runner is implemented and its protocol is locally tested. Validate a rea
 Linux host, user lingering, disconnect/recovery and artifact fetch before production
 use. No parallel execution, cloud provisioning, workflow editor or autonomous
 deployment is promised in this release.
+
+Project Compass now provides an experimental evolving handoff and decision parking.
+Prioritize real absence/review trials: operator interventions, instructions repeated,
+rework caused by late decisions, verified progress and review time. Tune semantic
+classification and reconciliation cost before adding more model roles. Native
+sleep/reboot recovery and an all-night local soak remain unvalidated.

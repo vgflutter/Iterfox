@@ -1,6 +1,7 @@
 import { readFile, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import type { AgentProvider, AgentRequest } from './provider.js';
+import { activeNotes } from '../core/compass.js';
 
 // Explicit fixture, never selected as fallback for a failed real provider.
 // All file edits still go through the real runtime, Git and command verifiers.
@@ -26,6 +27,26 @@ export class DemoProvider implements AgentProvider {
       throw new Error(
         'The avatar DEMO fixture does not assess qualitative criteria. Use Codex or an explicitly labeled test assessor.',
       );
+    if (r.mode === 'orient')
+      return {
+        focus: 'DEMO fixture: repair avatar labels and the second dialogue turn.',
+        nextArtifact: 'DEMO target: avatar behavior covered by the approved local Node checks.',
+        assumptions: ['DEMO does not interpret or consolidate free-form product instructions.'],
+        notes: activeNotes(r.state).map((n) => ({
+          noteId: n.id,
+          disposition: 'deferred',
+          reason: 'DEMO fixture has no semantic planner. Use real Codex to interpret this handoff.',
+          criterionIds: [],
+        })),
+        tasks: [
+          {
+            title: 'Normalize avatar names',
+            objective: 'Handle missing and empty avatar names safely.',
+            criterionId: 'render',
+            waitsFor: [],
+          },
+        ],
+      };
     if (r.mode === 'plan')
       return {
         tasks: [

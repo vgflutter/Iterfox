@@ -8,6 +8,8 @@ import { Store, alive } from './core/store.js';
 import { git, isolate } from './core/workspace.js';
 import { CodexProvider } from './providers/codex.js';
 import { DemoProvider } from './providers/demo.js';
+import { noteInputSchema, type NoteInput } from './core/compass.js';
+import { keepWorkerAwake } from './core/awake.js';
 
 export async function loadContract(path: string): Promise<Contract> {
   return contractSchema.parse(JSON.parse(await readFile(path, 'utf8')));
@@ -105,8 +107,14 @@ export async function createRun(
   contract: Contract,
   provider: 'codex' | 'demo',
   expectedHead?: string,
+  notes: NoteInput[] = [],
 ): Promise<RunState> {
   contract = contractSchema.parse(contract);
+  notes = notes.map((n) => noteInputSchema.parse(n));
+  if (notes.length > 64 || notes.reduce((sum, n) => sum + n.text.length, 0) > 64000)
+    throw new Error('Handoff note limit reached');
+  if (notes.some((n) => n.replyTo))
+    throw new Error('Initial handoff cannot reply to an existing question');
   const id =
     new Date().toISOString().replace(/[-:.]/g, '').slice(0, 15) + '-' + randomUUID().slice(0, 8);
   const workspace = await isolate(repository, dataDir, id, expectedHead);
@@ -114,11 +122,25 @@ export async function createRun(
   store.append(id, 'workflow.created', 'Isolated workflow created from committed Git HEAD.', {
     state,
   });
-  return store.append(
+  store.append(
     id,
     'goal.accepted',
     'Operator explicitly authorized this goal, acceptance contract and limits.',
     { version: 1 },
+  );
+  for (const note of notes) addDirectionNote(store, id, note);
+  return store.get(id);
+}
+export function addDirectionNote(store: Store, id: string, input: NoteInput): RunState {
+  const note = noteInputSchema.parse(input);
+  return store.append(
+    id,
+    'direction.noted',
+    `Operator ${note.kind}${note.replyTo ? ' reply' : ''}: ${note.text}`,
+    {
+      noteId: randomUUID(),
+      note,
+    },
   );
 }
 export async function createDemoRepository(dataDir: string): Promise<string> {
@@ -150,12 +172,16 @@ export function providerFor(state: RunState) {
 }
 export async function runWorker(store: Store, id: string): Promise<RunState> {
   const engine = new Engine(store, id, providerFor(store.get(id)));
+  const releaseAwake = await keepWorkerAwake((message) =>
+    store.append(id, 'decision.recorded', message, { kind: 'host.awake' }),
+  );
   const pause = () => engine.request('pause');
   process.on('SIGTERM', pause);
   process.on('SIGINT', pause);
   try {
     return await engine.run();
   } finally {
+    releaseAwake();
     process.off('SIGTERM', pause);
     process.off('SIGINT', pause);
   }

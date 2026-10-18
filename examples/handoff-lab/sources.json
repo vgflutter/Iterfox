@@ -1,0 +1,23 @@
+[
+  {
+    "id": "library",
+    "headline": "Library extends evening opening",
+    "previous": "The town library closed at 18:00 on weekdays.",
+    "today": "A four-week pilot extends Tuesday and Thursday opening to 21:00.",
+    "unknown": "Attendance and whether the pilot will become permanent are unknown."
+  },
+  {
+    "id": "bus",
+    "headline": "Bus pilot adds two evening departures",
+    "previous": "The last Route 4 departure was at 20:00.",
+    "today": "A two-week pilot adds departures at 21:00 and 22:00 on Fridays.",
+    "unknown": "Passenger numbers and continuation after the pilot are unknown."
+  },
+  {
+    "id": "garden",
+    "headline": "Community garden opens applications",
+    "previous": "Applications were closed while plots were measured.",
+    "today": "Twenty plots are available and applications close next Friday.",
+    "unknown": "Demand and the final allocation of plots are unknown."
+  }
+]

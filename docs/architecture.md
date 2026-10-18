@@ -77,3 +77,19 @@ host remains trusted. Live SSH/Linux/systemd behavior is pending validation.
 Deferred: graph editing, parallelism, provisioning, automatic reboot continuation,
 adversarial verifier isolation and cost estimation. A local runner stops during
 sleep/shutdown; a remote runner needs its host awake and correctly configured.
+
+## Evolving project direction
+
+An optional [Project Compass](project-compass.md) overlays the immutable contract.
+`direction.noted` appends operator context; a read-only `orient` turn replaces the
+ordinary initial planner or reconciles a later batch. `direction.compiled` atomically
+records its source snapshot, per-note dispositions and replacement unstarted tasks.
+Completed work and evidence retain their history. The pure projector requires one
+disposition for every active source note and validates known criteria and acyclic
+dependencies. Every model turn consumes the existing budget.
+
+Questions hold the named criteria and declared transitive dependent work. The
+scheduler continues on the remaining criteria, then blocks with preserved progress.
+Only linked operator replies retire questions; new notes arriving during a turn
+remain pending. No qualitative direction statement becomes acceptance evidence.
+The morning brief and event replay include the direction history.

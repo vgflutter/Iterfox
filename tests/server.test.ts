@@ -10,6 +10,55 @@ import { DemoProvider } from '../src/providers/demo.js';
 import { serve } from '../src/server.js';
 import { fixture } from './helpers.js';
 
+test('the direction inbox persists authorized notes and rejects unlinked replies and terminal edits', async (t) => {
+  const f = await fixture(t);
+  const server = await serve(f.store, f.dir, 0, () => {
+    throw new Error('No worker launch in this API test');
+  });
+  t.after(async () => {
+    server.closeAllConnections();
+    await new Promise<void>((r) => server.close(() => r()));
+  });
+  const base = `http://127.0.0.1:${(server.address() as AddressInfo).port}`;
+  const meta = (await (await fetch(base + '/api/meta')).json()) as { token: string };
+  const path = `/api/runs/${f.id}/direction`;
+  const headers = { 'Content-Type': 'application/json', 'X-Iterfox-Token': meta.token };
+  const payload = JSON.stringify({
+    text: 'Show a working exchange before branding.',
+    kind: 'request',
+  });
+  assert.equal(
+    (
+      await fetch(base + path, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: payload,
+      })
+    ).status,
+    403,
+  );
+  assert.equal((await fetch(base + path, { method: 'POST', headers, body: payload })).status, 201);
+  assert.equal(f.store.get(f.id).notes?.length, 1);
+  assert.equal(
+    (
+      await fetch(base + path, {
+        method: 'POST',
+        headers,
+        body: JSON.stringify({ text: 'Use initials.', replyTo: 'unknown' }),
+      })
+    ).status,
+    400,
+  );
+  const final = await new Engine(f.store, f.id, new DemoProvider()).run();
+  assert.equal(final.status, 'COMPLETED', final.reason);
+  assert.equal(
+    final.direction?.notes[0].disposition,
+    'deferred',
+    'DEMO must not pretend to understand natural-language instructions',
+  );
+  assert.equal((await fetch(base + path, { method: 'POST', headers, body: payload })).status, 400);
+});
+
 test('HTTP serves real state, replays ordered SSE, rejects unapproved controls, and exports a consistent brief', async (t) => {
   const f = await fixture(t);
   const engine = new Engine(f.store, f.id, new DemoProvider());

@@ -24,6 +24,8 @@ import {
 } from '../core/model.js';
 import { brief } from '../core/brief.js';
 import { graphFor, type TrailData } from './graph.js';
+import { Compass } from './compass.js';
+import { needsOrientation, questions } from '../core/compass.js';
 import './style.css';
 
 const icons: Record<string, string> = {
@@ -139,10 +141,19 @@ function App() {
   const [grouped, setGrouped] = useState(false);
   const [newRun, setNewRun] = useState(false);
   const [busy, setBusy] = useState(false);
+  useEffect(() => {
+    window.scrollTo({ top: 0 });
+  }, [view, runId]);
   const refresh = async () => {
     const rs = await api('/api/runs');
     setRuns(rs);
-    setRunId((id) => id ?? rs[0]?.id);
+    let remembered: string | null = null;
+    try {
+      remembered = localStorage.getItem('iterfox.run');
+    } catch {
+      /* storage can be unavailable */
+    }
+    setRunId((id) => rs.find((r: RunState) => r.id === (id ?? remembered))?.id ?? rs[0]?.id);
   };
   useEffect(() => {
     api('/api/meta')
@@ -155,6 +166,11 @@ function App() {
   }, []);
   useEffect(() => {
     if (!runId) return;
+    try {
+      localStorage.setItem('iterfox.run', runId);
+    } catch {
+      /* keep the in-memory selection */
+    }
     setEvents([]);
     setReplay(null);
     setSelected(undefined);
@@ -258,6 +274,7 @@ function App() {
         </div>
         <nav aria-label="Run views">
           {[
+            ['compass', '↗', 'Project Compass'],
             ['trail', '⌘', 'Live Trail'],
             ['brief', '☷', 'Morning Brief'],
             ['proof', '◇', 'Proof Ledger'],
@@ -268,7 +285,7 @@ function App() {
               className={view === id ? 'nav-item active' : 'nav-item'}
               onClick={() => setView(id)}
             >
-              <span>{icon}</span>
+              <span aria-hidden="true">{icon}</span>
               {title}
               {id === 'trail' && <small>{live?.nodes.length ?? '–'}</small>}
             </button>
@@ -335,7 +352,9 @@ function App() {
                   ? 'Morning Brief'
                   : view === 'proof'
                     ? 'Proof Ledger'
-                    : 'Decision history'}
+                    : view === 'compass'
+                      ? 'Project Compass'
+                      : 'Decision history'}
             </span>
           </div>
           <div className="topbar-right">
@@ -395,7 +414,9 @@ function App() {
                         ? 'Evidence you can inspect.'
                         : view === 'history'
                           ? 'Every change of direction.'
-                          : 'Follow the work.'}
+                          : view === 'compass'
+                            ? 'Keep the direction. Leave the work.'
+                            : 'Follow the work.'}
                   </h1>
                   <p className="goal-text">{state.goal}</p>
                 </div>
@@ -487,6 +508,32 @@ function App() {
                   <p>{state.reason}</p>
                 </div>
               </div>
+            )}
+            {view !== 'compass' && !!state.notes?.length && (
+              <button className="compass-strip" onClick={() => setView('compass')}>
+                <span>↗ PROJECT COMPASS</span>
+                <strong>
+                  {needsOrientation(state)
+                    ? 'New instructions await the next activity boundary'
+                    : state.direction?.focus}
+                </strong>
+                <small>
+                  {questions(state).length
+                    ? `${questions(state).length} decisions waiting`
+                    : 'Review direction'}{' '}
+                  →
+                </small>
+              </button>
+            )}
+            {view === 'compass' && (
+              <Compass
+                key={state.id}
+                state={state}
+                readOnly={replay !== null}
+                send={async (input) => {
+                  await api(`/api/runs/${state.id}/direction`, input, token);
+                }}
+              />
             )}
             {view === 'trail' && (
               <div
@@ -639,7 +686,11 @@ function App() {
                     />
                     <dl>
                       <dt>Objective</dt>
-                      <dd>{selectedNode?.objective ?? selectedCriterion?.title}</dd>
+                      <dd>
+                        {selectedNode?.title === 'Reconcile the project direction'
+                          ? 'Consolidate the handoff, retain completed work and plan the next reviewable result within the approved contract.'
+                          : (selectedNode?.objective ?? selectedCriterion?.title)}
+                      </dd>
                       <dt>Why this exists</dt>
                       <dd>
                         {selectedNode?.reason ??
@@ -763,7 +814,7 @@ function App() {
                   <div>
                     <div className="eyebrow">MORNING BRIEF</div>
                     <h2>
-                      {b?.open === 0
+                      {b?.open === 0 && !b?.attention.length
                         ? 'The goal is backed by evidence.'
                         : 'Here’s where the work stands.'}
                     </h2>
@@ -777,6 +828,35 @@ function App() {
                   </a>
                 </div>
                 <div className="brief-grid">
+                  {!!state.notes?.length && (
+                    <article className="surface">
+                      <h3>Where did the direction land?</h3>
+                      <p>
+                        <strong>Focus:</strong>{' '}
+                        {state.direction?.focus ?? 'New context awaits reconciliation.'}
+                      </p>
+                      <p>
+                        <strong>Next artifact (target):</strong>{' '}
+                        {state.direction?.nextArtifact ?? 'Not planned yet.'}
+                      </p>
+                      {b?.handoff
+                        .filter((n) => !n.answered && n.handling?.disposition === 'deferred')
+                        .map((n) => (
+                          <blockquote key={n.id}>
+                            {n.text}
+                            <small>Later · {n.handling?.reason}</small>
+                          </blockquote>
+                        ))}
+                      {(state.direction?.assumptions ?? []).map((a, i) => (
+                        <p key={i} className="muted small-text">
+                          Provisional assumption: {a}
+                        </p>
+                      ))}
+                      <button className="button" onClick={() => setView('compass')}>
+                        Review the handoff & decisions →
+                      </button>
+                    </article>
+                  )}
                   <article className="surface">
                     <h3>What was accomplished?</h3>
                     {b?.acceptance.map((c) => (
@@ -1072,6 +1152,7 @@ function NewRun({
 }) {
   const [repository, setRepository] = useState('');
   const [configPath, setConfig] = useState('');
+  const [handoff, setHandoff] = useState('');
   const [preview, setPreview] = useState<any>();
   const [error, setError] = useState('');
   const [busy, setBusy] = useState(false);
@@ -1111,7 +1192,7 @@ function NewRun({
           setBusy(true);
           setError('');
           try {
-            setPreview(await api('/api/preflight', { repository, configPath }, token));
+            setPreview(await api('/api/preflight', { repository, configPath, handoff }, token));
           } catch (e) {
             setError((e as Error).message);
           } finally {
@@ -1143,6 +1224,19 @@ function NewRun({
             }}
           />
         </label>
+        <label>
+          Handoff for your absence <span className="muted">(optional)</span>
+          <textarea
+            rows={4}
+            maxLength={4000}
+            value={handoff}
+            placeholder="What should be ready when you return? Which decisions are settled, and which ideas still need testing?"
+            onChange={(e) => {
+              setHandoff(e.target.value);
+              setPreview(undefined);
+            }}
+          />
+        </label>
         <button className="button" disabled={busy}>
           Review preflight →
         </button>
@@ -1165,6 +1259,12 @@ function NewRun({
             ))}
           </ul>
           <p>Allowed edits: {preview.contract.allowedPaths.join(', ')}</p>
+          {preview.handoff && (
+            <blockquote>
+              {preview.handoff.text}
+              <small>Project handoff · planning context within the approved contract</small>
+            </blockquote>
+          )}
           <p>
             {preview.limits.maxTurns} turns · {preview.limits.maxAttempts} attempts/check ·{' '}
             {Math.round(preview.limits.maxDurationMs / 60000)} minutes ·{' '}
@@ -1190,6 +1290,7 @@ function NewRun({
                     repository: preview.repository,
                     contract: preview.contract,
                     authorized: true,
+                    handoff: preview.handoff,
                   },
                   token,
                 );

@@ -2,7 +2,7 @@
 
 **Delegate the work. Wake up to evidence.**
 
-Iterfox is an acceptance-driven supervisor for Codex. Give it a goal and
+Iterfox is an acceptance-driven supervisor for Codex. Give it a goal, a handoff and
 checks you trust. It builds a plan, runs work sequentially, verifies results itself,
 and inserts corrective tasks when checks fail. Return to an evidence ledger and a
 Morning Brief instead of a long conversation.
@@ -121,6 +121,10 @@ Fingerprints make affected proofs STALE; unrelated scoped evidence remains valid
 
 ## A run you can understand
 
+- **Project Compass (experimental):** add requests, settled decisions and provisional
+  hypotheses while work runs. Batch reconciliation replaces only unstarted work;
+  operator questions hold dependent criteria while independent work continues.
+  Every instruction has an explicit disposition. Read the [handoff workflow](docs/project-compass.md).
 - **Live Trail:** execution activities and separate acceptance nodes, linked to
   evidence; real events over SSE; zoom, criterion filtering, grouped checks and
   reduced-motion support. Planner, builder and diagnosis are sequential roles of
@@ -147,6 +151,8 @@ iterfox pause RUN_ID
 iterfox resume RUN_ID --night
 iterfox stop RUN_ID
 iterfox events RUN_ID
+iterfox steer RUN_ID --message "Make one complete preview before polishing the landing."
+iterfox steer RUN_ID --kind decision --reply-to NOTE_ID --message "Use Faro as the name."
 iterfox brief RUN_ID --out morning.md
 iterfox brief RUN_ID --json --out morning.json
 iterfox contract RUN_ID --propose revised.json
@@ -163,6 +169,11 @@ shutdown.** It is not an auto-starting OS service. After an interruption, inspec
 the worktree and any orphan subprocesses, then explicitly resume. Budgets persist
 across resumes. Read [safety and recovery](docs/safety.md) before unattended use.
 
+On macOS, workers request idle-sleep inhibition for their lifetime with the built-in
+`caffeinate` helper. Explicit sleep/shutdown still interrupt execution. Add
+`--handoff /path/to/notes.txt` at launch or use Project Compass while working. An
+evolving direction does not change the approved acceptance contract or limits.
+
 ## Validation and honest limits
 
 ```sh
@@ -172,6 +183,7 @@ npm run test:visual            # real screenshot mismatch/correction and artifac
 npm run test:ui                # graph, evidence gallery, rubric and mobile browser checks
 npm run test:assessor          # OPT IN: one real Codex qualitative assessment
 npm run test:codex             # OPT IN: real Codex, tokens and authentication required
+npm run test:compass           # OPT IN: real evolving handoff and parked decision trial
 npm run compare:codex          # OPT IN: single-turn Codex reference measurement
 ```
 

@@ -1,4 +1,5 @@
 import { satisfied, type RunEvent, type RunState } from './model.js';
+import { activeNotes, questions, heldCriteria, needsOrientation } from './compass.js';
 
 export function brief(state: RunState, events: RunEvent[]) {
   const verified = state.criteria.filter((c) => c.status === 'PASSED');
@@ -35,6 +36,7 @@ export function brief(state: RunState, events: RunEvent[]) {
           'contract.approved',
           'workflow.recovered',
           'task.skipped',
+          'direction.compiled',
         ].includes(e.type),
       )
       .map((e) => ({ seq: e.seq, at: e.at, message: e.message })),
@@ -54,6 +56,14 @@ export function brief(state: RunState, events: RunEvent[]) {
         reason: n.summary,
         evidenceIds: n.evidenceIds,
       })),
+    direction: state.direction,
+    handoff: (state.notes ?? []).map((n) => ({
+      ...n,
+      handling: state.direction?.notes.find((d) => d.noteId === n.id),
+      answered: !activeNotes(state).some((a) => a.id === n.id),
+    })),
+    awaitingDirection: needsOrientation(state),
+    heldCriteria: [...heldCriteria(state)],
     evidence: state.evidence,
     assessments: state.nodes
       .filter((n) => n.kind === 'task' && n.startedAt)
@@ -75,12 +85,16 @@ export function brief(state: RunState, events: RunEvent[]) {
           ),
       )
       .map((e) => ({ at: e.at, message: e.message })),
-    attention: open.length
-      ? [
-          state.reason ??
-            'Acceptance checks remain open; inspect evidence and resume within the approved limits.',
-        ]
-      : [],
+    attention: [
+      ...questions(state).map((q) => q.reason),
+      ...(needsOrientation(state) ? ['New handoff notes have not yet been reconciled.'] : []),
+      ...(open.length
+        ? [
+            state.reason ??
+              'Acceptance checks remain open; inspect evidence and resume within the approved limits.',
+          ]
+        : []),
+    ],
     resources: {
       elapsedMs:
         Date.parse(state.finishedAt ?? state.updatedAt) -
@@ -118,6 +132,23 @@ export function markdownBrief(state: RunState, events: RunEvent[]): string {
         `- [${satisfied(c.status) ? 'x' : ' '}] ${c.title} — ${c.status}${c.evidenceId ? ` ([evidence](#evidence-${c.evidenceId}))` : ''}`,
     ),
     '',
+    ...(b.handoff.length
+      ? [
+          '## Project direction',
+          '',
+          `Focus (plan): ${b.direction?.focus ?? 'Awaiting reconciliation'}`,
+          `Next artifact (target, not proof): ${b.direction?.nextArtifact ?? 'Not planned yet'}`,
+          ...b.handoff.map(
+            (n) =>
+              `- ${n.kind}: ${n.text} — ${n.answered ? 'answered by linked reply' : n.handling ? `${n.handling.disposition}: ${n.handling.reason}` : 'awaiting reconciliation'}`,
+          ),
+          ...(b.direction?.assumptions ?? []).map((a) => `- Provisional assumption: ${a}`),
+          ...(b.heldCriteria.length
+            ? [`Dependent criteria waiting for decisions: ${b.heldCriteria.join(', ')}.`]
+            : []),
+          '',
+        ]
+      : []),
     '## What changed',
     '',
     ...b.corrections.map((c) => `- ${c.message}`),

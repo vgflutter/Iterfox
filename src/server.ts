@@ -6,6 +6,7 @@ import { resolve, extname, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { artifactRoot, readArtifact } from './core/artifacts.js';
 import { contractSchema } from './core/model.js';
+import { noteInputSchema } from './core/compass.js';
 import { brief, markdownBrief } from './core/brief.js';
 import { Store } from './core/store.js';
 import {
@@ -16,6 +17,7 @@ import {
   resumeRun,
   recoverDeadWorkers,
   auditStoredEvidence,
+  addDirectionNote,
 } from './service.js';
 
 export async function serve(
@@ -61,7 +63,11 @@ export async function serve(
         if (req.method === 'POST' && parts[1] === 'preflight') {
           const b = await body(req);
           const contract = await loadContract(String(b.configPath));
-          return json(res, 200, await preflight(String(b.repository), contract, 'codex'));
+          const handoff = b.handoff ? noteInputSchema.parse({ text: b.handoff }) : undefined;
+          return json(res, 200, {
+            ...(await preflight(String(b.repository), contract, 'codex')),
+            handoff,
+          });
         }
         if (parts[1] !== 'runs') return json(res, 404, { error: 'Not found' });
         if (parts.length === 2 && req.method === 'GET') {
@@ -78,6 +84,8 @@ export async function serve(
             String(b.repository),
             contractSchema.parse(b.contract),
             'codex',
+            undefined,
+            b.handoff ? [noteInputSchema.parse(b.handoff)] : [],
           );
           await launch(state.id);
           return json(res, 201, state);
@@ -87,6 +95,13 @@ export async function serve(
         await auditStoredEvidence(store, id);
         const state = store.get(id);
         if (parts.length === 3 && req.method === 'GET') return json(res, 200, state);
+        if (parts[3] === 'direction' && parts.length === 4 && req.method === 'POST') {
+          return json(
+            res,
+            201,
+            addDirectionNote(store, id, noteInputSchema.parse(await body(req))),
+          );
+        }
         if (parts[3] === 'artifacts' && parts.length === 5 && req.method === 'GET') {
           const artifact = state.evidence
             .flatMap((e) => e.artifacts ?? [])

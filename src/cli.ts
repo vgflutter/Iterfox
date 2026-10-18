@@ -19,18 +19,22 @@ import {
   exportFile,
   recoverDeadWorkers,
   auditStoredEvidence,
+  addDirectionNote,
 } from './service.js';
 import { brief, markdownBrief } from './core/brief.js';
+import { noteInputSchema } from './core/compass.js';
+import { readFile } from 'node:fs/promises';
 
 const help = `Iterfox — Delegate the work. Wake up to evidence.
 
-  iterfox run --config iterfox.json [--repo .] [--night] [--yes]
+  iterfox run --config iterfox.json [--repo .] [--handoff notes.txt] [--night] [--yes]
   iterfox demo [--codex] [--night] [--yes]
   iterfox status [run-id] [--json]
   iterfox ui [--port 4310]
   iterfox pause|resume|stop <run-id> [--night]
   iterfox brief <run-id> [--json] [--out brief.md]
   iterfox events <run-id>
+  iterfox steer <run-id> --message "..." [--kind request|decision|hypothesis] [--reply-to note-id]
   iterfox contract <run-id> --propose contract.json
   iterfox contract <run-id> --approve --yes
   iterfox capture <criterion-id> --config iterfox.json --out candidate.png
@@ -117,6 +121,10 @@ async function main() {
       propose: { type: 'string' },
       approve: { type: 'boolean' },
       'remote-target': { type: 'string' },
+      handoff: { type: 'string' },
+      message: { type: 'string' },
+      kind: { type: 'string', default: 'request' },
+      'reply-to': { type: 'string' },
     },
   });
   const [command = 'help', requestedId] = positionals;
@@ -186,11 +194,14 @@ async function main() {
         command === 'demo' ? join(repo, 'iterfox.json') : resolve(v.config!),
       );
       const provider = command === 'demo' && !v.codex ? 'demo' : 'codex';
+      const notes = v.handoff
+        ? [noteInputSchema.parse({ text: await readFile(resolve(v.handoff), 'utf8') })]
+        : [];
       await authorize(
         Boolean(v.yes),
-        JSON.stringify(await preflight(repo, contract, provider), null, 2),
+        JSON.stringify({ ...(await preflight(repo, contract, provider)), handoff: notes }, null, 2),
       );
-      const state = await createRun(store, dataDir, repo, contract, provider);
+      const state = await createRun(store, dataDir, repo, contract, provider, undefined, notes);
       console.log(`Run ${state.id}\nWorktree: ${state.worktree}`);
       if (v.night)
         console.log(
@@ -222,6 +233,21 @@ async function main() {
     }
     if (!requestedId) throw new Error('Provide a run ID; list runs with iterfox status');
     const id = requestedId;
+    if (command === 'steer') {
+      const state = addDirectionNote(
+        store,
+        id,
+        noteInputSchema.parse({
+          text: v.message,
+          kind: v.kind,
+          ...(v['reply-to'] ? { replyTo: v['reply-to'] } : {}),
+        }),
+      );
+      console.log(
+        `Handoff saved for ${id}. ${state.status === 'RUNNING' ? 'It will be reconciled at the next activity boundary.' : 'Resume explicitly to reconcile it within the original limits.'}`,
+      );
+      return;
+    }
     if (command === 'worker') {
       await runWorker(store, id);
       return;

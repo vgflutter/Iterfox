@@ -1,4 +1,5 @@
 import { randomUUID } from 'node:crypto';
+import { needsOrientation, heldCriteria, questions, validateDirection } from './compass.js';
 import { Store } from './store.js';
 import { auditChanges, changedFiles, stamp, worktreeDiff } from './workspace.js';
 import { artifactRoot, readArtifact } from './artifacts.js';
@@ -118,11 +119,23 @@ export class Engine {
       }, 100);
       await auditChanges(this.state);
       await this.refreshEvidence();
-      if (!this.state.planReady) await this.plan();
+      if (needsOrientation(this.state)) await this.orient();
+      else if (!this.state.planReady) await this.plan();
       while (true) {
         this.boundary();
         await this.refreshEvidence();
-        let task = this.state.nodes.find((n) => n.kind === 'task' && n.status === 'PENDING');
+        if (needsOrientation(this.state)) {
+          await this.orient();
+          continue;
+        }
+        const runnable = () =>
+          this.state.nodes.find(
+            (n) =>
+              n.kind === 'task' &&
+              n.status === 'PENDING' &&
+              !heldCriteria(this.state).has(n.criterionId),
+          );
+        let task = runnable();
         if (task?.reason.startsWith('Corrective')) {
           await this.satisfy(task.criterionId);
           continue;
@@ -130,7 +143,8 @@ export class Engine {
         if (task) {
           await this.probePlannedWork();
           this.skipSatisfiedTasks();
-          task = this.state.nodes.find((n) => n.kind === 'task' && n.status === 'PENDING');
+          if (needsOrientation(this.state)) continue;
+          task = runnable();
         }
         if (task) {
           await this.build(task);
@@ -139,13 +153,21 @@ export class Engine {
           continue;
         }
         await this.refreshEvidence();
-        const open = this.state.criteria.find((c) => !satisfied(c.status));
+        if (needsOrientation(this.state)) continue;
+        const open = this.state.criteria.find(
+          (c) => !satisfied(c.status) && !heldCriteria(this.state).has(c.id),
+        );
         if (open) {
           await this.satisfy(open.id);
           continue;
         }
         await auditChanges(this.state);
         this.boundary();
+        if (needsOrientation(this.state)) continue;
+        if (questions(this.state).length)
+          throw new Error(
+            'Independent work finished. Operator decisions remain in Project Compass; reply to continue the dependent work.',
+          );
         this.emit(
           'workflow.completed',
           'All approved acceptance policies are satisfied. Consult evidence for deterministic checks and AI assessments.',
@@ -189,6 +211,47 @@ export class Engine {
       this.store.release(this.id, this.owner);
       this.active = false;
     }
+  }
+  private async orient(): Promise<void> {
+    const snapshot = this.state;
+    const sourceIds = (snapshot.notes ?? []).map((n) => n.id);
+    const key = JSON.stringify({ sourceIds, version: snapshot.contractVersion });
+    let planner = snapshot.nodes.find(
+      (n) =>
+        n.role === 'planner' &&
+        n.objective === key &&
+        n.title === 'Reconcile the project direction' &&
+        ['PENDING', 'PASSED'].includes(n.status),
+    );
+    if (!planner) {
+      planner = node({
+        kind: 'decision',
+        role: 'planner',
+        title: 'Reconcile the project direction',
+        objective: key,
+        criterionId: snapshot.criteria[0].id,
+        reason: 'Operator handoff changed; reconcile once at an activity boundary.',
+      });
+      this.emit('task.planned', planner.title, { node: planner });
+    }
+    // Snapshot and result survive interruption; a completed planning turn is never paid for twice.
+    const proposal = planner.result?.proposal ?? (await this.invoke('orient', planner));
+    validateDirection(snapshot, proposal, sourceIds);
+    await auditChanges(this.state);
+    if (!planner.result)
+      this.emit('task.completed', 'Handoff consolidated; no completion or acceptance is implied.', {
+        nodeId: planner.id,
+        summary: 'Direction proposal mapped to the unchanged acceptance contract.',
+        result: { proposal, sourceIds },
+      });
+    this.emit(
+      'direction.compiled',
+      'Project direction updated. Unstarted work replaced; independent work can continue while operator questions wait.',
+      {
+        nodeId: planner.id,
+        sourceIds,
+      },
+    );
   }
   private interrupt(message: string): void {
     for (const n of this.state.nodes.filter((n) => ['RUNNING', 'VERIFYING'].includes(n.status)))
@@ -365,8 +428,11 @@ export class Engine {
   private async probePlannedWork(): Promise<void> {
     // Cheap approved command probes can discover already-covered future work.
     // Never add speculative browser captures or model assessments to this phase.
-    for (const c of this.state.contract.criteria.filter((c) => !c.verification)) {
+    for (const c of this.state.contract.criteria.filter(
+      (c) => !c.verification && !heldCriteria(this.state).has(c.id),
+    )) {
       this.boundary();
+      if (needsOrientation(this.state)) return;
       if (this.state.criteria.find((a) => a.id === c.id)!.status === 'PASSED') continue;
       const now = await stamp(this.state.worktree, c.scope);
       const cacheKey = `${this.state.contractVersion}:${now.head}:${now.fingerprint}`;
@@ -493,6 +559,7 @@ export class Engine {
   private async satisfy(criterionId: string): Promise<void> {
     while (true) {
       this.boundary();
+      if (needsOrientation(this.state) || heldCriteria(this.state).has(criterionId)) return;
       const pendingFix = this.state.nodes.find(
         (n) =>
           n.kind === 'task' &&
@@ -640,6 +707,7 @@ export class Engine {
         throw new Error(`Retry limit reached for ${criterion.title}`);
       if (this.state.noProgress >= this.state.contract.limits.maxNoProgress)
         throw new Error('No-progress limit reached; no further automatic retry');
+      if (needsOrientation(this.state)) return;
       await this.diagnose(criterionId, verifier.id, evidence.output);
     }
   }
@@ -700,6 +768,6 @@ export class Engine {
         edges: [edge(decision.id, corrective.id, 'repair')],
       });
     const current = this.state.nodes.find((n) => n.id === corrective.id)!;
-    if (current.status === 'PENDING') await this.build(current);
+    if (current.status === 'PENDING' && !needsOrientation(this.state)) await this.build(current);
   }
 }

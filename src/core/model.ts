@@ -1,4 +1,12 @@
 import { z } from 'zod';
+import {
+  noteInputSchema,
+  needsOrientation,
+  questions,
+  validateDirection,
+  type DirectionNote,
+  type Direction,
+} from './compass.js';
 
 export const pathPrefix = z
   .string()
@@ -136,6 +144,8 @@ export interface TaskNode {
   startedAt?: string;
   endedAt?: string;
   result?: Record<string, unknown>;
+  waitsFor?: string[];
+  supersededBy?: string;
 }
 export interface Edge {
   id: string;
@@ -249,6 +259,8 @@ export interface RunState {
   planReady: boolean;
   revisionProposal?: Contract;
   diff?: string;
+  notes?: DirectionNote[];
+  direction?: Direction;
 }
 export type EventType =
   | 'workflow.created'
@@ -283,7 +295,9 @@ export type EventType =
   | 'code.changed'
   | 'contract.proposed'
   | 'contract.approved'
-  | 'progress.recorded';
+  | 'progress.recorded'
+  | 'direction.noted'
+  | 'direction.compiled';
 export interface RunEvent {
   schemaVersion: 1;
   id: string;
@@ -340,6 +354,77 @@ export function reduce(previous: RunState | undefined, event: RunEvent): RunStat
     return n;
   };
   switch (event.type) {
+    case 'direction.noted': {
+      if (['COMPLETED', 'FAILED'].includes(s.status))
+        throw new Error('Start a new run after a terminal result');
+      const input = noteInputSchema.parse(d.note);
+      const notes = s.notes ?? [];
+      if (
+        notes.length >= 64 ||
+        notes.reduce((sum, n) => sum + n.text.length, 0) + input.text.length > 64000
+      )
+        throw new Error('Handoff note limit reached');
+      const id = String(d.noteId);
+      if (!id || notes.some((n) => n.id === id)) throw new Error('Invalid handoff note ID');
+      if (input.replyTo && !questions(s).some((n) => n.noteId === input.replyTo))
+        throw new Error('A reply must reference an open operator question');
+      s.notes = [...notes, { ...input, id, at: event.at }];
+      break;
+    }
+    case 'direction.compiled': {
+      const n = node();
+      if (n.role !== 'planner' || n.status !== 'PASSED' || !n.result)
+        throw new Error('Direction requires a finished read-only planning activity');
+      const sourceIds = d.sourceIds as string[];
+      if (
+        !Array.isArray(sourceIds) ||
+        JSON.stringify(n.result.sourceIds) !== JSON.stringify(sourceIds)
+      )
+        throw new Error('Direction source differs from the recorded planner snapshot');
+      if (
+        s.status !== 'RUNNING' ||
+        s.direction?.nodeId === n.id ||
+        n.objective !== JSON.stringify({ sourceIds, version: s.contractVersion })
+      )
+        throw new Error('Direction must match the active contract and a new planning snapshot');
+      const proposal = validateDirection(s, n.result.proposal, sourceIds);
+      const revision = (s.direction?.revision ?? 0) + 1;
+      s.direction = {
+        ...proposal,
+        revision,
+        nodeId: n.id,
+        sourceIds,
+        contractVersion: s.contractVersion,
+      };
+      // Only unstarted work is replaced. Completed work and its evidence retain their history.
+      for (const task of s.nodes.filter(
+        (t) => t.kind === 'task' && ['PENDING', 'BLOCKED', 'SKIPPED'].includes(t.status),
+      )) {
+        if (task.status !== 'SKIPPED') transition(task, 'SKIPPED');
+        task.supersededBy = n.id;
+        task.summary = `Replaced by project direction v${revision}; no execution or verification implied.`;
+        task.endedAt = event.at;
+      }
+      let previous = n.id;
+      for (const [index, task] of proposal.tasks.entries()) {
+        const id = `direction-${n.id}-${index}`;
+        s.nodes.push({
+          ...task,
+          id,
+          kind: 'task',
+          role: 'builder',
+          status: 'PENDING',
+          reason: `Project direction v${revision}; approved acceptance criteria unchanged.`,
+          attempt: 1,
+          files: [],
+          evidenceIds: [],
+        });
+        s.edges.push({ id: `next-${previous}-${id}`, source: previous, target: id, kind: 'next' });
+        previous = id;
+      }
+      s.planReady = true;
+      break;
+    }
     case 'goal.accepted':
       if (s.status !== 'PREFLIGHT') throw new Error('Goal already accepted');
       s.status = 'RUNNING';
@@ -583,6 +668,7 @@ export function reduce(previous: RunState | undefined, event: RunEvent): RunStat
         (n) =>
           n.kind === 'task' &&
           n.status === 'SKIPPED' &&
+          !n.supersededBy &&
           n.evidenceIds.includes(e.id) &&
           e.contractVersion === s.contractVersion,
       )) {
@@ -616,6 +702,8 @@ export function reduce(previous: RunState | undefined, event: RunEvent): RunStat
       break;
     case 'workflow.completed':
       if (
+        needsOrientation(s) ||
+        questions(s).length ||
         s.criteria.some((c) => !satisfied(c.status)) ||
         s.nodes.some((n) => ['RUNNING', 'VERIFYING', 'PENDING'].includes(n.status))
       )
