@@ -1,0 +1,114 @@
+{
+  "measuredAt": "2026-10-18T04:08:31.077Z",
+  "fixture": "handoff-lab",
+  "model": "gpt-6.1-sol",
+  "reasoningEffort": "medium",
+  "limits": {
+    "maxTurns": 10,
+    "maxAttempts": 2,
+    "maxDurationMs": 600000,
+    "maxTokens": 500000,
+    "turnTimeoutMs": 180000,
+    "maxNoProgress": 2
+  },
+  "fixtureHead": "9820b455edfe402979d86d944e0cdec416fce453",
+  "firstPhase": {
+    "status": "BLOCKED",
+    "elapsedMs": 132034,
+    "verifiedCriteria": [
+      "edition",
+      "preview"
+    ],
+    "openQuestion": [
+      {
+        "reason": "Which product name should be used? The landing criterion, product naming and landing branding must wait for your explicit reply. Independent edition preview work can continue.",
+        "criterionIds": [
+          "landing"
+        ]
+      }
+    ],
+    "directionRevision": 2
+  },
+  "final": {
+    "status": "COMPLETED",
+    "elapsedMs": 191643,
+    "verified": 3,
+    "open": 0,
+    "turns": 6,
+    "reportedTokens": 383378,
+    "checks": {
+      "assessed": 0,
+      "passed": 3,
+      "failed": 0,
+      "stale": 0,
+      "deferred": 4
+    },
+    "directionRevision": 3,
+    "noteCount": 6,
+    "questionAnswered": true
+  },
+  "modelModes": [
+    "orient",
+    "build",
+    "orient",
+    "build",
+    "orient",
+    "build"
+  ],
+  "scheduledSteeringMessages": 2,
+  "operatorReplies": 1,
+  "primaryReportSha256": "09e8af49f61cfd75b6ae32b096d612a16ad7a94c70ccbd3b4d35e41b3415b512",
+  "runtimeSources": {
+    "src/core/engine.ts": "be12b179d68f2010a4ed982176a20db791bddb70873b5a2e991d3764ee1ab5ec",
+    "src/core/model.ts": "033d4afed7d0dfd271039616edf3b8f145e878c103114dfd16b7c6a40973fd15",
+    "src/core/compass.ts": "b2d06b00a5b58fffa3272b2e956eee43b06d3a2bb45efdca7ce887718de613f9",
+    "src/providers/codex.ts": "baea705da29c0f9b0162321f3e1ad5dd007615d162eb40b7f3ba7050b70a985c",
+    "tests/compass-codex.test.ts": "3348095d8cfdbaf7abc516d32c306baf92ddb2bd66c7740b9ed1aca92a9d3b81"
+  },
+  "limitations": [
+    "Bounded fixture trial, not an overnight soak or comparative benchmark.",
+    "Text/local HTML only: no actual audio, video, live news or publishing.",
+    "Deterministic checks cover structure and basic escaping, not editorial quality.",
+    "Two incoming notes are injected by the harness; all planner and builder responses use the real SDK.",
+    "The model mixed confirmed context with provisional assumptions in its final assumptions list. Operator notes retain explicit provenance; semantic classification still needs evaluation.",
+    "No direct-Codex comparison or developer review-time measurement in this trial."
+  ],
+  "finalChecks": {
+    "typecheck": "passed",
+    "build": "passed",
+    "deterministicPassed": 42,
+    "optionalSkipped": 4,
+    "browserPassed": 4,
+    "realCompassPassed": 1
+  },
+  "visualAudit": {
+    "actualProvider": "codex",
+    "actualStatus": "COMPLETED",
+    "verifiedCriteria": 3,
+    "replayedPhase": "BLOCKED, 2/3 criteria passed",
+    "compassMobileOverflow": false,
+    "pages": [
+      {
+        "name": "edition",
+        "title": "Fictional evening edition — text prototype",
+        "mobileOverflow": false
+      },
+      {
+        "name": "landing",
+        "title": "Faro — Evening edition text prototype",
+        "mobileOverflow": false
+      }
+    ],
+    "pageErrors": [],
+    "previewJavaScript": false
+  },
+  "localMacSmoke": {
+    "status": "COMPLETED",
+    "workerDetachedAfterLauncherExit": true,
+    "osIdleSleepAssertionObserved": true,
+    "workerLeaseReleased": true,
+    "helperExitedAfterCompletion": true,
+    "manualSleepTested": false
+  },
+  "implementationCommit": "363eb9f"
+}

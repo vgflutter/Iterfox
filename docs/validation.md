@@ -281,3 +281,72 @@ node --import tsx scripts/retest-relaybox.ts \
 This is an explicit real-Codex opt-in. The harness refuses a dirty runtime, an
 existing output directory, changed fixture/contract/holdout, or a different model
 protocol. It clones the fixture, leaving the original assessment unchanged.
+
+## Project Compass — 2026-10-18
+
+A bounded real-SDK trial exercised the operator's evolving product handoff, rather
+than comparing throughput on a fixed coding task. The `handoff-lab` fixture asks
+for a complete fictional two-presenter text edition, a responsive HTML preview and
+a local landing. The operator explicitly reserves the product name. Three initial
+notes are supplied; two later notes arrive during the first builder activity.
+
+All planner and builder responses used **gpt-6.1-sol / medium** through the real
+SDK. The harness injects incoming notes and supplies one linked operator reply
+between phases. It does not script model plans, classifications or edits. Limits:
+10 turns, 500,000 reported tokens, 600 seconds, two attempts per failed criterion.
+
+| Observation             | Measured result                                                              |
+| ----------------------- | ---------------------------------------------------------------------------- |
+| Before the naming reply | Edition and preview passed, landing held; BLOCKED after 132.034 s            |
+| Incoming instructions   | Two messages reconciled in one later batch; none lost                        |
+| Operator decision       | Explicit naming question held landing while independent work finished        |
+| After linked reply      | Same run COMPLETED, 3/3 command gates satisfied                              |
+| Total                   | 191.643 s; six real turns; 383,378 reported tokens                           |
+| Turn sequence           | orient → build → orient → build → orient → build                             |
+| Plan history            | Three direction revisions; six notes including the linked reply              |
+| Verification            | Three current passes, four deferred preliminary observations, no corrections |
+| Integrity               | Protected inputs unchanged; final state reconstructs from events             |
+
+The terminal BLOCKED state in phase one is the expected wait for the operator,
+not a claim that the independently completed work failed. Naming/landing builders
+did not start before the reply. A second read-only planning turn was charged for
+the two arriving messages, and a third for the naming reply. This cost is material:
+there is no measured token-efficiency advantage in this trial.
+
+The [redacted summary](validation/compass-real.json) includes the primary local
+report hash and trial runtime source hashes. The full local report is
+`/private/tmp/iterfox-compass-real-20261018.json`; recorded runtime sources are kept
+at `/private/tmp/iterfox-compass-runtime-20261018`. Subsequent hardening preserves
+held criteria until a linked reply and prevents stale evidence from reopening
+superseded skipped work; deterministic regression tests cover those changes. The
+assumption prompt was tightened after observing confirmed context mixed into the
+model's assumptions list. The real trial has not been repeated after that prompt
+clarification and formatting.
+
+This is **not** an overnight soak, a developer study or a matched direct-Codex
+comparison. It establishes one observed orchestration path on a small text/HTML
+fixture. Checks cover structure and basic escaping, not editorial quality, avatar
+animation, audio, video or audience response. Operator-time savings and long-run
+reliability remain to be measured.
+
+Deterministic tests additionally cover batching, messages arriving during
+reconciliation, persisted-response recovery, missing dispositions, unknown criteria,
+dependency cycles, non-retirable questions, stale superseded work and original
+budget enforcement. The browser trial covers saving context, refresh, linked
+answers, resume, evidence/brief consistency and mobile overflow. On macOS the
+actual detached-worker suite exercises the new worker-scoped awake helper; its
+presence does not establish behavior under explicit system sleep or power loss.
+
+Final local checks: typecheck/build passed, 42 deterministic tests passed with
+four optional integrations skipped, four browser tests passed, and the separate
+real Compass test passed. A detached DEMO smoke run also exposed an actual macOS
+PreventUserIdleSystemSleep assertion owned by the worker's caffeinate helper;
+after completion the lease was released and the helper had exited. The real-data
+UI and generated HTML previews showed no mobile overflow or page errors. These
+observations and the implementation commit are recorded in the redacted summary.
+
+Reproduce the real trial, with Codex authentication and model usage:
+
+```sh
+ITERFOX_COMPASS_OUT=/tmp/compass-report.json npm run test:compass
+```
