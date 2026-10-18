@@ -100,3 +100,11 @@ The bounded real trial is documented in [validation](validation.md). It is not a
 all-night soak, user study or evidence of a net competitive advantage. The next
 product test should measure developer interventions, rework after late decisions,
 verified progress during absence and time to review the morning result.
+
+## Direction is not the work queue
+
+Project Compass now sits alongside [autonomous project development](project-development.md).
+A note is optional additional direction, not a requirement to unlock each next task.
+With project supervision enabled, the engine reviews actual milestones and discovers
+remaining goal work even when there are no new messages and regression checks pass.
+Its main success measure is useful progress during the developer's absence.

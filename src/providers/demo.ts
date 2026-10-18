@@ -10,6 +10,10 @@ export class DemoProvider implements AgentProvider {
   constructor(private delayMs = 0) {}
   async invoke(r: AgentRequest): Promise<unknown> {
     r.signal.throwIfAborted();
+    if (r.mode === 'oversee')
+      throw new Error(
+        'The DEMO fixture does not perform semantic project supervision. Use real Codex or an explicitly labeled test provider.',
+      );
     if (this.delayMs)
       await new Promise<void>((resolve, reject) => {
         const abort = () => {

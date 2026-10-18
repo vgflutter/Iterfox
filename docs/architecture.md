@@ -93,3 +93,19 @@ scheduler continues on the remaining criteria, then blocks with preserved progre
 Only linked operator replies retire questions; new notes arriving during a turn
 remain pending. No qualitative direction statement becomes acceptance evidence.
 The morning brief and event replay include the direction history.
+
+## Autonomous project checkpoints
+
+Optional contract `supervision: {mode:"project", maxReviews:20}` enables an outer
+project-development loop. After all runnable implementation and unheld checks,
+the read-only `oversee` mode inspects the goal, actual files, receipts, prior
+checkpoints and current approved PNGs. Passing a command gate alone does not stop
+this loop or skip its planned work.
+
+`project.reviewed` stores the supervisor's structured judgment and atomically
+inserts discovered implementation units tied to findings and existing criteria.
+Whole-worktree fingerprints, context IDs and contract versions bind reviews to
+the inspected state. A current ready review and current acceptance evidence are
+both required for completion. These are explicitly different kinds of support:
+AI project judgment versus runtime-owned verification. The original isolation,
+control, retry and duration mechanisms still own execution.

@@ -14,6 +14,12 @@ import { keepWorkerAwake } from './core/awake.js';
 export async function loadContract(path: string): Promise<Contract> {
   return contractSchema.parse(JSON.parse(await readFile(path, 'utf8')));
 }
+export function withProjectSupervision(contract: Contract): Contract {
+  return contractSchema.parse({
+    ...contract,
+    supervision: contract.supervision ?? { mode: 'project', maxReviews: 20 },
+  });
+}
 export function openStore(dataDir: string): Store {
   return new Store(join(resolve(dataDir), 'ledger.sqlite'));
 }
@@ -38,11 +44,23 @@ export function recoverDeadWorkers(store: Store): void {
 export async function auditStoredEvidence(store: Store, id: string): Promise<void> {
   const lease = store.lease(id);
   if (lease && alive(lease.pid)) return; // the active runtime owns freshness
-  if (!store.get(id).evidence.some((e) => ['passed', 'assessed'].includes(e.status))) return;
+  if (
+    !store.get(id).evidence.some((e) => ['passed', 'assessed'].includes(e.status)) &&
+    !store.get(id).projectReviews?.some((r) => r.outcome === 'ready' && !r.invalidatedReason)
+  )
+    return;
   const engine = new Engine(store, id, providerFor(store.get(id)));
   try {
     await engine.refreshEvidence();
   } catch {
+    const review = store.get(id).projectReviews?.at(-1);
+    if (review?.outcome === 'ready' && !review.invalidatedReason)
+      store.append(
+        id,
+        'project.review.invalidated',
+        'The inspected worktree is unavailable. Project readiness is unknown.',
+        { nodeId: review.nodeId },
+      );
     for (const e of store.get(id).evidence.filter((e) => ['passed', 'assessed'].includes(e.status)))
       store.append(
         id,
@@ -73,6 +91,11 @@ export async function preflight(
       'isolated worktree edits within approved paths',
       'runtime executes exact approved check argv',
       'Codex workspace-write; network disabled; escalation denied',
+      ...(contract.supervision
+        ? [
+            'Autonomous project checkpoints may discover and execute further goal work within the original scope; reversible choices are delegated.',
+          ]
+        : []),
       ...contract.criteria
         .filter((c) => c.verification?.kind === 'visual')
         .map(

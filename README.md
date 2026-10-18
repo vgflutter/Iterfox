@@ -2,10 +2,10 @@
 
 **Delegate the work. Wake up to evidence.**
 
-Iterfox is an acceptance-driven supervisor for Codex. Give it a goal, a handoff and
-checks you trust. It builds a plan, runs work sequentially, verifies results itself,
-and inserts corrective tasks when checks fail. Return to an evidence ledger and a
-Morning Brief instead of a long conversation.
+Iterfox develops toward a project goal while you are away. Give it direction and
+checks you trust. In project mode it implements, verifies a milestone, inspects the
+actual result and discovers the next useful work without another prompt. Reversible
+choices stay with the agent. Return to inspect the result, evidence and decisions.
 
 This is an early working MVP. Only Codex is supported. It does not automatically
 push, merge or deploy. A completed agent turn is not a passing acceptance check.
@@ -62,7 +62,7 @@ node /path/to/Iterfox/dist/cli.js run \
   --repo /path/to/my-project \
   --config /path/to/my-project/iterfox.json \
   --data /path/to/my-project/.iterfox \
-  --night --yes
+  --project --night --yes
 ```
 
 Only committed HEAD is copied into a separate `iterfox/<run-id>` worktree. Your
@@ -121,6 +121,10 @@ Fingerprints make affected proofs STALE; unrelated scoped evidence remains valid
 
 ## A run you can understand
 
+- **Autonomous project development:** after green checks, a supervisor compares the
+  result to the whole goal and can discover further implementation work. The loop
+  continues without an operator prompt. New Run enables this mode by default;
+  CLI `--project` opts in. See the [project workflow and an eight-hour work window](docs/project-development.md).
 - **Project Compass (experimental):** add requests, settled decisions and provisional
   hypotheses while work runs. Batch reconciliation replaces only unstarted work;
   operator questions hold dependent criteria while independent work continues.
@@ -144,6 +148,7 @@ Fingerprints make affected proofs STALE; unrelated scoped evidence remains valid
 ```sh
 iterfox run --config iterfox.json              # interactive preflight
 iterfox run --config iterfox.json --night --yes # explicitly authorize detached work
+iterfox run --config iterfox.json --project --night --yes # develop toward the project goal
 iterfox status                                # list runs; audit idle evidence
 iterfox status RUN_ID --json
 iterfox ui --port 4310
@@ -184,6 +189,7 @@ npm run test:ui                # graph, evidence gallery, rubric and mobile brow
 npm run test:assessor          # OPT IN: one real Codex qualitative assessment
 npm run test:codex             # OPT IN: real Codex, tokens and authentication required
 npm run test:compass           # OPT IN: real evolving handoff and parked decision trial
+npm run test:project           # OPT IN: autonomous discovery beyond green regression checks
 npm run compare:codex          # OPT IN: single-turn Codex reference measurement
 ```
 

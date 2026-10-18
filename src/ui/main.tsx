@@ -402,7 +402,9 @@ function App() {
               <div className="eyebrow">
                 {state.provider === 'demo'
                   ? 'DEMO RUN · DETERMINISTIC FIXTURE'
-                  : 'CODEX RUN · SEQUENTIAL EXECUTION'}{' '}
+                  : state.contract.supervision
+                    ? 'CODEX · AUTONOMOUS PROJECT DEVELOPMENT'
+                    : 'CODEX RUN · SEQUENTIAL EXECUTION'}{' '}
                 <span>/</span> {state.id.slice(-8)}
               </div>
               <div className="heading-row">
@@ -483,12 +485,22 @@ function App() {
                 <p>Recorded exit codes & file fingerprints</p>
               </div>
               <div>
-                <span>PLAN ADAPTATIONS</span>
+                <span>
+                  {state.contract.supervision ? 'PROJECT CHECKPOINTS' : 'PLAN ADAPTATIONS'}
+                </span>
                 <strong>
-                  {b?.corrections.length}
-                  <em> corrective {b?.corrections.length === 1 ? 'task' : 'tasks'}</em>
+                  {state.contract.supervision ? b?.projectReviews.length : b?.corrections.length}
+                  <em>
+                    {state.contract.supervision
+                      ? ' goal reviews'
+                      : ` corrective ${b?.corrections.length === 1 ? 'task' : 'tasks'}`}
+                  </em>
                 </strong>
-                <p>Created in response to observed failures</p>
+                <p>
+                  {state.contract.supervision
+                    ? `${b?.discoveredTasks.length} next ${b?.discoveredTasks.length === 1 ? 'step' : 'steps'} discovered autonomously`
+                    : 'Created in response to observed failures'}
+                </p>
               </div>
               <div>
                 <span>RESOURCES</span>
@@ -687,7 +699,10 @@ function App() {
                     <dl>
                       <dt>Objective</dt>
                       <dd>
-                        {selectedNode?.title === 'Reconcile the project direction'
+                        {[
+                          'Reconcile the project direction',
+                          'Review the project against its goal',
+                        ].includes(selectedNode?.title ?? '')
                           ? 'Consolidate the handoff, retain completed work and plan the next reviewable result within the approved contract.'
                           : (selectedNode?.objective ?? selectedCriterion?.title)}
                       </dd>
@@ -1153,6 +1168,7 @@ function NewRun({
   const [repository, setRepository] = useState('');
   const [configPath, setConfig] = useState('');
   const [handoff, setHandoff] = useState('');
+  const [project, setProject] = useState(true);
   const [preview, setPreview] = useState<any>();
   const [error, setError] = useState('');
   const [busy, setBusy] = useState(false);
@@ -1192,7 +1208,9 @@ function NewRun({
           setBusy(true);
           setError('');
           try {
-            setPreview(await api('/api/preflight', { repository, configPath, handoff }, token));
+            setPreview(
+              await api('/api/preflight', { repository, configPath, handoff, project }, token),
+            );
           } catch (e) {
             setError((e as Error).message);
           } finally {
@@ -1237,6 +1255,17 @@ function NewRun({
             }}
           />
         </label>
+        <label className="project-mode-choice">
+          <input
+            type="checkbox"
+            checked={project}
+            onChange={(e) => {
+              setProject(e.target.checked);
+              setPreview(undefined);
+            }}
+          />
+          Develop the project autonomously: review each milestone and discover the next useful work.
+        </label>
         <button className="button" disabled={busy}>
           Review preflight →
         </button>
@@ -1259,6 +1288,13 @@ function NewRun({
             ))}
           </ul>
           <p>Allowed edits: {preview.contract.allowedPaths.join(', ')}</p>
+          {preview.contract.supervision && (
+            <p>
+              Project development: the AI reviews actual results, chooses reversible details and
+              discovers further work toward this goal. Your approved checks, scope and session
+              limits remain in force.
+            </p>
+          )}
           {preview.handoff && (
             <blockquote>
               {preview.handoff.text}

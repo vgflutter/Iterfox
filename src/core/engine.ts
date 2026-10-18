@@ -1,5 +1,7 @@
 import { randomUUID } from 'node:crypto';
+import { resolve } from 'node:path';
 import { needsOrientation, heldCriteria, questions, validateDirection } from './compass.js';
+import { projectReviewCurrent, validateProjectReview } from './supervision.js';
 import { Store } from './store.js';
 import { auditChanges, changedFiles, stamp, worktreeDiff } from './workspace.js';
 import { artifactRoot, readArtifact } from './artifacts.js';
@@ -164,6 +166,18 @@ export class Engine {
         await auditChanges(this.state);
         this.boundary();
         if (needsOrientation(this.state)) continue;
+        if (this.state.contract.supervision) {
+          const now = await stamp(this.state.worktree);
+          if (!projectReviewCurrent(this.state, now) || this.state.projectNeedsReview) {
+            await this.oversee();
+            continue;
+          }
+          const last = this.state.projectReviews!.at(-1)!;
+          if (last.outcome === 'needs-operator')
+            throw new Error(
+              `Project supervisor needs an operator decision: ${last.operatorQuestion}`,
+            );
+        }
         if (questions(this.state).length)
           throw new Error(
             'Independent work finished. Operator decisions remain in Project Compass; reply to continue the dependent work.',
@@ -211,6 +225,89 @@ export class Engine {
       this.store.release(this.id, this.owner);
       this.active = false;
     }
+  }
+  private async oversee(): Promise<void> {
+    const snapshot = this.state;
+    if (
+      (snapshot.projectReviews?.filter((r) => r.contractVersion === snapshot.contractVersion)
+        .length ?? 0) >= snapshot.contract.supervision!.maxReviews
+    )
+      throw new Error(
+        'Project review limit reached; inspect the verified progress before extending the session.',
+      );
+    const code = await stamp(snapshot.worktree);
+    const noteIds = (snapshot.notes ?? []).map((n) => n.id);
+    const directionRevision = snapshot.direction?.revision ?? 0;
+    const key = JSON.stringify({
+      head: code.head,
+      fingerprint: code.fingerprint,
+      version: snapshot.contractVersion,
+      noteIds,
+      directionRevision,
+      round: (snapshot.projectReviews?.length ?? 0) + 1,
+    });
+    let activity = snapshot.nodes.find(
+      (n) =>
+        n.title === 'Review the project against its goal' &&
+        n.objective === key &&
+        ['PENDING', 'PASSED'].includes(n.status),
+    );
+    if (!activity) {
+      activity = node({
+        kind: 'decision',
+        role: 'planner',
+        title: 'Review the project against its goal',
+        objective: key,
+        reason: 'A verified milestone triggers autonomous discovery of the next useful work.',
+        criterionId: snapshot.criteria[0].id,
+      });
+      this.emit('task.planned', activity.title, { node: activity });
+    }
+    const reviewImages: NonNullable<AgentRequest['reviewImages']> = [];
+    for (const e of [...snapshot.evidence]
+      .reverse()
+      .filter((e) => ['passed', 'assessed'].includes(e.status)))
+      for (const a of e.artifacts ?? [])
+        if (a.mime === 'image/png' && a.bytes <= 4 * 1024 * 1024 && reviewImages.length < 6) {
+          await readArtifact(artifactRoot(this.store.path), a);
+          reviewImages.push({
+            path: resolve(artifactRoot(this.store.path), a.path),
+            name: a.name,
+            evidenceId: e.id,
+          });
+        }
+    const proposal =
+      activity.result?.proposal ??
+      (await this.invoke('oversee', activity, undefined, reviewImages));
+    const result = validateProjectReview(snapshot, proposal, code);
+    await auditChanges(this.state);
+    const after = await stamp(this.state.worktree);
+    if (after.head !== code.head || after.fingerprint !== code.fingerprint)
+      throw new Error(
+        'The project changed during read-only supervision; inspect and resume before using this review.',
+      );
+    if (!activity.result)
+      this.emit('task.completed', result.summary, {
+        nodeId: activity.id,
+        summary: result.summary,
+        result: { proposal: result, stamp: code, noteIds, directionRevision },
+      });
+    if (
+      result.outcome === 'continue' &&
+      this.state.noProgress >= this.state.contract.limits.maxNoProgress
+    )
+      throw new Error(
+        'Project no-progress limit reached; repeated work produced no observable file changes.',
+      );
+    this.emit(
+      'project.reviewed',
+      result.outcome === 'continue'
+        ? `Project supervisor discovered ${result.tasks.length} next implementation unit(s) from the result.`
+        : result.outcome === 'ready'
+          ? 'Project supervisor considers the goal ready for operator review; this is an AI judgment, not independent proof.'
+          : `Project work awaits a decision: ${result.operatorQuestion}`,
+      { nodeId: activity.id },
+    );
   }
   private async orient(): Promise<void> {
     const snapshot = this.state;
@@ -261,6 +358,7 @@ export class Engine {
     mode: AgentRequest['mode'],
     activity: TaskNode,
     failure?: string,
+    reviewImages?: AgentRequest['reviewImages'],
   ): Promise<unknown> {
     this.boundary(true);
     if (this.state.turns >= this.state.contract.limits.maxTurns)
@@ -290,6 +388,7 @@ export class Engine {
         node: this.state.nodes.find((n) => n.id === activity.id)!,
         signal,
         failure,
+        reviewImages,
         onThread: (threadId) =>
           this.emit('agent.thread', 'Codex session recorded for recovery.', {
             nodeId: activity.id,
@@ -408,6 +507,8 @@ export class Engine {
     );
   }
   private skipSatisfiedTasks(): void {
+    // Project intent extends beyond what regression gates happen to cover.
+    if (this.state.contract.supervision) return;
     for (const task of this.state.nodes.filter(
       (n) => n.kind === 'task' && n.status === 'PENDING',
     )) {
@@ -533,6 +634,26 @@ export class Engine {
     );
   }
   async refreshEvidence(): Promise<void> {
+    const review = this.state.projectReviews?.at(-1);
+    if (
+      this.state.contract.supervision &&
+      review?.outcome === 'ready' &&
+      !review.invalidatedReason
+    ) {
+      const now = await stamp(this.state.worktree);
+      if (
+        now.head !== review.stamp.head ||
+        now.fingerprint !== review.stamp.fingerprint ||
+        review.contractVersion !== this.state.contractVersion ||
+        review.directionRevision !== (this.state.direction?.revision ?? 0) ||
+        JSON.stringify(review.noteIds) !== JSON.stringify((this.state.notes ?? []).map((n) => n.id))
+      )
+        this.emit(
+          'project.review.invalidated',
+          'Project readiness is STALE: source or operator context changed after the inspected milestone.',
+          { nodeId: review.nodeId },
+        );
+    }
     for (const e of this.state.evidence.filter((e) => ['passed', 'assessed'].includes(e.status))) {
       const now = await stamp(this.state.worktree, e.scope, e.inputs);
       let artifactsIntact = true;

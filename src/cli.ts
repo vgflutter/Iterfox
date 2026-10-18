@@ -20,6 +20,7 @@ import {
   recoverDeadWorkers,
   auditStoredEvidence,
   addDirectionNote,
+  withProjectSupervision,
 } from './service.js';
 import { brief, markdownBrief } from './core/brief.js';
 import { noteInputSchema } from './core/compass.js';
@@ -27,7 +28,7 @@ import { readFile } from 'node:fs/promises';
 
 const help = `Iterfox — Delegate the work. Wake up to evidence.
 
-  iterfox run --config iterfox.json [--repo .] [--handoff notes.txt] [--night] [--yes]
+  iterfox run --config iterfox.json [--repo .] [--handoff notes.txt] [--project] [--night] [--yes]
   iterfox demo [--codex] [--night] [--yes]
   iterfox status [run-id] [--json]
   iterfox ui [--port 4310]
@@ -125,6 +126,7 @@ async function main() {
       message: { type: 'string' },
       kind: { type: 'string', default: 'request' },
       'reply-to': { type: 'string' },
+      project: { type: 'boolean' },
     },
   });
   const [command = 'help', requestedId] = positionals;
@@ -190,9 +192,10 @@ async function main() {
       if (command === 'run' && !v.config)
         throw new Error('Provide --config <file>. See examples/avatar-lab/iterfox.json.');
       const repo = command === 'demo' ? await createDemoRepository(dataDir) : resolve(v.repo!);
-      const contract = await loadContract(
+      let contract = await loadContract(
         command === 'demo' ? join(repo, 'iterfox.json') : resolve(v.config!),
       );
+      if (v.project) contract = withProjectSupervision(contract);
       const provider = command === 'demo' && !v.codex ? 'demo' : 'codex';
       const notes = v.handoff
         ? [noteInputSchema.parse({ text: await readFile(resolve(v.handoff), 'utf8') })]

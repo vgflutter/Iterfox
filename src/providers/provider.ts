@@ -1,6 +1,7 @@
 import { z } from 'zod';
 import type { RunState, TaskNode } from '../core/model.js';
 import { directionSchema } from '../core/compass.js';
+import { projectReviewSchema } from '../core/supervision.js';
 
 export const planSchema = z
   .object({
@@ -53,12 +54,13 @@ export const assessmentSchema = z
   })
   .strict();
 export interface AgentRequest {
-  mode: 'plan' | 'orient' | 'build' | 'diagnose' | 'assess';
+  mode: 'plan' | 'orient' | 'build' | 'diagnose' | 'assess' | 'oversee';
   state: RunState;
   node: TaskNode;
   signal: AbortSignal;
   failure?: string;
   assessmentInput?: { text: string; images: string[]; rubric: unknown; instructions: string };
+  reviewImages?: { path: string; name: string; evidenceId: string }[];
   onThread: (id: string) => void;
   onUsage: (tokens: number) => void;
 }
@@ -67,13 +69,15 @@ export interface AgentProvider {
   invoke(request: AgentRequest): Promise<unknown>;
 }
 export function resultSchema(mode: AgentRequest['mode']) {
-  return mode === 'orient'
-    ? directionSchema
-    : mode === 'plan'
-      ? planSchema
-      : mode === 'build'
-        ? buildSchema
-        : mode === 'assess'
-          ? assessmentSchema
-          : diagnosisSchema;
+  return mode === 'oversee'
+    ? projectReviewSchema
+    : mode === 'orient'
+      ? directionSchema
+      : mode === 'plan'
+        ? planSchema
+        : mode === 'build'
+          ? buildSchema
+          : mode === 'assess'
+            ? assessmentSchema
+            : diagnosisSchema;
 }

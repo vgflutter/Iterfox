@@ -24,3 +24,9 @@ Prioritize real absence/review trials: operator interventions, instructions repe
 rework caused by late decisions, verified progress and review time. Tune semantic
 classification and reconciliation cost before adding more model roles. Native
 sleep/reboot recovery and an all-night local soak remain unvalidated.
+
+The primary direction is now autonomous project advancement during absence.
+Project checkpoints can discover new implementation work after green regression
+gates, without new operator prompts. Prioritize an actual overnight project run,
+verified end-to-end deliverables and manual interventions. Token efficiency remains
+telemetry and a secondary engineering concern, not the primary value criterion.

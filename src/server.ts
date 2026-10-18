@@ -18,6 +18,7 @@ import {
   recoverDeadWorkers,
   auditStoredEvidence,
   addDirectionNote,
+  withProjectSupervision,
 } from './service.js';
 
 export async function serve(
@@ -62,7 +63,8 @@ export async function serve(
           return json(res, 200, { token, dataDir, localOnly: true, executionHost: hostname() });
         if (req.method === 'POST' && parts[1] === 'preflight') {
           const b = await body(req);
-          const contract = await loadContract(String(b.configPath));
+          const loaded = await loadContract(String(b.configPath));
+          const contract = b.project === true ? withProjectSupervision(loaded) : loaded;
           const handoff = b.handoff ? noteInputSchema.parse({ text: b.handoff }) : undefined;
           return json(res, 200, {
             ...(await preflight(String(b.repository), contract, 'codex')),

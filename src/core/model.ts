@@ -3,10 +3,17 @@ import {
   noteInputSchema,
   needsOrientation,
   questions,
+  heldCriteria,
   validateDirection,
   type DirectionNote,
   type Direction,
 } from './compass.js';
+import {
+  supervisionSchema,
+  validateProjectReview,
+  type ProjectReview,
+  type ProjectReviewProposal,
+} from './supervision.js';
 
 export const pathPrefix = z
   .string()
@@ -85,6 +92,7 @@ export const contractSchema = z
     criteria: z.array(criterionSchema).min(1).max(30),
     allowedPaths: z.array(pathPrefix).min(1),
     protectedPaths: z.array(pathPrefix).default([]),
+    supervision: supervisionSchema.optional(),
     limits: z
       .object({
         maxTurns: z.number().int().min(1).max(1000).default(20),
@@ -146,6 +154,7 @@ export interface TaskNode {
   result?: Record<string, unknown>;
   waitsFor?: string[];
   supersededBy?: string;
+  discoveredBy?: string;
 }
 export interface Edge {
   id: string;
@@ -261,6 +270,8 @@ export interface RunState {
   diff?: string;
   notes?: DirectionNote[];
   direction?: Direction;
+  projectReviews?: ProjectReview[];
+  projectNeedsReview?: boolean;
 }
 export type EventType =
   | 'workflow.created'
@@ -297,7 +308,9 @@ export type EventType =
   | 'contract.approved'
   | 'progress.recorded'
   | 'direction.noted'
-  | 'direction.compiled';
+  | 'direction.compiled'
+  | 'project.reviewed'
+  | 'project.review.invalidated';
 export interface RunEvent {
   schemaVersion: 1;
   id: string;
@@ -354,6 +367,102 @@ export function reduce(previous: RunState | undefined, event: RunEvent): RunStat
     return n;
   };
   switch (event.type) {
+    case 'project.review.invalidated': {
+      const last = s.projectReviews?.at(-1);
+      if (!last || last.nodeId !== d.nodeId || last.invalidatedReason || last.outcome !== 'ready')
+        throw new Error('Only a current ready project review can become stale');
+      last.invalidatedReason = event.message;
+      s.projectNeedsReview = true;
+      if (s.status === 'COMPLETED') {
+        s.status = 'PARTIAL';
+        s.reason = event.message;
+        s.finishedAt = event.at;
+      }
+      break;
+    }
+    case 'project.reviewed': {
+      const n = node();
+      if (
+        !s.contract.supervision ||
+        n.role !== 'planner' ||
+        n.status !== 'PASSED' ||
+        !n.result ||
+        s.status !== 'RUNNING' ||
+        s.projectReviews?.some((r) => r.nodeId === n.id)
+      )
+        throw new Error(
+          'A project review requires an authorized project session and completed supervisor activity',
+        );
+      if (
+        (s.projectReviews?.filter((r) => r.contractVersion === s.contractVersion).length ?? 0) >=
+        s.contract.supervision.maxReviews
+      )
+        throw new Error('Project review limit reached');
+      const result = n.result as unknown as {
+        proposal: ProjectReviewProposal;
+        stamp: CodeStamp;
+        noteIds: string[];
+        directionRevision: number;
+      };
+      const held = heldCriteria(s);
+      if (
+        s.criteria.some((c) => !held.has(c.id) && !satisfied(c.status)) ||
+        s.nodes.some(
+          (n) =>
+            ['RUNNING', 'VERIFYING'].includes(n.status) ||
+            (n.status === 'PENDING' && !held.has(n.criterionId)),
+        ) ||
+        n.objective !==
+          JSON.stringify({
+            head: result.stamp.head,
+            fingerprint: result.stamp.fingerprint,
+            version: s.contractVersion,
+            noteIds: result.noteIds,
+            directionRevision: result.directionRevision,
+            round: (s.projectReviews?.length ?? 0) + 1,
+          })
+      )
+        throw new Error(
+          'Project review must follow a verified milestone and match its recorded snapshot',
+        );
+      const p = validateProjectReview(s, result.proposal, result.stamp);
+      const review: ProjectReview = {
+        ...p,
+        stamp: result.stamp,
+        noteIds: result.noteIds,
+        directionRevision: result.directionRevision,
+        contractVersion: s.contractVersion,
+        nodeId: n.id,
+        at: event.at,
+        independent: false,
+      };
+      s.projectReviews = [...(s.projectReviews ?? []), review];
+      s.projectNeedsReview = p.outcome === 'continue';
+      let previous = n.id;
+      for (const [i, task] of p.tasks.entries()) {
+        const id = `discovered-${n.id}-${i}`;
+        s.nodes.push({
+          ...task,
+          id,
+          kind: 'task',
+          role: 'builder',
+          status: 'PENDING',
+          objective: `${task.objective}\nObserved gaps: ${p.findings
+            .filter((f) => task.findingIds.includes(f.id))
+            .map((f) => f.gap)
+            .join('\n')}`,
+          reason:
+            'Discovered by project supervision from the actual result, not an operator queue.',
+          discoveredBy: n.id,
+          attempt: 1,
+          files: [],
+          evidenceIds: [],
+        });
+        s.edges.push({ id: `next-${previous}-${id}`, source: previous, target: id, kind: 'next' });
+        previous = id;
+      }
+      break;
+    }
     case 'direction.noted': {
       if (['COMPLETED', 'FAILED'].includes(s.status))
         throw new Error('Start a new run after a terminal result');
@@ -369,6 +478,7 @@ export function reduce(previous: RunState | undefined, event: RunEvent): RunStat
       if (input.replyTo && !questions(s).some((n) => n.noteId === input.replyTo))
         throw new Error('A reply must reference an open operator question');
       s.notes = [...notes, { ...input, id, at: event.at }];
+      if (s.contract.supervision) s.projectNeedsReview = true;
       break;
     }
     case 'direction.compiled': {
@@ -423,6 +533,7 @@ export function reduce(previous: RunState | undefined, event: RunEvent): RunStat
         previous = id;
       }
       s.planReady = true;
+      if (s.contract.supervision) s.projectNeedsReview = true;
       break;
     }
     case 'goal.accepted':
@@ -645,6 +756,7 @@ export function reduce(previous: RunState | undefined, event: RunEvent): RunStat
       break;
     case 'code.changed':
       s.diff = String(d.diff);
+      if (s.contract.supervision) s.projectNeedsReview = true;
       break;
     case 'progress.recorded':
       s.noProgress = Number(d.noProgress);
@@ -693,6 +805,7 @@ export function reduce(previous: RunState | undefined, event: RunEvent): RunStat
       s.contracts.push(s.contract);
       s.revisionProposal = undefined;
       s.planReady = false;
+      s.projectNeedsReview = !!s.contract.supervision;
       for (const n of s.nodes)
         if (n.status === 'PENDING' || n.status === 'BLOCKED') {
           transition(n, 'SKIPPED');
@@ -704,6 +817,14 @@ export function reduce(previous: RunState | undefined, event: RunEvent): RunStat
       if (
         needsOrientation(s) ||
         questions(s).length ||
+        (s.contract.supervision &&
+          (s.projectNeedsReview ||
+            s.projectReviews?.at(-1)?.invalidatedReason ||
+            s.projectReviews?.at(-1)?.outcome !== 'ready' ||
+            s.projectReviews.at(-1)?.contractVersion !== s.contractVersion ||
+            s.projectReviews.at(-1)?.directionRevision !== (s.direction?.revision ?? 0) ||
+            JSON.stringify(s.projectReviews.at(-1)?.noteIds) !==
+              JSON.stringify((s.notes ?? []).map((n) => n.id)))) ||
         s.criteria.some((c) => !satisfied(c.status)) ||
         s.nodes.some((n) => ['RUNNING', 'VERIFYING', 'PENDING'].includes(n.status))
       )

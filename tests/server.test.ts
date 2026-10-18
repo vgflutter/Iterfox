@@ -23,6 +23,24 @@ test('the direction inbox persists authorized notes and rejects unlinked replies
   const meta = (await (await fetch(base + '/api/meta')).json()) as { token: string };
   const path = `/api/runs/${f.id}/direction`;
   const headers = { 'Content-Type': 'application/json', 'X-Iterfox-Token': meta.token };
+  const preflight = (await (
+    await fetch(base + '/api/preflight', {
+      method: 'POST',
+      headers,
+      body: JSON.stringify({
+        repository: f.repository,
+        configPath: f.repository + '/iterfox.json',
+        project: true,
+      }),
+    })
+  ).json()) as { contract: typeof f.contract };
+  assert.equal(preflight.contract.supervision?.mode, 'project');
+  assert.deepEqual(preflight.contract.criteria, f.contract.criteria);
+  assert.deepEqual(
+    preflight.contract.limits,
+    f.contract.limits,
+    'project mode preserves the configured work window',
+  );
   const payload = JSON.stringify({
     text: 'Show a working exchange before branding.',
     kind: 'request',

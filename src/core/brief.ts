@@ -37,6 +37,8 @@ export function brief(state: RunState, events: RunEvent[]) {
           'workflow.recovered',
           'task.skipped',
           'direction.compiled',
+          'project.reviewed',
+          'project.review.invalidated',
         ].includes(e.type),
       )
       .map((e) => ({ seq: e.seq, at: e.at, message: e.message })),
@@ -57,6 +59,10 @@ export function brief(state: RunState, events: RunEvent[]) {
         evidenceIds: n.evidenceIds,
       })),
     direction: state.direction,
+    projectReviews: state.projectReviews ?? [],
+    discoveredTasks: state.nodes
+      .filter((n) => n.discoveredBy)
+      .map((n) => ({ nodeId: n.id, title: n.title, status: n.status, reviewId: n.discoveredBy })),
     handoff: (state.notes ?? []).map((n) => ({
       ...n,
       handling: state.direction?.notes.find((d) => d.noteId === n.id),
@@ -88,6 +94,7 @@ export function brief(state: RunState, events: RunEvent[]) {
     attention: [
       ...questions(state).map((q) => q.reason),
       ...(needsOrientation(state) ? ['New handoff notes have not yet been reconciled.'] : []),
+      ...(state.reason && !open.length ? [state.reason] : []),
       ...(open.length
         ? [
             state.reason ??
@@ -150,6 +157,25 @@ export function markdownBrief(state: RunState, events: RunEvent[]): string {
         ]
       : []),
     '## What changed',
+    ...(state.contract.supervision
+      ? [
+          '',
+          '### Autonomous project development',
+          '',
+          `${b.projectReviews.length} project checkpoints; ${b.discoveredTasks.length} implementation units discovered without a new operator prompt.`,
+          'Project reviews are AI judgments from the same integration, separate from runtime acceptance evidence.',
+          ...b.projectReviews.flatMap((r) => [
+            `- ${r.outcome}${r.invalidatedReason ? ' (STALE)' : ''}: ${r.summary}`,
+            ...(r.invalidatedReason ? [`  - ${r.invalidatedReason}`] : []),
+            ...r.findings.map((f) => `  - Observed goal gap: ${f.gap} (${f.files.join(', ')})`),
+            ...r.decisions.map(
+              (d) => `  - Provisional autonomous choice: ${d.choice} — ${d.basis}`,
+            ),
+            ...(r.operatorQuestion ? [`  - Operator question: ${r.operatorQuestion}`] : []),
+          ]),
+          '',
+        ]
+      : []),
     '',
     ...b.corrections.map((c) => `- ${c.message}`),
     ...(b.corrections.length ? [] : ['No corrective tasks recorded.']),

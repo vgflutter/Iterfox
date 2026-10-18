@@ -7,13 +7,14 @@ import { DemoProvider } from '../../src/providers/demo.js';
 import { evidenceFixtures } from './evidence-fixtures.js';
 import { serve } from '../../src/server.js';
 import { launchWorker } from '../../src/cli.js';
-import { compassFixture } from './compass-fixture.js';
+import { compassFixture, projectFixture } from './compass-fixture.js';
 
 const dir = await mkdtemp(join(tmpdir(), 'iterfox-browser-'));
 const repo = await createDemoRepository(dir);
 const store = openStore(dir);
 await evidenceFixtures(dir, store);
 const compass = await compassFixture(dir, store);
+await projectFixture(dir, store);
 const state = await createRun(
   store,
   dir,

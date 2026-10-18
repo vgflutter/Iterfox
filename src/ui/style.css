@@ -2229,3 +2229,42 @@ textarea {
     max-width: 100%;
   }
 }
+
+.modal .project-mode-choice {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  line-height: 1.6;
+}
+.modal .project-mode-choice input {
+  width: auto;
+  margin: 4px 0 0;
+  accent-color: var(--sage);
+  flex-shrink: 0;
+}
+.project-checkpoint {
+  padding: 18px 0;
+  border-top: 1px solid var(--line);
+}
+.project-checkpoint > small {
+  font-size: 10px;
+  color: var(--sage);
+}
+.project-checkpoint blockquote {
+  margin: 15px 0;
+  border-left: 2px solid var(--sage);
+  padding-left: 14px;
+  line-height: 1.6;
+}
+.project-checkpoint blockquote small {
+  display: block;
+  margin-top: 9px;
+  font-size: 10px;
+  color: var(--muted);
+}
+.compass-focus {
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

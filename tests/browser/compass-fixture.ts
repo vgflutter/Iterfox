@@ -1,7 +1,7 @@
 import { readFile, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { Engine } from '../../src/core/engine.js';
-import { activeNotes } from '../../src/core/compass.js';
+import { activeNotes, questions } from '../../src/core/compass.js';
 import { Store } from '../../src/core/store.js';
 import {
   addDirectionNote,
@@ -17,6 +17,7 @@ export async function compassFixture(dir: string, store: Store) {
   contract.goal =
     'TEST FIXTURE project direction: deliver a reviewable avatar prototype while a naming decision waits.';
   contract.criteria[1].command = ['node', '--version'];
+  contract.supervision = { mode: 'project', maxReviews: 5 };
   const state = await createRun(store, dir, repo, contract, 'demo');
   addDirectionNote(store, state.id, {
     text: 'TEST FIXTURE: Ask me whether avatar labels should use initials or full names. Continue independent checks while I decide.',
@@ -30,6 +31,19 @@ export async function compassFixture(dir: string, store: Store) {
   const provider: AgentProvider = {
     name: 'demo',
     async invoke(r) {
+      if (r.mode === 'oversee') {
+        const q = questions(r.state)[0];
+        return {
+          outcome: q ? 'needs-operator' : 'ready',
+          summary: q
+            ? 'TEST FIXTURE: independent work finished while the naming decision waits.'
+            : 'TEST FIXTURE: inspected prototype ready for operator review.',
+          findings: [],
+          decisions: [],
+          tasks: [],
+          operatorQuestion: q?.reason ?? '',
+        };
+      }
       if (r.mode === 'orient')
         return {
           focus: 'TEST FIXTURE: make one avatar prototype reviewable before expanding the product.',
@@ -73,4 +87,83 @@ export async function compassFixture(dir: string, store: Store) {
   };
   await new Engine(store, state.id, provider).run();
   return { id: state.id, provider };
+}
+
+export async function projectFixture(dir: string, store: Store) {
+  const repo = await createDemoRepository(dir);
+  const contract = await loadContract(join(repo, 'iterfox.json'));
+  contract.goal = 'TEST FIXTURE autonomous project: deliver robust avatars and a reusable summary.';
+  contract.supervision = { mode: 'project', maxReviews: 5 };
+  const state = await createRun(store, dir, repo, contract, 'demo');
+  await new Engine(store, state.id, {
+    name: 'demo',
+    async invoke(r) {
+      if (r.mode === 'plan')
+        return {
+          tasks: [
+            {
+              title: 'TEST FIXTURE initial implementation',
+              objective: 'Repair labels and replies.',
+              criterionId: 'render',
+            },
+          ],
+        };
+      if (r.mode === 'oversee')
+        return r.state.projectReviews?.length
+          ? {
+              outcome: 'ready',
+              summary: 'TEST FIXTURE: the complete result is ready for review.',
+              findings: [],
+              decisions: [],
+              tasks: [],
+              operatorQuestion: '',
+            }
+          : {
+              outcome: 'continue',
+              summary: 'TEST FIXTURE: green checks miss the requested reusable summary.',
+              findings: [
+                {
+                  id: 'summary',
+                  gap: 'The approved project goal also needs a reusable summary; avatar.mjs does not export one.',
+                  files: ['avatar.mjs'],
+                  evidenceIds: r.state.evidence
+                    .filter((e) => e.status === 'passed')
+                    .map((e) => e.id),
+                },
+              ],
+              decisions: [
+                {
+                  choice: 'Reuse the existing dialogue output for the summary.',
+                  basis: 'A reversible local implementation choice within the goal.',
+                },
+              ],
+              tasks: [
+                {
+                  title: 'TEST FIXTURE expose a reusable summary',
+                  objective: 'Add reviewSummary(names) returning dialogue(names).',
+                  criterionId: 'dialogue',
+                  findingIds: ['summary'],
+                  waitsFor: [],
+                },
+              ],
+              operatorQuestion: '',
+            };
+      if (r.mode !== 'build') throw new Error(`Unexpected project fixture mode ${r.mode}`);
+      const path = join(r.state.worktree, 'avatar.mjs');
+      let s = await readFile(path, 'utf8');
+      s = s
+        .replace(
+          'return name.trim()[0].toUpperCase();',
+          "return String(name ?? '').trim()[0]?.toUpperCase() ?? '?';",
+        )
+        .replace(
+          'names.map(name => `${avatarLabel(name)}: Hello!`)',
+          'names.map((name, i) => i === 0 ? `${avatarLabel(name)}: Hello!` : `${avatarLabel(name)}: Hi, ${avatarLabel(names[i - 1])}!`)',
+        );
+      if (r.node.discoveredBy)
+        s += '\nexport function reviewSummary(names) { return dialogue(names); }\n';
+      await writeFile(path, s);
+      return { summary: 'TEST FIXTURE implementation applied.', blocked: false, reason: '' };
+    },
+  }).run();
 }

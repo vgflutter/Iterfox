@@ -38,7 +38,8 @@
     "check": "npm run typecheck && npm test && npm run build",
     "test:visual": "ITERFOX_VISUAL_TESTS=1 node --import tsx --test tests/visual.test.ts",
     "test:assessor": "ITERFOX_REAL_ASSESSOR=1 node --import tsx --test tests/assessment-codex.test.ts",
-    "test:compass": "ITERFOX_REAL_COMPASS=1 node --import tsx --test tests/compass-codex.test.ts"
+    "test:compass": "ITERFOX_REAL_COMPASS=1 node --import tsx --test tests/compass-codex.test.ts",
+    "test:project": "ITERFOX_REAL_PROJECT=1 node --import tsx --test tests/project-codex.test.ts"
   },
   "dependencies": {
     "@openai/codex-sdk": "0.163.0",

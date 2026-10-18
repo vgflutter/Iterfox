@@ -64,6 +64,9 @@ test('mobile layout, reduced motion, and explicit Night Run preflight are usable
   await page.setViewportSize({ width: 1440, height: 1080 });
   await page.getByRole('button', { name: 'New run', exact: false }).click();
   await expect(page.getByRole('dialog', { name: 'Night Run preflight' })).toBeVisible();
+  await expect(
+    page.getByRole('checkbox', { name: 'Develop the project autonomously', exact: false }),
+  ).toBeChecked();
   await expect(page.getByRole('button', { name: 'Authorize & start Night Run' })).toHaveCount(0);
   await page.getByRole('button', { name: 'Close preflight' }).click();
   expect(await page.evaluate(() => matchMedia('(prefers-reduced-motion: reduce)').matches)).toBe(
@@ -170,4 +173,21 @@ test('Project Compass accounts for instructions, persists a new thought, and res
   await page.getByRole('button', { name: 'Morning Brief', exact: true }).click();
   await expect(page.locator('.brief-view')).toContainText('2 criteria verified');
   expect(errors).toEqual([]);
+});
+
+test('autonomous checkpoints explain goal work discovered after green regression checks', async ({
+  page,
+}) => {
+  await page.goto('/');
+  await page.locator('.run-item').filter({ hasText: 'TEST FIXTURE autonomous project' }).click();
+  await page.getByRole('button', { name: 'Project Compass', exact: true }).click();
+  const checkpoints = page.getByRole('article', { name: 'Autonomous project checkpoints' });
+  await expect(checkpoints).toContainText('green checks miss the requested reusable summary');
+  await expect(checkpoints).toContainText('1 next implementation unit discovered and scheduled');
+  await expect(checkpoints).toContainText('Autonomous provisional choice');
+  await expect(checkpoints).toContainText('CHECKPOINT 2 · READY');
+  await expect(page.locator('.metrics')).toContainText('1 next step discovered autonomously');
+  await page.screenshot({ path: 'test-results/project-checkpoints.png', fullPage: true });
+  await page.getByRole('button', { name: 'Morning Brief', exact: true }).click();
+  await expect(page.locator('.brief-view')).toContainText('2 criteria verified');
 });

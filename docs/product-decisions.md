@@ -42,3 +42,18 @@ turn per changed batch, within the original budget, rather than periodic model
 supervision. The Mac can own unattended execution; an optional server is unnecessary
 for this workflow. This design is an implemented product hypothesis, not a claim of
 technical novelty or a measured user-time advantage.
+
+## Project progress, not prompt-queue throughput
+
+The operator clarified that the primary value is exploiting AI for sustained project
+development during absence. Minimizing reported tokens is not their priority.
+The previous handoff implementation still stopped once its initial plan and gates
+were satisfied. We added an explicit autonomous project loop: the same AI inspects
+a verified milestone, finds concrete remaining goal gaps and schedules further
+implementation without a new user prompt. Reversible choices are delegated. Green
+regression gates remain necessary but cannot skip discovered project work. No
+unrelated filler work, silent goal expansion or autonomous external publication.
+
+This changes the primary evaluation question to verified project advancement and
+operator interventions during absence. Token usage remains available as telemetry,
+without treating additional useful reasoning as a product failure.
