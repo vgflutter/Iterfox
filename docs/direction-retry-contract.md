@@ -47,7 +47,7 @@ superseded-orientation event and successful real Node checks. The protected JSON
 fixture fixes the canonical wire projection of every ledger prefix. New behavior
 must not reinterpret those earlier events or historical states.
 
-The existing Compass explicit-resume case uses a genuine provider interruption,
+The existing Compass explicit-resume case uses a genuine provider timeout,
 which remains blocking. Its superseded-planner and invalid-retirement assertions
 are retained. A returned semantic self-dependency belongs to the new automatic
 correction cases; requiring it to block immediately would contradict this approved
