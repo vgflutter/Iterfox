@@ -1,5 +1,5 @@
 import { satisfied, type RunEvent, type RunState } from './model.js';
-import { activeNotes, questions, heldCriteria, needsOrientation } from './compass.js';
+import { questions, heldCriteria, needsOrientation, noteProvenance } from './compass.js';
 
 export function brief(state: RunState, events: RunEvent[]) {
   const verified = state.criteria.filter((c) => c.status === 'PASSED');
@@ -59,14 +59,15 @@ export function brief(state: RunState, events: RunEvent[]) {
         evidenceIds: n.evidenceIds,
       })),
     direction: state.direction,
+    directionHistorical:
+      !!state.direction && state.direction.contractVersion !== state.contractVersion,
     projectReviews: state.projectReviews ?? [],
     discoveredTasks: state.nodes
       .filter((n) => n.discoveredBy)
       .map((n) => ({ nodeId: n.id, title: n.title, status: n.status, reviewId: n.discoveredBy })),
     handoff: (state.notes ?? []).map((n) => ({
       ...n,
-      handling: state.direction?.notes.find((d) => d.noteId === n.id),
-      answered: !activeNotes(state).some((a) => a.id === n.id),
+      ...noteProvenance(state, n),
     })),
     awaitingDirection: needsOrientation(state),
     heldCriteria: [...heldCriteria(state)],
@@ -93,7 +94,13 @@ export function brief(state: RunState, events: RunEvent[]) {
       .map((e) => ({ at: e.at, message: e.message })),
     attention: [
       ...questions(state).map((q) => q.reason),
-      ...(needsOrientation(state) ? ['New handoff notes have not yet been reconciled.'] : []),
+      ...(needsOrientation(state)
+        ? [
+            state.direction && state.direction.contractVersion !== state.contractVersion
+              ? 'Direction has not yet been reconciled with the current contract.'
+              : 'New handoff notes have not yet been reconciled.',
+          ]
+        : []),
       ...(state.reason && !open.length ? [state.reason] : []),
       ...(open.length
         ? [
@@ -143,12 +150,29 @@ export function markdownBrief(state: RunState, events: RunEvent[]): string {
       ? [
           '## Project direction',
           '',
-          `Focus (plan): ${b.direction?.focus ?? 'Awaiting reconciliation'}`,
-          `Next artifact (target, not proof): ${b.direction?.nextArtifact ?? 'Not planned yet'}`,
-          ...b.handoff.map(
-            (n) =>
-              `- ${n.kind}: ${n.text} — ${n.answered ? 'answered by linked reply' : n.handling ? `${n.handling.disposition}: ${n.handling.reason}` : 'awaiting reconciliation'}`,
-          ),
+          `Focus (${b.directionHistorical ? 'historical plan' : 'plan'}): ${b.direction?.focus ?? 'Awaiting reconciliation'}`,
+          `Next artifact (${b.directionHistorical ? 'historical target' : 'target'}, not proof): ${b.direction?.nextArtifact ?? 'Not planned yet'}`,
+          ...(b.direction
+            ? [
+                `Direction v${b.direction.revision}; contract v${b.direction.contractVersion}${b.directionHistorical ? '; historical plan, not current reconciliation' : '; planning, not runtime acceptance'}.`,
+                '',
+              ]
+            : []),
+          ...b.handoff.flatMap((n) => [
+            `- ${n.kind}: ${n.text}`,
+            `  - Recorded instruction: ${n.id}; ${n.at}${n.replyTo ? `; reply to ${n.replyTo}` : ''}.`,
+            `  - Disposition (planning, not runtime acceptance): ${n.answered ? 'answered by linked reply' : n.handling ? `${n.reconciliation?.historical ? 'historical ' : ''}${n.handling.disposition}: ${n.handling.reason}` : 'awaiting reconciliation'}.`,
+            ...(n.reference
+              ? [
+                  `  - Recorded reference: criterion ${n.reference.criterionId} — ${n.reference.criterionTitle ?? 'recorded title unavailable'}; contract v${n.reference.contractVersion}${n.reference.nodeId ? `; node ${n.reference.nodeId} — ${n.reference.nodeTitle ?? 'recorded title unavailable'}` : ''}; ${n.reference.historical ? 'historical version, not current acceptance context or runtime proof' : 'context, not runtime proof'}.`,
+                ]
+              : []),
+            ...(n.reconciliation
+              ? [
+                  `  - Reconciliation: direction v${n.reconciliation.revision}; contract v${n.reconciliation.contractVersion}; node ${n.reconciliation.nodeId}${n.reconciliation.historical ? '; historical plan, not current reconciliation' : '; planning only'}.`,
+                ]
+              : []),
+          ]),
           ...(b.direction?.assumptions ?? []).map((a) => `- Provisional assumption: ${a}`),
           ...(b.heldCriteria.length
             ? [`Dependent criteria waiting for decisions: ${b.heldCriteria.join(', ')}.`]

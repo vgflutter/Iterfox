@@ -8,7 +8,7 @@ import { Store, alive } from './core/store.js';
 import { git, isolate } from './core/workspace.js';
 import { CodexProvider } from './providers/codex.js';
 import { DemoProvider } from './providers/demo.js';
-import { noteInputSchema, type NoteInput } from './core/compass.js';
+import { noteInputSchema, validateNoteContext, type NoteInput } from './core/compass.js';
 import { keepWorkerAwake } from './core/awake.js';
 import { inspectLocalRepository } from './launch/repositories.js';
 import type { PreflightPreview } from './shared/launch.js';
@@ -144,6 +144,8 @@ export async function createRun(
     throw new Error('Handoff note limit reached');
   if (notes.some((n) => n.replyTo))
     throw new Error('Initial handoff cannot reply to an existing question');
+  for (const note of notes)
+    validateNoteContext({ contract, contractVersion: 1, nodes: [] }, note.context);
   const id =
     new Date().toISOString().replace(/[-:.]/g, '').slice(0, 15) + '-' + randomUUID().slice(0, 8);
   const workspace = await isolate(repository, dataDir, id, expectedHead);
@@ -162,6 +164,8 @@ export async function createRun(
 }
 export function addDirectionNote(store: Store, id: string, input: NoteInput): RunState {
   const note = noteInputSchema.parse(input);
+  const state = store.get(id);
+  validateNoteContext(state, note.context);
   return store.append(
     id,
     'direction.noted',
@@ -170,6 +174,7 @@ export function addDirectionNote(store: Store, id: string, input: NoteInput): Ru
       noteId: randomUUID(),
       note,
     },
+    state.seq,
   );
 }
 export async function createDemoRepository(dataDir: string): Promise<string> {

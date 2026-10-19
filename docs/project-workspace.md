@@ -13,10 +13,68 @@ an editable New Run goal. Current source includes the complete path through thes
 controls. The supplied host Chrome walkthrough observed creation, dependent
 milestones, actual run linking and handoff inspection, preparation/restoration,
 stale-edit reconciliation and a genuine server/store restart. Its older UI bundle,
-the latest receipts for the five fixed acceptance commands and the separate audits
-are distinguished below. This is bounded observation, with explicit remaining
-geometry, error and input-method limits; it does not certify every workflow variant
-or a future session.
+the historical receipts for the first milestone's five fixed commands and the
+separate audits are distinguished below. This is bounded observation, with explicit
+remaining geometry, error and input-method limits; it does not certify every
+workflow variant or a future session.
+
+## Selected work in current sessions
+
+In **Live Trail**, select an activity or acceptance node and use **Steer selected
+work → Send instruction**. Its contextual Compass note records the selected
+criterion, exact contract version and optional activity. **Recorded instructions**
+and Compass history expose the original reference separately from the disposition
+and version of its reconciled plan. Historical criterion titles resolve from their
+original contract after rename/removal; Morning Brief JSON/Markdown retain that
+provenance. Saving supplies context without execution or acceptance authority.
+Projects, milestone review and prepared New Run authorization keep their existing
+boundary: preparing a session still requires draft review and explicit launch.
+
+Existing reconciliation now receives the exact selected activity's ID, title, kind
+and objective alongside the recorded criterion title/version, including verification
+and decision activities. This bounded, reference-only metadata resolves a selected
+result among several activities under one criterion. Historical versions and
+unresolved references are explicit; the stored note is unchanged. It is context
+for planning, with no execution or acceptance authority.
+
+Live Trail drafts remain page-local, separated by run, version and selection;
+reload discards unsent text. Selection/view changes and rejected submissions keep
+text and type. Pending or unconfirmed submissions keep copyable read-only text,
+with replies bound to the captured submission. Inspect history before manually
+unlocking an uncertain send; there is no automatic retry. Terminal runs retain
+text for copying into a reviewed follow-up, replay stays read-only, and inactive
+runs require explicit **Resume**. Keyboard selection/focus restoration and narrow
+layout controls are implemented; the observation limits below still apply.
+
+The [selected-work guide](graph-controls.md#observation-status-for-this-change)
+contains the six approved Chrome captures and seven passing host probes after the
+mapping correction, from **2026-10-19 21:44–21:45 UTC**, including all nine browser
+cases. The captures show selected context and direction controls on desktop and
+at 390px, plus the project overview. They are explicitly labeled fixtures.
+
+The earlier qualitative receipt records **context 5/5, action 5/5, layout 5/5 and
+provenance 5/5**, a probabilistic **ASSESSED** result from the same Codex
+integration (`independent: false`). Its bounded real-Codex probe used
+**`gpt-6.1-sol`**, took **174130 ms** after explicit Resume and reached
+**COMPLETED**, with **three verified fixture criteria** (`render`, `dialogue`,
+`unicode`), **one applied graph instruction** and **zero additional operator
+messages**. Its reason prioritized Unicode extraction, kept dialogue separate and
+said the approved checks/protected files remained unchanged. The report also
+records **`contractPreserved: false`**. Its order-sensitive JSON-string comparison
+can be false after schema normalization alone while the structures remain equal;
+this was reproduced read-only. No final structural equality of that probe's
+contract was independently observed or claimed.
+
+Those assessment/integration receipts precede the mapping correction and are
+superseded for current-tree proof; they do not assess the regenerated capture set.
+The guide retains receipt IDs, stamps, the full handling reason and probe limits.
+Full keyboard, asynchronous-error and terminal/replay workflows remain unobserved
+in Chrome. These documentation edits change the source stamp; runtime checks and
+project review own acceptance of the edited tree.
+The first-milestone history below retains its original IDs, versions, older bundle
+observations and limits; none transfers PASS to the current eight criteria. The
+stored milestone-boundary handoff and its later historical probe IDs are also
+recorded in [the selected-work source history](graph-controls.md#source-and-historical-handoff).
 
 ## Projects workspace
 
@@ -369,16 +427,21 @@ lost response can leave a save uncertain: retain the draft and inspect current s
 and history before retrying. Automatic mutation retries and creation deduplication
 are not implemented. There is no project deletion or repository-rebinding API.
 
-## Observed validation and remaining limits
+<a id="observed-validation-and-remaining-limits"></a>
+
+## Historical first-milestone validation and remaining limits
 
 ### Evidence scope and source versions
 
-This reconciliation reads actual host reports, their drivers, snapshot metadata,
-stored run/project records and screenshots. The evidence files named here live
+The first-milestone reconciliation read actual host reports, their drivers, snapshot
+metadata, stored run/project records and screenshots. The evidence files named here
+live
 under `/Users/vins/work/iterfox/.iterfox/missions/project-continuity-20261019/`;
 they are mission artifacts, not files shipped with this documentation. No browser
 workflow or full test suite was rerun in this builder session. The runtime owns the
-subsequent fixed checks and review of the edited document.
+subsequent fixed checks and review of the edited document. References to the latest
+receipts and source stamps in this historical section describe that earlier
+inspection, not the current graph-control worktree.
 
 `host-workflow-a.json`, recorded at **2026-10-19 20:31:27.739 UTC**, reports
 `status: passed`. Its SHA256 was independently recomputed and matches the supplied
@@ -391,7 +454,7 @@ checksum:
 The inspected `host-workflow-a.mjs` imports the compiled server/service from
 `workflow-snapshot-a`. Its metadata, `workflow-snapshot-a.json`, records that target
 at 20:25:17.270 UTC. The snapshot's `dist/ui/index.html` references
-**`index-CmzEG7de.js`**. This worktree's current compiled HTML references
+**`index-CmzEG7de.js`**. The first milestone's later compiled HTML referenced
 **`index-Bi1-ClOA.js`**, which contains the later wrapped-sibling routing repair.
 Both reference `index-fn-aH02F.css`. The report checksum identifies the report's
 bytes; neither the report nor snapshot metadata supplies a full source fingerprint.
@@ -401,8 +464,8 @@ and its narrower limits are recorded below.
 
 The live mission's `data/ledger.sqlite` was opened read-only for run
 `20261019T191726-329482b8`. At inspection, the latest host receipts for all five
-fixed acceptance commands matched this worktree's 148-file stamp, including its
-uncommitted implementation files: base HEAD
+fixed acceptance commands matched that first-milestone worktree's 148-file stamp,
+including its uncommitted implementation files: base HEAD
 `69d70e5753ff73c38d943bd8954f361aeee3d145`, fingerprint
 `89aedfb25011b81c2063bb7c082060029e1a5c30f0c9b671b015e246e733d299`.
 The comparison uses file contents and executable modes, as the existing stamp
@@ -427,7 +490,7 @@ interactions, and neither substitutes for the other.
 The older table below is retained as history, not current coverage. Its receipts
 used fingerprint
 `16f47967748bc112234582ef57e2ce7586ec993454219899364cb652028c86d3`
-and the same base HEAD/148-file count. At this reconciliation their recorded source
+and the same base HEAD/148-file count. At that reconciliation their recorded source
 differs in `docs/project-workspace.md` and `src/ui/project-roadmap.tsx`.
 
 | Criterion    | Earlier host receipt ID                | UTC / ledger sequence | Historical observation                               |
@@ -670,5 +733,6 @@ WAL records. Different data directories show different project/run archives.
 There is no automatic checkpoint, launch, continuation-time re-audit or linking of
 a newly authorized run. A prepared proposal records a particular project revision;
 subsequent edits do not update an open New Run dialog. Close it and prepare again
-for newer context. Historical evidence never transfers its validity. Contextual
-execution-node feedback remains the subsequent milestone.
+for newer context. Historical evidence never transfers its validity. Selected
+execution-node feedback is now implemented through Compass; its current observations
+and limits are recorded in [Selected-work direction](graph-controls.md).

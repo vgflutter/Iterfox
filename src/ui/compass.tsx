@@ -1,21 +1,18 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import type { RunState } from '../core/model.js';
-import {
-  activeNotes,
-  heldCriteria,
-  needsOrientation,
-  questions,
-  type NoteInput,
-} from '../core/compass.js';
+import { heldCriteria, needsOrientation, questions, type NoteInput } from '../core/compass.js';
+import { DirectionNoteRecord } from './direction-note.js';
 
 export function Compass({
   state,
   send,
   readOnly,
+  focusTarget,
 }: {
   state: RunState;
   send: (input: NoteInput) => Promise<void>;
   readOnly: boolean;
+  focusTarget?: string;
 }) {
   const [text, setText] = useState('');
   const [kind, setKind] = useState<NoteInput['kind']>('request');
@@ -24,15 +21,30 @@ export function Compass({
   const [feedback, setFeedback] = useState('');
   const [error, setError] = useState('');
   const editor = useRef<HTMLTextAreaElement>(null);
+  const focusedTarget = useRef<string>(undefined);
   const qs = questions(state);
-  const active = new Set(activeNotes(state).map((n) => n.id));
   const held = heldCriteria(state);
+  const historicalDirection =
+    !!state.direction && state.direction.contractVersion !== state.contractVersion;
   const supervised = !!state.contract.supervision;
   const checkpoint = state.projectReviews?.at(-1);
   const discovered = state.nodes.filter((n) => n.discoveredBy).length;
   const projectReady =
     checkpoint?.outcome === 'ready' && !checkpoint.invalidatedReason && !state.projectNeedsReview;
   const editable = !readOnly && !['COMPLETED', 'FAILED'].includes(state.status);
+  useEffect(() => {
+    if (!focusTarget || focusedTarget.current === focusTarget) return;
+    const frame = requestAnimationFrame(() => {
+      const target = document.getElementById(
+        focusTarget === 'history' ? 'direction-history' : `direction-note-${focusTarget}`,
+      );
+      if (!target) return;
+      focusedTarget.current = focusTarget;
+      target.focus({ preventScroll: true });
+      target.scrollIntoView({ block: 'start' });
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [focusTarget, state.notes?.length]);
   return (
     <section className="compass-view" aria-label="Project Compass">
       <div className="compass-intro">
@@ -70,18 +82,28 @@ export function Compass({
       <div className="compass-overview">
         <article className="surface">
           <small>
-            {supervised && !state.direction ? 'THE PROJECT GOAL' : 'CURRENT FOCUS · PLAN'}
+            {historicalDirection
+              ? `HISTORICAL FOCUS · CONTRACT v${state.direction!.contractVersion}`
+              : supervised && !state.direction
+                ? 'THE PROJECT GOAL'
+                : 'CURRENT FOCUS · PLAN'}
           </small>
           <h3 className="compass-focus" title={state.direction?.focus ?? state.goal}>
             {state.direction?.focus ?? state.goal}
           </h3>
-          <p>Original goal and approved acceptance checks stay in force.</p>
+          <p>
+            {historicalDirection
+              ? `This previous plan has not been reconciled with current contract v${state.contractVersion}.`
+              : 'Original goal and approved acceptance checks stay in force.'}
+          </p>
         </article>
         <article className="surface">
           <small>
-            {supervised && projectReady
-              ? 'READY TO REVIEW · AI JUDGMENT'
-              : 'NEXT ARTIFACT · TARGET'}
+            {historicalDirection
+              ? 'PREVIOUS ARTIFACT · HISTORICAL TARGET'
+              : supervised && projectReady
+                ? 'READY TO REVIEW · AI JUDGMENT'
+                : 'NEXT ARTIFACT · TARGET'}
           </small>
           <h3>
             {state.direction?.nextArtifact ??
@@ -93,9 +115,11 @@ export function Compass({
                 : 'Describe what you want to inspect when you return.')}
           </h3>
           <p>
-            {projectReady
-              ? 'Inspect the actual implementation and runtime evidence before integrating it.'
-              : 'A planned deliverable. Inspect the Proof Ledger for actual results.'}
+            {historicalDirection
+              ? 'A historical planning target, not current implementation or runtime proof.'
+              : projectReady
+                ? 'Inspect the actual implementation and runtime evidence before integrating it.'
+                : 'A planned deliverable. Inspect the Proof Ledger for actual results.'}
           </p>
         </article>
         <article className="surface">
@@ -197,7 +221,12 @@ export function Compass({
               ))}
             </article>
           )}
-          <article className="surface" aria-label="Handoff history">
+          <article
+            className="surface"
+            aria-label="Handoff history"
+            id="direction-history"
+            tabIndex={-1}
+          >
             <div className="section-heading">
               <h3>Your instructions, accounted for.</h3>
               <span>{state.notes?.length ?? 0} notes</span>
@@ -208,38 +237,9 @@ export function Compass({
                 a decision you have made, or an idea to test.
               </p>
             )}
-            {(state.notes ?? []).map((n) => {
-              const handling = state.direction?.notes.find((d) => d.noteId === n.id);
-              const status = !active.has(n.id) ? 'answered' : (handling?.disposition ?? 'pending');
-              return (
-                <div className="handoff-note" key={n.id}>
-                  <div>
-                    <small>
-                      {n.kind.toUpperCase()}
-                      {n.replyTo ? ' · LINKED REPLY' : ''}
-                    </small>
-                    <span className={`note-disposition ${status}`}>
-                      {
-                        {
-                          applied: 'In the plan',
-                          deferred: 'Later',
-                          question: 'Your decision',
-                          pending: 'Awaiting reconciliation',
-                          answered: 'Answered',
-                        }[status]
-                      }
-                    </span>
-                  </div>
-                  <p>{n.text}</p>
-                  {handling && active.has(n.id) && <p className="note-reason">{handling.reason}</p>}
-                  {!active.has(n.id) && (
-                    <p className="note-reason">
-                      A linked operator reply supersedes this note. Both remain in history.
-                    </p>
-                  )}
-                </div>
-              );
-            })}
+            {(state.notes ?? []).map((note) => (
+              <DirectionNoteRecord key={note.id} state={state} note={note} historyAnchor />
+            ))}
             <p className="small-text muted">
               “In the plan” describes handling of your instruction. Acceptance requires runtime
               evidence.

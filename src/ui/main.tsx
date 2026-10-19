@@ -25,6 +25,7 @@ import {
 import { brief } from '../core/brief.js';
 import { graphFor, type TrailData } from './graph.js';
 import { Compass } from './compass.js';
+import { SelectedWork, useWorkInstructions } from './selected-work.js';
 import { NewRun, type NewRunSession } from './new-run.js';
 import { launchApi, launchFailure, LaunchRequestError } from './launch-api.js';
 import { ExistingRuns, RunChoices, type RunListing } from './run-browser.js';
@@ -145,9 +146,12 @@ function App() {
   });
   const [eventReload, setEventReload] = useState(0);
   const [token, setToken] = useState('');
+  const instructions = useWorkInstructions(token);
+  const [compassTarget, setCompassTarget] = useState<string>();
   const [executionHost, setExecutionHost] = useState('Runtime host');
   const [view, setView] = useState('trail');
   const [selected, setSelected] = useState<string>();
+  const trailCanvas = useRef<HTMLDivElement>(null);
   const [error, setError] = useState('');
   const [connected, setConnected] = useState(false);
   const [replay, setReplay] = useState<number | null>(null);
@@ -319,6 +323,20 @@ function App() {
       ? e.criterionId === selectedCriterion.id
       : selectedNode?.evidenceIds.includes(e.id),
   );
+  function closeDetails() {
+    const previousSelection = selected;
+    const canvas = trailCanvas.current;
+    setSelected(undefined);
+    requestAnimationFrame(() => {
+      if (!canvas?.isConnected || trailCanvas.current !== canvas) return;
+      const node = Array.from(canvas.querySelectorAll<HTMLElement>('.react-flow__node')).find(
+        (element) => element.dataset.id === previousSelection,
+      );
+      const target = node ?? canvas;
+      target?.focus({ preventScroll: true });
+      target?.scrollIntoView({ block: 'nearest' });
+    });
+  }
   async function control(action: string) {
     if (!runId) return;
     setBusy(true);
@@ -742,6 +760,7 @@ function App() {
                 key={state.id}
                 state={state}
                 readOnly={replay !== null}
+                focusTarget={compassTarget}
                 send={async (input) => {
                   await api(`/api/runs/${state.id}/direction`, input, token);
                 }}
@@ -783,7 +802,28 @@ function App() {
                       </button>
                     </div>
                   </div>
-                  <div className="canvas" data-testid="live-trail">
+                  <div
+                    ref={trailCanvas}
+                    className="canvas"
+                    data-testid="live-trail"
+                    tabIndex={-1}
+                    aria-label="Live Trail graph"
+                    onKeyDown={(event) => {
+                      if (event.repeat || event.nativeEvent.isComposing) return;
+                      const nodeId = (event.target as HTMLElement)
+                        .closest('.react-flow__node')
+                        ?.getAttribute('data-id');
+                      if (nodeId && event.key === 'Escape') {
+                        event.preventDefault();
+                        setSelected(undefined);
+                        return;
+                      }
+                      if (nodeId && (event.key === 'Enter' || event.key === ' ')) {
+                        event.preventDefault();
+                        setSelected(nodeId);
+                      }
+                    }}
+                  >
                     <div className="canvas-caption">
                       <span>EXECUTION GRAPH</span>
                       <span>↓ linked to acceptance</span>
@@ -792,6 +832,13 @@ function App() {
                       key={`${state.id}-${filter}-${grouped}`}
                       nodes={graph.nodes.map((n) => ({
                         ...n,
+                        ariaRole: 'button',
+                        domAttributes: {
+                          'aria-expanded': n.id === selected,
+                          ...(n.id === selected
+                            ? { 'aria-controls': 'selected-work-inspector' }
+                            : {}),
+                        },
                         data: { ...n.data, motion: connected || replay !== null },
                         selected: n.id === selected,
                       }))}
@@ -806,6 +853,14 @@ function App() {
                       maxZoom={1.4}
                       nodesDraggable={false}
                       nodesConnectable={false}
+                      deleteKeyCode={null}
+                      ariaLabelConfig={{
+                        'node.a11yDescription.default':
+                          'Press Enter or Space to inspect and steer selected work. Escape closes the inspector. Execution and acceptance cannot be edited here.',
+                        'node.a11yDescription.keyboardDisabled':
+                          'Press Enter or Space to inspect and steer selected work. Escape closes the inspector. Execution and acceptance cannot be edited here.',
+                        'edge.a11yDescription.default': 'Recorded execution link. Read-only.',
+                      }}
                       proOptions={{ hideAttribution: false }}
                       colorMode="dark"
                       aria-label="Execution and acceptance workflow graph"
@@ -882,10 +937,26 @@ function App() {
                   </div>
                 </section>
                 {selectedNode || selectedCriterion ? (
-                  <aside className="detail-panel">
+                  <aside
+                    id="selected-work-inspector"
+                    className="detail-panel"
+                    aria-label="Selected work inspector"
+                    onKeyDown={(event) => {
+                      if (
+                        event.key === 'Escape' &&
+                        !event.defaultPrevented &&
+                        !event.nativeEvent.isComposing &&
+                        !(event.target instanceof HTMLSelectElement)
+                      ) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                        closeDetails();
+                      }
+                    }}
+                  >
                     <div className="panel-title">
                       <span>ACTIVITY DETAILS</span>
-                      <button aria-label="Close details" onClick={() => setSelected(undefined)}>
+                      <button aria-label="Close details" onClick={closeDetails}>
                         ×
                       </button>
                     </div>
@@ -895,6 +966,21 @@ function App() {
                         selectedNode?.status ??
                         state.criteria.find((c) => c.id === selectedCriterion!.id)!.status
                       }
+                    />
+                    <SelectedWork
+                      state={state}
+                      context={{
+                        criterionId: selectedNode?.criterionId ?? selectedCriterion!.id,
+                        contractVersion: state.contractVersion,
+                        ...(selectedNode ? { nodeId: selectedNode.id } : {}),
+                      }}
+                      title={selectedNode?.title ?? selectedCriterion!.title}
+                      readOnly={replay !== null}
+                      instructions={instructions}
+                      openCompass={(noteId) => {
+                        setCompassTarget(noteId ?? 'history');
+                        setView('compass');
+                      }}
                     />
                     <dl>
                       <dt>Objective</dt>
@@ -1047,11 +1133,19 @@ function App() {
                     <article className="surface">
                       <h3>Where did the direction land?</h3>
                       <p>
-                        <strong>Focus:</strong>{' '}
+                        <strong>
+                          {b?.directionHistorical
+                            ? `Historical focus (contract v${state.direction!.contractVersion}):`
+                            : 'Focus (plan):'}
+                        </strong>{' '}
                         {state.direction?.focus ?? 'New context awaits reconciliation.'}
                       </p>
                       <p>
-                        <strong>Next artifact (target):</strong>{' '}
+                        <strong>
+                          {b?.directionHistorical
+                            ? 'Previous artifact (historical target):'
+                            : 'Next artifact (target):'}
+                        </strong>{' '}
                         {state.direction?.nextArtifact ?? 'Not planned yet.'}
                       </p>
                       {b?.handoff
@@ -1059,7 +1153,10 @@ function App() {
                         .map((n) => (
                           <blockquote key={n.id}>
                             {n.text}
-                            <small>Later · {n.handling?.reason}</small>
+                            <small>
+                              {n.reconciliation?.historical ? 'Historical plan · ' : ''}Later ·{' '}
+                              {n.handling?.reason}
+                            </small>
                           </blockquote>
                         ))}
                       {(state.direction?.assumptions ?? []).map((a, i) => (
@@ -1067,7 +1164,18 @@ function App() {
                           Provisional assumption: {a}
                         </p>
                       ))}
-                      <button className="button" onClick={() => setView('compass')}>
+                      <p className="small-text muted">
+                        {b?.directionHistorical
+                          ? 'This previous direction awaits reconciliation with the current contract. Recorded instructions and planning dispositions are not runtime acceptance.'
+                          : 'Recorded instructions and planning dispositions are not runtime acceptance.'}
+                      </p>
+                      <button
+                        className="button"
+                        onClick={() => {
+                          setCompassTarget('history');
+                          setView('compass');
+                        }}
+                      >
                         Review the handoff & decisions →
                       </button>
                     </article>

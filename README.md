@@ -76,17 +76,64 @@ and recovery. Notes entered in a separate Codex chat are not imported into Iterf
 
 ### Governing through the graph
 
-Live Trail is intended to become the main control surface: select the part of the
-work you want to inspect or influence, then act in its context. Today, selecting a
-node opens its real state, rationale, errors and evidence. Run-level Pause, Resume
-and Stop are available in the heading; direction changes and linked answers use
-Project Compass. Replay inspects history without changing execution.
+Select an activity or acceptance node in **Live Trail** to inspect its state and
+evidence. **Steer selected work** shows the selected title and criterion before
+you enter an **Instruction for selected work** and choose **Send instruction**.
+Requests, operator decisions and provisional hypotheses are saved as Compass
+notes with the exact contract version and optional activity reference. **Draft a
+priority request** prepares text for review; it promises no execution order.
 
-Direct feedback, answers and priority requests from the selected node, plus a
-reviewed visual contract-revision flow, are **proposed next steps, not implemented
-controls**. Nodes cannot currently be dragged or connected to edit the workflow.
-Future graph actions must issue recorded runtime commands and preserve approved
-acceptance policies. Read the [current and proposed graph interactions](README.it.md#governarlo-dal-grafico).
+Saving records context for existing activity-boundary reconciliation. It starts no
+worker and changes no acceptance result. Inactive runs require explicit **Resume**;
+terminal runs require a follow-up session. **Review Compass history** opens the
+recorded note. Live Trail drafts survive selection/view changes and errors while
+the page stays open; uncertain saves require history inspection before a manual
+retry. Pending/unconfirmed text stays read-only and copyable; unlocking a manual
+retry does not send it. Terminal runs keep the text for copying into a reviewed
+follow-up. Tab then Enter/Space selects a graph node with visible focus; Escape or
+closing details returns focus to that node. Replay is read-only. Linked answers
+remain in Project Compass, and approved
+contract revisions retain their existing approval flow.
+
+**Recorded instructions** in the inspector lists matching notes, including after
+reload, with links to each note in Compass. The note's criterion/activity reference
+and contract version stay distinct from its planning disposition and reconciliation
+version. Historical references retain their original criterion title after contract
+revisions. Morning Brief JSON and Markdown exports preserve these references;
+saved instructions and plans do not establish runtime acceptance.
+
+Compass reconciliation also receives a bounded, reference-only description of the
+exact selected activity, including checks and decisions: ID, title, kind and
+objective, plus the criterion's title at the recorded contract version. This
+resolves “this result” when several activities share a criterion, without changing
+the stored note or granting execution or acceptance authority.
+
+The [selected-work guide](docs/graph-controls.md#observation-status-for-this-change)
+includes all six approved Chrome captures and the latest host receipts after this
+mapping correction (2026-10-19, 21:44–21:45 UTC): four continuity cases, three graph
+cases, 66 regression passes (7 optional skips), typecheck, build, nine browser cases
+and capture passed as deterministic probes before this documentation edit. The
+initial desktop and 390px images show the selected title, context and direction
+form. They are labeled fixtures.
+
+The earlier qualitative receipt scored **context 5/5, action 5/5, layout 5/5 and
+provenance 5/5**: probabilistic **ASSESSED** by the same Codex integration, not an
+independent review or deterministic PASS. Its bounded real-Codex probe used
+`gpt-6.1-sol`, took **174130 ms** after explicit Resume and reached **COMPLETED**
+with three verified fixture criteria (`render`, `dialogue`, `unicode`), **one**
+graph instruction and **zero** additional operator messages. Handling was
+`applied`; its reason prioritized Unicode extraction while keeping dialogue
+separate and said checks/protected files remained unchanged. The report records
+**`contractPreserved: false`**. Its JSON-string comparison is order-sensitive;
+schema normalization alone reproduces false with structural equality. Final
+structural equality was not independently observed and is not claimed.
+
+That assessment/probe predates the mapping correction; it does not certify the
+corrected tree or regenerated captures. The guide distinguishes receipt versions,
+archives and remaining limits. Complete keyboard, asynchronous-error and
+terminal/replay workflows remain unobserved in Chrome. Runtime checks and review
+own acceptance of this edited tree. The older DEMO image below is historical
+context. Nodes cannot be dragged or connected to edit execution or acceptance.
 
 ![Actual Live Trail showing a recorded DEMO run](docs/screenshots/live-trail.png)
 

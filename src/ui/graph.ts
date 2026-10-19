@@ -39,6 +39,7 @@ export function graphFor(
     return {
       id: n.id,
       type: 'trail',
+      ariaLabel: `${n.title}, ${n.kind}, criterion ${n.criterionId}`,
       position: { x: lane.get(n.criterionId)! * 326, y: row * 139 },
       data: {
         title: n.title,
@@ -59,6 +60,7 @@ export function graphFor(
     nodes.push({
       id: `acceptance-${c.id}`,
       type: 'trail',
+      ariaLabel: `${c.title}, acceptance criterion ${c.id}`,
       position: { x: lane.get(c.id)! * 326, y: bottom },
       data: {
         title: c.title,

@@ -983,8 +983,9 @@ main {
   font-family: 'IBM Plex Mono', monospace;
 }
 .detail-panel {
-  max-height: 810px;
-  overflow: auto;
+  max-height: none;
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 .detail-panel h2 {
   font-size: 20px;
@@ -2287,7 +2288,7 @@ textarea {
   margin-bottom: 12px;
 }
 .handoff-note small {
-  font-size: 9px;
+  font-size: 11px;
   letter-spacing: 1px;
   color: var(--muted);
 }
@@ -2300,8 +2301,37 @@ textarea {
   color: var(--muted);
   margin: 0;
 }
+.handoff-note > .recorded-reference {
+  display: block;
+  margin-bottom: 12px;
+}
+.instruction-receipt {
+  margin: 12px 0;
+  color: #c4cfba;
+  font-size: 13px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+.instruction-receipt summary {
+  cursor: pointer;
+  min-height: 44px;
+  padding: 10px 0;
+}
+.instruction-receipt summary:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 4px;
+}
+.selected-instructions {
+  margin-top: 20px;
+}
+.selected-instructions .instruction-text {
+  color: #e4e7de;
+}
+.selected-instructions .note-reason {
+  font-size: 13px;
+}
 .note-disposition {
-  font-size: 10px;
+  font-size: 12px;
   border: 1px solid #45533a;
   padding: 4px 8px;
   border-radius: 4px;
@@ -3169,5 +3199,132 @@ textarea {
   }
   .project-link-form {
     padding: 12px;
+  }
+}
+
+/* Selected-work direction stays ahead of the existing details and proof. */
+.react-flow__node:focus-visible .trail-node {
+  outline: 3px solid var(--orange);
+  outline-offset: 6px;
+}
+.canvas:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 4px;
+}
+.detail-panel .panel-title button {
+  min-width: 44px;
+  min-height: 44px;
+}
+.trail-layout.with-detail {
+  grid-template-columns: minmax(300px, 1fr) minmax(280px, 360px);
+}
+.selected-work {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid #50633e;
+  scroll-margin-top: 16px;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.selected-work h3 {
+  border: 0;
+  margin: 0 0 12px;
+  padding: 0;
+  color: var(--sage);
+  font-size: 15px;
+}
+.selected-work h4 {
+  font-size: 18px;
+  line-height: 1.4;
+  margin: 0 0 10px;
+}
+.selected-work p,
+.selected-reference summary {
+  font-size: 13px;
+  line-height: 1.6;
+  margin: 10px 0;
+}
+.selected-context,
+.note-context {
+  color: #c4cfba;
+}
+.selected-reference code,
+.note-context code {
+  overflow-wrap: anywhere;
+}
+.selected-reference summary {
+  cursor: pointer;
+  color: var(--sage);
+  min-height: 32px;
+}
+.selected-work fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+}
+.selected-work label {
+  display: grid;
+  gap: 8px;
+  margin: 12px 0;
+  font-size: 14px;
+}
+.selected-work :is(textarea, select) {
+  width: 100%;
+  min-width: 0;
+  padding: 10px;
+  color: #e4e7de;
+  background: #11170e;
+  border: 1px solid #647a50;
+  border-radius: 5px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.selected-work textarea {
+  resize: vertical;
+}
+.selected-work textarea[readonly] {
+  border-style: dashed;
+}
+.selected-work select {
+  min-height: 44px;
+}
+.selected-work button {
+  display: block;
+  width: 100%;
+  min-height: 44px;
+  margin: 10px 0;
+  padding: 10px 12px;
+  border: 1px solid #647a50;
+  border-radius: 5px;
+  white-space: normal;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.selected-work :is(button, textarea, select):disabled {
+  opacity: 0.65;
+  cursor: default;
+}
+.selected-work .steering-help {
+  color: #b2bda7;
+}
+.steering-error {
+  color: #f0b6a9;
+}
+.selected-work :is(h3, input, textarea, select, summary):focus-visible,
+.selected-work h3:focus,
+#direction-history:focus-visible,
+.handoff-note:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 4px;
+}
+@media (max-width: 950px) {
+  .trail-layout.with-detail {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (max-width: 680px) {
+  .selected-work :is(textarea, select) {
+    font-size: 16px;
   }
 }

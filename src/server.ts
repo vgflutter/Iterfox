@@ -181,10 +181,8 @@ export async function serve(
           return json(res, 201, state);
         }
         const id = parts[2];
-        recoverDeadWorkers(store);
-        await auditStoredEvidence(store, id);
-        const state = store.get(id);
-        if (parts.length === 3 && req.method === 'GET') return json(res, 200, state);
+        // Direction is an atomic note append. Recovery/auditing belongs to reads
+        // and worker control, so even a rejected note cannot alter runtime proof.
         if (parts[3] === 'direction' && parts.length === 4 && req.method === 'POST') {
           return json(
             res,
@@ -192,6 +190,10 @@ export async function serve(
             addDirectionNote(store, id, noteInputSchema.parse(await body(req))),
           );
         }
+        recoverDeadWorkers(store);
+        await auditStoredEvidence(store, id);
+        const state = store.get(id);
+        if (parts.length === 3 && req.method === 'GET') return json(res, 200, state);
         if (parts[3] === 'artifacts' && parts.length === 5 && req.method === 'GET') {
           const artifact = state.evidence
             .flatMap((e) => e.artifacts ?? [])

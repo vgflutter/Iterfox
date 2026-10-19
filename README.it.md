@@ -72,30 +72,70 @@ dipendenze e prove. Non devi disegnare a mano tutti i passaggi prima di partire.
    successive. Filtri e raggruppamento aiutano a seguire una parte del lavoro.
 3. Usa **Pause**, **Resume** o **Stop** nella barra della run quando occorre
    intervenire sull'esecuzione. Sono controlli dell'intera sessione.
-4. Per cambiare direzione, apri **Project Compass** della stessa run e aggiungi il
-   contesto. Per rispondere a una domanda usa la sua risposta collegata.
+4. Nella regione **Steer selected work** trovi titolo, criterio e versione del
+   contratto. Scegli **Request**, **Decision** o **Hypothesis**, scrivi in
+   **Instruction for selected work** e usa **Send instruction**. **Draft a priority
+   request** prepara una richiesta modificabile senza promettere un ordine di
+   esecuzione. **Review Compass history** apre lo storico della nota registrata.
+5. Il salvataggio aggiunge contesto alla riconciliazione Compass al confine di
+   attività: non avvia worker e non modifica prove o accettazione. Se la run è
+   inattiva serve **Resume** esplicito, entro i limiti originali e dopo aver risolto
+   eventuali blocchi. Una run terminale richiede una sessione successiva autorizzata.
 
-Il grafico attuale è soprattutto uno strumento di osservazione e ispezione. Non
-offre ancora comandi sui singoli nodi, trascinamento per cambiare priorità,
-collegamenti modificabili o un editor visuale del contratto. Il replay mostra
-eventi passati: spostare il cursore non cambia il lavoro reale.
+Le bozze Live Trail restano separate per run, versione e selezione mentre la
+pagina è aperta, anche cambiando vista o dopo un errore. Un invio pendente resta
+vincolato al destinatario originale; una risposta incerta conserva testo e tipo e
+richiede di controllare lo storico prima di un reinvio manuale. Il replay è di sola
+lettura. Durante attesa o incertezza il testo rimane copiabile e non modificabile;
+sbloccare il retry manuale non invia nulla. Nei run terminali il testo conservato
+resta copiabile per una sessione successiva da rivedere e autorizzare. Con Tab e
+Invio/Spazio selezioni un nodo con focus visibile; Escape o la chiusura dei dettagli
+riporta il focus al nodo. Le risposte collegate alle domande restano in **Project Compass** e le
+revisioni del contratto usano il flusso di approvazione esistente.
 
-### Il passo successivo proposto
+**Recorded instructions** nell’inspector elenca le note pertinenti anche dopo un
+ricaricamento, con un collegamento alla singola nota in Compass. Mostra criterio,
+attività e versione registrati separatamente dalla disposizione e dalla versione
+della riconciliazione. Dopo rinomina o rimozione di un criterio, il titolo originale
+resta leggibile come riferimento storico. Gli export JSON e Markdown del Morning
+Brief conservano questa provenienza: istruzione registrata e piano riconciliato
+non costituiscono accettazione runtime.
 
-Portare le azioni di governo nel pannello del nodo selezionato, conservando lo
-stesso motore e gli stessi confini. Queste interazioni **non sono ancora implementate**:
+La riconciliazione Compass riceve anche una descrizione limitata e di solo
+riferimento dell’attività esatta: ID, titolo, tipo e obiettivo, incluse verifiche e
+decisioni, insieme al titolo del criterio nella versione registrata. Questo rende
+risolvibile «questo risultato» fra più attività dello stesso criterio, senza
+modificare la nota salvata o conferire autorità di esecuzione o accettazione.
 
-| Nodo selezionato           | Interazione proposta                                       | Effetto sul processo                                                                                                            |
-| -------------------------- | ---------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| Un risultato da migliorare | «Rivedi questo risultato» con un'indicazione contestuale.  | Il prossimo aggiornamento del piano considera il feedback collegato a quel punto.                                               |
-| Una domanda aperta         | Rispondere direttamente nel pannello.                      | Registra una risposta collegata e rende rivalutabile il lavoro dipendente; se la run è ferma serve comunque riprenderla.        |
-| Lavoro ancora da iniziare  | «Dai priorità a questo risultato».                         | Chiede una ripianificazione entro le dipendenze e i criteri approvati.                                                          |
-| Un criterio di successo    | Aprire una proposta di revisione con confronto prima/dopo. | Richiede una run inattiva e la tua approvazione del contratto completo aggiornato; invalida le prove della versione precedente. |
+Non sono disponibili trascinamento per cambiare priorità, collegamenti
+modificabili o un editor visuale del contratto. La [guida dei controlli
+contestuali](docs/graph-controls.md#observation-status-for-this-change) include i
+sei capture Chrome approvati e le ultime ricevute host dopo questa correzione
+(19 ottobre 2026, 21:44–21:45 UTC): quattro casi di continuità, tre sul grafico,
+66 test di regressione passati (7 opzionali saltati), typecheck, build, nove casi
+browser e capture sono passati come probe deterministici prima di questa revisione
+documentale. Le immagini iniziali desktop e a 390px mostrano titolo, contesto e
+form di direzione. Sono fixture dichiarate.
 
-Esempio di esperienza desiderata: selezioni «Anteprima mobile», leggi la prova,
-scrivi «Il riepilogo non rende evidenti le decisioni aperte: rivedilo prima delle
-rifiniture grafiche» e vedi come il piano viene aggiornato. La richiesta e la
-ripianificazione restano nello storico.
+La precedente ricevuta qualitativa assegna **contesto 5/5, azione 5/5, layout 5/5
+e provenienza 5/5**: **ASSESSED** probabilistico della stessa integrazione Codex,
+non revisione indipendente o PASS deterministico. La prova Codex limitata ha usato
+`gpt-6.1-sol`, impiegato **174130 ms** dopo **Resume** esplicito e raggiunto
+**COMPLETED**, con tre criteri della fixture verificati (`render`, `dialogue`,
+`unicode`), **una** istruzione dal grafico e **zero** messaggi aggiuntivi
+dell’operatore. Disposizione `applied`: la motivazione dà precedenza all’estrazione
+Unicode, mantiene separato il dialogo e dichiara invariati controlli e file protetti.
+Il report registra **`contractPreserved: false`**. Il confronto fra stringhe JSON
+dipende dall’ordine delle proprietà; la sola normalizzazione dello schema riproduce
+false con uguaglianza strutturale. L’uguaglianza strutturale finale non è stata
+osservata indipendentemente e non viene dichiarata.
+
+Valutazione e prova precedono la correzione del riferimento e non certificano
+l’albero corretto o i capture rigenerati. La guida distingue versioni delle
+ricevute, archivi e limiti. Percorsi completi da tastiera, errori asincroni e
+interazioni terminali/replay restano da osservare in Chrome. Controlli runtime e
+revisione governano l’accettazione dell’albero modificato. Le immagini e le
+ricevute del primo milestone conservano il loro valore storico.
 
 Una disposizione grafica diversa non può trasformare un controllo fallito in
 passato, cancellare lo storico o eliminare un criterio senza revisione approvata.

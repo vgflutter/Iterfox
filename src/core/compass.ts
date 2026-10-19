@@ -1,17 +1,48 @@
 import { z } from 'zod';
-import type { RunState } from './model.js';
+import type { RunState, TaskNode } from './model.js';
+
+// A recorded reference only. It cannot carry execution or acceptance authority.
+export const noteContextSchema = z
+  .object({
+    criterionId: z.string().regex(/^[a-z][a-z0-9-]{0,39}$/),
+    contractVersion: z.number().int().positive().max(Number.MAX_SAFE_INTEGER),
+    nodeId: z.string().min(1).optional(),
+  })
+  .strict();
+export type NoteContext = z.infer<typeof noteContextSchema>;
 
 export const noteInputSchema = z
   .object({
     text: z.string().trim().min(3).max(4000),
     kind: z.enum(['request', 'decision', 'hypothesis']).default('request'),
     replyTo: z.string().min(1).optional(),
+    context: noteContextSchema.optional(),
   })
   .strict();
 export type NoteInput = z.infer<typeof noteInputSchema>;
 export interface DirectionNote extends NoteInput {
   id: string;
   at: string;
+}
+
+export function validateNoteContext(
+  state: Pick<RunState, 'contract' | 'contractVersion' | 'nodes'>,
+  context: NoteContext | undefined,
+): void {
+  if (!context) return;
+  if (context.contractVersion !== state.contractVersion)
+    throw new Error(
+      'Selected work uses a different contract version. Return to Live and select again.',
+    );
+  if (!state.contract.criteria.some((c) => c.id === context.criterionId))
+    throw new Error('Selected work must reference a current approved criterion.');
+  if (
+    context.nodeId !== undefined &&
+    !state.nodes.some((n) => n.id === context.nodeId && n.criterionId === context.criterionId)
+  )
+    throw new Error(
+      'Selected activity must exist in this run and belong to the referenced criterion.',
+    );
 }
 
 // This is a plan proposal, never an acceptance policy or evidence of product quality.
@@ -55,9 +86,100 @@ export interface Direction extends DirectionProposal {
   contractVersion: number;
 }
 
-export function activeNotes(s: RunState): DirectionNote[] {
+// Display/export metadata only. Resolve titles from the recorded contract, never
+// from a newer criterion that happens to reuse the same ID. Handling belongs to
+// the recorded direction version and is separate from the note's own reference.
+export function noteProvenance(state: RunState, note: DirectionNote) {
+  const context = note.context;
+  const handling = state.direction?.notes.find((entry) => entry.noteId === note.id);
+  return {
+    reference: context
+      ? {
+          ...context,
+          criterionTitle: state.contracts[context.contractVersion - 1]?.criteria.find(
+            (criterion) => criterion.id === context.criterionId,
+          )?.title,
+          nodeTitle: context.nodeId
+            ? state.nodes.find(
+                (node) => node.id === context.nodeId && node.criterionId === context.criterionId,
+              )?.title
+            : undefined,
+          historical: context.contractVersion !== state.contractVersion,
+        }
+      : undefined,
+    handling,
+    reconciliation:
+      handling && state.direction
+        ? {
+            revision: state.direction.revision,
+            nodeId: state.direction.nodeId,
+            contractVersion: state.direction.contractVersion,
+            historical: state.direction.contractVersion !== state.contractVersion,
+          }
+        : undefined,
+    answered: (state.notes ?? []).some((reply) => reply.replyTo === note.id),
+  };
+}
+
+// Model-facing metadata only; never persisted as part of an operator note.
+export interface ActiveDirectionNote extends DirectionNote {
+  target?: {
+    referenceOnly: true;
+    contractVersion: number;
+    historical: boolean;
+    criterion: { id: string; title?: string; resolved: boolean };
+    activity?: {
+      id: string;
+      title?: string;
+      kind?: TaskNode['kind'];
+      objective?: string;
+      resolved: boolean;
+    };
+  };
+}
+
+function targetText(value: string | undefined, limit: number): string | undefined {
+  return value && value.length > limit ? `${value.slice(0, limit - 1)}…` : value;
+}
+
+export function activeNotes(s: RunState): ActiveDirectionNote[] {
   const superseded = new Set((s.notes ?? []).map((n) => n.replyTo).filter(Boolean));
-  return (s.notes ?? []).filter((n) => !superseded.has(n.id));
+  return (s.notes ?? [])
+    .filter((n) => !superseded.has(n.id))
+    .map((note) => {
+      const context = note.context;
+      if (!context) return note;
+      // Resolve the exact selection, including checks and decisions. A criterion
+      // can contain several activities, so never infer an activity from its ID.
+      const activity = s.nodes.find(
+        (n) => n.id === context.nodeId && n.criterionId === context.criterionId,
+      );
+      const criterion = s.contracts[context.contractVersion - 1]?.criteria.find(
+        (c) => c.id === context.criterionId,
+      );
+      return {
+        ...note,
+        target: {
+          referenceOnly: true,
+          contractVersion: context.contractVersion,
+          historical: context.contractVersion !== s.contractVersion,
+          criterion: {
+            id: context.criterionId,
+            title: targetText(criterion?.title, 500),
+            resolved: !!criterion,
+          },
+          activity: context.nodeId
+            ? {
+                id: context.nodeId,
+                title: targetText(activity?.title, 500),
+                kind: activity?.kind,
+                objective: targetText(activity?.objective, 4000),
+                resolved: !!activity,
+              }
+            : undefined,
+        },
+      };
+    });
 }
 export function needsOrientation(s: RunState): boolean {
   return (
