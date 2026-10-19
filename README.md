@@ -61,6 +61,20 @@ For an example handoff, state meanings and intervention steps, read the
 covers steering, and the [goal launch guide](docs/goal-launch.md) covers draft review
 and recovery. Notes entered in a separate Codex chat are not imported into Iterfox.
 
+### Governing through the graph
+
+Live Trail is intended to become the main control surface: select the part of the
+work you want to inspect or influence, then act in its context. Today, selecting a
+node opens its real state, rationale, errors and evidence. Run-level Pause, Resume
+and Stop are available in the heading; direction changes and linked answers use
+Project Compass. Replay inspects history without changing execution.
+
+Direct feedback, answers and priority requests from the selected node, plus a
+reviewed visual contract-revision flow, are **proposed next steps, not implemented
+controls**. Nodes cannot currently be dragged or connected to edit the workflow.
+Future graph actions must issue recorded runtime commands and preserve approved
+acceptance policies. Read the [current and proposed graph interactions](README.it.md#governarlo-dal-grafico).
+
 ![Actual Live Trail showing a recorded DEMO run](docs/screenshots/live-trail.png)
 
 _Real UI screenshot of the labeled DEMO fixture: a failed command check caused a

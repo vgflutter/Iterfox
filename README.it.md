@@ -42,6 +42,51 @@ che lasci all'agente: priorità, decisioni già prese e ipotesi da verificare.
 **Il piano può cambiare senza chiederti ogni passaggio. I criteri di successo e i
 limiti non possono essere cambiati silenziosamente per dichiarare il completamento.**
 
+## Governarlo dal grafico
+
+**La direzione di prodotto è usare Live Trail come plancia principale:** vedere
+che cosa sta succedendo e intervenire sul punto che richiede una decisione.
+L'agente genera e adatta il percorso; tu puoi orientarlo guardando risultati,
+dipendenze e prove. Non devi disegnare a mano tutti i passaggi prima di partire.
+
+### Che cosa puoi fare già oggi
+
+1. Apri **Live Trail** e seleziona un'attività o un criterio di accettazione.
+2. Nel pannello laterale leggi obiettivo, stato, motivo della creazione, ruolo,
+   tentativi, file, errori e prove disponibili. I collegamenti aprono le attività
+   successive. Filtri e raggruppamento aiutano a seguire una parte del lavoro.
+3. Usa **Pause**, **Resume** o **Stop** nella barra della run quando occorre
+   intervenire sull'esecuzione. Sono controlli dell'intera sessione.
+4. Per cambiare direzione, apri **Project Compass** della stessa run e aggiungi il
+   contesto. Per rispondere a una domanda usa la sua risposta collegata.
+
+Il grafico attuale è soprattutto uno strumento di osservazione e ispezione. Non
+offre ancora comandi sui singoli nodi, trascinamento per cambiare priorità,
+collegamenti modificabili o un editor visuale del contratto. Il replay mostra
+eventi passati: spostare il cursore non cambia il lavoro reale.
+
+### Il passo successivo proposto
+
+Portare le azioni di governo nel pannello del nodo selezionato, conservando lo
+stesso motore e gli stessi confini. Queste interazioni **non sono ancora implementate**:
+
+| Nodo selezionato           | Interazione proposta                                       | Effetto sul processo                                                                                                            |
+| -------------------------- | ---------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| Un risultato da migliorare | «Rivedi questo risultato» con un'indicazione contestuale.  | Il prossimo aggiornamento del piano considera il feedback collegato a quel punto.                                               |
+| Una domanda aperta         | Rispondere direttamente nel pannello.                      | Registra una risposta collegata e rende rivalutabile il lavoro dipendente; se la run è ferma serve comunque riprenderla.        |
+| Lavoro ancora da iniziare  | «Dai priorità a questo risultato».                         | Chiede una ripianificazione entro le dipendenze e i criteri approvati.                                                          |
+| Un criterio di successo    | Aprire una proposta di revisione con confronto prima/dopo. | Richiede una run inattiva e la tua approvazione del contratto completo aggiornato; invalida le prove della versione precedente. |
+
+Esempio di esperienza desiderata: selezioni «Anteprima mobile», leggi la prova,
+scrivi «Il riepilogo non rende evidenti le decisioni aperte: rivedilo prima delle
+rifiniture grafiche» e vedi come il piano viene aggiornato. La richiesta e la
+ripianificazione restano nello storico.
+
+Una disposizione grafica diversa non può trasformare un controllo fallito in
+passato, cancellare lo storico o eliminare un criterio senza revisione approvata.
+La modifica del piano deve diventare un comando registrato dal runtime: spostare
+un riquadro sullo schermo da solo non cambia l'esecuzione.
+
 ## La prima sessione
 
 ### 1. Scegli il progetto e descrivi il risultato

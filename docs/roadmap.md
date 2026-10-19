@@ -2,6 +2,14 @@
 
 0.1 is a working slice, not the full product vision.
 
+The next interaction direction is to make Live Trail the primary control surface:
+contextual feedback, linked answers and priority requests from a selected node,
+using the existing direction/reconciliation model. A visual contract revision must
+retain the inactive-worker requirement, explicit approval and evidence invalidation.
+These node actions are proposed, not implemented. Current graph clicks inspect
+state/evidence; run controls and Project Compass provide the existing interventions.
+This does not require manually drawing every execution step before delegation.
+
 1. Validate with developers returning to real overnight runs. Measure time to
    answer the three product questions, missed checks and manual interventions.
    Compare directly with Codex Goals and Fabro before expanding scope.
