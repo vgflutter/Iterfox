@@ -2,6 +2,8 @@
 
 **Delegate the work. Wake up to evidence.**
 
+[Guida pratica in italiano: come avviare e governare il lavoro](README.it.md)
+
 Iterfox develops toward a project goal while you are away. Give it direction and
 checks you trust. In project mode it implements, verifies a milestone, inspects the
 actual result and discovers the next useful work without another prompt. Reversible
@@ -9,6 +11,55 @@ choices stay with the agent. Return to inspect the result, evidence and decision
 
 This is an early working MVP. Only Codex is supported. It does not automatically
 push, merge or deploy. A completed agent turn is not a passing acceptance check.
+
+## Who governs the process?
+
+**You approve the destination and boundaries. Iterfox chooses and adapts the work
+inside them. You review the result before integrating it.**
+
+| Decision                                                                     | Who controls it?                                                                                                    |
+| ---------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| Goal, success criteria, exact check commands, editable paths and work window | You review the draft and explicitly authorize them before launch.                                                   |
+| Implementation order, corrections and further work toward the same goal      | Iterfox plans and adapts these during the run. Enable project development to discover work after green checks.      |
+| Reversible implementation and design choices                                 | Delegated to the agent unless you explicitly reserve a decision in the handoff.                                     |
+| New priorities and context during work                                       | You add requests, decisions or hypotheses in Project Compass. They apply after the current activity.                |
+| Changing approved success criteria or limits                                 | You pause and explicitly approve a versioned contract revision through the CLI. A Compass note cannot authorize it. |
+| Integrating, publishing or deploying the result                              | You do this after reviewing the isolated worktree and evidence.                                                     |
+
+A **run** is one authorized session. Its **contract** stores the approved goal,
+checks, edit boundaries and limits. Its **handoff** is optional additional context:
+priorities, settled choices, hypotheses and decisions reserved for you. The handoff
+can evolve while the contract remains in force.
+
+For your first real session:
+
+1. Open **New run → From a goal**, choose a committed Git repository and describe
+   what should work when you return.
+2. Keep **Develop the project autonomously** selected. In the optional handoff,
+   explain priorities and which decisions require you.
+3. Generate the Codex draft. Review the goal, checks, paths and work window. An
+   existing regression command may protect old behavior without checking the new
+   feature: make sure the proposed criteria actually cover your desired result.
+4. Choose **Review preflight**, inspect the final values, then **Authorize & start
+   Night Run**. This starts the worker; drafting alone does not.
+5. Leave it running, or open **Project Compass** to steer. **Pause** interrupts the
+   current activity; **Resume** continues within the original limits. **Stop** also
+   interrupts work and keeps the files/history; it can be explicitly resumed.
+6. Return to **Morning Brief**, inspect **Proof Ledger** and review the worktree
+   diff. `COMPLETED` means the configured policies are satisfied and, in project
+   mode, the supervisor considers the goal ready. Your product review still matters.
+
+When a decision is parked in Compass, independent work can continue. Use **Answer
+this question** for a linked reply. If the run has become `BLOCKED`, resolve its
+displayed reason and explicitly resume. A note saved on an inactive run does not
+restart it. Work stops when the goal is ready, progress needs your intervention or
+an approved limit is reached; eight hours is a maximum window, not work to fill.
+Paused time counts toward that window. Neither resume nor a new note extends it.
+
+For an example handoff, state meanings and intervention steps, read the
+[Italian operating guide](README.it.md). The [English Compass guide](docs/project-compass.md)
+covers steering, and the [goal launch guide](docs/goal-launch.md) covers draft review
+and recovery. Notes entered in a separate Codex chat are not imported into Iterfox.
 
 ![Actual Live Trail showing a recorded DEMO run](docs/screenshots/live-trail.png)
 
