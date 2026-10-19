@@ -1,5 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
+import { isDeepStrictEqual } from 'node:util';
 import { randomUUID } from 'node:crypto';
 import { mkdtemp, mkdir, writeFile, rm } from 'node:fs/promises';
 import { join } from 'node:path';
@@ -8,6 +9,7 @@ import type { AddressInfo } from 'node:net';
 import { chromium } from 'playwright';
 import { expect } from '@playwright/test';
 import { Engine } from '../src/core/engine.js';
+import { directionSchema, activeNotes } from '../src/core/compass.js';
 import type { RunState } from '../src/core/model.js';
 import { auditChanges, git } from '../src/core/workspace.js';
 import { CodexProvider } from '../src/providers/codex.js';
@@ -93,11 +95,26 @@ test(
       codexPath: process.env.ITERFOX_CODEX_PATH,
     });
     const modes: string[] = [];
+    const injectDirectionFault = process.env.ITERFOX_INJECT_DIRECTION_FAULT === '1';
+    let faultInjected = false;
     const engine = new Engine(store, run.id, {
       name: 'codex',
-      invoke(request) {
+      async invoke(request) {
         modes.push(request.mode);
-        return provider.invoke(request);
+        const reply = await provider.invoke(request);
+        if (injectDirectionFault && request.mode === 'orient' && !faultInjected) {
+          // Explicit synthetic transport/provider-result fault after an actual
+          // SDK response. It is never described as a spontaneous model error.
+          const proposal = directionSchema.parse(reply);
+          faultInjected = true;
+          return {
+            ...proposal,
+            notes: proposal.notes.map((note, index) =>
+              index === 0 ? { ...note, criterionIds: ['not-approved'] } : note,
+            ),
+          };
+        }
+        return reply;
       },
     });
     let running: Promise<RunState> | undefined;
@@ -150,6 +167,13 @@ test(
       contractVersion: 1,
     });
     assert.deepEqual(paused.contract, contract);
+    const plannerTarget = activeNotes(paused).find((item) => item.id === note.id)?.target;
+    assert(plannerTarget);
+    assert.equal(plannerTarget.referenceOnly, true);
+    assert.equal(plannerTarget.criterion.id, 'unicode');
+    assert.equal(plannerTarget.activity?.id, nodeId);
+    assert.equal(plannerTarget.activity?.title, 'Review Unicode avatar initials');
+    assert.equal(plannerTarget.activity?.resolved, true);
     assert.equal(running, undefined, 'Saving feedback never launches the worker.');
     const start = Date.now();
     await page.getByRole('button', { name: /Resume/ }).click();
@@ -160,6 +184,14 @@ test(
     }
     const final = await completion();
     assert.equal(final.status, 'COMPLETED', final.reason);
+    assert.deepEqual(final.contract, contract);
+    if (injectDirectionFault) {
+      assert.equal(faultInjected, true);
+      assert(
+        modes.filter((mode) => mode === 'orient').length >= 2,
+        'The injected rejected proposal requires another actual SDK orientation call.',
+      );
+    }
     assert(final.criteria.every((criterion) => criterion.status === 'PASSED'));
     const handling = final.direction?.notes.find((item) => item.noteId === note.id);
     assert(handling && ['applied', 'deferred'].includes(handling.disposition));
@@ -189,8 +221,19 @@ test(
       verified: final.criteria.length,
       graphInstructions: 1,
       additionalOperatorMessages: 0,
-      contractPreserved: JSON.stringify(final.contract) === JSON.stringify(contract),
+      contractPreserved: isDeepStrictEqual(final.contract, contract),
+      faultInjection: {
+        enabled: injectDirectionFault,
+        injected: faultInjected,
+        kind: 'One explicit semantic-reference fault after the first successful real SDK orientation response.',
+        realOrientationCalls: modes.filter((mode) => mode === 'orient').length,
+      },
       limitations: [
+        ...(injectDirectionFault
+          ? [
+              'The invalid reference is explicitly injected; this is not an observation of a spontaneous model mistake.',
+            ]
+          : []),
         'Initial task is an explicit fixture. Plan reconciliation, implementation, checks and project review use real Codex.',
         'This exercises the input route and intended behavior; it is not a matched comparison or an overnight reliability trial.',
       ],
