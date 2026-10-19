@@ -8,6 +8,7 @@ import { evidenceFixtures } from './evidence-fixtures.js';
 import { serve } from '../../src/server.js';
 import { launchWorker } from '../../src/cli.js';
 import { compassFixture, projectFixture } from './compass-fixture.js';
+import { graphControlFixture } from './graph-fixture.js';
 
 const dir = await mkdtemp(join(tmpdir(), 'iterfox-browser-'));
 const repo = await createDemoRepository(dir);
@@ -15,6 +16,7 @@ const store = openStore(dir);
 await evidenceFixtures(dir, store);
 const compass = await compassFixture(dir, store);
 await projectFixture(dir, store);
+await graphControlFixture(dir, store);
 const state = await createRun(
   store,
   dir,
