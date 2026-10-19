@@ -25,6 +25,9 @@ import {
 import { brief } from '../core/brief.js';
 import { graphFor, type TrailData } from './graph.js';
 import { Compass } from './compass.js';
+import { NewRun, type NewRunSession } from './new-run.js';
+import { launchApi, launchFailure, LaunchRequestError } from './launch-api.js';
+import { ExistingRuns, RunChoices, type RunListing } from './run-browser.js';
 import { needsOrientation, questions } from '../core/compass.js';
 import './style.css';
 
@@ -126,9 +129,19 @@ async function api(path: string, body?: unknown, token?: string) {
 }
 
 function App() {
-  const [runs, setRuns] = useState<RunState[]>([]);
+  const [runListing, setRunListing] = useState<RunListing>({
+    runs: [],
+    loaded: false,
+    refreshing: false,
+  });
+  const [browsingRuns, setBrowsingRuns] = useState(false);
+  const runListRevision = useRef(0);
   const [runId, setRunId] = useState<string>();
   const [events, setEvents] = useState<RunEvent[]>([]);
+  const [runRead, setRunRead] = useState<{ id?: string; loading: boolean; error?: string }>({
+    loading: false,
+  });
+  const [eventReload, setEventReload] = useState(0);
   const [token, setToken] = useState('');
   const [executionHost, setExecutionHost] = useState('Runtime host');
   const [view, setView] = useState('trail');
@@ -140,13 +153,42 @@ function App() {
   const [filter, setFilter] = useState('all');
   const [grouped, setGrouped] = useState(false);
   const [newRun, setNewRun] = useState(false);
+  const [newRunSession, setNewRunSession] = useState<NewRunSession>();
   const [busy, setBusy] = useState(false);
   useEffect(() => {
     window.scrollTo({ top: 0 });
   }, [view, runId]);
+  const readRuns = async (signal?: AbortSignal) => {
+    const revision = ++runListRevision.current;
+    setRunListing((current) => ({ ...current, refreshing: true, error: undefined }));
+    try {
+      const runs = await launchApi<RunState[]>('/api/runs', token, undefined, signal);
+      signal?.throwIfAborted();
+      if (!Array.isArray(runs))
+        throw new LaunchRequestError({ error: 'The runtime did not return a run list.' });
+      if (revision === runListRevision.current)
+        setRunListing({
+          runs,
+          loaded: true,
+          refreshing: false,
+          updatedAt: new Date().toISOString(),
+        });
+      return runs;
+    } catch (failure) {
+      if (revision === runListRevision.current)
+        setRunListing((current) => ({
+          ...current,
+          refreshing: false,
+          ...(!signal?.aborted ? { error: launchFailure(failure) } : {}),
+        }));
+      throw failure;
+    }
+  };
   const refresh = async () => {
-    const rs = await api('/api/runs');
-    setRuns(rs);
+    const pending = readRuns();
+    const revision = runListRevision.current;
+    const rs = await pending;
+    if (revision !== runListRevision.current) return;
     let remembered: string | null = null;
     try {
       remembered = localStorage.getItem('iterfox.run');
@@ -162,41 +204,62 @@ function App() {
         setExecutionHost(m.executionHost ?? 'Runtime host');
       })
       .catch((e) => setError(e.message));
-    refresh().catch((e) => setError(e.message));
+    void refresh().catch(() => {}); // The run selector keeps refresh errors and the retry action.
   }, []);
   useEffect(() => {
-    if (!runId) return;
+    if (!runId) {
+      setEvents([]);
+      setRunRead({ loading: false });
+      return;
+    }
     try {
       localStorage.setItem('iterfox.run', runId);
     } catch {
       /* keep the in-memory selection */
     }
     setEvents([]);
+    setRunRead({ id: runId, loading: true });
     setReplay(null);
     setSelected(undefined);
     setFilter('all');
     let source: EventSource | undefined;
     let cancelled = false;
-    api(`/api/runs/${runId}/events`)
+    const controller = new AbortController();
+    launchApi<RunEvent[]>(
+      `/api/runs/${encodeURIComponent(runId)}/events`,
+      token,
+      undefined,
+      controller.signal,
+    )
       .then((initial: RunEvent[]) => {
         if (cancelled) return;
         setEvents(initial);
+        setRunRead({ id: runId, loading: false });
         source = new EventSource(`/api/runs/${runId}/stream?after=${initial.at(-1)?.seq ?? 0}`);
-        source.onopen = () => setConnected(true);
-        source.onerror = () => setConnected(false);
+        source.onopen = () => {
+          if (!cancelled) setConnected(true);
+        };
+        source.onerror = () => {
+          if (!cancelled) setConnected(false);
+        };
         source.onmessage = (e) => {
+          if (cancelled) return;
           const event: RunEvent = JSON.parse(e.data);
           setEvents((prev) => (prev.some((p) => p.seq === event.seq) ? prev : [...prev, event]));
           if (event.type.startsWith('workflow.')) refresh().catch(() => {});
         };
       })
-      .catch((e) => setError(e.message));
+      .catch((failure) => {
+        if (!cancelled)
+          setRunRead({ id: runId, loading: false, error: launchFailure(failure).message });
+      });
     return () => {
       cancelled = true;
+      controller.abort();
       source?.close();
       setConnected(false);
     };
-  }, [runId]);
+  }, [runId, eventReload]);
   useEffect(() => {
     if (!playing || replay === null) return;
     const timer = setInterval(
@@ -212,12 +275,15 @@ function App() {
     );
     return () => clearInterval(timer);
   }, [playing, replay === null, events.length]);
-  const live = useMemo(() => (events.length ? project(events) : undefined), [events]);
+  const live = useMemo(
+    () => (runRead.id === runId && !runRead.loading && events.length ? project(events) : undefined),
+    [events, runId, runRead],
+  );
   const state = useMemo(
     () =>
       replay === null
         ? live
-        : events.length
+        : live && events.length
           ? project(events.slice(0, Math.max(1, replay)))
           : undefined,
     [events, live, replay],
@@ -259,6 +325,10 @@ function App() {
       setBusy(false);
     }
   }
+  function selectRun(id: string) {
+    if (id === runId) setEventReload((revision) => revision + 1);
+    else setRunId(id);
+  }
   return (
     <div className="app-shell">
       <aside className="sidebar">
@@ -296,31 +366,39 @@ function App() {
           <button
             title="Refresh runs"
             aria-label="Refresh runs"
-            onClick={() => refresh().catch((e) => setError(e.message))}
+            disabled={runListing.refreshing}
+            onClick={() => void refresh().catch(() => {})}
           >
             ↻
           </button>
         </div>
         <div className="run-list">
-          {runs.map((r) => (
-            <button
-              key={r.id}
-              className={`run-item ${r.id === runId ? 'chosen' : ''}`}
-              onClick={() => setRunId(r.id)}
-            >
-              <span className={`run-dot ${r.status.toLowerCase()}`} />
-              <span>
-                <strong>{r.goal}</strong>
-                <small>
-                  {new Date(r.createdAt).toLocaleDateString([], { month: 'short', day: 'numeric' })}{' '}
-                  · {r.provider === 'demo' ? 'DEMO' : 'Codex'}
-                </small>
-              </span>
-            </button>
-          ))}
+          {runListing.refreshing && <p className="run-list-note">Refreshing runs…</p>}
+          {runListing.error && (
+            <p className="run-list-note">
+              Could not refresh runs. Browse runs to inspect and retry.
+            </p>
+          )}
+          {runListing.loaded && !runListing.runs.length && (
+            <p className="run-list-note">No runs found. Refresh to check again.</p>
+          )}
+          <RunChoices runs={runListing.runs} selectedId={runId} open={selectRun} compact />
         </div>
+        <button
+          type="button"
+          className="browse-runs"
+          aria-haspopup="dialog"
+          onClick={() => {
+            setBrowsingRuns(true);
+            void readRuns().catch(() => {});
+          }}
+        >
+          <span aria-hidden="true">☷</span>
+          <span>Browse runs</span>
+        </button>
         <button className="new-run" onClick={() => setNewRun(true)}>
-          ＋ New run
+          <span aria-hidden="true">＋</span>
+          <span>New run</span>
         </button>
         <div className="local-note">
           <span className="local-icon">⌂</span>
@@ -377,7 +455,39 @@ function App() {
             </button>
           </div>
         )}
-        {!state ? (
+        {(newRunSession?.uncertainLaunch || newRunSession?.runCreated) && (
+          <div className="launch-recovery-banner">
+            <p>
+              {newRunSession.uncertainLaunch
+                ? 'A launch outcome is still uncertain. Your inputs and recovery actions are kept.'
+                : `Run ${newRunSession.runCreated} was created. Its launch recovery is still available.`}
+            </p>
+            <button className="button" onClick={() => setNewRun(true)}>
+              Return to launch recovery
+            </button>
+          </div>
+        )}
+        {!state && runId ? (
+          <div className="empty run-opening" aria-live="polite">
+            <h1>
+              {runRead.id !== runId || runRead.loading
+                ? 'Opening run…'
+                : runRead.error
+                  ? 'Could not open this run.'
+                  : 'No events available yet.'}
+            </h1>
+            <code>{runId}</code>
+            {runRead.id === runId && runRead.error && <p>{runRead.error}</p>}
+            {runRead.id === runId && !runRead.loading && (
+              <button
+                className="primary"
+                onClick={() => setEventReload((revision) => revision + 1)}
+              >
+                Retry opening run
+              </button>
+            )}
+          </div>
+        ) : !state ? (
           <div className="empty">
             <Fox />
             <h1>
@@ -1020,15 +1130,58 @@ function App() {
           </>
         )}
       </main>
+      {browsingRuns && (
+        <ExistingRuns
+          listing={runListing}
+          selectedId={runId}
+          refresh={() => void readRuns().catch(() => {})}
+          open={(id) => {
+            selectRun(id);
+            setBrowsingRuns(false);
+          }}
+          close={() => setBrowsingRuns(false)}
+        />
+      )}
       {newRun && (
         <NewRun
           token={token}
-          close={() => setNewRun(false)}
-          created={async (id) => {
-            await refresh();
-            setRunId(id);
+          initial={newRunSession}
+          runListing={runListing}
+          selectedRunId={runId}
+          close={(session) => {
+            setNewRunSession(session);
             setNewRun(false);
+          }}
+          created={async (id, signal) => {
+            const currentRuns = await readRuns(signal);
+            signal.throwIfAborted();
+            if (!currentRuns.some((run) => run.id === id))
+              throw new LaunchRequestError({
+                code: 'not-found',
+                runId: id,
+                error:
+                  'This run is missing from the current runtime. Check the data directory, then retry opening this existing run.',
+              });
+            selectRun(id);
             setView('trail');
+          }}
+          inspectRuns={async (signal) => {
+            await readRuns(signal);
+          }}
+          reconnect={async (signal) => {
+            const meta = await launchApi<{ token: string; executionHost?: string }>(
+              '/api/meta',
+              token,
+              undefined,
+              signal,
+            );
+            signal.throwIfAborted();
+            if (!meta || typeof meta.token !== 'string' || !meta.token)
+              throw new LaunchRequestError({
+                error: 'The local runtime did not provide a connection token.',
+              });
+            setToken(meta.token);
+            setExecutionHost(meta.executionHost ?? 'Runtime host');
           }}
         />
       )}
@@ -1154,199 +1307,6 @@ function EvidenceCard({
         )}
       </div>
     </details>
-  );
-}
-function NewRun({
-  token,
-  close,
-  created,
-}: {
-  token: string;
-  close: () => void;
-  created: (id: string) => void;
-}) {
-  const [repository, setRepository] = useState('');
-  const [configPath, setConfig] = useState('');
-  const [handoff, setHandoff] = useState('');
-  const [project, setProject] = useState(true);
-  const [preview, setPreview] = useState<any>();
-  const [error, setError] = useState('');
-  const [busy, setBusy] = useState(false);
-  const dialog = useRef<HTMLDialogElement>(null);
-  useEffect(() => {
-    dialog.current?.showModal();
-    return () => dialog.current?.close();
-  }, []);
-  return (
-    <dialog
-      ref={dialog}
-      className="modal"
-      aria-label="Night Run preflight"
-      onCancel={(e) => {
-        e.preventDefault();
-        close();
-      }}
-    >
-      <div className="panel-title">
-        <span>NIGHT RUN PREFLIGHT</span>
-        <button aria-label="Close preflight" onClick={close}>
-          ×
-        </button>
-      </div>
-      <h2>One goal. Clear boundaries.</h2>
-      <p className="muted">
-        Review the repository, approved checks and limits before starting real Codex.
-      </p>
-      {error && (
-        <p role="alert" className="failed">
-          {error}
-        </p>
-      )}
-      <form
-        onSubmit={async (e) => {
-          e.preventDefault();
-          setBusy(true);
-          setError('');
-          try {
-            setPreview(
-              await api('/api/preflight', { repository, configPath, handoff, project }, token),
-            );
-          } catch (e) {
-            setError((e as Error).message);
-          } finally {
-            setBusy(false);
-          }
-        }}
-      >
-        <label>
-          Repository root
-          <input
-            required
-            placeholder="/absolute/path/to/repository"
-            value={repository}
-            onChange={(e) => {
-              setRepository(e.target.value);
-              setPreview(undefined);
-            }}
-          />
-        </label>
-        <label>
-          Acceptance configuration
-          <input
-            required
-            placeholder="/absolute/path/to/iterfox.json"
-            value={configPath}
-            onChange={(e) => {
-              setConfig(e.target.value);
-              setPreview(undefined);
-            }}
-          />
-        </label>
-        <label>
-          Handoff for your absence <span className="muted">(optional)</span>
-          <textarea
-            rows={4}
-            maxLength={4000}
-            value={handoff}
-            placeholder="What should be ready when you return? Which decisions are settled, and which ideas still need testing?"
-            onChange={(e) => {
-              setHandoff(e.target.value);
-              setPreview(undefined);
-            }}
-          />
-        </label>
-        <label className="project-mode-choice">
-          <input
-            type="checkbox"
-            checked={project}
-            onChange={(e) => {
-              setProject(e.target.checked);
-              setPreview(undefined);
-            }}
-          />
-          Develop the project autonomously: review each milestone and discover the next useful work.
-        </label>
-        <button className="button" disabled={busy}>
-          Review preflight →
-        </button>
-      </form>
-      {preview && (
-        <div className="preflight-preview">
-          <h3>{preview.contract.goal}</h3>
-          <p className="mono">
-            {preview.repository} · {preview.sourceBranch} · {preview.head.slice(0, 8)}
-          </p>
-          {preview.dirty && (
-            <p>Uncommitted work is excluded and preserved. The run starts from committed HEAD.</p>
-          )}
-          <ul>
-            {preview.contract.criteria.map((c: any) => (
-              <li key={c.id}>
-                {c.title}
-                <code>{JSON.stringify(c.command)}</code>
-              </li>
-            ))}
-          </ul>
-          <p>Allowed edits: {preview.contract.allowedPaths.join(', ')}</p>
-          {preview.contract.supervision && (
-            <p>
-              Project development: the AI reviews actual results, chooses reversible details and
-              discovers further work toward this goal. Your approved checks, scope and session
-              limits remain in force.
-            </p>
-          )}
-          {preview.handoff && (
-            <blockquote>
-              {preview.handoff.text}
-              <small>Project handoff · planning context within the approved contract</small>
-            </blockquote>
-          )}
-          <p>
-            {preview.limits.maxTurns} turns · {preview.limits.maxAttempts} attempts/check ·{' '}
-            {Math.round(preview.limits.maxDurationMs / 60000)} minutes ·{' '}
-            {preview.limits.maxTokens.toLocaleString()} reported tokens (checked between turns)
-          </p>
-          <p>
-            Codex sandbox: workspace-write for builds, read-only otherwise. Network and permission
-            escalation disabled. Tests, configuration and secrets require operator review.
-          </p>
-          <p>
-            Checks are trusted local commands. No automatic push, merge or deploy. Keep the computer
-            awake; closing the page is safe.
-          </p>
-          <button
-            className="primary"
-            disabled={busy}
-            onClick={async () => {
-              setBusy(true);
-              try {
-                const s = await api(
-                  '/api/runs',
-                  {
-                    repository: preview.repository,
-                    contract: preview.contract,
-                    authorized: true,
-                    handoff: preview.handoff,
-                  },
-                  token,
-                );
-                await created(s.id);
-              } catch (e) {
-                setError((e as Error).message);
-              } finally {
-                setBusy(false);
-              }
-            }}
-          >
-            Authorize & start Night Run ↗
-          </button>
-        </div>
-      )}
-      <p className="small-text muted">
-        For a fixture with no model calls, run <code>npm run demo</code> from the Iterfox source
-        checkout.
-      </p>
-    </dialog>
   );
 }
 createRoot(document.getElementById('root')!).render(<App />);

@@ -77,7 +77,30 @@ turn. Unsupported CLI/configuration combinations are blocked with an actionable 
 
 ## Define what success means
 
-Commit a configuration with explicit command checks. For example:
+In the local UI, open **New run → From a goal**, choose a Git repository and describe
+the desired result in ordinary language, including Italian. Codex drafts editable
+criteria, exact check arguments, edit boundaries and a work window from a bounded
+snapshot of committed HEAD. Review the source excerpts, assumptions and any check
+gaps. Drafting and preflight do not execute the proposed checks or create a run;
+**Authorize & start Night Run** explicitly starts the isolated runtime.
+
+The review keeps the goal, criteria, exact argv, edit boundaries and work window
+visible, with a summary of turn and reported-token limits. New drafts normally
+propose **8 hours, 150 turns and 100,000,000 tokens**, adapting to specific guidance
+in the goal. These are editable proposals requiring authorization, not observed
+evidence or a promise of completion. Enter the window in hours and minutes; add
+seconds when needed. **Advanced session settings** contains turn/token controls,
+retries, turn timeout, no-progress and project-review limits. Each check's
+**Check details** contains its ID, scope and timeout. Invalid advanced fields open
+on validation, and structured error links return you to the affected field.
+
+**From a configuration file** remains available and loads the full existing
+configuration, including advanced verification fields. The CLI configuration route
+also remains available. The preflight summarizes the actual server-returned values;
+loading a file preserves its limits and precision. See [the goal launch flow](docs/goal-launch.md)
+for review, recovery and current validation limits.
+
+For the configuration route, use explicit command checks. For example:
 
 ```json
 {
@@ -195,6 +218,16 @@ npm run compare:codex          # OPT IN: single-turn Codex reference measurement
 
 On a machine with Chrome installed, `ITERFOX_BROWSER_CHANNEL=chrome npm run test:ui`
 uses it instead of downloading Chromium. CI does not call real Codex or require secrets.
+
+The 2026-10-19 self-development session completed this flow with five current host
+gates and two project reviews. After green checks, the supervisor discovered and
+implemented missing mobile run recovery. A separate browser audit exercised an
+Italian goal through a real Codex draft, edits, preflight and actual worker start;
+a deliberately lost authorization response was recovered on mobile without a
+duplicate run. The disposable audit workers were then stopped. See
+[recorded scope and remaining interaction checks](docs/goal-launch.md#implementation-choices-and-validation-status).
+This bounded case is not an eight-hour reliability result or a matched comparison
+with direct Codex. Passing regression suites alone does not establish a whole goal.
 
 The real Codex integration has been exercised through a failing check, diagnosis,
 dynamic correction and verified completion. See [recorded evidence and measured
