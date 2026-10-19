@@ -31,6 +31,19 @@ checks, edit boundaries and limits. Its **handoff** is optional additional conte
 priorities, settled choices, hypotheses and decisions reserved for you. The handoff
 can evolve while the contract remains in force.
 
+**Projects** keeps a durable brief and milestone roadmap independently of a run.
+Create or revisit a project, edit decisions and provisional hypotheses separately,
+inspect prerequisite links and revision history, link existing sessions, capture
+audited handoffs and inspect their provenance. Prepare a selected milestone in the
+existing editable New Run flow; drafting, review and authorization remain required.
+Operator-reviewed milestones and historical handoffs do not certify future runtime
+checks. The opening summary brings current work and linked sessions forward; expand
+**Project brief and editing** for the full memory and history. After a stale or
+uncertain save, retain your draft, inspect saved state and reconcile explicitly.
+Data persist in the selected data directory's `ledger.sqlite`; unsaved browser inputs
+remain page-local. Continuing code requires a reviewed committed checkpoint because
+New Run copies committed HEAD. Read the [workflow, recovery and observed limits](docs/project-workspace.md).
+
 For your first real session:
 
 1. Open **New run → From a goal**, choose a committed Git repository and describe

@@ -1,6 +1,7 @@
 import React, { useEffect, useId, useRef, useState } from 'react';
 import type { Contract, RunState } from '../core/model.js';
 import type { Proposal, SourceReference } from '../proposals/model.js';
+import type { ProjectContinuation } from '../shared/projects.js';
 import type {
   AuthorizeLaunchRequest,
   BrowseRepositoriesResponse,
@@ -43,6 +44,7 @@ export interface NewRunSession {
   error?: LaunchRequestError;
   inspectingRuns?: boolean;
   recoveryError?: LaunchRequestError;
+  projectContext?: ProjectContinuation;
 }
 
 export function NewRun({
@@ -131,6 +133,7 @@ export function NewRun({
     goal,
     configPath,
     handoff,
+    projectContext: initial?.projectContext,
     project,
     fileProject,
     runCreated,
@@ -764,6 +767,47 @@ export function NewRun({
       <p className="muted">
         Choose a repository, review the work and authorize its isolated Codex run.
       </p>
+      {initial?.projectContext && (
+        <div className="launch-note prepared-project-context">
+          <p>
+            Prepared from project revision {initial.projectContext.projectRevision}, milestone{' '}
+            {initial.projectContext.milestoneId}. Preparation did not start a run. Review the
+            editable goal and historical handoff, then draft and review the new session before
+            authorizing it.
+          </p>
+          {(repository !== initial.projectContext.repository ||
+            goal !== initial.projectContext.goal ||
+            handoff !== initial.projectContext.handoff) && (
+            <p>
+              Your inputs differ from the prepared proposal. The source references below describe
+              the original preparation.
+            </p>
+          )}
+          <details>
+            <summary>
+              Prepared from project revision {initial.projectContext.projectRevision}
+            </summary>
+            <p>
+              Milestone {initial.projectContext.milestoneId} · project{' '}
+              {initial.projectContext.projectId}. This is editable historical context. Preparation
+              has not started a run or transferred verification results.
+            </p>
+            <p>
+              Review and arrange the committed code checkpoint before drafting. New Run uses
+              committed HEAD.
+            </p>
+            <p>Source runs: {initial.projectContext.sourceRunIds.join(', ') || 'None'}.</p>
+            <p>Handoff receipts: {initial.projectContext.sourceHandoffIds.join(', ') || 'None'}.</p>
+            {!!initial.projectContext.omissions.length && (
+              <ul>
+                {initial.projectContext.omissions.map((item, index) => (
+                  <li key={index}>{item}</li>
+                ))}
+              </ul>
+            )}
+          </details>
+        </div>
+      )}
       {!token && <p role="status">Connecting to the local runtime…</p>}
       {error && <RequestFailure error={error} focus id={errorId} fields={dialog} />}
       {!locked &&

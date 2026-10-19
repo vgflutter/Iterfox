@@ -28,6 +28,8 @@ import { Compass } from './compass.js';
 import { NewRun, type NewRunSession } from './new-run.js';
 import { launchApi, launchFailure, LaunchRequestError } from './launch-api.js';
 import { ExistingRuns, RunChoices, type RunListing } from './run-browser.js';
+import { Projects } from './projects.js';
+import type { ProjectContinuation } from '../shared/projects.js';
 import { needsOrientation, questions } from '../core/compass.js';
 import './style.css';
 
@@ -154,6 +156,9 @@ function App() {
   const [grouped, setGrouped] = useState(false);
   const [newRun, setNewRun] = useState(false);
   const [newRunSession, setNewRunSession] = useState<NewRunSession>();
+  const newRunCurrent = useRef({ open: newRun, session: newRunSession });
+  newRunCurrent.current = { open: newRun, session: newRunSession };
+  const [keptRunInputs, setKeptRunInputs] = useState<NewRunSession[]>([]);
   const [busy, setBusy] = useState(false);
   useEffect(() => {
     window.scrollTo({ top: 0 });
@@ -326,8 +331,49 @@ function App() {
     }
   }
   function selectRun(id: string) {
+    if (view === 'projects') setView('trail');
     if (id === runId) setEventReload((revision) => revision + 1);
     else setRunId(id);
+  }
+  async function reconnectRuntime() {
+    const meta = await launchApi<{ token: string; executionHost?: string }>('/api/meta', token);
+    if (!meta || typeof meta.token !== 'string' || !meta.token)
+      throw new Error('The runtime did not provide a connection token.');
+    setToken(meta.token);
+    setExecutionHost(meta.executionHost ?? 'Runtime host');
+  }
+  function prepareProject(proposal: ProjectContinuation) {
+    // Preparation can finish after the operator opens/closes a different New
+    // Run dialog. Consult current inputs, not the request's render closure.
+    const current = newRunCurrent.current;
+    if (current.open)
+      throw new Error(
+        'New Run is already open. Close it with its inputs kept, then prepare again.',
+      );
+    if (current.session?.uncertainLaunch || current.session?.runCreated)
+      throw new Error(
+        'Return to launch recovery before preparing another session. Its inputs and recovery actions are kept.',
+      );
+    if (
+      current.session &&
+      (current.session.repository ||
+        current.session.goal ||
+        current.session.handoff ||
+        current.session.configPath)
+    )
+      setKeptRunInputs((kept) => [...kept, current.session!]);
+    setNewRunSession({
+      mode: 'goal',
+      repository: proposal.repository,
+      goal: proposal.goal,
+      handoff: proposal.handoff,
+      configPath: '',
+      project: true,
+      fileProject: false,
+      uncertainLaunch: false,
+      projectContext: proposal,
+    });
+    setNewRun(true);
   }
   return (
     <div className="app-shell">
@@ -344,6 +390,7 @@ function App() {
         </div>
         <nav aria-label="Run views">
           {[
+            ['projects', '▦', 'Projects'],
             ['compass', '↗', 'Project Compass'],
             ['trail', '⌘', 'Live Trail'],
             ['brief', '☷', 'Morning Brief'],
@@ -352,6 +399,8 @@ function App() {
           ].map(([id, icon, title]) => (
             <button
               key={id}
+              aria-label={title}
+              title={title}
               className={view === id ? 'nav-item active' : 'nav-item'}
               onClick={() => setView(id)}
             >
@@ -424,15 +473,17 @@ function App() {
             <span className="muted">Workspace</span>
             <span className="slash">/</span>
             <span>
-              {view === 'trail'
-                ? 'Live Trail'
-                : view === 'brief'
-                  ? 'Morning Brief'
-                  : view === 'proof'
-                    ? 'Proof Ledger'
-                    : view === 'compass'
-                      ? 'Project Compass'
-                      : 'Decision history'}
+              {view === 'projects'
+                ? 'Projects'
+                : view === 'trail'
+                  ? 'Live Trail'
+                  : view === 'brief'
+                    ? 'Morning Brief'
+                    : view === 'proof'
+                      ? 'Proof Ledger'
+                      : view === 'compass'
+                        ? 'Project Compass'
+                        : 'Decision history'}
             </span>
           </div>
           <div className="topbar-right">
@@ -467,7 +518,46 @@ function App() {
             </button>
           </div>
         )}
-        {!state && runId ? (
+        {!!keptRunInputs.length && (
+          <details className="launch-recovery-banner">
+            <summary>Previous New Run inputs kept ({keptRunInputs.length})</summary>
+            <p>
+              Prepared project context opened as a separate editable goal. You can return to prior
+              inputs.
+            </p>
+            {keptRunInputs.map((session, index) => (
+              <button
+                className="button"
+                key={index}
+                disabled={!!newRunSession?.uncertainLaunch || !!newRunSession?.runCreated}
+                onClick={() => {
+                  setKeptRunInputs((current) => [
+                    ...current.filter((_, i) => i !== index),
+                    ...(newRunSession ? [newRunSession] : []),
+                  ]);
+                  setNewRunSession(session);
+                  setNewRun(true);
+                }}
+              >
+                Restore inputs {index + 1}:{' '}
+                {(session.goal || session.configPath || session.repository).slice(0, 90)}
+              </button>
+            ))}
+          </details>
+        )}
+        <div hidden={view !== 'projects'}>
+          <Projects
+            active={view === 'projects'}
+            token={token}
+            reconnect={reconnectRuntime}
+            prepare={prepareProject}
+            openRun={selectRun}
+            runListing={runListing}
+            refreshRuns={() => void readRuns().catch(() => {})}
+            launchRecovery={!!newRunSession?.uncertainLaunch || !!newRunSession?.runCreated}
+          />
+        </div>
+        {view === 'projects' ? null : !state && runId ? (
           <div className="empty run-opening" aria-live="polite">
             <h1>
               {runRead.id !== runId || runRead.loading

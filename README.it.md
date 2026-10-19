@@ -42,6 +42,21 @@ che lasci all'agente: priorità, decisioni già prese e ipotesi da verificare.
 **Il piano può cambiare senza chiederti ogni passaggio. I criteri di successo e i
 limiti non possono essere cambiati silenziosamente per dichiarare il completamento.**
 
+**Projects** conserva una scheda persistente e una roadmap di milestone, anche
+senza una run aperta. Puoi creare e riaprire progetti, modificare decisioni e ipotesi
+in elenchi separati, ispezionare prerequisiti e revisioni, collegare sessioni esistenti
+e catturare handoff con provenienza e prove storiche ispezionabili. Puoi preparare la
+milestone selezionata nel flusso modificabile **New run**, che richiede ancora bozza,
+revisione e autorizzazione esplicita. La revisione di una milestone è una decisione
+dell'operatore; le prove storiche non verificano una nuova sessione. Il riepilogo iniziale
+mostra il lavoro corrente e l'accesso alla sessione collegata; **Project brief and
+editing** apre memoria completa e cronologia. Dopo un salvataggio incerto o una
+revisione concorrente, conserva la bozza, ispeziona i dati salvati e riconcilia
+esplicitamente. I dati persistono in `ledger.sqlite` nella directory dati scelta;
+gli input non salvati restano solo nella pagina. Per continuare il codice serve
+un checkpoint committato e revisionato: New Run copia il solo HEAD committato. Vedi
+[procedura, recupero e limiti osservati](docs/project-workspace.md).
+
 ## Governarlo dal grafico
 
 **La direzione di prodotto è usare Live Trail come plancia principale:** vedere

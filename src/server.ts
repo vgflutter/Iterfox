@@ -12,6 +12,9 @@ import { Store } from './core/store.js';
 import { LaunchService } from './launch/service.js';
 import { LaunchError, launchError } from './launch/errors.js';
 import { browseRepositories } from './launch/repositories.js';
+import { ProjectStore } from './projects/store.js';
+import { ProjectService } from './projects/service.js';
+import { ProjectError, projectError } from './projects/errors.js';
 import {
   createRun,
   controlRun,
@@ -36,6 +39,7 @@ export async function serve(
     : uiRoot;
   const streams = new Set<ServerResponse>();
   const proposals = new LaunchService();
+  const projects = new ProjectService(new ProjectStore(store.db), store);
   const server = createServer(async (req, res) => {
     try {
       const localPort = (server.address() as { port: number }).port;
@@ -50,9 +54,9 @@ export async function serve(
       const parts = url.pathname.split('/').filter(Boolean);
       // Draft polling exposes local paths and source evidence, so new resource
       // reads require the same token as mutations.
-      const privateDraftApi =
-        parts[0] === 'api' && (parts[1] === 'repositories' || parts[1] === 'proposals');
-      if (req.method === 'POST' || privateDraftApi) {
+      const privateApi =
+        parts[0] === 'api' && ['repositories', 'proposals', 'projects'].includes(parts[1]);
+      if (req.method === 'POST' || privateApi) {
         const origin = req.headers.origin;
         if (origin && !hosts.some((h) => origin === `http://${h}`))
           return json(res, 403, { error: 'Same-origin request required' });
@@ -76,6 +80,37 @@ export async function serve(
       if (parts[0] === 'api') {
         if (req.method === 'GET' && parts[1] === 'meta')
           return json(res, 200, { token, dataDir, localOnly: true, executionHost: hostname() });
+        if (parts[1] === 'projects') {
+          if (parts.length === 2 && req.method === 'GET')
+            return json(res, 200, projects.store.list());
+          if (parts.length === 2 && req.method === 'POST')
+            return json(res, 201, await projects.create(await body(req), disconnected(res)));
+          if (parts.length === 3 && req.method === 'GET')
+            return json(res, 200, projects.store.get(parts[2]));
+          if (parts.length === 4 && parts[3] === 'history' && req.method === 'GET')
+            return json(res, 200, projects.store.history(parts[2]));
+          if (parts.length === 4 && parts[3] === 'revisions' && req.method === 'POST')
+            return json(res, 200, projects.revise(parts[2], await body(req)));
+          if (parts.length === 4 && parts[3] === 'runs' && req.method === 'POST')
+            return json(
+              res,
+              200,
+              await projects.linkRun(parts[2], await body(req), disconnected(res)),
+            );
+          if (parts.length === 4 && parts[3] === 'handoffs' && req.method === 'POST')
+            return json(
+              res,
+              201,
+              await projects.captureHandoff(parts[2], await body(req), disconnected(res)),
+            );
+          if (parts.length === 4 && parts[3] === 'continuations' && req.method === 'POST')
+            return json(
+              res,
+              200,
+              await projects.prepareContinuation(parts[2], await body(req), disconnected(res)),
+            );
+          return json(res, 404, { error: 'Not found' });
+        }
         if (parts[1] === 'repositories') {
           if (parts.length === 3 && parts[2] === 'browse' && req.method === 'POST') {
             const signal = disconnected(res);
@@ -257,7 +292,9 @@ export async function serve(
       );
       res.end(content);
     } catch (e) {
-      if (!res.headersSent) json(res, e instanceof LaunchError ? e.status : 400, launchError(e));
+      if (!res.headersSent && e instanceof ProjectError) json(res, e.status, projectError(e));
+      else if (!res.headersSent)
+        json(res, e instanceof LaunchError ? e.status : 400, launchError(e));
       else res.end();
     }
   });
