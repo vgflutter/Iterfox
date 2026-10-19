@@ -47,6 +47,13 @@ superseded-orientation event and successful real Node checks. The protected JSON
 fixture fixes the canonical wire projection of every ledger prefix. New behavior
 must not reinterpret those earlier events or historical states.
 
+The existing Compass explicit-resume case uses a genuine provider interruption,
+which remains blocking. Its superseded-planner and invalid-retirement assertions
+are retained. A returned semantic self-dependency belongs to the new automatic
+correction cases; requiring it to block immediately would contradict this approved
+outcome. The frozen legacy ledger separately retains the older semantic
+rejection/resume history without reinterpreting it.
+
 After the reviewed delivery is collected, the existing real graph integration
 can also be enabled with `ITERFOX_INJECT_DIRECTION_FAULT=1` alongside
 `ITERFOX_REAL_GRAPH=1`. Its first successful real SDK orientation response then

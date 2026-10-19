@@ -394,7 +394,7 @@ test('reconciliation uses the existing model budget and never silently extends a
   assert.equal(final.turns, 1);
 });
 
-test('a new handoff after rejected orientation retires only the obsolete planner and can complete project review', async (t) => {
+test('a new handoff after a provider interruption retires only the obsolete planner and can complete project review', async (t) => {
   const f = await fixture(t, (c) => {
     c.supervision = { mode: 'project', maxReviews: 4 };
     c.limits.maxTurns = 12;
@@ -408,12 +408,8 @@ test('a new handoff after rejected orientation retires only the obsolete planner
     name: 'demo' as const,
     async invoke(r: AgentRequest) {
       if (r.mode === 'orient') {
-        const p = proposal(r);
-        if (++orientations === 1)
-          p.tasks = p.tasks.map((task, index) =>
-            index === 0 ? { ...task, waitsFor: ['render'] } : task,
-          );
-        return p;
+        if (++orientations === 1) throw new Error('Explicit provider interruption fixture.');
+        return proposal(r);
       }
       if (r.mode === 'oversee')
         return {
@@ -446,7 +442,7 @@ test('a new handoff after rejected orientation retires only the obsolete planner
   };
   const first = await new Engine(f.store, f.id, provider).run();
   assert.equal(first.status, 'BLOCKED');
-  assert.match(first.reason!, /self dependency/);
+  assert.match(first.reason!, /Explicit provider interruption/);
   const rejected = first.nodes.find((n) => n.title === 'Reconcile the project direction')!;
   addDirectionNote(f.store, f.id, {
     text: 'Preserve the original contract and use only valid dependencies.',
@@ -459,7 +455,7 @@ test('a new handoff after rejected orientation retires only the obsolete planner
   const obsolete = final.nodes.find((n) => n.id === rejected.id)!;
   assert.equal(obsolete.status, 'SKIPPED');
   assert.equal(obsolete.supersededBy, final.direction!.nodeId);
-  assert.match(obsolete.error!, /self dependency/);
+  assert.match(obsolete.error!, /Explicit provider interruption/);
   assert(final.criteria.every((c) => c.status === 'PASSED'));
   assert.equal(final.projectReviews!.at(-1)!.outcome, 'ready');
   assert.deepEqual(final.contract, f.contract);
