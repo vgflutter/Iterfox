@@ -1,0 +1,614 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-19T22:39:17.330Z",
+  "title": "Iterfox sviluppa Iterfox: memoria, governo dal grafico e recupero dei piani",
+  "sourceHead": "2c07739f2752eac22a72fdb8b2c343a032c88280",
+  "branch": "feat/project-continuity",
+  "model": "gpt-6.1-sol",
+  "sdk": "0.163.0",
+  "environment": "macOS arm64; Node 22.21.1; actual installed Chrome",
+  "project": {
+    "id": "44b52c8e-4010-4778-b291-a9527e292097",
+    "name": "Iterfox — sviluppo durante l’assenza",
+    "revision": 13,
+    "milestones": [
+      {
+        "id": "memory",
+        "title": "Memoria e continuità fra sessioni",
+        "outcome": "Conservare contesto e decisioni del progetto, governare milestone e preparare una nuova sessione con una consegna derivata da prove reali.",
+        "dependsOn": [],
+        "status": "reviewed"
+      },
+      {
+        "id": "graph",
+        "title": "Pilotare il lavoro dal grafico",
+        "outcome": "Dare indicazioni contestuali a un’attività o criterio selezionato nel Live Trail, conservando provenienza, controllo dell’operatore e compatibilità delle viste esistenti.",
+        "dependsOn": [
+          "memory"
+        ],
+        "status": "reviewed"
+      },
+      {
+        "id": "reliability",
+        "title": "Recuperare un piano rifiutato durante l’assenza",
+        "outcome": "Correggere automaticamente le proposte di direzione formalmente invalide entro i limiti già approvati, conservando storico, istruzioni, verifiche e blocchi reali.",
+        "dependsOn": [
+          "graph"
+        ],
+        "status": "active"
+      }
+    ],
+    "linkedRuns": 4,
+    "auditedHandoffs": 4,
+    "milestoneReview": "The assistant technically reviewed memory/graph for continuation; reliability remains active for the user’s review."
+  },
+  "outcome": {
+    "completedProductMissions": 3,
+    "stoppedBoundaryConflictAttempts": 1,
+    "defaultSuite": {
+      "passed": 73,
+      "skipped": 7,
+      "failed": 0
+    },
+    "chromeSuite": {
+      "passed": 9,
+      "failed": 0
+    },
+    "recoveryCases": 7,
+    "legacyFixturePrefixes": 40,
+    "typecheck": "passed",
+    "productionBuild": "passed"
+  },
+  "missions": [
+    {
+      "title": "Memoria e continuità",
+      "runId": "20261019T191726-329482b8",
+      "status": "COMPLETED",
+      "elapsedMs": 6146088,
+      "agentTurns": 16,
+      "implementedUnits": 8,
+      "discoveredUnits": 3,
+      "projectReviews": [
+        {
+          "outcome": "continue",
+          "summary": "All five current acceptance gates pass. Source inspection and the revised desktop/mobile screenshots support the implemented scope. Readiness still requires the explicitly requested whole-workflow and recovery observations beyond the protected browser smoke case."
+        },
+        {
+          "outcome": "continue",
+          "summary": "All five current acceptance gates pass. Source inspection found a responsive dependency-routing defect. The required whole-workflow and recovery observations also remain incomplete."
+        },
+        {
+          "outcome": "continue",
+          "summary": "All five current acceptance gates pass. Newly available host artifacts support the core returning-developer workflow, but the workspace documentation has not incorporated them or distinguished their older UI bundle from the current routing repair."
+        },
+        {
+          "outcome": "ready",
+          "summary": "Ready for operator review. Source inspection, current matching receipts and bounded host observations support the approved persistent workspace and reviewed continuation flow. No material remaining goal gap was found."
+        }
+      ],
+      "criteria": [
+        {
+          "id": "continuity",
+          "status": "PASSED"
+        },
+        {
+          "id": "regression",
+          "status": "PASSED"
+        },
+        {
+          "id": "types",
+          "status": "PASSED"
+        },
+        {
+          "id": "build",
+          "status": "PASSED"
+        },
+        {
+          "id": "interface",
+          "status": "PASSED"
+        }
+      ],
+      "interventions": [
+        {
+          "at": "2026-10-19T19:59:32.771Z",
+          "kind": "assistant-visual-review",
+          "noteId": "e143ee70-94f5-4631-bf8d-2d4b31c2b79f",
+          "newHumanMessages": 0,
+          "observation": "Active milestone below first viewport; prioritize visual project orientation.",
+          "layoutEvidence": "project-layout-observation.json",
+          "changesToApprovedContract": false,
+          "activityAtSubmission": "Complete recovery, responsive behavior and operating documentation"
+        },
+        {
+          "at": "2026-10-19T20:33:04.389Z",
+          "kind": "assistant-host-browser-observation",
+          "noteId": "fc2469b3-2968-4ff5-aca8-6723374d3f23",
+          "newHumanMessages": 0,
+          "report": "host-workflow-a.json",
+          "changesToApprovedContract": false,
+          "statusBefore": "RUNNING"
+        },
+        {
+          "at": "2026-10-19T20:44:38.683Z",
+          "kind": "assistant-explicit-resume-after-invalid-direction",
+          "noteId": "02dd999c-7508-4f95-84cd-1baa3d7a3671",
+          "reason": "Direction referenced an unapproved criterion or self dependency",
+          "newHumanMessages": 0,
+          "changesToApprovedContract": false,
+          "frozenRuntimeUnchanged": true
+        },
+        {
+          "at": "2026-10-19T20:59:37.303Z",
+          "kind": "assistant-runtime-maintenance-and-resume",
+          "reason": "Project review must follow a verified milestone and match its recorded snapshot",
+          "sourceCommit": "0ba4a48c7cb563f92b19ef098bd8eb0154994ade",
+          "newHumanMessages": 0,
+          "changesToApprovedContract": false,
+          "originalFrozenRuntimePreserved": true,
+          "priorHistoryReplayIdentical": true,
+          "failedManualSkipAttempt": "Original guard rejected retirement via task.skipped; no event/state mutation occurred. Recovery instead uses the tested guarded direction.superseded event."
+        }
+      ],
+      "replayMatches": true,
+      "frozenRuntimeHashesMatch": true,
+      "runtimeUpgrades": [
+        {
+          "at": "2026-10-19T20:59:37.010Z",
+          "from": "/Users/vins/work/iterfox/.iterfox/missions/project-continuity-20261019/runtime",
+          "fromHashes": {
+            "dist/core/engine.js": "288c8fbb4717a943438dc629bd6fd68cfd4c54fa96b09b0b8a998fa3a8d9ffa9",
+            "dist/core/model.js": "0fba23f8b7ec30686f9f1c654044ea09d4cbc294fe91ed9eb1e84755b90a6f5c",
+            "dist/core/workspace.js": "a0c531794db9e31bae2351da1ed760ef3bbc974caf9436ea51b9d3d8d0a35252",
+            "dist/core/store.js": "c331c63bca3d83914653b6439fa59aa2ffd90f64e9ece73c8ba93bf995cf1911",
+            "dist/providers/codex.js": "e16f527cf4e7d2f3416325f73922bf58a715c3653b07f1cdd97c21b6dcd4a995",
+            "dist/providers/provider.js": "0fddb695a0815ca17163e72ed88cc246a21f1f315dccd05538b2ca53052f28b9"
+          },
+          "to": "/Users/vins/work/iterfox/.iterfox/missions/project-continuity-20261019/runtime-a-recovery",
+          "toHashes": {
+            "dist/core/engine.js": "d9fe022d1da430494cadee75780c67d6eda65bc4750d9c6183342548fc7a6b01",
+            "dist/core/model.js": "bcc217bae213ae5481af0ffab92cf5579cdd8a065dc460fa7f5b7f15bfff6bfd",
+            "dist/core/workspace.js": "a0c531794db9e31bae2351da1ed760ef3bbc974caf9436ea51b9d3d8d0a35252",
+            "dist/core/store.js": "c331c63bca3d83914653b6439fa59aa2ffd90f64e9ece73c8ba93bf995cf1911",
+            "dist/providers/codex.js": "e16f527cf4e7d2f3416325f73922bf58a715c3653b07f1cdd97c21b6dcd4a995",
+            "dist/providers/provider.js": "0fddb695a0815ca17163e72ed88cc246a21f1f315dccd05538b2ca53052f28b9"
+          },
+          "sourceCommit": "0ba4a48c7cb563f92b19ef098bd8eb0154994ade",
+          "reason": "Project review must follow a verified milestone and match its recorded snapshot",
+          "scope": [
+            "Supervisor engine retires obsolete planning snapshots with a guarded event.",
+            "Prior event replay is identical; acceptance contract, source worktree and receipts are unchanged."
+          ],
+          "tests": "8 Compass tests pass; typecheck and production build pass. Original failure reproduced before fix."
+        }
+      ],
+      "originalWorktreeHeadPreserved": true,
+      "implementationHashes": {
+        "README.it.md": "7e7b5f13e3537a771d2a5e0cd77aa30d4b9b8f05a961ee3a33c02bbbcec746ed",
+        "README.md": "e520a367c23efdc640ed8132e8350e0b4f66df5e81dc15a74b60265e505be7e3",
+        "src/server.ts": "30065b35bfcaa1a39dfd41c6e525b9ce8483126bd1263c71a35e63a521091a01",
+        "src/ui/main.tsx": "ae6978e37782e915bf6bbfc4f6691c147da6e1224dc5b3c99f2fdf58883a2eae",
+        "src/ui/new-run.tsx": "3921417a82238164968fc7782c1010a97e1d10ac6a916ee6a988ce05879cbd8e",
+        "src/ui/style.css": "b938253d9b9293e12371501ab8dd5344a1566c68ebbdaa1e470d6d5c6447225c",
+        "docs/project-workspace.md": "b57db6e52667e356f3c21de3993f01a9f39835379d8bbecba4595160eea38de5",
+        "src/projects/context.ts": "76aec3008a757fa9cc54d9836c08ad408526b884c0c3a50d66f8466627b9118f",
+        "src/projects/continuations.ts": "76cb882660b556e71a0cfcf28c4a8f989b589cfec12219ac19fcae6a2f3594e0",
+        "src/projects/errors.ts": "eac0d97f3cda8c39afad1d2ad5eee4f3242b460e24e15fe1f552357b214295f3",
+        "src/projects/handoffs.ts": "680f684dcf47e7edb6853f75274a81a92d33ad7437c69b7e13d6e76946ff5374",
+        "src/projects/repository.ts": "3fed9a1722f2efe292ec92f64bfa71ab4302f4d72a469c52c30db9a407704d1b",
+        "src/projects/service.ts": "0989b495b7bd4ca609092be1e43a6742cb1f99884a07d74a6459021ccc615233",
+        "src/projects/store.ts": "98c141e333f56ab6e83e218962e9b7399397351f1701f261c3164f63a9fa68d3",
+        "src/shared/projects.ts": "c13d5565437d4662d5e27c29a595c672f5ee2117da73074a7a36924d2a1c0024",
+        "src/ui/project-handoff.tsx": "5cb5d09f5a40937da5bf3fd1f38a0d863ac89a75b5f2add66487721b7569a179",
+        "src/ui/project-roadmap.tsx": "27f577cd8aa339d62ce24831dbdef27fb8f4bc2761ae57c4f72ce47b5e7e0425",
+        "src/ui/project-sessions.tsx": "a46c7e946123f4983802f733266cbb216c291e01c47fc0bfc2e435fddd1a6d2d",
+        "src/ui/projects-api.ts": "94dfcef9f5dd280d5a07f027ef08277612448d55edc1dfc0ccf51fc56a7f505f",
+        "src/ui/projects.tsx": "1bfba7c716e1448e9316d06fe7f9af25180b397a3b43dc2e024a145cff3d329b"
+      }
+    },
+    {
+      "title": "Comandi contestuali dal grafico",
+      "runId": "20261019T210114-4d752b17",
+      "status": "COMPLETED",
+      "elapsedMs": 3235478,
+      "agentTurns": 11,
+      "implementedUnits": 6,
+      "discoveredUnits": 2,
+      "projectReviews": [
+        {
+          "outcome": "continue",
+          "summary": "Current receipts and captures support the implemented interface, but reconciliation lacks a reliable mapping from selected node IDs to activities. The guides also need reconciliation with the completed qualitative assessment and real Codex probe."
+        },
+        {
+          "outcome": "ready",
+          "summary": "Read-only inspection found no remaining material goal gap. Current receipts cover all eight criteria; qualitative scores are 5/5/4/5. The bounded real Codex probe completed with three verified fixture criteria and no additional operator messages. This is a same-integration judgment, not independent certification."
+        }
+      ],
+      "criteria": [
+        {
+          "id": "continuity",
+          "status": "PASSED"
+        },
+        {
+          "id": "graph",
+          "status": "PASSED"
+        },
+        {
+          "id": "regression",
+          "status": "PASSED"
+        },
+        {
+          "id": "types",
+          "status": "PASSED"
+        },
+        {
+          "id": "build",
+          "status": "PASSED"
+        },
+        {
+          "id": "interface",
+          "status": "PASSED"
+        },
+        {
+          "id": "capture",
+          "status": "PASSED"
+        },
+        {
+          "id": "usability",
+          "status": "ASSESSED"
+        }
+      ],
+      "interventions": [],
+      "replayMatches": true,
+      "frozenRuntimeHashesMatch": true,
+      "runtimeUpgrades": [],
+      "originalWorktreeHeadPreserved": true,
+      "implementationHashes": {
+        "README.it.md": "f7a58231277a4eee963133ed544abee5b0872a5c9459d68117c5548f879d808e",
+        "README.md": "72b63ee104a4919ea89720c06a0c1518fc44cbad84990ec522c2a97349f585bc",
+        "docs/project-workspace.md": "13b6ce4644ac4e536b6892f042e7af1bd5425250393388bf8e708f22d8456a87",
+        "src/core/brief.ts": "0ca6c284fa24bc274cc4108a87033154a33cac16ade37bf9b9a05682120ecbb8",
+        "src/core/compass.ts": "861c85a78b58d0230a4b6fdac67eaf3254b16390ab8d6f0f1c46f006ecc05c99",
+        "src/server.ts": "c5877a02144debbcf9490c7776b82aad90152b8e4dd1d1560bf401646483f42b",
+        "src/service.ts": "9be7bd5fd6f02fe7342a7aed605df1fc670fb044440afe2c3aba123e92cc52ed",
+        "src/ui/compass.tsx": "b15319cb40ae73a548889dc062d280df9fec502b9a9d7c901638c11d21971d02",
+        "src/ui/graph.ts": "959b6a17f8ad293fdb147ac36345081160595a2ab67cba52839c2d585db890e1",
+        "src/ui/main.tsx": "a8a871fbf5fcd352bf22c7b11804aaf839c79d0c6b0e941c9a1a2e4181a5c156",
+        "src/ui/style.css": "7f536554a48e9cadb655040d1f48f35562386e3e997961c98307c75030ed65bd",
+        "docs/graph-controls.md": "a551c037eba3c16bb22f1f45a9694cb3039e77f196e964ad0fd3b36f4113a324",
+        "src/ui/direction-note.tsx": "28696794848369f51e83b00f9af8f0d872764820b2932ef3ba855e7443ad55ee",
+        "src/ui/selected-work.tsx": "40ac70d5f68bb8f61a0ffd43f8862ecfddbbca7603ed73d26a5bba801664ac39"
+      }
+    },
+    {
+      "title": "Recupero limitato dei piani rifiutati",
+      "runId": "20261019T221229-b2caf237",
+      "status": "COMPLETED",
+      "elapsedMs": 946259,
+      "agentTurns": 6,
+      "implementedUnits": 2,
+      "discoveredUnits": 1,
+      "projectReviews": [
+        {
+          "outcome": "continue",
+          "summary": "All five supplied current acceptance receipts pass. Read-only source review found no concrete implementation gap, but the required documentation still describes host acceptance as pending."
+        },
+        {
+          "outcome": "ready",
+          "summary": "Ready for operator review. Read-only inspection found no concrete remaining gap. Current host receipts report recovery 7/7, regression 73 passed with 7 skips, successful typecheck/build, and Chrome 9/9. The previous documentation finding is resolved."
+        }
+      ],
+      "criteria": [
+        {
+          "id": "recovery",
+          "status": "PASSED"
+        },
+        {
+          "id": "regression",
+          "status": "PASSED"
+        },
+        {
+          "id": "types",
+          "status": "PASSED"
+        },
+        {
+          "id": "build",
+          "status": "PASSED"
+        },
+        {
+          "id": "interface",
+          "status": "PASSED"
+        }
+      ],
+      "interventions": [
+        {
+          "at": "2026-10-19T22:14:51.381Z",
+          "kind": "assistant-real-product-graph-priority-instruction",
+          "noteId": "32111558-b78e-4ccf-a34b-137b19852b1c",
+          "context": {
+            "criterionId": "recovery",
+            "contractVersion": 1,
+            "nodeId": "direction-c3b38516-c5fa-4933-b226-2fd90ee7e95e-0"
+          },
+          "newHumanMessages": 0,
+          "changesToApprovedContract": false,
+          "report": "steering-c.json"
+        }
+      ],
+      "replayMatches": true,
+      "frozenRuntimeHashesMatch": true,
+      "runtimeUpgrades": [],
+      "originalWorktreeHeadPreserved": true,
+      "implementationHashes": {
+        "README.it.md": "0e443756b0f45ae37f3448cea87d1f3ee5dd4f67fa974c64d4b7dcc4b322baaf",
+        "README.md": "6701bf33587f42bed4f8dcb21d7696a8f375c5b8a395d759b078f0bc55494595",
+        "src/core/compass.ts": "b79b96a9c5f6139a853643750ce4fa1fe052d8096b132815e0d7998ecf458d05",
+        "src/core/engine.ts": "d4be8ef85ee2360b3a4205ca7787c6e4adc45958c7da6799e9822a160b269656",
+        "src/core/model.ts": "0ea852ede0fcbd309c7b7da325a665929c23e68b4226afabac2f84ce3f40e783",
+        "docs/autonomous-recovery.md": "31c88ef258b6c938f922930a00ab187d5092e435ca14394a89fcae8dfff0d28f"
+      }
+    }
+  ],
+  "stoppedAttempt": {
+    "runId": "20261019T220012-163d561e",
+    "status": "STOPPED",
+    "sourceHead": "5edad6b51e2a37ca5df56a7d8e6bbcc40e42c086",
+    "reason": "Assistant-authored baseline conflict: old Compass case required blocking the semantic error that the new policy required correcting.",
+    "resolution": "New reviewed checkpoint d401a60 uses a genuine AbortSignal provider timeout for explicit-resume behavior; semantic rejections use bounded correction. Original history and all 40 legacy fixture prefixes retained.",
+    "sourceImplementationFilesChanged": 0,
+    "graphNote": {
+      "id": "2d1d3298-9722-48ae-b089-f58d482ebdcc",
+      "saved": true,
+      "reconciledBeforeStop": false
+    }
+  },
+  "realProductGraphInstruction": {
+    "runId": "20261019T221229-b2caf237",
+    "noteId": "32111558-b78e-4ccf-a34b-137b19852b1c",
+    "context": {
+      "criterionId": "recovery",
+      "contractVersion": 1,
+      "nodeId": "direction-c3b38516-c5fa-4933-b226-2fd90ee7e95e-0"
+    },
+    "resolvedActivityTitle": "Implement bounded recovery with replayable rejected attempts",
+    "disposition": "applied",
+    "directionRevision": 2,
+    "contractChanged": false,
+    "additionalHumanMessages": 0,
+    "limits": "The instruction reinforced the existing approved recovery goal; this does not measure a causal prioritization advantage."
+  },
+  "finalRealSdkProbe": {
+    "at": "2026-10-19T22:35:31.127Z",
+    "exitCode": 0,
+    "command": "ITERFOX_REAL_GRAPH=1 ITERFOX_INJECT_DIRECTION_FAULT=1 ITERFOX_BROWSER_CHANNEL=chrome ITERFOX_MODEL=gpt-6.1-sol node --import tsx --test tests/graph-codex.test.ts",
+    "log": "/private/tmp/iterfox-final-real-graph.log",
+    "report": {
+      "at": "2026-10-19T22:34:24.318Z",
+      "status": "passed",
+      "model": "gpt-6.1-sol",
+      "elapsedMs": 260432,
+      "modes": [
+        "orient",
+        "orient",
+        "build",
+        "build",
+        "build",
+        "oversee"
+      ],
+      "context": {
+        "criterionId": "unicode",
+        "contractVersion": 1,
+        "nodeId": "edd050ba-a436-4f29-97b2-a0aa2f00e20f"
+      },
+      "finalStatus": "COMPLETED",
+      "feedbackDisposition": "applied",
+      "feedbackReason": "Place Unicode work first, then complete fallback handling and the independent dialogue change. Keep all approved checks unchanged.",
+      "verified": 3,
+      "graphInstructions": 1,
+      "additionalOperatorMessages": 0,
+      "contractPreserved": true,
+      "faultInjection": {
+        "enabled": true,
+        "injected": true,
+        "kind": "One explicit semantic-reference fault after the first successful real SDK orientation response.",
+        "realOrientationCalls": 2
+      },
+      "limitations": [
+        "The invalid reference is explicitly injected; this is not an observation of a spontaneous model mistake.",
+        "Initial task is an explicit fixture. Plan reconciliation, implementation, checks and project review use real Codex.",
+        "This exercises the input route and intended behavior; it is not a matched comparison or an overnight reliability trial."
+      ]
+    }
+  },
+  "externalGraphAudit": {
+    "at": "2026-10-19T22:31:08.192Z",
+    "status": "passed",
+    "checks": [
+      "an unsent activity draft survives selecting an acceptance result and returning",
+      "a pre-upstream 503 retains text, shows the error and does not automatically retry",
+      "explicit keyboard activation records the original task context without resuming or changing the contract",
+      "a delayed task response retains its original context and leaves a different selected acceptance draft intact",
+      "a real committed HTTP 201 with its downstream response aborted stays unconfirmed, avoids automatic duplication and is inspectable in Compass history",
+      "historical replay cannot submit another selected-work instruction",
+      "the selected acceptance control fits a 390px viewport",
+      "the completed result explains follow-up work and offers no active feedback submission"
+    ],
+    "launches": 0,
+    "modelCalls": 0,
+    "pageErrors": [],
+    "provenance": "Actual browser/server/store with explicitly labelled deterministic fixtures. Terminal fixture uses real Node checks, not Codex.",
+    "limits": [
+      "Keyboard checks cover Enter graph selection and feedback form activation, not all graph keyboard navigation.",
+      "The lost response is explicitly aborted downstream after an actual upstream 201; this does not establish idempotency for arbitrary clients.",
+      "Per-target unsent drafts are page-local; no restart persistence is inferred."
+    ],
+    "stage": "c",
+    "sourceSha256": {
+      "src/ui/selected-work.tsx": "40ac70d5f68bb8f61a0ffd43f8862ecfddbbca7603ed73d26a5bba801664ac39",
+      "src/ui/direction-note.tsx": "28696794848369f51e83b00f9af8f0d872764820b2932ef3ba855e7443ad55ee",
+      "src/ui/main.tsx": "a8a871fbf5fcd352bf22c7b11804aaf839c79d0c6b0e941c9a1a2e4181a5c156",
+      "src/ui/compass.tsx": "b15319cb40ae73a548889dc062d280df9fec502b9a9d7c901638c11d21971d02",
+      "src/ui/graph.ts": "959b6a17f8ad293fdb147ac36345081160595a2ab67cba52839c2d585db890e1",
+      "src/ui/style.css": "7f536554a48e9cadb655040d1f48f35562386e3e997961c98307c75030ed65bd",
+      "src/core/compass.ts": "b79b96a9c5f6139a853643750ce4fa1fe052d8096b132815e0d7998ecf458d05",
+      "src/core/brief.ts": "0ca6c284fa24bc274cc4108a87033154a33cac16ade37bf9b9a05682120ecbb8",
+      "src/service.ts": "9be7bd5fd6f02fe7342a7aed605df1fc670fb044440afe2c3aba123e92cc52ed",
+      "src/server.ts": "c5877a02144debbcf9490c7776b82aad90152b8e4dd1d1560bf401646483f42b",
+      "src/core/model.ts": "0ea852ede0fcbd309c7b7da325a665929c23e68b4226afabac2f84ce3f40e783",
+      "src/core/engine.ts": "d4be8ef85ee2360b3a4205ca7787c6e4adc45958c7da6799e9822a160b269656"
+    },
+    "compiledUiAssets": {
+      "index-DwadBNO1.js": "eecf54bd66dc506bfda8fc928411cfbd4d6cbf3be924c29d21a07fceea9faf3c",
+      "index-aWDoHxBs.css": "f95f13fa854834cb6380a81671018a6b067b33fe3f64f07371f940c488ffe8ea"
+    }
+  },
+  "actualDeliveryUi": {
+    "at": "2026-10-19T22:35:42.233Z",
+    "status": "passed",
+    "ui": "http://127.0.0.1:4341",
+    "runId": "20261019T221229-b2caf237",
+    "noteId": "32111558-b78e-4ccf-a34b-137b19852b1c",
+    "observations": [
+      {
+        "name": "desktop",
+        "viewport": {
+          "width": 1440,
+          "height": 1080
+        },
+        "overflow": false,
+        "recordedInstructionVisible": true,
+        "disposition": "In the plan",
+        "terminalGuard": true
+      },
+      {
+        "name": "mobile",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "overflow": false,
+        "recordedInstructionVisible": true,
+        "disposition": "In the plan",
+        "terminalGuard": true
+      }
+    ],
+    "pageErrors": [],
+    "provenance": "Actual completed Codex product mission and its real model-planned activity; no screenshot task fixture or new instruction was inserted."
+  },
+  "ledgerCompatibility": {
+    "at": "2026-10-19T22:31:04.464Z",
+    "status": "passed",
+    "checks": [
+      {
+        "runId": "20261019T191726-329482b8",
+        "status": "COMPLETED",
+        "seq": 241,
+        "wireProjectionMatchesOriginal": true,
+        "originalWorktreeHeadPreserved": true,
+        "frozenCompiledHashesChecked": 6
+      },
+      {
+        "runId": "20261019T210114-4d752b17",
+        "status": "COMPLETED",
+        "seq": 215,
+        "wireProjectionMatchesOriginal": true,
+        "originalWorktreeHeadPreserved": true,
+        "frozenCompiledHashesChecked": 6
+      },
+      {
+        "runId": "20261019T220012-163d561e",
+        "status": "STOPPED",
+        "seq": 28,
+        "wireProjectionMatchesOriginal": true,
+        "originalWorktreeHeadPreserved": true,
+        "frozenCompiledHashesChecked": 40
+      },
+      {
+        "runId": "20261019T221229-b2caf237",
+        "status": "COMPLETED",
+        "seq": 82,
+        "wireProjectionMatchesOriginal": true,
+        "originalWorktreeHeadPreserved": true,
+        "frozenCompiledHashesChecked": 40
+      }
+    ],
+    "scope": "Final wire state of each of the four actual product attempts matches its original supervisor projection. The protected legacy fixture separately checks every one of its 40 historical prefixes.",
+    "source": "Reviewed delivery model; original frozen runtimes preserved, including the explicit A recovery upgrade."
+  },
+  "governance": {
+    "withinRun": "Plan, implement, verify, review and discover more work within the approved goal; contextual instructions reconcile at activity boundaries.",
+    "betweenRuns": "Assistant prepared dependencies, reviewed and committed code checkpoints, collected results and explicitly authorized subsequent contracts. No automatic multi-run scheduler/checkpoint/authorization is demonstrated.",
+    "review": "Memory and graph milestones were technically reviewed by the delegated assistant for continuation. Reliability remains active for the user’s product review.",
+    "launchRoute": "Actual Projects > Prepare next session > From a configuration file > preflight > explicit UI authorization; fixed advanced checks were prepared outside the builder."
+  },
+  "reportCorrection": {
+    "original": "B real-graph report preserved contractPreserved:false from an order-sensitive JSON string comparison.",
+    "diagnosis": "Schema normalization reproduces the false flag with structural equality before execution.",
+    "followup": "After B collection, the harness was strengthened with semantic equality, final-state assertion and an optional injected-fault case. The final real SDK probe reports structural equality true."
+  },
+  "limits": [
+    "No matched comparison with direct Codex, no measured superiority, no full overnight soak or months-long reliability claim.",
+    "Planning, qualitative assessment and project review use the same Codex integration; they are not independent certification.",
+    "The real SDK fault is deliberately injected after a successful model response. Its initial task is a fixture. The actual C2 product activity and graph note are separate real model-planned work.",
+    "The graph error/replay/keyboard audit uses explicit deterministic fixtures and no model; it covers selected keyboard paths, not complete accessibility or arbitrary-client idempotency.",
+    "Only returned semantic Compass orientation failures are corrected automatically. Provider, authentication, timeout, permission, integrity and protected-path failures remain blocking.",
+    "The first mission needed four assistant interventions, including an explicit tested supervisor upgrade. B had no during-run steering. C2 had one intentional graph instruction. The stopped C1 attempt and its setup conflict remain recorded.",
+    "Dependencies for this known repository were prepared privately; arbitrary repository environment provisioning and a live remote SSH host were not tested.",
+    "Final wire projections of four actual histories were compared; every prefix was checked only for the separate frozen 40-prefix legacy fixture.",
+    "Unsent drafts are page-local. A completed technical run does not automatically mark the product milestone reviewed.",
+    "This documentation-only delivery changes the whole-tree fingerprint. Historical acceptance remains attributed to its preserved original run worktree, not silently transferred to a new run."
+  ],
+  "inputs": {
+    "collected-a.json": {
+      "sha256": "de6757be3c4fc14cfa2815a4de520a378ee6797b35d6162de4391e94a2501aad",
+      "localArchive": "/Users/vins/work/iterfox/.iterfox/missions/project-continuity-20261019/collected-a.json"
+    },
+    "collected-b.json": {
+      "sha256": "22ae5d9270bc158ca73d2cf2b412e6d99911b0768d5e2605d056ac16051aba2f",
+      "localArchive": "/Users/vins/work/iterfox/.iterfox/missions/project-continuity-20261019/collected-b.json"
+    },
+    "collected-c.json": {
+      "sha256": "78e736dee3f735196a38089f9350942a7f83fc8372d36476764c268558a36d93",
+      "localArchive": "/Users/vins/work/iterfox/.iterfox/missions/project-continuity-20261019/collected-c.json"
+    },
+    "review-c-conflict.json": {
+      "sha256": "aabf98fe63e8a3ef20f557965962c98f288149982853a4fc84ff9a32f389034f",
+      "localArchive": "/Users/vins/work/iterfox/.iterfox/missions/project-continuity-20261019/review-c-conflict.json"
+    },
+    "actual-project-final.json": {
+      "sha256": "28d1aaa2c8d2dcc351d37e77ae3306c53a08a9612ba196cc46c422606c916da9",
+      "localArchive": "/Users/vins/work/iterfox/.iterfox/missions/project-continuity-20261019/actual-project-final.json"
+    },
+    "audit-graph-c.json": {
+      "sha256": "bc310b9951d4c0b772516708be0f730610c0d5eb96af389432abeaae1956621d",
+      "localArchive": "/Users/vins/work/iterfox/.iterfox/missions/project-continuity-20261019/audit-graph-c.json"
+    },
+    "ledger-compatibility.json": {
+      "sha256": "b0dea08b5bab8bcbbf487ec0ee274821ae142b800577a0555a3522d7e39eb7a5",
+      "localArchive": "/Users/vins/work/iterfox/.iterfox/missions/project-continuity-20261019/ledger-compatibility.json"
+    },
+    "final-real-graph.json": {
+      "sha256": "cb8bf9c41e56f7a8ffbf53dc8bdb20a5491324eb16bfe87909349298321853e0",
+      "localArchive": "/Users/vins/work/iterfox/.iterfox/missions/project-continuity-20261019/final-real-graph.json"
+    },
+    "delivery-ui-observations.json": {
+      "sha256": "3db65ee6f4b31186345d1d323b804cd0b8352729947f65d0a5995840828dd338",
+      "localArchive": "/Users/vins/work/iterfox/.iterfox/missions/project-continuity-20261019/delivery-ui-observations.json"
+    },
+    "steering-c.json": {
+      "sha256": "af7763b1ea87583b209755e8e9280df0cd7678c43a6ef92617088117643cd11b",
+      "localArchive": "/Users/vins/work/iterfox/.iterfox/missions/project-continuity-20261019/steering-c.json"
+    },
+    "audit-a-final.json": {
+      "sha256": "e1ffd721c605389b9ed01e3a3011a8700c42364a0f5607a00368fb142535aeb9",
+      "localArchive": "/Users/vins/work/iterfox/.iterfox/missions/project-continuity-20261019/audit-a-final.json"
+    },
+    "host-workflow-a.json": {
+      "sha256": "89f2c5b16bf2ef07d5ad073680a167f67fe6eef3eb3ecbe03e94cecad469867c",
+      "localArchive": "/Users/vins/work/iterfox/.iterfox/missions/project-continuity-20261019/host-workflow-a.json"
+    },
+    "audit-roadmap-a.json": {
+      "sha256": "c38c10e6d70fcc27c2d7d6ba248ae80dd105e30903b70e659a1402cff9ae5999",
+      "localArchive": "/Users/vins/work/iterfox/.iterfox/missions/project-continuity-20261019/audit-roadmap-a.json"
+    }
+  }
+}

@@ -12,6 +12,20 @@ choices stay with the agent. Return to inspect the result, evidence and decision
 This is an early working MVP. Only Codex is supported. It does not automatically
 push, merge or deploy. A completed agent turn is not a passing acceptance check.
 
+## Demonstrated on Iterfox itself
+
+Three real product missions completed: persistent project memory, contextual graph
+instructions and bounded semantic-plan recovery. A fourth attempt stopped on an
+assistant-authored test conflict and remains in the history. Reviews discovered
+and implemented missing work after green checks.
+[Report, screenshots and interventions](docs/validation/project-continuity-real.html).
+
+Within each authorized mission, Iterfox developed and adapted the work. Between
+missions, the assistant still prepared the environment, reviewed and committed
+checkpoints, and authorized the next contract. The roadmap preserves long-term
+direction; automatic cross-run scheduling is not yet demonstrated. This is not an
+overnight soak or a new comparison against direct Codex.
+
 ## Who governs the process?
 
 **You approve the destination and boundaries. Iterfox chooses and adapts the work
@@ -91,9 +105,12 @@ includes receipt IDs and the full tested fingerprint. These receipts precede thi
 documentation update; subsequent freshness checks and required project review
 remain with the unchanged runtime acceptance process.
 
-This product mission uses real Codex; the fault cases are deterministic fixtures.
-The optional real SDK injected-fault probe has not been observed for this patch.
-These results do not establish unattended overnight reliability.
+Acceptance became current again and the product mission reached **COMPLETED**.
+After collection, the optional real-SDK injected-fault probe passed on the reviewed
+code in **4 min 20 s**: two actual orientation calls, three verified fixture
+criteria and structural contract equality. Its seeded task and injected error are
+explicit fixtures, separate from the product mission.
+[Full provenance and limits](docs/validation/project-continuity-real.json).
 
 For an example handoff, state meanings and intervention steps, read the
 [Italian operating guide](README.it.md). The [English Compass guide](docs/project-compass.md)
@@ -134,32 +151,23 @@ objective, plus the criterion's title at the recorded contract version. This
 resolves “this result” when several activities share a criterion, without changing
 the stored note or granting execution or acceptance authority.
 
-The [selected-work guide](docs/graph-controls.md#observation-status-for-this-change)
-includes all six approved Chrome captures and the latest host receipts after this
-mapping correction (2026-10-19, 21:44–21:45 UTC): four continuity cases, three graph
-cases, 66 regression passes (7 optional skips), typecheck, build, nine browser cases
-and capture passed as deterministic probes before this documentation edit. The
-initial desktop and 390px images show the selected title, context and direction
-form. They are labeled fixtures.
+The final delivery exercised a contextual instruction on an actual model-planned
+product activity; it is recorded as **In the plan** with its original reference
+and reconciliation reason. Eight additional Chrome checks on the final code
+cover drafts, errors, delayed/lost responses, keyboard submission, replay, mobile
+and terminal runs using explicit fixtures. A separate real-Codex probe corrected
+one deliberately injected semantic error, completed three fixture criteria and
+preserved structural contract equality without another operator message after
+the initial Resume. This does not measure a causal priority advantage.
 
-The earlier qualitative receipt scored **context 5/5, action 5/5, layout 5/5 and
-provenance 5/5**: probabilistic **ASSESSED** by the same Codex integration, not an
-independent review or deterministic PASS. Its bounded real-Codex probe used
-`gpt-6.1-sol`, took **174130 ms** after explicit Resume and reached **COMPLETED**
-with three verified fixture criteria (`render`, `dialogue`, `unicode`), **one**
-graph instruction and **zero** additional operator messages. Handling was
-`applied`; its reason prioritized Unicode extraction while keeping dialogue
-separate and said checks/protected files remained unchanged. The report records
-**`contractPreserved: false`**. Its JSON-string comparison is order-sensitive;
-schema normalization alone reproduces false with structural equality. Final
-structural equality was not independently observed and is not claimed.
-
-That assessment/probe predates the mapping correction; it does not certify the
-corrected tree or regenerated captures. The guide distinguishes receipt versions,
-archives and remaining limits. Complete keyboard, asynchronous-error and
-terminal/replay workflows remain unobserved in Chrome. Runtime checks and review
-own acceptance of this edited tree. The older DEMO image below is historical
-context. Nodes cannot be dragged or connected to edit execution or acceptance.
+Read the [dated delivery report](docs/validation/project-continuity-real.html) for
+versions, actual screenshots, interventions and limits. The
+[selected-work guide](docs/graph-controls.md#observation-status-for-this-change)
+retains the earlier observations, including the JSON-order comparison defect in
+an old report; the final harness uses structural equality. Qualitative judgments
+are ASSESSED by the same integration, not independent certification. Keyboard
+coverage is partial. Nodes cannot be dragged or connected to edit execution or
+acceptance. The older DEMO image below remains historical context.
 
 ![Actual Live Trail showing a recorded DEMO run](docs/screenshots/live-trail.png)
 

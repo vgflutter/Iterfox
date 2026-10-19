@@ -22,6 +22,20 @@ richiedono ancora attenzione tecnica.
 Se l'interfaccia è già aperta, segui [La prima sessione](#la-prima-sessione).
 Altrimenti trovi più sotto [come avviarla](#avviare-linterfaccia).
 
+## La prova sul prodotto reale
+
+Iterfox ha completato **tre missioni sul proprio codice**: memoria persistente del
+progetto, istruzioni dal grafico e recupero limitato dei piani incoerenti. Una
+quarta esecuzione, fermata per un conflitto nei test preparati dall'assistente,
+resta nello storico. Le revisioni hanno scoperto e fatto svolgere lavoro mancante
+anche dopo i controlli verdi. [Rapporto con immagini e interventi](docs/validation/project-continuity-real.html).
+
+Il confine attuale è concreto: **Iterfox può sviluppare e adattare il lavoro dentro
+una missione autorizzata; fra missioni ho ancora gestito io ambiente, revisione,
+checkpoint Git e nuova autorizzazione.** La roadmap conserva il lungo periodo,
+ma non esegue ancora da sola una catena di sessioni. La prova non stabilisce un
+vantaggio rispetto a Codex diretto né l'affidabilità per una notte intera.
+
 ## Chi decide cosa
 
 | Aspetto                                        | Il tuo controllo                                                  | Autonomia di Iterfox                                                                  |
@@ -107,35 +121,23 @@ decisioni, insieme al titolo del criterio nella versione registrata. Questo rend
 risolvibile «questo risultato» fra più attività dello stesso criterio, senza
 modificare la nota salvata o conferire autorità di esecuzione o accettazione.
 
-Non sono disponibili trascinamento per cambiare priorità, collegamenti
-modificabili o un editor visuale del contratto. La [guida dei controlli
-contestuali](docs/graph-controls.md#observation-status-for-this-change) include i
-sei capture Chrome approvati e le ultime ricevute host dopo questa correzione
-(19 ottobre 2026, 21:44–21:45 UTC): quattro casi di continuità, tre sul grafico,
-66 test di regressione passati (7 opzionali saltati), typecheck, build, nove casi
-browser e capture sono passati come probe deterministici prima di questa revisione
-documentale. Le immagini iniziali desktop e a 390px mostrano titolo, contesto e
-form di direzione. Sono fixture dichiarate.
+La prova finale usa il codice delle tre missioni completate: un'istruzione inviata
+su una vera attività pianificata dal modello compare come **In the plan**, con
+riferimento originale e motivazione. Otto controlli Chrome aggiuntivi coprono
+bozze, errori e risposte incerte, invio da tastiera, replay, mobile e run completata;
+sono fixture dichiarate. La prova separata con **Codex reale** ha corretto un errore
+semantico introdotto apposta, poi completato sviluppo e tre criteri, con contratto
+strutturalmente invariato e nessun altro messaggio dell'operatore dopo la ripresa
+iniziale. Non misura l'effetto causale della nota sulla priorità del lavoro.
 
-La precedente ricevuta qualitativa assegna **contesto 5/5, azione 5/5, layout 5/5
-e provenienza 5/5**: **ASSESSED** probabilistico della stessa integrazione Codex,
-non revisione indipendente o PASS deterministico. La prova Codex limitata ha usato
-`gpt-6.1-sol`, impiegato **174130 ms** dopo **Resume** esplicito e raggiunto
-**COMPLETED**, con tre criteri della fixture verificati (`render`, `dialogue`,
-`unicode`), **una** istruzione dal grafico e **zero** messaggi aggiuntivi
-dell’operatore. Disposizione `applied`: la motivazione dà precedenza all’estrazione
-Unicode, mantiene separato il dialogo e dichiara invariati controlli e file protetti.
-Il report registra **`contractPreserved: false`**. Il confronto fra stringhe JSON
-dipende dall’ordine delle proprietà; la sola normalizzazione dello schema riproduce
-false con uguaglianza strutturale. L’uguaglianza strutturale finale non è stata
-osservata indipendentemente e non viene dichiarata.
-
-Valutazione e prova precedono la correzione del riferimento e non certificano
-l’albero corretto o i capture rigenerati. La guida distingue versioni delle
-ricevute, archivi e limiti. Percorsi completi da tastiera, errori asincroni e
-interazioni terminali/replay restano da osservare in Chrome. Controlli runtime e
-revisione governano l’accettazione dell’albero modificato. Le immagini e le
-ricevute del primo milestone conservano il loro valore storico.
+Il [rapporto del 19–20 ottobre](docs/validation/project-continuity-real.html)
+distingue missioni reali, fixture, interventi e limiti. La
+[guida tecnica dei controlli](docs/graph-controls.md#observation-status-for-this-change)
+conserva anche le prove precedenti e il problema del confronto JSON nel vecchio
+report, corretto nel test finale. I giudizi qualitativi sono **ASSESSED** della
+stessa integrazione, non certificazioni indipendenti. Non sono disponibili
+trascinamento per cambiare priorità, collegamenti modificabili o un editor visuale
+del contratto; la copertura da tastiera resta parziale.
 
 Una disposizione grafica diversa non può trasformare un controllo fallito in
 passato, cancellare lo storico o eliminare un criterio senza revisione approvata.
@@ -257,9 +259,12 @@ questo aggiornamento documentale; i successivi controlli di freschezza delle pro
 e la revisione di progetto richiesta restano al processo di accettazione runtime
 invariato.
 
-La missione di prodotto usa Codex reale; i guasti dei test sono fixture
-deterministiche. La prova SDK facoltativa con errore iniettato non è stata osservata
-su questa modifica. Non è una dimostrazione di affidabilità per una notte intera.
+Le verifiche sono poi tornate attuali e la missione ha raggiunto **COMPLETED**.
+Dopo la raccolta, la prova SDK facoltativa sul codice revisionato è passata in
+**4 min 20 s**: un errore semantico iniettato dopo una risposta valida, due chiamate
+reali di orientamento, tre criteri verificati e contratto invariato. Task iniziale
+e guasto di questa prova sono fixture esplicite; la missione sul prodotto è separata.
+[Prove, versioni e limiti](docs/validation/project-continuity-real.json).
 
 Il lavoro vive in una cartella Git separata, chiamata **worktree**, su un branch
 `iterfox/<id>`. L'archivio conserva eventi, decisioni e prove. Le dipendenze necessarie

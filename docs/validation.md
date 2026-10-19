@@ -2,6 +2,45 @@
 
 Each dated record describes its own code, protocol and limits.
 
+## Real project continuity and graph governance — 2026-10-19–20
+
+Three actual Codex product missions completed on Iterfox itself: durable project
+memory, contextual Live Trail instructions and bounded semantic Compass recovery.
+A fourth attempt stopped because the assistant's prepared baseline contradicted
+the new recovery policy. That attempt and its unchanged source remain preserved;
+a reviewed checkpoint reconciled genuine provider timeout with semantic rejection.
+
+The final mission passed **73 regression cases with 7 optional skips**, typecheck,
+production build and **9 Chrome cases**. Seven recovery cases include all 40
+prefixes of a frozen legacy ledger. The final wire projections of all four actual
+attempts also match those of their original runtimes. An external browser audit
+passed eight graph-control error/replay/mobile checks on explicit deterministic
+fixtures. Actual project and instruction screenshots were inspected separately.
+
+The final opted-in real SDK test passed in **260432 ms**. It seeds an initial
+fixture task, sends a graph instruction through Chrome and explicitly resumes;
+after the first successful real model response, it injects one invalid criterion
+reference. Two real orientation calls correct it, then real implementation,
+checks and project review complete three criteria. Structural contract equality
+holds and no additional operator message is required. This is deliberate fault
+injection, not an observed spontaneous model failure. It also replaces an older
+report's order-sensitive JSON comparison with a structural final-state assertion;
+the original false flag remains in the historical record.
+
+Assistant intervention is explicit: A needed four interventions including a tested
+supervisor runtime upgrade; B had none during its run; C2 received one deliberate
+graph instruction on its actual model-planned activity. The stopped C1 instruction
+was saved but not reconciled. Environment preparation, code checkpoints, collection
+and subsequent session authorization remained with the delegated assistant.
+This does not establish automatic multi-run development, overnight reliability,
+independent AI review or an advantage over direct Codex. The technical completion
+leaves the final roadmap milestone active for the user's product review.
+
+- [Readable Italian report with actual screenshots](validation/project-continuity-real.html)
+- [Structured record, interventions, hashes and local archive paths](validation/project-continuity-real.json)
+- [Operating guide](../README.it.md)
+- [Recovery implementation and historical observations](autonomous-recovery.md)
+
 ## Real project goal launch — 2026-10-19
 
 Iterfox developed its own natural-language New Run flow from a committed backend

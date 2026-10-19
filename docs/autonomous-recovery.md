@@ -172,9 +172,29 @@ The report records fault injection and orientation-call counts. The initial task
 is a fixture; the injected error is not a spontaneous model mistake. The real
 product mission's model-planned activity is separate from this seeded integration.
 
-This optional probe was not run in this builder session; no new SDK correction
-report is available here. Neither deterministic cases nor a bounded integration
+This optional probe was not run inside the builder session; no new SDK correction
+report was available there. Neither deterministic cases nor a bounded integration
 would establish general unattended recovery, resilience to every provider failure,
 an overnight soak, or an advantage over direct Codex. Model planning and project
 review remain probabilistic judgments of the same integration. Inspect current
 runtime evidence and unresolved decisions before integrating any result.
+
+### Post-collection observation — 2026-10-19 22:34 UTC
+
+The delivery assistant subsequently ran that opted-in test on reviewed commit
+`2c07739f2752eac22a72fdb8b2c343a032c88280`. It **passed** in **260432 ms** with
+`gpt-6.1-sol`: the fault was injected once, two actual orientation calls occurred,
+the contextual instruction was applied and real implementation/checks/review
+reached COMPLETED with three verified criteria. The test asserts final structural
+contract equality and reports zero additional operator messages after initial
+Resume. It does not turn the synthetic fault into a spontaneous-model observation
+or change the limits above.
+
+Eight additional browser error/replay/mobile checks passed on the final source
+with explicit deterministic fixtures. Separate desktop/mobile captures show the
+actual completed product mission and its real model-planned activity's instruction.
+The four actual ledgers retain their original final wire projections under the
+delivery model; all 40 historical prefixes are checked for the separate legacy
+fixture. See the [delivery report](validation/project-continuity-real.html) and
+[structured receipts](validation/project-continuity-real.json). Documentation-only
+collection does not transfer old acceptance proofs to a newly started run.
