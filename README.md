@@ -69,6 +69,32 @@ restart it. Work stops when the goal is ready, progress needs your intervention 
 an approved limit is reached; eight hours is a maximum window, not work to fill.
 Paused time counts toward that window. Neither resume nor a new note extends it.
 
+When a successfully returned structured Compass direction has invalid criterion
+references, dependencies, note accounting or question handling, Iterfox can ask
+for correction with validation feedback. The first attempt counts toward the
+original `maxAttempts`; calls share the remaining turn, token and time budgets.
+Rejected proposals and reasons remain replayable without becoming active work or
+proof. Ordered handoffs and linked questions are preserved. Audits gate each
+correction; provider/authentication/timeout/network/sandbox failures, source
+integrity failures and protected edits still block.
+
+The [recovery record](docs/autonomous-recovery.md) documents the first mission's
+explicit recovery, the stopped conflicting attempt and the operator's reviewed
+timeout/semantic-rejection reconciliation. Locally, seven protected recovery
+fixtures and eight Compass cases passed, including 40 frozen replay prefixes;
+TypeScript passed. Separate runtime host receipts for the post-implementation
+snapshot (`ccde5f1b4a4d…`, 2026-10-19 22:22–22:23 UTC) record **7/7 recovery cases,
+73 regression passes with 7 optional skips, successful server/UI typecheck and
+production build, and 9 passing Chrome cases**. The build retains the existing
+Vite advisory: a 668.44 kB minified JavaScript chunk exceeds 500 kB. The record
+includes receipt IDs and the full tested fingerprint. These receipts precede this
+documentation update; subsequent freshness checks and required project review
+remain with the unchanged runtime acceptance process.
+
+This product mission uses real Codex; the fault cases are deterministic fixtures.
+The optional real SDK injected-fault probe has not been observed for this patch.
+These results do not establish unattended overnight reliability.
+
 For an example handoff, state meanings and intervention steps, read the
 [Italian operating guide](README.it.md). The [English Compass guide](docs/project-compass.md)
 covers steering, and the [goal launch guide](docs/goal-launch.md) covers draft review

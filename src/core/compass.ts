@@ -210,6 +210,10 @@ export function heldCriteria(s: RunState): Set<string> {
   }
   return held;
 }
+// Only semantic rejection of a successfully returned, structured proposal can
+// request correction. Schema, handoff/source integrity and provider errors block.
+export class DirectionProposalRejection extends Error {}
+
 export function validateDirection(
   s: RunState,
   raw: unknown,
@@ -233,7 +237,7 @@ export function validateDirection(
     p.notes.length !== expected.length ||
     p.notes.some((n) => !expected.includes(n.noteId))
   )
-    throw new Error('Every active handoff note needs exactly one disposition');
+    throw new DirectionProposalRejection('Every active handoff note needs exactly one disposition');
   const ids = new Set(s.criteria.map((c) => c.id));
   if (
     p.notes.some((n) => n.criterionIds.some((id) => !ids.has(id))) ||
@@ -242,7 +246,9 @@ export function validateDirection(
         !ids.has(t.criterionId) || t.waitsFor.some((id) => !ids.has(id) || id === t.criterionId),
     )
   )
-    throw new Error('Direction referenced an unapproved criterion or self dependency');
+    throw new DirectionProposalRejection(
+      'Direction referenced an unapproved criterion or self dependency',
+    );
   // A model cannot answer its own request for an operator decision on the next replan.
   for (const q of questions(snapshot))
     if (
@@ -252,12 +258,13 @@ export function validateDirection(
           (id) => !p.notes.find((n) => n.noteId === q.noteId)?.criterionIds.includes(id),
         ))
     )
-      throw new Error('An operator question needs a linked operator reply');
+      throw new DirectionProposalRejection('An operator question needs a linked operator reply');
   const deps = new Map<string, string[]>();
   for (const t of p.tasks)
     deps.set(t.criterionId, [...(deps.get(t.criterionId) ?? []), ...t.waitsFor]);
   const visit = (id: string, trail: Set<string>) => {
-    if (trail.has(id)) throw new Error('Direction contains a dependency cycle');
+    if (trail.has(id))
+      throw new DirectionProposalRejection('Direction contains a dependency cycle');
     for (const next of deps.get(id) ?? []) visit(next, new Set([...trail, id]));
   };
   for (const id of deps.keys()) visit(id, new Set());

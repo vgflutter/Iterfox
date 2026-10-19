@@ -1,12 +1,18 @@
 import { randomUUID } from 'node:crypto';
 import { resolve } from 'node:path';
-import { needsOrientation, heldCriteria, questions, validateDirection } from './compass.js';
+import {
+  needsOrientation,
+  heldCriteria,
+  questions,
+  validateDirection,
+  DirectionProposalRejection,
+} from './compass.js';
 import { projectReviewCurrent, validateProjectReview } from './supervision.js';
 import { Store } from './store.js';
 import { auditChanges, changedFiles, stamp, worktreeDiff } from './workspace.js';
 import { artifactRoot, readArtifact } from './artifacts.js';
 import { verify } from '../verifiers/runtime.js';
-import { satisfied, obsoleteOrientations } from './model.js';
+import { satisfied, obsoleteOrientations, rejectedOrientations } from './model.js';
 import {
   buildSchema,
   diagnosisSchema,
@@ -319,45 +325,93 @@ export class Engine {
     );
   }
   private async orient(): Promise<void> {
-    const snapshot = this.state;
-    const sourceIds = (snapshot.notes ?? []).map((n) => n.id);
-    const key = JSON.stringify({ sourceIds, version: snapshot.contractVersion });
-    let planner = snapshot.nodes.find(
-      (n) =>
-        n.role === 'planner' &&
-        n.objective === key &&
-        n.title === 'Reconcile the project direction' &&
-        ['PENDING', 'PASSED'].includes(n.status),
-    );
-    if (!planner) {
-      planner = node({
-        kind: 'decision',
-        role: 'planner',
-        title: 'Reconcile the project direction',
-        objective: key,
-        criterionId: snapshot.criteria[0].id,
-        reason: 'Operator handoff changed; reconcile once at an activity boundary.',
-      });
-      this.emit('task.planned', planner.title, { node: planner });
+    while (true) {
+      this.boundary();
+      // Audit at every boundary, including after rejection and before another
+      // provider call. An invalid proposal cannot hide a protected edit.
+      await auditChanges(this.state);
+      const snapshot = this.state;
+      const rejected = rejectedOrientations(snapshot);
+      if (rejected.length >= snapshot.contract.limits.maxAttempts)
+        throw new Error(
+          `Direction proposal attempt limit reached (${snapshot.contract.limits.maxAttempts}): ${rejected.at(-1)!.error}`,
+        );
+      const lastRejection = rejected.at(-1);
+      const failure = lastRejection
+        ? `Direction proposal rejected (attempt ${lastRejection.attempt} of ${snapshot.contract.limits.maxAttempts}): ${lastRejection.error}. Correct the orientation using the supplied current handoff snapshot, including any newer notes. Account for each active note exactly once. Use only approved criterion IDs; waitsFor must not contain a self dependency or a cycle. Keep existing operator questions and all their held criteria until a linked operator reply. The rejected proposal was not activated and supplies no work or evidence.`
+        : undefined;
+      const sourceIds = (snapshot.notes ?? []).map((n) => n.id);
+      const key = JSON.stringify({ sourceIds, version: snapshot.contractVersion });
+      let planner = snapshot.nodes.find(
+        (n) =>
+          n.role === 'planner' &&
+          n.objective === key &&
+          n.title === 'Reconcile the project direction' &&
+          ['PENDING', 'PASSED'].includes(n.status),
+      );
+      if (!planner) {
+        // Do not create another activity when the original model budget is
+        // already exhausted. invoke also checks immediately before the call.
+        this.boundary(true);
+        if (snapshot.turns >= snapshot.contract.limits.maxTurns)
+          throw new Error('Agent turn limit reached');
+        planner = node({
+          kind: 'decision',
+          role: 'planner',
+          title: 'Reconcile the project direction',
+          objective: key,
+          criterionId: snapshot.criteria[0].id,
+          attempt: rejected.length + 1,
+          reason: 'Operator handoff changed; reconcile once at an activity boundary.',
+        });
+        this.emit('task.planned', planner.title, { node: planner });
+      }
+      // Snapshot and result survive interruption; a completed planning turn is never paid for twice.
+      // Provider failures are outside the validation catch and always block.
+      const proposal =
+        planner.result?.proposal ??
+        (await this.invoke('orient', planner, failure, undefined, snapshot.notes));
+      let rejection: DirectionProposalRejection | undefined;
+      try {
+        validateDirection(snapshot, proposal, sourceIds);
+      } catch (error) {
+        if (!(error instanceof DirectionProposalRejection)) {
+          await auditChanges(this.state);
+          throw error;
+        }
+        rejection = error;
+        this.emit('direction.rejected', `Direction proposal rejected: ${error.message}`, {
+          nodeId: planner.id,
+          proposal,
+          sourceIds,
+          reason: error.message,
+        });
+      }
+      // Preserve the rejected response even when this audit blocks correction.
+      await this.refreshEvidence();
+      await auditChanges(this.state);
+      this.boundary();
+      if (rejection) continue;
+      if (!planner.result)
+        this.emit(
+          'task.completed',
+          'Handoff consolidated; no completion or acceptance is implied.',
+          {
+            nodeId: planner.id,
+            summary: 'Direction proposal mapped to the unchanged acceptance contract.',
+            result: { proposal, sourceIds },
+          },
+        );
+      this.emit(
+        'direction.compiled',
+        'Project direction updated. Unstarted work replaced; independent work can continue while operator questions wait.',
+        {
+          nodeId: planner.id,
+          sourceIds,
+        },
+      );
+      return;
     }
-    // Snapshot and result survive interruption; a completed planning turn is never paid for twice.
-    const proposal = planner.result?.proposal ?? (await this.invoke('orient', planner));
-    validateDirection(snapshot, proposal, sourceIds);
-    await auditChanges(this.state);
-    if (!planner.result)
-      this.emit('task.completed', 'Handoff consolidated; no completion or acceptance is implied.', {
-        nodeId: planner.id,
-        summary: 'Direction proposal mapped to the unchanged acceptance contract.',
-        result: { proposal, sourceIds },
-      });
-    this.emit(
-      'direction.compiled',
-      'Project direction updated. Unstarted work replaced; independent work can continue while operator questions wait.',
-      {
-        nodeId: planner.id,
-        sourceIds,
-      },
-    );
   }
   private interrupt(message: string): void {
     for (const n of this.state.nodes.filter((n) => ['RUNNING', 'VERIFYING'].includes(n.status)))
@@ -368,6 +422,7 @@ export class Engine {
     activity: TaskNode,
     failure?: string,
     reviewImages?: AgentRequest['reviewImages'],
+    handoffSnapshot?: RunState['notes'],
   ): Promise<unknown> {
     this.boundary(true);
     if (this.state.turns >= this.state.contract.limits.maxTurns)
@@ -391,10 +446,13 @@ export class Engine {
     );
     const signal = AbortSignal.any([this.abort.signal, timeout]);
     try {
+      const current = this.state;
       const answer = await this.provider.invoke({
         mode,
-        state: this.state,
-        node: this.state.nodes.find((n) => n.id === activity.id)!,
+        // Instructions arriving after the captured boundary remain pending for
+        // the next one; they cannot change the snapshot this response must cover.
+        state: handoffSnapshot ? { ...current, notes: handoffSnapshot } : current,
+        node: current.nodes.find((n) => n.id === activity.id)!,
         signal,
         failure,
         reviewImages,

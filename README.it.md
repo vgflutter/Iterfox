@@ -232,6 +232,35 @@ finire prima e non aggiunge funzionalità estranee per riempire il tempo. La dur
 è tempo trascorso e comprende anche le pause. **Resume** non azzera il tempo né
 estende automaticamente i limiti.
 
+Se Codex restituisce una direzione Compass strutturata con riferimenti a criteri,
+dipendenze, disposizioni delle note o gestione delle domande non validi, il motore
+può chiedere una correzione fornendo il motivo. Il primo tentativo conta nel
+`maxAttempts` originale; ogni chiamata consuma i limiti di turni, token e tempo già
+approvati. Le proposte rifiutate restano ispezionabili e ricostruibili dal replay,
+senza diventare lavoro attivo o prove. Restano conservati handoff ordinati e domande
+con risposta collegata. L'audit precede ogni correzione; errori del provider,
+autenticazione, timeout, rete, sandbox, integrità delle fonti e modifiche protette
+continuano a bloccare.
+
+Il [resoconto del recupero](docs/autonomous-recovery.md) conserva la ripresa
+esplicita della prima missione, il tentativo fermato per il conflitto nei test e
+la decisione dell'operatore che separa timeout e rifiuti semantici. In locale sono
+passati i sette casi protetti di recupero e gli otto Compass, incluse 40 proiezioni
+storiche congelate, oltre al typecheck. Le ricevute host del runtime, distinte dai
+resoconti locali, registrano sullo snapshot dopo l'implementazione (`ccde5f1b4a4d…`,
+19 ottobre 2026, 22:22–22:23 UTC) **7/7 casi di recupero, 73 test di regressione
+passati con 7 opzionali saltati, typecheck server/UI e build di produzione riusciti,
+9 casi Chrome passati**. La build conserva l'avviso Vite esistente: un chunk
+JavaScript minificato di 668,44 kB supera 500 kB. Il resoconto include gli ID delle
+ricevute e il fingerprint completo dello snapshot verificato. Le ricevute precedono
+questo aggiornamento documentale; i successivi controlli di freschezza delle prove
+e la revisione di progetto richiesta restano al processo di accettazione runtime
+invariato.
+
+La missione di prodotto usa Codex reale; i guasti dei test sono fixture
+deterministiche. La prova SDK facoltativa con errore iniettato non è stata osservata
+su questa modifica. Non è una dimostrazione di affidabilità per una notte intera.
+
 Il lavoro vive in una cartella Git separata, chiamata **worktree**, su un branch
 `iterfox/<id>`. L'archivio conserva eventi, decisioni e prove. Le dipendenze necessarie
 in quella cartella non vengono installate automaticamente: se mancano, occorre

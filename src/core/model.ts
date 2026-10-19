@@ -5,6 +5,7 @@ import {
   questions,
   heldCriteria,
   validateDirection,
+  DirectionProposalRejection,
   type DirectionNote,
   type Direction,
 } from './compass.js';
@@ -309,6 +310,7 @@ export type EventType =
   | 'progress.recorded'
   | 'direction.noted'
   | 'direction.compiled'
+  | 'direction.rejected'
   | 'direction.superseded'
   | 'project.reviewed'
   | 'project.review.invalidated';
@@ -379,6 +381,23 @@ export function obsoleteOrientations(s: RunState): TaskNode[] {
   });
 }
 
+// Count only the new semantic-rejection receipts since the last accepted
+// direction in this contract. New notes and explicit resume do not reset them.
+// Keeping this additive leaves every historical ledger prefix unchanged.
+export function rejectedOrientations(s: RunState): TaskNode[] {
+  const accepted = s.nodes.findIndex((n) => n.id === s.direction?.nodeId);
+  return s.nodes
+    .slice(accepted + 1)
+    .filter(
+      (n) =>
+        n.kind === 'decision' &&
+        n.role === 'planner' &&
+        n.title === 'Reconcile the project direction' &&
+        n.result?.rejection !== undefined &&
+        n.result.contractVersion === s.contractVersion,
+    );
+}
+
 export function reduce(previous: RunState | undefined, event: RunEvent): RunState {
   if (event.schemaVersion !== 1 || event.seq !== (previous?.seq ?? 0) + 1)
     throw new Error('Invalid event schema or ordering');
@@ -399,6 +418,43 @@ export function reduce(previous: RunState | undefined, event: RunEvent): RunStat
     return n;
   };
   switch (event.type) {
+    case 'direction.rejected': {
+      const n = node();
+      const sourceIds = d.sourceIds as string[];
+      if (
+        s.status !== 'RUNNING' ||
+        n.kind !== 'decision' ||
+        n.role !== 'planner' ||
+        n.title !== 'Reconcile the project direction' ||
+        n.status !== 'RUNNING' ||
+        n.result ||
+        !Array.isArray(sourceIds) ||
+        n.objective !== JSON.stringify({ sourceIds, version: s.contractVersion }) ||
+        n.attempt !== rejectedOrientations(s).length + 1 ||
+        n.attempt > s.contract.limits.maxAttempts
+      )
+        throw new Error('Direction rejection requires the active bounded orientation snapshot');
+      let rejection: DirectionProposalRejection | undefined;
+      try {
+        validateDirection(s, d.proposal, sourceIds);
+      } catch (error) {
+        if (!(error instanceof DirectionProposalRejection)) throw error;
+        rejection = error;
+      }
+      if (!rejection || rejection.message !== d.reason)
+        throw new Error('Only a semantically invalid direction can be recorded as rejected');
+      transition(n, 'FAILED');
+      n.error = rejection.message;
+      n.summary = event.message;
+      n.endedAt = event.at;
+      n.result = {
+        proposal: structuredClone(d.proposal),
+        sourceIds: [...sourceIds],
+        contractVersion: s.contractVersion,
+        rejection: rejection.message,
+      };
+      break;
+    }
     case 'direction.superseded': {
       const n = node();
       if (
