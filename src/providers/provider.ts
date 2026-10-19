@@ -24,8 +24,20 @@ export const buildSchema = z
     summary: z.string().min(1).max(8000),
     blocked: z.boolean(),
     reason: z.string().max(4000),
+    verificationRequest: z
+      .object({ criterionIds: z.array(z.string().min(1)).min(1).max(30) })
+      .strict()
+      .nullable()
+      .default(null),
   })
-  .strict();
+  .strict()
+  .superRefine((result, ctx) => {
+    if (result.blocked && result.verificationRequest)
+      ctx.addIssue({
+        code: 'custom',
+        message: 'An implementation blocker cannot be downgraded to a verification handoff',
+      });
+  });
 export const diagnosisSchema = z
   .object({
     hypothesis: z.string().min(3).max(4000),

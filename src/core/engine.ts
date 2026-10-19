@@ -526,11 +526,14 @@ export class Engine {
         );
     }
   }
-  private async probePlannedWork(): Promise<void> {
+  private async probePlannedWork(criterionIds?: string[]): Promise<void> {
     // Cheap approved command probes can discover already-covered future work.
     // Never add speculative browser captures or model assessments to this phase.
     for (const c of this.state.contract.criteria.filter(
-      (c) => !c.verification && !heldCriteria(this.state).has(c.id),
+      (c) =>
+        !c.verification &&
+        !heldCriteria(this.state).has(c.id) &&
+        (!criterionIds || criterionIds.includes(c.id)),
     )) {
       this.boundary();
       if (needsOrientation(this.state)) return;
@@ -626,6 +629,22 @@ export class Engine {
     });
     if (result.blocked)
       throw new Error(`Codex requested operator attention: ${result.reason || result.summary}`);
+    if (result.verificationRequest) {
+      const ids = [...new Set(result.verificationRequest.criterionIds)];
+      for (const id of ids) {
+        const criterion = this.state.contract.criteria.find((c) => c.id === id);
+        if (!criterion || criterion.verification || heldCriteria(this.state).has(id))
+          throw new Error(`Invalid runtime verification request: ${id}`);
+      }
+      this.emit(
+        'decision.recorded',
+        'Builder handed verification to the runtime host. Agent-local check limitations are unverified observations; only approved runtime checks can certify results.',
+        { kind: 'verification.handoff', nodeId: task.id, criterionIds: ids },
+      );
+      // Negative probes defer diagnosis until remaining planned work is done.
+      // This does not grant the builder authority to change or certify a check.
+      await this.probePlannedWork(ids);
+    }
     const noProgress = files.length ? 0 : this.state.noProgress + 1;
     this.emit(
       'progress.recorded',

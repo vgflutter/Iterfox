@@ -90,6 +90,19 @@ attached for supervisor inspection. They remain labeled observed evidence. A
 read-only reviewer changing the source blocks the run. Review/attempt/no-progress
 limits prevent endless cycling.
 
+## Verification handoff
+
+Builder commands run inside the Codex sandbox, while the runtime executes the exact
+approved checks on its host. An agent-local `EPERM` opening a localhost listener,
+an unavailable browser or an unobserved model API call is not evidence that the
+implementation needs new permissions. Builders can return a structured
+`verificationRequest` naming existing plain-command criterion IDs and continue
+with `blocked: false`. The runtime validates those IDs and gathers current proof.
+Negative probes defer diagnosis while planned implementation remains; they never
+become a PASS from the builder's statement. Genuine protected edits, unauthorized
+actions and reserved operator decisions still require `blocked: true` and cannot
+be combined with a verification handoff. The handoff adds no commands or permissions.
+
 ## Present scope
 
 The supervisor can develop and improve the approved code and deliverables, discover
