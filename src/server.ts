@@ -9,16 +9,16 @@ import { contractSchema } from './core/model.js';
 import { noteInputSchema } from './core/compass.js';
 import { brief, markdownBrief } from './core/brief.js';
 import { Store } from './core/store.js';
+import { LaunchService } from './launch/service.js';
+import { LaunchError, launchError } from './launch/errors.js';
+import { browseRepositories } from './launch/repositories.js';
 import {
   createRun,
-  loadContract,
-  preflight,
   controlRun,
   resumeRun,
   recoverDeadWorkers,
   auditStoredEvidence,
   addDirectionNote,
-  withProjectSupervision,
 } from './service.js';
 
 export async function serve(
@@ -35,6 +35,7 @@ export async function serve(
     ? fileURLToPath(new URL('./ui/', import.meta.url))
     : uiRoot;
   const streams = new Set<ServerResponse>();
+  const proposals = new LaunchService();
   const server = createServer(async (req, res) => {
     try {
       const localPort = (server.address() as { port: number }).port;
@@ -47,29 +48,66 @@ export async function serve(
       res.setHeader('Cache-Control', 'no-store');
       const url = new URL(req.url ?? '/', `http://127.0.0.1:${localPort}`);
       const parts = url.pathname.split('/').filter(Boolean);
-      if (req.method === 'POST') {
+      // Draft polling exposes local paths and source evidence, so new resource
+      // reads require the same token as mutations.
+      const privateDraftApi =
+        parts[0] === 'api' && (parts[1] === 'repositories' || parts[1] === 'proposals');
+      if (req.method === 'POST' || privateDraftApi) {
         const origin = req.headers.origin;
         if (origin && !hosts.some((h) => origin === `http://${h}`))
           return json(res, 403, { error: 'Same-origin request required' });
         const supplied = Buffer.from(String(req.headers['x-iterfox-token'] ?? ''));
         const expected = Buffer.from(token);
         if (supplied.length !== expected.length || !timingSafeEqual(supplied, expected))
-          return json(res, 403, { error: 'Authorization token required' });
-        if (!req.headers['content-type']?.startsWith('application/json'))
+          return json(
+            res,
+            403,
+            launchError(
+              new LaunchError(
+                'expired',
+                'Authorization token required. Reload Iterfox and retry.',
+                403,
+              ),
+            ),
+          );
+        if (req.method === 'POST' && !req.headers['content-type']?.startsWith('application/json'))
           return json(res, 415, { error: 'JSON required' });
       }
       if (parts[0] === 'api') {
         if (req.method === 'GET' && parts[1] === 'meta')
           return json(res, 200, { token, dataDir, localOnly: true, executionHost: hostname() });
-        if (req.method === 'POST' && parts[1] === 'preflight') {
-          const b = await body(req);
-          const loaded = await loadContract(String(b.configPath));
-          const contract = b.project === true ? withProjectSupervision(loaded) : loaded;
-          const handoff = b.handoff ? noteInputSchema.parse({ text: b.handoff }) : undefined;
-          return json(res, 200, {
-            ...(await preflight(String(b.repository), contract, 'codex')),
-            handoff,
-          });
+        if (parts[1] === 'repositories') {
+          if (parts.length === 3 && parts[2] === 'browse' && req.method === 'POST') {
+            const signal = disconnected(res);
+            return json(res, 200, await browseRepositories(await body(req), signal));
+          }
+          return json(res, 404, { error: 'Not found' });
+        }
+        if (parts[1] === 'proposals') {
+          if (parts.length === 2 && req.method === 'POST') {
+            const job = proposals.start(await body(req));
+            res.once('close', () => {
+              if (!res.writableFinished) {
+                try {
+                  proposals.cancel(job.id);
+                } catch {
+                  /* server may have closed */
+                }
+              }
+            });
+            return json(res, 202, job);
+          }
+          if (parts.length === 3 && req.method === 'GET')
+            return json(res, 200, proposals.get(parts[2]));
+          if (parts.length === 4 && parts[3] === 'cancel' && req.method === 'POST') {
+            await body(req);
+            return json(res, 200, proposals.cancel(parts[2]));
+          }
+          return json(res, 404, { error: 'Not found' });
+        }
+        if (req.method === 'POST' && parts[1] === 'preflight' && parts.length === 2) {
+          const signal = disconnected(res);
+          return json(res, 200, await proposals.review(await body(req), signal));
         }
         if (parts[1] !== 'runs') return json(res, 404, { error: 'Not found' });
         if (parts.length === 2 && req.method === 'GET') {
@@ -80,16 +118,31 @@ export async function serve(
         if (parts.length === 2 && req.method === 'POST') {
           const b = await body(req);
           if (b.authorized !== true) throw new Error('Explicit preflight authorization required');
+          const reviewed =
+            b.authorizationId !== undefined ||
+            b.proposalId !== undefined ||
+            b.originalGoal !== undefined
+              ? await proposals.authorize(b, disconnected(res))
+              : undefined;
           const state = await createRun(
             store,
             dataDir,
-            String(b.repository),
-            contractSchema.parse(b.contract),
+            reviewed?.repository ?? String(b.repository),
+            reviewed?.contract ?? contractSchema.parse(b.contract),
             'codex',
-            undefined,
-            b.handoff ? [noteInputSchema.parse(b.handoff)] : [],
+            reviewed?.expectedHead,
+            reviewed?.notes ?? (b.handoff ? [noteInputSchema.parse(b.handoff)] : []),
           );
-          await launch(state.id);
+          try {
+            await launch(state.id);
+          } catch {
+            throw new LaunchError(
+              'worker-launch',
+              `Run ${state.id} was created, but its worker could not start. Open that run and resume it; do not authorize another run.`,
+              503,
+              state.id,
+            );
+          }
           return json(res, 201, state);
         }
         const id = parts[2];
@@ -204,22 +257,38 @@ export async function serve(
       );
       res.end(content);
     } catch (e) {
-      if (!res.headersSent) json(res, 400, { error: e instanceof Error ? e.message : String(e) });
+      if (!res.headersSent) json(res, e instanceof LaunchError ? e.status : 400, launchError(e));
       else res.end();
     }
   });
-  await new Promise<void>((resolve, reject) => {
-    server.once('error', reject);
-    server.listen(port, '127.0.0.1', resolve);
+  // A slow/incomplete body must not keep an unactioned request alive forever.
+  server.requestTimeout = 30_000;
+  server.headersTimeout = 15_000;
+  server.on('close', () => {
+    proposals.close();
+    for (const stream of streams) stream.end();
   });
+  try {
+    await new Promise<void>((resolve, reject) => {
+      server.once('error', reject);
+      server.listen(port, '127.0.0.1', resolve);
+    });
+  } catch (error) {
+    proposals.close();
+    throw error;
+  }
   console.log(`Iterfox UI: http://127.0.0.1:${(server.address() as { port: number }).port}`);
   console.log(
     'Worker state persists independently of this page. Keep the execution host awake for Night Runs.',
   );
-  server.on('close', () => {
-    for (const stream of streams) stream.end();
-  });
   return server;
+}
+function disconnected(res: ServerResponse): AbortSignal {
+  const controller = new AbortController();
+  res.once('close', () => {
+    if (!res.writableFinished) controller.abort();
+  });
+  return controller.signal;
 }
 function json(res: ServerResponse, status: number, value: unknown) {
   res.writeHead(status, { 'Content-Type': 'application/json; charset=utf-8' });
@@ -233,5 +302,16 @@ async function body(req: IncomingMessage): Promise<Record<string, unknown>> {
     if (bytes > 262_144) throw new Error('Request body too large');
     chunks.push(chunk);
   }
-  return JSON.parse(Buffer.concat(chunks).toString());
+  let parsed: unknown;
+  try {
+    parsed = JSON.parse(Buffer.concat(chunks).toString());
+  } catch {
+    throw new LaunchError(
+      'invalid-request',
+      'The request must contain valid JSON. Correct it and retry.',
+    );
+  }
+  if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed))
+    throw new LaunchError('invalid-request', 'A JSON object is required.');
+  return parsed as Record<string, unknown>;
 }

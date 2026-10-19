@@ -10,6 +10,8 @@ import { CodexProvider } from './providers/codex.js';
 import { DemoProvider } from './providers/demo.js';
 import { noteInputSchema, type NoteInput } from './core/compass.js';
 import { keepWorkerAwake } from './core/awake.js';
+import { inspectLocalRepository } from './launch/repositories.js';
+import type { PreflightPreview } from './shared/launch.js';
 
 export async function loadContract(path: string): Promise<Contract> {
   return contractSchema.parse(JSON.parse(await readFile(path, 'utf8')));
@@ -74,14 +76,18 @@ export async function preflight(
   repository: string,
   contract: Contract,
   provider: 'codex' | 'demo',
-) {
-  const root = resolve(repository);
-  const branch = await git(root, ['branch', '--show-current']);
-  const head = await git(root, ['rev-parse', 'HEAD']);
-  const dirty = Boolean(await git(root, ['status', '--porcelain']));
+  signal?: AbortSignal,
+): Promise<PreflightPreview> {
+  contract = contractSchema.parse(contract);
+  const {
+    repository: root,
+    sourceBranch,
+    head,
+    dirty,
+  } = await inspectLocalRepository(repository, signal);
   return {
     repository: root,
-    sourceBranch: branch,
+    sourceBranch,
     runBranch: 'new iterfox/<run-id> branch from committed HEAD',
     head,
     dirty,
