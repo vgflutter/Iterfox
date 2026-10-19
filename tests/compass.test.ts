@@ -393,3 +393,75 @@ test('reconciliation uses the existing model budget and never silently extends a
   assert.equal(calls, 1);
   assert.equal(final.turns, 1);
 });
+
+test('a new handoff after rejected orientation retires only the obsolete planner and can complete project review', async (t) => {
+  const f = await fixture(t, (c) => {
+    c.supervision = { mode: 'project', maxReviews: 4 };
+    c.limits.maxTurns = 12;
+  });
+  addDirectionNote(f.store, f.id, {
+    text: 'Keep useful project progress across an interruption.',
+    kind: 'request',
+  });
+  let orientations = 0;
+  const provider = {
+    name: 'demo' as const,
+    async invoke(r: AgentRequest) {
+      if (r.mode === 'orient') {
+        const p = proposal(r);
+        if (++orientations === 1)
+          p.tasks = p.tasks.map((task, index) =>
+            index === 0 ? { ...task, waitsFor: ['render'] } : task,
+          );
+        return p;
+      }
+      if (r.mode === 'oversee')
+        return {
+          outcome: 'ready',
+          summary: 'Explicit fixture: current behavior is ready for review.',
+          findings: [],
+          decisions: [],
+          tasks: [],
+          operatorQuestion: '',
+        };
+      assert.equal(r.mode, 'build');
+      const beforeRejectedRetirement = f.store.get(f.id);
+      for (const nodeId of [r.node.id, r.state.direction!.nodeId])
+        assert.throws(
+          () =>
+            f.store.append(f.id, 'direction.superseded', 'Invalid retirement fixture.', {
+              nodeId,
+              supersededBy: r.state.direction!.nodeId,
+            }),
+          /Only an obsolete orientation/,
+        );
+      assert.deepEqual(f.store.get(f.id), beforeRejectedRetirement);
+      await edit(
+        r.state.worktree,
+        r.node.criterionId === 'render',
+        r.node.criterionId === 'dialogue',
+      );
+      return result;
+    },
+  };
+  const first = await new Engine(f.store, f.id, provider).run();
+  assert.equal(first.status, 'BLOCKED');
+  assert.match(first.reason!, /self dependency/);
+  const rejected = first.nodes.find((n) => n.title === 'Reconcile the project direction')!;
+  addDirectionNote(f.store, f.id, {
+    text: 'Preserve the original contract and use only valid dependencies.',
+    kind: 'decision',
+  });
+  resumeRun(f.store, f.id);
+  const final = await new Engine(f.store, f.id, provider).run();
+  assert.equal(final.status, 'COMPLETED', final.reason);
+  assert.equal(orientations, 2);
+  const obsolete = final.nodes.find((n) => n.id === rejected.id)!;
+  assert.equal(obsolete.status, 'SKIPPED');
+  assert.equal(obsolete.supersededBy, final.direction!.nodeId);
+  assert.match(obsolete.error!, /self dependency/);
+  assert(final.criteria.every((c) => c.status === 'PASSED'));
+  assert.equal(final.projectReviews!.at(-1)!.outcome, 'ready');
+  assert.deepEqual(final.contract, f.contract);
+  assert.deepEqual(project(f.store.events(f.id)), final);
+});

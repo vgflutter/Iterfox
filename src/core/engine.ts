@@ -6,7 +6,7 @@ import { Store } from './store.js';
 import { auditChanges, changedFiles, stamp, worktreeDiff } from './workspace.js';
 import { artifactRoot, readArtifact } from './artifacts.js';
 import { verify } from '../verifiers/runtime.js';
-import { satisfied } from './model.js';
+import { satisfied, obsoleteOrientations } from './model.js';
 import {
   buildSchema,
   diagnosisSchema,
@@ -126,6 +126,15 @@ export class Engine {
       while (true) {
         this.boundary();
         await this.refreshEvidence();
+        for (const old of obsoleteOrientations(this.state))
+          this.emit(
+            'direction.superseded',
+            'Obsolete orientation superseded by the validated current handoff; no implementation or acceptance skipped.',
+            {
+              nodeId: old.id,
+              supersededBy: this.state.direction!.nodeId,
+            },
+          );
         if (needsOrientation(this.state)) {
           await this.orient();
           continue;

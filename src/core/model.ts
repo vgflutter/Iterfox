@@ -309,6 +309,7 @@ export type EventType =
   | 'progress.recorded'
   | 'direction.noted'
   | 'direction.compiled'
+  | 'direction.superseded'
   | 'project.reviewed'
   | 'project.review.invalidated';
 export interface RunEvent {
@@ -347,6 +348,37 @@ export function project(events: RunEvent[]): RunState {
   if (!state) throw new Error('Run not found');
   return state;
 }
+
+/** Failed planning snapshots can outlive a resume with a longer handoff.
+ * Retire only an unstarted orientation whose exact note prefix is already
+ * covered by a different, validated current direction. This never skips work.
+ */
+export function obsoleteOrientations(s: RunState): TaskNode[] {
+  const direction = s.direction;
+  if (!direction || needsOrientation(s)) return [];
+  return s.nodes.filter((n) => {
+    if (
+      n.kind !== 'decision' ||
+      n.role !== 'planner' ||
+      n.title !== 'Reconcile the project direction' ||
+      !['PENDING', 'BLOCKED'].includes(n.status) ||
+      n.id === direction.nodeId
+    )
+      return false;
+    try {
+      const snapshot = JSON.parse(n.objective);
+      return (
+        snapshot.version === s.contractVersion &&
+        Array.isArray(snapshot.sourceIds) &&
+        snapshot.sourceIds.length < direction.sourceIds.length &&
+        snapshot.sourceIds.every((id: unknown, index: number) => id === direction.sourceIds[index])
+      );
+    } catch {
+      return false;
+    }
+  });
+}
+
 export function reduce(previous: RunState | undefined, event: RunEvent): RunState {
   if (event.schemaVersion !== 1 || event.seq !== (previous?.seq ?? 0) + 1)
     throw new Error('Invalid event schema or ordering');
@@ -367,6 +399,22 @@ export function reduce(previous: RunState | undefined, event: RunEvent): RunStat
     return n;
   };
   switch (event.type) {
+    case 'direction.superseded': {
+      const n = node();
+      if (
+        s.status !== 'RUNNING' ||
+        d.supersededBy !== s.direction?.nodeId ||
+        !obsoleteOrientations(s).some((old) => old.id === n.id)
+      )
+        throw new Error(
+          'Only an obsolete orientation covered by the current direction can be retired',
+        );
+      transition(n, 'SKIPPED');
+      n.supersededBy = s.direction!.nodeId;
+      n.summary = event.message;
+      n.endedAt = event.at;
+      break;
+    }
     case 'project.review.invalidated': {
       const last = s.projectReviews?.at(-1);
       if (!last || last.nodeId !== d.nodeId || last.invalidatedReason || last.outcome !== 'ready')
