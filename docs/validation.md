@@ -1,4 +1,45 @@
-# Validation — 2026-10-16
+# Validation records
+
+Each dated record describes its own code, protocol and limits.
+
+## Real project goal launch — 2026-10-19
+
+Iterfox developed its own natural-language New Run flow from a committed backend
+checkpoint. The fresh session completed in **65 min 52 s**, with six implementation
+units, five current host gates and two project reviews. After green checks the
+read-only supervisor found that uncertain-launch recovery could not reach runs on
+mobile, inserted one new implementation unit and reviewed its result. This was a
+natural source finding, not a fault inserted into the development repository.
+
+The session required no additional human message after launch. An external assistant
+review supplied one note carrying the operator's already-stated preference for
+generous overnight defaults and readable time controls. Previous-day sessions had
+blocked on builder-local listener checks; their records remain separate. The new
+runtime's structured verification handoff was exercised six times on the real host.
+
+The final delivery passed typecheck/build, **58 deterministic tests** and **seven
+Chrome browser regressions**. Six optional integrations are skipped by the default
+suite. Two permanent browser tests use explicit UI-state fixtures for late draft
+responses, review invalidation and mobile recovery; they do not call a model or
+start a worker. Separately, real Codex drafting ran repeatedly in the development session.
+A new external browser audit then observed the complete Italian-goal → real draft
+→ reviewed edits → preflight → actual worker-start path. Source files and run count
+were unchanged before authorization. A second audit deliberately dropped a real
+authorization response and recovered its run from a phone-sized viewport without
+a duplicate authorization/run. The disposable workers were intentionally stopped;
+their avatar goals are not claimed complete.
+
+The full run remains replayable in its preserved worktree. Recorded frozen-runtime
+core hashes and protected tracked paths were checked; copied implementation files
+match the source that passed the live audit. The supervisor is the same integration,
+not an independent reviewer. This is not an eight-hour soak, an arbitrary-project
+environment test or a matched direct-Codex comparison. Rare expiry/reconnect/error
+sequences and all keyboard/touch combinations remain outside the observed scope.
+
+- [Structured case record](validation/goal-launch-real.json)
+- [Flow and remaining validation scope](goal-launch.md)
+- [Actual Codex draft review](screenshots/goal-launch-draft.png)
+- [Actual mobile run browser](screenshots/goal-launch-mobile.png)
 
 ## What actually ran
 
