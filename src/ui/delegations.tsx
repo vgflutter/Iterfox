@@ -274,12 +274,19 @@ export function Delegations({
             <div className="delegation-outcomes">
               {current.spec.milestones.map((m) => {
                 const s = current.stages.find((s) => s.id === m.id)!;
+                // Persisted stage progress remains RUNNING until a checkpoint;
+                // the parent records whether its unfinished work is still active.
+                const status =
+                  s.status === 'RUNNING' &&
+                  ['PAUSED', 'STOPPED', 'BLOCKED'].includes(current.status)
+                    ? current.status
+                    : s.status;
                 return (
                   <article
                     key={m.id}
-                    className={`project-card delegation-outcome ${s.status.toLowerCase()}`}
+                    className={`project-card delegation-outcome ${status.toLowerCase()}`}
                   >
-                    <p className="eyebrow">{s.status}</p>
+                    <p className="eyebrow">{status}</p>
                     <h3>{m.title}</h3>
                     <p>{m.outcome}</p>
                     <p className="muted">
