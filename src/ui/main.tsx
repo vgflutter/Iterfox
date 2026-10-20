@@ -30,6 +30,7 @@ import { NewRun, type NewRunSession } from './new-run.js';
 import { launchApi, launchFailure, LaunchRequestError } from './launch-api.js';
 import { ExistingRuns, RunChoices, type RunListing } from './run-browser.js';
 import { Projects } from './projects.js';
+import { Delegations } from './delegations.js';
 import type { ProjectContinuation } from '../shared/projects.js';
 import { needsOrientation, questions } from '../core/compass.js';
 import './style.css';
@@ -349,7 +350,7 @@ function App() {
     }
   }
   function selectRun(id: string) {
-    if (view === 'projects') setView('trail');
+    if (view === 'projects' || view === 'delegations') setView('trail');
     if (id === runId) setEventReload((revision) => revision + 1);
     else setRunId(id);
   }
@@ -409,6 +410,7 @@ function App() {
         <nav aria-label="Run views">
           {[
             ['projects', '▦', 'Projects'],
+            ['delegations', '↪', 'Delegations'],
             ['compass', '↗', 'Project Compass'],
             ['trail', '⌘', 'Live Trail'],
             ['brief', '☷', 'Morning Brief'],
@@ -491,17 +493,19 @@ function App() {
             <span className="muted">Workspace</span>
             <span className="slash">/</span>
             <span>
-              {view === 'projects'
-                ? 'Projects'
-                : view === 'trail'
-                  ? 'Live Trail'
-                  : view === 'brief'
-                    ? 'Morning Brief'
-                    : view === 'proof'
-                      ? 'Proof Ledger'
-                      : view === 'compass'
-                        ? 'Project Compass'
-                        : 'Decision history'}
+              {view === 'delegations'
+                ? 'Delegations'
+                : view === 'projects'
+                  ? 'Projects'
+                  : view === 'trail'
+                    ? 'Live Trail'
+                    : view === 'brief'
+                      ? 'Morning Brief'
+                      : view === 'proof'
+                        ? 'Proof Ledger'
+                        : view === 'compass'
+                          ? 'Project Compass'
+                          : 'Decision history'}
             </span>
           </div>
           <div className="topbar-right">
@@ -575,7 +579,15 @@ function App() {
             launchRecovery={!!newRunSession?.uncertainLaunch || !!newRunSession?.runCreated}
           />
         </div>
-        {view === 'projects' ? null : !state && runId ? (
+        <div hidden={view !== 'delegations'}>
+          <Delegations
+            active={view === 'delegations'}
+            token={token}
+            reconnect={reconnectRuntime}
+            openRun={selectRun}
+          />
+        </div>
+        {view === 'projects' || view === 'delegations' ? null : !state && runId ? (
           <div className="empty run-opening" aria-live="polite">
             <h1>
               {runRead.id !== runId || runRead.loading

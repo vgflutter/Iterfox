@@ -35,6 +35,8 @@ const help = `Iterfox — Delegate the work. Wake up to evidence.
   iterfox pause|resume|stop <run-id> [--night]
   iterfox brief <run-id> [--json] [--out brief.md]
   iterfox events <run-id>
+  iterfox delegation run --config delegation.json [--night] [--yes]
+  iterfox delegation status|pause|resume|stop|brief <delegation-id>
   iterfox steer <run-id> --message "..." [--kind request|decision|hypothesis] [--reply-to note-id]
   iterfox contract <run-id> --propose contract.json
   iterfox contract <run-id> --approve --yes
@@ -98,6 +100,10 @@ async function authorize(yes: boolean, text: string): Promise<void> {
   }
 }
 async function main() {
+  if (process.argv[2] === 'delegation') {
+    const { delegationCli } = await import('./delegations/cli.js');
+    return delegationCli(process.argv.slice(3), authorize);
+  }
   if (process.argv[2] === 'cloud') {
     const { cloudCli } = await import('./cloud.js');
     return cloudCli(process.argv.slice(3), authorize);
@@ -185,7 +191,14 @@ async function main() {
           throw new Error('Remote UI target must use the same ledger directory');
         launch = (id) => launchRemote(target, 'worker', id);
       }
-      await serve(store, dataDir, Number(v.port), launch);
+      const { launchDelegationWorker } = await import('./delegations/cli.js');
+      await serve(
+        store,
+        dataDir,
+        Number(v.port),
+        launch,
+        v['remote-target'] ? undefined : (id) => launchDelegationWorker(id, dataDir),
+      );
       return; // server owns the store until it closes
     }
     if (command === 'run' || command === 'demo') {

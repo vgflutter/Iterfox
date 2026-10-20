@@ -16,6 +16,14 @@ import { ProjectStore } from './projects/store.js';
 import { ProjectService } from './projects/service.js';
 import { ProjectError, projectError } from './projects/errors.js';
 import {
+  DelegationStore,
+  previewDelegation,
+  createDelegation,
+  requestDelegationControl,
+  resumeDelegation,
+  recoverDelegations,
+} from './delegations/service.js';
+import {
   createRun,
   controlRun,
   resumeRun,
@@ -29,6 +37,7 @@ export async function serve(
   dataDir: string,
   port: number,
   launch: (id: string) => number | Promise<unknown>,
+  launchDelegation?: (id: string) => number | Promise<unknown>,
 ) {
   if (!Number.isInteger(port) || port < 0 || port > 65535) throw new Error('Invalid port');
   const token = randomBytes(32).toString('hex');
@@ -40,6 +49,7 @@ export async function serve(
   const streams = new Set<ServerResponse>();
   const proposals = new LaunchService();
   const projects = new ProjectService(new ProjectStore(store.db), store);
+  const delegations = new DelegationStore(store);
   const server = createServer(async (req, res) => {
     try {
       const localPort = (server.address() as { port: number }).port;
@@ -55,7 +65,8 @@ export async function serve(
       // Draft polling exposes local paths and source evidence, so new resource
       // reads require the same token as mutations.
       const privateApi =
-        parts[0] === 'api' && ['repositories', 'proposals', 'projects'].includes(parts[1]);
+        parts[0] === 'api' &&
+        ['repositories', 'proposals', 'projects', 'delegations'].includes(parts[1]);
       if (req.method === 'POST' || privateApi) {
         const origin = req.headers.origin;
         if (origin && !hosts.some((h) => origin === `http://${h}`))
@@ -78,6 +89,60 @@ export async function serve(
           return json(res, 415, { error: 'JSON required' });
       }
       if (parts[0] === 'api') {
+        if (parts[1] === 'delegations') {
+          if (req.method === 'GET') recoverDelegations(store);
+          if (parts.length === 2 && req.method === 'GET') return json(res, 200, delegations.list());
+          if (parts.length === 3 && parts[2] === 'preflight' && req.method === 'POST')
+            return json(res, 200, await previewDelegation(await body(req)));
+          if (parts.length === 2 && req.method === 'POST') {
+            if (!launchDelegation)
+              throw new Error('Continuous delegation launch is not configured on this host');
+            const d = await createDelegation(store, await body(req));
+            let start = false;
+            delegations.change(d.id, (x) => {
+              if (!x.launchRequested && x.status === 'AUTHORIZED') {
+                x.launchRequested = true;
+                start = true;
+              }
+            });
+            if (start)
+              try {
+                await launchDelegation(d.id);
+              } catch (e) {
+                delegations.change(d.id, (x) => {
+                  x.status = 'BLOCKED';
+                  x.reason =
+                    'Worker launch could not be confirmed. Inspect this delegation and resume it; do not create another.';
+                });
+              }
+            return json(res, 201, delegations.get(d.id));
+          }
+          if (parts.length === 3 && req.method === 'GET')
+            return json(res, 200, delegations.get(parts[2]));
+          if (parts.length === 4 && req.method === 'POST') {
+            await body(req);
+            const id = parts[2],
+              action = parts[3];
+            if (action === 'pause' || action === 'stop')
+              return json(res, 200, requestDelegationControl(store, id, action));
+            if (action === 'resume') {
+              if (!launchDelegation)
+                throw new Error('Continuous delegation launch is not configured on this host');
+              resumeDelegation(store, id);
+              try {
+                await launchDelegation(id);
+              } catch {
+                delegations.change(id, (x) => {
+                  x.status = 'BLOCKED';
+                  x.reason =
+                    'Worker launch could not be confirmed; inspect and resume this delegation.';
+                });
+              }
+              return json(res, 200, delegations.get(id));
+            }
+          }
+          return json(res, 404, { error: 'Not found' });
+        }
         if (req.method === 'GET' && parts[1] === 'meta')
           return json(res, 200, { token, dataDir, localOnly: true, executionHost: hostname() });
         if (parts[1] === 'projects') {

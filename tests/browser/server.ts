@@ -25,6 +25,11 @@ const state = await createRun(
   'demo',
 );
 await new Engine(store, state.id, new DemoProvider()).run();
-await serve(store, dir, Number(process.env.ITERFOX_UI_TEST_PORT ?? 4311), (id) =>
-  id === compass.id ? new Engine(store, id, compass.provider).run() : launchWorker(id, dir),
+await serve(
+  store,
+  dir,
+  Number(process.env.ITERFOX_UI_TEST_PORT ?? 4311),
+  (id) =>
+    id === compass.id ? new Engine(store, id, compass.provider).run() : launchWorker(id, dir),
+  () => 0, // Explicit UI authorization fixture: records intent, never starts a model/worker.
 );
