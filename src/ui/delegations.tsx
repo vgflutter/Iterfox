@@ -164,10 +164,7 @@ export function Delegations({
     <section className="delegations-workspace" aria-label="Continuous delegation">
       <p className="eyebrow">CONTINUOUS PROJECT WORK</p>
       <h1>Delegations</h1>
-      <p>
-        Approve a set of outcomes once. Iterfox develops, verifies, saves a local checkpoint and
-        continues to the next eligible outcome. You return to review the result.
-      </p>
+      <p>Approve your roadmap once. Return to results, evidence and decisions.</p>
       <div className="project-actions">
         <button className="button" onClick={() => setReadRevision((revision) => revision + 1)}>
           Refresh delegations
@@ -214,7 +211,7 @@ export function Delegations({
       {current && (
         <>
           <section className="project-card" aria-label="Delegation progress">
-            <h2>{current.spec.contract.goal}</h2>
+            <h2>Project progress</h2>
             <p>
               <strong>
                 {current.status === 'COMPLETED' ? 'Ready for your product review' : current.status}
@@ -227,10 +224,7 @@ export function Delegations({
                 {current.reason}
               </p>
             )}
-            <p>
-              The original repository HEAD stays unchanged. Local checkpoints are technical results;
-              they do not approve a product release.
-            </p>
+            <p>Checkpointed results await your product review.</p>
             <div className="project-actions">
               {['AUTHORIZED', 'RUNNING'].includes(current.status) && (
                 <>
@@ -248,11 +242,19 @@ export function Delegations({
                 </button>
               )}
             </div>
-            <p>
+            <p className="muted small-text">
               Authorized {new Date(current.authorizedAt).toLocaleString()} · window{' '}
               {Math.round((current.spec.contract.limits.maxDurationMs / 3600000) * 10) / 10} hours,
               including pauses
             </p>
+            <details>
+              <summary>Approved goal</summary>
+              <p>{current.spec.contract.goal}</p>
+              <p className="muted">
+                The original repository HEAD stays unchanged. Local checkpoints are technical
+                results; they do not approve a product release.
+              </p>
+            </details>
           </section>
           <DelegationBriefReader
             key={current.id}

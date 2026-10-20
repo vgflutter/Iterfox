@@ -511,11 +511,13 @@ export async function runDelegation(
       d.status = 'RUNNING';
       event(d, 'worker-started', 'Sequential delegation worker started.');
     });
+    const deadline = Date.parse(initial.authorizedAt) + initial.spec.contract.limits.maxDurationMs;
     timer = setInterval(() => {
       try {
         const d = ds.get(id);
-        if (d.control || usage(runs, d).duration >= d.spec.contract.limits.maxDurationMs)
-          activeEngine?.request(d.control ?? 'pause');
+        // Poll control and the original clock without replaying every linked
+        // mission. Aggregate turn/token accounting remains at mission boundaries.
+        if (d.control || Date.now() >= deadline) activeEngine?.request(d.control ?? 'pause');
       } catch (error) {
         pollingError = error;
         activeEngine?.request('pause');

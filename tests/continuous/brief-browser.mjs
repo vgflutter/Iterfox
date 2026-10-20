@@ -3,7 +3,7 @@ import { reportFixture } from './fixture.mjs';
 import { chromium } from 'playwright';
 const f = await reportFixture();
 const browser = await chromium.launch({
-  channel: process.env.ITERFOX_BROWSER_CHANNEL ?? 'chrome',
+  channel: process.env.ITERFOX_BROWSER_CHANNEL,
   headless: true,
   chromiumSandbox: true,
   args: ['--disable-gpu'],
