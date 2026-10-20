@@ -1,0 +1,22 @@
+# Valigia — contratto fissato prima della prova
+
+Crea Valigia, una piccola app web locale in italiano per preparare una lista da viaggio.
+Voglio aggiungere oggetti con nome, quantità e categoria; modificare la quantità, segnare ciò che è preparato ed eliminare gli oggetti. Mostra il totale delle unità, quelle preparate e quelle rimanenti, anche mentre filtro una categoria (i totali restano globali). Conserva la lista al ricaricamento usando localStorage. Permetti di esportarla in un campo di testo JSON e reimportarla. Un backup non valido non deve cancellare o alterare la lista corrente.
+L'app deve funzionare su desktop e telefono, con etichette comprensibili, navigazione da tastiera, stato vuoto utile e messaggi d'errore visibili. Nomi Unicode e testo simile a HTML devono essere gestiti come normale testo. Se il salvataggio locale fallisce, spiega che i dati non sono salvati; l'app deve restare utilizzabile. Nessuna registrazione, rete, servizio esterno o dipendenza aggiuntiva.
+Usa i file iniziali e completa src/domain.mjs, src/app.mjs, index.html e style.css; documenta uso e limiti in README.md. I dettagli di implementazione sono una tua scelta. SPEC.md e i test definiscono il contratto osservabile. Sono già predisposti server e controlli. Puoi leggere ed eseguire i controlli disponibili e correggere il codice quanto serve. Non modificare SPEC.md, server.mjs, tests o configurazioni, non fare commit/push/deploy. Consegna una piccola app completa e utilizzabile, non un mockup. Se il browser o localhost non funzionano nella sandbox, completa il codice e dichiara la verifica non osservata: i controlli verranno eseguiti esternamente sugli stessi file.
+
+## Dati e funzioni osservabili
+
+src/domain.mjs esporta emptyList(), addItem(state, {name, quantity, category}), updateItem(state, id, patch), removeItem(state,id), summary(state), exportList(state) e importList(jsonText).
+Lo stato è {version:1,items:[{id,name,quantity,category,packed}]}. Le funzioni che cambiano dati restituiscono un nuovo stato e non modificano quello ricevuto. ID non vuoti, univoci, stringhe di massimo 100 caratteri. Nome ripulito agli estremi, 1–80 caratteri; categoria 1–40, oppure Generale se omessa durante addItem. Quantità intera 1–99. packed booleano, inizialmente false. Massimo 500 righe. updateItem modifica solo name/quantity/category/packed; un ID inesistente in update/remove è un errore. Non è richiesta fusione automatica di nomi duplicati. summary restituisce {total,packed,remaining}, contando quantità, non righe.
+importList valida l'intero documento, versione inclusa, e rifiuta errori con un'eccezione; nessuna conversione silenziosa di quantità o booleani. exportList genera un JSON reimportabile. Gli input non validi producono un errore senza mutazioni.
+
+## Interfaccia osservabile (etichette accessibili)
+
+La pagina ha titolo Valigia. Il form usa Nome oggetto, Quantità, Categoria e pulsante Aggiungi. Ogni riga espone data-item-id e nome come testo, checkbox Preparato: NOME, spinbutton Quantità: NOME e pulsante Elimina: NOME. Il filtro nativo Filtra categoria ha opzione Tutte e le categorie presenti. I totali globali sono output con data-testid total, packed, remaining.
+Backup JSON è il campo di testo multiriga per import/export; i pulsanti sono Esporta backup e Importa backup. Importare sostituisce la lista soltanto dopo validazione completa. Gli errori hanno role=alert. La chiave localStorage è valigia.v1. Al primo caricamento senza dati mostra uno stato vuoto; dati salvati illeggibili vanno segnalati e non sovrascritti automaticamente al solo caricamento. Dopo un errore di localStorage la lista resta utilizzabile in memoria, senza dichiarare un salvataggio riuscito.
+Nessun overflow orizzontale a 390px, nessun errore JavaScript nel flusso valido e nessuna richiesta a domini esterni. Il form deve aggiungere anche con Invio e riportare il focus a Nome oggetto dopo l'aggiunta. Il design resta libero: i controlli funzionali non sono una valutazione estetica.
+
+## Esecuzione
+
+node server.mjs (PORT opzionale). Controlli: node --test tests/domain.test.mjs e node tests/browser.mjs. Per il secondo è predisposta VALIGIA_PLAYWRIGHT con il percorso assoluto del modulo Playwright e Chrome installato. Non servono npm o installazioni. I test del modello e quelli esterni usano gli stessi requisiti; l'audit aggiuntivo varia soltanto i dati. Non è richiesto supportare browser diversi da Chrome in questa prova.

@@ -1,0 +1,95 @@
+{
+  "at": "2026-10-20T10:18:43.349Z",
+  "status": "passed",
+  "scope": "Post-run captures with identical sample data; scroll explicitly reset to zero. Original full-page captures and audit outcomes preserved. App source hashes unchanged.",
+  "observations": [
+    {
+      "arm": "direct",
+      "name": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "beforeReset": {
+        "scrollY": 232,
+        "active": "import-backup",
+        "fixedLinks": [
+          {
+            "text": "Vai alla lista da viaggio",
+            "focused": false,
+            "y": -80,
+            "height": 46.5
+          }
+        ]
+      },
+      "captureScrollY": 0,
+      "errors": []
+    },
+    {
+      "arm": "direct",
+      "name": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "beforeReset": {
+        "scrollY": 1167,
+        "active": "import-backup",
+        "fixedLinks": [
+          {
+            "text": "Vai alla lista da viaggio",
+            "focused": false,
+            "y": -80,
+            "height": 46.5
+          }
+        ]
+      },
+      "captureScrollY": 0,
+      "errors": []
+    },
+    {
+      "arm": "iterfox",
+      "name": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "beforeReset": {
+        "scrollY": 419,
+        "active": "import-backup",
+        "fixedLinks": [
+          {
+            "text": "Vai alla lista da viaggio",
+            "focused": false,
+            "y": -64.80000305175781,
+            "height": 48
+          }
+        ]
+      },
+      "captureScrollY": 0,
+      "errors": []
+    },
+    {
+      "arm": "iterfox",
+      "name": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "beforeReset": {
+        "scrollY": 1104,
+        "active": "import-backup",
+        "fixedLinks": [
+          {
+            "text": "Vai alla lista da viaggio",
+            "focused": false,
+            "y": -64.80000305175781,
+            "height": 48
+          }
+        ]
+      },
+      "captureScrollY": 0,
+      "errors": []
+    }
+  ]
+}

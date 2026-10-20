@@ -1,0 +1,34 @@
+{
+  "cases": [
+    {
+      "name": "empty state and keyboard addition",
+      "passed": true
+    },
+    {
+      "name": "quantities packed counts and category filter",
+      "passed": true
+    },
+    {
+      "name": "persistence across refresh and deletion",
+      "passed": true
+    },
+    {
+      "name": "backup valid and invalid imports are atomic",
+      "passed": true
+    },
+    {
+      "name": "HTML-like Unicode names render as text",
+      "passed": true
+    },
+    {
+      "name": "390px layout and no page errors or external requests",
+      "passed": true
+    },
+    {
+      "name": "storage failure is reported and memory list still works",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "external": []
+}

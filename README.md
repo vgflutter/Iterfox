@@ -26,6 +26,12 @@ checkpoints, and authorized the next contract. The roadmap preserves long-term
 direction; automatic cross-run scheduling is not yet demonstrated. This is not an
 overnight soak or a new comparison against direct Codex.
 
+A subsequent [paired small-app case](docs/validation/valigia-comparison-20261020.html)
+gave the same functional result for direct Codex SDK and Iterfox: 12 domain tests,
+7 Chrome workflow assertions and 6 extra audit groups passed, with zero operator
+interventions in either arm. No functional advantage is demonstrated by this one
+case with prepared criteria. The prompt, both apps and measurements are preserved.
+
 ## Who governs the process?
 
 **You approve the destination and boundaries. Iterfox chooses and adapts the work

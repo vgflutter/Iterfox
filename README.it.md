@@ -36,6 +36,12 @@ checkpoint Git e nuova autorizzazione.** La roadmap conserva il lungo periodo,
 ma non esegue ancora da sola una catena di sessioni. La prova non stabilisce un
 vantaggio rispetto a Codex diretto né l'affidabilità per una notte intera.
 
+Il [confronto su una piccola app, Valigia](docs/validation/valigia-comparison-20261020.html)
+ha poi dato lo stesso risultato funzionale per Codex diretto e Iterfox: 12 test,
+7 flussi Chrome e 6 gruppi aggiuntivi superati, zero interventi per entrambi.
+Su questo singolo caso con criteri preparati, il valore funzionale aggiuntivo non
+è dimostrato. Prompt, sorgenti e misure sono conservati nel rapporto.
+
 ## Chi decide cosa
 
 | Aspetto                                        | Il tuo controllo                                                  | Autonomia di Iterfox                                                                  |

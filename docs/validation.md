@@ -2,6 +2,50 @@
 
 Each dated record describes its own code, protocol and limits.
 
+## Paired small-app case: Valigia — 2026-10-20
+
+The same Italian app goal, committed starter, fixed specification and acceptance
+checks were given to direct Codex SDK and the existing Iterfox project engine.
+Both used `gpt-6.1-sol`, explicitly pinned `xhigh`, identical workspace/tool
+restrictions and a 20-minute maximum. Arm order was randomized and execution
+sequential. No model coaching, manual app repairs or resumes occurred. Common
+specification/test preparation was performed by the assistant before either arm.
+
+Both apps passed **12 domain tests, 7 Chrome workflow assertions and 6 additional
+audit groups**, including 250 seeded mixed data operations. Both required **zero
+operator interventions during development**. Direct Codex returned in **703697 ms
+(11 min 44 s)**; Iterfox completed in **981010 ms (16 min 21 s)**. External audits
+then took 4452 and 4910 ms respectively. The direct agent honestly reported that
+its sandbox could not start localhost/Chrome; host browser checks passed without
+changing its app. Deliberately simulated storage quota failure is a shared test,
+not a defect planted in one implementation.
+
+Iterfox recorded four model invocations, two implementation units, six runtime
+check starts, one ready project review, zero inserted corrections and zero tasks
+discovered after green checks. Its event replay matches. Protected starter files,
+original worktree HEADs and the five frozen runtime modules checked by the harness
+were preserved. Post-audit fingerprints still match both delivery snapshots.
+
+**No functional advantage was demonstrated on this simple case.** The richer
+runtime history is observable; reduced human audit effort was not measured.
+This is one pair with prepared acceptance criteria, not a statistical benchmark,
+a native Codex app/Goals comparison or a test of continuous cross-run delegation.
+Role prompts differ by design; the shared app goal and contract are identical.
+Reported input/output tokens are secondary metrics, not monetary cost or success.
+
+Actual app captures use identical sample data. Presentation captures reset scroll
+to zero; originals remain archived. The offscreen skip link has negative viewport
+coordinates and no focus in the post-run observation, rather than being treated
+as an app defect from a full-page capture at nonzero scroll. Final source hashes
+are unchanged. Report links/images and 1440px/390px layout were checked in Chrome.
+The reproducible harness is packaged and syntax checked; no duplicate real-model
+trial was run after packaging.
+
+- [Readable Italian comparison and screenshots](validation/valigia-comparison-20261020.html)
+- [Structured measurements and provenance](validation/valigia-comparison-20261020.json)
+- [Exact prompt](validation/valigia-case/prompt.txt)
+- [Starter, both apps, traces, checks and reproduction](validation/valigia-case/README.md)
+
 ## Real project continuity and graph governance — 2026-10-19–20
 
 Three actual Codex product missions completed on Iterfox itself: durable project
