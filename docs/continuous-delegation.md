@@ -37,6 +37,26 @@ A following mission gets the remaining budget and cumulative checks for all prio
 outcomes. A new mission or Resume never resets the original delegation window.
 Reported tokens retain the existing boundary-based accounting limitations.
 
+The authenticated `GET /api/delegations/<id>/brief` returns a read-only aggregate
+project brief as JSON. Add `?format=markdown` for a portable `text/markdown`
+document, or `?format=json` for explicit JSON. Both use the existing local host,
+same-origin and `X-Iterfox-Token` guards. Generating either format reads saved
+records without recovering workers, launching missions, auditing evidence,
+executing checks or writing history.
+
+The brief counts approved outcomes separately from repeated cumulative checks and
+sums reported turns/tokens once per unique linked mission. It retains the original
+goal, authorization time, limits and approval hash. Remaining time includes
+pauses; a new mission or resume does not reset the window. Missing mission history
+is explicit, makes usage partial and leaves remaining turn/token budgets unknown.
+Checkpoint receipts retain their SHA, ref, source fingerprint and source sequence.
+Their evidence is replayed only through that saved sequence; later recorded
+mission state is shown separately. If the prefix cannot be read, checkpoint proof
+is unavailable rather than reconstructed from newer evidence. Current worktree
+freshness is unobserved, and technical checkpoints still require operator product
+review. Attention includes saved blocking reasons and unresolved linked questions;
+answered Compass questions are excluded.
+
 Successful current checks and a matching ready project review are required before
 checkpointing. The host uses a private Git index and commits under
 `refs/iterfox/checkpoints/<delegation>/<outcome>`. The source HEAD/index and each

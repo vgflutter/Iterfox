@@ -15,6 +15,7 @@ import { browseRepositories } from './launch/repositories.js';
 import { ProjectStore } from './projects/store.js';
 import { ProjectService } from './projects/service.js';
 import { ProjectError, projectError } from './projects/errors.js';
+import { buildDelegationBrief, renderDelegationBriefMarkdown } from './delegations/brief.js';
 import {
   DelegationStore,
   previewDelegation,
@@ -90,6 +91,19 @@ export async function serve(
       }
       if (parts[0] === 'api') {
         if (parts[1] === 'delegations') {
+          // Brief exports are saved-record reads. In particular they must bypass
+          // GET recovery below, which may change delegation status and history.
+          if (parts.length === 4 && parts[3] === 'brief' && req.method === 'GET') {
+            const format = url.searchParams.get('format');
+            if (format !== null && format !== 'json' && format !== 'markdown')
+              return json(res, 400, { error: 'Brief format must be json or markdown' });
+            const result = await buildDelegationBrief(store, parts[2]);
+            if (format === 'markdown') {
+              res.setHeader('Content-Type', 'text/markdown; charset=utf-8');
+              return res.end(renderDelegationBriefMarkdown(result));
+            }
+            return json(res, 200, result);
+          }
           if (req.method === 'GET') recoverDelegations(store);
           if (parts.length === 2 && req.method === 'GET') return json(res, 200, delegations.list());
           if (parts.length === 3 && parts[2] === 'preflight' && req.method === 'POST')
