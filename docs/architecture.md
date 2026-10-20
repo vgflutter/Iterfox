@@ -109,3 +109,27 @@ the inspected state. A current ready review and current acceptance evidence are
 both required for completion. These are explicitly different kinds of support:
 AI project judgment versus runtime-owned verification. The original isolation,
 control, retry and duration mechanisms still own execution.
+
+## Continuous outcome delegations
+
+A stored, hashed delegation approves a finite outcome DAG, source HEAD/common Git
+directory, exact criteria, edit boundaries and aggregate limits. One leased parent
+worker creates sequential project-mode missions with cumulative gates. Each new
+mission starts with no proofs; the historical handoff supplies context and a
+checkpoint reference. Prepared ignored `node_modules` can be privately copied
+without installing dependencies.
+
+Current acceptance evidence, source integrity and a matching ready review are
+required before host checkpoint plumbing writes a private index and a dedicated
+`refs/iterfox/checkpoints` ref. Original source and run HEAD/index stay intact.
+The next isolated mission receives that code; operator product acceptance remains
+separate. Pause, stop, explicit recovery and one original wall-clock window govern
+the parent. The monitor reads control and the original deadline cheaply; aggregate
+turn/token accounting occurs at mission boundaries.
+
+Saved-record briefs reconstruct checkpoint event prefixes separately from later
+mission state. JSON, Markdown and self-contained HTML exports do not recover, audit
+or execute work. Missing history stays unavailable and usage partial. The local
+UI distinguishes project memory, single-run work and an authorized delegation;
+creating the latter still requires a prepared technical configuration. See the
+[workflow and measured recovery](continuous-delegation.md).

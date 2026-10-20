@@ -149,7 +149,7 @@ the verified snapshot. Two delegation workers cannot own the same delegation.
 
 ## Validation boundary and current trial
 
-The first boundary suite has nine cases with an explicitly deterministic provider:
+The boundary suite has ten cases with an explicitly deterministic provider:
 real Git/SQLite/Node verification, dependent handoff, fresh evidence, pause/resume,
 aggregate limits, lease exclusion, protected edits, checkpoint-boundary recovery
 and authenticated/idempotent HTTP approval. Two additional Chrome cases use a
@@ -160,30 +160,38 @@ their original scope. Their manual environment preparation, checkpointing and
 reauthorization between missions describe those earlier trials, not a requirement
 to prompt again for each outcome in an approved continuous delegation.
 
-As of 20 October 2026, the [three-outcome return-to-work trial](continuous-project-trial.md)
-is in progress. Its protected API/report/browser fixtures use a deterministic
-provider to create real Git/SQLite/Node receipts; its product development missions
-use Codex. The host owns the approved local checkpoints and automatic progression
-to following outcomes. The report route and **Download project report HTML**
-action are implemented in source. Earlier documentation checkpoints describing
-implementation or verification as pending retain their historical scope; current
-technical status comes from host receipts tied to the reviewed source snapshot.
-This documentation edit does not establish a fresh runtime or browser result.
+## Measured trial and delivered validation
 
-Fresh cumulative host checks are requested after these documentation edits for
-the brief API, backend regression suite, server/UI typecheck, production build,
-all eleven existing Chrome workflows, the brief browser fixture and the report
-route's authentication, escaping and checkpoint provenance. Browser suites run on
-the host, not inside the coding-agent sandbox. The brief browser fixture reads
-cross-mission progress and downloads JSON/Markdown on desktop, then checks page
-overflow at 390px and the absence of page errors. It does not click **Download
-project report HTML** or open the saved HTML file. The report check exercises the
-HTTP attachment and renderer; it does not observe browser layout. The HTML
-download interaction and offline desktop/mobile layout remain unobserved by these
-approved checks and require operator product review.
+The [three-outcome return-to-work trial](validation/continuous-project-real-20261020.html)
+completed on 20 October 2026: three real Codex missions, one original authorization,
+three local checkpoints and fresh cumulative sets of five, six and seven criteria.
+A source review discovered one further documentation task after green checks.
 
-Previous checkpoints and receipts remain historical context for a following
-mission, which must obtain its own cumulative evidence. Technical checks and
-checkpoints do not establish product acceptance, completion of this trial or
-general unattended overnight reliability. Final product review remains with the
-operator.
+One technical recovery by the coding assistant was necessary during the third
+mission: the original 100 ms control monitor replayed all linked histories just
+to inspect the clock. The assistant paused, preserved the original runtime and
+resumed the same delegation with a separately frozen monitor fix. Shared limits,
+authorization time, run IDs, source worktrees and existing checkpoints stayed
+unchanged. Both worker starts and the explicit resume are recorded. A separate
+earlier attempt failed before any model call and required a dependency-copy fix.
+This is a recovered bounded trial, not a zero-intervention or overnight claim.
+
+The delivered monitor checks control and a deadline derived from the original
+authorization without replaying linked histories at each tick. Aggregate accounting
+still runs at mission boundaries. Existing pause/resume and shared-limit checks
+pass. The reviewed mobile header also keeps the full approved goal expandable so
+status and the brief action remain accessible for long goals.
+
+The protected original cases remain preserved with the actual trial. In the
+reviewed delivery, `npm test` includes the three brief/report API cases alongside
+existing tests: 86 passed and seven optional cases skipped. `npm run test:ui`
+now runs eleven Playwright cases plus separate brief-download, offline HTML and
+adversarial selection/network drivers. Those fixtures explicitly use a deterministic
+provider; they do not measure model quality. They support the configured
+`ITERFOX_BROWSER_CHANNEL`, or Playwright's bundled browser by default.
+
+A separate read-only browser audit used the three completed Codex missions. It
+checked JSON, Markdown and HTML downloads, checkpoint identity, desktop/390px,
+offline HTML with JavaScript disabled, native details, no remote requests and no
+history writes. Product acceptance remains an operator decision. Complete initial
+configuration, a recurring scheduler and overnight resilience remain separate work.

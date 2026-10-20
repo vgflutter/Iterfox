@@ -1,0 +1,27 @@
+{
+  "question": "Can one approved bounded delegation advance real project code across three dependent missions without operator relaunches between outcomes?",
+  "primaryMeasures": [
+    "Checkpointed useful outcomes",
+    "Additional operator prompts during successful execution",
+    "Root interventions/resumes/worker relaunches",
+    "Automatic environment and verified code transfer",
+    "Correct read-only return-to-work summary"
+  ],
+  "secondaryMeasures": [
+    "Elapsed time",
+    "Reported model turns and tokens",
+    "Correction and project-review events"
+  ],
+  "notClaimed": [
+    "General superiority over every direct Codex workflow",
+    "Token or speed optimization",
+    "Unbounded automatic acceptance creation",
+    "Overnight reliability from a short trial",
+    "Independent AI review"
+  ],
+  "setup": "Root implemented and tested the delegation host, prepared the acceptance graph, then froze compiled runtime, configuration and protected case hashes. Real project development is performed by Codex through the frozen runtime.",
+  "priorAttempt": "The first attempt blocked before any model invocation due to incompatible Git check-ignore flags. Root fixed the host, added a meaningful private-dependency-copy regression and began a new preserved trial. This setup intervention is disclosed.",
+  "successfulAttemptBoundary": "No edits to runtime/config/targets, no coaching notes, no pause/resume or new mission launches by root while the new trial runs. Root may read records and capture UI observations.",
+  "acceptanceFixtureBoundary": "Automated API/browser/report acceptance uses a named deterministic provider to generate actual Git/SQLite/check receipts. The three product development missions use the real Codex provider. Scripted fixture outcomes are not real-model performance evidence.",
+  "productReview": "Technical checks and local checkpoint creation do not approve release or integration. Root reviews the final code/UI and preserves original mission worktrees."
+}

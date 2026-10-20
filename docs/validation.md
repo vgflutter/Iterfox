@@ -2,6 +2,30 @@
 
 Each dated record describes its own code, protocol and limits.
 
+## Continuous delegation on Iterfox — 2026-10-20
+
+One original delegation completed three real Codex outcomes with three local
+checkpoints and fresh cumulative gate sets of 5, 6 and 7. The parent transferred
+code and prepared dependencies automatically. A review discovered one further
+documentation task after green checks. No development-coaching note or additional
+user decision was added during execution.
+
+One assistant technical recovery was necessary in the third mission: pause,
+freeze a separately fixed monitor runtime and explicitly resume the same delegation.
+Two worker starts are recorded. The source runtime, contract, original clock,
+limits, run IDs, worktrees and prior checkpoints remain preserved. An earlier
+separate startup attempt failed before any model call and required a dependency
+preparation fix. This is not a zero-intervention or overnight-reliability result.
+
+The delivered code passed 86 backend cases (7 optional cases skipped), types,
+build, 11 Chrome cases and three extra browser workflows. An additional audit
+used the actual completed ledger for all three downloads and a script-free offline
+report at 390px, with no remote requests or history writes. Fixtures remain clearly
+separate from the real-model development record. The revised regular test scripts
+include those feature checks for subsequent development.
+
+[Full protocol, recoveries, source/checkpoint audit and real screenshots](validation/continuous-project-real-20261020.html).
+
 ## Paired small-app case: Valigia — 2026-10-20
 
 The same Italian app goal, committed starter, fixed specification and acceptance

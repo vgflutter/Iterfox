@@ -8,8 +8,11 @@ preflight and a separate **Authorize & start Night Run** action. It always start
 real Codex; the no-token fixture is an explicitly named CLI demo.
 
 Every run creates an `iterfox/<id>` branch and a worktree from the repository's
-committed HEAD. Uncommitted source work is not copied or reset. There is no automatic
-commit, push, merge, deployment, cleanup, dependency installation or secret edit.
+committed HEAD. Uncommitted source work is not copied or reset. Ordinary single-run execution does not commit. A continuous delegation explicitly
+authorizes the host to create verified local checkpoint commits under
+`refs/iterfox/checkpoints/<delegation>/<outcome>` with a private Git index. Original
+source and run HEAD/index remain unchanged; coding agents cannot commit. There is
+no automatic push, merge, deployment, cleanup, dependency installation or secret edit.
 Prepare dependencies in the isolated worktree yourself when required by your checks.
 
 The builder uses Codex `workspace-write`, no command network access and

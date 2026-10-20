@@ -1,0 +1,33 @@
+{
+  "at": "2026-10-20T13:28:18.233Z",
+  "result": "PASS",
+  "boundary": "Real completed Codex delegation data, delivered interface; no model, verifier or worker started by this audit.",
+  "delegationId": "321f909e-e317-48a5-9ad7-b2b82638e4ec",
+  "checkpoints": [
+    "564416eb8ed3ea93b0b0cdc010a33a9e01414081",
+    "bed58e2cf4ad7439cf31b7e04793e1d4c1fcf36d",
+    "23f6ff670897de624de59f6d2c508a948ea846b0"
+  ],
+  "downloads": [
+    {
+      "format": "json",
+      "filename": "iterfox-project-brief-321f909e-e317-48a5-9ad7-b2b82638e4ec.json"
+    },
+    {
+      "format": "md",
+      "filename": "iterfox-project-brief-321f909e-e317-48a5-9ad7-b2b82638e4ec.md"
+    },
+    {
+      "format": "html",
+      "filename": "iterfox-project-report-321f909e-e317-48a5-9ad7-b2b82638e4ec.html"
+    }
+  ],
+  "errors": [],
+  "writes": [],
+  "desktopWidth": 1440,
+  "mobileWidth": 390,
+  "horizontalOverflow": false,
+  "offlineWithJavaScriptDisabled": true,
+  "remoteReportRequests": [],
+  "historyUnchanged": true
+}

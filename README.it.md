@@ -13,38 +13,57 @@ richiedono ancora attenzione tecnica.
 ## Il processo in un minuto
 
 1. **Tu descrivi il risultato** e le decisioni che vuoi riservarti.
-2. **Codex prepara una bozza.** Tu controlli criteri, verifiche, file e durata.
-3. **Tu autorizzi la sessione.** Da quel momento Iterfox può lavorare entro quei confini.
+2. **Si prepara la delega.** Per più risultati approvi una roadmap con prerequisiti,
+   verifiche, file modificabili e una finestra di lavoro condivisa.
+3. **Autorizzi una volta quel perimetro.** Il worker può attraversare gli esiti
+   approvati senza chiederti un nuovo avvio per ciascuno.
 4. **Iterfox sviluppa, verifica e adatta il piano.** Puoi lasciarlo procedere,
    aggiungere contesto o interromperlo; le decisioni riservate restano tue.
 5. **Tu rivedi il risultato e le prove**, poi decidi cosa integrare nel progetto.
 
-Se l'interfaccia è già aperta, segui [La prima sessione](#la-prima-sessione).
+Per lavoro continuo usa **Delegations**. **Projects** conserva memoria e roadmap;
+**New run** prepara una singola missione. La creazione di una delega completa
+richiede ancora una configurazione tecnica: un assistente può prepararla dal tuo
+obiettivo, poi puoi importarla, controllare il preflight e autorizzarla. La UI
+non genera ancora automaticamente una roadmap completa e verificata da una frase.
+
+Al ritorno: **Delegations → Read project brief**. Leggi risultati, lavoro
+rimanente e attenzione richiesta; scarica JSON, Markdown o **Download project
+report HTML**. Le schede dei risultati mostrano i prerequisiti; **Open mission in
+Live Trail** apre attività e prove della singola missione. Puoi mettere in pausa
+o fermare l’intera delega. I limiti e i criteri approvati restano gli stessi.
+
+Per una sola missione, segui [La prima sessione](#la-prima-sessione).
 Altrimenti trovi più sotto [come avviarla](#avviare-linterfaccia).
 
 ## La prova sul prodotto reale
 
-Il resoconto del 19–20 ottobre 2026 comprende **tre missioni completate sul proprio
-codice**: memoria persistente del progetto, istruzioni dal grafico e recupero
-limitato dei piani incoerenti. Una
-quarta esecuzione, fermata per un conflitto nei test preparati dall'assistente,
-resta nello storico. Le revisioni hanno scoperto e fatto svolgere lavoro mancante
-anche dopo i controlli verdi. [Rapporto con immagini e interventi](docs/validation/project-continuity-real.html).
+Il 20 ottobre 2026 Iterfox ha completato **tre esiti sul proprio codice con una
+sola delega**: riepilogo delle prove, vista da consultare al ritorno e rapporto
+HTML offline. L’host ha trasferito codice e ambiente fra missioni e salvato tre
+checkpoint. Le verifiche approvate sono cresciute da 5 a 6 a 7; ogni missione è
+partita senza prove ereditate. Il supervisore ha inoltre scoperto e fatto svolgere
+un task sulle guide dopo i controlli verdi.
 
-In quella prova Iterfox sviluppava e adattava il lavoro dentro ogni missione
-autorizzata; fra quelle missioni un assistente esterno gestiva ambiente, revisione,
-checkpoint Git e nuova autorizzazione. Quel resoconto storico non dimostra la
-continuazione automatica fra sessioni. La successiva
-[prova di delegazione continua](docs/continuous-project-trial.md) riguarda invece
-la continuazione gestita dall'host entro un'autorizzazione già approvata ed è
-ancora in corso al 20 ottobre 2026. Nessuna delle due prove stabilisce un vantaggio
-rispetto a Codex diretto o l'affidabilità per una notte intera.
+**È servito un recupero tecnico dell’assistente durante l’ultima missione:** il
+monitor rileggeva troppo spesso lo storico. La stessa delega è stata messa in
+pausa e ripresa con un runtime alleggerito, conservando orario originale, limiti,
+criteri, run e checkpoint. Un precedente tentativo si era fermato prima di Codex
+per un difetto nella preparazione delle dipendenze, anch’esso corretto e
+conservato. Nessuna decisione aggiuntiva è stata chiesta all’utente. Non è una
+prova interamente senza interventi né una validazione per una notte intera.
+[Rapporto, protocollo, interventi e immagini reali](docs/validation/continuous-project-real-20261020.html).
 
-Il [confronto su una piccola app, Valigia](docs/validation/valigia-comparison-20261020.html)
-ha poi dato lo stesso risultato funzionale per Codex diretto e Iterfox: 12 test,
-7 flussi Chrome e 6 gruppi aggiuntivi superati, zero interventi per entrambi.
-Su questo singolo caso con criteri preparati, il valore funzionale aggiuntivo non
-è dimostrato. Prompt, sorgenti e misure sono conservati nel rapporto.
+La consegna aggiunge controlli regolari per API, esportazioni, HTML offline e
+risposte lente: **86 test backend superati, 7 opzionali saltati, 11 casi Chrome e
+3 flussi browser aggiuntivi**. Download e report offline sono stati verificati
+anche sui dati delle tre missioni reali, senza modificare lo storico.
+
+I precedenti [sviluppi sul prodotto](docs/validation/project-continuity-real.html)
+e il [confronto Valigia con Codex diretto](docs/validation/valigia-comparison-20261020.html)
+restano documentati nei rispettivi perimetri. Valigia ha dato risultati funzionali
+uguali con criteri già preparati; la prova attuale misura la continuità fra
+missioni e i recuperi necessari, senza stabilire un vantaggio universale su Codex.
 
 ## Chi decide cosa
 
@@ -121,16 +140,14 @@ dalle prove al checkpoint e non sostituisce la provenienza mancante. L'ora di
 lettura non certifica la freschezza del codice corrente; il file offline non si
 aggiorna da solo. Affermazioni AI e checkpoint tecnici non costituiscono accettazione
 del prodotto. La [guida alle delegazioni](docs/continuous-delegation.md) descrive
-route, aggiornamento, recupero e limiti delle verifiche della prova in corso.
+route, aggiornamento, recupero e limiti delle verifiche.
 
-Lo stato tecnico corrente deriva dalle ricevute dell'host sullo snapshot del
-codice revisionato; i checkpoint documentali datati conservano il proprio ambito
-storico. Dopo queste modifiche documentali sono richieste nuove verifiche
-cumulative sull'host. La copertura browser approvata comprende gli undici flussi
-Chrome esistenti e una fixture del brief che scarica JSON/Markdown su desktop,
-poi controlla l'overflow della pagina a 390px. Questi controlli non azionano il
-download HTML e non ispezionano il layout del rapporto offline. La prova resta in
-corso e richiede ancora la revisione del prodotto da parte dell'operatore.
+Il controllo browser protetto della prova originaria copriva JSON/Markdown e
+390px, senza il pulsante HTML. La suite ordinaria della consegna comprende ora
+anche download HTML, lettura offline con JavaScript disabilitato e risposte lente
+o fallite del brief. Un audit browser separato ha usato il ledger delle tre
+missioni Codex concluse. [Risultati e recupero tecnico necessario](docs/validation/continuous-project-real-20261020.html).
+La revisione del prodotto e la decisione di pubblicarlo restano tue.
 
 ## Governarlo dal grafico
 
@@ -497,7 +514,7 @@ un problema di recupero delle run su mobile e ha aggiunto e implementato un nuov
 compito. Non sono serviti ulteriori messaggi dell'utente dopo l'avvio; un assistente
 esterno ha fornito una nota con preferenze già espresse su durata e controlli.
 
-La consegna ha superato 58 test automatici e 7 test nel browser. Prove separate
+Quella consegna originaria aveva superato 58 test automatici e 7 test nel browser. Prove separate
 hanno osservato la generazione con Codex reale, l'avvio effettivo del worker e il
 recupero dopo una risposta di autorizzazione deliberatamente persa. I worker di
 quelle prove di avvio sono stati fermati intenzionalmente.

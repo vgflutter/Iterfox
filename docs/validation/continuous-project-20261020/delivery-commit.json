@@ -1,0 +1,8 @@
+{
+  "at": "2026-10-20T13:40:54.583Z",
+  "branch": "feat/continuous-return-review",
+  "codeCommit": "b00e3ae332a6c62d0cc5de418630bef3be53d7bc",
+  "sourceCheckpoint": "23f6ff670897de624de59f6d2c508a948ea846b0",
+  "url": "http://127.0.0.1:4358",
+  "checkedCode": "Byte-identical source, tests and configuration to the fully checked candidate; later changes are documentation/evidence only."
+}

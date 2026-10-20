@@ -1,0 +1,204 @@
+(node:23329) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+{
+  "spec": {
+    "repository": "/Users/vins/work/iterfox/.iterfox/development/continuous-delegation",
+    "contract": {
+      "goal": "Develop Iterfox's return-to-work experience so the operator can understand actual multi-mission progress without prompting repeatedly. Read docs/continuous-project-trial.md for the fixed scope and interfaces. The current outcome is the implementation target; future outcomes are handed to new missions automatically. Own ordinary reversible decisions. Report real blockers only. Keep original evidence, history, acceptance and permissions intact. This is an approved local implementation; no publication, deployment, push or merge. Existing UI and eleven Chrome workflows must remain functional. Do not edit protected tests or dependency files. Request host verification rather than running browser suites inside the agent sandbox. Technical completion remains subject to operator product review.",
+      "criteria": [
+        {
+          "id": "brief-api",
+          "title": "Cross-mission brief derives saved evidence and exports JSON/Markdown",
+          "command": [
+            "node",
+            "--import",
+            "tsx",
+            "--test",
+            "tests/continuous/brief-api.case.mjs"
+          ],
+          "scope": [],
+          "timeoutMs": 120000
+        },
+        {
+          "id": "regression",
+          "title": "All existing backend regression checks stay passing",
+          "command": [
+            "npm",
+            "test"
+          ],
+          "scope": [],
+          "timeoutMs": 180000
+        },
+        {
+          "id": "types",
+          "title": "Server and interface TypeScript remain valid",
+          "command": [
+            "npm",
+            "run",
+            "typecheck"
+          ],
+          "scope": [],
+          "timeoutMs": 120000
+        },
+        {
+          "id": "build",
+          "title": "Production server and interface build successfully",
+          "command": [
+            "npm",
+            "run",
+            "build"
+          ],
+          "scope": [],
+          "timeoutMs": 120000
+        },
+        {
+          "id": "interface",
+          "title": "Eleven existing Chrome workflows remain functional",
+          "command": [
+            "env",
+            "ITERFOX_BROWSER_CHANNEL=chrome",
+            "ITERFOX_UI_TEST_PORT=4356",
+            "npm",
+            "run",
+            "test:ui"
+          ],
+          "scope": [],
+          "timeoutMs": 240000
+        },
+        {
+          "id": "brief-ui",
+          "title": "Project brief and JSON/Markdown downloads work on desktop and mobile",
+          "command": [
+            "env",
+            "ITERFOX_BROWSER_CHANNEL=chrome",
+            "node",
+            "--import",
+            "tsx",
+            "tests/continuous/brief-browser.mjs"
+          ],
+          "scope": [],
+          "timeoutMs": 180000
+        },
+        {
+          "id": "report",
+          "title": "Offline report is authenticated, escaped and tied to checkpoint evidence",
+          "command": [
+            "node",
+            "--import",
+            "tsx",
+            "--test",
+            "tests/continuous/report.case.mjs"
+          ],
+          "scope": [],
+          "timeoutMs": 120000
+        }
+      ],
+      "allowedPaths": [
+        "src/delegations/brief.ts",
+        "src/delegations/export.ts",
+        "src/server.ts",
+        "src/ui/delegation-brief.tsx",
+        "src/ui/delegations.tsx",
+        "src/ui/style.css",
+        "README.md",
+        "README.it.md",
+        "docs/continuous-delegation.md"
+      ],
+      "protectedPaths": [
+        "tests",
+        "scripts",
+        "package.json",
+        "package-lock.json",
+        "docs/continuous-project-trial.md",
+        "src/core",
+        "src/providers",
+        "src/shared",
+        "src/launch",
+        "src/projects",
+        "src/cli.ts",
+        "src/cloud.ts",
+        "src/delegations/service.ts",
+        "src/delegations/cli.ts",
+        "tsconfig.json",
+        "tsconfig.server.json",
+        "vite.config.ts",
+        "playwright.config.ts",
+        ".github"
+      ],
+      "supervision": {
+        "mode": "project",
+        "maxReviews": 20
+      },
+      "limits": {
+        "maxTurns": 180,
+        "maxAttempts": 3,
+        "maxDurationMs": 28800000,
+        "maxTokens": 100000000,
+        "turnTimeoutMs": 1200000,
+        "maxNoProgress": 6
+      }
+    },
+    "milestones": [
+      {
+        "id": "evidence-brief",
+        "title": "An evidence-derived project brief",
+        "outcome": "Implement Outcome 1 in docs/continuous-project-trial.md: read-only aggregate project brief with real checkpoint provenance, accurate shared usage, attention and authenticated JSON/Markdown exports. Build only this coherent backend result; later UI and HTML work belong to following missions.",
+        "criterionIds": [
+          "brief-api",
+          "regression",
+          "types",
+          "build",
+          "interface"
+        ],
+        "dependsOn": []
+      },
+      {
+        "id": "return-view",
+        "title": "A useful return-to-work view",
+        "outcome": "Implement Outcome 2 in docs/continuous-project-trial.md using the preceding checkpointed backend. Add the selected-project morning brief, accurate attention/results, JSON and Markdown downloads with specified accessible labels, working 390px layout and existing control/recovery preservation. The offline HTML report is the next mission.",
+        "criterionIds": [
+          "brief-ui"
+        ],
+        "dependsOn": [
+          "evidence-brief"
+        ]
+      },
+      {
+        "id": "portable-report",
+        "title": "A portable project report",
+        "outcome": "Implement Outcome 3 in docs/continuous-project-trial.md: readable script-free offline HTML report and authenticated attachment route, accessible report download in the existing brief, correct escaping/provenance and factual governance documentation. Preserve and reverify all earlier backend and interface behavior.",
+        "criterionIds": [
+          "report"
+        ],
+        "dependsOn": [
+          "return-view"
+        ]
+      }
+    ],
+    "environment": {
+      "copyIgnoredPaths": [
+        "node_modules"
+      ]
+    }
+  },
+  "expectedHead": "e4717a568f87da5377e0c502b107ef9d7253759b",
+  "commonDirectory": "/Users/vins/work/iterfox/.git",
+  "specHash": "36f875055036581a9485900e411d7a524c00f548c3f7e6d44d56eb97c3a7fb6b",
+  "permissions": [
+    "Sequential project missions within this complete approved contract",
+    "Host creates verified local checkpoint commits under refs/iterfox/checkpoints; source HEAD and index stay unchanged",
+    "Historical handoffs are context; each new mission starts with no proofs",
+    "No push, merge, deployment, new check commands or automatic contract changes"
+  ],
+  "limits": {
+    "maxTurns": 180,
+    "maxAttempts": 3,
+    "maxDurationMs": 28800000,
+    "maxTokens": 100000000,
+    "turnTimeoutMs": 1200000,
+    "maxNoProgress": 6
+  },
+  "authorizationRequired": true
+}
+Delegation 321f909e-e317-48a5-9ad7-b2b82638e4ec
+Detached worker PID 23343

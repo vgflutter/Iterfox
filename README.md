@@ -12,29 +12,48 @@ choices stay with the agent. Return to inspect the result, evidence and decision
 This is an early working MVP. Only Codex is supported. It does not automatically
 push, merge or deploy. A completed agent turn is not a passing acceptance check.
 
+## Continuous work while you are away
+
+Use **Delegations** for a bounded chain of outcomes. Approve the outcome graph,
+checks, edit boundaries and shared work window once. The host develops and verifies
+each eligible outcome, saves a local checkpoint and starts the next mission from
+that code. Each mission gathers fresh evidence. Pause or stop the whole delegation;
+review the product before integration.
+
+Return through **Delegations → Read project brief** for outcomes, remaining work,
+attention and source-mission links. Export JSON, Markdown or **Download project
+report HTML** for offline reading. **Projects** stores project memory and a roadmap;
+**New run** prepares one mission. A full delegation still needs technical
+configuration, which an assistant can prepare from your goal before review. The
+current UI does not generate a complete verified outcome graph from a sentence.
+
 ## Demonstrated on Iterfox itself
 
-The 19–20 October 2026 record includes three completed real product missions:
-persistent project memory, contextual graph instructions and bounded semantic-plan
-recovery. A fourth attempt stopped on an assistant-authored test conflict and
-remains in the history. Reviews discovered
-and implemented missing work after green checks.
-[Report, screenshots and interventions](docs/validation/project-continuity-real.html).
+On 20 October 2026, one delegation completed three real Codex outcomes on Iterfox:
+an evidence-derived project brief, its return-to-work interface and an offline
+HTML report. Code and prepared dependencies moved between three missions with
+local checkpoints and fresh cumulative gates: 5, then 6, then 7. Project review
+also discovered and implemented a documentation task after green checks.
 
-Within each authorized mission in that record, Iterfox developed and adapted the
-work. Between those missions, the assistant prepared the environment, reviewed and
-committed checkpoints, and authorized the next contract. That historical record
-does not demonstrate automatic cross-run scheduling. The later
-[continuous delegation trial](docs/continuous-project-trial.md) exercises approved
-host-managed continuation and remains in progress as of 20 October 2026. Neither
-record establishes unattended overnight reliability. The later trial does not
-compare speed or token efficiency with direct Codex.
+**One assistant recovery was required during the last mission.** Expensive history
+replay in a 100 ms monitor caused long delays. The assistant paused the same
+delegation, preserved the original runtime and resumed with a separately frozen
+fixed runtime. Original authorization time, checks, limits, run IDs and checkpoints
+were retained. An earlier pre-model startup failure also required a dependency
+preparation fix. No additional user decision was requested. This is not a fully
+unattended run or an overnight reliability claim.
+[Protocol, results, interventions and real screenshots](docs/validation/continuous-project-real-20261020.html).
 
-A subsequent [paired small-app case](docs/validation/valigia-comparison-20261020.html)
-gave the same functional result for direct Codex SDK and Iterfox: 12 domain tests,
-7 Chrome workflow assertions and 6 extra audit groups passed, with zero operator
-interventions in either arm. No functional advantage is demonstrated by this one
-case with prepared criteria. The prompt, both apps and measurements are preserved.
+The delivered checks pass 86 backend cases, with 7 optional cases skipped, plus
+11 Chrome cases and three additional browser workflows. The final three exports
+and offline HTML were also exercised against the actual completed Codex ledger
+without changing its history.
+
+Earlier [product missions](docs/validation/project-continuity-real.html) and the
+[paired Valigia case](docs/validation/valigia-comparison-20261020.html) retain their
+original results. Valigia showed equal functional results with prepared criteria;
+this trial measures cross-mission continuity and required recoveries, not universal
+superiority over direct Codex.
 
 ## Who governs the process?
 
@@ -168,13 +187,12 @@ not refresh itself. AI claims and technical checkpoints do not establish operato
 product acceptance. See the [delegation guide](docs/continuous-delegation.md) for
 routes, refresh/recovery behavior and the current trial's validation limits.
 
-Current technical status comes from host receipts for the reviewed source
-snapshot; dated documentation checkpoints retain their historical scope. Fresh
-cumulative host checks are requested after these documentation edits. The approved
-browser coverage includes eleven existing Chrome workflows and a brief fixture
-that downloads JSON/Markdown on desktop, then checks page overflow at 390px.
-Those checks do not click the HTML download or inspect the offline report layout.
-The trial remains in progress and still requires operator product review.
+The original trial's protected browser case covered JSON/Markdown and 390px
+without the HTML interaction. The delivered regular UI suite now also checks the
+HTML download, offline reading with JavaScript disabled and delayed/failed brief
+responses. A separate browser audit exercised the completed real Codex ledger.
+[Results and the required technical recovery](docs/validation/continuous-project-real-20261020.html).
+Product review and release decisions remain with the operator.
 
 ### Governing through the graph
 
