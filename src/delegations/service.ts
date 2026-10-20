@@ -399,7 +399,9 @@ async function prepareEnvironment(d: Delegation, run: RunState) {
       destination = join(run.worktree, name);
     if (!(await lstat(source)).isDirectory())
       throw new Error('Prepared dependencies must be a real directory');
-    await git(d.spec.repository, ['check-ignore', '-q', '--', name]);
+    // check-ignore does not support the literal pathspec magic used by other
+    // plumbing commands. `name` is the schema's fixed node_modules literal.
+    await git(d.spec.repository, ['--no-literal-pathspecs', 'check-ignore', '-q', '--', name]);
     try {
       await lstat(destination);
       throw new Error('Environment destination already exists');

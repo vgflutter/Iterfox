@@ -1,6 +1,6 @@
 import { test, type TestContext } from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdtemp, mkdir, writeFile, readFile, rm } from 'node:fs/promises';
+import { mkdtemp, mkdir, writeFile, readFile, rm, symlink, readlink } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { openStore } from '../src/service.js';
@@ -216,6 +216,34 @@ test('one authorization executes dependent missions with fresh proof and preserv
   );
   assert.equal(new DelegationStore(f.store).get(d.id).status, 'COMPLETED');
 });
+test('each mission receives a private ignored dependency copy with executable symlinks preserved', async (t) => {
+  const f = await fixture(t);
+  const dependencies = join(f.repo, 'node_modules');
+  await mkdir(join(dependencies, 'prepared'), { recursive: true });
+  await mkdir(join(dependencies, '.bin'));
+  await writeFile(join(dependencies, 'prepared', 'tool.mjs'), 'prepared tool\n');
+  await symlink('../prepared/tool.mjs', join(dependencies, '.bin', 'prepared'));
+  const d = await f.create({ environment: { copyIgnoredPaths: ['node_modules'] } });
+  let observations = 0;
+  const result = await runDelegation(f.store, join(f.dir, 'data'), d.id, () =>
+    provider(async (r) => {
+      if (r.mode !== 'orient') return;
+      const copy = join(r.state.worktree, 'node_modules');
+      assert.equal(await readFile(join(copy, 'prepared', 'tool.mjs'), 'utf8'), 'prepared tool\n');
+      assert.equal(await readlink(join(copy, '.bin', 'prepared')), '../prepared/tool.mjs');
+      await writeFile(join(copy, 'prepared', 'tool.mjs'), 'private change\n');
+      observations++;
+    }),
+  );
+  assert.equal(result.status, 'COMPLETED', result.reason);
+  assert.equal(observations, 2);
+  assert.equal(
+    await readFile(join(dependencies, 'prepared', 'tool.mjs'), 'utf8'),
+    'prepared tool\n',
+  );
+  assert(result.stages.every((s) => s.environmentPrepared));
+});
+
 test('authorization, clean committed source and DAG coverage are mandatory', async (t) => {
   const f = await fixture(t);
   await assert.rejects(
