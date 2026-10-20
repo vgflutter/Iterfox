@@ -303,7 +303,27 @@ function OutcomeList({
   );
 }
 
-type BriefFormat = 'json' | 'markdown';
+const briefFormats = {
+  json: {
+    label: 'JSON',
+    mime: 'application/json',
+    endpoint: 'brief?format=json',
+    extension: 'json',
+  },
+  markdown: {
+    label: 'Markdown',
+    mime: 'text/markdown',
+    endpoint: 'brief?format=markdown',
+    extension: 'md',
+  },
+  html: {
+    label: 'HTML report',
+    mime: 'text/html',
+    endpoint: 'report',
+    extension: 'html',
+  },
+} as const;
+type BriefFormat = keyof typeof briefFormats;
 
 function BriefExports({
   delegationId,
@@ -316,6 +336,7 @@ function BriefExports({
   active: boolean;
   token: string;
 }) {
+  const descriptionId = useId();
   const [pending, setPending] = useState<BriefFormat | null>(null);
   const [error, setError] = useState('');
   const [message, setMessage] = useState('');
@@ -356,16 +377,15 @@ function BriefExports({
       }, 30_000),
     };
     request.current = exchange;
-    const label = format === 'json' ? 'JSON' : 'Markdown';
+    const { label, mime, endpoint, extension } = briefFormats[format];
     setPending(format);
     setError('');
     setMessage('');
     let anchor: HTMLAnchorElement | undefined;
     let objectUrl: string | undefined;
     try {
-      const mime = format === 'json' ? 'application/json' : 'text/markdown';
       const response = await fetch(
-        `/api/delegations/${encodeURIComponent(delegationId)}/brief?format=${format}`,
+        `/api/delegations/${encodeURIComponent(delegationId)}/${endpoint}`,
         {
           method: 'GET',
           headers: { 'X-Iterfox-Token': token, Accept: mime },
@@ -373,7 +393,7 @@ function BriefExports({
           signal: controller.signal,
         },
       );
-      // Markdown is a text document; it must not pass through the JSON-only API helper.
+      // Markdown and HTML are downloaded as text, never inserted into the live page.
       const content = await response.text();
       if (!response.ok) {
         let detail = '';
@@ -397,7 +417,11 @@ function BriefExports({
       objectUrl = URL.createObjectURL(new Blob([content], { type: `${mime};charset=utf-8` }));
       anchor = document.createElement('a');
       anchor.href = objectUrl;
-      anchor.download = `iterfox-project-brief-${delegationId.replace(/[^a-zA-Z0-9_-]/g, '_')}.${format === 'json' ? 'json' : 'md'}`;
+      const filenameId = delegationId.replace(/[^a-zA-Z0-9_-]/g, '_');
+      anchor.download =
+        format === 'html'
+          ? `iterfox-project-report-${filenameId.slice(0, 80) || 'delegation'}.html`
+          : `iterfox-project-brief-${filenameId}.${extension}`;
       anchor.hidden = true;
       document.body.append(anchor);
       anchor.click();
@@ -420,7 +444,9 @@ function BriefExports({
         : failure instanceof Error
           ? failure.message
           : String(failure);
-      setError(`Could not export project brief ${label}. ${detail}`);
+      const action =
+        format === 'html' ? 'download project report HTML' : `export project brief ${label}`;
+      setError(`Could not ${action}. ${detail}`);
     } finally {
       clearTimeout(exchange.timer);
       anchor?.remove();
@@ -454,10 +480,21 @@ function BriefExports({
         >
           Export project brief Markdown
         </button>
+        <button
+          className="button"
+          disabled={!active || !token || pending !== null}
+          aria-describedby={descriptionId}
+          onClick={() => void download('html')}
+        >
+          Download project report HTML
+        </button>
       </div>
-      <p className="muted small-text">Downloads read the latest saved brief for this delegation.</p>
+      <p id={descriptionId} className="muted small-text">
+        Downloads read the latest saved brief for this delegation. The HTML report is a
+        self-contained snapshot for offline reading.
+      </p>
       <p role="status" className="brief-download-status">
-        {pending ? `Preparing ${pending === 'json' ? 'JSON' : 'Markdown'} download…` : message}
+        {pending ? `Preparing ${briefFormats[pending].label} download…` : message}
       </p>
       {error && (
         <p role="alert" className="project-error">

@@ -24,17 +24,21 @@ Altrimenti trovi più sotto [come avviarla](#avviare-linterfaccia).
 
 ## La prova sul prodotto reale
 
-Iterfox ha completato **tre missioni sul proprio codice**: memoria persistente del
-progetto, istruzioni dal grafico e recupero limitato dei piani incoerenti. Una
+Il resoconto del 19–20 ottobre 2026 comprende **tre missioni completate sul proprio
+codice**: memoria persistente del progetto, istruzioni dal grafico e recupero
+limitato dei piani incoerenti. Una
 quarta esecuzione, fermata per un conflitto nei test preparati dall'assistente,
 resta nello storico. Le revisioni hanno scoperto e fatto svolgere lavoro mancante
 anche dopo i controlli verdi. [Rapporto con immagini e interventi](docs/validation/project-continuity-real.html).
 
-Il confine attuale è concreto: **Iterfox può sviluppare e adattare il lavoro dentro
-una missione autorizzata; fra missioni ho ancora gestito io ambiente, revisione,
-checkpoint Git e nuova autorizzazione.** La roadmap conserva il lungo periodo,
-ma non esegue ancora da sola una catena di sessioni. La prova non stabilisce un
-vantaggio rispetto a Codex diretto né l'affidabilità per una notte intera.
+In quella prova Iterfox sviluppava e adattava il lavoro dentro ogni missione
+autorizzata; fra quelle missioni un assistente esterno gestiva ambiente, revisione,
+checkpoint Git e nuova autorizzazione. Quel resoconto storico non dimostra la
+continuazione automatica fra sessioni. La successiva
+[prova di delegazione continua](docs/continuous-project-trial.md) riguarda invece
+la continuazione gestita dall'host entro un'autorizzazione già approvata ed è
+ancora in corso al 20 ottobre 2026. Nessuna delle due prove stabilisce un vantaggio
+rispetto a Codex diretto o l'affidabilità per una notte intera.
 
 Il [confronto su una piccola app, Valigia](docs/validation/valigia-comparison-20261020.html)
 ha poi dato lo stesso risultato funzionale per Codex diretto e Iterfox: 12 test,
@@ -44,15 +48,16 @@ Su questo singolo caso con criteri preparati, il valore funzionale aggiuntivo no
 
 ## Chi decide cosa
 
-| Aspetto                                        | Il tuo controllo                                                  | Autonomia di Iterfox                                                                  |
-| ---------------------------------------------- | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| Risultato da ottenere                          | Descrivi l'obiettivo e approvi la versione proposta.              | Codex può aiutarti a formularlo nella bozza iniziale.                                 |
-| Criteri di successo e comandi di verifica      | Li controlli e autorizzi prima dell'avvio.                        | Il motore esegue le verifiche approvate e registra gli esiti.                         |
-| File modificabili e file protetti              | Approvi i confini; restano attive anche le protezioni del motore. | L'agente lavora nel perimetro autorizzato.                                            |
-| Piano e ordine di lavoro                       | Puoi indicare priorità.                                           | Pianifica, corregge i problemi e scopre ulteriore lavoro utile allo stesso obiettivo. |
-| Scelte di implementazione e design reversibili | Puoi riservarti esplicitamente una decisione.                     | Negli altri casi sceglie e registra le proprie valutazioni.                           |
-| Durata e limiti della sessione                 | Li approvi e puoi interrompere il lavoro.                         | Continua finché può progredire entro quei limiti.                                     |
-| Integrazione e pubblicazione                   | Rivedi il risultato e decidi cosa portare nel progetto.           | La versione attuale non fa automaticamente commit, push, merge o deploy.              |
+| Aspetto                                                 | Il tuo controllo                                                            | Autonomia di Iterfox                                                                                                                                    |
+| ------------------------------------------------------- | --------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Risultato da ottenere                                   | Descrivi l'obiettivo e approvi la versione proposta.                        | Codex può aiutarti a formularlo nella bozza iniziale.                                                                                                   |
+| Criteri di successo e comandi di verifica               | Li controlli e autorizzi prima dell'avvio.                                  | Il motore esegue le verifiche approvate e registra gli esiti.                                                                                           |
+| File modificabili e file protetti                       | Approvi i confini; restano attive anche le protezioni del motore.           | L'agente lavora nel perimetro autorizzato.                                                                                                              |
+| Piano e ordine di lavoro                                | Puoi indicare priorità.                                                     | Pianifica, corregge i problemi e scopre ulteriore lavoro utile allo stesso obiettivo.                                                                   |
+| Scelte di implementazione e design reversibili          | Puoi riservarti esplicitamente una decisione.                               | Negli altri casi sceglie e registra le proprie valutazioni.                                                                                             |
+| Durata e limiti della sessione                          | Li approvi e puoi interrompere il lavoro.                                   | Continua finché può progredire entro quei limiti.                                                                                                       |
+| Esiti successivi di una delegazione e checkpoint locali | Approvi il grafo degli esiti, le verifiche cumulative e i limiti condivisi. | L'host prosegue e crea i commit locali di checkpoint entro quei confini; l'agente di sviluppo non può committare o autorizzare il contratto successivo. |
+| Integrazione e pubblicazione                            | Rivedi il risultato e decidi cosa portare nel progetto.                     | Push, merge, deploy e pubblicazione restano decisioni dell'operatore.                                                                                   |
 
 Una **run** è una sessione autorizzata. Il **contratto** è l'insieme approvato di
 obiettivo, criteri, comandi, percorsi e limiti. Il **piano** descrive le attività per
@@ -73,9 +78,59 @@ mostra il lavoro corrente e l'accesso alla sessione collegata; **Project brief a
 editing** apre memoria completa e cronologia. Dopo un salvataggio incerto o una
 revisione concorrente, conserva la bozza, ispeziona i dati salvati e riconcilia
 esplicitamente. I dati persistono in `ledger.sqlite` nella directory dati scelta;
-gli input non salvati restano solo nella pagina. Per continuare il codice serve
-un checkpoint committato e revisionato: New Run copia il solo HEAD committato. Vedi
+gli input non salvati restano solo nella pagina. Nel flusso manuale New Run, per
+continuare il codice serve un checkpoint committato e revisionato: viene copiato
+il solo HEAD committato. Vedi
 [procedura, recupero e limiti osservati](docs/project-workspace.md).
+
+## Delegazioni continue e rapporto offline
+
+Una delegazione approvata copre un grafo finito di esiti con un unico contratto.
+L'host avvia la missione successiva ammissibile, ripete le verifiche cumulative
+approvate e registra un checkpoint Git locale prima di proseguire, nei limiti
+condivisi originali. L'agente sceglie i normali dettagli reversibili della missione
+corrente; non può cambiare contratto, protezioni o permessi, committare o autorizzare
+altro lavoro. Il checkpoint è un risultato tecnico: accettazione del prodotto,
+integrazione, push, merge, pubblicazione e deploy restano all'operatore. Le milestone
+di **Projects** mantengono il proprio processo di revisione.
+
+Apri **Delegations**, seleziona una delegazione e scegli **Read project brief**.
+Il **Project morning brief** riunisce avanzamento salvato degli esiti, lavoro
+rimanente e domande o blocchi, con collegamenti alle missioni sorgenti e provenienza
+espandibile. **Export project brief JSON** e **Export project brief Markdown**
+mantengono i download `.json` e `.md` esistenti.
+
+Per un rapporto portabile, scegli **Download project report HTML** nel **Project
+morning brief**, accanto alle esportazioni JSON e Markdown. Il pulsante richiede
+`GET /api/delegations/:id/report` autenticato e invia per te l'header
+`X-Iterfox-Token`. La route restituisce un allegato `text/html` con nome `.html`
+sicuro, mantenendo i controlli su host locale e stessa origine delle route del
+brief; aprire il solo URL senza quell'header non autorizza il download. Salva
+l'allegato e aprilo localmente nel browser. Stili incorporati e dettagli espandibili nativi
+funzionano offline, senza script, risorse remote, server Iterfox attivo o chiamate
+al modello. Stringhe salvate, comandi e percorsi degli artefatti sono testo con
+escaping HTML; i file delle prove citate non sono inclusi.
+
+Il rapporto conserva obiettivo e limiti originali, utilizzo registrato, questioni
+aperte, risultati dei criteri e SHA/ref/fingerprint/sequenza dei checkpoint.
+Legge i dati salvati senza avviare lavoro, consumare token del modello o rieseguire
+controlli. Se manca lo storico di una missione, i totali sono parziali e i budget
+rimanenti di turni e token sono sconosciuti; utilizzo non registrato e costo
+monetario non sono disponibili. Lo stato successivo di una missione è distinto
+dalle prove al checkpoint e non sostituisce la provenienza mancante. L'ora di
+lettura non certifica la freschezza del codice corrente; il file offline non si
+aggiorna da solo. Affermazioni AI e checkpoint tecnici non costituiscono accettazione
+del prodotto. La [guida alle delegazioni](docs/continuous-delegation.md) descrive
+route, aggiornamento, recupero e limiti delle verifiche della prova in corso.
+
+Lo stato tecnico corrente deriva dalle ricevute dell'host sullo snapshot del
+codice revisionato; i checkpoint documentali datati conservano il proprio ambito
+storico. Dopo queste modifiche documentali sono richieste nuove verifiche
+cumulative sull'host. La copertura browser approvata comprende gli undici flussi
+Chrome esistenti e una fixture del brief che scarica JSON/Markdown su desktop,
+poi controlla l'overflow della pagina a 390px. Questi controlli non azionano il
+download HTML e non ispezionano il layout del rapporto offline. La prova resta in
+corso e richiede ancora la revisione del prodotto da parte dell'operatore.
 
 ## Governarlo dal grafico
 
@@ -100,7 +155,8 @@ dipendenze e prove. Non devi disegnare a mano tutti i passaggi prima di partire.
 5. Il salvataggio aggiunge contesto alla riconciliazione Compass al confine di
    attività: non avvia worker e non modifica prove o accettazione. Se la run è
    inattiva serve **Resume** esplicito, entro i limiti originali e dopo aver risolto
-   eventuali blocchi. Una run terminale richiede una sessione successiva autorizzata.
+   eventuali blocchi. Una run terminale richiede una sessione successiva autorizzata;
+   in una delegazione approvata l'host può crearla per l'esito successivo ammissibile.
 
 Le bozze Live Trail restano separate per run, versione e selezione mentre la
 pagina è aperta, anche cambiando vista o dopo un errore. Un invio pendente resta
@@ -375,8 +431,10 @@ finita e un criterio verificato sono cose diverse.
 
 Controlla anche l'esperienza reale del prodotto: i test configurati possono non
 coprire una richiesta. Il supervisore usa la stessa integrazione AI e non è un
-revisore indipendente. Decidi poi quali modifiche conservare, committare e integrare.
-Questi passaggi non vengono eseguiti automaticamente da Iterfox.
+revisore indipendente. Decidi poi quali modifiche conservare e integrare. Il commit
+locale di checkpoint creato dall'host in una delegazione approvata conserva il
+risultato tecnico e non sostituisce questa decisione. Push, merge, pubblicazione e
+deploy richiedono una decisione separata dell'operatore.
 
 ## Avviare l'interfaccia
 
@@ -426,8 +484,10 @@ node dist/cli.js contract RUN_ID --approve --data /percorso/assoluto/iterfox-dat
 node dist/cli.js resume RUN_ID --night --data /percorso/assoluto/iterfox-data
 ```
 
-La pausa consente di cambiare un contratto di una run non conclusa. Per una run
-già completata, o per una nuova direzione di progetto, avvia una nuova sessione.
+La pausa consente di cambiare un contratto di una run non conclusa. Nel flusso
+manuale, per una run già completata o una nuova direzione di progetto avvia una
+nuova sessione. La continuazione fra esiti già approvati di una delegazione è
+invece responsabilità dell'host e resta nei limiti originali.
 
 ## Che cosa è già stato osservato
 

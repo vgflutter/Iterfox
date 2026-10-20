@@ -16,6 +16,7 @@ import { ProjectStore } from './projects/store.js';
 import { ProjectService } from './projects/service.js';
 import { ProjectError, projectError } from './projects/errors.js';
 import { buildDelegationBrief, renderDelegationBriefMarkdown } from './delegations/brief.js';
+import { renderDelegationReport } from './delegations/export.js';
 import {
   DelegationStore,
   previewDelegation,
@@ -91,7 +92,7 @@ export async function serve(
       }
       if (parts[0] === 'api') {
         if (parts[1] === 'delegations') {
-          // Brief exports are saved-record reads. In particular they must bypass
+          // Brief and report exports are saved-record reads. They must bypass
           // GET recovery below, which may change delegation status and history.
           if (parts.length === 4 && parts[3] === 'brief' && req.method === 'GET') {
             const format = url.searchParams.get('format');
@@ -103,6 +104,17 @@ export async function serve(
               return res.end(renderDelegationBriefMarkdown(result));
             }
             return json(res, 200, result);
+          }
+          if (parts.length === 4 && parts[3] === 'report' && req.method === 'GET') {
+            const result = await buildDelegationBrief(store, parts[2]);
+            const html = renderDelegationReport(result);
+            const filenameId = result.delegationId.replace(/[^a-zA-Z0-9_-]/g, '_').slice(0, 80);
+            res.setHeader('Content-Type', 'text/html; charset=utf-8');
+            res.setHeader(
+              'Content-Disposition',
+              `attachment; filename="iterfox-project-report-${filenameId || 'delegation'}.html"`,
+            );
+            return res.end(html);
           }
           if (req.method === 'GET') recoverDelegations(store);
           if (parts.length === 2 && req.method === 'GET') return json(res, 200, delegations.list());

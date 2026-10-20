@@ -14,17 +14,21 @@ push, merge or deploy. A completed agent turn is not a passing acceptance check.
 
 ## Demonstrated on Iterfox itself
 
-Three real product missions completed: persistent project memory, contextual graph
-instructions and bounded semantic-plan recovery. A fourth attempt stopped on an
-assistant-authored test conflict and remains in the history. Reviews discovered
+The 19–20 October 2026 record includes three completed real product missions:
+persistent project memory, contextual graph instructions and bounded semantic-plan
+recovery. A fourth attempt stopped on an assistant-authored test conflict and
+remains in the history. Reviews discovered
 and implemented missing work after green checks.
 [Report, screenshots and interventions](docs/validation/project-continuity-real.html).
 
-Within each authorized mission, Iterfox developed and adapted the work. Between
-missions, the assistant still prepared the environment, reviewed and committed
-checkpoints, and authorized the next contract. The roadmap preserves long-term
-direction; automatic cross-run scheduling is not yet demonstrated. This is not an
-overnight soak or a new comparison against direct Codex.
+Within each authorized mission in that record, Iterfox developed and adapted the
+work. Between those missions, the assistant prepared the environment, reviewed and
+committed checkpoints, and authorized the next contract. That historical record
+does not demonstrate automatic cross-run scheduling. The later
+[continuous delegation trial](docs/continuous-project-trial.md) exercises approved
+host-managed continuation and remains in progress as of 20 October 2026. Neither
+record establishes unattended overnight reliability. The later trial does not
+compare speed or token efficiency with direct Codex.
 
 A subsequent [paired small-app case](docs/validation/valigia-comparison-20261020.html)
 gave the same functional result for direct Codex SDK and Iterfox: 12 domain tests,
@@ -37,14 +41,15 @@ case with prepared criteria. The prompt, both apps and measurements are preserve
 **You approve the destination and boundaries. Iterfox chooses and adapts the work
 inside them. You review the result before integrating it.**
 
-| Decision                                                                     | Who controls it?                                                                                                    |
-| ---------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
-| Goal, success criteria, exact check commands, editable paths and work window | You review the draft and explicitly authorize them before launch.                                                   |
-| Implementation order, corrections and further work toward the same goal      | Iterfox plans and adapts these during the run. Enable project development to discover work after green checks.      |
-| Reversible implementation and design choices                                 | Delegated to the agent unless you explicitly reserve a decision in the handoff.                                     |
-| New priorities and context during work                                       | You add requests, decisions or hypotheses in Project Compass. They apply after the current activity.                |
-| Changing approved success criteria or limits                                 | You pause and explicitly approve a versioned contract revision through the CLI. A Compass note cannot authorize it. |
-| Integrating, publishing or deploying the result                              | You do this after reviewing the isolated worktree and evidence.                                                     |
+| Decision                                                                     | Who controls it?                                                                                                                                             |
+| ---------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Goal, success criteria, exact check commands, editable paths and work window | You review the draft and explicitly authorize them before launch.                                                                                            |
+| Implementation order, corrections and further work toward the same goal      | Iterfox plans and adapts these during the run. Enable project development to discover work after green checks.                                               |
+| Reversible implementation and design choices                                 | Delegated to the agent unless you explicitly reserve a decision in the handoff.                                                                              |
+| Following approved delegation outcomes and making local checkpoint commits   | The host worker does this within the authorized graph, cumulative checks and original limits. The coding agent cannot commit or authorize the next contract. |
+| New priorities and context during work                                       | You add requests, decisions or hypotheses in Project Compass. They apply after the current activity.                                                         |
+| Changing approved success criteria or limits                                 | You pause and explicitly approve a versioned contract revision through the CLI. A Compass note cannot authorize it.                                          |
+| Integrating, publishing or deploying the result                              | You do this after reviewing the isolated worktree and evidence.                                                                                              |
 
 A **run** is one authorized session. Its **contract** stores the approved goal,
 checks, edit boundaries and limits. Its **handoff** is optional additional context:
@@ -61,8 +66,9 @@ checks. The opening summary brings current work and linked sessions forward; exp
 **Project brief and editing** for the full memory and history. After a stale or
 uncertain save, retain your draft, inspect saved state and reconcile explicitly.
 Data persist in the selected data directory's `ledger.sqlite`; unsaved browser inputs
-remain page-local. Continuing code requires a reviewed committed checkpoint because
-New Run copies committed HEAD. Read the [workflow, recovery and observed limits](docs/project-workspace.md).
+remain page-local. In the manual New Run flow, continuing code requires a reviewed
+committed checkpoint because New Run copies committed HEAD. Read the
+[workflow, recovery and observed limits](docs/project-workspace.md).
 
 For your first real session:
 
@@ -123,6 +129,53 @@ For an example handoff, state meanings and intervention steps, read the
 covers steering, and the [goal launch guide](docs/goal-launch.md) covers draft review
 and recovery. Notes entered in a separate Codex chat are not imported into Iterfox.
 
+### Returning to a multi-mission delegation
+
+An approved continuous delegation covers a finite graph of outcomes under one
+contract. The host starts the next eligible mission, repeats cumulative approved
+checks and records a local checkpoint before continuing within the original shared
+limits. The coding agent owns ordinary reversible implementation choices inside
+its current mission. It cannot change the contract, protections or permissions,
+commit, or authorize further work. A host checkpoint is a technical result;
+operator product acceptance and any push, merge, deployment or publication remain
+separate decisions. **Projects** milestones retain their operator review process.
+
+Open **Delegations**, select a delegation and choose **Read project brief**. The
+**Project morning brief** brings saved outcome progress, remaining work and
+questions or blocks together, with source-mission links and expandable provenance.
+**Export project brief JSON** and **Export project brief Markdown** retain the
+existing `.json` and `.md` downloads.
+
+For a portable report, choose **Download project report HTML** in **Project morning
+brief**, beside the JSON and Markdown exports. The button fetches authenticated
+`GET /api/delegations/:id/report` and supplies the `X-Iterfox-Token` request header
+for you. The route returns a `text/html` attachment with a safe `.html` filename
+under the same local-host and same-origin guards as the brief routes; opening a
+bare URL without that header does not authorize a download. Save the attachment
+and open it locally in a browser. Inline styles and native expandable
+details work offline without scripts, remote resources, a running Iterfox server
+or model calls. Saved strings, commands and artifact paths are escaped text;
+referenced evidence files are not bundled.
+
+The report preserves the original goal and limits, reported usage, saved attention,
+criterion results and checkpoint SHA/ref/fingerprint/sequence. It reads saved
+records without starting work, spending model tokens or rerunning checks. Missing
+mission history makes usage partial and remaining turn/token budgets unknown;
+unreported usage and monetary cost are unavailable. Later recorded mission state
+is separate from checkpoint proof; unavailable provenance stays unavailable.
+The read time is not a current-source freshness check, and the offline file does
+not refresh itself. AI claims and technical checkpoints do not establish operator
+product acceptance. See the [delegation guide](docs/continuous-delegation.md) for
+routes, refresh/recovery behavior and the current trial's validation limits.
+
+Current technical status comes from host receipts for the reviewed source
+snapshot; dated documentation checkpoints retain their historical scope. Fresh
+cumulative host checks are requested after these documentation edits. The approved
+browser coverage includes eleven existing Chrome workflows and a brief fixture
+that downloads JSON/Markdown on desktop, then checks page overflow at 390px.
+Those checks do not click the HTML download or inspect the offline report layout.
+The trial remains in progress and still requires operator product review.
+
 ### Governing through the graph
 
 Select an activity or acceptance node in **Live Trail** to inspect its state and
@@ -134,7 +187,8 @@ priority request** prepares text for review; it promises no execution order.
 
 Saving records context for existing activity-boundary reconciliation. It starts no
 worker and changes no acceptance result. Inactive runs require explicit **Resume**;
-terminal runs require a follow-up session. **Review Compass history** opens the
+terminal runs require a follow-up session, which an approved delegation can create
+for its next eligible outcome. **Review Compass history** opens the
 recorded note. Live Trail drafts survive selection/view changes and errors while
 the page stays open; uncertain saves require history inspection before a manual
 retry. Pending/unconfirmed text stays read-only and copyable; unlocking a manual
