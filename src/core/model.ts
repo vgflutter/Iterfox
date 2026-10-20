@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { MAX_TECHNICAL_RECOVERIES, type TechnicalInterruption } from './recovery.js';
 import {
   noteInputSchema,
   needsOrientation,
@@ -273,6 +274,7 @@ export interface RunState {
   direction?: Direction;
   projectReviews?: ProjectReview[];
   projectNeedsReview?: boolean;
+  technicalInterruptions?: TechnicalInterruption[];
 }
 export type EventType =
   | 'workflow.created'
@@ -304,6 +306,8 @@ export type EventType =
   | 'plan.accepted'
   | 'agent.thread'
   | 'agent.usage'
+  | 'agent.interrupted'
+  | 'agent.retry.started'
   | 'code.changed'
   | 'contract.proposed'
   | 'contract.approved'
@@ -858,6 +862,41 @@ export function reduce(previous: RunState | undefined, event: RunEvent): RunStat
     case 'agent.usage':
       s.tokens += Number(d.tokens);
       break;
+    case 'agent.interrupted': {
+      if (
+        s.status !== 'RUNNING' ||
+        !['RUNNING', 'VERIFYING'].includes(node().status) ||
+        !['turn-timeout', 'provider-abort', 'transport'].includes(String(d.cause)) ||
+        typeof d.quiesced !== 'boolean'
+      )
+        throw new Error('Invalid technical interruption');
+      (s.technicalInterruptions ??= []).push({
+        nodeId: node().id,
+        at: event.at,
+        cause: d.cause as TechnicalInterruption['cause'],
+        message: event.message,
+        quiesced: d.quiesced,
+      });
+      break;
+    }
+    case 'agent.retry.started': {
+      const previous = s.technicalInterruptions?.at(-1);
+      if (
+        s.status !== 'RUNNING' ||
+        !['RUNNING', 'VERIFYING'].includes(node().status) ||
+        !previous?.quiesced ||
+        previous.nodeId !== node().id ||
+        previous.retriedAt ||
+        s.technicalInterruptions!.filter((i) => i.retriedAt).length >= MAX_TECHNICAL_RECOVERIES ||
+        s.turns >= s.contract.limits.maxTurns ||
+        s.tokens >= s.contract.limits.maxTokens ||
+        Date.parse(event.at) - Date.parse(s.startedAt!) >= s.contract.limits.maxDurationMs
+      )
+        throw new Error('Technical retry requires a joined process and original remaining budget');
+      previous.retriedAt = event.at;
+      s.turns++;
+      break;
+    }
     case 'code.changed':
       s.diff = String(d.diff);
       if (s.contract.supervision) s.projectNeedsReview = true;

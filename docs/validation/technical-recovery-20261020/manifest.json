@@ -1,0 +1,33 @@
+{
+  "generatedAt": "2026-10-20T20:24:03.230Z",
+  "files": {
+    "brief-desktop.png": "2b61ce875944f9c01ebdde051a81a870380fc04f88b670360595b8bda5600603",
+    "brief-mobile.png": "1686e0a741b015de78f7b95be366b370623e5b030681fadb202b01b06588fecb",
+    "brief.md": "034bd463a40194cfb255bcdec381dab5b786f467231f75a3ad27cb71f3e527a7",
+    "browser-audit.mjs": "642923232a54016a6d1eb7f9c6565e20050c2597dc8529bc0119ec0d56a02b87",
+    "browser-check.log": "a10dd8b3d6a0ca7a682c777ebe9289cbe7114a234bca635d83f8265489221900",
+    "contract.json": "407a3f99debcefeba6dc84575bf62ac5d8251d3beea7a85f81a91e638fd8b8ec",
+    "delivered-avatar.mjs": "d48751d90bb32b5b0feeb9a62eb1494bac54718cfdcb32c66eab6110c0a4d8c1",
+    "delivery-audit.json": "fa554d799e5384566fc62332e52656e7031189d65edcb53f9fd0e567dcf3bf1a",
+    "dialogue.test.mjs": "10a8ff02edb786219141b29b7543ac377c41cde587f4c18e5dc7213883ddc5b4",
+    "events.json": "7de0ec143ffda47c96b7054a990fa45ad9dc11e983b8129254c1386bc0accca8",
+    "final-build.log": "77c6ef8a3e7b313d0c0f144a08e34202a4cd64206dda7078bea60aec9069cfc7",
+    "first-trial-result.json": "2d828d5d8d87396fec46629fe6018a0b3553e0989208521888cfa73778e6c59c",
+    "framework-check.log": "9f775e8741b1065a9dcee337ba0a28217e316a3f23f29708ba47717bcd5a686a",
+    "index.html": "d04cff5b15ba8eaee8afb015a12c5ed4d16314861cdc92a6308f84d335d6ad8e",
+    "pre-fix-process-census.log": "9eb0b91cf0f6f67134b45bcaa4f7f5fe7b494c9f317866af81abc6242b2d35d3",
+    "pre-fix-timeout-regression.log": "c4d49ccf5a95d518abbd8cdc3a29b53b220053980cb1059ad966ef1faef6f0ba",
+    "protocol.json": "a9ab9a86ffa9f77f1b35f96ab6830a159aca07e43c18e2ea0d59af5fb5088947",
+    "recovery-cases.log": "9f775e8741b1065a9dcee337ba0a28217e316a3f23f29708ba47717bcd5a686a",
+    "render.test.mjs": "14dddb1f91aa72ae076f305048af48a085ca172586462609456e73630c01e9ea",
+    "report-1440.png": "b2444f70e840f56a7d600ac6b8551c32c9f4af60577e2659e4223249081d3221",
+    "report-390.png": "4c9dcd4b23b4abbc79ac552acedd05e821cb04edbfd04a34246606bc4487426f",
+    "report-audit.mjs": "86ca82a11a182eb91d09f56725ca42cbc7af48da4ffb6a326aef9929bcbec98e",
+    "report-qa.json": "50687c6c37f6a023f43a82737b3816ff1e3afd35254a647095f4a3ecd8cf22bd",
+    "result.json": "cf1809248f90316370cc6a97f465bcf8f3d977be7534f1de851c1cb389cbd0fa",
+    "run.json": "93c63e5da3d5555ff1eaf4cf93122b176fe696bc0645a93ffc802bc4feb521fa",
+    "runtime-hashes.json": "a08c27f42c9e98c0bf05e82590478ae896f66f504eb30dad1cff3e9fd490b47b",
+    "trial-driver.mjs": "284e00e5ea62ef18adfe1d97f5144004ffa871e024eddc7029dfa3f06fe907db",
+    "visual-review.json": "473987b433e3f21bf742108d6c440373f0522348caa5863ec51ffe31856c9959"
+  }
+}

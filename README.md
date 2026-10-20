@@ -27,6 +27,17 @@ report HTML** for offline reading. **Projects** stores project memory and a road
 configuration, which an assistant can prepare from your goal before review. The
 current UI does not generate a complete verified outcome graph from a sentence.
 
+## Technical recovery demonstrated
+
+After Custode exposed the interruption gap, **two real Codex trials** discarded
+the first builder response. Iterfox retried automatically and completed in
+**2 min 10 s and 2 min 7 s**, each with two verified criteria and no assistant
+Resume. The second trial uses the final version. Up to two technical retries per
+run require owned processes to exit and files to pass audit; the original
+authorization and budgets remain in force. The Morning Brief records the cause
+and outcome. These are short injected-fault trials; a long session remains to test.
+[Protocol, ledger, ten recovery cases and screenshots](docs/validation/technical-recovery-20261020/index.html).
+
 ## A simulated absence on a new application
 
 On 20 October 2026, one delegation built **Custode**, a local household inventory,
@@ -451,9 +462,14 @@ explicit operator approval; old versions and invalidated proofs remain in histor
 
 `--night` runs a detached local worker with a SQLite event ledger. Closing the page
 or the launching terminal is safe. **A local worker cannot execute during sleep or
-shutdown.** It is not an auto-starting OS service. After an interruption, inspect
-the worktree and any orphan subprocesses, then explicitly resume. Budgets persist
-across resumes. Read [safety and recovery](docs/safety.md) before unattended use.
+shutdown.** It is not an auto-starting OS service. While the worker remains alive,
+a timed-out call or recognized transport interruption can recover automatically
+up to **twice per run**, after the owned Codex processes exit and the worktree is
+audited. Retries preserve the original deadline, turn and reported-token limits.
+Pause/stop, a dead worker, unconfirmed process termination, protected edits and
+reserved operator decisions require explicit intervention. The **Morning Brief →
+Technical recovery** records each cause and retry. Budgets persist across resumes.
+[Real lost-response trial](docs/validation/technical-recovery-20261020/index.html). Read [safety and recovery](docs/safety.md) before unattended use.
 
 On macOS, workers request idle-sleep inhibition for their lifetime with the built-in
 `caffeinate` helper. Explicit sleep/shutdown still interrupt execution. Add

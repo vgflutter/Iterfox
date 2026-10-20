@@ -266,6 +266,7 @@ export async function previewDelegation(input: unknown) {
       'Host creates verified local checkpoint commits under refs/iterfox/checkpoints; source HEAD and index stay unchanged',
       'Historical handoffs are context; each new mission starts with no proofs',
       'No push, merge, deployment, new check commands or automatic contract changes',
+      'Up to two technical recoveries per mission after the owned Codex process group exits and files are audited; original aggregate limits remain in force',
     ],
     limits: spec.contract.limits,
     authorizationRequired: true as const,

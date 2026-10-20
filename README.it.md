@@ -36,6 +36,17 @@ o fermare l’intera delega. I limiti e i criteri approvati restano gli stessi.
 Per una sola missione, segui [La prima sessione](#la-prima-sessione).
 Altrimenti trovi più sotto [come avviarla](#avviare-linterfaccia).
 
+## La ripresa tecnica ora è verificata
+
+Dopo il limite emerso con Custode, **due prove con Codex reale** hanno scartato
+la prima risposta del builder. Iterfox è ripartito da solo e ha completato in
+**2 min 10 s e 2 min 7 s**, ogni volta con due criteri verificati e nessun Resume
+dell’assistente. La seconda prova usa la versione finale. Le riprese sono limitate
+a due per run, dopo la chiusura dei processi posseduti e il controllo dei file;
+restano validi i limiti originali. Il Morning Brief mostra causa ed esito.
+Sono prove brevi con guasto iniettato; una sessione lunga resta da collaudare.
+[Protocollo, ledger, dieci casi di recupero e schermate](docs/validation/technical-recovery-20261020/index.html).
+
 ## Una simulazione di assenza su un’app nuova
 
 Il 20 ottobre 2026 una delega ha sviluppato **Custode**, inventario domestico,
@@ -54,7 +65,7 @@ ricevute runtime e revisione AI della stessa integrazione.
 La consegna passa sei criteri host, **12 gruppi di audit esterno e 3 prove con
 risposte di rete perse**; interfaccia e ripristino sono verificati anche a 390px.
 Il valore osservato è lavoro utile durante l’assenza, con risultati e prove al
-ritorno. Il limite concreto è il recupero autonomo delle interruzioni tecniche;
+ritorno. In questa prova il limite concreto era il recupero autonomo delle interruzioni tecniche;
 questa prova non stabilisce una superiorità universale su Codex diretto.
 [Rapporto, codice, cronologia e schermate](docs/validation/night-custode-20261020/index.html).
 
@@ -375,8 +386,17 @@ prepararle nel worktree indicato dalla run prima di poter procedere con quei con
 Puoi chiudere la pagina o il terminale che ha avviato un Night Run. Il processo di
 lavoro è separato. **Il computer deve restare acceso e operativo.** Su macOS il
 worker richiede di impedire lo stop automatico per inattività; stop esplicito,
-spegnimento, riavvio e perdita di rete possono interromperlo. Dopo un'interruzione
-non riparte automaticamente: controlli lo stato e riprendi tu.
+spegnimento e riavvio interrompono il processo locale. Se il worker resta vivo,
+un timeout della chiamata o una disconnessione riconosciuta può essere recuperato
+automaticamente, fino a **due riprese per run**, dopo la chiusura dei processi
+Codex posseduti e il controllo dei file. Ogni ripresa consuma i limiti originali: non
+riapre la finestra di lavoro e non azzera turni o utilizzo riportato.
+
+**Pausa e Stop hanno sempre precedenza.** Un worker morto, processi la cui chiusura
+non è confermata, modifiche protette e decisioni riservate rimangono bloccati: li
+controlli e riprendi esplicitamente. Nel **Morning Brief → Technical recovery**
+vedi la causa registrata e se la chiamata è ripartita da sola.
+[Prova reale con risposta persa e recupero automatico](docs/validation/technical-recovery-20261020/index.html).
 
 Non serve un server separato se lasci acceso il Mac. Il runner SSH è un'opzione
 per una macchina Linux remota già disponibile; il ciclo completo su un vero host

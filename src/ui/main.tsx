@@ -1141,6 +1141,27 @@ function App() {
                   </a>
                 </div>
                 <div className="brief-grid">
+                  {!!b?.technicalInterruptions.length && (
+                    <article className="surface" aria-label="Technical recovery">
+                      <h3>Technical recovery</h3>
+                      <p>
+                        Automatic retries:{' '}
+                        {b.technicalInterruptions.filter((i) => i.retriedAt).length}. Original
+                        permissions and limits retained.
+                      </p>
+                      {b.technicalInterruptions.map((i, index) => (
+                        <blockquote key={`${i.nodeId}-${index}`}>
+                          {i.message}
+                          <small>
+                            {i.quiesced
+                              ? 'Owned session processes exited.'
+                              : 'Process termination unconfirmed.'}{' '}
+                            {i.retriedAt ? `Retried at ${i.retriedAt}.` : 'No automatic retry.'}
+                          </small>
+                        </blockquote>
+                      ))}
+                    </article>
+                  )}
                   {!!state.notes?.length && (
                     <article className="surface">
                       <h3>Where did the direction land?</h3>

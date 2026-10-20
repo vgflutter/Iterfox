@@ -1,5 +1,7 @@
 import { randomUUID } from 'node:crypto';
 import { resolve } from 'node:path';
+import { setTimeout as delay } from 'node:timers/promises';
+import { MAX_TECHNICAL_RECOVERIES, ProviderInterruption } from './recovery.js';
 import {
   needsOrientation,
   heldCriteria,
@@ -434,48 +436,116 @@ export class Engine {
       nodeId: activity.id,
       edges: previous ? [edge(previous.id, activity.id)] : [],
     });
-    const timeout = AbortSignal.timeout(
-      Math.min(
-        this.state.contract.limits.turnTimeoutMs,
-        Math.max(
-          1,
-          this.state.contract.limits.maxDurationMs -
-            (Date.now() - Date.parse(this.state.startedAt!)),
-        ),
-      ),
-    );
-    const signal = AbortSignal.any([this.abort.signal, timeout]);
     try {
-      const current = this.state;
-      const answer = await this.provider.invoke({
-        mode,
-        // Instructions arriving after the captured boundary remain pending for
-        // the next one; they cannot change the snapshot this response must cover.
-        state: handoffSnapshot ? { ...current, notes: handoffSnapshot } : current,
-        node: current.nodes.find((n) => n.id === activity.id)!,
-        signal,
-        failure,
-        reviewImages,
-        onThread: (threadId) =>
-          this.emit('agent.thread', 'Codex session recorded for recovery.', {
-            nodeId: activity.id,
-            threadId,
-          }),
-        onUsage: (tokens) => {
-          if (!Number.isFinite(tokens) || tokens < 0) throw new Error('Invalid provider usage');
-          this.emit('agent.usage', `${tokens} tokens reported by provider.`, { tokens });
-        },
-      });
-      signal.throwIfAborted();
-      return answer;
+      return await this.callAgent(
+        { mode, node: activity, failure, reviewImages },
+        undefined,
+        handoffSnapshot,
+      );
     } catch (e) {
-      // An aborted activity is interrupted by the outer handler; a provider error is a real failure.
-      if (!signal.aborted)
+      if (!this.abort.signal.aborted && !(e instanceof ProviderInterruption))
         this.emit('task.failed', e instanceof Error ? e.message : String(e), {
           nodeId: activity.id,
         });
       throw e;
     }
+  }
+  private async callAgent(
+    input: Pick<AgentRequest, 'mode' | 'node' | 'failure' | 'reviewImages' | 'assessmentInput'>,
+    parentSignal?: AbortSignal,
+    handoffSnapshot?: RunState['notes'],
+  ): Promise<unknown> {
+    let recoveryContext: string | undefined;
+    while (true) {
+      const timeout = AbortSignal.timeout(
+        Math.min(
+          this.state.contract.limits.turnTimeoutMs,
+          Math.max(
+            1,
+            this.state.contract.limits.maxDurationMs -
+              (Date.now() - Date.parse(this.state.startedAt!)),
+          ),
+        ),
+      );
+      const signal = AbortSignal.any([
+        this.abort.signal,
+        timeout,
+        ...(parentSignal ? [parentSignal] : []),
+      ]);
+      try {
+        const current = this.state;
+        const answer = await this.provider.invoke({
+          ...input,
+          state: handoffSnapshot ? { ...current, notes: handoffSnapshot } : current,
+          node: current.nodes.find((n) => n.id === input.node.id)!,
+          signal,
+          failure: [input.failure, recoveryContext].filter(Boolean).join('\n') || undefined,
+          onThread: (threadId) =>
+            this.emit('agent.thread', 'Codex session recorded for recovery.', {
+              nodeId: input.node.id,
+              threadId,
+            }),
+          onUsage: (tokens) => {
+            if (!Number.isFinite(tokens) || tokens < 0) throw new Error('Invalid provider usage');
+            this.emit('agent.usage', `${tokens} tokens reported by provider.`, { tokens });
+          },
+        });
+        signal.throwIfAborted();
+        return answer;
+      } catch (e) {
+        // A user control, parent verification timeout or original deadline always
+        // wins, even when a provider also reports a transport interruption.
+        this.checkControls();
+        this.boundary();
+        parentSignal?.throwIfAborted();
+        const interruption =
+          e instanceof ProviderInterruption
+            ? e
+            : timeout.aborted
+              ? new ProviderInterruption(
+                  'Per-turn timeout; provider process termination is unconfirmed.',
+                  'turn-timeout',
+                  false,
+                )
+              : undefined;
+        if (!interruption) throw e;
+        const cause = timeout.aborted ? 'turn-timeout' : interruption.kind;
+        this.emit('agent.interrupted', `${cause}: ${interruption.message}`, {
+          nodeId: input.node.id,
+          cause,
+          quiesced: interruption.quiesced,
+        });
+        if (!interruption.quiesced) throw interruption;
+        const used = (this.state.technicalInterruptions ?? []).filter((i) => i.retriedAt).length;
+        if (used >= MAX_TECHNICAL_RECOVERIES)
+          throw new ProviderInterruption(
+            'Technical recovery limit reached (2 per run). Inspect the recorded interruptions.',
+            cause,
+            true,
+          );
+        // Preserve partial work; invalidate obsolete receipts before auditing it.
+        await this.refreshEvidence();
+        await auditChanges(this.state);
+        await delay(250 * (used + 1), undefined, { signal: this.abort.signal });
+        this.checkControls();
+        this.boundary(true);
+        parentSignal?.throwIfAborted();
+        if (this.state.turns >= this.state.contract.limits.maxTurns)
+          throw new Error('Agent turn limit reached');
+        this.emit(
+          'agent.retry.started',
+          `Automatic technical recovery ${used + 1}/${MAX_TECHNICAL_RECOVERIES}; previous process group joined, worktree audited, original limits retained.`,
+          {
+            nodeId: input.node.id,
+          },
+        );
+        recoveryContext = `The previous call was interrupted (${cause}). Its owned process group has exited. Partial file edits were preserved and audited, not rolled back. Inspect the current files before continuing this same task; avoid blindly repeating an operation. No completion was accepted from the interrupted call. Original permissions, acceptance contract and budgets still apply.`;
+      }
+    }
+  }
+  private checkControls(): void {
+    const control = this.store.takeControl(this.id);
+    if (control) this.request(control);
   }
   private async plan(): Promise<void> {
     let planner = this.state.nodes.find(
@@ -861,28 +931,14 @@ export class Engine {
             'Assessing the approved rubric; same integration, not independent review.',
             { nodeId: verifier!.id },
           );
-          const assessmentSignal = AbortSignal.any([
-            signal,
-            AbortSignal.timeout(this.state.contract.limits.turnTimeoutMs),
-          ]);
-          const answer = await this.provider.invoke({
-            mode: 'assess',
-            state: this.state,
-            node: this.state.nodes.find((n) => n.id === verifier!.id)!,
-            signal: assessmentSignal,
-            assessmentInput: input,
-            onThread: (threadId) =>
-              this.emit('agent.thread', 'Assessor session recorded.', {
-                nodeId: verifier!.id,
-                threadId,
-              }),
-            onUsage: (tokens) => {
-              if (!Number.isFinite(tokens) || tokens < 0) throw new Error('Invalid provider usage');
-              this.emit('agent.usage', `${tokens} tokens reported by assessor.`, { tokens });
+          return this.callAgent(
+            {
+              mode: 'assess',
+              node: verifier!,
+              assessmentInput: input,
             },
-          });
-          assessmentSignal.throwIfAborted();
-          return answer;
+            signal,
+          );
         },
       );
       signal.throwIfAborted();

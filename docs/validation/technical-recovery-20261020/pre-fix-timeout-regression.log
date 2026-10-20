@@ -1,0 +1,732 @@
+
+> iterfox@0.1.0 check
+> npm run typecheck && npm test && npm run build
+
+
+> iterfox@0.1.0 typecheck
+> tsc --noEmit && tsc -p tsconfig.server.json --noEmit
+
+
+> iterfox@0.1.0 test
+> node --import tsx --test tests/*.test.ts tests/continuous/*.case.mjs
+
+TAP version 13
+# Subtest: the archived real-Codex ledger replays offline and supports its published acceptance claim
+ok 1 - the archived real-Codex ledger replays offline and supports its published acceptance claim
+  ---
+  duration_ms: 14.249291
+  type: 'test'
+  ...
+# (node:82805) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: REAL Codex qualitative assessor: structured rubric and provenance on an actual transcript
+ok 2 - REAL Codex qualitative assessor: structured rubric and provenance on an actual transcript # SKIP
+  ---
+  duration_ms: 0.392667
+  type: 'test'
+  ...
+# Subtest: command checks preserve argv literally, record nonzero/spawn failures and time out
+ok 3 - command checks preserve argv literally, record nonzero/spawn failures and time out
+  ---
+  duration_ms: 200.752
+  type: 'test'
+  ...
+# Subtest: stop terminates an actual verifier process before reporting interruption
+ok 4 - stop terminates an actual verifier process before reporting interruption
+  ---
+  duration_ms: 31.307459
+  type: 'test'
+  ...
+# Subtest: Codex policy disables inherited integrations and fails closed if the policy cannot be confirmed
+ok 5 - Codex policy disables inherited integrations and fails closed if the policy cannot be confirmed
+  ---
+  duration_ms: 400.475958
+  type: 'test'
+  ...
+# (node:82808) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: SSH transport fixes host-key checking, local tunnel binding and literal quoting
+ok 6 - SSH transport fixes host-key checking, local tunnel binding and literal quoting
+  ---
+  duration_ms: 1.64475
+  type: 'test'
+  ...
+# Subtest: remote protocol pins approved source and contract and exports verifiable results
+ok 7 - remote protocol pins approved source and contract and exports verifiable results
+  ---
+  duration_ms: 3017.684
+  type: 'test'
+  ...
+# Subtest: remote-agent launch returns while its detached DEMO finishes after the client exits
+ok 8 - remote-agent launch returns while its detached DEMO finishes after the client exits
+  ---
+  duration_ms: 3607.702625
+  type: 'test'
+  ...
+# Subtest: download checks real artifact bytes and rejects corruption and traversal before creating output
+ok 9 - download checks real artifact bytes and rejects corruption and traversal before creating output
+  ---
+  duration_ms: 1869.756917
+  type: 'test'
+  ...
+# (node:82809) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: REAL Codex SDK: structured plan, worktree edits, runtime verification and adaptive correction
+ok 10 - REAL Codex SDK: structured plan, worktree edits, runtime verification and adaptive correction # SKIP Opt in with npm run test:codex; requires Codex authentication and network.
+  ---
+  duration_ms: 0.348958
+  type: 'test'
+  ...
+# (node:82810) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: REAL Codex: evolving product handoff, independent progress, parked naming decision and linked reply
+ok 11 - REAL Codex: evolving product handoff, independent progress, parked naming decision and linked reply # SKIP
+  ---
+  duration_ms: 0.37025
+  type: 'test'
+  ...
+# (node:82811) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: an operator question holds dependent work; independent work finishes, then a linked reply resumes the same run
+ok 12 - an operator question holds dependent work; independent work finishes, then a linked reply resumes the same run
+  ---
+  duration_ms: 2817.970084
+  type: 'test'
+  ...
+# Subtest: multiple steering notes received during one build are batched; only unstarted work is replaced
+ok 13 - multiple steering notes received during one build are batched; only unstarted work is replaced
+  ---
+  duration_ms: 2473.110958
+  type: 'test'
+  ...
+# Subtest: notes arriving during reconciliation stay pending for the next snapshot instead of disappearing
+ok 14 - notes arriving during reconciliation stay pending for the next snapshot instead of disappearing
+  ---
+  duration_ms: 1477.229625
+  type: 'test'
+  ...
+# Subtest: recovery reuses a persisted orientation response; replacement of the remaining plan is atomic
+ok 15 - recovery reuses a persisted orientation response; replacement of the remaining plan is atomic
+  ---
+  duration_ms: 1424.182083
+  type: 'test'
+  ...
+# Subtest: direction rejects lost instructions, fabricated criteria, circular dependencies and self-answered operator questions
+ok 16 - direction rejects lost instructions, fabricated criteria, circular dependencies and self-answered operator questions
+  ---
+  duration_ms: 95.11275
+  type: 'test'
+  ...
+# Subtest: evidence invalidation cannot resurrect skipped work from a superseded direction
+ok 17 - evidence invalidation cannot resurrect skipped work from a superseded direction
+  ---
+  duration_ms: 1626.510125
+  type: 'test'
+  ...
+# Subtest: reconciliation uses the existing model budget and never silently extends an unattended session
+ok 18 - reconciliation uses the existing model budget and never silently extends an unattended session
+  ---
+  duration_ms: 527.0585
+  type: 'test'
+  ...
+# Subtest: a new handoff after a provider timeout retires only the obsolete planner and can complete project review
+not ok 19 - a new handoff after a provider timeout retires only the obsolete planner and can complete project review
+  ---
+  duration_ms: 2916.770834
+  type: 'test'
+  location: '/Users/vins/work/iterfox/.iterfox/development/technical-recovery/tests/compass.test.ts:1:10795'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'FAILED'
+    - 'SKIPPED'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'SKIPPED'
+  actual: 'FAILED'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/Users/vins/work/iterfox/.iterfox/development/technical-recovery/tests/compass.test.ts:460:10)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# (node:82812) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Iterfox UI: http://127.0.0.1:52195
+# Worker state persists independently of this page. Keep the execution host awake for Night Runs.
+# Subtest: project brief derives actual cross-mission results without invoking work or altering history
+ok 20 - project brief derives actual cross-mission results without invoking work or altering history
+  ---
+  duration_ms: 4510.833833
+  type: 'test'
+  ...
+# Iterfox UI: http://127.0.0.1:52203
+# Worker state persists independently of this page. Keep the execution host awake for Night Runs.
+# Subtest: authenticated JSON and Markdown exports preserve boundaries and show a real blocked reason
+ok 21 - authenticated JSON and Markdown exports preserve boundaries and show a real blocked reason
+  ---
+  duration_ms: 3388.266416
+  type: 'test'
+  ...
+# (node:82813) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Iterfox UI: http://127.0.0.1:52193
+# Worker state persists independently of this page. Keep the execution host awake for Night Runs.
+# Subtest: portable project report is authenticated, script-free, escaped and tied to real checkpoint provenance
+ok 22 - portable project report is authenticated, script-free, escaped and tied to real checkpoint provenance
+  ---
+  duration_ms: 4517.880334
+  type: 'test'
+  ...
+# (node:82814) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: one authorization executes dependent missions with fresh proof and preserved original snapshots
+ok 23 - one authorization executes dependent missions with fresh proof and preserved original snapshots
+  ---
+  duration_ms: 4522.031333
+  type: 'test'
+  ...
+# Subtest: each mission receives a private ignored dependency copy with executable symlinks preserved
+ok 24 - each mission receives a private ignored dependency copy with executable symlinks preserved
+  ---
+  duration_ms: 3247.802625
+  type: 'test'
+  ...
+# Subtest: authorization, clean committed source and DAG coverage are mandatory
+ok 25 - authorization, clean committed source and DAG coverage are mandatory
+  ---
+  duration_ms: 164.408917
+  type: 'test'
+  ...
+# Subtest: a real implementation blocker preserves work and prevents later missions and checkpoint claims
+ok 26 - a real implementation blocker preserves work and prevents later missions and checkpoint claims
+  ---
+  duration_ms: 568.661334
+  type: 'test'
+  ...
+# Subtest: aggregate turn limit is never reset by a new mission or explicit resume
+ok 27 - aggregate turn limit is never reset by a new mission or explicit resume
+  ---
+  duration_ms: 1140.627625
+  type: 'test'
+  ...
+# Subtest: pause reaches the active model and resume continues the same mission without duplicate launch
+ok 28 - pause reaches the active model and resume continues the same mission without duplicate launch
+  ---
+  duration_ms: 2840.319083
+  type: 'test'
+  ...
+# Subtest: simultaneous delegation workers are excluded by a durable lease
+ok 29 - simultaneous delegation workers are excluded by a durable lease
+  ---
+  duration_ms: 2309.45875
+  type: 'test'
+  ...
+# Subtest: protected edits cannot become auto-checkpoints even when the model claims success
+ok 30 - protected edits cannot become auto-checkpoints even when the model claims success
+  ---
+  duration_ms: 501.302042
+  type: 'test'
+  ...
+# Subtest: checkpoint recovery reuses the finished mission and the same immutable ref
+ok 31 - checkpoint recovery reuses the finished mission and the same immutable ref
+  ---
+  duration_ms: 2565.406166
+  type: 'test'
+  ...
+# Iterfox UI: http://127.0.0.1:52212
+# Worker state persists independently of this page. Keep the execution host awake for Night Runs.
+# Subtest: HTTP approval is authenticated and concurrent duplicate authorizations launch once
+ok 32 - HTTP approval is authenticated and concurrent duplicate authorizations launch once
+  ---
+  duration_ms: 186.593958
+  type: 'test'
+  ...
+# (node:82815) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: a semantically rejected orientation is automatically retried with useful feedback and no operator resume
+ok 33 - a semantically rejected orientation is automatically retried with useful feedback and no operator resume
+  ---
+  duration_ms: 3432.904958
+  type: 'test'
+  ...
+# Subtest: repeated invalid orientation proposals stop at the original attempt limit without fabricating work or proof
+ok 34 - repeated invalid orientation proposals stop at the original attempt limit without fabricating work or proof
+  ---
+  duration_ms: 567.09375
+  type: 'test'
+  ...
+# Subtest: a provider permission or authentication failure is not treated as a retryable direction proposal
+ok 35 - a provider permission or authentication failure is not treated as a retryable direction proposal
+  ---
+  duration_ms: 227.908667
+  type: 'test'
+  ...
+# Subtest: automatic orientation recovery consumes the remaining original model-turn budget
+ok 36 - automatic orientation recovery consumes the remaining original model-turn budget
+  ---
+  duration_ms: 312.000833
+  type: 'test'
+  ...
+# Subtest: an incoming instruction during a rejected orientation is retained by subsequent automatic reconciliation
+ok 37 - an incoming instruction during a rejected orientation is retained by subsequent automatic reconciliation
+  ---
+  duration_ms: 2523.67725
+  type: 'test'
+  ...
+# Subtest: a rejected planner that also changed protected files cannot obtain another automatic model attempt
+ok 38 - a rejected planner that also changed protected files cannot obtain another automatic model attempt
+  ---
+  duration_ms: 233.189166
+  type: 'test'
+  ...
+# Subtest: every wire projection of a pre-retry ledger remains compatible, including the explicit superseded-orientation event
+ok 39 - every wire projection of a pre-retry ledger remains compatible, including the explicit superseded-orientation event
+  ---
+  duration_ms: 33.03275
+  type: 'test'
+  ...
+# (node:82816) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: REAL Codex consumes feedback submitted from a selected graph node and verifies the resulting implementation
+ok 40 - REAL Codex consumes feedback submitted from a selected graph node and verifies the resulting implementation # SKIP
+  ---
+  duration_ms: 0.4145
+  type: 'test'
+  ...
+# (node:82817) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Iterfox UI: http://127.0.0.1:52153
+# Worker state persists independently of this page. Keep the execution host awake for Night Runs.
+# Subtest: contextual feedback binds an existing node and criterion without starting or certifying work
+ok 41 - contextual feedback binds an existing node and criterion without starting or certifying work
+  ---
+  duration_ms: 225.823959
+  type: 'test'
+  ...
+# Iterfox UI: http://127.0.0.1:52156
+# Worker state persists independently of this page. Keep the execution host awake for Night Runs.
+# Subtest: criterion-only graph context and ordinary Compass notes remain compatible
+ok 42 - criterion-only graph context and ordinary Compass notes remain compatible
+  ---
+  duration_ms: 137.276958
+  type: 'test'
+  ...
+# Iterfox UI: http://127.0.0.1:52160
+# Worker state persists independently of this page. Keep the execution host awake for Night Runs.
+# Subtest: unknown, mismatched, stale or authority-bearing graph context is rejected atomically
+ok 43 - unknown, mismatched, stale or authority-bearing graph context is rejected atomically
+  ---
+  duration_ms: 159.066625
+  type: 'test'
+  ...
+# (node:82818) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: execution graph reconstructs from events and links deterministic evidence to acceptance
+ok 44 - execution graph reconstructs from events and links deterministic evidence to acceptance
+  ---
+  duration_ms: 2727.097417
+  type: 'test'
+  ...
+# (node:82872) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: review never executes a proposed command; one reviewed authorization can be consumed only once
+ok 45 - review never executes a proposed command; one reviewed authorization can be consumed only once
+  ---
+  duration_ms: 386.365583
+  type: 'test'
+  ...
+# Subtest: changing HEAD invalidates reviewed authorization and cancelling ignores a late model response
+ok 46 - changing HEAD invalidates reviewed authorization and cancelling ignores a late model response
+  ---
+  duration_ms: 398.972166
+  type: 'test'
+  ...
+# (node:82876) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: REAL Codex project session: discover and fix a goal defect despite green regression gates, without new operator instructions
+ok 47 - REAL Codex project session: discover and fix a goal defect despite green regression gates, without new operator instructions # SKIP
+  ---
+  duration_ms: 0.384083
+  type: 'test'
+  ...
+# (node:82877) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Iterfox UI: http://127.0.0.1:52163
+# Worker state persists independently of this page. Keep the execution host awake for Night Runs.
+# Iterfox UI: http://127.0.0.1:52166
+# Worker state persists independently of this page. Keep the execution host awake for Night Runs.
+# Subtest: project memory survives a real server/store restart without creating runs
+ok 48 - project memory survives a real server/store restart without creating runs
+  ---
+  duration_ms: 156.311458
+  type: 'test'
+  ...
+# Iterfox UI: http://127.0.0.1:52169
+# Worker state persists independently of this page. Keep the execution host awake for Night Runs.
+# Subtest: project revisions reject stale edits and invalid milestone dependencies without losing history
+ok 49 - project revisions reject stale edits and invalid milestone dependencies without losing history
+  ---
+  duration_ms: 122.831959
+  type: 'test'
+  ...
+# Iterfox UI: http://127.0.0.1:52172
+# Worker state persists independently of this page. Keep the execution host awake for Night Runs.
+# Iterfox UI: http://127.0.0.1:52182
+# Worker state persists independently of this page. Keep the execution host awake for Night Runs.
+# Subtest: handoff captures actual run evidence and continuation preserves its provenance without certifying or launching work
+ok 50 - handoff captures actual run evidence and continuation preserves its provenance without certifying or launching work
+  ---
+  duration_ms: 2867.690167
+  type: 'test'
+  ...
+# Iterfox UI: http://127.0.0.1:52185
+# Worker state persists independently of this page. Keep the execution host awake for Night Runs.
+# Subtest: cross-project links, stale continuations and unmet milestone dependencies cannot start or redirect work
+ok 51 - cross-project links, stale continuations and unmet milestone dependencies cannot start or redirect work
+  ---
+  duration_ms: 255.447958
+  type: 'test'
+  ...
+# (node:83056) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: REAL Codex drafts grounded checks from an Italian goal without changing the repository or creating a run
+ok 52 - REAL Codex drafts grounded checks from an Italian goal without changing the repository or creating a run # SKIP
+  ---
+  duration_ms: 0.352208
+  type: 'test'
+  ...
+# Subtest: editing a work window preserves the approved duration, including fractional seconds
+ok 53 - editing a work window preserves the approved duration, including fractional seconds
+  ---
+  duration_ms: 1.656417
+  type: 'test'
+  ...
+# Subtest: incomplete, overprecise and out-of-window inputs cannot silently become other limits
+ok 54 - incomplete, overprecise and out-of-window inputs cannot silently become other limits
+  ---
+  duration_ms: 0.192083
+  type: 'test'
+  ...
+# (node:84404) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: qualitative receipt is ASSESSED, never deterministic PASS; replay and brief preserve provenance
+ok 55 - qualitative receipt is ASSESSED, never deterministic PASS; replay and brief preserve provenance
+  ---
+  duration_ms: 759.94975
+  type: 'test'
+  ...
+# Subtest: uncertainty blocks and retains the assessor report instead of certifying acceptance
+ok 56 - uncertainty blocks and retains the assessor report instead of certifying acceptance
+  ---
+  duration_ms: 613.922333
+  type: 'test'
+  ...
+# Subtest: runtime rubric thresholds reject a sufficient claim with low scores, unknown IDs or a deterministic pass
+ok 57 - runtime rubric thresholds reject a sufficient claim with low scores, unknown IDs or a deterministic pass
+  ---
+  duration_ms: 2552.060667
+  type: 'test'
+  ...
+# Subtest: missing or tampered evidence artifacts invalidate an otherwise current assessment
+ok 58 - missing or tampered evidence artifacts invalidate an otherwise current assessment
+  ---
+  duration_ms: 602.347125
+  type: 'test'
+  ...
+# (node:84699) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: a joined technical interruption preserves partial work, invalidates proof and completes without resume
+ok 59 - a joined technical interruption preserves partial work, invalidates proof and completes without resume
+  ---
+  duration_ms: 2958.455791
+  type: 'test'
+  ...
+# Subtest: technical retries are bounded across explicit resume and retain usage
+ok 60 - technical retries are bounded across explicit resume and retain usage
+  ---
+  duration_ms: 1110.586125
+  type: 'test'
+  ...
+# Subtest: a per-turn timeout is diagnosed separately and can recover without resetting startedAt
+ok 61 - a per-turn timeout is diagnosed separately and can recover without resetting startedAt
+  ---
+  duration_ms: 3232.704917
+  type: 'test'
+  ...
+# Subtest: qualitative retries count model turns while preserving the same immutable captured inputs
+ok 62 - qualitative retries count model turns while preserving the same immutable captured inputs
+  ---
+  duration_ms: 789.03175
+  type: 'test'
+  ...
+# Subtest: unjoined writers, ordinary errors, auth failures and uncertain output never trigger automatic recovery
+ok 63 - unjoined writers, ordinary errors, auth failures and uncertain output never trigger automatic recovery
+  ---
+  duration_ms: 481.032625
+  type: 'test'
+  ...
+# Subtest: operator pause/stop, queued controls, shared turn/token budget and original deadline take precedence
+ok 64 - operator pause/stop, queued controls, shared turn/token budget and original deadline take precedence
+  ---
+  duration_ms: 2282.500667
+  type: 'test'
+  ...
+# Subtest: a protected edit during an interrupted call blocks before another model starts
+ok 65 - a protected edit during an interrupted call blocks before another model starts
+  ---
+  duration_ms: 146.663667
+  type: 'test'
+  ...
+# Subtest: owned SDK process group joins an uncooperative tool descendant before returning a response
+ok 66 - owned SDK process group joins an uncooperative tool descendant before returning a response
+  ---
+  duration_ms: 2429.500792
+  type: 'test'
+  ...
+# Subtest: owned SDK process group joins an uncooperative tool descendant before abort rejection
+ok 67 - owned SDK process group joins an uncooperative tool descendant before abort rejection
+  ---
+  duration_ms: 3036.752416
+  type: 'test'
+  ...
+# (node:86354) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: end-to-end: real checks → dynamic correction → original check → stale recheck → brief
+ok 68 - end-to-end: real checks → dynamic correction → original check → stale recheck → brief
+  ---
+  duration_ms: 2757.900083
+  type: 'test'
+  ...
+# Subtest: state transitions reject unsupported success, concurrent work, and out-of-order events
+ok 69 - state transitions reject unsupported success, concurrent work, and out-of-order events
+  ---
+  duration_ms: 130.979333
+  type: 'test'
+  ...
+# Subtest: evidence freshness retains disjoint changes and invalidates relevant additions/edits/deletions
+ok 70 - evidence freshness retains disjoint changes and invalidates relevant additions/edits/deletions
+  ---
+  duration_ms: 2219.2725
+  type: 'test'
+  ...
+# Subtest: builder cannot rewrite protected tests or approved acceptance configuration
+ok 71 - builder cannot rewrite protected tests or approved acceptance configuration
+  ---
+  duration_ms: 734.01775
+  type: 'test'
+  ...
+# Subtest: contract changes require explicit proposal and approval while no worker is alive
+ok 72 - contract changes require explicit proposal and approval while no worker is alive
+  ---
+  duration_ms: 108.532708
+  type: 'test'
+  ...
+# Subtest: fingerprints account for scoped additions and tracked deletions
+ok 73 - fingerprints account for scoped additions and tracked deletions
+  ---
+  duration_ms: 168.107584
+  type: 'test'
+  ...
+# Subtest: a dead worker is reconciled before UI/status can keep showing RUNNING
+ok 74 - a dead worker is reconciled before UI/status can keep showing RUNNING
+  ---
+  duration_ms: 106.698542
+  type: 'test'
+  ...
+# Subtest: partial edits before a provider error invalidate previously passing evidence
+ok 75 - partial edits before a provider error invalidate previously passing evidence
+  ---
+  duration_ms: 1209.894625
+  type: 'test'
+  ...
+# Subtest: retry, turn, no-progress, duration and token limits stop without infinite loops
+ok 76 - retry, turn, no-progress, duration and token limits stop without infinite loops
+  ---
+  duration_ms: 3558.530708
+  type: 'test'
+  ...
+# Subtest: pause and stop abort an actual in-flight activity; resume preserves accepted state
+ok 77 - pause and stop abort an actual in-flight activity; resume preserves accepted state
+  ---
+  duration_ms: 1706.038792
+  type: 'test'
+  ...
+# Subtest: crash recovery preserves graph, retries interrupted work and never leaves a false running node
+ok 78 - crash recovery preserves graph, retries interrupted work and never leaves a false running node
+  ---
+  duration_ms: 1463.505625
+  type: 'test'
+  ...
+# Subtest: interruption after a failed check resumes the pending diagnosis rather than losing the corrective path
+ok 79 - interruption after a failed check resumes the pending diagnosis rather than losing the corrective path
+  ---
+  duration_ms: 1677.337334
+  type: 'test'
+  ...
+# (node:87142) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: adjacent substeps of one acceptance gate are implemented together; missing planned CLI-like work does not consume retries
+ok 80 - adjacent substeps of one acceptance gate are implemented together; missing planned CLI-like work does not consume retries
+  ---
+  duration_ms: 1002.732958
+  type: 'test'
+  ...
+# Subtest: nonadjacent contributions retain plan order; negative probes defer correction until all planned work finishes
+ok 81 - nonadjacent contributions retain plan order; negative probes defer correction until all planned work finishes
+  ---
+  duration_ms: 2379.581417
+  type: 'test'
+  ...
+# Subtest: real deterministic coverage skips future model calls, including final certification at the reported token boundary
+ok 82 - real deterministic coverage skips future model calls, including final certification at the reported token boundary
+  ---
+  duration_ms: 1339.8435
+  type: 'test'
+  ...
+# Subtest: an unmet criterion still blocks before another model call when the token boundary is reached
+ok 83 - an unmet criterion still blocks before another model call when the token boundary is reached
+  ---
+  duration_ms: 1264.738209
+  type: 'test'
+  ...
+# Subtest: stale evidence revokes a skip and reopens the original plan rather than inventing a correction
+ok 84 - stale evidence revokes a skip and reopens the original plan rather than inventing a correction
+  ---
+  duration_ms: 2318.341
+  type: 'test'
+  ...
+# Subtest: skip guards reject unsupported evidence and interrupted probes reuse their pending verifier on resume
+ok 85 - skip guards reject unsupported evidence and interrupted probes reuse their pending verifier on resume
+  ---
+  duration_ms: 1718.062583
+  type: 'test'
+  ...
+# (node:87241) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Iterfox UI: http://127.0.0.1:52175
+# Worker state persists independently of this page. Keep the execution host awake for Night Runs.
+# Subtest: the direction inbox persists authorized notes and rejects unlinked replies and terminal edits
+ok 86 - the direction inbox persists authorized notes and rejects unlinked replies and terminal edits
+  ---
+  duration_ms: 2947.815667
+  type: 'test'
+  ...
+# Iterfox UI: http://127.0.0.1:52188
+# Worker state persists independently of this page. Keep the execution host awake for Night Runs.
+# Subtest: HTTP serves real state, replays ordered SSE, rejects unapproved controls, and exports a consistent brief
+ok 87 - HTTP serves real state, replays ordered SSE, rejects unapproved controls, and exports a consistent brief
+  ---
+  duration_ms: 2287.881833
+  type: 'test'
+  ...
+# Subtest: a detached worker finishes after its launching process and browser disconnect
+ok 88 - a detached worker finishes after its launching process and browser disconnect
+  ---
+  duration_ms: 2988.126292
+  type: 'test'
+  ...
+# (node:94614) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: ledger startup waits for a concurrent opener before configuring WAL
+ok 89 - ledger startup waits for a concurrent opener before configuring WAL
+  ---
+  duration_ms: 518.731
+  type: 'test'
+  ...
+# (node:7230) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: after green gates, project supervision discovers and implements missing goal work without a new operator prompt
+ok 90 - after green gates, project supervision discovers and implements missing goal work without a new operator prompt
+  ---
+  duration_ms: 3239.217125
+  type: 'test'
+  ...
+# Subtest: a project cannot finish just because its old command checks pass when a checkpoint still needs execution
+ok 91 - a project cannot finish just because its old command checks pass when a checkpoint still needs execution
+  ---
+  duration_ms: 2297.497792
+  type: 'test'
+  ...
+# Subtest: a completed read-only supervisor response survives interruption without a duplicate model turn
+ok 92 - a completed read-only supervisor response survives interruption without a duplicate model turn
+  ---
+  duration_ms: 1616.857083
+  type: 'test'
+  ...
+# Subtest: new context during a project review is reconciled and reviewed before completion
+ok 93 - new context during a project review is reconciled and reviewed before completion
+  ---
+  duration_ms: 1572.965083
+  type: 'test'
+  ...
+# Subtest: project review and no-progress limits stop repeated work with an explicit incomplete result
+ok 94 - project review and no-progress limits stop repeated work with an explicit incomplete result
+  ---
+  duration_ms: 2968.513
+  type: 'test'
+  ...
+# Subtest: project findings cannot invent files/evidence, bypass held criteria, introduce cycles or use empty continuation
+ok 95 - project findings cannot invent files/evidence, bypass held criteria, introduce cycles or use empty continuation
+  ---
+  duration_ms: 80.896542
+  type: 'test'
+  ...
+# Subtest: a read-only project reviewer changing source cannot certify the altered result
+ok 96 - a read-only project reviewer changing source cannot certify the altered result
+  ---
+  duration_ms: 1076.768208
+  type: 'test'
+  ...
+# Subtest: a whole-project change outside command scopes invalidates ready status without falsifying still-current regression proofs
+ok 97 - a whole-project change outside command scopes invalidates ready status without falsifying still-current regression proofs
+  ---
+  duration_ms: 1329.143333
+  type: 'test'
+  ...
+# (node:20280) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: host verification handoff continues planned work when its probe passes
+ok 98 - host verification handoff continues planned work when its probe passes
+  ---
+  duration_ms: 2097.435
+  type: 'test'
+  ...
+# Subtest: host verification handoff continues planned work when its probe still needs later implementation
+ok 99 - host verification handoff continues planned work when its probe still needs later implementation
+  ---
+  duration_ms: 1802.083375
+  type: 'test'
+  ...
+# Subtest: handoff cannot invent checks and genuine implementation blockers still stop execution
+ok 100 - handoff cannot invent checks and genuine implementation blockers still stop execution
+  ---
+  duration_ms: 963.861209
+  type: 'test'
+  ...
+# (node:39671) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: real browser: screenshot mismatch → corrective task → original pixel check → artifact tamper becomes STALE
+ok 101 - real browser: screenshot mismatch → corrective task → original pixel check → artifact tamper becomes STALE # SKIP
+  ---
+  duration_ms: 0.326167
+  type: 'test'
+  ...
+# Subtest: visual policies reject external origins and approval-like threshold changes
+ok 102 - visual policies reject external origins and approval-like threshold changes
+  ---
+  duration_ms: 3.994667
+  type: 'test'
+  ...
+1..102
+# tests 102
+# suites 0
+# pass 94
+# fail 1
+# cancelled 0
+# skipped 7
+# todo 0
+# duration_ms 18824.109

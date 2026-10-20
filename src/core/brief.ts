@@ -28,6 +28,7 @@ export function brief(state: RunState, events: RunEvent[]) {
     corrections: events
       .filter((e) => e.type === 'corrective.inserted')
       .map((e) => ({ at: e.at, message: e.message })),
+    technicalInterruptions: state.technicalInterruptions ?? [],
     decisions: events
       .filter((e) =>
         [
@@ -39,6 +40,7 @@ export function brief(state: RunState, events: RunEvent[]) {
           'direction.compiled',
           'project.reviewed',
           'project.review.invalidated',
+          'agent.retry.started',
         ].includes(e.type),
       )
       .map((e) => ({ seq: e.seq, at: e.at, message: e.message })),
@@ -202,6 +204,10 @@ export function markdownBrief(state: RunState, events: RunEvent[]): string {
       : []),
     '',
     ...b.corrections.map((c) => `- ${c.message}`),
+    ...b.technicalInterruptions.map(
+      (i) =>
+        `- Technical interruption (${i.cause}): ${i.message}. Process group joined: ${i.quiesced ? 'yes' : 'NO'}. ${i.retriedAt ? `Automatic retry at ${i.retriedAt}, within original limits.` : 'No automatic retry.'}`,
+    ),
     ...(b.corrections.length ? [] : ['No corrective tasks recorded.']),
     ...b.skippedTasks.map(
       (t) =>

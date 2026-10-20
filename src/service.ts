@@ -125,6 +125,7 @@ export async function preflight(
       'Only committed HEAD is copied. Uncommitted source work is preserved and excluded.',
       'Check commands are trusted local programs, not sandboxed by Iterfox. Review them before authorization.',
       'Token cap is checked at turn boundaries. Partial-turn usage and monetary cost may be unavailable.',
+      'At most two technical recoveries per run, after the owned Codex process group exits and files are audited. Retries retain the original time, turn and reported-token limits. Operator stop/pause and worker crashes require explicit control.',
       'The worker continues after browser close. Sleep, shutdown or worker termination interrupt local execution.',
     ],
   };

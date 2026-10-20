@@ -1,0 +1,11 @@
+{
+  "result": "PASS",
+  "viewports": [
+    1440,
+    390
+  ],
+  "javaScript": false,
+  "networkRequests": 0,
+  "relativeLinks": 20,
+  "hashes": 23
+}

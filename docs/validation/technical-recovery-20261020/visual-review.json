@@ -1,0 +1,18 @@
+{
+  "result": "PASS",
+  "at": "2026-10-20T20:23:09.481Z",
+  "browser": "Installed Chrome, headless, sandbox enabled",
+  "viewports": [
+    "1440x1080",
+    "390x844"
+  ],
+  "checks": [
+    "real completed Codex run visible",
+    "one automatic retry and joined processes visible",
+    "no horizontal overflow",
+    "no page errors",
+    "no mutation requests",
+    "ledger identical after review"
+  ],
+  "physicalDevice": false
+}

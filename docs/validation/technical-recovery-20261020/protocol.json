@@ -1,0 +1,69 @@
+{
+  "createdAt": "2026-10-20T20:20:08.721Z",
+  "goal": "Repair this small avatar module end-to-end: robust labels for missing, empty and ordinary names, and a second dialogue turn that replies to the first. Inspect the current repository and preserve all tests, dependencies, configuration and acceptance policies. Deliver the implemented module supported by both approved checks. Own reversible implementation choices.",
+  "contract": {
+    "goal": "Repair this small avatar module end-to-end: robust labels for missing, empty and ordinary names, and a second dialogue turn that replies to the first. Inspect the current repository and preserve all tests, dependencies, configuration and acceptance policies. Deliver the implemented module supported by both approved checks. Own reversible implementation choices.",
+    "criteria": [
+      {
+        "id": "render",
+        "title": "Avatar labels handle empty input",
+        "command": [
+          "node",
+          "--test",
+          "render.test.mjs"
+        ],
+        "scope": [
+          "avatar.mjs",
+          "render.test.mjs"
+        ],
+        "timeoutMs": 60000
+      },
+      {
+        "id": "dialogue",
+        "title": "Two avatars exchange distinct turns",
+        "command": [
+          "node",
+          "--test",
+          "dialogue.test.mjs"
+        ],
+        "scope": [
+          "avatar.mjs",
+          "dialogue.test.mjs"
+        ],
+        "timeoutMs": 60000
+      }
+    ],
+    "allowedPaths": [
+      "avatar.mjs"
+    ],
+    "protectedPaths": [
+      "render.test.mjs",
+      "dialogue.test.mjs",
+      "iterfox.json"
+    ],
+    "limits": {
+      "maxTurns": 12,
+      "maxAttempts": 3,
+      "maxDurationMs": 900000,
+      "maxTokens": 3000000,
+      "turnTimeoutMs": 240000,
+      "maxNoProgress": 3
+    },
+    "supervision": {
+      "mode": "project",
+      "maxReviews": 3
+    }
+  },
+  "provider": "real Codex SDK 0.163.0",
+  "model": "gpt-6.1-sol",
+  "fault": "Discard the first build response at the actual turn.completed usage receipt; abort the supervised session. Preserve partial files and reported usage. No operator resume or application edits afterward.",
+  "expected": [
+    "one typed interruption and automatic retry",
+    "same original startedAt, contract and limits",
+    "no workflow.blocked or workflow.resumed",
+    "both criteria fresh PASSED, ready review and COMPLETED",
+    "original source untouched",
+    "exact event replay"
+  ],
+  "limits": "A short deliberate lost-response trial, not an overnight soak or a new direct-Codex comparison."
+}

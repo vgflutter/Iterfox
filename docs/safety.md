@@ -79,6 +79,36 @@ termination and a bounded kill fallback on macOS/Linux. SIGINT/SIGTERM requests 
 safe pause; the current activity becomes BLOCKED, with no fictitious RUNNING node.
 Stop is resumable through an explicit operator action; original budgets remain.
 
+## Automatic technical recovery
+
+A live worker can retry a per-turn timeout, provider abort or recognized transport
+interruption at most twice per run. The allowance is recorded in the event ledger;
+explicit Resume does not replenish it. Each retry counts as another model turn and
+keeps the original wall-clock deadline, reported usage, contract and permissions.
+The worker audits preserved partial edits and invalidates obsolete evidence before
+restarting the same task/thread. Planning, building, diagnosis, project review and
+qualitative assessment share this policy. An assessment's enclosing check timeout
+still applies; an uncertain assessment is not a technical retry.
+
+Each SDK call runs in an owned POSIX session. The supervisor records process birth
+identities and descendants, including observed tool processes with separate groups,
+then terminates and joins them before accepting a result or allowing another call.
+A failed process census or unconfirmed termination blocks the run. This is lifecycle
+supervision for trusted local development, not containment against deliberately
+escaping malicious daemons. It cannot certify unknown orphans after the worker dies.
+macOS is exercised locally; Windows supervised Codex sessions are refused.
+
+Operator pause/stop, the original duration/turn/token boundary, explicit implementation
+blockers, protected edits, authentication/configuration errors, malformed responses
+and dead workers do not trigger automatic recovery. The ledger distinguishes
+`turn-timeout`, `provider-abort` and `transport`; an unclassified generic AbortError
+from a provider without process-join confirmation is not enough to authorize a retry.
+The Morning Brief and Markdown/JSON exports retain interruptions and retry timestamps.
+
+The [real trial](validation/technical-recovery-20261020/index.html) deliberately lost
+one actual builder response and completed without an operator resume. It is a short
+fault-injection test, not a full overnight reliability claim.
+
 ## Local persistence and recovery
 
 The worker is separate from the UI. `--night` starts a detached local Node process

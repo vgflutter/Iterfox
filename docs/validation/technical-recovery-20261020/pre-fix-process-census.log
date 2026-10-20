@@ -1,0 +1,127 @@
+TAP version 13
+# (node:89661) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: an operator question holds dependent work; independent work finishes, then a linked reply resumes the same run
+ok 1 - an operator question holds dependent work; independent work finishes, then a linked reply resumes the same run
+  ---
+  duration_ms: 1052.120541
+  type: 'test'
+  ...
+# Subtest: multiple steering notes received during one build are batched; only unstarted work is replaced
+ok 2 - multiple steering notes received during one build are batched; only unstarted work is replaced
+  ---
+  duration_ms: 1160.139583
+  type: 'test'
+  ...
+# Subtest: notes arriving during reconciliation stay pending for the next snapshot instead of disappearing
+ok 3 - notes arriving during reconciliation stay pending for the next snapshot instead of disappearing
+  ---
+  duration_ms: 779.1
+  type: 'test'
+  ...
+# Subtest: recovery reuses a persisted orientation response; replacement of the remaining plan is atomic
+ok 4 - recovery reuses a persisted orientation response; replacement of the remaining plan is atomic
+  ---
+  duration_ms: 761.038625
+  type: 'test'
+  ...
+# Subtest: direction rejects lost instructions, fabricated criteria, circular dependencies and self-answered operator questions
+ok 5 - direction rejects lost instructions, fabricated criteria, circular dependencies and self-answered operator questions
+  ---
+  duration_ms: 55.433417
+  type: 'test'
+  ...
+# Subtest: evidence invalidation cannot resurrect skipped work from a superseded direction
+ok 6 - evidence invalidation cannot resurrect skipped work from a superseded direction
+  ---
+  duration_ms: 1077.890917
+  type: 'test'
+  ...
+# Subtest: reconciliation uses the existing model budget and never silently extends an unattended session
+ok 7 - reconciliation uses the existing model budget and never silently extends an unattended session
+  ---
+  duration_ms: 364.441
+  type: 'test'
+  ...
+# Subtest: a new handoff after a provider timeout retires only the obsolete planner and can complete project review
+ok 8 - a new handoff after a provider timeout retires only the obsolete planner and can complete project review
+  ---
+  duration_ms: 2337.743667
+  type: 'test'
+  ...
+# (node:89662) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: a joined technical interruption preserves partial work, invalidates proof and completes without resume
+ok 9 - a joined technical interruption preserves partial work, invalidates proof and completes without resume
+  ---
+  duration_ms: 1381.698292
+  type: 'test'
+  ...
+# Subtest: technical retries are bounded across explicit resume and retain usage
+ok 10 - technical retries are bounded across explicit resume and retain usage
+  ---
+  duration_ms: 897.0655
+  type: 'test'
+  ...
+# Subtest: a per-turn timeout is diagnosed separately and can recover without resetting startedAt
+ok 11 - a per-turn timeout is diagnosed separately and can recover without resetting startedAt
+  ---
+  duration_ms: 2348.779333
+  type: 'test'
+  ...
+# Subtest: qualitative retries count model turns while preserving the same immutable captured inputs
+ok 12 - qualitative retries count model turns while preserving the same immutable captured inputs
+  ---
+  duration_ms: 576.539583
+  type: 'test'
+  ...
+# Subtest: unjoined writers, ordinary errors, auth failures and uncertain output never trigger automatic recovery
+ok 13 - unjoined writers, ordinary errors, auth failures and uncertain output never trigger automatic recovery
+  ---
+  duration_ms: 329.205791
+  type: 'test'
+  ...
+# Subtest: operator pause/stop, queued controls, shared turn/token budget and original deadline take precedence
+ok 14 - operator pause/stop, queued controls, shared turn/token budget and original deadline take precedence
+  ---
+  duration_ms: 2012.048459
+  type: 'test'
+  ...
+# Subtest: a protected edit during an interrupted call blocks before another model starts
+ok 15 - a protected edit during an interrupted call blocks before another model starts
+  ---
+  duration_ms: 101.767791
+  type: 'test'
+  ...
+# Subtest: owned SDK process group joins an uncooperative tool descendant before returning a response
+not ok 16 - owned SDK process group joins an uncooperative tool descendant before returning a response
+  ---
+  duration_ms: 2422.789417
+  type: 'test'
+  location: '/Users/vins/work/iterfox/.iterfox/development/technical-recovery/tests/recovery.test.ts:1:6935'
+  failureType: 'testCodeFailure'
+  error: 'Missing expected rejection: old tool must never write after a retry can start'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  operator: 'rejects'
+  stack: |-
+    async TestContext.<anonymous> (/Users/vins/work/iterfox/.iterfox/development/technical-recovery/tests/recovery.test.ts:278:7)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: owned SDK process group joins an uncooperative tool descendant before abort rejection
+ok 17 - owned SDK process group joins an uncooperative tool descendant before abort rejection
+  ---
+  duration_ms: 3094.046625
+  type: 'test'
+  ...
+1..17
+# tests 17
+# suites 0
+# pass 16
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 13484.550667
