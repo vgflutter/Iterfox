@@ -1,0 +1,46 @@
+{
+  "at": "2026-10-20T19:09:14.037Z",
+  "cwd": "delivery",
+  "seed": 20261020,
+  "method": "External post-run deterministic/property and browser audit, not fed back during the primary run",
+  "results": [
+    {
+      "name": "48 seeded Unicode/text records and reference search",
+      "status": "PASS"
+    },
+    {
+      "name": "24 concurrent creations do not lose or duplicate writes",
+      "status": "PASS"
+    },
+    {
+      "name": "50 generated civil-date recurrence cases including year boundaries",
+      "status": "PASS"
+    },
+    {
+      "name": "Concurrent one-off completion stores exactly one history entry",
+      "status": "PASS"
+    },
+    {
+      "name": "Every rejected import preserves exact original backup, 20 cases",
+      "status": "PASS"
+    },
+    {
+      "name": "Exported data remains valid after deleting a task with history",
+      "status": "PASS"
+    },
+    {
+      "name": "Full dataset remains byte-for-byte equivalent after process restart",
+      "status": "PASS"
+    },
+    {
+      "name": "Static routes do not expose source, objective, tests or data",
+      "status": "PASS"
+    },
+    {
+      "name": "Literal imported markup cannot execute in desktop/mobile UI",
+      "status": "PASS"
+    }
+  ],
+  "passed": 9,
+  "total": 9
+}

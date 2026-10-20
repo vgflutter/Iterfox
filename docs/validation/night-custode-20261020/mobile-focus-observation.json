@@ -1,0 +1,59 @@
+{
+  "at": "2026-10-20T19:14:27.803Z",
+  "trace": [
+    {
+      "tag": "BUTTON",
+      "id": "cancel-restore",
+      "documentHasFocus": true,
+      "insideDialog": true
+    },
+    {
+      "tag": "BODY",
+      "id": "",
+      "documentHasFocus": false,
+      "insideDialog": false
+    },
+    {
+      "tag": "BUTTON",
+      "id": "close-restore",
+      "documentHasFocus": true,
+      "insideDialog": true
+    },
+    {
+      "tag": "INPUT",
+      "id": "restore-consent",
+      "documentHasFocus": true,
+      "insideDialog": true
+    },
+    {
+      "tag": "BUTTON",
+      "id": "cancel-restore",
+      "documentHasFocus": true,
+      "insideDialog": true
+    },
+    {
+      "tag": "BUTTON",
+      "id": "close-restore",
+      "documentHasFocus": true,
+      "insideDialog": true
+    },
+    {
+      "tag": "INPUT",
+      "id": "restore-consent",
+      "documentHasFocus": true,
+      "insideDialog": true
+    },
+    {
+      "tag": "BUTTON",
+      "id": "cancel-restore",
+      "documentHasFocus": true,
+      "insideDialog": true
+    },
+    {
+      "tag": "BODY",
+      "id": "",
+      "documentHasFocus": false,
+      "insideDialog": false
+    }
+  ]
+}

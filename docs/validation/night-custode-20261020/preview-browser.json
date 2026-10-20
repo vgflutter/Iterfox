@@ -1,0 +1,24 @@
+{
+  "at": "2026-10-20T19:09:25.288Z",
+  "result": "PASS",
+  "base": "http://127.0.0.1:4380",
+  "pid": 4854,
+  "errors": [],
+  "remoteRequests": [],
+  "browserPosts": [],
+  "noRestoreRequestBeforeConsent": true,
+  "invalidRestorePreservedData": true,
+  "mobileOverflow": false,
+  "screenshots": [
+    "app-empty.png",
+    "app-desktop.png",
+    "app-form-desktop.png",
+    "app-maintenance.png",
+    "app-backup.png",
+    "app-invalid-backup.png",
+    "app-restore-consent.png",
+    "app-mobile.png",
+    "app-form-mobile.png",
+    "app-maintenance-mobile.png"
+  ]
+}

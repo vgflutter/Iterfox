@@ -1,0 +1,17 @@
+{
+  "at": "2026-10-20T15:38:59.415Z",
+  "summary": "  PID  PPID  ELAPSED  %CPU COMM\n78179     1 01:12:11   2.1 /Users/vins/.local/share/fnm/node-versions/v22.21.1/installation/bin/node\n",
+  "children": [
+    {
+      "pid": 32862,
+      "kind": "Codex SDK subprocess",
+      "model": "gpt-6.1-sol",
+      "sandbox": "workspace-write"
+    },
+    {
+      "pid": 78180,
+      "kind": "idle sleep inhibitor"
+    }
+  ],
+  "purpose": "Read-only process snapshot during primary observation; no process control, environment reads or model messages."
+}

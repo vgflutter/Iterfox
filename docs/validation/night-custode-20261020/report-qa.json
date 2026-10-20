@@ -1,0 +1,21 @@
+{
+  "at": "2026-10-20T19:22:34.514Z",
+  "result": "PASS",
+  "relativeLinks": 19,
+  "results": [
+    {
+      "width": 1440,
+      "offline": true,
+      "javaScriptDisabled": true,
+      "overflow": false,
+      "imagesLoaded": true
+    },
+    {
+      "width": 390,
+      "offline": true,
+      "javaScriptDisabled": true,
+      "overflow": false,
+      "imagesLoaded": true
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "at": "2026-10-20T16:15:58.364Z",
+  "name": "robustness-audit.mjs",
+  "sha256": "bd235507b95a206514421db054dc5f20444bbefcd6058eaa208e5b0ce748d010",
+  "scope": "Additional checks prepared before final product completion, not added to or fed back into the primary delegation."
+}

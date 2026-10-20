@@ -1,0 +1,17 @@
+{
+  "at": "2026-10-20T19:16:22.461Z",
+  "result": "PASS",
+  "mobileRestoreDialogFits": true,
+  "dialogBounds": {
+    "x": 16,
+    "y": 39.015625,
+    "width": 358,
+    "height": 765.953125
+  },
+  "noBackgroundControlFocusedDuringModal": true,
+  "browserChromeFocusAllowedWhenDocumentUnfocused": true,
+  "escapeClosesWithoutMutation": true,
+  "invalidFileError": "Il file non contiene JSON valido in UTF-8. Scegli una copia integra del backup. La lettura del file non ha modificato l’archivio.",
+  "noWrites": true,
+  "dataUnchanged": true
+}

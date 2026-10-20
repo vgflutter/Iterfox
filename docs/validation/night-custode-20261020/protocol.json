@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "createdAt": "2026-10-20T14:26:13.607Z",
+  "task": "Simulated absence: one authorization, complete new local app, four dependent outcomes",
+  "userPrompt": "ok ma facciamo finta sia notte santo cielo, proseguiamo, facciamo tutto il necessario per comprndere il valore ok ?",
+  "productBrief": "source/BRIEF.md",
+  "runtimeSource": {
+    "repository": "/Users/vins/work/iterfox/.iterfox/development/continuous-return-review",
+    "commit": "56aa2b4"
+  },
+  "model": "gpt-6.1-sol",
+  "reasoningEffort": "provider default; no override",
+  "provider": "actual Codex SDK through Iterfox",
+  "operatorAbsentPolicy": "After initial authorization, do not coach, edit product/runtime/tests, resume or repair during the primary observation. Log any such action as an intervention. Read-only observations allowed. At a blocker or completion independently audit. A subsequent recovery is a separate phase retaining the original result.",
+  "preparation": "Coding assistant wrote a product brief, explicit HTTP and accessibility acceptance interfaces, six frozen host checks and a four-outcome delegation. Technical setup is not yet a self-service natural-language workflow and is measured separately. No direct baseline in this trial; previous comparison does not measure absence continuity.",
+  "primaryMeasures": [
+    "Useful final user flows",
+    "Extra user prompts after authorization",
+    "Assistant product/technical interventions after authorization",
+    "Automatic next-outcome starts",
+    "Discovered corrective work from actual failures and reviews",
+    "Truthful blockers and retained intermediate artifacts"
+  ],
+  "limits": {
+    "maxTurns": 180,
+    "maxAttempts": 5,
+    "maxDurationMs": 14400000,
+    "maxTokens": 100000000,
+    "turnTimeoutMs": 1200000,
+    "maxNoProgress": 8
+  },
+  "claimsExcluded": [
+    "Full overnight duration",
+    "Universal superiority to a direct coding agent",
+    "Independent AI review",
+    "Autonomous natural-language creation of the delegation",
+    "Deployment or publication"
+  ],
+  "interventions": []
+}

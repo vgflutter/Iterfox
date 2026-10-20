@@ -27,6 +27,27 @@ report HTML** for offline reading. **Projects** stores project memory and a road
 configuration, which an assistant can prepare from your goal before review. The
 current UI does not generate a complete verified outcome graph from a sentence.
 
+## A simulated absence on a new application
+
+On 20 October 2026, one delegation built **Custode**, a local household inventory,
+maintenance and backup app, without further user prompts. The assistant prepared
+the configuration and six fixed checks. The first worker remained active for
+152.0 minutes, saved three checkpoints and verified the fourth outcome’s functionality,
+then blocked on an aborted model call. **It did not recover automatically and
+remains recorded as 3/4.**
+
+One assistant recovery used an explicitly uncertified review snapshot and a
+separate authorization to finish integration and guidance in 17.3 minutes. No additional
+user prompt or manual application-code correction was needed. Four guides received
+a post-run editorial correction distinguishing runtime receipts and same-integration
+AI source review.
+
+The delivery passes six host criteria, **12 external audit groups and three
+dropped-response recovery scenarios**, with browser layouts at 390px. This measures
+useful work while the operator is away and exposes autonomous interruption recovery
+as the concrete reliability gap; it does not prove universal superiority to direct Codex.
+[Protocol, results, source and actual screenshots](docs/validation/night-custode-20261020/index.html).
+
 ## Demonstrated on Iterfox itself
 
 On 20 October 2026, one delegation completed three real Codex outcomes on Iterfox:

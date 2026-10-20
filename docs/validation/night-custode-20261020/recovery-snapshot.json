@@ -1,0 +1,58 @@
+{
+  "at": "2026-10-20T18:26:40.220Z",
+  "kind": "Manual review snapshot, NOT an Iterfox verified checkpoint",
+  "sourceRun": "20261020T161136-f1baf0a7",
+  "sourceSeq": 72,
+  "sourceHead": "cb513eb21a98abdc21aae66debcd93ee98c01673",
+  "sourceFingerprint": "f0c268743c131f0d72310dd0d30cb8b8d308305d791e942b3fde57722f8ad7ad",
+  "changed": [
+    "README.md",
+    "docs/api-manutenzioni.md",
+    "docs/ui-manutenzioni.md",
+    "public/app.js",
+    "public/index.html",
+    "public/styles.css",
+    "src/server.mjs",
+    "src/store.mjs",
+    "docs/api-backup.md",
+    "docs/ui-backup.md",
+    "src/backup.mjs"
+  ],
+  "candidate": "/Users/vins/work/iterfox/.iterfox/missions/night-custode-20261020/recovery-source",
+  "head": "7dc07f5cd1e3faf5ae946caf084762f72d45ebc3",
+  "originalWorktreePreserved": true,
+  "primaryStatus": "BLOCKED",
+  "primaryCheckpoints": 3,
+  "primaryGateStatuses": [
+    {
+      "id": "inventory",
+      "status": "PASSED",
+      "evidenceId": "a5bdf5bf-ccd2-4e6e-8288-13b03a9f7170"
+    },
+    {
+      "id": "inventory-ui",
+      "status": "PASSED",
+      "evidenceId": "611548b2-2d6b-4b0f-bf77-706be0b3b389"
+    },
+    {
+      "id": "maintenance",
+      "status": "PASSED",
+      "evidenceId": "9a44ff6c-e827-42a7-ad00-7d3240c8778b"
+    },
+    {
+      "id": "maintenance-ui",
+      "status": "PASSED",
+      "evidenceId": "6b39fef9-fa55-40ad-8f73-9a9149467775"
+    },
+    {
+      "id": "backup",
+      "status": "PASSED",
+      "evidenceId": "860e6591-6ca6-4359-81f4-d20c5f5098d5"
+    },
+    {
+      "id": "backup-ui",
+      "status": "PASSED",
+      "evidenceId": "d3efa6f6-7639-4e5e-acb4-d5aa8e250b98"
+    }
+  ]
+}

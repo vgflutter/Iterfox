@@ -1,0 +1,1711 @@
+{
+  "result": "PASS",
+  "at": "2026-10-20T19:08:41.585Z",
+  "boundary": "Recovered trial: original unattended delegation BLOCKED at 3/4; one assistant review snapshot and a separately authorized completion. No manual product edits or additional user prompts.",
+  "primary": {
+    "id": "4067d97a-eaea-4343-b726-7b33c05bdf7d",
+    "revision": 19,
+    "spec": {
+      "repository": "/Users/vins/work/iterfox/.iterfox/missions/night-custode-20261020/source",
+      "contract": {
+        "goal": "Build Custode, a useful Italian local application for household inventory and maintenance, from the product objective in BRIEF.md. Own ordinary implementation, design and product decisions and deliver a coherent end-to-end result. Read the fixed brief for the API/accessibility interfaces required for host verification. Work only on the current outcome, preserve previous behavior and leave later outcomes to automatic continuation. Do not ask the operator to choose routine details. Green tests are a minimum: inspect the actual result, discover and repair concrete goal gaps within scope. Do not create demo user data. No network, package installation, external notifications, publication, push or merge. Use host verificationRequest for browser/listener tests; sandbox observation limits do not block implementation. The operator is absent: report a real boundary blocker honestly, rather than changing acceptance or claiming success.",
+        "criteria": [
+          {
+            "id": "inventory",
+            "title": "Inventory API stores valid searchable data across a process restart",
+            "command": [
+              "node",
+              "tests/acceptance.mjs",
+              "inventory"
+            ],
+            "scope": [],
+            "timeoutMs": 120000
+          },
+          {
+            "id": "inventory-ui",
+            "title": "Accessible responsive inventory supports create/search/edit and reload",
+            "command": [
+              "node",
+              "tests/acceptance.mjs",
+              "inventory-ui"
+            ],
+            "scope": [],
+            "timeoutMs": 120000
+          },
+          {
+            "id": "maintenance",
+            "title": "Linked one-off and recurring maintenance has civil-date and durable history semantics",
+            "command": [
+              "node",
+              "tests/acceptance.mjs",
+              "maintenance"
+            ],
+            "scope": [],
+            "timeoutMs": 120000
+          },
+          {
+            "id": "maintenance-ui",
+            "title": "User can schedule and complete maintenance end-to-end",
+            "command": [
+              "node",
+              "tests/acceptance.mjs",
+              "maintenance-ui"
+            ],
+            "scope": [],
+            "timeoutMs": 120000
+          },
+          {
+            "id": "backup",
+            "title": "Exact backup/restore is validated, atomic and documented",
+            "command": [
+              "node",
+              "tests/acceptance.mjs",
+              "backup"
+            ],
+            "scope": [],
+            "timeoutMs": 120000
+          },
+          {
+            "id": "backup-ui",
+            "title": "User downloads and explicitly confirms data replacement in the interface",
+            "command": [
+              "node",
+              "tests/acceptance.mjs",
+              "backup-ui"
+            ],
+            "scope": [],
+            "timeoutMs": 120000
+          }
+        ],
+        "allowedPaths": [
+          "src",
+          "public",
+          "README.md",
+          "docs"
+        ],
+        "protectedPaths": [
+          "tests",
+          "BRIEF.md",
+          "package.json",
+          ".gitignore"
+        ],
+        "supervision": {
+          "mode": "project",
+          "maxReviews": 16
+        },
+        "limits": {
+          "maxTurns": 180,
+          "maxAttempts": 5,
+          "maxDurationMs": 14400000,
+          "maxTokens": 100000000,
+          "turnTimeoutMs": 1200000,
+          "maxNoProgress": 8
+        }
+      },
+      "milestones": [
+        {
+          "id": "reliable-inventory",
+          "title": "Reliable inventory",
+          "outcome": "Implement outcome 1 in BRIEF.md: real validated inventory HTTP API, case-insensitive combined search and durable storage. No UI or maintenance/backup behavior is required in this first outcome. Future acceptance cases are not active yet.",
+          "criterionIds": [
+            "inventory"
+          ],
+          "dependsOn": []
+        },
+        {
+          "id": "usable-inventory",
+          "title": "Usable visual inventory",
+          "outcome": "Implement outcome 2 in BRIEF.md: coherent Italian inventory UI, accessible real forms and actions, search, edit/delete with confirmation, empty/error states, desktop and phone layout. Preserve the inventory API. Maintenance and backup are following outcomes.",
+          "criterionIds": [
+            "inventory-ui"
+          ],
+          "dependsOn": [
+            "reliable-inventory"
+          ]
+        },
+        {
+          "id": "maintenance-workflow",
+          "title": "Maintenance from due date to history",
+          "outcome": "Implement outcome 3 in BRIEF.md: validated maintenance API, overview, one-off and recurring completions, durable history and integrated interface. Preserve all inventory behavior and fix concrete end-to-end gaps. Backup remains the next outcome.",
+          "criterionIds": [
+            "maintenance",
+            "maintenance-ui"
+          ],
+          "dependsOn": [
+            "usable-inventory"
+          ]
+        },
+        {
+          "id": "safe-return",
+          "title": "Safe return and complete handover",
+          "outcome": "Implement outcome 4 in BRIEF.md: exact JSON backup/download and validated atomic explicit restore in API and UI, recovery/error states, truthful README with startup/data/backup/limits. Review the whole final product and resolve material gaps against the approved goal; deliver something the returning operator can use without technical coaching.",
+          "criterionIds": [
+            "backup",
+            "backup-ui"
+          ],
+          "dependsOn": [
+            "maintenance-workflow"
+          ]
+        }
+      ],
+      "environment": {
+        "copyIgnoredPaths": []
+      }
+    },
+    "specHash": "e8857473a37e2e63a659099888fb644f103cf3a088c0136ab5bb342ce952e7c1",
+    "sourceHead": "1892c983f18b7332a0c24b431b02d3ee3be3e668",
+    "commonDirectory": "/Users/vins/work/iterfox/.iterfox/missions/night-custode-20261020/source/.git",
+    "provider": "codex",
+    "authorizedAt": "2026-10-20T14:26:48.615Z",
+    "updatedAt": "2026-10-20T16:58:48.583Z",
+    "status": "BLOCKED",
+    "stages": [
+      {
+        "id": "reliable-inventory",
+        "status": "CHECKPOINTED",
+        "runId": "20261020T142648-35f27844",
+        "environmentPrepared": true,
+        "checkpoint": {
+          "head": "3baad1931f9f79aa9fc1bb724d843cd12eb88404",
+          "ref": "refs/iterfox/checkpoints/4067d97a-eaea-4343-b726-7b33c05bdf7d/reliable-inventory",
+          "sourceFingerprint": "d12cb9a31c5c21b24140bc8a9becea47baa0720b159ef5914369f62d078a1be3",
+          "sourceSeq": 47,
+          "at": "2026-10-20T14:45:12.218Z"
+        }
+      },
+      {
+        "id": "usable-inventory",
+        "status": "CHECKPOINTED",
+        "runId": "20261020T144512-fd44a424",
+        "environmentPrepared": true,
+        "checkpoint": {
+          "head": "6ca9f2e7e21e990662505af6b18850f56f0eae98",
+          "ref": "refs/iterfox/checkpoints/4067d97a-eaea-4343-b726-7b33c05bdf7d/usable-inventory",
+          "sourceFingerprint": "1c78a9f813a072230605bfaa7bc3c4c3f55ac59a8d386d7428a6befd9177dbdc",
+          "sourceSeq": 95,
+          "at": "2026-10-20T15:26:04.510Z"
+        }
+      },
+      {
+        "id": "maintenance-workflow",
+        "status": "CHECKPOINTED",
+        "runId": "20261020T152604-46b3d576",
+        "environmentPrepared": true,
+        "checkpoint": {
+          "head": "cb513eb21a98abdc21aae66debcd93ee98c01673",
+          "ref": "refs/iterfox/checkpoints/4067d97a-eaea-4343-b726-7b33c05bdf7d/maintenance-workflow",
+          "sourceFingerprint": "557abda9249d3e1508accfa61d02ba601c72cc25870fea40d997d107a4b2c3c0",
+          "sourceSeq": 115,
+          "at": "2026-10-20T16:11:36.801Z"
+        }
+      },
+      {
+        "id": "safe-return",
+        "status": "RUNNING",
+        "runId": "20261020T161136-f1baf0a7",
+        "environmentPrepared": true
+      }
+    ],
+    "events": [
+      {
+        "at": "2026-10-20T14:26:48.615Z",
+        "kind": "authorized",
+        "message": "Operator authorized the complete bounded delegation, including local verified checkpoint commits."
+      },
+      {
+        "at": "2026-10-20T14:26:48.809Z",
+        "kind": "worker-started",
+        "message": "Sequential delegation worker started."
+      },
+      {
+        "at": "2026-10-20T14:26:48.820Z",
+        "kind": "mission-creating",
+        "message": "Preparing Reliable inventory",
+        "stageId": "reliable-inventory"
+      },
+      {
+        "at": "2026-10-20T14:26:48.846Z",
+        "kind": "mission-created",
+        "message": "Fresh mission authorized by the stored delegation.",
+        "stageId": "reliable-inventory",
+        "runId": "20261020T142648-35f27844"
+      },
+      {
+        "at": "2026-10-20T14:45:12.219Z",
+        "kind": "checkpoint-created",
+        "message": "Verified snapshot saved without changing the original run HEAD, index or worktree.",
+        "stageId": "reliable-inventory",
+        "runId": "20261020T142648-35f27844"
+      },
+      {
+        "at": "2026-10-20T14:45:12.232Z",
+        "kind": "mission-creating",
+        "message": "Preparing Usable visual inventory",
+        "stageId": "usable-inventory"
+      },
+      {
+        "at": "2026-10-20T14:45:12.257Z",
+        "kind": "mission-created",
+        "message": "Fresh mission authorized by the stored delegation.",
+        "stageId": "usable-inventory",
+        "runId": "20261020T144512-fd44a424"
+      },
+      {
+        "at": "2026-10-20T15:26:04.511Z",
+        "kind": "checkpoint-created",
+        "message": "Verified snapshot saved without changing the original run HEAD, index or worktree.",
+        "stageId": "usable-inventory",
+        "runId": "20261020T144512-fd44a424"
+      },
+      {
+        "at": "2026-10-20T15:26:04.540Z",
+        "kind": "mission-creating",
+        "message": "Preparing Maintenance from due date to history",
+        "stageId": "maintenance-workflow"
+      },
+      {
+        "at": "2026-10-20T15:26:04.569Z",
+        "kind": "mission-created",
+        "message": "Fresh mission authorized by the stored delegation.",
+        "stageId": "maintenance-workflow",
+        "runId": "20261020T152604-46b3d576"
+      },
+      {
+        "at": "2026-10-20T16:11:36.802Z",
+        "kind": "checkpoint-created",
+        "message": "Verified snapshot saved without changing the original run HEAD, index or worktree.",
+        "stageId": "maintenance-workflow",
+        "runId": "20261020T152604-46b3d576"
+      },
+      {
+        "at": "2026-10-20T16:11:36.849Z",
+        "kind": "mission-creating",
+        "message": "Preparing Safe return and complete handover",
+        "stageId": "safe-return"
+      },
+      {
+        "at": "2026-10-20T16:11:36.880Z",
+        "kind": "mission-created",
+        "message": "Fresh mission authorized by the stored delegation.",
+        "stageId": "safe-return",
+        "runId": "20261020T161136-f1baf0a7"
+      },
+      {
+        "at": "2026-10-20T16:58:48.583Z",
+        "kind": "worker-ended",
+        "message": "Outcome safe-return requires attention: BLOCKED: The operation was aborted"
+      }
+    ],
+    "launchRequested": true,
+    "reason": "Outcome safe-return requires attention: BLOCKED: The operation was aborted"
+  },
+  "stages": [
+    {
+      "id": "reliable-inventory",
+      "runId": "20261020T142648-35f27844",
+      "status": "COMPLETED",
+      "worktree": "/Users/vins/work/iterfox/.iterfox/missions/night-custode-20261020/data/worktrees/20261020T142648-35f27844",
+      "baseHead": "1892c983f18b7332a0c24b431b02d3ee3be3e668",
+      "sourceFingerprint": "d12cb9a31c5c21b24140bc8a9becea47baa0720b159ef5914369f62d078a1be3",
+      "checkpoint": {
+        "head": "3baad1931f9f79aa9fc1bb724d843cd12eb88404",
+        "ref": "refs/iterfox/checkpoints/4067d97a-eaea-4343-b726-7b33c05bdf7d/reliable-inventory",
+        "sourceFingerprint": "d12cb9a31c5c21b24140bc8a9becea47baa0720b159ef5914369f62d078a1be3",
+        "sourceSeq": 47,
+        "at": "2026-10-20T14:45:12.218Z"
+      },
+      "turns": 5,
+      "tokens": 997378,
+      "createdAt": "2026-10-20T14:26:48.844Z",
+      "finishedAt": "2026-10-20T14:45:12.058Z",
+      "criteria": [
+        {
+          "id": "inventory",
+          "status": "PASSED",
+          "evidenceId": "275c0ecc-4ea9-4453-b706-75117f8d2d25"
+        }
+      ],
+      "changes": [
+        "src/server.mjs",
+        "README.md",
+        "src/errors.mjs",
+        "src/inventory.mjs",
+        "src/store.mjs"
+      ],
+      "eventCounts": {
+        "workflow.created": 1,
+        "goal.accepted": 1,
+        "direction.noted": 1,
+        "task.planned": 2,
+        "task.started": 5,
+        "agent.thread": 5,
+        "agent.usage": 5,
+        "task.completed": 5,
+        "direction.compiled": 1,
+        "verification.started": 4,
+        "verification.deferred": 1,
+        "code.changed": 3,
+        "decision.recorded": 3,
+        "verification.passed": 3,
+        "progress.recorded": 3,
+        "evidence.invalidated": 2,
+        "project.reviewed": 1,
+        "workflow.completed": 1
+      },
+      "tasks": [
+        {
+          "title": "Implement durable, validated inventory CRUD",
+          "status": "PASSED",
+          "summary": "Implemented validated inventory CRUD, combined case-insensitive search, transactional SQLite persistence, bounded HTTP bodies, loopback-only listening and Italian documentation. Focused checks passed, including literal text preservation, storage failures and crash recovery. HTTP listener acceptance remains for host verification."
+        },
+        {
+          "title": "Complete combined search and resilient HTTP boundaries",
+          "status": "PASSED",
+          "summary": "Completati i confini HTTP: percorsi anomali rifiutati, errori JSON coerenti e limite di 2 MiB. Passati 87 casi mirati in processo, inclusi ricerca combinata e rifiuti senza mutazioni. README aggiornato. HTTP reale e riavvio restano da verificare sull’host."
+        },
+        {
+          "title": "Document the implemented inventory service",
+          "status": "PASSED",
+          "summary": "README aggiornato in italiano con avvio, variabili d’ambiente, percorso predefinito del database, esempi HTTP, persistenza e limiti attuali. Documentazione confrontata con il codice; verifiche HTTP e riavvio richieste all’host."
+        }
+      ],
+      "reviews": [
+        {
+          "outcome": "ready",
+          "summary": "Outcome 1 is ready for review. Source inspection found no concrete remaining inventory gap. Current host receipt 275c0ecc-4ea9-4453-b706-75117f8d2d25 reports all eight inventory acceptance groups passed.",
+          "findings": [],
+          "decisions": [
+            {
+              "choice": "Accept the documented combined search semantics.",
+              "basis": "src/inventory.mjs combines case-insensitive substring search across all four text fields with exact category and location filters using AND."
+            },
+            {
+              "choice": "Accept the inventory persistence and HTTP implementation.",
+              "basis": "Source inspection confirms validation before writes, transactional SQLite persistence, literal text preservation, bounded request bodies, loopback listening and JSON error handling. README.md matches the implemented behavior."
+            },
+            {
+              "choice": "Keep subsequent outcomes deferred.",
+              "basis": "The active delegation requires inventory APIs only; UI, maintenance and application backup remain assigned to later outcomes."
+            }
+          ],
+          "tasks": [],
+          "operatorQuestion": "",
+          "stamp": {
+            "head": "1892c983f18b7332a0c24b431b02d3ee3be3e668",
+            "files": {
+              ".gitignore": "38af0c189b6ea42f53b44594ce1cb8fe26b4861079fe816e4babbbb8c0b33374",
+              "BRIEF.md": "6d924142cfafaf42c0f91215fa4a44e3c24022079e585d462081a732491bdb01",
+              "README.md": "bebf17f533a2182cb7fe7667499cd6bbcb0ac08a4f1a4cb4d5f9088964eeead5",
+              "package.json": "059e15020af9ea47307d8b9b6112991177ee25f1458b9351ea0a6c61a1bb1c1c",
+              "src/errors.mjs": "e80649a6029653512539fab5b2a950aa01ce047c48c709af23ead8d89f1a2cde",
+              "src/inventory.mjs": "abd476e31241a521120d30a65de8587b7124eef594ad1264133521509867bee8",
+              "src/server.mjs": "9cbbbf2a42600b0ba66c7084fbf5993bf7d8fb960869fec1171e584c5ae5aa54",
+              "src/store.mjs": "453ba88e0f4b39bda7fae8bbe36be8be2e5b8ee4681c5b499ed30afd92681285",
+              "tests/acceptance.mjs": "cd51582a782f0400fe1729ba27b4df50a388c0057f6f41ad63fed52ef8c1aaf3"
+            },
+            "fingerprint": "d12cb9a31c5c21b24140bc8a9becea47baa0720b159ef5914369f62d078a1be3"
+          },
+          "noteIds": [
+            "dbf99c7c-38a7-41a5-89d9-b89bfa3b496b"
+          ],
+          "directionRevision": 1,
+          "contractVersion": 1,
+          "nodeId": "4d6f6daf-aecd-432f-b734-5536b74036b8",
+          "at": "2026-10-20T14:45:11.939Z",
+          "independent": false
+        }
+      ],
+      "finalProofs": [
+        {
+          "criterionId": "inventory",
+          "output": "PASS empty inventory\nPASS stable identifiers, defaults and literal Unicode\nPASS invalid writes leave inventory unchanged\nPASS partial updates preserve fields\nPASS combined case-insensitive search\nPASS missing records and malformed JSON handled\nPASS real process restart preserves data\nPASS deletion persists\n{\"result\":\"passed\",\"mode\":\"inventory\",\"groups\":8,\"worktree\":\"/Users/vins/work/iterfox/.iterfox/missions/night-custode-20261020/data/worktrees/20261020T142648-35f27844\",\"at\":\"2026-10-20T14:43:31.318Z\"}\n",
+          "stamp": {
+            "head": "1892c983f18b7332a0c24b431b02d3ee3be3e668",
+            "files": {
+              ".gitignore": "38af0c189b6ea42f53b44594ce1cb8fe26b4861079fe816e4babbbb8c0b33374",
+              "BRIEF.md": "6d924142cfafaf42c0f91215fa4a44e3c24022079e585d462081a732491bdb01",
+              "README.md": "bebf17f533a2182cb7fe7667499cd6bbcb0ac08a4f1a4cb4d5f9088964eeead5",
+              "package.json": "059e15020af9ea47307d8b9b6112991177ee25f1458b9351ea0a6c61a1bb1c1c",
+              "src/errors.mjs": "e80649a6029653512539fab5b2a950aa01ce047c48c709af23ead8d89f1a2cde",
+              "src/inventory.mjs": "abd476e31241a521120d30a65de8587b7124eef594ad1264133521509867bee8",
+              "src/server.mjs": "9cbbbf2a42600b0ba66c7084fbf5993bf7d8fb960869fec1171e584c5ae5aa54",
+              "src/store.mjs": "453ba88e0f4b39bda7fae8bbe36be8be2e5b8ee4681c5b499ed30afd92681285",
+              "tests/acceptance.mjs": "cd51582a782f0400fe1729ba27b4df50a388c0057f6f41ad63fed52ef8c1aaf3"
+            },
+            "fingerprint": "d12cb9a31c5c21b24140bc8a9becea47baa0720b159ef5914369f62d078a1be3"
+          }
+        }
+      ]
+    },
+    {
+      "id": "usable-inventory",
+      "runId": "20261020T144512-fd44a424",
+      "status": "COMPLETED",
+      "worktree": "/Users/vins/work/iterfox/.iterfox/missions/night-custode-20261020/data/worktrees/20261020T144512-fd44a424",
+      "baseHead": "3baad1931f9f79aa9fc1bb724d843cd12eb88404",
+      "sourceFingerprint": "1c78a9f813a072230605bfaa7bc3c4c3f55ac59a8d386d7428a6befd9177dbdc",
+      "checkpoint": {
+        "head": "6ca9f2e7e21e990662505af6b18850f56f0eae98",
+        "ref": "refs/iterfox/checkpoints/4067d97a-eaea-4343-b726-7b33c05bdf7d/usable-inventory",
+        "sourceFingerprint": "1c78a9f813a072230605bfaa7bc3c4c3f55ac59a8d386d7428a6befd9177dbdc",
+        "sourceSeq": 95,
+        "at": "2026-10-20T15:26:04.510Z"
+      },
+      "turns": 8,
+      "tokens": 3284568,
+      "createdAt": "2026-10-20T14:45:12.256Z",
+      "finishedAt": "2026-10-20T15:26:04.227Z",
+      "criteria": [
+        {
+          "id": "inventory",
+          "status": "PASSED",
+          "evidenceId": "6680eccd-a8e6-4ded-84b5-ecba61f22bfd"
+        },
+        {
+          "id": "inventory-ui",
+          "status": "PASSED",
+          "evidenceId": "7c1938f0-68d7-4f98-9278-af3bdd581694"
+        }
+      ],
+      "changes": [
+        "README.md",
+        "src/server.mjs",
+        "docs/ui-inventario.md",
+        "public/app.js",
+        "public/favicon.svg",
+        "public/index.html",
+        "public/styles.css"
+      ],
+      "eventCounts": {
+        "workflow.created": 1,
+        "goal.accepted": 1,
+        "direction.noted": 1,
+        "task.planned": 2,
+        "task.started": 8,
+        "agent.thread": 8,
+        "agent.usage": 8,
+        "task.completed": 8,
+        "direction.compiled": 1,
+        "verification.started": 14,
+        "verification.passed": 11,
+        "verification.deferred": 3,
+        "code.changed": 6,
+        "evidence.invalidated": 9,
+        "decision.recorded": 6,
+        "progress.recorded": 6,
+        "project.reviewed": 1,
+        "workflow.completed": 1
+      },
+      "tasks": [
+        {
+          "title": "Servire il primo percorso completo di inventario",
+          "status": "PASSED",
+          "summary": "Implementato il primo percorso: pagina Custode con risorse locali confinate a public, elenco reale, form accessibile collegato a POST, stati vuoti/errori e layout responsive. Manutenzioni e Backup disabilitati; nessun dato dimostrativo. README e scelte progettuali aggiornati. Superati controlli statici e 34 verifiche HTTP in processo. Browser, layout effettivo e persistenza richiedono verifica host. Ricerca, modifica ed eliminazione UI restano ai task successivi."
+        },
+        {
+          "title": "Collegare ricerca e stati dell’elenco",
+          "status": "PASSED",
+          "summary": "Collegata Cerca oggetti al filtro q dell’API, con cancellazione, protezione dalle risposte obsolete e stati distinti di caricamento, archivio vuoto, nessun risultato ed errore recuperabile. Aggiunta sempre disponibile. Controlli mirati passati; browser e layout richiedono verifica host. Modifica/eliminazione restano ai task successivi."
+        },
+        {
+          "title": "Completare modifica ed eliminazione con conferma",
+          "status": "PASSED",
+          "summary": "Aggiunte azioni accessibili Modifica/Elimina, form precompilato con PATCH e conferma annullabile prima di DELETE. Gestiti errori, conflitti e aggiornamento della ricerca senza rimozioni anticipate. Documentazione aggiornata e controlli mirati in processo superati. Browser, layout e persistenza dopo riavvio richiedono verifica host."
+        },
+        {
+          "title": "Rendere affidabili form e feedback",
+          "status": "PASSED",
+          "summary": "Rafforzati errori associati ai campi, conservazione dei valori, blocco degli invii duplicati e annunci accessibili. Distinti salvataggi confermati da errori di ricaricamento; preservati testo letterale e campi invariati. Passati 64 confronti Unicode UI/API e controlli mirati nel DOM simulato. Browser reale e screen reader restano da verificare sull’host."
+        },
+        {
+          "title": "Completare il layout e l’uso da tastiera",
+          "status": "PASSED",
+          "summary": "Esaminate le schermate host e migliorati leggibilità, contrasto, layout per testi lunghi e gestione del focus nei dialoghi e durante gli aggiornamenti. Superati 27 controlli mirati in DOM simulato. Rendering, tastiera e zoom reali richiedono verifica host aggiornata. API preservata."
+        },
+        {
+          "title": "Aggiornare la guida all’inventario utilizzabile",
+          "status": "PASSED",
+          "summary": "README aggiornato con accesso all’interfaccia, creazione, ricerca, modifica, eliminazione e recupero dagli errori. Chiariti bozze, limite loopback e funzioni ancora assenti; conservate istruzioni su avvio, API e persistenza. Confronto statico con il codice completato; browser, HTTP e riavvio restano da verificare sull’host."
+        }
+      ],
+      "reviews": [
+        {
+          "outcome": "ready",
+          "summary": "L’esito 2 è pronto per la revisione: codice, documentazione e schermate host esaminati. Le prove correnti passano; non emergono lacune concrete che impediscano l’uso dell’inventario.",
+          "findings": [],
+          "decisions": [
+            {
+              "choice": "Considerare completato l’inventario usabile.",
+              "basis": "public/index.html, public/app.js e public/styles.css implementano form accessibili, ricerca, modifica, eliminazione con conferma e stati recuperabili. Le schermate host desktop e 390px mostrano un inventario leggibile. Ricevute correnti: inventory 6680eccd-a8e6-4ded-84b5-ecba61f22bfd; inventory-ui 7c1938f0-68d7-4f98-9278-af3bdd581694. Eliminazione ed errori sono stati valutati dal sorgente, senza eseguire un nuovo browser."
+            },
+            {
+              "choice": "Preservare il perimetro dell’esito corrente.",
+              "basis": "L’API esistente è preservata; README.md descrive utilizzo, persistenza e limiti reali. Manutenzioni e Backup sono chiaramente disabilitati e restano agli esiti successivi previsti da BRIEF.md."
+            }
+          ],
+          "tasks": [],
+          "operatorQuestion": "",
+          "stamp": {
+            "head": "3baad1931f9f79aa9fc1bb724d843cd12eb88404",
+            "files": {
+              ".gitignore": "38af0c189b6ea42f53b44594ce1cb8fe26b4861079fe816e4babbbb8c0b33374",
+              "BRIEF.md": "6d924142cfafaf42c0f91215fa4a44e3c24022079e585d462081a732491bdb01",
+              "README.md": "5a8b1f1d8b325d320bbc36ac0a8834c4b0019a3bfec977b39bca3633de60ead6",
+              "docs/ui-inventario.md": "905aa2a62347c621d7b6f1a4e54b64dacfc2562c42bbcb21bf4c7cdc66aedae1",
+              "package.json": "059e15020af9ea47307d8b9b6112991177ee25f1458b9351ea0a6c61a1bb1c1c",
+              "public/app.js": "397ab27a6eae0988d97aed19ba17c974885364625bb47bb4c6e840df287e0374",
+              "public/favicon.svg": "b4fddcb795fed38eb7025b73d3e941bf19b1b1407c9bd99a0d513f1f08fc424e",
+              "public/index.html": "4c2270f1af97317be0c956bacb4260cfb5c0df9d11a056d8bdfb80e63461e7e1",
+              "public/styles.css": "6fb0d98f7b09fb63521d11cceca166a699da6707b3620e2409e5e44b4fa9429e",
+              "src/errors.mjs": "e80649a6029653512539fab5b2a950aa01ce047c48c709af23ead8d89f1a2cde",
+              "src/inventory.mjs": "abd476e31241a521120d30a65de8587b7124eef594ad1264133521509867bee8",
+              "src/server.mjs": "b16f4a452741a827446be9a036903914f5df055959b89c564a64c79ee29bd67d",
+              "src/store.mjs": "453ba88e0f4b39bda7fae8bbe36be8be2e5b8ee4681c5b499ed30afd92681285",
+              "tests/acceptance.mjs": "cd51582a782f0400fe1729ba27b4df50a388c0057f6f41ad63fed52ef8c1aaf3"
+            },
+            "fingerprint": "1c78a9f813a072230605bfaa7bc3c4c3f55ac59a8d386d7428a6befd9177dbdc"
+          },
+          "noteIds": [
+            "88a59696-84ff-4f2f-9747-c0be50bb5d7f"
+          ],
+          "directionRevision": 1,
+          "contractVersion": 1,
+          "nodeId": "3b93ded0-ce87-4cc1-bca5-3c8333da69b1",
+          "at": "2026-10-20T15:26:03.850Z",
+          "independent": false
+        }
+      ],
+      "finalProofs": [
+        {
+          "criterionId": "inventory",
+          "output": "PASS empty inventory\nPASS stable identifiers, defaults and literal Unicode\nPASS invalid writes leave inventory unchanged\nPASS partial updates preserve fields\nPASS combined case-insensitive search\nPASS missing records and malformed JSON handled\nPASS real process restart preserves data\nPASS deletion persists\n{\"result\":\"passed\",\"mode\":\"inventory\",\"groups\":8,\"worktree\":\"/Users/vins/work/iterfox/.iterfox/missions/night-custode-20261020/data/worktrees/20261020T144512-fd44a424\",\"at\":\"2026-10-20T15:23:44.007Z\"}\n",
+          "stamp": {
+            "head": "3baad1931f9f79aa9fc1bb724d843cd12eb88404",
+            "files": {
+              ".gitignore": "38af0c189b6ea42f53b44594ce1cb8fe26b4861079fe816e4babbbb8c0b33374",
+              "BRIEF.md": "6d924142cfafaf42c0f91215fa4a44e3c24022079e585d462081a732491bdb01",
+              "README.md": "5a8b1f1d8b325d320bbc36ac0a8834c4b0019a3bfec977b39bca3633de60ead6",
+              "docs/ui-inventario.md": "905aa2a62347c621d7b6f1a4e54b64dacfc2562c42bbcb21bf4c7cdc66aedae1",
+              "package.json": "059e15020af9ea47307d8b9b6112991177ee25f1458b9351ea0a6c61a1bb1c1c",
+              "public/app.js": "397ab27a6eae0988d97aed19ba17c974885364625bb47bb4c6e840df287e0374",
+              "public/favicon.svg": "b4fddcb795fed38eb7025b73d3e941bf19b1b1407c9bd99a0d513f1f08fc424e",
+              "public/index.html": "4c2270f1af97317be0c956bacb4260cfb5c0df9d11a056d8bdfb80e63461e7e1",
+              "public/styles.css": "6fb0d98f7b09fb63521d11cceca166a699da6707b3620e2409e5e44b4fa9429e",
+              "src/errors.mjs": "e80649a6029653512539fab5b2a950aa01ce047c48c709af23ead8d89f1a2cde",
+              "src/inventory.mjs": "abd476e31241a521120d30a65de8587b7124eef594ad1264133521509867bee8",
+              "src/server.mjs": "b16f4a452741a827446be9a036903914f5df055959b89c564a64c79ee29bd67d",
+              "src/store.mjs": "453ba88e0f4b39bda7fae8bbe36be8be2e5b8ee4681c5b499ed30afd92681285",
+              "tests/acceptance.mjs": "cd51582a782f0400fe1729ba27b4df50a388c0057f6f41ad63fed52ef8c1aaf3"
+            },
+            "fingerprint": "1c78a9f813a072230605bfaa7bc3c4c3f55ac59a8d386d7428a6befd9177dbdc"
+          }
+        },
+        {
+          "criterionId": "inventory-ui",
+          "output": "PASS browser creates, searches, edits and reloads real inventory\nPASS 390px layout, no page errors, no remote resources\n{\"result\":\"passed\",\"mode\":\"inventory-ui\",\"groups\":2,\"worktree\":\"/Users/vins/work/iterfox/.iterfox/missions/night-custode-20261020/data/worktrees/20261020T144512-fd44a424\",\"at\":\"2026-10-20T15:23:46.002Z\"}\n",
+          "stamp": {
+            "head": "3baad1931f9f79aa9fc1bb724d843cd12eb88404",
+            "files": {
+              ".gitignore": "38af0c189b6ea42f53b44594ce1cb8fe26b4861079fe816e4babbbb8c0b33374",
+              "BRIEF.md": "6d924142cfafaf42c0f91215fa4a44e3c24022079e585d462081a732491bdb01",
+              "README.md": "5a8b1f1d8b325d320bbc36ac0a8834c4b0019a3bfec977b39bca3633de60ead6",
+              "docs/ui-inventario.md": "905aa2a62347c621d7b6f1a4e54b64dacfc2562c42bbcb21bf4c7cdc66aedae1",
+              "package.json": "059e15020af9ea47307d8b9b6112991177ee25f1458b9351ea0a6c61a1bb1c1c",
+              "public/app.js": "397ab27a6eae0988d97aed19ba17c974885364625bb47bb4c6e840df287e0374",
+              "public/favicon.svg": "b4fddcb795fed38eb7025b73d3e941bf19b1b1407c9bd99a0d513f1f08fc424e",
+              "public/index.html": "4c2270f1af97317be0c956bacb4260cfb5c0df9d11a056d8bdfb80e63461e7e1",
+              "public/styles.css": "6fb0d98f7b09fb63521d11cceca166a699da6707b3620e2409e5e44b4fa9429e",
+              "src/errors.mjs": "e80649a6029653512539fab5b2a950aa01ce047c48c709af23ead8d89f1a2cde",
+              "src/inventory.mjs": "abd476e31241a521120d30a65de8587b7124eef594ad1264133521509867bee8",
+              "src/server.mjs": "b16f4a452741a827446be9a036903914f5df055959b89c564a64c79ee29bd67d",
+              "src/store.mjs": "453ba88e0f4b39bda7fae8bbe36be8be2e5b8ee4681c5b499ed30afd92681285",
+              "tests/acceptance.mjs": "cd51582a782f0400fe1729ba27b4df50a388c0057f6f41ad63fed52ef8c1aaf3"
+            },
+            "fingerprint": "1c78a9f813a072230605bfaa7bc3c4c3f55ac59a8d386d7428a6befd9177dbdc"
+          }
+        }
+      ]
+    },
+    {
+      "id": "maintenance-workflow",
+      "runId": "20261020T152604-46b3d576",
+      "status": "COMPLETED",
+      "worktree": "/Users/vins/work/iterfox/.iterfox/missions/night-custode-20261020/data/worktrees/20261020T152604-46b3d576",
+      "baseHead": "6ca9f2e7e21e990662505af6b18850f56f0eae98",
+      "sourceFingerprint": "557abda9249d3e1508accfa61d02ba601c72cc25870fea40d997d107a4b2c3c0",
+      "checkpoint": {
+        "head": "cb513eb21a98abdc21aae66debcd93ee98c01673",
+        "ref": "refs/iterfox/checkpoints/4067d97a-eaea-4343-b726-7b33c05bdf7d/maintenance-workflow",
+        "sourceFingerprint": "557abda9249d3e1508accfa61d02ba601c72cc25870fea40d997d107a4b2c3c0",
+        "sourceSeq": 115,
+        "at": "2026-10-20T16:11:36.801Z"
+      },
+      "turns": 7,
+      "tokens": 7109567,
+      "createdAt": "2026-10-20T15:26:04.568Z",
+      "finishedAt": "2026-10-20T16:11:36.331Z",
+      "criteria": [
+        {
+          "id": "inventory",
+          "status": "PASSED",
+          "evidenceId": "e133efbc-a254-42d7-a245-b639f2cd9ef6"
+        },
+        {
+          "id": "inventory-ui",
+          "status": "PASSED",
+          "evidenceId": "ccb42a3d-2806-4e10-82fe-f6905e59c9e3"
+        },
+        {
+          "id": "maintenance",
+          "status": "PASSED",
+          "evidenceId": "c5abcff1-4f4a-419e-98f3-471c84e7ed1a"
+        },
+        {
+          "id": "maintenance-ui",
+          "status": "PASSED",
+          "evidenceId": "29a94599-2a19-42ad-8aa0-fe36b8488e6b"
+        }
+      ],
+      "changes": [
+        "README.md",
+        "docs/ui-inventario.md",
+        "public/app.js",
+        "public/index.html",
+        "public/styles.css",
+        "src/server.mjs",
+        "src/store.mjs",
+        "docs/api-manutenzioni.md",
+        "docs/ui-manutenzioni.md",
+        "src/maintenance.mjs"
+      ],
+      "eventCounts": {
+        "workflow.created": 1,
+        "goal.accepted": 1,
+        "direction.noted": 1,
+        "task.planned": 2,
+        "task.started": 7,
+        "agent.thread": 7,
+        "agent.usage": 7,
+        "task.completed": 7,
+        "direction.compiled": 1,
+        "verification.started": 24,
+        "verification.passed": 20,
+        "verification.deferred": 4,
+        "code.changed": 5,
+        "evidence.invalidated": 16,
+        "decision.recorded": 5,
+        "progress.recorded": 5,
+        "project.reviewed": 1,
+        "workflow.completed": 1
+      },
+      "tasks": [
+        {
+          "title": "Archivio e API manutenzioni complete",
+          "status": "PASSED",
+          "summary": "Implementato il backend manutenzioni: migrazione transazionale, CRUD validato, completamenti atomici, ricorrenze civili, storico e panoramica. Preservati inventario, riferimenti e limiti HTTP. Passati controlli mirati locali; verifiche host richieste. Documentazione aggiornata; interfaccia manutenzioni al prossimo task."
+        },
+        {
+          "title": "Programmazione e panoramica nell’interfaccia",
+          "status": "PASSED",
+          "summary": "Attivata Manutenzioni con creazione tramite API, selezione dall’inventario completo, scadenze ordinate, conteggi e gestione recuperabile degli errori. Preservate ricerca e bozze; documentazione aggiornata. Controlli statici e mirati superati; browser da verificare sull’host. Completamento e storico UI restano ai task successivi."
+        },
+        {
+          "title": "Completamento e storico consultabile",
+          "status": "PASSED",
+          "summary": "Collegati completamento e Storico: date validate, aggiornamento di scadenze e conteggi, distinzione tra una tantum conclusi e ricorrenti attivi. Conservati valori dopo errori, bloccati invii duplicati e separati scrittura confermata e ricaricamento fallito. Documentazione aggiornata; controlli mirati in processo superati. Browser, layout e listener richiedono verifica host."
+        },
+        {
+          "title": "Modifica ed eliminazione degli interventi",
+          "status": "PASSED",
+          "summary": "Implementate modifica precompilata con PATCH parziali ed eliminazione con conferma esplicita. Conservati storico e bozze separate; gestiti conflitti tra finestre e risposte incerte senza ricreazioni automatiche. Documentazione aggiornata e controlli mirati in processo superati. Browser, layout e riavvio del processo richiedono verifica host."
+        },
+        {
+          "title": "Integrazione accessibile e guida aggiornata",
+          "status": "PASSED",
+          "summary": "Completata l’integrazione: focus, ricerca e bozze preservati, dettagli leggibili nel select, conteggi accessibili e protezione dalle letture obsolete. Completamenti protetti dai conflitti di versione. README e documentazione aggiornati; Backup resta futuro. Passati controlli mirati in processo e sintassi. Schermate host esaminate; browser, manutenzioni a 390px e tastiera nativa richiedono nuova verifica host."
+        }
+      ],
+      "reviews": [
+        {
+          "outcome": "ready",
+          "summary": "L’esito 3 è pronto alla revisione: API validate, scadenze, completamenti, storico persistente e interfaccia integrata. L’ispezione di codice, documentazione e schermate disponibili non ha individuato lacune materiali residue. Le quattro prove host correnti sono positive.",
+          "findings": [],
+          "decisions": [
+            {
+              "choice": "Considerare completo il percorso manutenzioni.",
+              "basis": "src/maintenance.mjs e src/store.mjs implementano date civili, ricorrenze e storico atomico; public/app.js e public/index.html collegano creazione, modifica, eliminazione e completamento con gestione degli errori. Ricevute: c5abcff1-4f4a-419e-98f3-471c84e7ed1a e 29a94599-2a19-42ad-8aa0-fe36b8488e6b."
+            },
+            {
+              "choice": "Considerare preservato l’inventario entro le verifiche disponibili.",
+              "basis": "La migrazione conserva la tabella degli oggetti; ricerca e CRUD restano integrati. Ricevute correnti positive: e133efbc-a254-42d7-a245-b639f2cd9ef6 e ccb42a3d-2806-4e10-82fe-f6905e59c9e3."
+            },
+            {
+              "choice": "Limitare le conclusioni visive alle schermate osservate.",
+              "basis": "Esaminate maintenance-ui-desktop.png e maintenance-ui-mobile.png: la prima mostra scadenze e storico; la seconda mostra l’inventario a 390px. I dialoghi e le manutenzioni su telefono sono stati esaminati nel sorgente, senza eseguire un browser."
+            },
+            {
+              "choice": "Lasciare backup e ripristino alla continuazione successiva.",
+              "basis": "BRIEF.md li assegna all’esito 4; interfaccia e README ne indicano correttamente la disponibilità futura."
+            }
+          ],
+          "tasks": [],
+          "operatorQuestion": "",
+          "stamp": {
+            "head": "6ca9f2e7e21e990662505af6b18850f56f0eae98",
+            "files": {
+              ".gitignore": "38af0c189b6ea42f53b44594ce1cb8fe26b4861079fe816e4babbbb8c0b33374",
+              "BRIEF.md": "6d924142cfafaf42c0f91215fa4a44e3c24022079e585d462081a732491bdb01",
+              "README.md": "b4adb8ae6d55b6e7b897c9e7503f979602272fb9fb86f49f737e6c4b4e18335a",
+              "docs/api-manutenzioni.md": "68f61042d0860ba3352578acac89426b3ce928cf65764276ace49024c4f8f3a0",
+              "docs/ui-inventario.md": "b56253513a73c9bca6e8c07814c9853c1613641aa658b87f23289fa5f73f41aa",
+              "docs/ui-manutenzioni.md": "b9280bf4f3809df0ca81c549221e303f8c2c8430718ff3edcdc0937c82ecf108",
+              "package.json": "059e15020af9ea47307d8b9b6112991177ee25f1458b9351ea0a6c61a1bb1c1c",
+              "public/app.js": "b680742d22345bd547aad5b3bd796be27bf1e5ac77c0d44f913cd49c4eee1349",
+              "public/favicon.svg": "b4fddcb795fed38eb7025b73d3e941bf19b1b1407c9bd99a0d513f1f08fc424e",
+              "public/index.html": "b85d872d30d339aedd10c735589895b9a60d2cdf2a591944abf561aa4666ce8e",
+              "public/styles.css": "09c6b701023e2578d3f6e891ca02fe85d4ed15d8d84be9119312f7787b48b435",
+              "src/errors.mjs": "e80649a6029653512539fab5b2a950aa01ce047c48c709af23ead8d89f1a2cde",
+              "src/inventory.mjs": "abd476e31241a521120d30a65de8587b7124eef594ad1264133521509867bee8",
+              "src/maintenance.mjs": "9a1576c725c755efddbda8252b18f56a8616bb838cee53501817e692f51c9994",
+              "src/server.mjs": "f1fef9916d2ea0dabb9305a5be372736754d5e66cb52d9a24bb0bd4d07d197cb",
+              "src/store.mjs": "3fa2e280d9acb4603501c345e04b105dd478bbcd388c658eb17697df140930d1",
+              "tests/acceptance.mjs": "cd51582a782f0400fe1729ba27b4df50a388c0057f6f41ad63fed52ef8c1aaf3"
+            },
+            "fingerprint": "557abda9249d3e1508accfa61d02ba601c72cc25870fea40d997d107a4b2c3c0"
+          },
+          "noteIds": [
+            "946cc48e-c48f-4b54-b7bb-537e0b841186"
+          ],
+          "directionRevision": 1,
+          "contractVersion": 1,
+          "nodeId": "d4e622f0-0ed4-479a-a0fa-67da3e3d7737",
+          "at": "2026-10-20T16:11:35.530Z",
+          "independent": false
+        }
+      ],
+      "finalProofs": [
+        {
+          "criterionId": "inventory",
+          "output": "PASS empty inventory\nPASS stable identifiers, defaults and literal Unicode\nPASS invalid writes leave inventory unchanged\nPASS partial updates preserve fields\nPASS combined case-insensitive search\nPASS missing records and malformed JSON handled\nPASS real process restart preserves data\nPASS deletion persists\n{\"result\":\"passed\",\"mode\":\"inventory\",\"groups\":8,\"worktree\":\"/Users/vins/work/iterfox/.iterfox/missions/night-custode-20261020/data/worktrees/20261020T152604-46b3d576\",\"at\":\"2026-10-20T16:08:55.218Z\"}\n",
+          "stamp": {
+            "head": "6ca9f2e7e21e990662505af6b18850f56f0eae98",
+            "files": {
+              ".gitignore": "38af0c189b6ea42f53b44594ce1cb8fe26b4861079fe816e4babbbb8c0b33374",
+              "BRIEF.md": "6d924142cfafaf42c0f91215fa4a44e3c24022079e585d462081a732491bdb01",
+              "README.md": "b4adb8ae6d55b6e7b897c9e7503f979602272fb9fb86f49f737e6c4b4e18335a",
+              "docs/api-manutenzioni.md": "68f61042d0860ba3352578acac89426b3ce928cf65764276ace49024c4f8f3a0",
+              "docs/ui-inventario.md": "b56253513a73c9bca6e8c07814c9853c1613641aa658b87f23289fa5f73f41aa",
+              "docs/ui-manutenzioni.md": "b9280bf4f3809df0ca81c549221e303f8c2c8430718ff3edcdc0937c82ecf108",
+              "package.json": "059e15020af9ea47307d8b9b6112991177ee25f1458b9351ea0a6c61a1bb1c1c",
+              "public/app.js": "b680742d22345bd547aad5b3bd796be27bf1e5ac77c0d44f913cd49c4eee1349",
+              "public/favicon.svg": "b4fddcb795fed38eb7025b73d3e941bf19b1b1407c9bd99a0d513f1f08fc424e",
+              "public/index.html": "b85d872d30d339aedd10c735589895b9a60d2cdf2a591944abf561aa4666ce8e",
+              "public/styles.css": "09c6b701023e2578d3f6e891ca02fe85d4ed15d8d84be9119312f7787b48b435",
+              "src/errors.mjs": "e80649a6029653512539fab5b2a950aa01ce047c48c709af23ead8d89f1a2cde",
+              "src/inventory.mjs": "abd476e31241a521120d30a65de8587b7124eef594ad1264133521509867bee8",
+              "src/maintenance.mjs": "9a1576c725c755efddbda8252b18f56a8616bb838cee53501817e692f51c9994",
+              "src/server.mjs": "f1fef9916d2ea0dabb9305a5be372736754d5e66cb52d9a24bb0bd4d07d197cb",
+              "src/store.mjs": "3fa2e280d9acb4603501c345e04b105dd478bbcd388c658eb17697df140930d1",
+              "tests/acceptance.mjs": "cd51582a782f0400fe1729ba27b4df50a388c0057f6f41ad63fed52ef8c1aaf3"
+            },
+            "fingerprint": "557abda9249d3e1508accfa61d02ba601c72cc25870fea40d997d107a4b2c3c0"
+          }
+        },
+        {
+          "criterionId": "inventory-ui",
+          "output": "PASS browser creates, searches, edits and reloads real inventory\nPASS 390px layout, no page errors, no remote resources\n{\"result\":\"passed\",\"mode\":\"inventory-ui\",\"groups\":2,\"worktree\":\"/Users/vins/work/iterfox/.iterfox/missions/night-custode-20261020/data/worktrees/20261020T152604-46b3d576\",\"at\":\"2026-10-20T16:08:57.155Z\"}\n",
+          "stamp": {
+            "head": "6ca9f2e7e21e990662505af6b18850f56f0eae98",
+            "files": {
+              ".gitignore": "38af0c189b6ea42f53b44594ce1cb8fe26b4861079fe816e4babbbb8c0b33374",
+              "BRIEF.md": "6d924142cfafaf42c0f91215fa4a44e3c24022079e585d462081a732491bdb01",
+              "README.md": "b4adb8ae6d55b6e7b897c9e7503f979602272fb9fb86f49f737e6c4b4e18335a",
+              "docs/api-manutenzioni.md": "68f61042d0860ba3352578acac89426b3ce928cf65764276ace49024c4f8f3a0",
+              "docs/ui-inventario.md": "b56253513a73c9bca6e8c07814c9853c1613641aa658b87f23289fa5f73f41aa",
+              "docs/ui-manutenzioni.md": "b9280bf4f3809df0ca81c549221e303f8c2c8430718ff3edcdc0937c82ecf108",
+              "package.json": "059e15020af9ea47307d8b9b6112991177ee25f1458b9351ea0a6c61a1bb1c1c",
+              "public/app.js": "b680742d22345bd547aad5b3bd796be27bf1e5ac77c0d44f913cd49c4eee1349",
+              "public/favicon.svg": "b4fddcb795fed38eb7025b73d3e941bf19b1b1407c9bd99a0d513f1f08fc424e",
+              "public/index.html": "b85d872d30d339aedd10c735589895b9a60d2cdf2a591944abf561aa4666ce8e",
+              "public/styles.css": "09c6b701023e2578d3f6e891ca02fe85d4ed15d8d84be9119312f7787b48b435",
+              "src/errors.mjs": "e80649a6029653512539fab5b2a950aa01ce047c48c709af23ead8d89f1a2cde",
+              "src/inventory.mjs": "abd476e31241a521120d30a65de8587b7124eef594ad1264133521509867bee8",
+              "src/maintenance.mjs": "9a1576c725c755efddbda8252b18f56a8616bb838cee53501817e692f51c9994",
+              "src/server.mjs": "f1fef9916d2ea0dabb9305a5be372736754d5e66cb52d9a24bb0bd4d07d197cb",
+              "src/store.mjs": "3fa2e280d9acb4603501c345e04b105dd478bbcd388c658eb17697df140930d1",
+              "tests/acceptance.mjs": "cd51582a782f0400fe1729ba27b4df50a388c0057f6f41ad63fed52ef8c1aaf3"
+            },
+            "fingerprint": "557abda9249d3e1508accfa61d02ba601c72cc25870fea40d997d107a4b2c3c0"
+          }
+        },
+        {
+          "criterionId": "maintenance",
+          "output": "PASS task references, civil dates, recurrence validation\nPASS linked item deletion cannot silently lose maintenance\nPASS recurrence crosses leap day and saves history\nPASS one-off completion is single and invalid completion is atomic\nPASS due summary counts active dates at exact 30-day boundary\nPASS tasks and completion history survive restart\n{\"result\":\"passed\",\"mode\":\"maintenance\",\"groups\":6,\"worktree\":\"/Users/vins/work/iterfox/.iterfox/missions/night-custode-20261020/data/worktrees/20261020T152604-46b3d576\",\"at\":\"2026-10-20T16:08:57.691Z\"}\n",
+          "stamp": {
+            "head": "6ca9f2e7e21e990662505af6b18850f56f0eae98",
+            "files": {
+              ".gitignore": "38af0c189b6ea42f53b44594ce1cb8fe26b4861079fe816e4babbbb8c0b33374",
+              "BRIEF.md": "6d924142cfafaf42c0f91215fa4a44e3c24022079e585d462081a732491bdb01",
+              "README.md": "b4adb8ae6d55b6e7b897c9e7503f979602272fb9fb86f49f737e6c4b4e18335a",
+              "docs/api-manutenzioni.md": "68f61042d0860ba3352578acac89426b3ce928cf65764276ace49024c4f8f3a0",
+              "docs/ui-inventario.md": "b56253513a73c9bca6e8c07814c9853c1613641aa658b87f23289fa5f73f41aa",
+              "docs/ui-manutenzioni.md": "b9280bf4f3809df0ca81c549221e303f8c2c8430718ff3edcdc0937c82ecf108",
+              "package.json": "059e15020af9ea47307d8b9b6112991177ee25f1458b9351ea0a6c61a1bb1c1c",
+              "public/app.js": "b680742d22345bd547aad5b3bd796be27bf1e5ac77c0d44f913cd49c4eee1349",
+              "public/favicon.svg": "b4fddcb795fed38eb7025b73d3e941bf19b1b1407c9bd99a0d513f1f08fc424e",
+              "public/index.html": "b85d872d30d339aedd10c735589895b9a60d2cdf2a591944abf561aa4666ce8e",
+              "public/styles.css": "09c6b701023e2578d3f6e891ca02fe85d4ed15d8d84be9119312f7787b48b435",
+              "src/errors.mjs": "e80649a6029653512539fab5b2a950aa01ce047c48c709af23ead8d89f1a2cde",
+              "src/inventory.mjs": "abd476e31241a521120d30a65de8587b7124eef594ad1264133521509867bee8",
+              "src/maintenance.mjs": "9a1576c725c755efddbda8252b18f56a8616bb838cee53501817e692f51c9994",
+              "src/server.mjs": "f1fef9916d2ea0dabb9305a5be372736754d5e66cb52d9a24bb0bd4d07d197cb",
+              "src/store.mjs": "3fa2e280d9acb4603501c345e04b105dd478bbcd388c658eb17697df140930d1",
+              "tests/acceptance.mjs": "cd51582a782f0400fe1729ba27b4df50a388c0057f6f41ad63fed52ef8c1aaf3"
+            },
+            "fingerprint": "557abda9249d3e1508accfa61d02ba601c72cc25870fea40d997d107a4b2c3c0"
+          }
+        },
+        {
+          "criterionId": "maintenance-ui",
+          "output": "PASS browser creates, searches, edits and reloads real inventory\nPASS browser schedules, completes, advances recurrence and shows history\nPASS 390px layout, no page errors, no remote resources\n{\"result\":\"passed\",\"mode\":\"maintenance-ui\",\"groups\":3,\"worktree\":\"/Users/vins/work/iterfox/.iterfox/missions/night-custode-20261020/data/worktrees/20261020T152604-46b3d576\",\"at\":\"2026-10-20T16:08:59.738Z\"}\n",
+          "stamp": {
+            "head": "6ca9f2e7e21e990662505af6b18850f56f0eae98",
+            "files": {
+              ".gitignore": "38af0c189b6ea42f53b44594ce1cb8fe26b4861079fe816e4babbbb8c0b33374",
+              "BRIEF.md": "6d924142cfafaf42c0f91215fa4a44e3c24022079e585d462081a732491bdb01",
+              "README.md": "b4adb8ae6d55b6e7b897c9e7503f979602272fb9fb86f49f737e6c4b4e18335a",
+              "docs/api-manutenzioni.md": "68f61042d0860ba3352578acac89426b3ce928cf65764276ace49024c4f8f3a0",
+              "docs/ui-inventario.md": "b56253513a73c9bca6e8c07814c9853c1613641aa658b87f23289fa5f73f41aa",
+              "docs/ui-manutenzioni.md": "b9280bf4f3809df0ca81c549221e303f8c2c8430718ff3edcdc0937c82ecf108",
+              "package.json": "059e15020af9ea47307d8b9b6112991177ee25f1458b9351ea0a6c61a1bb1c1c",
+              "public/app.js": "b680742d22345bd547aad5b3bd796be27bf1e5ac77c0d44f913cd49c4eee1349",
+              "public/favicon.svg": "b4fddcb795fed38eb7025b73d3e941bf19b1b1407c9bd99a0d513f1f08fc424e",
+              "public/index.html": "b85d872d30d339aedd10c735589895b9a60d2cdf2a591944abf561aa4666ce8e",
+              "public/styles.css": "09c6b701023e2578d3f6e891ca02fe85d4ed15d8d84be9119312f7787b48b435",
+              "src/errors.mjs": "e80649a6029653512539fab5b2a950aa01ce047c48c709af23ead8d89f1a2cde",
+              "src/inventory.mjs": "abd476e31241a521120d30a65de8587b7124eef594ad1264133521509867bee8",
+              "src/maintenance.mjs": "9a1576c725c755efddbda8252b18f56a8616bb838cee53501817e692f51c9994",
+              "src/server.mjs": "f1fef9916d2ea0dabb9305a5be372736754d5e66cb52d9a24bb0bd4d07d197cb",
+              "src/store.mjs": "3fa2e280d9acb4603501c345e04b105dd478bbcd388c658eb17697df140930d1",
+              "tests/acceptance.mjs": "cd51582a782f0400fe1729ba27b4df50a388c0057f6f41ad63fed52ef8c1aaf3"
+            },
+            "fingerprint": "557abda9249d3e1508accfa61d02ba601c72cc25870fea40d997d107a4b2c3c0"
+          }
+        }
+      ]
+    },
+    {
+      "id": "safe-return",
+      "runId": "20261020T161136-f1baf0a7",
+      "status": "BLOCKED",
+      "reason": "The operation was aborted",
+      "worktree": "/Users/vins/work/iterfox/.iterfox/missions/night-custode-20261020/data/worktrees/20261020T161136-f1baf0a7",
+      "baseHead": "cb513eb21a98abdc21aae66debcd93ee98c01673",
+      "sourceFingerprint": "f0c268743c131f0d72310dd0d30cb8b8d308305d791e942b3fde57722f8ad7ad",
+      "turns": 4,
+      "tokens": 1852904,
+      "createdAt": "2026-10-20T16:11:36.878Z",
+      "finishedAt": "2026-10-20T16:58:48.571Z",
+      "criteria": [
+        {
+          "id": "inventory",
+          "status": "PASSED",
+          "evidenceId": "a5bdf5bf-ccd2-4e6e-8288-13b03a9f7170"
+        },
+        {
+          "id": "inventory-ui",
+          "status": "PASSED",
+          "evidenceId": "611548b2-2d6b-4b0f-bf77-706be0b3b389"
+        },
+        {
+          "id": "maintenance",
+          "status": "PASSED",
+          "evidenceId": "9a44ff6c-e827-42a7-ad00-7d3240c8778b"
+        },
+        {
+          "id": "maintenance-ui",
+          "status": "PASSED",
+          "evidenceId": "6b39fef9-fa55-40ad-8f73-9a9149467775"
+        },
+        {
+          "id": "backup",
+          "status": "PASSED",
+          "evidenceId": "860e6591-6ca6-4359-81f4-d20c5f5098d5"
+        },
+        {
+          "id": "backup-ui",
+          "status": "PASSED",
+          "evidenceId": "d3efa6f6-7639-4e5e-acb4-d5aa8e250b98"
+        }
+      ],
+      "changes": [
+        "README.md",
+        "docs/api-manutenzioni.md",
+        "docs/ui-manutenzioni.md",
+        "public/app.js",
+        "public/index.html",
+        "public/styles.css",
+        "src/server.mjs",
+        "src/store.mjs",
+        "docs/api-backup.md",
+        "docs/ui-backup.md",
+        "src/backup.mjs"
+      ],
+      "eventCounts": {
+        "workflow.created": 1,
+        "goal.accepted": 1,
+        "direction.noted": 1,
+        "task.planned": 1,
+        "task.started": 4,
+        "agent.thread": 4,
+        "agent.usage": 3,
+        "task.completed": 3,
+        "direction.compiled": 1,
+        "verification.started": 18,
+        "verification.passed": 15,
+        "verification.deferred": 3,
+        "code.changed": 2,
+        "evidence.invalidated": 9,
+        "decision.recorded": 2,
+        "progress.recorded": 2,
+        "task.interrupted": 1,
+        "workflow.blocked": 1
+      },
+      "tasks": [
+        {
+          "title": "Implementare backup completo e ripristino atomico",
+          "status": "PASSED",
+          "summary": "Implementate GET /api/backup e POST /api/restore con snapshot coerente, validazione completa e sostituzione transazionale. Preservati testi letterali, identificativi, date, interventi eliminati e ordine dello storico. Documentati uso, recupero e limite HTTP di 2 MiB. Controlli mirati locali superati, inclusi rollback forzato e concorrenza; listener da verificare sull’host. Interfaccia Backup lasciata al task successivo."
+        },
+        {
+          "title": "Attivare download e conferma esplicita nell’interfaccia",
+          "status": "PASSED",
+          "summary": "Attivata Backup con download JSON completo, lettura senza scritture e ripristino con riepilogo e consenso obbligatorio. Gestiti annullamento, focus, nomi file letterali, errori e invii duplicati; documentazione aggiornata. Controlli mirati locali passati. Download e tastiera nativi, layout desktop/390px e regressioni richiedono verifica host."
+        },
+        {
+          "title": "Integrare recupero degli errori e cambio di archivio",
+          "status": "BLOCKED"
+        },
+        {
+          "title": "Consegnare una guida operativa aderente al prodotto",
+          "status": "PENDING"
+        }
+      ],
+      "reviews": [],
+      "finalProofs": [
+        {
+          "criterionId": "inventory",
+          "output": "PASS empty inventory\nPASS stable identifiers, defaults and literal Unicode\nPASS invalid writes leave inventory unchanged\nPASS partial updates preserve fields\nPASS combined case-insensitive search\nPASS missing records and malformed JSON handled\nPASS real process restart preserves data\nPASS deletion persists\n{\"result\":\"passed\",\"mode\":\"inventory\",\"groups\":8,\"worktree\":\"/Users/vins/work/iterfox/.iterfox/missions/night-custode-20261020/data/worktrees/20261020T161136-f1baf0a7\",\"at\":\"2026-10-20T16:29:55.572Z\"}\n",
+          "stamp": {
+            "head": "cb513eb21a98abdc21aae66debcd93ee98c01673",
+            "files": {
+              ".gitignore": "38af0c189b6ea42f53b44594ce1cb8fe26b4861079fe816e4babbbb8c0b33374",
+              "BRIEF.md": "6d924142cfafaf42c0f91215fa4a44e3c24022079e585d462081a732491bdb01",
+              "README.md": "9830315497d148108510e1a40bffa0fb298270dea591b6dde330461b30cbfaa9",
+              "docs/api-backup.md": "1ead43623d8611072252a70594fd3c08d057a055010a5273a08959514a423ca2",
+              "docs/api-manutenzioni.md": "38179abe3587a8e1ec9d9e900b7e927158870767eb889d3bc910890f9f0f94eb",
+              "docs/ui-backup.md": "5fab75328aea57acb34480b4dc2cc27cf5dbd537aee028ea3b6d3d7a3dd946e8",
+              "docs/ui-inventario.md": "b56253513a73c9bca6e8c07814c9853c1613641aa658b87f23289fa5f73f41aa",
+              "docs/ui-manutenzioni.md": "d1ce74415ce1f4c0bfd0faacb28354e5a054c763f3bce640ee25acb53ec6d456",
+              "package.json": "059e15020af9ea47307d8b9b6112991177ee25f1458b9351ea0a6c61a1bb1c1c",
+              "public/app.js": "0bec981f3308415340624a2ea3ebf55e4858d18c544620cb579e86e24e2b7c4a",
+              "public/favicon.svg": "b4fddcb795fed38eb7025b73d3e941bf19b1b1407c9bd99a0d513f1f08fc424e",
+              "public/index.html": "5baa34856e5ad0a16eb82e504132d3013b75c7919ca46af91de6063b4d3d87aa",
+              "public/styles.css": "8e46008a500cf20c42d290904477f64d17fb893024445fef346a7aa3659064c3",
+              "src/backup.mjs": "e6a6b58667e1fad0d9dd2e21e351eadb500cb33d06d6c7bfdb52cf91a03c4661",
+              "src/errors.mjs": "e80649a6029653512539fab5b2a950aa01ce047c48c709af23ead8d89f1a2cde",
+              "src/inventory.mjs": "abd476e31241a521120d30a65de8587b7124eef594ad1264133521509867bee8",
+              "src/maintenance.mjs": "9a1576c725c755efddbda8252b18f56a8616bb838cee53501817e692f51c9994",
+              "src/server.mjs": "ecdcd6e7ba249b28d49c399f30cfecd5d393d63c63a69a4dd72ac4b7e537561e",
+              "src/store.mjs": "e10978d6dc097997fd98a55f741708c02e3eaebdaa2cf5ef68b8eb0f9964b1c6",
+              "tests/acceptance.mjs": "cd51582a782f0400fe1729ba27b4df50a388c0057f6f41ad63fed52ef8c1aaf3"
+            },
+            "fingerprint": "f0c268743c131f0d72310dd0d30cb8b8d308305d791e942b3fde57722f8ad7ad"
+          }
+        },
+        {
+          "criterionId": "inventory-ui",
+          "output": "PASS browser creates, searches, edits and reloads real inventory\nPASS 390px layout, no page errors, no remote resources\n{\"result\":\"passed\",\"mode\":\"inventory-ui\",\"groups\":2,\"worktree\":\"/Users/vins/work/iterfox/.iterfox/missions/night-custode-20261020/data/worktrees/20261020T161136-f1baf0a7\",\"at\":\"2026-10-20T16:29:50.455Z\"}\n",
+          "stamp": {
+            "head": "cb513eb21a98abdc21aae66debcd93ee98c01673",
+            "files": {
+              ".gitignore": "38af0c189b6ea42f53b44594ce1cb8fe26b4861079fe816e4babbbb8c0b33374",
+              "BRIEF.md": "6d924142cfafaf42c0f91215fa4a44e3c24022079e585d462081a732491bdb01",
+              "README.md": "9830315497d148108510e1a40bffa0fb298270dea591b6dde330461b30cbfaa9",
+              "docs/api-backup.md": "1ead43623d8611072252a70594fd3c08d057a055010a5273a08959514a423ca2",
+              "docs/api-manutenzioni.md": "38179abe3587a8e1ec9d9e900b7e927158870767eb889d3bc910890f9f0f94eb",
+              "docs/ui-backup.md": "5fab75328aea57acb34480b4dc2cc27cf5dbd537aee028ea3b6d3d7a3dd946e8",
+              "docs/ui-inventario.md": "b56253513a73c9bca6e8c07814c9853c1613641aa658b87f23289fa5f73f41aa",
+              "docs/ui-manutenzioni.md": "d1ce74415ce1f4c0bfd0faacb28354e5a054c763f3bce640ee25acb53ec6d456",
+              "package.json": "059e15020af9ea47307d8b9b6112991177ee25f1458b9351ea0a6c61a1bb1c1c",
+              "public/app.js": "0bec981f3308415340624a2ea3ebf55e4858d18c544620cb579e86e24e2b7c4a",
+              "public/favicon.svg": "b4fddcb795fed38eb7025b73d3e941bf19b1b1407c9bd99a0d513f1f08fc424e",
+              "public/index.html": "5baa34856e5ad0a16eb82e504132d3013b75c7919ca46af91de6063b4d3d87aa",
+              "public/styles.css": "8e46008a500cf20c42d290904477f64d17fb893024445fef346a7aa3659064c3",
+              "src/backup.mjs": "e6a6b58667e1fad0d9dd2e21e351eadb500cb33d06d6c7bfdb52cf91a03c4661",
+              "src/errors.mjs": "e80649a6029653512539fab5b2a950aa01ce047c48c709af23ead8d89f1a2cde",
+              "src/inventory.mjs": "abd476e31241a521120d30a65de8587b7124eef594ad1264133521509867bee8",
+              "src/maintenance.mjs": "9a1576c725c755efddbda8252b18f56a8616bb838cee53501817e692f51c9994",
+              "src/server.mjs": "ecdcd6e7ba249b28d49c399f30cfecd5d393d63c63a69a4dd72ac4b7e537561e",
+              "src/store.mjs": "e10978d6dc097997fd98a55f741708c02e3eaebdaa2cf5ef68b8eb0f9964b1c6",
+              "tests/acceptance.mjs": "cd51582a782f0400fe1729ba27b4df50a388c0057f6f41ad63fed52ef8c1aaf3"
+            },
+            "fingerprint": "f0c268743c131f0d72310dd0d30cb8b8d308305d791e942b3fde57722f8ad7ad"
+          }
+        },
+        {
+          "criterionId": "maintenance",
+          "output": "PASS task references, civil dates, recurrence validation\nPASS linked item deletion cannot silently lose maintenance\nPASS recurrence crosses leap day and saves history\nPASS one-off completion is single and invalid completion is atomic\nPASS due summary counts active dates at exact 30-day boundary\nPASS tasks and completion history survive restart\n{\"result\":\"passed\",\"mode\":\"maintenance\",\"groups\":6,\"worktree\":\"/Users/vins/work/iterfox/.iterfox/missions/night-custode-20261020/data/worktrees/20261020T161136-f1baf0a7\",\"at\":\"2026-10-20T16:29:56.021Z\"}\n",
+          "stamp": {
+            "head": "cb513eb21a98abdc21aae66debcd93ee98c01673",
+            "files": {
+              ".gitignore": "38af0c189b6ea42f53b44594ce1cb8fe26b4861079fe816e4babbbb8c0b33374",
+              "BRIEF.md": "6d924142cfafaf42c0f91215fa4a44e3c24022079e585d462081a732491bdb01",
+              "README.md": "9830315497d148108510e1a40bffa0fb298270dea591b6dde330461b30cbfaa9",
+              "docs/api-backup.md": "1ead43623d8611072252a70594fd3c08d057a055010a5273a08959514a423ca2",
+              "docs/api-manutenzioni.md": "38179abe3587a8e1ec9d9e900b7e927158870767eb889d3bc910890f9f0f94eb",
+              "docs/ui-backup.md": "5fab75328aea57acb34480b4dc2cc27cf5dbd537aee028ea3b6d3d7a3dd946e8",
+              "docs/ui-inventario.md": "b56253513a73c9bca6e8c07814c9853c1613641aa658b87f23289fa5f73f41aa",
+              "docs/ui-manutenzioni.md": "d1ce74415ce1f4c0bfd0faacb28354e5a054c763f3bce640ee25acb53ec6d456",
+              "package.json": "059e15020af9ea47307d8b9b6112991177ee25f1458b9351ea0a6c61a1bb1c1c",
+              "public/app.js": "0bec981f3308415340624a2ea3ebf55e4858d18c544620cb579e86e24e2b7c4a",
+              "public/favicon.svg": "b4fddcb795fed38eb7025b73d3e941bf19b1b1407c9bd99a0d513f1f08fc424e",
+              "public/index.html": "5baa34856e5ad0a16eb82e504132d3013b75c7919ca46af91de6063b4d3d87aa",
+              "public/styles.css": "8e46008a500cf20c42d290904477f64d17fb893024445fef346a7aa3659064c3",
+              "src/backup.mjs": "e6a6b58667e1fad0d9dd2e21e351eadb500cb33d06d6c7bfdb52cf91a03c4661",
+              "src/errors.mjs": "e80649a6029653512539fab5b2a950aa01ce047c48c709af23ead8d89f1a2cde",
+              "src/inventory.mjs": "abd476e31241a521120d30a65de8587b7124eef594ad1264133521509867bee8",
+              "src/maintenance.mjs": "9a1576c725c755efddbda8252b18f56a8616bb838cee53501817e692f51c9994",
+              "src/server.mjs": "ecdcd6e7ba249b28d49c399f30cfecd5d393d63c63a69a4dd72ac4b7e537561e",
+              "src/store.mjs": "e10978d6dc097997fd98a55f741708c02e3eaebdaa2cf5ef68b8eb0f9964b1c6",
+              "tests/acceptance.mjs": "cd51582a782f0400fe1729ba27b4df50a388c0057f6f41ad63fed52ef8c1aaf3"
+            },
+            "fingerprint": "f0c268743c131f0d72310dd0d30cb8b8d308305d791e942b3fde57722f8ad7ad"
+          }
+        },
+        {
+          "criterionId": "maintenance-ui",
+          "output": "PASS browser creates, searches, edits and reloads real inventory\nPASS browser schedules, completes, advances recurrence and shows history\nPASS 390px layout, no page errors, no remote resources\n{\"result\":\"passed\",\"mode\":\"maintenance-ui\",\"groups\":3,\"worktree\":\"/Users/vins/work/iterfox/.iterfox/missions/night-custode-20261020/data/worktrees/20261020T161136-f1baf0a7\",\"at\":\"2026-10-20T16:29:52.369Z\"}\n",
+          "stamp": {
+            "head": "cb513eb21a98abdc21aae66debcd93ee98c01673",
+            "files": {
+              ".gitignore": "38af0c189b6ea42f53b44594ce1cb8fe26b4861079fe816e4babbbb8c0b33374",
+              "BRIEF.md": "6d924142cfafaf42c0f91215fa4a44e3c24022079e585d462081a732491bdb01",
+              "README.md": "9830315497d148108510e1a40bffa0fb298270dea591b6dde330461b30cbfaa9",
+              "docs/api-backup.md": "1ead43623d8611072252a70594fd3c08d057a055010a5273a08959514a423ca2",
+              "docs/api-manutenzioni.md": "38179abe3587a8e1ec9d9e900b7e927158870767eb889d3bc910890f9f0f94eb",
+              "docs/ui-backup.md": "5fab75328aea57acb34480b4dc2cc27cf5dbd537aee028ea3b6d3d7a3dd946e8",
+              "docs/ui-inventario.md": "b56253513a73c9bca6e8c07814c9853c1613641aa658b87f23289fa5f73f41aa",
+              "docs/ui-manutenzioni.md": "d1ce74415ce1f4c0bfd0faacb28354e5a054c763f3bce640ee25acb53ec6d456",
+              "package.json": "059e15020af9ea47307d8b9b6112991177ee25f1458b9351ea0a6c61a1bb1c1c",
+              "public/app.js": "0bec981f3308415340624a2ea3ebf55e4858d18c544620cb579e86e24e2b7c4a",
+              "public/favicon.svg": "b4fddcb795fed38eb7025b73d3e941bf19b1b1407c9bd99a0d513f1f08fc424e",
+              "public/index.html": "5baa34856e5ad0a16eb82e504132d3013b75c7919ca46af91de6063b4d3d87aa",
+              "public/styles.css": "8e46008a500cf20c42d290904477f64d17fb893024445fef346a7aa3659064c3",
+              "src/backup.mjs": "e6a6b58667e1fad0d9dd2e21e351eadb500cb33d06d6c7bfdb52cf91a03c4661",
+              "src/errors.mjs": "e80649a6029653512539fab5b2a950aa01ce047c48c709af23ead8d89f1a2cde",
+              "src/inventory.mjs": "abd476e31241a521120d30a65de8587b7124eef594ad1264133521509867bee8",
+              "src/maintenance.mjs": "9a1576c725c755efddbda8252b18f56a8616bb838cee53501817e692f51c9994",
+              "src/server.mjs": "ecdcd6e7ba249b28d49c399f30cfecd5d393d63c63a69a4dd72ac4b7e537561e",
+              "src/store.mjs": "e10978d6dc097997fd98a55f741708c02e3eaebdaa2cf5ef68b8eb0f9964b1c6",
+              "tests/acceptance.mjs": "cd51582a782f0400fe1729ba27b4df50a388c0057f6f41ad63fed52ef8c1aaf3"
+            },
+            "fingerprint": "f0c268743c131f0d72310dd0d30cb8b8d308305d791e942b3fde57722f8ad7ad"
+          }
+        },
+        {
+          "criterionId": "backup",
+          "output": "PASS backup restore round-trip preserves exact identities and dates\nPASS malformed, duplicate and dangling backups never partially overwrite\nPASS bounded HTTP input and restored data durable after restart\nPASS operator guide explains actual launch and data recovery\n{\"result\":\"passed\",\"mode\":\"backup\",\"groups\":4,\"worktree\":\"/Users/vins/work/iterfox/.iterfox/missions/night-custode-20261020/data/worktrees/20261020T161136-f1baf0a7\",\"at\":\"2026-10-20T16:29:52.797Z\"}\n",
+          "stamp": {
+            "head": "cb513eb21a98abdc21aae66debcd93ee98c01673",
+            "files": {
+              ".gitignore": "38af0c189b6ea42f53b44594ce1cb8fe26b4861079fe816e4babbbb8c0b33374",
+              "BRIEF.md": "6d924142cfafaf42c0f91215fa4a44e3c24022079e585d462081a732491bdb01",
+              "README.md": "9830315497d148108510e1a40bffa0fb298270dea591b6dde330461b30cbfaa9",
+              "docs/api-backup.md": "1ead43623d8611072252a70594fd3c08d057a055010a5273a08959514a423ca2",
+              "docs/api-manutenzioni.md": "38179abe3587a8e1ec9d9e900b7e927158870767eb889d3bc910890f9f0f94eb",
+              "docs/ui-backup.md": "5fab75328aea57acb34480b4dc2cc27cf5dbd537aee028ea3b6d3d7a3dd946e8",
+              "docs/ui-inventario.md": "b56253513a73c9bca6e8c07814c9853c1613641aa658b87f23289fa5f73f41aa",
+              "docs/ui-manutenzioni.md": "d1ce74415ce1f4c0bfd0faacb28354e5a054c763f3bce640ee25acb53ec6d456",
+              "package.json": "059e15020af9ea47307d8b9b6112991177ee25f1458b9351ea0a6c61a1bb1c1c",
+              "public/app.js": "0bec981f3308415340624a2ea3ebf55e4858d18c544620cb579e86e24e2b7c4a",
+              "public/favicon.svg": "b4fddcb795fed38eb7025b73d3e941bf19b1b1407c9bd99a0d513f1f08fc424e",
+              "public/index.html": "5baa34856e5ad0a16eb82e504132d3013b75c7919ca46af91de6063b4d3d87aa",
+              "public/styles.css": "8e46008a500cf20c42d290904477f64d17fb893024445fef346a7aa3659064c3",
+              "src/backup.mjs": "e6a6b58667e1fad0d9dd2e21e351eadb500cb33d06d6c7bfdb52cf91a03c4661",
+              "src/errors.mjs": "e80649a6029653512539fab5b2a950aa01ce047c48c709af23ead8d89f1a2cde",
+              "src/inventory.mjs": "abd476e31241a521120d30a65de8587b7124eef594ad1264133521509867bee8",
+              "src/maintenance.mjs": "9a1576c725c755efddbda8252b18f56a8616bb838cee53501817e692f51c9994",
+              "src/server.mjs": "ecdcd6e7ba249b28d49c399f30cfecd5d393d63c63a69a4dd72ac4b7e537561e",
+              "src/store.mjs": "e10978d6dc097997fd98a55f741708c02e3eaebdaa2cf5ef68b8eb0f9964b1c6",
+              "tests/acceptance.mjs": "cd51582a782f0400fe1729ba27b4df50a388c0057f6f41ad63fed52ef8c1aaf3"
+            },
+            "fingerprint": "f0c268743c131f0d72310dd0d30cb8b8d308305d791e942b3fde57722f8ad7ad"
+          }
+        },
+        {
+          "criterionId": "backup-ui",
+          "output": "PASS browser creates, searches, edits and reloads real inventory\nPASS browser schedules, completes, advances recurrence and shows history\nPASS browser downloads and requires explicit consent before restoring\nPASS 390px layout, no page errors, no remote resources\n{\"result\":\"passed\",\"mode\":\"backup-ui\",\"groups\":4,\"worktree\":\"/Users/vins/work/iterfox/.iterfox/missions/night-custode-20261020/data/worktrees/20261020T161136-f1baf0a7\",\"at\":\"2026-10-20T16:29:54.958Z\"}\n",
+          "stamp": {
+            "head": "cb513eb21a98abdc21aae66debcd93ee98c01673",
+            "files": {
+              ".gitignore": "38af0c189b6ea42f53b44594ce1cb8fe26b4861079fe816e4babbbb8c0b33374",
+              "BRIEF.md": "6d924142cfafaf42c0f91215fa4a44e3c24022079e585d462081a732491bdb01",
+              "README.md": "9830315497d148108510e1a40bffa0fb298270dea591b6dde330461b30cbfaa9",
+              "docs/api-backup.md": "1ead43623d8611072252a70594fd3c08d057a055010a5273a08959514a423ca2",
+              "docs/api-manutenzioni.md": "38179abe3587a8e1ec9d9e900b7e927158870767eb889d3bc910890f9f0f94eb",
+              "docs/ui-backup.md": "5fab75328aea57acb34480b4dc2cc27cf5dbd537aee028ea3b6d3d7a3dd946e8",
+              "docs/ui-inventario.md": "b56253513a73c9bca6e8c07814c9853c1613641aa658b87f23289fa5f73f41aa",
+              "docs/ui-manutenzioni.md": "d1ce74415ce1f4c0bfd0faacb28354e5a054c763f3bce640ee25acb53ec6d456",
+              "package.json": "059e15020af9ea47307d8b9b6112991177ee25f1458b9351ea0a6c61a1bb1c1c",
+              "public/app.js": "0bec981f3308415340624a2ea3ebf55e4858d18c544620cb579e86e24e2b7c4a",
+              "public/favicon.svg": "b4fddcb795fed38eb7025b73d3e941bf19b1b1407c9bd99a0d513f1f08fc424e",
+              "public/index.html": "5baa34856e5ad0a16eb82e504132d3013b75c7919ca46af91de6063b4d3d87aa",
+              "public/styles.css": "8e46008a500cf20c42d290904477f64d17fb893024445fef346a7aa3659064c3",
+              "src/backup.mjs": "e6a6b58667e1fad0d9dd2e21e351eadb500cb33d06d6c7bfdb52cf91a03c4661",
+              "src/errors.mjs": "e80649a6029653512539fab5b2a950aa01ce047c48c709af23ead8d89f1a2cde",
+              "src/inventory.mjs": "abd476e31241a521120d30a65de8587b7124eef594ad1264133521509867bee8",
+              "src/maintenance.mjs": "9a1576c725c755efddbda8252b18f56a8616bb838cee53501817e692f51c9994",
+              "src/server.mjs": "ecdcd6e7ba249b28d49c399f30cfecd5d393d63c63a69a4dd72ac4b7e537561e",
+              "src/store.mjs": "e10978d6dc097997fd98a55f741708c02e3eaebdaa2cf5ef68b8eb0f9964b1c6",
+              "tests/acceptance.mjs": "cd51582a782f0400fe1729ba27b4df50a388c0057f6f41ad63fed52ef8c1aaf3"
+            },
+            "fingerprint": "f0c268743c131f0d72310dd0d30cb8b8d308305d791e942b3fde57722f8ad7ad"
+          }
+        }
+      ]
+    }
+  ],
+  "recovery": {
+    "id": "c59044fd-9fc4-4362-bfd5-2f35522c4d47",
+    "revision": 8,
+    "spec": {
+      "repository": "/Users/vins/work/iterfox/.iterfox/missions/night-custode-20261020/recovery-source",
+      "contract": {
+        "goal": "Finish and independently review Custode from the preserved interrupted candidate. Read BRIEF.md for the original approved product goal. Inventory, maintenance, backup API and interface already exist; inspect actual code and current evidence rather than rebuilding them. Finish only material remaining integration, recovery/error states and truthful README/guide gaps, then request fresh host checks and a source-based ready review. The preceding independent absence trial stopped during an aborted Codex call; this is a separately authorized recovery, not a continuation with a reset clock. Own reversible decisions, do not ask for routine choices. Preserve protected acceptance and all earlier behavior. No network, dependencies, publication, push or merge.",
+        "criteria": [
+          {
+            "id": "inventory",
+            "title": "Inventory API stores valid searchable data across a process restart",
+            "command": [
+              "node",
+              "tests/acceptance.mjs",
+              "inventory"
+            ],
+            "scope": [],
+            "timeoutMs": 120000
+          },
+          {
+            "id": "inventory-ui",
+            "title": "Accessible responsive inventory supports create/search/edit and reload",
+            "command": [
+              "node",
+              "tests/acceptance.mjs",
+              "inventory-ui"
+            ],
+            "scope": [],
+            "timeoutMs": 120000
+          },
+          {
+            "id": "maintenance",
+            "title": "Linked one-off and recurring maintenance has civil-date and durable history semantics",
+            "command": [
+              "node",
+              "tests/acceptance.mjs",
+              "maintenance"
+            ],
+            "scope": [],
+            "timeoutMs": 120000
+          },
+          {
+            "id": "maintenance-ui",
+            "title": "User can schedule and complete maintenance end-to-end",
+            "command": [
+              "node",
+              "tests/acceptance.mjs",
+              "maintenance-ui"
+            ],
+            "scope": [],
+            "timeoutMs": 120000
+          },
+          {
+            "id": "backup",
+            "title": "Exact backup/restore is validated, atomic and documented",
+            "command": [
+              "node",
+              "tests/acceptance.mjs",
+              "backup"
+            ],
+            "scope": [],
+            "timeoutMs": 120000
+          },
+          {
+            "id": "backup-ui",
+            "title": "User downloads and explicitly confirms data replacement in the interface",
+            "command": [
+              "node",
+              "tests/acceptance.mjs",
+              "backup-ui"
+            ],
+            "scope": [],
+            "timeoutMs": 120000
+          }
+        ],
+        "allowedPaths": [
+          "src",
+          "public",
+          "README.md",
+          "docs"
+        ],
+        "protectedPaths": [
+          "tests",
+          "BRIEF.md",
+          "package.json",
+          ".gitignore"
+        ],
+        "supervision": {
+          "mode": "project",
+          "maxReviews": 16
+        },
+        "limits": {
+          "maxTurns": 80,
+          "maxAttempts": 5,
+          "maxDurationMs": 7200000,
+          "maxTokens": 100000000,
+          "turnTimeoutMs": 1200000,
+          "maxNoProgress": 8
+        }
+      },
+      "milestones": [
+        {
+          "id": "complete-return",
+          "title": "Complete the preserved Custode product",
+          "outcome": "Inspect the existing preserved candidate against BRIEF.md. Finish material missing error recovery, archive-change integration and factual user guidance; do not repeat implemented features or polish indefinitely. Verify all six fixed host checks and resolve real gaps before returning ready.",
+          "criterionIds": [
+            "inventory",
+            "inventory-ui",
+            "maintenance",
+            "maintenance-ui",
+            "backup",
+            "backup-ui"
+          ],
+          "dependsOn": []
+        }
+      ],
+      "environment": {
+        "copyIgnoredPaths": []
+      }
+    },
+    "specHash": "e7c7f110e0fa0289c7c0e0b42ccfc71b78d6cc73726e4bf26b443ecbb75d9eda",
+    "sourceHead": "7dc07f5cd1e3faf5ae946caf084762f72d45ebc3",
+    "commonDirectory": "/Users/vins/work/iterfox/.iterfox/missions/night-custode-20261020/source/.git",
+    "provider": "codex",
+    "authorizedAt": "2026-10-20T18:28:10.237Z",
+    "updatedAt": "2026-10-20T18:45:29.838Z",
+    "status": "COMPLETED",
+    "stages": [
+      {
+        "id": "complete-return",
+        "status": "CHECKPOINTED",
+        "runId": "20261020T182810-4cfa5d18",
+        "environmentPrepared": true,
+        "checkpoint": {
+          "head": "c11af3764f1deec8a596daa235c8dc85f983d1c8",
+          "ref": "refs/iterfox/checkpoints/c59044fd-9fc4-4362-bfd5-2f35522c4d47/complete-return",
+          "sourceFingerprint": "9fd6cc05a50adbb7a3e3252ac4e26a392f14c29da061643f85a454073764f4ad",
+          "sourceSeq": 103,
+          "at": "2026-10-20T18:45:29.828Z"
+        }
+      }
+    ],
+    "events": [
+      {
+        "at": "2026-10-20T18:28:10.237Z",
+        "kind": "authorized",
+        "message": "Operator authorized the complete bounded delegation, including local verified checkpoint commits."
+      },
+      {
+        "at": "2026-10-20T18:28:10.432Z",
+        "kind": "worker-started",
+        "message": "Sequential delegation worker started."
+      },
+      {
+        "at": "2026-10-20T18:28:10.443Z",
+        "kind": "mission-creating",
+        "message": "Preparing Complete the preserved Custode product",
+        "stageId": "complete-return"
+      },
+      {
+        "at": "2026-10-20T18:28:10.475Z",
+        "kind": "mission-created",
+        "message": "Fresh mission authorized by the stored delegation.",
+        "stageId": "complete-return",
+        "runId": "20261020T182810-4cfa5d18"
+      },
+      {
+        "at": "2026-10-20T18:45:29.829Z",
+        "kind": "checkpoint-created",
+        "message": "Verified snapshot saved without changing the original run HEAD, index or worktree.",
+        "stageId": "complete-return",
+        "runId": "20261020T182810-4cfa5d18"
+      },
+      {
+        "at": "2026-10-20T18:45:29.838Z",
+        "kind": "completed",
+        "message": "All approved outcomes have fresh checks, ready reviews and local checkpoints. Product acceptance remains with the operator."
+      }
+    ],
+    "launchRequested": true
+  },
+  "recovered": {
+    "id": "complete-return",
+    "runId": "20261020T182810-4cfa5d18",
+    "status": "COMPLETED",
+    "worktree": "/Users/vins/work/iterfox/.iterfox/missions/night-custode-20261020/recovery-data/worktrees/20261020T182810-4cfa5d18",
+    "baseHead": "7dc07f5cd1e3faf5ae946caf084762f72d45ebc3",
+    "sourceFingerprint": "9fd6cc05a50adbb7a3e3252ac4e26a392f14c29da061643f85a454073764f4ad",
+    "checkpoint": {
+      "head": "c11af3764f1deec8a596daa235c8dc85f983d1c8",
+      "ref": "refs/iterfox/checkpoints/c59044fd-9fc4-4362-bfd5-2f35522c4d47/complete-return",
+      "sourceFingerprint": "9fd6cc05a50adbb7a3e3252ac4e26a392f14c29da061643f85a454073764f4ad",
+      "sourceSeq": 103,
+      "at": "2026-10-20T18:45:29.828Z"
+    },
+    "turns": 5,
+    "tokens": 3227317,
+    "createdAt": "2026-10-20T18:28:10.474Z",
+    "finishedAt": "2026-10-20T18:45:29.415Z",
+    "criteria": [
+      {
+        "id": "inventory",
+        "status": "PASSED",
+        "evidenceId": "4662d120-ac7a-487e-b0b8-4378d560394e"
+      },
+      {
+        "id": "inventory-ui",
+        "status": "PASSED",
+        "evidenceId": "456bd0c1-aad1-4827-980a-5a5c8e89694e"
+      },
+      {
+        "id": "maintenance",
+        "status": "PASSED",
+        "evidenceId": "cc4cd09b-e185-49b5-8fa7-e05d94aa5926"
+      },
+      {
+        "id": "maintenance-ui",
+        "status": "PASSED",
+        "evidenceId": "347ce7f1-7a27-4745-a065-2e1a763998b2"
+      },
+      {
+        "id": "backup",
+        "status": "PASSED",
+        "evidenceId": "613f5d6a-01f4-4c92-984c-2afbfee21fd4"
+      },
+      {
+        "id": "backup-ui",
+        "status": "PASSED",
+        "evidenceId": "dfc15702-8037-482f-a4f5-c027dc7c1f82"
+      }
+    ],
+    "changes": [
+      "README.md",
+      "docs/api-backup.md",
+      "docs/api-manutenzioni.md",
+      "docs/ui-backup.md",
+      "docs/ui-inventario.md",
+      "docs/ui-manutenzioni.md",
+      "public/app.js",
+      "public/index.html",
+      "public/styles.css"
+    ],
+    "eventCounts": {
+      "workflow.created": 1,
+      "goal.accepted": 1,
+      "direction.noted": 1,
+      "task.planned": 2,
+      "task.started": 5,
+      "agent.thread": 5,
+      "agent.usage": 5,
+      "task.completed": 5,
+      "direction.compiled": 1,
+      "verification.started": 24,
+      "verification.passed": 24,
+      "code.changed": 3,
+      "evidence.invalidated": 18,
+      "decision.recorded": 3,
+      "progress.recorded": 3,
+      "project.reviewed": 1,
+      "workflow.completed": 1
+    },
+    "tasks": [
+      {
+        "title": "Recover uncertain inventory writes without immediate repetition",
+        "status": "PASSED",
+        "summary": "Implemented GET-only inventory creation recovery: drafts and search persist, and repeat creation stays blocked until a valid full-inventory read. Validation correction remains available. DELETE success now requires valid confirmation. Syntax and focused mocked-handler checks passed; host/browser verification and independent source review remain pending."
+      },
+      {
+        "title": "Apply creation recovery to new maintenance",
+        "status": "PASSED",
+        "summary": "Added maintenance creation recovery that preserves drafts and blocks repeat creation until successful GET-only reconciliation. Users can inspect current interventions, including concluded ones, before explicitly retrying. Validation retries, item-loading recovery, version checks and restore cleanup remain intact. Syntax, markup and focused simulated checks passed; real browser behavior and host acceptance remain unverified."
+      },
+      {
+        "title": "Reconcile guidance with the preserved product and recovery changes",
+        "status": "PASSED",
+        "summary": "Updated README and guides for creation recovery and implemented Backup, corrected stale claims, and marked inherited evidence historical. Preserved restore, archive-refresh, storage and size-limit guidance. Documentation checks passed; fresh host checks and independent source review remain pending."
+      }
+    ],
+    "reviews": [
+      {
+        "outcome": "ready",
+        "summary": "Read-only review against BRIEF.md found no material remaining gap. All six current host checks pass. Ready for the host’s independent ready review.",
+        "findings": [],
+        "decisions": [
+          {
+            "choice": "Preserve the focused recovery implementation.",
+            "basis": "public/app.js and public/index.html preserve creation drafts, block uncertain repeat creation until successful GET-only reconciliation, validate deletion confirmation, and clear prior archive state after confirmed restore. src/store.mjs and src/backup.mjs retain transactional persistence, history and validated atomic replacement."
+          },
+          {
+            "choice": "Accept the six current host receipts as verification evidence.",
+            "basis": "inventory: 4662d120-ac7a-487e-b0b8-4378d560394e; inventory-ui: 456bd0c1-aad1-4827-980a-5a5c8e89694e; maintenance: cc4cd09b-e185-49b5-8fa7-e05d94aa5926; maintenance-ui: 347ce7f1-7a27-4745-a065-2e1a763998b2; backup: 613f5d6a-01f4-4c92-984c-2afbfee21fd4; backup-ui: dfc15702-8037-482f-a4f5-c027dc7c1f82. Each is marked passed."
+          },
+          {
+            "choice": "Advance without additional implementation.",
+            "basis": "README.md and docs describe implemented recovery, backup, storage and size limits and identify inherited observations as historical. No concrete remaining product gap warrants another patch. This supervisor review did not run a browser or inspect supplied PNGs; independent review remains a host step."
+          }
+        ],
+        "tasks": [],
+        "operatorQuestion": "",
+        "stamp": {
+          "head": "7dc07f5cd1e3faf5ae946caf084762f72d45ebc3",
+          "files": {
+            ".gitignore": "38af0c189b6ea42f53b44594ce1cb8fe26b4861079fe816e4babbbb8c0b33374",
+            "BRIEF.md": "6d924142cfafaf42c0f91215fa4a44e3c24022079e585d462081a732491bdb01",
+            "README.md": "9d93a8177adbbff10dcb2a11259cd395f28ad09fdd65e10989bc3c1374481315",
+            "docs/api-backup.md": "62f24aa7d569e8c3cb428479b0d239fb580abc1fb4c1ff8e4bae8dfcdc74745c",
+            "docs/api-manutenzioni.md": "6b788bfb9f68957e73a4a596abd1bba8e319daaa15ddb053cae0f0bad154f340",
+            "docs/ui-backup.md": "dd64f9673c976692997c4e5c1076255e01a9c4ad64711fba26f3f4b062245192",
+            "docs/ui-inventario.md": "75a55fabfe6aff8cf30f51d631769ded5700cb62a38ba02ecd657b9c59644e19",
+            "docs/ui-manutenzioni.md": "cd616dd13a6dd14b6c4c198614ab410934c5d454e9487a122cef6f0475c5ea9d",
+            "package.json": "059e15020af9ea47307d8b9b6112991177ee25f1458b9351ea0a6c61a1bb1c1c",
+            "public/app.js": "14672081434d4ecc1459afeef57af251c01fad737fa53204a3178c82dbf27430",
+            "public/favicon.svg": "b4fddcb795fed38eb7025b73d3e941bf19b1b1407c9bd99a0d513f1f08fc424e",
+            "public/index.html": "f59426340f00513517e59197efbc01b357101a1f33205a68e01ee38f0b821220",
+            "public/styles.css": "43808ae7f6e280c905a0b00afbc5c5a13c124fa05c223763ed8c3eb263eb164c",
+            "src/backup.mjs": "e6a6b58667e1fad0d9dd2e21e351eadb500cb33d06d6c7bfdb52cf91a03c4661",
+            "src/errors.mjs": "e80649a6029653512539fab5b2a950aa01ce047c48c709af23ead8d89f1a2cde",
+            "src/inventory.mjs": "abd476e31241a521120d30a65de8587b7124eef594ad1264133521509867bee8",
+            "src/maintenance.mjs": "9a1576c725c755efddbda8252b18f56a8616bb838cee53501817e692f51c9994",
+            "src/server.mjs": "ecdcd6e7ba249b28d49c399f30cfecd5d393d63c63a69a4dd72ac4b7e537561e",
+            "src/store.mjs": "e10978d6dc097997fd98a55f741708c02e3eaebdaa2cf5ef68b8eb0f9964b1c6",
+            "tests/acceptance.mjs": "cd51582a782f0400fe1729ba27b4df50a388c0057f6f41ad63fed52ef8c1aaf3"
+          },
+          "fingerprint": "9fd6cc05a50adbb7a3e3252ac4e26a392f14c29da061643f85a454073764f4ad"
+        },
+        "noteIds": [
+          "9078a2d6-05e4-4ea6-a7b3-58d7e30cf163"
+        ],
+        "directionRevision": 1,
+        "contractVersion": 1,
+        "nodeId": "2ac049bd-5730-40f1-8191-cab8eef7939f",
+        "at": "2026-10-20T18:45:28.757Z",
+        "independent": false
+      }
+    ],
+    "finalProofs": [
+      {
+        "criterionId": "inventory",
+        "output": "PASS empty inventory\nPASS stable identifiers, defaults and literal Unicode\nPASS invalid writes leave inventory unchanged\nPASS partial updates preserve fields\nPASS combined case-insensitive search\nPASS missing records and malformed JSON handled\nPASS real process restart preserves data\nPASS deletion persists\n{\"result\":\"passed\",\"mode\":\"inventory\",\"groups\":8,\"worktree\":\"/Users/vins/work/iterfox/.iterfox/missions/night-custode-20261020/recovery-data/worktrees/20261020T182810-4cfa5d18\",\"at\":\"2026-10-20T18:43:26.702Z\"}\n",
+        "stamp": {
+          "head": "7dc07f5cd1e3faf5ae946caf084762f72d45ebc3",
+          "files": {
+            ".gitignore": "38af0c189b6ea42f53b44594ce1cb8fe26b4861079fe816e4babbbb8c0b33374",
+            "BRIEF.md": "6d924142cfafaf42c0f91215fa4a44e3c24022079e585d462081a732491bdb01",
+            "README.md": "9d93a8177adbbff10dcb2a11259cd395f28ad09fdd65e10989bc3c1374481315",
+            "docs/api-backup.md": "62f24aa7d569e8c3cb428479b0d239fb580abc1fb4c1ff8e4bae8dfcdc74745c",
+            "docs/api-manutenzioni.md": "6b788bfb9f68957e73a4a596abd1bba8e319daaa15ddb053cae0f0bad154f340",
+            "docs/ui-backup.md": "dd64f9673c976692997c4e5c1076255e01a9c4ad64711fba26f3f4b062245192",
+            "docs/ui-inventario.md": "75a55fabfe6aff8cf30f51d631769ded5700cb62a38ba02ecd657b9c59644e19",
+            "docs/ui-manutenzioni.md": "cd616dd13a6dd14b6c4c198614ab410934c5d454e9487a122cef6f0475c5ea9d",
+            "package.json": "059e15020af9ea47307d8b9b6112991177ee25f1458b9351ea0a6c61a1bb1c1c",
+            "public/app.js": "14672081434d4ecc1459afeef57af251c01fad737fa53204a3178c82dbf27430",
+            "public/favicon.svg": "b4fddcb795fed38eb7025b73d3e941bf19b1b1407c9bd99a0d513f1f08fc424e",
+            "public/index.html": "f59426340f00513517e59197efbc01b357101a1f33205a68e01ee38f0b821220",
+            "public/styles.css": "43808ae7f6e280c905a0b00afbc5c5a13c124fa05c223763ed8c3eb263eb164c",
+            "src/backup.mjs": "e6a6b58667e1fad0d9dd2e21e351eadb500cb33d06d6c7bfdb52cf91a03c4661",
+            "src/errors.mjs": "e80649a6029653512539fab5b2a950aa01ce047c48c709af23ead8d89f1a2cde",
+            "src/inventory.mjs": "abd476e31241a521120d30a65de8587b7124eef594ad1264133521509867bee8",
+            "src/maintenance.mjs": "9a1576c725c755efddbda8252b18f56a8616bb838cee53501817e692f51c9994",
+            "src/server.mjs": "ecdcd6e7ba249b28d49c399f30cfecd5d393d63c63a69a4dd72ac4b7e537561e",
+            "src/store.mjs": "e10978d6dc097997fd98a55f741708c02e3eaebdaa2cf5ef68b8eb0f9964b1c6",
+            "tests/acceptance.mjs": "cd51582a782f0400fe1729ba27b4df50a388c0057f6f41ad63fed52ef8c1aaf3"
+          },
+          "fingerprint": "9fd6cc05a50adbb7a3e3252ac4e26a392f14c29da061643f85a454073764f4ad"
+        }
+      },
+      {
+        "criterionId": "inventory-ui",
+        "output": "PASS browser creates, searches, edits and reloads real inventory\nPASS 390px layout, no page errors, no remote resources\n{\"result\":\"passed\",\"mode\":\"inventory-ui\",\"groups\":2,\"worktree\":\"/Users/vins/work/iterfox/.iterfox/missions/night-custode-20261020/recovery-data/worktrees/20261020T182810-4cfa5d18\",\"at\":\"2026-10-20T18:43:28.862Z\"}\n",
+        "stamp": {
+          "head": "7dc07f5cd1e3faf5ae946caf084762f72d45ebc3",
+          "files": {
+            ".gitignore": "38af0c189b6ea42f53b44594ce1cb8fe26b4861079fe816e4babbbb8c0b33374",
+            "BRIEF.md": "6d924142cfafaf42c0f91215fa4a44e3c24022079e585d462081a732491bdb01",
+            "README.md": "9d93a8177adbbff10dcb2a11259cd395f28ad09fdd65e10989bc3c1374481315",
+            "docs/api-backup.md": "62f24aa7d569e8c3cb428479b0d239fb580abc1fb4c1ff8e4bae8dfcdc74745c",
+            "docs/api-manutenzioni.md": "6b788bfb9f68957e73a4a596abd1bba8e319daaa15ddb053cae0f0bad154f340",
+            "docs/ui-backup.md": "dd64f9673c976692997c4e5c1076255e01a9c4ad64711fba26f3f4b062245192",
+            "docs/ui-inventario.md": "75a55fabfe6aff8cf30f51d631769ded5700cb62a38ba02ecd657b9c59644e19",
+            "docs/ui-manutenzioni.md": "cd616dd13a6dd14b6c4c198614ab410934c5d454e9487a122cef6f0475c5ea9d",
+            "package.json": "059e15020af9ea47307d8b9b6112991177ee25f1458b9351ea0a6c61a1bb1c1c",
+            "public/app.js": "14672081434d4ecc1459afeef57af251c01fad737fa53204a3178c82dbf27430",
+            "public/favicon.svg": "b4fddcb795fed38eb7025b73d3e941bf19b1b1407c9bd99a0d513f1f08fc424e",
+            "public/index.html": "f59426340f00513517e59197efbc01b357101a1f33205a68e01ee38f0b821220",
+            "public/styles.css": "43808ae7f6e280c905a0b00afbc5c5a13c124fa05c223763ed8c3eb263eb164c",
+            "src/backup.mjs": "e6a6b58667e1fad0d9dd2e21e351eadb500cb33d06d6c7bfdb52cf91a03c4661",
+            "src/errors.mjs": "e80649a6029653512539fab5b2a950aa01ce047c48c709af23ead8d89f1a2cde",
+            "src/inventory.mjs": "abd476e31241a521120d30a65de8587b7124eef594ad1264133521509867bee8",
+            "src/maintenance.mjs": "9a1576c725c755efddbda8252b18f56a8616bb838cee53501817e692f51c9994",
+            "src/server.mjs": "ecdcd6e7ba249b28d49c399f30cfecd5d393d63c63a69a4dd72ac4b7e537561e",
+            "src/store.mjs": "e10978d6dc097997fd98a55f741708c02e3eaebdaa2cf5ef68b8eb0f9964b1c6",
+            "tests/acceptance.mjs": "cd51582a782f0400fe1729ba27b4df50a388c0057f6f41ad63fed52ef8c1aaf3"
+          },
+          "fingerprint": "9fd6cc05a50adbb7a3e3252ac4e26a392f14c29da061643f85a454073764f4ad"
+        }
+      },
+      {
+        "criterionId": "maintenance",
+        "output": "PASS task references, civil dates, recurrence validation\nPASS linked item deletion cannot silently lose maintenance\nPASS recurrence crosses leap day and saves history\nPASS one-off completion is single and invalid completion is atomic\nPASS due summary counts active dates at exact 30-day boundary\nPASS tasks and completion history survive restart\n{\"result\":\"passed\",\"mode\":\"maintenance\",\"groups\":6,\"worktree\":\"/Users/vins/work/iterfox/.iterfox/missions/night-custode-20261020/recovery-data/worktrees/20261020T182810-4cfa5d18\",\"at\":\"2026-10-20T18:43:29.321Z\"}\n",
+        "stamp": {
+          "head": "7dc07f5cd1e3faf5ae946caf084762f72d45ebc3",
+          "files": {
+            ".gitignore": "38af0c189b6ea42f53b44594ce1cb8fe26b4861079fe816e4babbbb8c0b33374",
+            "BRIEF.md": "6d924142cfafaf42c0f91215fa4a44e3c24022079e585d462081a732491bdb01",
+            "README.md": "9d93a8177adbbff10dcb2a11259cd395f28ad09fdd65e10989bc3c1374481315",
+            "docs/api-backup.md": "62f24aa7d569e8c3cb428479b0d239fb580abc1fb4c1ff8e4bae8dfcdc74745c",
+            "docs/api-manutenzioni.md": "6b788bfb9f68957e73a4a596abd1bba8e319daaa15ddb053cae0f0bad154f340",
+            "docs/ui-backup.md": "dd64f9673c976692997c4e5c1076255e01a9c4ad64711fba26f3f4b062245192",
+            "docs/ui-inventario.md": "75a55fabfe6aff8cf30f51d631769ded5700cb62a38ba02ecd657b9c59644e19",
+            "docs/ui-manutenzioni.md": "cd616dd13a6dd14b6c4c198614ab410934c5d454e9487a122cef6f0475c5ea9d",
+            "package.json": "059e15020af9ea47307d8b9b6112991177ee25f1458b9351ea0a6c61a1bb1c1c",
+            "public/app.js": "14672081434d4ecc1459afeef57af251c01fad737fa53204a3178c82dbf27430",
+            "public/favicon.svg": "b4fddcb795fed38eb7025b73d3e941bf19b1b1407c9bd99a0d513f1f08fc424e",
+            "public/index.html": "f59426340f00513517e59197efbc01b357101a1f33205a68e01ee38f0b821220",
+            "public/styles.css": "43808ae7f6e280c905a0b00afbc5c5a13c124fa05c223763ed8c3eb263eb164c",
+            "src/backup.mjs": "e6a6b58667e1fad0d9dd2e21e351eadb500cb33d06d6c7bfdb52cf91a03c4661",
+            "src/errors.mjs": "e80649a6029653512539fab5b2a950aa01ce047c48c709af23ead8d89f1a2cde",
+            "src/inventory.mjs": "abd476e31241a521120d30a65de8587b7124eef594ad1264133521509867bee8",
+            "src/maintenance.mjs": "9a1576c725c755efddbda8252b18f56a8616bb838cee53501817e692f51c9994",
+            "src/server.mjs": "ecdcd6e7ba249b28d49c399f30cfecd5d393d63c63a69a4dd72ac4b7e537561e",
+            "src/store.mjs": "e10978d6dc097997fd98a55f741708c02e3eaebdaa2cf5ef68b8eb0f9964b1c6",
+            "tests/acceptance.mjs": "cd51582a782f0400fe1729ba27b4df50a388c0057f6f41ad63fed52ef8c1aaf3"
+          },
+          "fingerprint": "9fd6cc05a50adbb7a3e3252ac4e26a392f14c29da061643f85a454073764f4ad"
+        }
+      },
+      {
+        "criterionId": "maintenance-ui",
+        "output": "PASS browser creates, searches, edits and reloads real inventory\nPASS browser schedules, completes, advances recurrence and shows history\nPASS 390px layout, no page errors, no remote resources\n{\"result\":\"passed\",\"mode\":\"maintenance-ui\",\"groups\":3,\"worktree\":\"/Users/vins/work/iterfox/.iterfox/missions/night-custode-20261020/recovery-data/worktrees/20261020T182810-4cfa5d18\",\"at\":\"2026-10-20T18:43:31.239Z\"}\n",
+        "stamp": {
+          "head": "7dc07f5cd1e3faf5ae946caf084762f72d45ebc3",
+          "files": {
+            ".gitignore": "38af0c189b6ea42f53b44594ce1cb8fe26b4861079fe816e4babbbb8c0b33374",
+            "BRIEF.md": "6d924142cfafaf42c0f91215fa4a44e3c24022079e585d462081a732491bdb01",
+            "README.md": "9d93a8177adbbff10dcb2a11259cd395f28ad09fdd65e10989bc3c1374481315",
+            "docs/api-backup.md": "62f24aa7d569e8c3cb428479b0d239fb580abc1fb4c1ff8e4bae8dfcdc74745c",
+            "docs/api-manutenzioni.md": "6b788bfb9f68957e73a4a596abd1bba8e319daaa15ddb053cae0f0bad154f340",
+            "docs/ui-backup.md": "dd64f9673c976692997c4e5c1076255e01a9c4ad64711fba26f3f4b062245192",
+            "docs/ui-inventario.md": "75a55fabfe6aff8cf30f51d631769ded5700cb62a38ba02ecd657b9c59644e19",
+            "docs/ui-manutenzioni.md": "cd616dd13a6dd14b6c4c198614ab410934c5d454e9487a122cef6f0475c5ea9d",
+            "package.json": "059e15020af9ea47307d8b9b6112991177ee25f1458b9351ea0a6c61a1bb1c1c",
+            "public/app.js": "14672081434d4ecc1459afeef57af251c01fad737fa53204a3178c82dbf27430",
+            "public/favicon.svg": "b4fddcb795fed38eb7025b73d3e941bf19b1b1407c9bd99a0d513f1f08fc424e",
+            "public/index.html": "f59426340f00513517e59197efbc01b357101a1f33205a68e01ee38f0b821220",
+            "public/styles.css": "43808ae7f6e280c905a0b00afbc5c5a13c124fa05c223763ed8c3eb263eb164c",
+            "src/backup.mjs": "e6a6b58667e1fad0d9dd2e21e351eadb500cb33d06d6c7bfdb52cf91a03c4661",
+            "src/errors.mjs": "e80649a6029653512539fab5b2a950aa01ce047c48c709af23ead8d89f1a2cde",
+            "src/inventory.mjs": "abd476e31241a521120d30a65de8587b7124eef594ad1264133521509867bee8",
+            "src/maintenance.mjs": "9a1576c725c755efddbda8252b18f56a8616bb838cee53501817e692f51c9994",
+            "src/server.mjs": "ecdcd6e7ba249b28d49c399f30cfecd5d393d63c63a69a4dd72ac4b7e537561e",
+            "src/store.mjs": "e10978d6dc097997fd98a55f741708c02e3eaebdaa2cf5ef68b8eb0f9964b1c6",
+            "tests/acceptance.mjs": "cd51582a782f0400fe1729ba27b4df50a388c0057f6f41ad63fed52ef8c1aaf3"
+          },
+          "fingerprint": "9fd6cc05a50adbb7a3e3252ac4e26a392f14c29da061643f85a454073764f4ad"
+        }
+      },
+      {
+        "criterionId": "backup",
+        "output": "PASS backup restore round-trip preserves exact identities and dates\nPASS malformed, duplicate and dangling backups never partially overwrite\nPASS bounded HTTP input and restored data durable after restart\nPASS operator guide explains actual launch and data recovery\n{\"result\":\"passed\",\"mode\":\"backup\",\"groups\":4,\"worktree\":\"/Users/vins/work/iterfox/.iterfox/missions/night-custode-20261020/recovery-data/worktrees/20261020T182810-4cfa5d18\",\"at\":\"2026-10-20T18:43:31.705Z\"}\n",
+        "stamp": {
+          "head": "7dc07f5cd1e3faf5ae946caf084762f72d45ebc3",
+          "files": {
+            ".gitignore": "38af0c189b6ea42f53b44594ce1cb8fe26b4861079fe816e4babbbb8c0b33374",
+            "BRIEF.md": "6d924142cfafaf42c0f91215fa4a44e3c24022079e585d462081a732491bdb01",
+            "README.md": "9d93a8177adbbff10dcb2a11259cd395f28ad09fdd65e10989bc3c1374481315",
+            "docs/api-backup.md": "62f24aa7d569e8c3cb428479b0d239fb580abc1fb4c1ff8e4bae8dfcdc74745c",
+            "docs/api-manutenzioni.md": "6b788bfb9f68957e73a4a596abd1bba8e319daaa15ddb053cae0f0bad154f340",
+            "docs/ui-backup.md": "dd64f9673c976692997c4e5c1076255e01a9c4ad64711fba26f3f4b062245192",
+            "docs/ui-inventario.md": "75a55fabfe6aff8cf30f51d631769ded5700cb62a38ba02ecd657b9c59644e19",
+            "docs/ui-manutenzioni.md": "cd616dd13a6dd14b6c4c198614ab410934c5d454e9487a122cef6f0475c5ea9d",
+            "package.json": "059e15020af9ea47307d8b9b6112991177ee25f1458b9351ea0a6c61a1bb1c1c",
+            "public/app.js": "14672081434d4ecc1459afeef57af251c01fad737fa53204a3178c82dbf27430",
+            "public/favicon.svg": "b4fddcb795fed38eb7025b73d3e941bf19b1b1407c9bd99a0d513f1f08fc424e",
+            "public/index.html": "f59426340f00513517e59197efbc01b357101a1f33205a68e01ee38f0b821220",
+            "public/styles.css": "43808ae7f6e280c905a0b00afbc5c5a13c124fa05c223763ed8c3eb263eb164c",
+            "src/backup.mjs": "e6a6b58667e1fad0d9dd2e21e351eadb500cb33d06d6c7bfdb52cf91a03c4661",
+            "src/errors.mjs": "e80649a6029653512539fab5b2a950aa01ce047c48c709af23ead8d89f1a2cde",
+            "src/inventory.mjs": "abd476e31241a521120d30a65de8587b7124eef594ad1264133521509867bee8",
+            "src/maintenance.mjs": "9a1576c725c755efddbda8252b18f56a8616bb838cee53501817e692f51c9994",
+            "src/server.mjs": "ecdcd6e7ba249b28d49c399f30cfecd5d393d63c63a69a4dd72ac4b7e537561e",
+            "src/store.mjs": "e10978d6dc097997fd98a55f741708c02e3eaebdaa2cf5ef68b8eb0f9964b1c6",
+            "tests/acceptance.mjs": "cd51582a782f0400fe1729ba27b4df50a388c0057f6f41ad63fed52ef8c1aaf3"
+          },
+          "fingerprint": "9fd6cc05a50adbb7a3e3252ac4e26a392f14c29da061643f85a454073764f4ad"
+        }
+      },
+      {
+        "criterionId": "backup-ui",
+        "output": "PASS browser creates, searches, edits and reloads real inventory\nPASS browser schedules, completes, advances recurrence and shows history\nPASS browser downloads and requires explicit consent before restoring\nPASS 390px layout, no page errors, no remote resources\n{\"result\":\"passed\",\"mode\":\"backup-ui\",\"groups\":4,\"worktree\":\"/Users/vins/work/iterfox/.iterfox/missions/night-custode-20261020/recovery-data/worktrees/20261020T182810-4cfa5d18\",\"at\":\"2026-10-20T18:43:33.822Z\"}\n",
+        "stamp": {
+          "head": "7dc07f5cd1e3faf5ae946caf084762f72d45ebc3",
+          "files": {
+            ".gitignore": "38af0c189b6ea42f53b44594ce1cb8fe26b4861079fe816e4babbbb8c0b33374",
+            "BRIEF.md": "6d924142cfafaf42c0f91215fa4a44e3c24022079e585d462081a732491bdb01",
+            "README.md": "9d93a8177adbbff10dcb2a11259cd395f28ad09fdd65e10989bc3c1374481315",
+            "docs/api-backup.md": "62f24aa7d569e8c3cb428479b0d239fb580abc1fb4c1ff8e4bae8dfcdc74745c",
+            "docs/api-manutenzioni.md": "6b788bfb9f68957e73a4a596abd1bba8e319daaa15ddb053cae0f0bad154f340",
+            "docs/ui-backup.md": "dd64f9673c976692997c4e5c1076255e01a9c4ad64711fba26f3f4b062245192",
+            "docs/ui-inventario.md": "75a55fabfe6aff8cf30f51d631769ded5700cb62a38ba02ecd657b9c59644e19",
+            "docs/ui-manutenzioni.md": "cd616dd13a6dd14b6c4c198614ab410934c5d454e9487a122cef6f0475c5ea9d",
+            "package.json": "059e15020af9ea47307d8b9b6112991177ee25f1458b9351ea0a6c61a1bb1c1c",
+            "public/app.js": "14672081434d4ecc1459afeef57af251c01fad737fa53204a3178c82dbf27430",
+            "public/favicon.svg": "b4fddcb795fed38eb7025b73d3e941bf19b1b1407c9bd99a0d513f1f08fc424e",
+            "public/index.html": "f59426340f00513517e59197efbc01b357101a1f33205a68e01ee38f0b821220",
+            "public/styles.css": "43808ae7f6e280c905a0b00afbc5c5a13c124fa05c223763ed8c3eb263eb164c",
+            "src/backup.mjs": "e6a6b58667e1fad0d9dd2e21e351eadb500cb33d06d6c7bfdb52cf91a03c4661",
+            "src/errors.mjs": "e80649a6029653512539fab5b2a950aa01ce047c48c709af23ead8d89f1a2cde",
+            "src/inventory.mjs": "abd476e31241a521120d30a65de8587b7124eef594ad1264133521509867bee8",
+            "src/maintenance.mjs": "9a1576c725c755efddbda8252b18f56a8616bb838cee53501817e692f51c9994",
+            "src/server.mjs": "ecdcd6e7ba249b28d49c399f30cfecd5d393d63c63a69a4dd72ac4b7e537561e",
+            "src/store.mjs": "e10978d6dc097997fd98a55f741708c02e3eaebdaa2cf5ef68b8eb0f9964b1c6",
+            "tests/acceptance.mjs": "cd51582a782f0400fe1729ba27b4df50a388c0057f6f41ad63fed52ef8c1aaf3"
+          },
+          "fingerprint": "9fd6cc05a50adbb7a3e3252ac4e26a392f14c29da061643f85a454073764f4ad"
+        }
+      }
+    ]
+  },
+  "primaryActiveDurationMs": 9119968,
+  "primaryBlockedAt": "2026-10-20T16:58:48.583Z",
+  "recoveryDurationMs": 1039601,
+  "totalWallMs": 15521223,
+  "preparationMs": 333615,
+  "sourceAndIndexesPreserved": true,
+  "originalRuntimeAndAcceptancePreserved": true,
+  "assistantRecoveries": 1,
+  "userPromptsAfterInitialAuthorization": 0,
+  "technicalAuthorizations": 2,
+  "certifiedCheckpoints": 4,
+  "uncertifiedReviewSnapshots": 1,
+  "finalCheckpoint": "c11af3764f1deec8a596daa235c8dc85f983d1c8",
+  "totalTurns": 29
+}

@@ -36,6 +36,28 @@ o fermare l’intera delega. I limiti e i criteri approvati restano gli stessi.
 Per una sola missione, segui [La prima sessione](#la-prima-sessione).
 Altrimenti trovi più sotto [come avviarla](#avviare-linterfaccia).
 
+## Una simulazione di assenza su un’app nuova
+
+Il 20 ottobre 2026 una delega ha sviluppato **Custode**, inventario domestico,
+manutenzioni e backup, senza nuovi prompt dell’utente. La configurazione e i sei
+controlli erano stati preparati dall’assistente. La prima esecuzione è rimasta
+attiva per 152.0 minuti: tre checkpoint,
+quarta funzionalità già verificata, poi blocco su una chiamata interrotta.
+**Non ha ripreso da sola e resta registrata a 3/4.**
+
+Un recupero dell’assistente, con snapshot di revisione non certificato e seconda
+delega separata, ha completato integrazione e guida in 17.3 minuti. Nessun
+altro prompt è stato richiesto all’utente; nessuna correzione manuale al codice
+applicativo. Quattro guide sono state rettificate dopo la run per distinguere
+ricevute runtime e revisione AI della stessa integrazione.
+
+La consegna passa sei criteri host, **12 gruppi di audit esterno e 3 prove con
+risposte di rete perse**; interfaccia e ripristino sono verificati anche a 390px.
+Il valore osservato è lavoro utile durante l’assenza, con risultati e prove al
+ritorno. Il limite concreto è il recupero autonomo delle interruzioni tecniche;
+questa prova non stabilisce una superiorità universale su Codex diretto.
+[Rapporto, codice, cronologia e schermate](docs/validation/night-custode-20261020/index.html).
+
 ## La prova sul prodotto reale
 
 Il 20 ottobre 2026 Iterfox ha completato **tre esiti sul proprio codice con una
