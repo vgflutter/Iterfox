@@ -666,6 +666,10 @@ export class Engine {
   private async probePlannedWork(criterionIds?: string[]): Promise<void> {
     // Cheap approved command probes can discover already-covered future work.
     // Never add speculative browser captures or model assessments to this phase.
+    // The last builder may request verification after completing its task.
+    // With no planned work left, ordinary acceptance owns failure/diagnosis;
+    // there is no unfinished implementation that can justify a deferred probe.
+    if (!this.state.nodes.some((n) => n.kind === 'task' && n.status === 'PENDING')) return;
     for (const c of this.state.contract.criteria.filter(
       (c) =>
         !c.verification &&

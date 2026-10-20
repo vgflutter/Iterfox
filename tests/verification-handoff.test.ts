@@ -141,3 +141,64 @@ test('handoff cannot invent checks and genuine implementation blockers still sto
     }),
   );
 });
+
+for (const implemented of [false, true]) {
+  test(`a final planned task requesting host verification ${implemented ? 'passes normally' : 'enters real diagnosis and correction when its check fails'}`, async (t) => {
+    const f = await fixture(t, (c) => {
+      c.criteria = [c.criteria[0]];
+    });
+    let builds = 0;
+    let diagnoses = 0;
+    const final = await new Engine(f.store, f.id, {
+      name: 'demo',
+      async invoke(r) {
+        if (r.mode === 'plan')
+          return {
+            tasks: [
+              {
+                title: 'Implement the only planned unit',
+                objective: 'Normalize empty names and request the original host check.',
+                criterionId: 'render',
+              },
+            ],
+          };
+        if (r.mode === 'diagnose') {
+          diagnoses++;
+          return {
+            hypothesis: 'Empty-name normalization remains absent after the initial build.',
+            correctiveTitle: 'Repair empty-name normalization',
+            correctiveObjective: 'Implement the missing safe normalization without editing checks.',
+            blocked: false,
+          };
+        }
+        assert.equal(r.mode, 'build');
+        builds++;
+        // Both variants change the source fingerprint, so a stale negative
+        // probe cache cannot hide the exact final-handoff regression.
+        await repair(r.state.worktree, implemented || builds > 1, false);
+        return {
+          summary: 'Explicit final-task verification handoff fixture.',
+          blocked: false,
+          reason: '',
+          verificationRequest: { criterionIds: ['render'] },
+        };
+      },
+    }).run();
+    assert.equal(final.status, 'COMPLETED', final.reason);
+    assert.equal(builds, implemented ? 1 : 2);
+    assert.equal(diagnoses, implemented ? 0 : 1);
+    assert.equal(final.criteria[0].status, 'PASSED');
+    const events = f.store.events(f.id);
+    assert.equal(
+      events.filter((e) => e.type === 'verification.failed').length,
+      implemented ? 0 : 1,
+    );
+    assert.equal(
+      events.filter((e) => e.type === 'corrective.inserted').length,
+      implemented ? 0 : 1,
+    );
+    assert(!events.some((e) => e.type === 'workflow.blocked'));
+    assert(!final.nodes.some((n) => ['RUNNING', 'VERIFYING'].includes(n.status)));
+    assert.deepEqual(project(events), final);
+  });
+}
