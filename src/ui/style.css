@@ -3331,8 +3331,10 @@ textarea {
 /* A project delegation is separate from the activity/proof graph of one run. */
 .delegations-workspace {
   max-width: 1200px;
+  min-width: 0;
   margin: 28px auto;
   padding: 0 16px 48px;
+  overflow-wrap: anywhere;
 }
 .delegations-workspace > p {
   max-width: 880px;
@@ -3354,6 +3356,21 @@ textarea {
   overflow-wrap: anywhere;
   white-space: pre-wrap;
 }
+.delegations-workspace .button,
+.delegations-workspace summary {
+  min-height: 44px;
+  max-width: 100%;
+  white-space: normal;
+  font-size: 14px;
+}
+.delegations-workspace select,
+.delegations-workspace input {
+  min-height: 44px;
+}
+.delegations-workspace :is(input, textarea, select, summary):focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 4px;
+}
 .delegation-outcomes {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
@@ -3374,4 +3391,144 @@ textarea {
 }
 .delegation-outcome p {
   overflow-wrap: anywhere;
+}
+.delegation-brief-reader {
+  margin: 20px 0;
+  min-width: 0;
+}
+.delegation-brief {
+  margin-top: 16px;
+  overflow-wrap: anywhere;
+}
+.delegation-brief section {
+  margin: 24px 0;
+}
+.delegation-brief :is(ul, ol) {
+  padding-left: 22px;
+}
+.delegation-brief li + li {
+  margin-top: 20px;
+}
+.delegation-brief h4 {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+.delegation-brief summary {
+  cursor: pointer;
+}
+.delegation-brief .brief-outcomes,
+.delegation-brief .brief-criteria,
+.delegation-brief .brief-mission-usage {
+  list-style: none;
+  padding: 0;
+}
+.delegation-brief .brief-outcome {
+  min-width: 0;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+.delegation-brief .brief-outcome h5 {
+  font-size: 14px;
+  font-weight: 550;
+  margin: 16px 0 8px;
+}
+.delegation-brief .brief-evidence-boundary {
+  margin-top: 16px;
+}
+.delegation-brief .brief-result-heading {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 6px 16px;
+}
+.delegation-brief .brief-result-heading > span {
+  flex: 1 1 220px;
+  min-width: 0;
+}
+.delegation-brief .brief-result-heading > strong[data-result-status='PASSED'] {
+  color: var(--sage);
+}
+.delegation-brief
+  .brief-result-heading
+  > strong:is([data-result-status='FAILED'], [data-result-status='BLOCKED']) {
+  color: var(--red);
+}
+.delegation-brief .brief-result-heading code {
+  display: inline-block;
+  max-width: 100%;
+}
+.delegation-brief .brief-provenance,
+.delegation-brief .brief-latest-state {
+  margin-top: 12px;
+  padding-top: 8px;
+  border-top: 1px solid var(--line);
+}
+.delegation-brief summary {
+  padding: 10px 0;
+  line-height: 1.5;
+}
+.delegation-brief .brief-latest-state > summary {
+  font-weight: 550;
+}
+.delegation-brief .brief-facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+  gap: 14px 20px;
+  margin: 12px 0 20px;
+}
+.delegation-brief .brief-facts > div {
+  min-width: 0;
+}
+.delegation-brief .brief-facts dt {
+  color: var(--muted);
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+.delegation-brief .brief-facts dd {
+  margin: 0;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+.delegation-brief .brief-usage-summary {
+  padding: 16px;
+  background: var(--bg);
+  border-radius: 8px;
+}
+.delegation-brief .brief-exports {
+  margin: 24px 0;
+  padding: 16px 0;
+  border-block: 1px solid var(--line);
+}
+.delegation-brief .brief-exports .project-actions {
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.delegation-brief .brief-exports p {
+  margin-bottom: 8px;
+}
+.delegation-brief .brief-download-status {
+  min-height: 1.6em;
+  color: var(--sage);
+}
+@media (max-width: 680px) {
+  .delegations-workspace {
+    margin: 18px auto;
+    padding: 0 14px 32px;
+  }
+  .delegations-workspace :is(select, textarea, input) {
+    font-size: 16px;
+  }
+  .delegations-workspace .project-actions > button {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+  .delegation-brief .brief-outcome,
+  .delegation-brief .brief-usage-summary {
+    padding: 12px;
+  }
+  .delegation-brief .brief-facts {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import type { Delegation, DelegationSpec } from '../delegations/service.js';
 import { launchApi } from './launch-api.js';
+import { DelegationBriefReader } from './delegation-brief.js';
 type Preview = {
   spec: DelegationSpec;
   expectedHead: string;
@@ -29,28 +30,64 @@ export function Delegations({
     [error, setError] = useState(''),
     [uncertain, setUncertain] = useState(false);
   const [readError, setReadError] = useState('');
-  async function load() {
-    try {
-      const list = await launchApi<Delegation[]>('/api/delegations', token);
-      setItems((previous) => {
-        const next = new Map(previous.map((d) => [d.id, d]));
-        for (const d of list)
-          if (!next.has(d.id) || next.get(d.id)!.revision <= d.revision) next.set(d.id, d);
-        return [...next.values()].sort((a, b) => b.authorizedAt.localeCompare(a.authorizedAt));
-      });
-      setSelected((previous) => previous || list[0]?.id || '');
-      setReadError('');
-    } catch (e) {
-      setReadError(e instanceof Error ? e.message : String(e));
-    }
-  }
+  const [readRevision, setReadRevision] = useState(0);
+  const [reconnecting, setReconnecting] = useState(false);
+  const [connectionError, setConnectionError] = useState('');
   useEffect(() => {
     if (!active || !token) return;
+    let obsolete = false;
+    let pending: AbortController | undefined;
+    async function load() {
+      // Keep polling, but let a slow read finish rather than overlapping reads.
+      if (pending) return;
+      const controller = new AbortController();
+      pending = controller;
+      try {
+        const list = await launchApi<Delegation[]>(
+          '/api/delegations',
+          token,
+          undefined,
+          controller.signal,
+        );
+        if (obsolete) return;
+        setItems((previous) => {
+          const next = new Map(previous.map((d) => [d.id, d]));
+          for (const d of list)
+            if (!next.has(d.id) || next.get(d.id)!.revision <= d.revision) next.set(d.id, d);
+          return [...next.values()].sort((a, b) => b.authorizedAt.localeCompare(a.authorizedAt));
+        });
+        setSelected((previous) => previous || list[0]?.id || '');
+        setReadError('');
+      } catch (e) {
+        if (!obsolete) setReadError(e instanceof Error ? e.message : String(e));
+      } finally {
+        pending = undefined;
+      }
+    }
     void load();
     const timer = setInterval(() => void load(), 3000);
-    return () => clearInterval(timer);
-  }, [active, token]);
+    return () => {
+      obsolete = true;
+      clearInterval(timer);
+      pending?.abort();
+    };
+  }, [active, token, readRevision]);
   const current = items.find((d) => d.id === selected);
+  async function reconnectRuntime() {
+    if (reconnecting) return;
+    setReconnecting(true);
+    setConnectionError('');
+    try {
+      await reconnect();
+      // A healthy runtime can return the same token. Invalidate saved reads
+      // explicitly without resetting preflight, request IDs or control state.
+      setReadRevision((revision) => revision + 1);
+    } catch (e) {
+      setConnectionError(e instanceof Error ? e.message : String(e));
+    } finally {
+      setReconnecting(false);
+    }
+  }
   async function review() {
     setBusy(true);
     setError('');
@@ -132,16 +169,18 @@ export function Delegations({
         continues to the next eligible outcome. You return to review the result.
       </p>
       <div className="project-actions">
-        <button className="button" onClick={() => void load()}>
+        <button className="button" onClick={() => setReadRevision((revision) => revision + 1)}>
           Refresh delegations
         </button>
-        <button
-          className="button"
-          onClick={() => void reconnect().catch((e) => setError(String(e)))}
-        >
+        <button className="button" disabled={reconnecting} onClick={() => void reconnectRuntime()}>
           Reconnect runtime
         </button>
       </div>
+      {connectionError && (
+        <p role="alert" className="project-error">
+          Could not reconnect to the runtime. {connectionError}
+        </p>
+      )}
       {error && (
         <p role="alert" className="project-error">
           {error}
@@ -215,6 +254,15 @@ export function Delegations({
               including pauses
             </p>
           </section>
+          <DelegationBriefReader
+            key={current.id}
+            delegationId={current.id}
+            savedRevision={current.revision}
+            refreshRevision={readRevision}
+            active={active}
+            token={token}
+            openRun={openRun}
+          />
           <section aria-label="Delegated outcome graph">
             <h2>Outcome graph</h2>
             <p>

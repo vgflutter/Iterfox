@@ -57,6 +57,42 @@ freshness is unobserved, and technical checkpoints still require operator produc
 review. Attention includes saved blocking reasons and unresolved linked questions;
 answered Compass questions are excluded.
 
+For a selected delegation, **Read project brief** opens the **Project morning
+brief**. It leads with the selected goal, checkpointed outcome count, remaining
+work and saved attention. **Open source mission in Live Trail** opens the actual
+linked mission for an outcome or attention item. Each outcome shows its saved
+status and criterion results. Expand
+**Checkpoint provenance** or a criterion's provenance for the exact SHA, source
+fingerprint, sequence and evidence references. **Latest recorded mission state**
+is separately labeled and cannot replace unavailable checkpoint proof. The usage
+section shows original limits, unique-mission totals and unknown remaining budgets
+when history is missing; its expandable accounting retains the original clock.
+These saved results do not establish current source freshness or operator product
+acceptance.
+
+An opened brief refreshes when delegation polling finds a newer saved revision,
+when you choose **Refresh delegations**, after a successful **Reconnect runtime**
+(even when its token stays the same), and when you return to the Delegations view.
+Unchanged polling results do not reread the full brief. Linked mission events that
+do not change the delegation revision appear on the next explicit refresh or return.
+Only the active selection is read; changing delegations starts with a closed brief.
+Leaving the view cancels pending reads. Refresh failures retain and label the
+previous snapshot, with **Retry project brief** available. Brief loading and errors
+do not disable delegation controls or clear preflight inputs or an uncertain
+authorization request ID; use **Inspect saved authorization** to recover that
+request before another submission.
+
+**Export project brief JSON** downloads a `.json` document, and **Export project
+brief Markdown** downloads a `.md` text document. Both fetch the selected
+delegation's latest saved brief through the authenticated read-only routes above;
+the runtime token stays in the request header. Downloads retain the original goal,
+limits and checkpoint provenance. Preparing a download disables the export buttons;
+failures appear in the brief and can be retried with the same buttons. Changing
+delegations or leaving the view cancels pending downloads. Temporary download links
+and object URLs are released after use. The view wraps long goals, identifiers and
+provenance at a 390px viewport, with keyboard-accessible buttons and expandable
+details. Reading and exporting a brief never authorizes or resumes work.
+
 Successful current checks and a matching ready project review are required before
 checkpointing. The host uses a private Git index and commits under
 `refs/iterfox/checkpoints/<delegation>/<outcome>`. The source HEAD/index and each
