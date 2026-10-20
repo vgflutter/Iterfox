@@ -9,12 +9,21 @@ import {
   validateDirection,
   DirectionProposalRejection,
 } from './compass.js';
-import { projectReviewCurrent, validateProjectReview } from './supervision.js';
+import {
+  projectReviewCurrent,
+  validateProjectReview,
+  ProjectReviewRejection,
+} from './supervision.js';
 import { Store } from './store.js';
 import { auditChanges, changedFiles, stamp, worktreeDiff } from './workspace.js';
 import { artifactRoot, readArtifact } from './artifacts.js';
 import { verify } from '../verifiers/runtime.js';
-import { satisfied, obsoleteOrientations, rejectedOrientations } from './model.js';
+import {
+  satisfied,
+  obsoleteOrientations,
+  rejectedOrientations,
+  rejectedProjectReviews,
+} from './model.js';
 import {
   buildSchema,
   diagnosisSchema,
@@ -263,6 +272,14 @@ export class Engine {
       directionRevision,
       round: (snapshot.projectReviews?.length ?? 0) + 1,
     });
+    const rejected = rejectedProjectReviews(snapshot);
+    if (rejected.length >= snapshot.contract.limits.maxAttempts)
+      throw new Error(
+        `Project review proposal attempt limit reached (${snapshot.contract.limits.maxAttempts}): ${rejected.at(-1)!.error}`,
+      );
+    const failure = rejected.length
+      ? `The previous project review was rejected: ${rejected.at(-1)!.error}. Correct the proposal against the supplied current snapshot. Use exact recorded relative file paths without line suffixes and known evidence IDs, not criterion IDs. Preserve genuine findings; do not discard a gap merely to return ready. The rejected proposal activated no work or acceptance. Original permissions, criteria and budgets remain unchanged.`
+      : undefined;
     let activity = snapshot.nodes.find(
       (n) =>
         n.title === 'Review the project against its goal' &&
@@ -270,6 +287,10 @@ export class Engine {
         ['PENDING', 'PASSED'].includes(n.status),
     );
     if (!activity) {
+      this.checkControls();
+      this.boundary(true);
+      if (snapshot.turns >= snapshot.contract.limits.maxTurns)
+        throw new Error('Agent turn limit reached');
       activity = node({
         kind: 'decision',
         role: 'planner',
@@ -277,6 +298,7 @@ export class Engine {
         objective: key,
         reason: 'A verified milestone triggers autonomous discovery of the next useful work.',
         criterionId: snapshot.criteria[0].id,
+        attempt: rejected.length + 1,
       });
       this.emit('task.planned', activity.title, { node: activity });
     }
@@ -294,9 +316,31 @@ export class Engine {
           });
         }
     const proposal =
-      activity.result?.proposal ??
-      (await this.invoke('oversee', activity, undefined, reviewImages));
-    const result = validateProjectReview(snapshot, proposal, code);
+      activity.result?.proposal ?? (await this.invoke('oversee', activity, failure, reviewImages));
+    let result: ReturnType<typeof validateProjectReview>;
+    try {
+      result = validateProjectReview(snapshot, proposal, code);
+    } catch (error) {
+      if (!(error instanceof ProjectReviewRejection)) throw error;
+      this.emit('project.review.rejected', `Project review rejected: ${error.message}`, {
+        nodeId: activity.id,
+        proposal,
+        stamp: code,
+        noteIds,
+        directionRevision,
+        reason: error.message,
+      });
+      await this.refreshEvidence();
+      await auditChanges(this.state);
+      const after = await stamp(this.state.worktree);
+      if (after.head !== code.head || after.fingerprint !== code.fingerprint)
+        throw new Error(
+          'The project changed during read-only supervision; inspect and resume before using this review.',
+        );
+      this.checkControls();
+      this.boundary();
+      return;
+    }
     await auditChanges(this.state);
     const after = await stamp(this.state.worktree);
     if (after.head !== code.head || after.fingerprint !== code.fingerprint)

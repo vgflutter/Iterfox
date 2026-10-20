@@ -13,6 +13,7 @@ import {
 import {
   supervisionSchema,
   validateProjectReview,
+  ProjectReviewRejection,
   type ProjectReview,
   type ProjectReviewProposal,
 } from './supervision.js';
@@ -315,6 +316,7 @@ export type EventType =
   | 'direction.noted'
   | 'direction.compiled'
   | 'direction.rejected'
+  | 'project.review.rejected'
   | 'direction.superseded'
   | 'project.reviewed'
   | 'project.review.invalidated';
@@ -402,6 +404,20 @@ export function rejectedOrientations(s: RunState): TaskNode[] {
     );
 }
 
+export function rejectedProjectReviews(s: RunState): TaskNode[] {
+  const accepted = s.nodes.findIndex((n) => n.id === s.projectReviews?.at(-1)?.nodeId);
+  return s.nodes
+    .slice(accepted + 1)
+    .filter(
+      (n) =>
+        n.kind === 'decision' &&
+        n.role === 'planner' &&
+        n.title === 'Review the project against its goal' &&
+        n.result?.reviewRejection === true &&
+        n.result.contractVersion === s.contractVersion,
+    );
+}
+
 export function reduce(previous: RunState | undefined, event: RunEvent): RunState {
   if (event.schemaVersion !== 1 || event.seq !== (previous?.seq ?? 0) + 1)
     throw new Error('Invalid event schema or ordering');
@@ -422,6 +438,62 @@ export function reduce(previous: RunState | undefined, event: RunEvent): RunStat
     return n;
   };
   switch (event.type) {
+    case 'project.review.rejected': {
+      const n = node();
+      const code = d.stamp as CodeStamp;
+      const noteIds = d.noteIds as string[];
+      if (
+        s.status !== 'RUNNING' ||
+        !s.contract.supervision ||
+        n.kind !== 'decision' ||
+        n.role !== 'planner' ||
+        n.title !== 'Review the project against its goal' ||
+        n.status !== 'RUNNING' ||
+        n.result ||
+        !code ||
+        typeof code.head !== 'string' ||
+        typeof code.fingerprint !== 'string' ||
+        !code.files ||
+        !Array.isArray(noteIds) ||
+        n.attempt !== rejectedProjectReviews(s).length + 1 ||
+        n.attempt > s.contract.limits.maxAttempts ||
+        n.objective !==
+          JSON.stringify({
+            head: code.head,
+            fingerprint: code.fingerprint,
+            version: s.contractVersion,
+            noteIds,
+            directionRevision: d.directionRevision,
+            round: (s.projectReviews?.length ?? 0) + 1,
+          })
+      )
+        throw new Error(
+          'Project review rejection requires the active bounded supervision snapshot',
+        );
+      let rejection: ProjectReviewRejection | undefined;
+      try {
+        validateProjectReview(s, d.proposal, code);
+      } catch (error) {
+        if (!(error instanceof ProjectReviewRejection)) throw error;
+        rejection = error;
+      }
+      if (!rejection || rejection.message !== d.reason)
+        throw new Error('Only an invalid project review can be recorded as rejected');
+      transition(n, 'FAILED');
+      n.error = rejection.message;
+      n.summary = event.message;
+      n.endedAt = event.at;
+      n.result = {
+        proposal: structuredClone(d.proposal),
+        stamp: structuredClone(code),
+        noteIds: [...noteIds],
+        directionRevision: d.directionRevision,
+        contractVersion: s.contractVersion,
+        reviewRejection: true,
+        rejection: rejection.message,
+      };
+      break;
+    }
     case 'direction.rejected': {
       const n = node();
       const sourceIds = d.sourceIds as string[];

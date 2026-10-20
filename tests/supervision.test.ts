@@ -358,3 +358,223 @@ test('a whole-project change outside command scopes invalidates ready status wit
   );
   assert.deepEqual(project(f.store.events(f.id)), changed);
 });
+
+test('a rejected project review is corrected within the original limits without activating its invented work', async (t) => {
+  const f = await fixture(t, (c) => {
+    c.supervision = { mode: 'project', maxReviews: 5 };
+    c.limits.maxAttempts = 2;
+  });
+  let reviews = 0;
+  const final = await new Engine(f.store, f.id, {
+    name: 'demo',
+    async invoke(r) {
+      if (r.mode === 'plan') return plan;
+      if (r.mode === 'oversee') {
+        reviews++;
+        r.onUsage(7);
+        if (reviews === 1) {
+          const p = gap(r);
+          p.findings[0].files = ['invented.mjs'];
+          return p;
+        }
+        assert.match(r.failure!, /actual recorded files and known evidence/);
+        return ready;
+      }
+      await repair(r.state.worktree);
+      return built;
+    },
+  }).run();
+  assert.equal(final.status, 'COMPLETED', final.reason);
+  assert.equal(reviews, 2);
+  assert.equal(final.tokens, 14);
+  assert.equal(final.projectReviews?.length, 1);
+  assert(!final.nodes.some((n) => n.discoveredBy), 'invalid review supplied no executable work');
+  assert.equal(f.store.events(f.id).filter((e) => e.type === 'project.review.rejected').length, 1);
+  assert.equal(brief(final, f.store.events(f.id)).projectReviewRejections.length, 1);
+  assert.deepEqual(project(f.store.events(f.id)), final);
+});
+
+for (const invalid of ['evidence', 'shape']) {
+  test(`a project review can repair invalid ${invalid} while preserving the rejected response`, async (t) => {
+    const f = await fixture(t, (c) => {
+      c.supervision = { mode: 'project', maxReviews: 5 };
+    });
+    let reviews = 0;
+    const final = await new Engine(f.store, f.id, {
+      name: 'demo',
+      async invoke(r) {
+        if (r.mode === 'plan') return plan;
+        if (r.mode === 'oversee') {
+          if (++reviews > 1) {
+            assert(r.failure);
+            return ready;
+          }
+          if (invalid === 'shape') return { outcome: 'ready' };
+          const p = gap(r);
+          p.findings[0].evidenceIds = ['invented-proof'];
+          return p;
+        }
+        await repair(r.state.worktree);
+        return built;
+      },
+    }).run();
+    assert.equal(final.status, 'COMPLETED', final.reason);
+    assert.equal(reviews, 2);
+    assert.equal(final.nodes.filter((n) => n.result?.reviewRejection).length, 1);
+    assert.deepEqual(project(f.store.events(f.id)), final);
+  });
+}
+
+test('rejected project reviews remain bounded across explicit resume', async (t) => {
+  const f = await fixture(t, (c) => {
+    c.supervision = { mode: 'project', maxReviews: 5 };
+    c.limits.maxAttempts = 2;
+  });
+  let reviews = 0;
+  const provider = {
+    name: 'demo' as const,
+    async invoke(r: AgentRequest) {
+      if (r.mode === 'plan') return plan;
+      if (r.mode === 'oversee') {
+        reviews++;
+        const p = gap(r);
+        p.findings[0].files = ['invented.mjs'];
+        return p;
+      }
+      await repair(r.state.worktree);
+      return built;
+    },
+  };
+  const first = await new Engine(f.store, f.id, provider).run();
+  assert.equal(first.status, 'BLOCKED');
+  assert.match(first.reason!, /review proposal attempt limit/);
+  assert.equal(reviews, 2);
+  assert.equal(first.projectReviews, undefined);
+  resumeRun(f.store, f.id);
+  const again = await new Engine(f.store, f.id, provider).run();
+  assert.equal(again.status, 'BLOCKED');
+  assert.equal(reviews, 2);
+  assert.deepEqual(project(f.store.events(f.id)), again);
+});
+
+test('invalid review plus a read-only source mutation blocks instead of requesting a repair', async (t) => {
+  const f = await fixture(t, (c) => {
+    c.supervision = { mode: 'project', maxReviews: 5 };
+  });
+  let reviews = 0;
+  const final = await new Engine(f.store, f.id, {
+    name: 'demo',
+    async invoke(r) {
+      if (r.mode === 'plan') return plan;
+      if (r.mode === 'oversee') {
+        reviews++;
+        await addSummary(r.state.worktree);
+        const p = gap(r);
+        p.findings[0].files = ['invented.mjs'];
+        return p;
+      }
+      await repair(r.state.worktree);
+      return built;
+    },
+  }).run();
+  assert.equal(final.status, 'BLOCKED');
+  assert.match(final.reason!, /changed during read-only/);
+  assert.equal(reviews, 1);
+  assert.equal(final.projectReviews, undefined);
+  assert(final.evidence.some((e) => e.status === 'stale'));
+});
+
+for (const action of ['pause', 'stop'] as const) {
+  test(`${action} after a rejected project review prevents another model call`, async (t) => {
+    const f = await fixture(t, (c) => {
+      c.supervision = { mode: 'project', maxReviews: 5 };
+    });
+    let reviews = 0;
+    const engine = new Engine(f.store, f.id, {
+      name: 'demo',
+      async invoke(r) {
+        if (r.mode === 'plan') return plan;
+        if (r.mode === 'oversee') {
+          reviews++;
+          const p = gap(r);
+          p.findings[0].files = ['invented.mjs'];
+          return p;
+        }
+        await repair(r.state.worktree);
+        return built;
+      },
+    });
+    const emit = engine.emit.bind(engine);
+    engine.emit = (type, message, data) => {
+      const result = emit(type, message, data);
+      if (type === 'project.review.rejected') engine.request(action);
+      return result;
+    };
+    const final = await engine.run();
+    assert.equal(final.status, action === 'pause' ? 'PAUSED' : 'STOPPED');
+    assert.equal(reviews, 1);
+    assert.deepEqual(project(f.store.events(f.id)), final);
+  });
+}
+
+for (const budget of ['turns', 'tokens']) {
+  test(`project review repair preserves the original ${budget} cap`, async (t) => {
+    const f = await fixture(t, (c) => {
+      c.supervision = { mode: 'project', maxReviews: 5 };
+      if (budget === 'turns') c.limits.maxTurns = 3;
+      else c.limits.maxTokens = 5;
+    });
+    let reviews = 0;
+    const final = await new Engine(f.store, f.id, {
+      name: 'demo',
+      async invoke(r) {
+        if (r.mode === 'plan') return plan;
+        if (r.mode === 'oversee') {
+          reviews++;
+          if (budget === 'tokens') r.onUsage(5);
+          const p = gap(r);
+          p.findings[0].files = ['invented.mjs'];
+          return p;
+        }
+        await repair(r.state.worktree);
+        return built;
+      },
+    }).run();
+    assert.equal(final.status, 'BLOCKED');
+    assert.match(final.reason!, budget === 'turns' ? /turn limit/ : /token budget/);
+    assert.equal(reviews, 1);
+  });
+}
+
+test('a valid project review cannot be forged into a rejection receipt', async (t) => {
+  const f = await fixture(t, (c) => {
+    c.supervision = { mode: 'project', maxReviews: 5 };
+  });
+  const final = await new Engine(f.store, f.id, {
+    name: 'demo',
+    async invoke(r) {
+      if (r.mode === 'plan') return plan;
+      if (r.mode === 'oversee') {
+        const code = await stamp(r.state.worktree);
+        const context = JSON.parse(r.node.objective);
+        assert.throws(
+          () =>
+            f.store.append(f.id, 'project.review.rejected', 'Forged rejection', {
+              nodeId: r.node.id,
+              proposal: ready,
+              stamp: code,
+              noteIds: context.noteIds,
+              directionRevision: context.directionRevision,
+              reason: 'invented failure',
+            }),
+          /Only an invalid project review/,
+        );
+        return ready;
+      }
+      await repair(r.state.worktree);
+      return built;
+    },
+  }).run();
+  assert.equal(final.status, 'COMPLETED', final.reason);
+  assert(!f.store.events(f.id).some((e) => e.type === 'project.review.rejected'));
+});

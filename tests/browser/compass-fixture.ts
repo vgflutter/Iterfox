@@ -95,6 +95,7 @@ export async function projectFixture(dir: string, store: Store) {
   contract.goal = 'TEST FIXTURE autonomous project: deliver robust avatars and a reusable summary.';
   contract.supervision = { mode: 'project', maxReviews: 5 };
   const state = await createRun(store, dir, repo, contract, 'demo');
+  let reviewResponses = 0;
   await new Engine(store, state.id, {
     name: 'demo',
     async invoke(r) {
@@ -107,6 +108,22 @@ export async function projectFixture(dir: string, store: Store) {
               criterionId: 'render',
             },
           ],
+        };
+      if (r.mode === 'oversee' && ++reviewResponses === 1)
+        return {
+          outcome: 'ready',
+          summary: 'TEST FIXTURE invalid reference must be rejected before acceptance.',
+          findings: [
+            {
+              id: 'invented',
+              gap: 'TEST FIXTURE reference is intentionally invalid.',
+              files: ['missing-fixture.md'],
+              evidenceIds: [],
+            },
+          ],
+          decisions: [],
+          tasks: [],
+          operatorQuestion: '',
         };
       if (r.mode === 'oversee')
         return r.state.projectReviews?.length

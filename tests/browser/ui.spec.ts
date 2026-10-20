@@ -190,4 +190,7 @@ test('autonomous checkpoints explain goal work discovered after green regression
   await page.screenshot({ path: 'test-results/project-checkpoints.png', fullPage: true });
   await page.getByRole('button', { name: 'Morning Brief', exact: true }).click();
   await expect(page.locator('.brief-view')).toContainText('2 criteria verified');
+  const rejected = page.getByRole('article', { name: 'Project review corrections', exact: true });
+  await expect(rejected).toContainText('actual recorded files and known evidence');
+  await expect(rejected).toContainText('Later valid review recorded');
 });

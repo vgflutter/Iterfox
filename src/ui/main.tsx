@@ -1141,6 +1141,25 @@ function App() {
                   </a>
                 </div>
                 <div className="brief-grid">
+                  {!!b?.projectReviewRejections.length && (
+                    <article className="surface" aria-label="Project review corrections">
+                      <h3>Project review corrections</h3>
+                      <p>
+                        Invalid proposals created no work or acceptance. Corrections retain the
+                        original attempt and session limits.
+                      </p>
+                      {b.projectReviewRejections.map((r) => (
+                        <blockquote key={r.nodeId}>
+                          Attempt {r.attempt}: {r.reason}
+                          <small>
+                            {r.laterValidatedAt
+                              ? `Later valid review recorded at ${r.laterValidatedAt}.`
+                              : 'No later validated review recorded.'}
+                          </small>
+                        </blockquote>
+                      ))}
+                    </article>
+                  )}
                   {!!b?.technicalInterruptions.length && (
                     <article className="surface" aria-label="Technical recovery">
                       <h3>Technical recovery</h3>

@@ -61,12 +61,16 @@ export interface ProjectReview extends ProjectReviewProposal {
   independent: false;
   invalidatedReason?: string;
 }
+export class ProjectReviewRejection extends Error {}
 export function validateProjectReview(
   s: RunState,
   raw: unknown,
   stamp: CodeStamp,
 ): ProjectReviewProposal {
-  const p = projectReviewSchema.parse(raw);
+  const parsed = projectReviewSchema.safeParse(raw);
+  if (!parsed.success)
+    throw new ProjectReviewRejection(`Invalid project review shape: ${parsed.error.message}`);
+  const p = parsed.data;
   const findings = new Set(p.findings.map((f) => f.id));
   const held = heldCriteria(s);
   if (
@@ -77,7 +81,9 @@ export function validateProjectReview(
         f.evidenceIds.some((id) => !s.evidence.some((e) => e.id === id)),
     )
   )
-    throw new Error('Project findings must reference actual recorded files and known evidence');
+    throw new ProjectReviewRejection(
+      'Project findings must reference actual recorded files and known evidence',
+    );
   if (
     p.tasks.some(
       (t) =>
@@ -89,24 +95,27 @@ export function validateProjectReview(
         ),
     )
   )
-    throw new Error(
+    throw new ProjectReviewRejection(
       'Discovered work must reference a concrete finding and an unheld approved criterion',
     );
   if (p.outcome === 'continue' && (!p.tasks.length || !p.findings.length || p.operatorQuestion))
-    throw new Error(
+    throw new ProjectReviewRejection(
       'Continuing supervision requires concrete work, not a new prompt from the operator',
     );
   if (p.outcome !== 'continue' && p.tasks.length)
-    throw new Error('A final project review cannot contain unexecuted work');
+    throw new ProjectReviewRejection('A final project review cannot contain unexecuted work');
   if (p.outcome === 'needs-operator' && !p.operatorQuestion.trim())
-    throw new Error('Operator attention needs a specific question');
+    throw new ProjectReviewRejection('Operator attention needs a specific question');
   if (p.outcome === 'ready' && (p.operatorQuestion || questions(s).length))
-    throw new Error('An unresolved operator question prevents a ready project review');
+    throw new ProjectReviewRejection(
+      'An unresolved operator question prevents a ready project review',
+    );
   const deps = new Map<string, string[]>();
   for (const t of p.tasks)
     deps.set(t.criterionId, [...(deps.get(t.criterionId) ?? []), ...t.waitsFor]);
   const visit = (id: string, trail: Set<string>) => {
-    if (trail.has(id)) throw new Error('Discovered work contains a dependency cycle');
+    if (trail.has(id))
+      throw new ProjectReviewRejection('Discovered work contains a dependency cycle');
     for (const next of deps.get(id) ?? []) visit(next, new Set([...trail, id]));
   };
   for (const id of deps.keys()) visit(id, new Set());

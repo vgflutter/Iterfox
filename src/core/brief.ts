@@ -64,6 +64,17 @@ export function brief(state: RunState, events: RunEvent[]) {
     directionHistorical:
       !!state.direction && state.direction.contractVersion !== state.contractVersion,
     projectReviews: state.projectReviews ?? [],
+    projectReviewRejections: state.nodes
+      .filter((n) => n.result?.reviewRejection === true)
+      .map((n) => ({
+        nodeId: n.id,
+        at: n.endedAt,
+        attempt: n.attempt,
+        reason: n.error,
+        laterValidatedAt: state.projectReviews?.find(
+          (r) => r.at > n.endedAt! && r.contractVersion === n.result?.contractVersion,
+        )?.at,
+      })),
     discoveredTasks: state.nodes
       .filter((n) => n.discoveredBy)
       .map((n) => ({ nodeId: n.id, title: n.title, status: n.status, reviewId: n.discoveredBy })),
@@ -190,6 +201,10 @@ export function markdownBrief(state: RunState, events: RunEvent[]): string {
           '',
           `${b.projectReviews.length} project checkpoints; ${b.discoveredTasks.length} implementation units discovered without a new operator prompt.`,
           'Project reviews are AI judgments from the same integration, separate from runtime acceptance evidence.',
+          ...b.projectReviewRejections.map(
+            (r) =>
+              `- Rejected project review (attempt ${r.attempt}): ${r.reason}. ${r.laterValidatedAt ? `Later valid review recorded at ${r.laterValidatedAt}.` : 'No later validated review recorded.'} Rejected output supplied no work or acceptance.`,
+          ),
           ...b.projectReviews.flatMap((r) => [
             `- ${r.outcome}${r.invalidatedReason ? ' (STALE)' : ''}: ${r.summary}`,
             ...(r.invalidatedReason ? [`  - ${r.invalidatedReason}`] : []),
