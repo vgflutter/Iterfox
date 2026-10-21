@@ -21,6 +21,9 @@ jobs:
       - run: npm run check
   browser:
     runs-on: ubuntu-latest
+    env:
+      # Ubuntu's AppArmor profile permits Chrome's sandbox at its installed path.
+      ITERFOX_BROWSER_CHANNEL: chrome
     steps:
       - uses: actions/checkout@v7
         with:
@@ -30,7 +33,7 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
-      - run: npx playwright install --with-deps chromium
+      - run: npx playwright install --with-deps chrome
       - run: npm run build
       - run: npm run test:visual
       - run: npm run test:ui

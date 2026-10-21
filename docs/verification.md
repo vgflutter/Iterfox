@@ -53,7 +53,11 @@ Its `index.html` intentionally has square corners, while the protected reference
 is round. **Do not use `reference.json` as the coding goal**; it is for capture only.
 
 Install a browser with `npx playwright install chromium`, or use
-`ITERFOX_BROWSER_CHANNEL=chrome` with locally installed Chrome. Keep the same
+`ITERFOX_BROWSER_CHANNEL=chrome` with locally installed Chrome. The Ubuntu CI
+browser job installs and uses this channel so the system AppArmor profile can
+permit Chrome's sandbox; the runtime still launches with `chromiumSandbox: true`.
+See the [Chromium explanation of Ubuntu namespace restrictions](https://chromium.googlesource.com/chromium/src/+/main/docs/security/apparmor-userns-restrictions.md).
+Keep the same
 browser, OS, fonts and dependencies for reference and run. Receipts record browser
 version, platform, viewport, baseline hash, actual/baseline/diff PNGs and a JSON report.
 Cross-platform visual equivalence is not assumed. See the primary Playwright
