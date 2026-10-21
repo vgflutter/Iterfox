@@ -1,0 +1,43 @@
+import assert from'node:assert/strict';
+import{readFile,writeFile,mkdir,copyFile,open}from'node:fs/promises';
+import{spawn}from'node:child_process';
+import{createHash}from'node:crypto';
+import{createRequire}from'node:module';
+import{setTimeout as delay}from'node:timers/promises';
+const root='/Users/vins/work/iterfox';
+const repo=root+'/.iterfox/development/long-delegation-review';
+const prior=root+'/.iterfox/missions/long-svolta-20261020-r2';
+const evidence=root+'/.iterfox/missions/long-svolta-20261020-r3/evidence';
+const data=repo+'/.iterfox/stopped-graph-native-qa';
+const sha=x=>createHash('sha256').update(x).digest('hex');
+await mkdir(data,{recursive:true});
+const frozen=await readFile(prior+'/evidence/frozen-stopped/ledger.sqlite');
+await copyFile(prior+'/evidence/frozen-stopped/ledger.sqlite',data+'/ledger.sqlite');
+const log=await open(data+'/ui.log','wx',0o600);
+const child=spawn(process.execPath,[repo+'/dist/cli.js','ui','--port','4375','--data',data],{cwd:repo,detached:true,stdio:['ignore',log.fd,log.fd],env:process.env});
+await log.close();child.unref();
+await writeFile(data+'/pid.json',JSON.stringify({pid:child.pid},null,2));
+const require=createRequire(repo+'/package.json');const{chromium}=require('playwright');
+let browser;
+try{
+  for(let i=0;i<80;i++){if((await readFile(data+'/ui.log','utf8')).includes('Iterfox UI:'))break;await delay(100)}
+  browser=await chromium.launch({channel:'chrome',headless:true,chromiumSandbox:true});
+  const page=await browser.newPage({viewport:{width:1440,height:1080},reducedMotion:'reduce'});
+  const errors=[];let mutations=0;
+  page.on('pageerror',e=>errors.push(e.message));page.on('request',r=>{if(!['GET','HEAD'].includes(r.method()))mutations++});
+  await page.goto('http://127.0.0.1:4375');
+  await page.getByRole('button',{name:'Delegations',exact:true}).click();
+  await page.getByLabel('Saved delegation',{exact:true}).selectOption('ba19c3c0-677b-4354-9729-fd66916ed929');
+  const graph=page.getByRole('region',{name:'Delegated outcome graph',exact:true});await graph.waitFor();
+  const cards=graph.getByRole('article');
+  assert.deepEqual(await cards.locator('.eyebrow').allTextContents(),['CHECKPOINTED','STOPPED','PENDING']);
+  assert((await page.getByRole('region',{name:'Delegation progress',exact:true}).textContent()).includes('STOPPED'));
+  await page.screenshot({path:evidence+'/stopped-graph-fixed-desktop.png',fullPage:true});
+  await page.setViewportSize({width:390,height:844});await cards.nth(1).scrollIntoViewIfNeeded();
+  assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
+  await page.screenshot({path:evidence+'/stopped-graph-fixed-mobile.png'});
+  assert.deepEqual(errors,[]);assert.equal(mutations,0);
+  assert.equal(sha(await readFile(prior+'/evidence/frozen-stopped/ledger.sqlite')),sha(frozen));
+  const receipt={at:new Date().toISOString(),result:'PASS',kind:'Post-trial UI correction on review branch; frozen SDK trial runtimes unchanged',sourceSha256:sha(await readFile(repo+'/src/ui/delegations.tsx')),frozenLedgerSha256:sha(frozen),sourceFrozenLedgerUnchanged:true,outcomes:['CHECKPOINTED','STOPPED','PENDING'],viewports:['1440x1080','390x844'],mutations,pageErrors:errors};
+  await writeFile(evidence+'/stopped-graph-fixed.json',JSON.stringify(receipt,null,2));console.log(JSON.stringify(receipt,null,2));
+}finally{if(browser)await browser.close();try{process.kill(child.pid,'SIGTERM')}catch(e){if(e.code!=='ESRCH')throw e}}

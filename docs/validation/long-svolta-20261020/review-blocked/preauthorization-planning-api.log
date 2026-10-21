@@ -1,0 +1,8 @@
+PASS civil seven-day plan and unscheduled work
+PASS Monday and impossible-date rejection
+PASS time records preserve links and task status
+PASS weekly time and full-archive task counts are distinguished
+PASS invalid time entries do not write
+PASS deleting one session updates totals without deleting others
+PASS archiving a task preserves history and restart
+{"criterion":"planning-api","result":"PASS","groups":7}

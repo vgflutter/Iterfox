@@ -1,0 +1,18 @@
+{
+  "at": "2026-10-21T00:07:47.675Z",
+  "result": "PASS",
+  "browser": "Installed Chrome headless with sandbox",
+  "viewports": [
+    "1440x1000",
+    "390x844"
+  ],
+  "views": [
+    "Attività",
+    "Settimana",
+    "Riepilogo",
+    "Backup"
+  ],
+  "externalRequests": [],
+  "pageErrors": [],
+  "physicalDevice": false
+}

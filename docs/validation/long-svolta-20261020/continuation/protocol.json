@@ -1,0 +1,98 @@
+{
+  "createdAt": "2026-10-20T23:19:09.304Z",
+  "kind": "Third declared continuation; fourth distinct technical authorization, not an uninterrupted original success",
+  "priorDelegations": [
+    {
+      "id": "de2c27e8-446b-492c-9825-2f2abe2e0e57",
+      "status": "BLOCKED"
+    },
+    {
+      "id": "ba19c3c0-677b-4354-9729-fd66916ed929",
+      "status": "STOPPED"
+    },
+    {
+      "id": "156e137f-0bca-49f1-bc68-34fe60c1ef29",
+      "status": "BLOCKED"
+    }
+  ],
+  "runtimeCommit": "5ac6eca8cbc83d6baf5990ddd039e5fce6d35520",
+  "protectedInputHashes": {
+    "BRIEF.md": "4b0d5c8467bf7ca91ddef6c89d3f077fab4121c3245404d97cf19dc681e250cb",
+    "package.json": "860de3ed7de7d0b08bc8e01ded1fcc61403a77b4918a1f1178802d9af60a8cc1",
+    ".gitignore": "d7374edf9ed6b2549bc7b02c7bd49e8031bae04000b61a59e57dc2f8f375a52d",
+    "tests/harness.mjs": "67c21916ab5cc5da82310c2abd7c84bd42e73ef65acf5e93afe9c6ce129db8d1",
+    "tests/acceptance.mjs": "292079cdc1622e83651930181bb3732990dad3bf8cefa103c64f64283c576e81",
+    "tests/browser.mjs": "c83e176fbee1c8660b3a40e95532a306d023b145e9e031dba223f22edd5d1f8f"
+  },
+  "model": "gpt-6.1-sol",
+  "sdk": "0.163.0",
+  "manualApplicationEditsAfterAuthorizationAllowed": false,
+  "manualResumeWithinContinuationAllowed": false,
+  "faults": [
+    {
+      "stage": "weekly-work",
+      "mode": "oversee",
+      "kind": "invalid-review-reference",
+      "trigger": "After a real completed SDK response, append one finding referencing a deliberately absent file. Preserve actual and altered responses; reject it without creating work, then obtain a real corrected review."
+    },
+    {
+      "stage": "safe-delivery",
+      "mode": "build",
+      "kind": "lost-completed-response",
+      "trigger": "Discard first actual builder response after turn.completed usage receipt."
+    }
+  ],
+  "previousFaultsAlreadyObserved": [
+    "original observed-partial-edit",
+    "R3 review-in-flight interruption"
+  ],
+  "budget": {
+    "originalDelegation": "de2c27e8-446b-492c-9825-2f2abe2e0e57",
+    "originalAuthorizedAt": "2026-10-20T20:50:56.207Z",
+    "originalDeadline": "2026-10-21T00:50:56.207Z",
+    "originalLimits": {
+      "maxTurns": 140,
+      "maxAttempts": 4,
+      "maxDurationMs": 14400000,
+      "maxTokens": 100000000,
+      "turnTimeoutMs": 720000,
+      "maxNoProgress": 4
+    },
+    "used": {
+      "turns": 36,
+      "reportedTokens": 13694556
+    },
+    "remainingTurns": 104,
+    "remainingReportedTokens": 86305444,
+    "marginMs": 30000,
+    "incompleteTurnTokens": "Unreported by provider; no claim of a hard in-flight spend cap.",
+    "priorDelegations": [
+      {
+        "id": "de2c27e8-446b-492c-9825-2f2abe2e0e57",
+        "status": "BLOCKED"
+      },
+      {
+        "id": "ba19c3c0-677b-4354-9729-fd66916ed929",
+        "status": "STOPPED"
+      },
+      {
+        "id": "156e137f-0bca-49f1-bc68-34fe60c1ef29",
+        "status": "BLOCKED"
+      }
+    ]
+  },
+  "driverSha256": "48d6e78689425c68dfc4903f5ebb67eb59d9bab310ce4bc4e928395cdd5aff6a",
+  "externalAuditSha256": "3bc5b0c43bd0735a739e3bfa75addb2d0d3adf594fd45ac33ab92c74f843683a",
+  "externalAuditDefinitionsUnchangedExceptPaths": true,
+  "assistantTrialRecoveryEpisodes": 3,
+  "separatePostObservationUIFixes": 1,
+  "finalizedAt": "2026-10-20T23:19:56.461Z",
+  "finalRemainingLimits": {
+    "maxTurns": 104,
+    "maxAttempts": 4,
+    "maxDurationMs": 5429746,
+    "maxTokens": 86305444,
+    "turnTimeoutMs": 720000,
+    "maxNoProgress": 4
+  }
+}

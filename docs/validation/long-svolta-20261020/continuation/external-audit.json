@@ -1,0 +1,40 @@
+{
+  "at": "2026-10-21T00:09:30.518Z",
+  "boundary": "Pinned external audit prepared before delegation authorization. Trusted host checks against separate synthetic data; no application edits.",
+  "seed": 20261020,
+  "result": "PASS",
+  "groups": [
+    {
+      "name": "seeded Unicode records preserve content and persistence",
+      "result": "PASS"
+    },
+    {
+      "name": "parallel creates have unique IDs and no lost writes",
+      "result": "PASS"
+    },
+    {
+      "name": "twelve stale writers produce exactly one accepted update",
+      "result": "PASS"
+    },
+    {
+      "name": "civil week boundaries survive DST, leap day and year end",
+      "result": "PASS"
+    },
+    {
+      "name": "UTF-8 characters split between actual request chunks are preserved",
+      "result": "PASS"
+    },
+    {
+      "name": "SQL-like search values are literal queries",
+      "result": "PASS"
+    },
+    {
+      "name": "source, acceptance files and data are not served as public assets",
+      "result": "PASS"
+    },
+    {
+      "name": "seeded invalid backup graphs and root JSON types are atomic",
+      "result": "PASS"
+    }
+  ]
+}

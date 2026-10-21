@@ -1,0 +1,98 @@
+{
+  "observedAt": "2026-10-20T21:21:29.145Z",
+  "fault": {
+    "stage": "usable-board",
+    "mode": "build",
+    "runId": "20261020T211511-838aa23e",
+    "nodeId": "direction-c3872323-7c37-488f-9699-49f852704db3-0",
+    "threadId": null,
+    "at": "2026-10-20T21:19:15.999Z",
+    "kind": "observed-partial-edit",
+    "details": {
+      "files": [
+        "src/app.mjs",
+        "public/index.html",
+        "src/public.mjs"
+      ],
+      "before": "d4be2d94025d39f88c9a5cd35afec5cc9a90c6f6eb72f4379eec3cc751dd2ba5",
+      "observed": "a6c3fdc2f30e4600cd19f9b1501737337ff00aade74a4e5c579aa71f019827cb",
+      "usageAlreadyReceived": false,
+      "threadId": "01a15b2d-5bd3-7e83-97ba-e5d7eb478c95"
+    }
+  },
+  "events": [
+    {
+      "schemaVersion": 1,
+      "id": "8015223c-9b54-41e2-b1af-1a82e81daa58",
+      "runId": "20261020T211511-838aa23e",
+      "seq": 18,
+      "at": "2026-10-20T21:19:16.172Z",
+      "type": "agent.interrupted",
+      "message": "provider-abort: Injected supervisor fault: usable-board / observed-partial-edit",
+      "data": {
+        "nodeId": "direction-c3872323-7c37-488f-9699-49f852704db3-0",
+        "cause": "provider-abort",
+        "quiesced": true
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "c6e7ff26-47a6-4e8e-a58c-6f1b7ab0d227",
+      "runId": "20261020T211511-838aa23e",
+      "seq": 19,
+      "at": "2026-10-20T21:19:16.198Z",
+      "type": "evidence.invalidated",
+      "message": "Evidence is STALE: src/app.mjs, public/index.html, src/public.mjs. Scope: all repository files.",
+      "data": {
+        "evidenceId": "a4a243af-9cf0-4b50-ba1e-014cedbf2d7a",
+        "changed": [
+          "src/app.mjs",
+          "public/index.html",
+          "src/public.mjs"
+        ]
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "231e3c07-0936-4d87-8aa3-382ec7803cb5",
+      "runId": "20261020T211511-838aa23e",
+      "seq": 20,
+      "at": "2026-10-20T21:19:16.218Z",
+      "type": "evidence.invalidated",
+      "message": "Evidence is STALE: src/app.mjs, public/index.html, src/public.mjs. Scope: all repository files.",
+      "data": {
+        "evidenceId": "931b9911-843b-49c4-843a-137bab8e8588",
+        "changed": [
+          "src/app.mjs",
+          "public/index.html",
+          "src/public.mjs"
+        ]
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "88824494-7652-49b4-acd9-978dee620baf",
+      "runId": "20261020T211511-838aa23e",
+      "seq": 21,
+      "at": "2026-10-20T21:19:16.518Z",
+      "type": "agent.retry.started",
+      "message": "Automatic technical recovery 1/2; previous process group joined, worktree audited, original limits retained.",
+      "data": {
+        "nodeId": "direction-c3872323-7c37-488f-9699-49f852704db3-0"
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "73e954dd-6784-49b0-b262-948bf75ee798",
+      "runId": "20261020T211511-838aa23e",
+      "seq": 22,
+      "at": "2026-10-20T21:19:17.370Z",
+      "type": "agent.thread",
+      "message": "Codex session recorded for recovery.",
+      "data": {
+        "nodeId": "direction-c3872323-7c37-488f-9699-49f852704db3-0",
+        "threadId": "01a15b2d-5bd3-7e83-97ba-e5d7eb478c95"
+      }
+    }
+  ]
+}

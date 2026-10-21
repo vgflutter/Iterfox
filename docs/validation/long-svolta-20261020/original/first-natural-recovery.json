@@ -1,0 +1,89 @@
+{
+  "at": "2026-10-20T21:13:55.350Z",
+  "firstProjectReview": {
+    "outcome": "continue",
+    "summary": "La revisione dei sorgenti non evidenzia ulteriori lacune funzionali nella delega corrente; entrambi i criteri risultano superati nelle ricevute host. Resta da correggere il resoconto delle verifiche nel README.",
+    "findings": [
+      {
+        "id": "verifiche-documentate",
+        "gap": "README.md, nella sezione «Stato delle verifiche», dichiara ancora assenti gli esiti host e non osservati ascolto HTTP, annuncio della porta e riavvio. Le ricevute correnti riportano invece PASS per projects-api e tasks-api, sei gruppi ciascuno. La guida non rappresenta lo stato effettivo della consegna.",
+        "files": [
+          "README.md"
+        ],
+        "evidenceIds": [
+          "e78a317d-c39d-4224-88a3-7365f033c348",
+          "18f6f4f8-e4e5-458d-8d4b-bac69931e9a2"
+        ]
+      }
+    ],
+    "decisions": [
+      {
+        "choice": "Limitare il lavoro residuo all’allineamento della documentazione.",
+        "basis": "Persistenza, validazione, filtri, date civili e revisioni risultano coerenti all’ispezione; le ricevute correnti coprono entrambi i criteri delegati."
+      },
+      {
+        "choice": "Lasciare interfaccia completa, pianificazione, sessioni e backup agli esiti successivi.",
+        "basis": "Il contratto e il contesto operatore delimitano esplicitamente questa consegna alle API di progetti e attività."
+      }
+    ],
+    "tasks": [
+      {
+        "title": "Allineare il README alle verifiche host ricevute",
+        "objective": "Aggiornare «Stato delle verifiche» riportando i comandi projects-api e tasks-api, entrambi PASS con sei gruppi, e la copertura osservata. Rimuovere le dichiarazioni ormai superate sulle verifiche host pendenti; distinguere i controlli locali dichiarati dalle ricevute host e mantenere esplicita l’assenza di collaudi browser, desktop e mobile.",
+        "criterionId": "tasks-api",
+        "findingIds": [
+          "verifiche-documentate"
+        ],
+        "waitsFor": []
+      }
+    ],
+    "operatorQuestion": "",
+    "stamp": {
+      "head": "595658b48b6d7118f46d604f4d011f681217aaf8",
+      "files": {
+        ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+        "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+        "README.md": "1143a9fcd0794cf7ad3dd2fd2e9967d4c14e7c3fd616bd1297723ec2385ebc3e",
+        "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+        "src/app.mjs": "1e0b4f3bd0bbfbdf6dd1704bc7a445e95b29b3a5296308f04bd2fff89dec100d",
+        "src/archive.mjs": "07d8f1c116184f827d5da85b0874f0849f441a3e9a0bff6279b635a7f66de443",
+        "src/dates.mjs": "97166e73d0b44fc0758dba28a8e89c24e643efb97202e484c79cf9903906bde2",
+        "src/errors.mjs": "594ce35930d8da6b7abec818d5c0111a1d2488cd02d2bc2359297f7f12d11996",
+        "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+        "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+        "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+        "tests/acceptance.mjs": "5759467fd1c94b32c4044e4e7809c8b19afa636bd2b73ec210952d5c2bdcd4da",
+        "tests/browser.mjs": "e1cf12b45480219881ec514b1a2d830ab98ca4285153b941cbaa01ac5c9f26e8",
+        "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+      },
+      "fingerprint": "5028bdf81d91b81c6c60c4dd496fa852ab46785458931adee5371825df93527b"
+    },
+    "noteIds": [
+      "1ae4353d-5029-4737-a9a4-1129892ce1da"
+    ],
+    "directionRevision": 1,
+    "contractVersion": 1,
+    "nodeId": "7e42291e-6438-40eb-ac0c-84dc6c147c9d",
+    "at": "2026-10-20T21:13:25.673Z",
+    "independent": false
+  },
+  "interruptions": [
+    {
+      "nodeId": "7e42291e-6438-40eb-ac0c-84dc6c147c9d",
+      "at": "2026-10-20T21:13:04.995Z",
+      "cause": "turn-timeout",
+      "message": "turn-timeout: The operation was aborted due to timeout",
+      "quiesced": true,
+      "retriedAt": "2026-10-20T21:13:05.324Z"
+    }
+  ],
+  "newlyDiscovered": [
+    {
+      "title": "Allineare il README alle verifiche host ricevute",
+      "objective": "Aggiornare «Stato delle verifiche» riportando i comandi projects-api e tasks-api, entrambi PASS con sei gruppi, e la copertura osservata. Rimuovere le dichiarazioni ormai superate sulle verifiche host pendenti; distinguere i controlli locali dichiarati dalle ricevute host e mantenere esplicita l’assenza di collaudi browser, desktop e mobile.\nObserved gaps: README.md, nella sezione «Stato delle verifiche», dichiara ancora assenti gli esiti host e non osservati ascolto HTTP, annuncio della porta e riavvio. Le ricevute correnti riportano invece PASS per projects-api e tasks-api, sei gruppi ciascuno. La guida non rappresenta lo stato effettivo della consegna.",
+      "status": "RUNNING",
+      "discoveredBy": "7e42291e-6438-40eb-ac0c-84dc6c147c9d"
+    }
+  ],
+  "boundary": "Read-only observation after the natural timeout; no prompt or manual resume."
+}

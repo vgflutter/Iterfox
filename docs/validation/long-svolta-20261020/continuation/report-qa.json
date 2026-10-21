@@ -1,0 +1,97 @@
+{
+  "at": "2026-10-21T00:14:40.387Z",
+  "result": "PASS",
+  "manifestFilesChecked": 188,
+  "observations": [
+    {
+      "file": "index.html",
+      "width": 1440,
+      "javaScriptEnabled": false,
+      "localReferencesChecked": 68,
+      "pageErrors": [],
+      "externalRequests": [],
+      "horizontalOverflow": false
+    },
+    {
+      "file": "index.html",
+      "width": 390,
+      "javaScriptEnabled": false,
+      "localReferencesChecked": 68,
+      "pageErrors": [],
+      "externalRequests": [],
+      "horizontalOverflow": false
+    },
+    {
+      "file": "original/index.html",
+      "width": 1440,
+      "javaScriptEnabled": false,
+      "localReferencesChecked": 19,
+      "pageErrors": [],
+      "externalRequests": [],
+      "horizontalOverflow": false
+    },
+    {
+      "file": "original/index.html",
+      "width": 390,
+      "javaScriptEnabled": false,
+      "localReferencesChecked": 19,
+      "pageErrors": [],
+      "externalRequests": [],
+      "horizontalOverflow": false
+    },
+    {
+      "file": "intermediate/project-brief.html",
+      "width": 1440,
+      "javaScriptEnabled": false,
+      "localReferencesChecked": 0,
+      "pageErrors": [],
+      "externalRequests": [],
+      "horizontalOverflow": false
+    },
+    {
+      "file": "intermediate/project-brief.html",
+      "width": 390,
+      "javaScriptEnabled": false,
+      "localReferencesChecked": 0,
+      "pageErrors": [],
+      "externalRequests": [],
+      "horizontalOverflow": false
+    },
+    {
+      "file": "review-blocked/project-brief.html",
+      "width": 1440,
+      "javaScriptEnabled": false,
+      "localReferencesChecked": 0,
+      "pageErrors": [],
+      "externalRequests": [],
+      "horizontalOverflow": false
+    },
+    {
+      "file": "review-blocked/project-brief.html",
+      "width": 390,
+      "javaScriptEnabled": false,
+      "localReferencesChecked": 0,
+      "pageErrors": [],
+      "externalRequests": [],
+      "horizontalOverflow": false
+    },
+    {
+      "file": "continuation/project-brief.html",
+      "width": 1440,
+      "javaScriptEnabled": false,
+      "localReferencesChecked": 0,
+      "pageErrors": [],
+      "externalRequests": [],
+      "horizontalOverflow": false
+    },
+    {
+      "file": "continuation/project-brief.html",
+      "width": 390,
+      "javaScriptEnabled": false,
+      "localReferencesChecked": 0,
+      "pageErrors": [],
+      "externalRequests": [],
+      "horizontalOverflow": false
+    }
+  ]
+}

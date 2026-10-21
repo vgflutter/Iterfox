@@ -1,0 +1,11 @@
+{
+  "at": "2026-10-20T21:54:09.837Z",
+  "criterion": "board-ui",
+  "boundary": "Secondary diagnostic audit added after authorization. The original approved checks remain unchanged; this result cannot certify an original checkpoint. Only accessible-label matching was adapted for the observed optional required suffix and currently visible controls.",
+  "observerChanges": "Input getByLabel selectors accept optional (obbligatorio) and filter currently visible controls; all browser actions, data assertions and role/button selectors are unchanged.",
+  "auditSourceHash": "e9e5e3ce25eb40c72fcb90150f4b28066f66d2425dc6e32d1ae045f806bbb9d0",
+  "groups": 4,
+  "result": "PASS",
+  "sourceStableDuringObservation": true,
+  "observedSourceFingerprint": "9b1814d23c3952c22ffff71ea5336130fccca839f6eaffde32356bfaaa60617b"
+}

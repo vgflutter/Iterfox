@@ -1,0 +1,22 @@
+{
+  "at": "2026-10-20T22:51:58.534Z",
+  "result": "PASS",
+  "commit": "8c63be53597c045635d45a33ed767ef08bef9b84",
+  "scope": "Post-observation outcome-graph display correction only; frozen SDK trial runtimes unchanged",
+  "regressionsBeforeFix": {
+    "cases": 2,
+    "expectedFailure": "PAUSED/STOPPED outcome badge was RUNNING"
+  },
+  "chromeCasesPassed": 14,
+  "additionalBrowserFlowsPassed": 3,
+  "typecheck": "PASS",
+  "build": "PASS",
+  "execution": "All browser test files executed against a manually started unmodified tests/browser/server.ts fixture on localhost4393, using explicit temporary Playwright config and installed Chrome. Three continuous flows run with ITERFOX_BROWSER_CHANNEL=chrome.",
+  "setupNotes": [
+    "Initial automatic webServer readiness checks timed out before browser cases; final test fixture was started directly and its HTTP200 checked. Canonical repo Playwright config unchanged.",
+    "Initial additional-flow launch used absent bundled Chromium; rerun explicitly selected installed Chrome."
+  ],
+  "nativeStoppedLedgerCloneQA": "stopped-graph-fixed.json",
+  "originalTrialLedgerChanged": false,
+  "modelCallsInUITests": 0
+}

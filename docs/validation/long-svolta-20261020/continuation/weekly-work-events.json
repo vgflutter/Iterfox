@@ -1,0 +1,2691 @@
+[
+  {
+    "schemaVersion": 1,
+    "id": "d69a0d13-f580-4f29-8b92-5eb697f6e651",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 1,
+    "at": "2026-10-20T23:19:56.622Z",
+    "type": "workflow.created",
+    "message": "Isolated workflow created from committed Git HEAD.",
+    "data": {
+      "state": {
+        "id": "20261020T231956-19cf8a63",
+        "seq": 0,
+        "goal": "Realizzare Svolta, app locale in italiano per progetti, attività, settimana, tempo dedicato e backup. Proseguire sul candidato esistente, che ha già cinque criteri host verdi ma non un checkpoint certificato: la revisione precedente si è fermata per riferimenti a file o prove non validi. Il nuovo runtime può chiedere una revisione corretta entro maxAttempts, mantenendo invariati contratto, prove e limiti. Ricertificare da zero e completare il backup e la consegna, conservando funzionalità e scelte visuali già implementate. Non rifare flussi già funzionanti. Correggere solo lacune concrete osservate. Seguire BRIEF.md; scelte reversibili autonome, niente servizi esterni, dipendenze o pubblicazione. Le evidenze precedenti restano contesto storico.\n\nCurrent delegated outcome: Dalla lista al piano settimanale e al tempo reale\nRicertificare tutti e cinque i criteri sul candidato già sviluppato: progetti, attività, interfaccia, settimana e sessioni API/UI. Questi cinque controlli passavano nella prova precedente; preservare il codice. Colmare soltanto eventuali lacune concrete della guida o dell’esperienza individuate dalle nuove prove e dalla revisione. Il backup resta il risultato successivo.\nComplete this outcome and preserve earlier verified behavior. Subsequent outcomes remain delegated to the host.",
+        "status": "PREFLIGHT",
+        "provider": "codex",
+        "repository": "/Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020-r4/source",
+        "worktree": "/Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020-r4/data/worktrees/20261020T231956-19cf8a63",
+        "branch": "iterfox/20261020T231956-19cf8a63",
+        "baseHead": "d9cb9d910812e6a632d2765b205963466a47c16a",
+        "contract": {
+          "goal": "Realizzare Svolta, app locale in italiano per progetti, attività, settimana, tempo dedicato e backup. Proseguire sul candidato esistente, che ha già cinque criteri host verdi ma non un checkpoint certificato: la revisione precedente si è fermata per riferimenti a file o prove non validi. Il nuovo runtime può chiedere una revisione corretta entro maxAttempts, mantenendo invariati contratto, prove e limiti. Ricertificare da zero e completare il backup e la consegna, conservando funzionalità e scelte visuali già implementate. Non rifare flussi già funzionanti. Correggere solo lacune concrete osservate. Seguire BRIEF.md; scelte reversibili autonome, niente servizi esterni, dipendenze o pubblicazione. Le evidenze precedenti restano contesto storico.\n\nCurrent delegated outcome: Dalla lista al piano settimanale e al tempo reale\nRicertificare tutti e cinque i criteri sul candidato già sviluppato: progetti, attività, interfaccia, settimana e sessioni API/UI. Questi cinque controlli passavano nella prova precedente; preservare il codice. Colmare soltanto eventuali lacune concrete della guida o dell’esperienza individuate dalle nuove prove e dalla revisione. Il backup resta il risultato successivo.\nComplete this outcome and preserve earlier verified behavior. Subsequent outcomes remain delegated to the host.",
+          "criteria": [
+            {
+              "id": "projects-api",
+              "title": "Archivio progetti persistente e revisioni",
+              "command": [
+                "node",
+                "tests/acceptance.mjs",
+                "projects-api"
+              ],
+              "scope": [],
+              "timeoutMs": 120000
+            },
+            {
+              "id": "tasks-api",
+              "title": "Attività, filtri e conflitti senza perdita di dati",
+              "command": [
+                "node",
+                "tests/acceptance.mjs",
+                "tasks-api"
+              ],
+              "scope": [],
+              "timeoutMs": 120000
+            },
+            {
+              "id": "board-ui",
+              "title": "Interfaccia progetti e attività su desktop e mobile",
+              "command": [
+                "node",
+                "tests/acceptance.mjs",
+                "board-ui"
+              ],
+              "scope": [],
+              "timeoutMs": 120000
+            },
+            {
+              "id": "planning-api",
+              "title": "Settimana civile, sessioni e riepilogo coerente",
+              "command": [
+                "node",
+                "tests/acceptance.mjs",
+                "planning-api"
+              ],
+              "scope": [],
+              "timeoutMs": 120000
+            },
+            {
+              "id": "planning-ui",
+              "title": "Pianificazione e tempo dal browser",
+              "command": [
+                "node",
+                "tests/acceptance.mjs",
+                "planning-ui"
+              ],
+              "scope": [],
+              "timeoutMs": 120000
+            }
+          ],
+          "allowedPaths": [
+            "src",
+            "public",
+            "README.md",
+            "docs"
+          ],
+          "protectedPaths": [
+            "BRIEF.md",
+            "tests",
+            "package.json",
+            ".gitignore"
+          ],
+          "supervision": {
+            "mode": "project",
+            "maxReviews": 12
+          },
+          "limits": {
+            "maxTurns": 104,
+            "maxAttempts": 4,
+            "maxDurationMs": 5429742,
+            "maxTokens": 86305444,
+            "turnTimeoutMs": 720000,
+            "maxNoProgress": 4
+          }
+        },
+        "contracts": [
+          {
+            "goal": "Realizzare Svolta, app locale in italiano per progetti, attività, settimana, tempo dedicato e backup. Proseguire sul candidato esistente, che ha già cinque criteri host verdi ma non un checkpoint certificato: la revisione precedente si è fermata per riferimenti a file o prove non validi. Il nuovo runtime può chiedere una revisione corretta entro maxAttempts, mantenendo invariati contratto, prove e limiti. Ricertificare da zero e completare il backup e la consegna, conservando funzionalità e scelte visuali già implementate. Non rifare flussi già funzionanti. Correggere solo lacune concrete osservate. Seguire BRIEF.md; scelte reversibili autonome, niente servizi esterni, dipendenze o pubblicazione. Le evidenze precedenti restano contesto storico.\n\nCurrent delegated outcome: Dalla lista al piano settimanale e al tempo reale\nRicertificare tutti e cinque i criteri sul candidato già sviluppato: progetti, attività, interfaccia, settimana e sessioni API/UI. Questi cinque controlli passavano nella prova precedente; preservare il codice. Colmare soltanto eventuali lacune concrete della guida o dell’esperienza individuate dalle nuove prove e dalla revisione. Il backup resta il risultato successivo.\nComplete this outcome and preserve earlier verified behavior. Subsequent outcomes remain delegated to the host.",
+            "criteria": [
+              {
+                "id": "projects-api",
+                "title": "Archivio progetti persistente e revisioni",
+                "command": [
+                  "node",
+                  "tests/acceptance.mjs",
+                  "projects-api"
+                ],
+                "scope": [],
+                "timeoutMs": 120000
+              },
+              {
+                "id": "tasks-api",
+                "title": "Attività, filtri e conflitti senza perdita di dati",
+                "command": [
+                  "node",
+                  "tests/acceptance.mjs",
+                  "tasks-api"
+                ],
+                "scope": [],
+                "timeoutMs": 120000
+              },
+              {
+                "id": "board-ui",
+                "title": "Interfaccia progetti e attività su desktop e mobile",
+                "command": [
+                  "node",
+                  "tests/acceptance.mjs",
+                  "board-ui"
+                ],
+                "scope": [],
+                "timeoutMs": 120000
+              },
+              {
+                "id": "planning-api",
+                "title": "Settimana civile, sessioni e riepilogo coerente",
+                "command": [
+                  "node",
+                  "tests/acceptance.mjs",
+                  "planning-api"
+                ],
+                "scope": [],
+                "timeoutMs": 120000
+              },
+              {
+                "id": "planning-ui",
+                "title": "Pianificazione e tempo dal browser",
+                "command": [
+                  "node",
+                  "tests/acceptance.mjs",
+                  "planning-ui"
+                ],
+                "scope": [],
+                "timeoutMs": 120000
+              }
+            ],
+            "allowedPaths": [
+              "src",
+              "public",
+              "README.md",
+              "docs"
+            ],
+            "protectedPaths": [
+              "BRIEF.md",
+              "tests",
+              "package.json",
+              ".gitignore"
+            ],
+            "supervision": {
+              "mode": "project",
+              "maxReviews": 12
+            },
+            "limits": {
+              "maxTurns": 104,
+              "maxAttempts": 4,
+              "maxDurationMs": 5429742,
+              "maxTokens": 86305444,
+              "turnTimeoutMs": 720000,
+              "maxNoProgress": 4
+            }
+          }
+        ],
+        "contractVersion": 1,
+        "createdAt": "2026-10-20T23:19:56.621Z",
+        "updatedAt": "2026-10-20T23:19:56.621Z",
+        "nodes": [],
+        "edges": [],
+        "criteria": [
+          {
+            "id": "projects-api",
+            "status": "PENDING"
+          },
+          {
+            "id": "tasks-api",
+            "status": "PENDING"
+          },
+          {
+            "id": "board-ui",
+            "status": "PENDING"
+          },
+          {
+            "id": "planning-api",
+            "status": "PENDING"
+          },
+          {
+            "id": "planning-ui",
+            "status": "PENDING"
+          }
+        ],
+        "evidence": [],
+        "turns": 0,
+        "tokens": 0,
+        "noProgress": 0,
+        "planReady": false
+      }
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "c76b806f-c98a-424b-bde8-f1f0fcd67dd6",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 2,
+    "at": "2026-10-20T23:19:56.622Z",
+    "type": "goal.accepted",
+    "message": "Operator explicitly authorized this goal, acceptance contract and limits.",
+    "data": {
+      "version": 1
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "8095324c-2f44-4a56-bd0c-4fc967aa246f",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 3,
+    "at": "2026-10-20T23:19:56.623Z",
+    "type": "direction.noted",
+    "message": "Operator request: Delegation 5b9630cd-ff8a-4636-ba99-a49b077cb364; approval d709e9d758158e91b750d0c97fde876f700f2f0f034ce22dd0e747af56c2e70a; outcome weekly-work.\nPrevious checkpoint d9cb9d910812e6a632d2765b205963466a47c16a. Historical evidence is context only; this new mission must obtain fresh proof.\nThis is the first delegated mission.",
+    "data": {
+      "noteId": "1fd3f030-c625-4d8b-9be4-10d67fe2516d",
+      "note": {
+        "text": "Delegation 5b9630cd-ff8a-4636-ba99-a49b077cb364; approval d709e9d758158e91b750d0c97fde876f700f2f0f034ce22dd0e747af56c2e70a; outcome weekly-work.\nPrevious checkpoint d9cb9d910812e6a632d2765b205963466a47c16a. Historical evidence is context only; this new mission must obtain fresh proof.\nThis is the first delegated mission.",
+        "kind": "request"
+      }
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "0de4fc8e-eab3-4d72-b3bd-ac9681985eb6",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 4,
+    "at": "2026-10-20T23:19:56.672Z",
+    "type": "task.planned",
+    "message": "Reconcile the project direction",
+    "data": {
+      "node": {
+        "id": "8ba66e6b-25e2-4e19-bb26-a584d41475d6",
+        "status": "PENDING",
+        "attempt": 1,
+        "files": [],
+        "evidenceIds": [],
+        "kind": "decision",
+        "role": "planner",
+        "title": "Reconcile the project direction",
+        "objective": "{\"sourceIds\":[\"1fd3f030-c625-4d8b-9be4-10d67fe2516d\"],\"version\":1}",
+        "criterionId": "projects-api",
+        "reason": "Operator handoff changed; reconcile once at an activity boundary."
+      }
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "fdade723-8f1f-4757-a1c5-66f9f983f80e",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 5,
+    "at": "2026-10-20T23:19:56.673Z",
+    "type": "task.started",
+    "message": "planner: Reconcile the project direction",
+    "data": {
+      "nodeId": "8ba66e6b-25e2-4e19-bb26-a584d41475d6",
+      "edges": []
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "05c99391-3801-4454-a688-fc779d057e8d",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 6,
+    "at": "2026-10-20T23:19:58.833Z",
+    "type": "agent.thread",
+    "message": "Codex session recorded for recovery.",
+    "data": {
+      "nodeId": "8ba66e6b-25e2-4e19-bb26-a584d41475d6",
+      "threadId": "01a15b9d-4f2a-72e2-af04-2cffc4036cca"
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "94db070f-f932-43ef-8388-d73b8c08074b",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 7,
+    "at": "2026-10-20T23:21:05.385Z",
+    "type": "agent.usage",
+    "message": "195409 tokens reported by provider.",
+    "data": {
+      "tokens": 195409
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "acc55a7d-903e-4fbe-a214-5566ef764b51",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 8,
+    "at": "2026-10-20T23:21:05.815Z",
+    "type": "task.completed",
+    "message": "Handoff consolidated; no completion or acceptance is implied.",
+    "data": {
+      "nodeId": "8ba66e6b-25e2-4e19-bb26-a584d41475d6",
+      "summary": "Direction proposal mapped to the unchanged acceptance contract.",
+      "result": {
+        "proposal": {
+          "focus": "Preservare il candidato esistente e ricertificare projects-api, tasks-api, board-ui, planning-api e planning-ui con nuove prove host. La lettura conferma la presenza dei flussi, senza dimostrarne il funzionamento. Correggere solo lacune documentali osservate o difetti concreti emersi dalle nuove prove e dalla revisione. Backup e consegna restano al successivo esito del supervisore.",
+          "nextArtifact": "Una patch minima a README.md, docs/guida.md e docs/verifiche.md che presenti correttamente la missione r4, separi lo storico dallo stato corrente e renda il candidato pronto alle cinque verifiche host e alla revisione con riferimenti riscontrabili.",
+          "assumptions": [
+            "Il candidato potrebbe superare nuovamente tutti e cinque i criteri senza modifiche funzionali; questa ipotesi richiede nuove prove host."
+          ],
+          "notes": [
+            {
+              "noteId": "1fd3f030-c625-4d8b-9be4-10d67fe2516d",
+              "disposition": "applied",
+              "reason": "Incorporata la delega weekly-work: ripartire dal candidato d9cb9d910812e6a632d2765b205963466a47c16a, conservare funzionalità e scelte visuali e ottenere nuove evidenze per tutti i criteri. Il checkpoint precedente e le ricevute ereditate restano contesto storico.",
+              "criterionIds": [
+                "projects-api",
+                "tasks-api",
+                "board-ui",
+                "planning-api",
+                "planning-ui"
+              ]
+            }
+          ],
+          "tasks": [
+            {
+              "title": "Riallineare guida e provenienza delle evidenze alla missione corrente",
+              "objective": "Correggere i riferimenti che presentano ancora r3 come missione attuale in README.md, docs/guida.md e docs/verifiche.md. Rendere univoca la distinzione tra funzioni implementate, controlli locali dichiarati e ricevute storiche. Conservare le istruzioni del percorso progetti → attività → settimana → sessioni → riepilogo e l’indicazione del backup ancora successivo. Usare riferimenti a file presenti e attribuire nuovi esiti esclusivamente a ricevute effettivamente fornite dal runtime, senza ricostruire metadati mancanti né modificare codice o contratto.",
+              "criterionId": "planning-ui",
+              "waitsFor": []
+            }
+          ]
+        },
+        "sourceIds": [
+          "1fd3f030-c625-4d8b-9be4-10d67fe2516d"
+        ]
+      }
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "ef2cb828-4d7e-4fbd-9705-fb17202e2bf8",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 9,
+    "at": "2026-10-20T23:21:05.816Z",
+    "type": "direction.compiled",
+    "message": "Project direction updated. Unstarted work replaced; independent work can continue while operator questions wait.",
+    "data": {
+      "nodeId": "8ba66e6b-25e2-4e19-bb26-a584d41475d6",
+      "sourceIds": [
+        "1fd3f030-c625-4d8b-9be4-10d67fe2516d"
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "599c4bd9-21d7-48e9-b3b6-7610bcb3a67d",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 10,
+    "at": "2026-10-20T23:21:05.832Z",
+    "type": "verification.started",
+    "message": "Checking existing coverage: Archivio progetti persistente e revisioni",
+    "data": {
+      "nodeId": "80b13580-f782-4f85-b429-2aa2975b568f",
+      "node": {
+        "id": "80b13580-f782-4f85-b429-2aa2975b568f",
+        "status": "PENDING",
+        "attempt": 1,
+        "files": [],
+        "evidenceIds": [],
+        "kind": "verification",
+        "role": "verifier",
+        "title": "Archivio progetti persistente e revisioni",
+        "objective": "Run approved check: [\"node\",\"tests/acceptance.mjs\",\"projects-api\"]",
+        "criterionId": "projects-api",
+        "reason": "Probe while planned implementation remains; a negative observation defers correction."
+      },
+      "edges": [
+        {
+          "id": "007f0d7f-5b23-4548-a246-60f656ff1307",
+          "source": "8ba66e6b-25e2-4e19-bb26-a584d41475d6",
+          "target": "80b13580-f782-4f85-b429-2aa2975b568f",
+          "kind": "next"
+        }
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "58a44059-104c-4f87-88d0-e0476f499f7d",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 11,
+    "at": "2026-10-20T23:21:07.189Z",
+    "type": "verification.passed",
+    "message": "Archivio progetti persistente e revisioni: approved command already passes on the recorded inputs.",
+    "data": {
+      "nodeId": "80b13580-f782-4f85-b429-2aa2975b568f",
+      "evidence": {
+        "id": "facf3661-7b99-4c93-b517-2c4243e13fe1",
+        "nodeId": "80b13580-f782-4f85-b429-2aa2975b568f",
+        "criterionId": "projects-api",
+        "contractVersion": 1,
+        "kind": "deterministic",
+        "status": "passed",
+        "createdAt": "2026-10-20T23:21:07.146Z",
+        "command": [
+          "node",
+          "tests/acceptance.mjs",
+          "projects-api"
+        ],
+        "exitCode": 0,
+        "output": "PASS empty archive\nPASS create project with stable defaults\nPASS optimistic project edit\nPASS invalid names and missing revisions do not write\nPASS project archival survives restart\nPASS unknown project does not create a record\n{\"criterion\":\"projects-api\",\"result\":\"PASS\",\"groups\":6}\n",
+        "durationMs": 1325,
+        "stamp": {
+          "head": "d9cb9d910812e6a632d2765b205963466a47c16a",
+          "files": {
+            ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+            "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+            "README.md": "66888882a54cfc1141b2b069976a7c1d83b54d28f3f65d60d61d835545e35ed4",
+            "docs/guida.md": "1674703f22a654a73d601fcabdfd0f998fd5c59a05cbe829aced1f95467e036f",
+            "docs/verifiche.md": "56c6354ccd853948940dd67c6579bef72fff630f01941d064ed58eb78da64090",
+            "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+            "public/index.html": "6fac8f98234b9a2861abc405819c28698f1dd9db91e145cde8956bbcffc79479",
+            "public/svolta.css": "f81904ebcf820f2f00c79464ff76642ab5255ae3af3899183957a915b43f646f",
+            "public/svolta.js": "426e33279a1739e4e43b488deff13b2b9817c1ea6436249a8f78f50bdeb64675",
+            "src/app.mjs": "4d368778a32ca98583d1c0e7e67015bd8f943039b52df577cfaca16b25522d7a",
+            "src/archive.mjs": "1f0dc4aea4cf6d55c122c65e3f111edef4798a48c610a515e175146575a22d03",
+            "src/dates.mjs": "befb2084c723419e957dd976a1e2f9ecd5b92b5c8d768158ba99ce452d794515",
+            "src/errors.mjs": "acbb23489da8c799787caf170d2ff70a9f26c875de462e287cfc911c856baa5f",
+            "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+            "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+            "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+            "src/summary.mjs": "a58abb9c5ef8a37c51f2e6cf434faf761ca5f552fdba000708c6cc61085502e8",
+            "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+            "src/time-entries.mjs": "5a4ff445656c9f15639159e253db1e99e97c010953ee7c2198db4441f0348ebf",
+            "src/week.mjs": "f533bdaed237f9b051608355d588f3b5147653c0d81143e7b5d7148a0dee2eeb",
+            "tests/acceptance.mjs": "ee4f811515605a5cbab795c9ad4e40777774006bad8fe350c54590e1836c3235",
+            "tests/browser.mjs": "fe87ad9b4d5feeae587e1d030403bcffe4d5e78a236dcd6f5f6b1c305edaba84",
+            "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+          },
+          "fingerprint": "14acd491b91b02bc5303cbbeeba818b05a164dfa845d5b30376b0641c5b11376"
+        },
+        "scope": [],
+        "inputs": [],
+        "purpose": "probe"
+      }
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "e47121b9-d752-4521-a818-a47e145d3226",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 12,
+    "at": "2026-10-20T23:21:07.201Z",
+    "type": "verification.started",
+    "message": "Checking existing coverage: Attività, filtri e conflitti senza perdita di dati",
+    "data": {
+      "nodeId": "fcdbd644-1a87-4cd5-94e6-c1f9b501f435",
+      "node": {
+        "id": "fcdbd644-1a87-4cd5-94e6-c1f9b501f435",
+        "status": "PENDING",
+        "attempt": 1,
+        "files": [],
+        "evidenceIds": [],
+        "kind": "verification",
+        "role": "verifier",
+        "title": "Attività, filtri e conflitti senza perdita di dati",
+        "objective": "Run approved check: [\"node\",\"tests/acceptance.mjs\",\"tasks-api\"]",
+        "criterionId": "tasks-api",
+        "reason": "Probe while planned implementation remains; a negative observation defers correction."
+      },
+      "edges": [
+        {
+          "id": "9c564876-3bb7-41e4-85e3-d921dc19fd6a",
+          "source": "80b13580-f782-4f85-b429-2aa2975b568f",
+          "target": "fcdbd644-1a87-4cd5-94e6-c1f9b501f435",
+          "kind": "next"
+        }
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "9fea1875-f1b3-4060-8463-c0794217c386",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 13,
+    "at": "2026-10-20T23:21:08.578Z",
+    "type": "verification.passed",
+    "message": "Attività, filtri e conflitti senza perdita di dati: approved command already passes on the recorded inputs.",
+    "data": {
+      "nodeId": "fcdbd644-1a87-4cd5-94e6-c1f9b501f435",
+      "evidence": {
+        "id": "1cfa0cc1-186d-48d9-9fb3-b32f8a10cb96",
+        "nodeId": "fcdbd644-1a87-4cd5-94e6-c1f9b501f435",
+        "criterionId": "tasks-api",
+        "contractVersion": 1,
+        "kind": "deterministic",
+        "status": "passed",
+        "createdAt": "2026-10-20T23:21:08.536Z",
+        "command": [
+          "node",
+          "tests/acceptance.mjs",
+          "tasks-api"
+        ],
+        "exitCode": 0,
+        "output": "PASS task defaults and exact fields\nPASS task edit, revision conflicts and combined filters\nPASS civil dates, invalid states and numeric validation\nPASS parallel stale writers cannot overwrite each other\nPASS archived projects disappear from general activity list\nPASS task persistence and malformed JSON\n{\"criterion\":\"tasks-api\",\"result\":\"PASS\",\"groups\":6}\n",
+        "durationMs": 1345,
+        "stamp": {
+          "head": "d9cb9d910812e6a632d2765b205963466a47c16a",
+          "files": {
+            ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+            "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+            "README.md": "66888882a54cfc1141b2b069976a7c1d83b54d28f3f65d60d61d835545e35ed4",
+            "docs/guida.md": "1674703f22a654a73d601fcabdfd0f998fd5c59a05cbe829aced1f95467e036f",
+            "docs/verifiche.md": "56c6354ccd853948940dd67c6579bef72fff630f01941d064ed58eb78da64090",
+            "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+            "public/index.html": "6fac8f98234b9a2861abc405819c28698f1dd9db91e145cde8956bbcffc79479",
+            "public/svolta.css": "f81904ebcf820f2f00c79464ff76642ab5255ae3af3899183957a915b43f646f",
+            "public/svolta.js": "426e33279a1739e4e43b488deff13b2b9817c1ea6436249a8f78f50bdeb64675",
+            "src/app.mjs": "4d368778a32ca98583d1c0e7e67015bd8f943039b52df577cfaca16b25522d7a",
+            "src/archive.mjs": "1f0dc4aea4cf6d55c122c65e3f111edef4798a48c610a515e175146575a22d03",
+            "src/dates.mjs": "befb2084c723419e957dd976a1e2f9ecd5b92b5c8d768158ba99ce452d794515",
+            "src/errors.mjs": "acbb23489da8c799787caf170d2ff70a9f26c875de462e287cfc911c856baa5f",
+            "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+            "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+            "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+            "src/summary.mjs": "a58abb9c5ef8a37c51f2e6cf434faf761ca5f552fdba000708c6cc61085502e8",
+            "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+            "src/time-entries.mjs": "5a4ff445656c9f15639159e253db1e99e97c010953ee7c2198db4441f0348ebf",
+            "src/week.mjs": "f533bdaed237f9b051608355d588f3b5147653c0d81143e7b5d7148a0dee2eeb",
+            "tests/acceptance.mjs": "ee4f811515605a5cbab795c9ad4e40777774006bad8fe350c54590e1836c3235",
+            "tests/browser.mjs": "fe87ad9b4d5feeae587e1d030403bcffe4d5e78a236dcd6f5f6b1c305edaba84",
+            "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+          },
+          "fingerprint": "14acd491b91b02bc5303cbbeeba818b05a164dfa845d5b30376b0641c5b11376"
+        },
+        "scope": [],
+        "inputs": [],
+        "purpose": "probe"
+      }
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "f659b8ee-d1ba-49fa-adab-56e1d458019b",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 14,
+    "at": "2026-10-20T23:21:08.592Z",
+    "type": "verification.started",
+    "message": "Checking existing coverage: Interfaccia progetti e attività su desktop e mobile",
+    "data": {
+      "nodeId": "d0c15913-3b72-4813-85ae-025a56f3796e",
+      "node": {
+        "id": "d0c15913-3b72-4813-85ae-025a56f3796e",
+        "status": "PENDING",
+        "attempt": 1,
+        "files": [],
+        "evidenceIds": [],
+        "kind": "verification",
+        "role": "verifier",
+        "title": "Interfaccia progetti e attività su desktop e mobile",
+        "objective": "Run approved check: [\"node\",\"tests/acceptance.mjs\",\"board-ui\"]",
+        "criterionId": "board-ui",
+        "reason": "Probe while planned implementation remains; a negative observation defers correction."
+      },
+      "edges": [
+        {
+          "id": "20234ab7-73ef-42ba-8fba-5ad718102b9d",
+          "source": "fcdbd644-1a87-4cd5-94e6-c1f9b501f435",
+          "target": "d0c15913-3b72-4813-85ae-025a56f3796e",
+          "kind": "next"
+        }
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "31e8168b-9c08-4f92-82ba-ef994f09b326",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 15,
+    "at": "2026-10-20T23:21:11.176Z",
+    "type": "verification.passed",
+    "message": "Interfaccia progetti e attività su desktop e mobile: approved command already passes on the recorded inputs.",
+    "data": {
+      "nodeId": "d0c15913-3b72-4813-85ae-025a56f3796e",
+      "evidence": {
+        "id": "1c7906dd-faf3-4732-997b-71b026751ab5",
+        "nodeId": "d0c15913-3b72-4813-85ae-025a56f3796e",
+        "criterionId": "board-ui",
+        "contractVersion": 1,
+        "kind": "deterministic",
+        "status": "passed",
+        "createdAt": "2026-10-20T23:21:11.132Z",
+        "command": [
+          "node",
+          "tests/acceptance.mjs",
+          "board-ui"
+        ],
+        "exitCode": 0,
+        "output": "PASS create a project and task through the actual interface\nPASS edit, filter and preserve the changed activity after reopening\nPASS concurrent interface edits cannot silently overwrite another tab\nPASS literal hostile text and mobile layout\n{\"criterion\":\"board-ui\",\"result\":\"PASS\",\"groups\":4}\n",
+        "durationMs": 2549,
+        "stamp": {
+          "head": "d9cb9d910812e6a632d2765b205963466a47c16a",
+          "files": {
+            ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+            "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+            "README.md": "66888882a54cfc1141b2b069976a7c1d83b54d28f3f65d60d61d835545e35ed4",
+            "docs/guida.md": "1674703f22a654a73d601fcabdfd0f998fd5c59a05cbe829aced1f95467e036f",
+            "docs/verifiche.md": "56c6354ccd853948940dd67c6579bef72fff630f01941d064ed58eb78da64090",
+            "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+            "public/index.html": "6fac8f98234b9a2861abc405819c28698f1dd9db91e145cde8956bbcffc79479",
+            "public/svolta.css": "f81904ebcf820f2f00c79464ff76642ab5255ae3af3899183957a915b43f646f",
+            "public/svolta.js": "426e33279a1739e4e43b488deff13b2b9817c1ea6436249a8f78f50bdeb64675",
+            "src/app.mjs": "4d368778a32ca98583d1c0e7e67015bd8f943039b52df577cfaca16b25522d7a",
+            "src/archive.mjs": "1f0dc4aea4cf6d55c122c65e3f111edef4798a48c610a515e175146575a22d03",
+            "src/dates.mjs": "befb2084c723419e957dd976a1e2f9ecd5b92b5c8d768158ba99ce452d794515",
+            "src/errors.mjs": "acbb23489da8c799787caf170d2ff70a9f26c875de462e287cfc911c856baa5f",
+            "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+            "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+            "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+            "src/summary.mjs": "a58abb9c5ef8a37c51f2e6cf434faf761ca5f552fdba000708c6cc61085502e8",
+            "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+            "src/time-entries.mjs": "5a4ff445656c9f15639159e253db1e99e97c010953ee7c2198db4441f0348ebf",
+            "src/week.mjs": "f533bdaed237f9b051608355d588f3b5147653c0d81143e7b5d7148a0dee2eeb",
+            "tests/acceptance.mjs": "ee4f811515605a5cbab795c9ad4e40777774006bad8fe350c54590e1836c3235",
+            "tests/browser.mjs": "fe87ad9b4d5feeae587e1d030403bcffe4d5e78a236dcd6f5f6b1c305edaba84",
+            "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+          },
+          "fingerprint": "14acd491b91b02bc5303cbbeeba818b05a164dfa845d5b30376b0641c5b11376"
+        },
+        "scope": [],
+        "inputs": [],
+        "purpose": "probe"
+      }
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "b606740c-e95c-4b76-953b-7d4b19010037",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 16,
+    "at": "2026-10-20T23:21:11.189Z",
+    "type": "verification.started",
+    "message": "Checking existing coverage: Settimana civile, sessioni e riepilogo coerente",
+    "data": {
+      "nodeId": "012b48b2-8db7-4436-a9b5-d3894ad3c408",
+      "node": {
+        "id": "012b48b2-8db7-4436-a9b5-d3894ad3c408",
+        "status": "PENDING",
+        "attempt": 1,
+        "files": [],
+        "evidenceIds": [],
+        "kind": "verification",
+        "role": "verifier",
+        "title": "Settimana civile, sessioni e riepilogo coerente",
+        "objective": "Run approved check: [\"node\",\"tests/acceptance.mjs\",\"planning-api\"]",
+        "criterionId": "planning-api",
+        "reason": "Probe while planned implementation remains; a negative observation defers correction."
+      },
+      "edges": [
+        {
+          "id": "b519ba84-85b7-454b-af72-699a56db11bc",
+          "source": "d0c15913-3b72-4813-85ae-025a56f3796e",
+          "target": "012b48b2-8db7-4436-a9b5-d3894ad3c408",
+          "kind": "next"
+        }
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "3f1b5c77-613d-4e85-995e-64de388a2f02",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 17,
+    "at": "2026-10-20T23:21:12.596Z",
+    "type": "verification.passed",
+    "message": "Settimana civile, sessioni e riepilogo coerente: approved command already passes on the recorded inputs.",
+    "data": {
+      "nodeId": "012b48b2-8db7-4436-a9b5-d3894ad3c408",
+      "evidence": {
+        "id": "16ee71cc-5da5-43d5-ba3c-ec00ffc63539",
+        "nodeId": "012b48b2-8db7-4436-a9b5-d3894ad3c408",
+        "criterionId": "planning-api",
+        "contractVersion": 1,
+        "kind": "deterministic",
+        "status": "passed",
+        "createdAt": "2026-10-20T23:21:12.553Z",
+        "command": [
+          "node",
+          "tests/acceptance.mjs",
+          "planning-api"
+        ],
+        "exitCode": 0,
+        "output": "PASS civil seven-day plan and unscheduled work\nPASS Monday and impossible-date rejection\nPASS time records preserve links and task status\nPASS weekly time and full-archive task counts are distinguished\nPASS invalid time entries do not write\nPASS deleting one session updates totals without deleting others\nPASS archiving a task preserves history and restart\n{\"criterion\":\"planning-api\",\"result\":\"PASS\",\"groups\":7}\n",
+        "durationMs": 1370,
+        "stamp": {
+          "head": "d9cb9d910812e6a632d2765b205963466a47c16a",
+          "files": {
+            ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+            "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+            "README.md": "66888882a54cfc1141b2b069976a7c1d83b54d28f3f65d60d61d835545e35ed4",
+            "docs/guida.md": "1674703f22a654a73d601fcabdfd0f998fd5c59a05cbe829aced1f95467e036f",
+            "docs/verifiche.md": "56c6354ccd853948940dd67c6579bef72fff630f01941d064ed58eb78da64090",
+            "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+            "public/index.html": "6fac8f98234b9a2861abc405819c28698f1dd9db91e145cde8956bbcffc79479",
+            "public/svolta.css": "f81904ebcf820f2f00c79464ff76642ab5255ae3af3899183957a915b43f646f",
+            "public/svolta.js": "426e33279a1739e4e43b488deff13b2b9817c1ea6436249a8f78f50bdeb64675",
+            "src/app.mjs": "4d368778a32ca98583d1c0e7e67015bd8f943039b52df577cfaca16b25522d7a",
+            "src/archive.mjs": "1f0dc4aea4cf6d55c122c65e3f111edef4798a48c610a515e175146575a22d03",
+            "src/dates.mjs": "befb2084c723419e957dd976a1e2f9ecd5b92b5c8d768158ba99ce452d794515",
+            "src/errors.mjs": "acbb23489da8c799787caf170d2ff70a9f26c875de462e287cfc911c856baa5f",
+            "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+            "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+            "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+            "src/summary.mjs": "a58abb9c5ef8a37c51f2e6cf434faf761ca5f552fdba000708c6cc61085502e8",
+            "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+            "src/time-entries.mjs": "5a4ff445656c9f15639159e253db1e99e97c010953ee7c2198db4441f0348ebf",
+            "src/week.mjs": "f533bdaed237f9b051608355d588f3b5147653c0d81143e7b5d7148a0dee2eeb",
+            "tests/acceptance.mjs": "ee4f811515605a5cbab795c9ad4e40777774006bad8fe350c54590e1836c3235",
+            "tests/browser.mjs": "fe87ad9b4d5feeae587e1d030403bcffe4d5e78a236dcd6f5f6b1c305edaba84",
+            "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+          },
+          "fingerprint": "14acd491b91b02bc5303cbbeeba818b05a164dfa845d5b30376b0641c5b11376"
+        },
+        "scope": [],
+        "inputs": [],
+        "purpose": "probe"
+      }
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "38adda71-68a3-47a9-b9b2-e6254f7201d3",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 18,
+    "at": "2026-10-20T23:21:12.611Z",
+    "type": "verification.started",
+    "message": "Checking existing coverage: Pianificazione e tempo dal browser",
+    "data": {
+      "nodeId": "a4578e95-e8c4-44e5-b95f-b033661d002a",
+      "node": {
+        "id": "a4578e95-e8c4-44e5-b95f-b033661d002a",
+        "status": "PENDING",
+        "attempt": 1,
+        "files": [],
+        "evidenceIds": [],
+        "kind": "verification",
+        "role": "verifier",
+        "title": "Pianificazione e tempo dal browser",
+        "objective": "Run approved check: [\"node\",\"tests/acceptance.mjs\",\"planning-ui\"]",
+        "criterionId": "planning-ui",
+        "reason": "Probe while planned implementation remains; a negative observation defers correction."
+      },
+      "edges": [
+        {
+          "id": "096bf7bb-a377-4458-84f6-6da1b76f4ca3",
+          "source": "012b48b2-8db7-4436-a9b5-d3894ad3c408",
+          "target": "a4578e95-e8c4-44e5-b95f-b033661d002a",
+          "kind": "next"
+        }
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "aa1af638-2e1f-46ae-a12d-23261fd9161c",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 19,
+    "at": "2026-10-20T23:21:14.871Z",
+    "type": "verification.passed",
+    "message": "Pianificazione e tempo dal browser: approved command already passes on the recorded inputs.",
+    "data": {
+      "nodeId": "a4578e95-e8c4-44e5-b95f-b033661d002a",
+      "evidence": {
+        "id": "c7e940fe-0f71-4517-84bc-4c87abb245a5",
+        "nodeId": "a4578e95-e8c4-44e5-b95f-b033661d002a",
+        "criterionId": "planning-ui",
+        "contractVersion": 1,
+        "kind": "deterministic",
+        "status": "passed",
+        "createdAt": "2026-10-20T23:21:14.827Z",
+        "command": [
+          "node",
+          "tests/acceptance.mjs",
+          "planning-ui"
+        ],
+        "exitCode": 0,
+        "output": "PASS reschedule a task and see it in its actual weekly day\nPASS time entry changes the real week summary\nPASS weekly mobile layout and persisted sessions\n{\"criterion\":\"planning-ui\",\"result\":\"PASS\",\"groups\":3}\n",
+        "durationMs": 2226,
+        "stamp": {
+          "head": "d9cb9d910812e6a632d2765b205963466a47c16a",
+          "files": {
+            ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+            "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+            "README.md": "66888882a54cfc1141b2b069976a7c1d83b54d28f3f65d60d61d835545e35ed4",
+            "docs/guida.md": "1674703f22a654a73d601fcabdfd0f998fd5c59a05cbe829aced1f95467e036f",
+            "docs/verifiche.md": "56c6354ccd853948940dd67c6579bef72fff630f01941d064ed58eb78da64090",
+            "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+            "public/index.html": "6fac8f98234b9a2861abc405819c28698f1dd9db91e145cde8956bbcffc79479",
+            "public/svolta.css": "f81904ebcf820f2f00c79464ff76642ab5255ae3af3899183957a915b43f646f",
+            "public/svolta.js": "426e33279a1739e4e43b488deff13b2b9817c1ea6436249a8f78f50bdeb64675",
+            "src/app.mjs": "4d368778a32ca98583d1c0e7e67015bd8f943039b52df577cfaca16b25522d7a",
+            "src/archive.mjs": "1f0dc4aea4cf6d55c122c65e3f111edef4798a48c610a515e175146575a22d03",
+            "src/dates.mjs": "befb2084c723419e957dd976a1e2f9ecd5b92b5c8d768158ba99ce452d794515",
+            "src/errors.mjs": "acbb23489da8c799787caf170d2ff70a9f26c875de462e287cfc911c856baa5f",
+            "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+            "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+            "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+            "src/summary.mjs": "a58abb9c5ef8a37c51f2e6cf434faf761ca5f552fdba000708c6cc61085502e8",
+            "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+            "src/time-entries.mjs": "5a4ff445656c9f15639159e253db1e99e97c010953ee7c2198db4441f0348ebf",
+            "src/week.mjs": "f533bdaed237f9b051608355d588f3b5147653c0d81143e7b5d7148a0dee2eeb",
+            "tests/acceptance.mjs": "ee4f811515605a5cbab795c9ad4e40777774006bad8fe350c54590e1836c3235",
+            "tests/browser.mjs": "fe87ad9b4d5feeae587e1d030403bcffe4d5e78a236dcd6f5f6b1c305edaba84",
+            "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+          },
+          "fingerprint": "14acd491b91b02bc5303cbbeeba818b05a164dfa845d5b30376b0641c5b11376"
+        },
+        "scope": [],
+        "inputs": [],
+        "purpose": "probe"
+      }
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "aa3cdda5-10f9-4fcc-9741-bf9b668620cb",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 20,
+    "at": "2026-10-20T23:21:14.892Z",
+    "type": "task.started",
+    "message": "builder: Riallineare guida e provenienza delle evidenze alla missione corrente",
+    "data": {
+      "nodeId": "direction-8ba66e6b-25e2-4e19-bb26-a584d41475d6-0",
+      "edges": [
+        {
+          "id": "b8403223-36da-4a92-91f6-6e895c0bfdf2",
+          "source": "a4578e95-e8c4-44e5-b95f-b033661d002a",
+          "target": "direction-8ba66e6b-25e2-4e19-bb26-a584d41475d6-0",
+          "kind": "next"
+        }
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "24d1abe8-db1f-4ba8-a7ef-66d6c4661b93",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 21,
+    "at": "2026-10-20T23:21:15.427Z",
+    "type": "agent.thread",
+    "message": "Codex session recorded for recovery.",
+    "data": {
+      "nodeId": "direction-8ba66e6b-25e2-4e19-bb26-a584d41475d6-0",
+      "threadId": "01a15b9e-7a4d-7cb2-8439-a01b6159337d"
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "a6301a06-42bf-4855-9b72-81e87b08ae6d",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 22,
+    "at": "2026-10-20T23:23:04.363Z",
+    "type": "agent.usage",
+    "message": "412733 tokens reported by provider.",
+    "data": {
+      "tokens": 412733
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "33fb151e-ea37-408d-b657-f0d8dac81eb2",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 23,
+    "at": "2026-10-20T23:23:04.862Z",
+    "type": "code.changed",
+    "message": "3 files changed by this activity.",
+    "data": {
+      "nodeId": "direction-8ba66e6b-25e2-4e19-bb26-a584d41475d6-0",
+      "files": [
+        "README.md",
+        "docs/guida.md",
+        "docs/verifiche.md"
+      ],
+      "diff": "diff --git a/README.md b/README.md\nindex f9b8b07..a82e3bd 100644\n--- a/README.md\n+++ b/README.md\n@@ -16,11 +16,12 @@ conflitti. Il contratto completo, incluse le funzioni successive ancora\n indisponibili, è in [BRIEF.md](BRIEF.md). La descrizione del codice qui presente\n è distinta dalle [evidenze di verifica](docs/verifiche.md).\n \n-Questa missione `long-svolta-20261020-r3` continua dal candidato interrotto,\n-copiato senza certificazione. Le ricevute della prova precedente, riportate\n-sotto e nel registro, sono soltanto storiche. Al momento di questo aggiornamento\n-non sono state fornite nuove ricevute host per nessuno dei cinque criteri della\n-missione r3; la descrizione dell’implementazione non ne attesta il collaudo.\n+Questa missione `long-svolta-20261020-r4` prosegue dal candidato esistente,\n+senza un checkpoint certificato per la missione corrente. Le ricevute delle\n+prove precedenti, riportate sotto e nel registro, sono soltanto storiche.\n+Alla redazione non sono state fornite nuove ricevute host r4 per nessuno dei\n+cinque criteri approvati. Le funzioni descritte sono implementate nei sorgenti;\n+i controlli locali dichiarati e lo storico non ne attestano il collaudo r4.\n \n ## Avvio\n \n@@ -171,8 +172,9 @@ manualmente il file durante l’esecuzione.\n | Backup | **Non ancora disponibile**: nessun download, importazione o ripristino portabile. |\n \n Piano settimanale, sessioni e riepilogo sono disponibili nelle API. Il percorso\n-progetti → settimana → tempo è utilizzabile nel browser; la stima da sola non\n-registra tempo. **Riepilogo** usa `/api/summary` per i conteggi e il tempo della\n+progetti → attività → settimana → sessioni → riepilogo è implementato nel browser;\n+la stima da sola non registra tempo. **Riepilogo** usa `/api/summary` per i\n+conteggi e il tempo della\n settimana scelta. Il totale comprende anche il tempo di attività e progetti\n archiviati; i progetti senza minuti restano elencati con zero. Per una sessione\n la cui attività non è negli elenchi caricati, la cronologia mostra l’ID al posto\n@@ -183,6 +185,7 @@ Tornare nella sezione o nella scheda/finestra rilegge l’ultima data richiesta,\n conservando una nuova data ancora in bozza. Non c’è sincronizzazione continua.\n \n **Backup** mostra esplicitamente l’indisponibilità di esportazione e ripristino.\n+Backup e consegna restano al successivo esito delegato dal supervisore host.\n Non ci sono recupero automatico, migrazioni da altri formati o recupero persistente\n delle bozze. Il file interno `archive.json` non è il backup portabile previsto\n dal contratto: questa versione non offre una procedura di esportazione/ripristino.\n@@ -385,16 +388,20 @@ Gli errori hanno forma `{\"error\":\"Messaggio in italiano\",\"code\":\"CODICE\"}`:\n \n ## Stato delle verifiche\n \n-Per la missione r3 non è disponibile una nuova ricevuta host. I controlli locali\n-e i loro limiti sono riportati nel [registro](docs/verifiche.md).\n+Per la missione r4 non sono state fornite nuove ricevute host. I controlli\n+documentali di questo task, i controlli locali dichiarati nei task precedenti\n+e le ricevute storiche sono distinti nel [registro](docs/verifiche.md).\n+Sono richieste nuove verifiche host per `projects-api`, `tasks-api`, `board-ui`,\n+`planning-api` e `planning-ui`; la richiesta non è un risultato.\n Layout a 390px, flussi completi di Settimana, sessioni e Riepilogo e focus nativo\n-richiedono osservazione nel browser host; non sono attestati dalle ricevute storiche.\n+del candidato r4 richiedono osservazione nel browser host; le ricevute storiche\n+non certificano questa missione.\n \n ### Ricevute storiche della missione r2\n \n Questa è una fotografia storica alla redazione per la missione `long-svolta-20261020-r2`,\n-run `20261020T220700-5ec53331`, contratto v1. Il contesto operativo segnala le\n-seguenti ricevute come `passed`, con risultato **PASS**:\n+run `20261020T220700-5ec53331`, contratto v1. La documentazione ereditata riportava\n+le seguenti ricevute come `passed`, con risultato **PASS**:\n \n | Comando host | ID ricevuta (prefisso disponibile) | Esito registrato | Gruppi |\n | --- | --- | --- | --- |\n@@ -419,7 +426,9 @@ Per queste ricevute storiche sono disponibili solo i prefissi degli ID, i comand\n gli esiti e i conteggi dei gruppi. Date, stamp e output conservati nel\n [registro delle evidenze](docs/verifiche.md#fotografia-delle-evidenze-alla-redazione)\n appartengono alle ricevute precedenti `f60e43e0…`, `d3604e71…` e `98c0ea1d…`,\n-segnalate come `stale` alla redazione, e non vengono attribuiti alle nuove.\n+segnalate come `stale` alla redazione storica, e non vengono attribuiti alle\n+ricevute con il solo prefisso né alla missione r4. Le ricevute originali non sono\n+file presenti nel worktree: questi dati sono resoconti ereditati.\n \n Il risultato PASS documenta la singola esecuzione; lo stato runtime può cambiare\n dopo modifiche agli input, anche documentali. Per lo stato rispetto al worktree\n@@ -427,15 +436,15 @@ successivo occorre consultare il runtime: questa pagina non lo aggiorna in tempo\n reale e non certifica una nuova revisione o impronta dei documenti modificati.\n \n I PASS API della prova originale e l’audit UI separato rimangono nel registro\n-come contesto. Per l’API Settimana sono stati eseguiti controlli mirati delle date\n-in quattro fusi e del gestore richieste in memoria, oltre a sintassi e diff;\n+come contesto. Il registro ereditato dichiara per l’API Settimana controlli mirati\n+delle date in quattro fusi e del gestore richieste in memoria, oltre a sintassi e diff;\n non sono stati avviati server o browser né eseguite suite complete. Questi\n controlli non dimostrano il funzionamento HTTP o una certificazione host.\n-Per sessioni e riepilogo sono passati controlli locali mirati su archivio\n+Per sessioni e riepilogo riferisce controlli locali mirati su archivio\n temporaneo e gestore in memoria: compatibilità dei file, validazione dei\n riferimenti, cronologia dopo riavvio, eliminazione, coda e salvataggio fallito,\n conteggi e confini settimanali in quattro fusi. Anche questi non sono ricevute\n-host e non osservano il browser. La copertura\n+host, non sono nuove esecuzioni r4 e non osservano il browser. La copertura\n registrata non si estende a ogni risoluzione dei conflitti per campo, al focus,\n all’intero layout o all’uso con lettori di schermo. Backup e ripristino\n restano indisponibili come descritto sopra.\ndiff --git a/docs/guida.md b/docs/guida.md\nindex a7c68c5..d50d2a0 100644\n--- a/docs/guida.md\n+++ b/docs/guida.md\n@@ -1,9 +1,12 @@\n-# Usare Progetti, Settimana, tempo e Riepilogo\n+# Usare Progetti, Attività, Settimana, sessioni e Riepilogo\n \n-Questa guida descrive le funzioni presenti nel candidato della missione r3,\n-ereditato senza certificazione. Per questa missione non sono state fornite nuove\n-ricevute host. La tabella seguente conserva soltanto evidenze storiche della\n-missione r2, allora segnalate come `passed`:\n+Questa guida descrive le funzioni implementate nel candidato della missione\n+`long-svolta-20261020-r4`, senza un checkpoint certificato per questa missione.\n+Alla redazione non sono state fornite nuove ricevute host r4 per i cinque\n+criteri approvati. I controlli locali dichiarati nei task precedenti sono\n+separati dalle ricevute nel [registro](verifiche.md#missione-r4-stato-corrente).\n+La tabella seguente conserva soltanto i resoconti ereditati delle ricevute\n+storiche r2, allora segnalate come `passed`:\n \n | Comando host | ID ricevuta (prefisso disponibile) | Esito registrato | Gruppi |\n | --- | --- | --- | --- |\n@@ -272,9 +275,10 @@ cartella ai riavvii; non modificare il file mentre il server è attivo.\n Per errori di avvio vedere [Cartella dati e affidabilità](../README.md#cartella-dati-e-affidabilità).\n \n **Backup** mostra «Non ancora disponibile». Il percorso\n-**progetti → settimana → tempo → riepilogo → backup** arriva al Riepilogo e alla\n-cronologia delle sessioni; una stima non registra tempo. Il backup portabile con\n-ripristino resta al prossimo esito: il file interno non è quel backup.\n+**progetti → attività → settimana → sessioni → riepilogo → backup** arriva al\n+Riepilogo e alla cronologia delle sessioni; una stima non registra tempo.\n+Il backup portabile con ripristino e la consegna restano al successivo esito\n+delegato dal supervisore host: il file interno non è quel backup.\n Non c’è recupero automatico dei dati o delle bozze.\n \n La lettura della settimana è disponibile tramite\n@@ -296,11 +300,13 @@ Gli archivi precedenti vengono letti con sessioni vuote senza riscrittura all’\n Il server ascolta solo sul dispositivo che lo esegue: il layout adattivo non\n permette di collegare il telefono al computer con lo stesso indirizzo locale.\n Le evidenze API della prova originale, l’audit UI e le ricevute precedenti\n-segnalate come `stale` alla redazione sono separati dalle successive ricevute r2 nel\n-[registro delle evidenze](verifiche.md). I tre PASS riportati riguardano le\n+segnalate come `stale` alla redazione storica sono separati dalle successive\n+ricevute r2 nel [registro delle evidenze](verifiche.md). I tre PASS riportati riguardano le\n rispettive esecuzioni, entro i 6/6/4 gruppi registrati; non attestano le funzioni\n successive né un collaudo completo di accessibilità. Quelle ricevute restano\n-storiche per questa nuova missione. Alla redazione non sono state fornite nuove\n-ricevute host r3 per nessuno dei cinque criteri, comprese API e viste di Settimana,\n-sessioni e Riepilogo. Controlli locali e limiti sono nel registro;\n+storiche per la missione r4; gli originali non sono file presenti nel worktree.\n+Alla redazione non sono state fornite nuove ricevute host r4 per nessuno dei\n+cinque criteri, comprese API e viste di Settimana, sessioni e Riepilogo.\n+Le nuove verifiche sono richieste al runtime, senza anticiparne l’esito.\n+Controlli locali dichiarati e limiti sono nel registro;\n non attestano focus nativo, layout o accessibilità.\ndiff --git a/docs/verifiche.md b/docs/verifiche.md\nindex db15584..38a9680 100644\n--- a/docs/verifiche.md\n+++ b/docs/verifiche.md\n@@ -4,7 +4,50 @@ La descrizione delle funzioni nel [README](../README.md) e nella [guida](guida.m\n è basata sui sorgenti presenti. Una funzione descritta, un controllo locale\n dichiarato, un audit riferito e una ricevuta del runtime sono informazioni diverse.\n \n-## Missione r3: Riepilogo e guida (task attuale)\n+## Missione r4: stato corrente\n+\n+La missione corrente è `long-svolta-20261020-r4`, esito `weekly-work`.\n+La delega indica come provenienza il candidato\n+`d9cb9d910812e6a632d2765b205963466a47c16a` e riferisce cinque criteri verdi\n+nella prova precedente, conclusa senza checkpoint certificato per riferimenti\n+a file o prove non validi. Questo è contesto storico fornito dall’operatore,\n+non una ricevuta r4: non sono forniti qui ID o altri metadati di quei cinque esiti.\n+\n+Questo task riallinea soltanto [README.md](../README.md), [docs/guida.md](guida.md)\n+e questo registro. Conserva codice, scelte visuali e contratto in [BRIEF.md](../BRIEF.md).\n+\n+| Informazione | Provenienza e limite |\n+| --- | --- |\n+| Funzioni implementate | README e guida descrivono i sorgenti presenti in `src/` e `public/`: progetti, attività, settimana, sessioni e riepilogo. La lettura non dimostra il funzionamento. |\n+| Controlli locali r4 | Lettura del brief e dei documenti, controllo dei collegamenti e dei riferimenti a file, diff e percorsi modificati. Sono controlli documentali; nessun server, browser o suite API/accettazione è stato avviato in questo task. |\n+| Controlli locali precedenti | Le sezioni storiche sotto riportano dichiarazioni ereditate su sintassi, simulazioni DOM e prove in memoria o su archivio temporaneo. Non sono nuove esecuzioni r4 né ricevute host. |\n+| Ricevute storiche | Prefissi, ID, output e stamp sotto sono resoconti della documentazione ereditata, riferiti alle rispettive prove. Le ricevute originali non sono file presenti nel worktree e non certificano r4. |\n+| Ricevute host r4 | Alla redazione non ne è stata fornita alcuna per i cinque criteri approvati. Non si attribuisce alcun nuovo esito PASS al candidato. |\n+\n+Sono richieste al runtime nuove verifiche con i cinque comandi approvati:\n+\n+- `node tests/acceptance.mjs projects-api`\n+- `node tests/acceptance.mjs tasks-api`\n+- `node tests/acceptance.mjs board-ui`\n+- `node tests/acceptance.mjs planning-api`\n+- `node tests/acceptance.mjs planning-ui`\n+\n+Il file dei comandi è [tests/acceptance.mjs](../tests/acceptance.mjs).\n+Una richiesta non è un’esecuzione né un PASS. Nuovi esiti possono essere\n+registrati soltanto da ricevute effettivamente fornite dal runtime, senza\n+ricostruire ID, date, output, stamp o altri metadati mancanti.\n+\n+Il percorso implementato è **progetti → attività → settimana → sessioni → riepilogo**.\n+Backup e ripristino portabili sono ancora indisponibili; backup e consegna\n+restano al successivo esito del supervisore host.\n+\n+## Storico r3: Riepilogo e guida\n+\n+Da questa sezione alla fine il registro conserva resoconti ereditati.\n+«Questo task», «nuove ricevute» e ogni altro riferimento relativo indicano\n+l’intervento storico descritto, mai il task r4 corrente. Anche gli stati di\n+disponibilità delle funzioni sono fotografie di allora: per le istruzioni\n+attuali consultare README e guida.\n \n Il task «Riepilogo leggibile e guida coerente» collega Data di riferimento e\n Aggiorna riepilogo a `GET /api/summary?date=…`. Mostra data e intervallo civile,\n@@ -27,7 +70,7 @@ esplicite e ritorno nella sezione o scheda aggiornano il riepilogo già richiest\n Gli stati delle attività sono attuali: una data passata non è una fotografia\n storica. Backup e ripristino rimangono indisponibili e al prossimo esito.\n \n-Nuovi controlli locali eseguiti per questo task: sintassi di\n+Controlli locali dichiarati per quel task: sintassi di\n `public/svolta.js`, diff e riferimenti statici HTML/ARIA e documentali.\n Una simulazione mirata esegue lo script completo dell’app su un DOM simulato,\n con risposte HTTP simulate e il calcolo esistente di `src/summary.mjs` in memoria.\n@@ -48,7 +91,7 @@ storici. Sono richiesti al runtime `projects-api`, `tasks-api`, `board-ui`,\n verifica non costituisce un esito PASS; solo ricevute effettivamente fornite\n possono documentare l’esito dei controlli host su questa missione.\n \n-## Missione r3: sessioni nel browser (task precedente)\n+## Storico r3: sessioni nel browser\n \n Questa sezione conserva implementazione e controlli dichiarati dal task\n precedente; il Riepilogo completo è descritto sopra. Non è una nuova esecuzione\n@@ -94,7 +137,7 @@ per la missione r3 non sono state fornite nuove prove runtime. Sono richiesti\n evidenze e regressioni; `planning-ui` comprende anche la vista Riepilogo completa,\n che era ancora delegata al task successivo.\n \n-## Missione r3: vista Settimana (task precedente)\n+## Storico r3: vista Settimana\n \n Questo task sostituisce il segnaposto Settimana con il piano letto da\n `GET /api/week?start=…`, senza cambiare API, conteggi o sessioni. Riusa schede,\n@@ -135,13 +178,13 @@ che non erano implementati dal task Settimana; per lo stato attuale vedere sopra\n \n Le sezioni seguenti conservano la fotografia delle prove precedenti e lo stato\n delle funzioni alla loro redazione. «Nuove ricevute» e «intervento corrente»\n-si riferiscono alle prove allora descritte, non alla missione r3. Per lo stato\n+si riferiscono alle prove allora descritte, non alla missione r4. Per lo stato\n attuale delle funzioni consultare README e guida.\n \n ## Fotografia delle evidenze alla redazione\n \n-La missione `long-svolta-20261020-r2`, esito `usable-board`, continua dalla revisione\n-`8fbf6801cdda04de5f9153c737902289d355e59f` (HEAD all’inizio di questo task).\n+La missione storica `long-svolta-20261020-r2`, esito `usable-board`, continuava dalla revisione\n+`8fbf6801cdda04de5f9153c737902289d355e59f` (HEAD dichiarato all’inizio del task r2).\n È il candidato già prodotto, **privo di certificazione all’avvio della missione**.\n La prova originale è stata dichiarata bloccata da un difetto del runtime; le sue\n evidenze restano contesto storico, separato dalle nuove ricevute riportate qui.\n@@ -172,7 +215,7 @@ quelle documentali. Per la validità rispetto a un worktree successivo occorre\n consultare il runtime; i risultati registrati restano evidenze delle rispettive\n esecuzioni e non certificano automaticamente la revisione documentale seguente.\n \n-## Ricevute precedenti della missione: stale alla redazione\n+## Ricevute storiche r2: stale alla redazione di allora\n \n Le ricevute sotto riportate sono segnalate come `stale` nel contesto operativo\n fornito a questo task. Il loro risultato di esecuzione era PASS; la qualifica\n@@ -310,20 +353,20 @@ annuncio `SVOLTA_READY`, richieste HTTP e riavvio sulla stessa cartella.\n Questi riferimenti sono conservati come informazioni del documento ereditato;\n le ricevute originali e il loro output non sono disponibili nel worktree di\n questo task. Non sono nuove osservazioni né rinnovi degli esiti. Non comprendono\n-una ricevuta `board-ui`; le ricevute di questa missione sono documentate\n+una ricevuta `board-ui`; i resoconti delle ricevute r2 sono documentati\n separatamente sopra, con i rispettivi risultati e le informazioni disponibili.\n \n ## Contesto dell’audit UI separato\n \n-La delega corrente riferisce che un audit separato ha esercitato **quattro flussi\n+La documentazione ereditata riferisce che un audit separato ha esercitato **quattro flussi\n UI** sul candidato. Non fornisce qui l’elenco dei quattro flussi, la revisione\n esercitata, i comandi o l’output dell’audit. Questo registro non può quindi\n-attribuirgli una copertura più specifica o usarlo come ricevuta di questa missione per\n+attribuirgli una copertura più specifica o usarlo come ricevuta r4 per\n `board-ui`.\n \n L’audit rimane contesto utile alla continuità del candidato. Non costituisce una\n-certificazione dei tre criteri di questa missione né un nuovo collaudo osservato\n-durante questo task.\n+certificazione dei cinque criteri r4 né un nuovo collaudo osservato\n+nella missione r4.\n \n ## Controlli locali dichiarati nei task precedenti\n \n@@ -343,7 +386,7 @@ nativo, Tab/Escape, lettori di schermo o l’esperienza effettiva nel browser.\n Le prove senza socket non dimostrano il funzionamento HTTP; quelle in memoria\n non dimostrano la persistenza su disco.\n \n-## Controlli documentali e limiti residui\n+## Controlli documentali e limiti dichiarati nel registro storico r2\n \n Questo aggiornamento ha confrontato il contratto e la documentazione con i\n metadati delle ricevute forniti nel contesto operativo e con la copertura\n@@ -359,8 +402,8 @@ scartano le modifiche nei dialoghi. Non c’è recupero persistente delle bozze.\n Se un’attività è stata archiviata altrove, la versione corrente non è consultabile\n negli elenchi per risolvere il conflitto: copiare gli input utili prima di annullare.\n \n-Le viste Settimana, sessioni di tempo, Riepilogo e Backup/ripristino rimangono\n-indisponibili e spettano ai task successivi del supervisore host. Le API per\n+Alla redazione storica r2, le viste Settimana, sessioni di tempo, Riepilogo e\n+Backup/ripristino erano indisponibili e delegate ai task successivi. Le API per\n sessioni e riepilogo sono descritte nell’intervento in fondo; quelle per\n backup/ripristino restano da implementare. Il file\n interno `archive.json` non è un backup portabile; non esiste ancora una procedura\n@@ -374,7 +417,7 @@ pubblicazioni. I criteri automatici non esauriscono la revisione d’uso: confli\n per campo, tastiera, focus, nomi lunghi e assenza di scorrimento orizzontale vanno\n riferiti solo alla copertura realmente osservata.\n \n-## Intervento corrente: date civili e API Settimana\n+## Intervento storico: date civili e API Settimana\n \n Le ricevute riportate sopra appartengono alla prova precedente: sono contesto\n storico e non certificano la nuova missione. Non è disponibile una nuova\n@@ -396,7 +439,7 @@ o suite di accettazione. Non sono prove HTTP, di persistenza o ricevute host.\n Il criterio `planning-api` include anche sessioni e riepilogo: questi controlli\n della sola API Settimana non ne attestano l’esito.\n \n-## Intervento corrente: sessioni persistenti e riepilogo\n+## Intervento storico: sessioni persistenti e riepilogo\n \n Implementati `POST/GET /api/time-entries`, `DELETE /api/time-entries/:id` con\n 204 senza corpo e `GET /api/summary?date=YYYY-MM-DD`. L’archivio valida le sessioni,\n@@ -425,5 +468,7 @@ Nessuna suite completa di accettazione o browser è stata eseguita nella sandbox\n questi controlli non osservano HTTP o l’interfaccia e non sono ricevute host.\n Il criterio richiesto al runtime è `planning-api`; per le regressioni della\n persistenza condivisa sono richiesti anche `projects-api` e `tasks-api`.\n-Non è disponibile alcun nuovo esito host per queste modifiche. Le viste\n-rimangono delegate ai task successivi; backup e ripristino al prossimo esito.\n+Alla redazione di quell’intervento non era disponibile alcun nuovo esito host\n+per quelle modifiche e le viste erano ancora delegate ai task successivi.\n+Lo stato implementato in r4 è descritto in README e guida; backup e ripristino\n+restano al prossimo esito."
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "20ff66f8-db8a-4016-8b0b-5d11c1befa98",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 24,
+    "at": "2026-10-20T23:23:04.877Z",
+    "type": "evidence.invalidated",
+    "message": "Evidence is STALE: README.md, docs/guida.md, docs/verifiche.md. Scope: all repository files.",
+    "data": {
+      "evidenceId": "facf3661-7b99-4c93-b517-2c4243e13fe1",
+      "changed": [
+        "README.md",
+        "docs/guida.md",
+        "docs/verifiche.md"
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "4f5be1af-f9c1-4668-bb20-200820a762dc",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 25,
+    "at": "2026-10-20T23:23:04.890Z",
+    "type": "evidence.invalidated",
+    "message": "Evidence is STALE: README.md, docs/guida.md, docs/verifiche.md. Scope: all repository files.",
+    "data": {
+      "evidenceId": "1cfa0cc1-186d-48d9-9fb3-b32f8a10cb96",
+      "changed": [
+        "README.md",
+        "docs/guida.md",
+        "docs/verifiche.md"
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "d4de8ab7-9eaf-499a-954a-af445473f6f2",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 26,
+    "at": "2026-10-20T23:23:04.904Z",
+    "type": "evidence.invalidated",
+    "message": "Evidence is STALE: README.md, docs/guida.md, docs/verifiche.md. Scope: all repository files.",
+    "data": {
+      "evidenceId": "1c7906dd-faf3-4732-997b-71b026751ab5",
+      "changed": [
+        "README.md",
+        "docs/guida.md",
+        "docs/verifiche.md"
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "b03bfa5d-4a53-4a4f-b8ac-e741b26eaab0",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 27,
+    "at": "2026-10-20T23:23:04.920Z",
+    "type": "evidence.invalidated",
+    "message": "Evidence is STALE: README.md, docs/guida.md, docs/verifiche.md. Scope: all repository files.",
+    "data": {
+      "evidenceId": "16ee71cc-5da5-43d5-ba3c-ec00ffc63539",
+      "changed": [
+        "README.md",
+        "docs/guida.md",
+        "docs/verifiche.md"
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "7529cb90-4f56-4585-a17e-4aed1283074b",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 28,
+    "at": "2026-10-20T23:23:04.934Z",
+    "type": "evidence.invalidated",
+    "message": "Evidence is STALE: README.md, docs/guida.md, docs/verifiche.md. Scope: all repository files.",
+    "data": {
+      "evidenceId": "c7e940fe-0f71-4517-84bc-4c87abb245a5",
+      "changed": [
+        "README.md",
+        "docs/guida.md",
+        "docs/verifiche.md"
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "9be7b4d7-ce17-4f2e-8fe9-66dfe00b0559",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 29,
+    "at": "2026-10-20T23:23:04.959Z",
+    "type": "task.completed",
+    "message": "Aggiornati README.md, docs/guida.md e docs/verifiche.md alla missione r4, distinguendo funzioni implementate, controlli locali dichiarati e ricevute storiche. Conservate le istruzioni del percorso completo; backup e consegna restano successivi. Codice e contratto invariati. Collegamenti e diff controllati localmente; nessuna suite API/browser eseguita né nuova ricevuta host fornita.",
+    "data": {
+      "nodeId": "direction-8ba66e6b-25e2-4e19-bb26-a584d41475d6-0",
+      "summary": "Aggiornati README.md, docs/guida.md e docs/verifiche.md alla missione r4, distinguendo funzioni implementate, controlli locali dichiarati e ricevute storiche. Conservate le istruzioni del percorso completo; backup e consegna restano successivi. Codice e contratto invariati. Collegamenti e diff controllati localmente; nessuna suite API/browser eseguita né nuova ricevuta host fornita.",
+      "files": [
+        "README.md",
+        "docs/guida.md",
+        "docs/verifiche.md"
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "9931b131-4c70-47c6-a838-a2de18b00cd6",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 30,
+    "at": "2026-10-20T23:23:04.972Z",
+    "type": "decision.recorded",
+    "message": "Builder handed verification to the runtime host. Agent-local check limitations are unverified observations; only approved runtime checks can certify results.",
+    "data": {
+      "kind": "verification.handoff",
+      "nodeId": "direction-8ba66e6b-25e2-4e19-bb26-a584d41475d6-0",
+      "criterionIds": [
+        "projects-api",
+        "tasks-api",
+        "board-ui",
+        "planning-api",
+        "planning-ui"
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "5e800f50-b248-47d4-8626-4f8467716986",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 31,
+    "at": "2026-10-20T23:23:04.975Z",
+    "type": "progress.recorded",
+    "message": "Code fingerprint changed.",
+    "data": {
+      "noProgress": 0
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "bf7b4fd5-37f6-4eb9-8f0d-310a665c1e7d",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 32,
+    "at": "2026-10-20T23:23:05.007Z",
+    "type": "verification.started",
+    "message": "Verifying: Archivio progetti persistente e revisioni",
+    "data": {
+      "nodeId": "27ecd3e8-4d88-4d49-8560-984cc155695b",
+      "node": {
+        "id": "27ecd3e8-4d88-4d49-8560-984cc155695b",
+        "status": "PENDING",
+        "attempt": 2,
+        "files": [],
+        "evidenceIds": [],
+        "kind": "verification",
+        "role": "verifier",
+        "title": "Archivio progetti persistente e revisioni",
+        "objective": "Run approved check: [\"node\",\"tests/acceptance.mjs\",\"projects-api\"]",
+        "criterionId": "projects-api",
+        "reason": "Acceptance requires runtime-owned evidence for the approved verification policy."
+      },
+      "edges": [
+        {
+          "id": "46ef58bf-7ff8-4da6-a8d5-9f4c0898fd53",
+          "source": "80b13580-f782-4f85-b429-2aa2975b568f",
+          "target": "27ecd3e8-4d88-4d49-8560-984cc155695b",
+          "kind": "next"
+        }
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "1532cad2-51a2-4164-8e6f-20a70d6e67cc",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 33,
+    "at": "2026-10-20T23:23:06.380Z",
+    "type": "verification.passed",
+    "message": "Archivio progetti persistente e revisioni: approved deterministic check satisfied on recorded inputs.",
+    "data": {
+      "nodeId": "27ecd3e8-4d88-4d49-8560-984cc155695b",
+      "evidence": {
+        "id": "3c82b042-9f7c-4207-8427-fb9c3406ce17",
+        "nodeId": "27ecd3e8-4d88-4d49-8560-984cc155695b",
+        "criterionId": "projects-api",
+        "contractVersion": 1,
+        "kind": "deterministic",
+        "status": "passed",
+        "createdAt": "2026-10-20T23:23:06.336Z",
+        "command": [
+          "node",
+          "tests/acceptance.mjs",
+          "projects-api"
+        ],
+        "exitCode": 0,
+        "output": "PASS empty archive\nPASS create project with stable defaults\nPASS optimistic project edit\nPASS invalid names and missing revisions do not write\nPASS project archival survives restart\nPASS unknown project does not create a record\n{\"criterion\":\"projects-api\",\"result\":\"PASS\",\"groups\":6}\n",
+        "durationMs": 1345,
+        "stamp": {
+          "head": "d9cb9d910812e6a632d2765b205963466a47c16a",
+          "files": {
+            ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+            "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+            "README.md": "6c3119adcf1a4a81760553de43941f9a5abe329db9cf7b5eff57e77af8b51960",
+            "docs/guida.md": "61607a6c375a3f4132eebb3a3d39208e4a92ddf447d2733cd48368b1bfc084f2",
+            "docs/verifiche.md": "52511bc3053c576e6e65270a41ea914f4c1e44a18d3b7db82e3e5f256106e6be",
+            "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+            "public/index.html": "6fac8f98234b9a2861abc405819c28698f1dd9db91e145cde8956bbcffc79479",
+            "public/svolta.css": "f81904ebcf820f2f00c79464ff76642ab5255ae3af3899183957a915b43f646f",
+            "public/svolta.js": "426e33279a1739e4e43b488deff13b2b9817c1ea6436249a8f78f50bdeb64675",
+            "src/app.mjs": "4d368778a32ca98583d1c0e7e67015bd8f943039b52df577cfaca16b25522d7a",
+            "src/archive.mjs": "1f0dc4aea4cf6d55c122c65e3f111edef4798a48c610a515e175146575a22d03",
+            "src/dates.mjs": "befb2084c723419e957dd976a1e2f9ecd5b92b5c8d768158ba99ce452d794515",
+            "src/errors.mjs": "acbb23489da8c799787caf170d2ff70a9f26c875de462e287cfc911c856baa5f",
+            "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+            "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+            "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+            "src/summary.mjs": "a58abb9c5ef8a37c51f2e6cf434faf761ca5f552fdba000708c6cc61085502e8",
+            "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+            "src/time-entries.mjs": "5a4ff445656c9f15639159e253db1e99e97c010953ee7c2198db4441f0348ebf",
+            "src/week.mjs": "f533bdaed237f9b051608355d588f3b5147653c0d81143e7b5d7148a0dee2eeb",
+            "tests/acceptance.mjs": "ee4f811515605a5cbab795c9ad4e40777774006bad8fe350c54590e1836c3235",
+            "tests/browser.mjs": "fe87ad9b4d5feeae587e1d030403bcffe4d5e78a236dcd6f5f6b1c305edaba84",
+            "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+          },
+          "fingerprint": "17defd4dcff0883747c7d2aa4aa673621ee0c9a8020e81620fc4af7f5c8fc30d"
+        },
+        "scope": [],
+        "inputs": []
+      }
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "3c00ff92-10d5-41d3-8a82-4d553010da11",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 34,
+    "at": "2026-10-20T23:23:06.443Z",
+    "type": "verification.started",
+    "message": "Verifying: Attività, filtri e conflitti senza perdita di dati",
+    "data": {
+      "nodeId": "669034f1-17b5-4c23-b6f7-c05938498573",
+      "node": {
+        "id": "669034f1-17b5-4c23-b6f7-c05938498573",
+        "status": "PENDING",
+        "attempt": 2,
+        "files": [],
+        "evidenceIds": [],
+        "kind": "verification",
+        "role": "verifier",
+        "title": "Attività, filtri e conflitti senza perdita di dati",
+        "objective": "Run approved check: [\"node\",\"tests/acceptance.mjs\",\"tasks-api\"]",
+        "criterionId": "tasks-api",
+        "reason": "Acceptance requires runtime-owned evidence for the approved verification policy."
+      },
+      "edges": [
+        {
+          "id": "a73f08a3-057c-44ee-acaa-cdd766432ef6",
+          "source": "fcdbd644-1a87-4cd5-94e6-c1f9b501f435",
+          "target": "669034f1-17b5-4c23-b6f7-c05938498573",
+          "kind": "next"
+        }
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "6100e5b5-0175-4d1f-9a6a-1bccedfa9b60",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 35,
+    "at": "2026-10-20T23:23:07.837Z",
+    "type": "verification.passed",
+    "message": "Attività, filtri e conflitti senza perdita di dati: approved deterministic check satisfied on recorded inputs.",
+    "data": {
+      "nodeId": "669034f1-17b5-4c23-b6f7-c05938498573",
+      "evidence": {
+        "id": "baae52cf-7226-4160-b412-8c863433580a",
+        "nodeId": "669034f1-17b5-4c23-b6f7-c05938498573",
+        "criterionId": "tasks-api",
+        "contractVersion": 1,
+        "kind": "deterministic",
+        "status": "passed",
+        "createdAt": "2026-10-20T23:23:07.796Z",
+        "command": [
+          "node",
+          "tests/acceptance.mjs",
+          "tasks-api"
+        ],
+        "exitCode": 0,
+        "output": "PASS task defaults and exact fields\nPASS task edit, revision conflicts and combined filters\nPASS civil dates, invalid states and numeric validation\nPASS parallel stale writers cannot overwrite each other\nPASS archived projects disappear from general activity list\nPASS task persistence and malformed JSON\n{\"criterion\":\"tasks-api\",\"result\":\"PASS\",\"groups\":6}\n",
+        "durationMs": 1365,
+        "stamp": {
+          "head": "d9cb9d910812e6a632d2765b205963466a47c16a",
+          "files": {
+            ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+            "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+            "README.md": "6c3119adcf1a4a81760553de43941f9a5abe329db9cf7b5eff57e77af8b51960",
+            "docs/guida.md": "61607a6c375a3f4132eebb3a3d39208e4a92ddf447d2733cd48368b1bfc084f2",
+            "docs/verifiche.md": "52511bc3053c576e6e65270a41ea914f4c1e44a18d3b7db82e3e5f256106e6be",
+            "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+            "public/index.html": "6fac8f98234b9a2861abc405819c28698f1dd9db91e145cde8956bbcffc79479",
+            "public/svolta.css": "f81904ebcf820f2f00c79464ff76642ab5255ae3af3899183957a915b43f646f",
+            "public/svolta.js": "426e33279a1739e4e43b488deff13b2b9817c1ea6436249a8f78f50bdeb64675",
+            "src/app.mjs": "4d368778a32ca98583d1c0e7e67015bd8f943039b52df577cfaca16b25522d7a",
+            "src/archive.mjs": "1f0dc4aea4cf6d55c122c65e3f111edef4798a48c610a515e175146575a22d03",
+            "src/dates.mjs": "befb2084c723419e957dd976a1e2f9ecd5b92b5c8d768158ba99ce452d794515",
+            "src/errors.mjs": "acbb23489da8c799787caf170d2ff70a9f26c875de462e287cfc911c856baa5f",
+            "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+            "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+            "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+            "src/summary.mjs": "a58abb9c5ef8a37c51f2e6cf434faf761ca5f552fdba000708c6cc61085502e8",
+            "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+            "src/time-entries.mjs": "5a4ff445656c9f15639159e253db1e99e97c010953ee7c2198db4441f0348ebf",
+            "src/week.mjs": "f533bdaed237f9b051608355d588f3b5147653c0d81143e7b5d7148a0dee2eeb",
+            "tests/acceptance.mjs": "ee4f811515605a5cbab795c9ad4e40777774006bad8fe350c54590e1836c3235",
+            "tests/browser.mjs": "fe87ad9b4d5feeae587e1d030403bcffe4d5e78a236dcd6f5f6b1c305edaba84",
+            "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+          },
+          "fingerprint": "17defd4dcff0883747c7d2aa4aa673621ee0c9a8020e81620fc4af7f5c8fc30d"
+        },
+        "scope": [],
+        "inputs": []
+      }
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "7534dd15-45a8-4f94-a4ef-03d3670a0545",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 36,
+    "at": "2026-10-20T23:23:07.929Z",
+    "type": "verification.started",
+    "message": "Verifying: Interfaccia progetti e attività su desktop e mobile",
+    "data": {
+      "nodeId": "ec385023-eb90-4a0e-99cf-5735598c7823",
+      "node": {
+        "id": "ec385023-eb90-4a0e-99cf-5735598c7823",
+        "status": "PENDING",
+        "attempt": 2,
+        "files": [],
+        "evidenceIds": [],
+        "kind": "verification",
+        "role": "verifier",
+        "title": "Interfaccia progetti e attività su desktop e mobile",
+        "objective": "Run approved check: [\"node\",\"tests/acceptance.mjs\",\"board-ui\"]",
+        "criterionId": "board-ui",
+        "reason": "Acceptance requires runtime-owned evidence for the approved verification policy."
+      },
+      "edges": [
+        {
+          "id": "c07462ca-7626-4379-ac28-00b277e97e82",
+          "source": "d0c15913-3b72-4813-85ae-025a56f3796e",
+          "target": "ec385023-eb90-4a0e-99cf-5735598c7823",
+          "kind": "next"
+        }
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "f8c4d0cb-c5ae-4875-ba69-002ee814e59f",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 37,
+    "at": "2026-10-20T23:23:10.551Z",
+    "type": "verification.passed",
+    "message": "Interfaccia progetti e attività su desktop e mobile: approved deterministic check satisfied on recorded inputs.",
+    "data": {
+      "nodeId": "ec385023-eb90-4a0e-99cf-5735598c7823",
+      "evidence": {
+        "id": "e822bee2-e285-4dbf-b70f-eff14886d902",
+        "nodeId": "ec385023-eb90-4a0e-99cf-5735598c7823",
+        "criterionId": "board-ui",
+        "contractVersion": 1,
+        "kind": "deterministic",
+        "status": "passed",
+        "createdAt": "2026-10-20T23:23:10.516Z",
+        "command": [
+          "node",
+          "tests/acceptance.mjs",
+          "board-ui"
+        ],
+        "exitCode": 0,
+        "output": "PASS create a project and task through the actual interface\nPASS edit, filter and preserve the changed activity after reopening\nPASS concurrent interface edits cannot silently overwrite another tab\nPASS literal hostile text and mobile layout\n{\"criterion\":\"board-ui\",\"result\":\"PASS\",\"groups\":4}\n",
+        "durationMs": 2595,
+        "stamp": {
+          "head": "d9cb9d910812e6a632d2765b205963466a47c16a",
+          "files": {
+            ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+            "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+            "README.md": "6c3119adcf1a4a81760553de43941f9a5abe329db9cf7b5eff57e77af8b51960",
+            "docs/guida.md": "61607a6c375a3f4132eebb3a3d39208e4a92ddf447d2733cd48368b1bfc084f2",
+            "docs/verifiche.md": "52511bc3053c576e6e65270a41ea914f4c1e44a18d3b7db82e3e5f256106e6be",
+            "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+            "public/index.html": "6fac8f98234b9a2861abc405819c28698f1dd9db91e145cde8956bbcffc79479",
+            "public/svolta.css": "f81904ebcf820f2f00c79464ff76642ab5255ae3af3899183957a915b43f646f",
+            "public/svolta.js": "426e33279a1739e4e43b488deff13b2b9817c1ea6436249a8f78f50bdeb64675",
+            "src/app.mjs": "4d368778a32ca98583d1c0e7e67015bd8f943039b52df577cfaca16b25522d7a",
+            "src/archive.mjs": "1f0dc4aea4cf6d55c122c65e3f111edef4798a48c610a515e175146575a22d03",
+            "src/dates.mjs": "befb2084c723419e957dd976a1e2f9ecd5b92b5c8d768158ba99ce452d794515",
+            "src/errors.mjs": "acbb23489da8c799787caf170d2ff70a9f26c875de462e287cfc911c856baa5f",
+            "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+            "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+            "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+            "src/summary.mjs": "a58abb9c5ef8a37c51f2e6cf434faf761ca5f552fdba000708c6cc61085502e8",
+            "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+            "src/time-entries.mjs": "5a4ff445656c9f15639159e253db1e99e97c010953ee7c2198db4441f0348ebf",
+            "src/week.mjs": "f533bdaed237f9b051608355d588f3b5147653c0d81143e7b5d7148a0dee2eeb",
+            "tests/acceptance.mjs": "ee4f811515605a5cbab795c9ad4e40777774006bad8fe350c54590e1836c3235",
+            "tests/browser.mjs": "fe87ad9b4d5feeae587e1d030403bcffe4d5e78a236dcd6f5f6b1c305edaba84",
+            "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+          },
+          "fingerprint": "17defd4dcff0883747c7d2aa4aa673621ee0c9a8020e81620fc4af7f5c8fc30d"
+        },
+        "scope": [],
+        "inputs": []
+      }
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "de5b9da7-7e25-4e5d-b554-f5778129a0ab",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 38,
+    "at": "2026-10-20T23:23:10.674Z",
+    "type": "verification.started",
+    "message": "Verifying: Settimana civile, sessioni e riepilogo coerente",
+    "data": {
+      "nodeId": "21b95f9b-0f3c-4411-a61e-d11eb6282839",
+      "node": {
+        "id": "21b95f9b-0f3c-4411-a61e-d11eb6282839",
+        "status": "PENDING",
+        "attempt": 2,
+        "files": [],
+        "evidenceIds": [],
+        "kind": "verification",
+        "role": "verifier",
+        "title": "Settimana civile, sessioni e riepilogo coerente",
+        "objective": "Run approved check: [\"node\",\"tests/acceptance.mjs\",\"planning-api\"]",
+        "criterionId": "planning-api",
+        "reason": "Acceptance requires runtime-owned evidence for the approved verification policy."
+      },
+      "edges": [
+        {
+          "id": "00e0b29f-edb6-498f-95b5-0e12a35ed642",
+          "source": "012b48b2-8db7-4436-a9b5-d3894ad3c408",
+          "target": "21b95f9b-0f3c-4411-a61e-d11eb6282839",
+          "kind": "next"
+        }
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "f2c742ff-6142-4666-b226-eb51f733f6a8",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 39,
+    "at": "2026-10-20T23:23:12.073Z",
+    "type": "verification.passed",
+    "message": "Settimana civile, sessioni e riepilogo coerente: approved deterministic check satisfied on recorded inputs.",
+    "data": {
+      "nodeId": "21b95f9b-0f3c-4411-a61e-d11eb6282839",
+      "evidence": {
+        "id": "1065d21b-6b6d-4bb2-ac36-1e7177cfb9ba",
+        "nodeId": "21b95f9b-0f3c-4411-a61e-d11eb6282839",
+        "criterionId": "planning-api",
+        "contractVersion": 1,
+        "kind": "deterministic",
+        "status": "passed",
+        "createdAt": "2026-10-20T23:23:12.037Z",
+        "command": [
+          "node",
+          "tests/acceptance.mjs",
+          "planning-api"
+        ],
+        "exitCode": 0,
+        "output": "PASS civil seven-day plan and unscheduled work\nPASS Monday and impossible-date rejection\nPASS time records preserve links and task status\nPASS weekly time and full-archive task counts are distinguished\nPASS invalid time entries do not write\nPASS deleting one session updates totals without deleting others\nPASS archiving a task preserves history and restart\n{\"criterion\":\"planning-api\",\"result\":\"PASS\",\"groups\":7}\n",
+        "durationMs": 1372,
+        "stamp": {
+          "head": "d9cb9d910812e6a632d2765b205963466a47c16a",
+          "files": {
+            ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+            "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+            "README.md": "6c3119adcf1a4a81760553de43941f9a5abe329db9cf7b5eff57e77af8b51960",
+            "docs/guida.md": "61607a6c375a3f4132eebb3a3d39208e4a92ddf447d2733cd48368b1bfc084f2",
+            "docs/verifiche.md": "52511bc3053c576e6e65270a41ea914f4c1e44a18d3b7db82e3e5f256106e6be",
+            "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+            "public/index.html": "6fac8f98234b9a2861abc405819c28698f1dd9db91e145cde8956bbcffc79479",
+            "public/svolta.css": "f81904ebcf820f2f00c79464ff76642ab5255ae3af3899183957a915b43f646f",
+            "public/svolta.js": "426e33279a1739e4e43b488deff13b2b9817c1ea6436249a8f78f50bdeb64675",
+            "src/app.mjs": "4d368778a32ca98583d1c0e7e67015bd8f943039b52df577cfaca16b25522d7a",
+            "src/archive.mjs": "1f0dc4aea4cf6d55c122c65e3f111edef4798a48c610a515e175146575a22d03",
+            "src/dates.mjs": "befb2084c723419e957dd976a1e2f9ecd5b92b5c8d768158ba99ce452d794515",
+            "src/errors.mjs": "acbb23489da8c799787caf170d2ff70a9f26c875de462e287cfc911c856baa5f",
+            "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+            "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+            "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+            "src/summary.mjs": "a58abb9c5ef8a37c51f2e6cf434faf761ca5f552fdba000708c6cc61085502e8",
+            "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+            "src/time-entries.mjs": "5a4ff445656c9f15639159e253db1e99e97c010953ee7c2198db4441f0348ebf",
+            "src/week.mjs": "f533bdaed237f9b051608355d588f3b5147653c0d81143e7b5d7148a0dee2eeb",
+            "tests/acceptance.mjs": "ee4f811515605a5cbab795c9ad4e40777774006bad8fe350c54590e1836c3235",
+            "tests/browser.mjs": "fe87ad9b4d5feeae587e1d030403bcffe4d5e78a236dcd6f5f6b1c305edaba84",
+            "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+          },
+          "fingerprint": "17defd4dcff0883747c7d2aa4aa673621ee0c9a8020e81620fc4af7f5c8fc30d"
+        },
+        "scope": [],
+        "inputs": []
+      }
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "3de9ccfb-2c2f-44ab-846c-17f98532fe58",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 40,
+    "at": "2026-10-20T23:23:12.225Z",
+    "type": "verification.started",
+    "message": "Verifying: Pianificazione e tempo dal browser",
+    "data": {
+      "nodeId": "4f1862ce-9874-4789-a5d4-b091bb35d8f4",
+      "node": {
+        "id": "4f1862ce-9874-4789-a5d4-b091bb35d8f4",
+        "status": "PENDING",
+        "attempt": 2,
+        "files": [],
+        "evidenceIds": [],
+        "kind": "verification",
+        "role": "verifier",
+        "title": "Pianificazione e tempo dal browser",
+        "objective": "Run approved check: [\"node\",\"tests/acceptance.mjs\",\"planning-ui\"]",
+        "criterionId": "planning-ui",
+        "reason": "Acceptance requires runtime-owned evidence for the approved verification policy."
+      },
+      "edges": [
+        {
+          "id": "56f23098-56f4-49ea-b6cb-f29ae0d77e8f",
+          "source": "a4578e95-e8c4-44e5-b95f-b033661d002a",
+          "target": "4f1862ce-9874-4789-a5d4-b091bb35d8f4",
+          "kind": "next"
+        }
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "64a4f486-8b6e-4b4c-88e0-3b92a4b482e4",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 41,
+    "at": "2026-10-20T23:23:14.507Z",
+    "type": "verification.passed",
+    "message": "Pianificazione e tempo dal browser: approved deterministic check satisfied on recorded inputs.",
+    "data": {
+      "nodeId": "4f1862ce-9874-4789-a5d4-b091bb35d8f4",
+      "evidence": {
+        "id": "e2fafac5-859e-4a51-877b-8def02d67b1b",
+        "nodeId": "4f1862ce-9874-4789-a5d4-b091bb35d8f4",
+        "criterionId": "planning-ui",
+        "contractVersion": 1,
+        "kind": "deterministic",
+        "status": "passed",
+        "createdAt": "2026-10-20T23:23:14.473Z",
+        "command": [
+          "node",
+          "tests/acceptance.mjs",
+          "planning-ui"
+        ],
+        "exitCode": 0,
+        "output": "PASS reschedule a task and see it in its actual weekly day\nPASS time entry changes the real week summary\nPASS weekly mobile layout and persisted sessions\n{\"criterion\":\"planning-ui\",\"result\":\"PASS\",\"groups\":3}\n",
+        "durationMs": 2247,
+        "stamp": {
+          "head": "d9cb9d910812e6a632d2765b205963466a47c16a",
+          "files": {
+            ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+            "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+            "README.md": "6c3119adcf1a4a81760553de43941f9a5abe329db9cf7b5eff57e77af8b51960",
+            "docs/guida.md": "61607a6c375a3f4132eebb3a3d39208e4a92ddf447d2733cd48368b1bfc084f2",
+            "docs/verifiche.md": "52511bc3053c576e6e65270a41ea914f4c1e44a18d3b7db82e3e5f256106e6be",
+            "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+            "public/index.html": "6fac8f98234b9a2861abc405819c28698f1dd9db91e145cde8956bbcffc79479",
+            "public/svolta.css": "f81904ebcf820f2f00c79464ff76642ab5255ae3af3899183957a915b43f646f",
+            "public/svolta.js": "426e33279a1739e4e43b488deff13b2b9817c1ea6436249a8f78f50bdeb64675",
+            "src/app.mjs": "4d368778a32ca98583d1c0e7e67015bd8f943039b52df577cfaca16b25522d7a",
+            "src/archive.mjs": "1f0dc4aea4cf6d55c122c65e3f111edef4798a48c610a515e175146575a22d03",
+            "src/dates.mjs": "befb2084c723419e957dd976a1e2f9ecd5b92b5c8d768158ba99ce452d794515",
+            "src/errors.mjs": "acbb23489da8c799787caf170d2ff70a9f26c875de462e287cfc911c856baa5f",
+            "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+            "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+            "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+            "src/summary.mjs": "a58abb9c5ef8a37c51f2e6cf434faf761ca5f552fdba000708c6cc61085502e8",
+            "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+            "src/time-entries.mjs": "5a4ff445656c9f15639159e253db1e99e97c010953ee7c2198db4441f0348ebf",
+            "src/week.mjs": "f533bdaed237f9b051608355d588f3b5147653c0d81143e7b5d7148a0dee2eeb",
+            "tests/acceptance.mjs": "ee4f811515605a5cbab795c9ad4e40777774006bad8fe350c54590e1836c3235",
+            "tests/browser.mjs": "fe87ad9b4d5feeae587e1d030403bcffe4d5e78a236dcd6f5f6b1c305edaba84",
+            "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+          },
+          "fingerprint": "17defd4dcff0883747c7d2aa4aa673621ee0c9a8020e81620fc4af7f5c8fc30d"
+        },
+        "scope": [],
+        "inputs": []
+      }
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "1c259e08-f3c1-487d-b1c0-489e79d5a486",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 42,
+    "at": "2026-10-20T23:23:14.724Z",
+    "type": "task.planned",
+    "message": "Review the project against its goal",
+    "data": {
+      "node": {
+        "id": "1fa45b7f-3b59-48df-a6a7-521080c9980b",
+        "status": "PENDING",
+        "attempt": 1,
+        "files": [],
+        "evidenceIds": [],
+        "kind": "decision",
+        "role": "planner",
+        "title": "Review the project against its goal",
+        "objective": "{\"head\":\"d9cb9d910812e6a632d2765b205963466a47c16a\",\"fingerprint\":\"17defd4dcff0883747c7d2aa4aa673621ee0c9a8020e81620fc4af7f5c8fc30d\",\"version\":1,\"noteIds\":[\"1fd3f030-c625-4d8b-9be4-10d67fe2516d\"],\"directionRevision\":1,\"round\":1}",
+        "reason": "A verified milestone triggers autonomous discovery of the next useful work.",
+        "criterionId": "projects-api"
+      }
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "ae0b1fda-e72a-4831-bd65-0ecb9727b9ab",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 43,
+    "at": "2026-10-20T23:23:14.734Z",
+    "type": "task.started",
+    "message": "planner: Review the project against its goal",
+    "data": {
+      "nodeId": "1fa45b7f-3b59-48df-a6a7-521080c9980b",
+      "edges": [
+        {
+          "id": "4934fb03-a7f0-4251-bc40-94bae42ed5e7",
+          "source": "4f1862ce-9874-4789-a5d4-b091bb35d8f4",
+          "target": "1fa45b7f-3b59-48df-a6a7-521080c9980b",
+          "kind": "next"
+        }
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "faa8af4c-4150-4536-910e-e85b89a8502c",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 44,
+    "at": "2026-10-20T23:23:15.374Z",
+    "type": "agent.thread",
+    "message": "Codex session recorded for recovery.",
+    "data": {
+      "nodeId": "1fa45b7f-3b59-48df-a6a7-521080c9980b",
+      "threadId": "01a15ba0-4e91-7ae3-aa42-96cff53108d9"
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "03e64b6c-5e00-4ba4-b858-035389cbecfc",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 45,
+    "at": "2026-10-20T23:24:48.742Z",
+    "type": "agent.usage",
+    "message": "712323 tokens reported by provider.",
+    "data": {
+      "tokens": 712323
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "3f772598-4080-41c9-85aa-1a9f1988b796",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 46,
+    "at": "2026-10-20T23:24:49.155Z",
+    "type": "project.review.rejected",
+    "message": "Project review rejected: Project findings must reference actual recorded files and known evidence",
+    "data": {
+      "nodeId": "1fa45b7f-3b59-48df-a6a7-521080c9980b",
+      "proposal": {
+        "outcome": "ready",
+        "summary": "Esito weekly-work pronto alla revisione: cinque ricevute correnti passed, 26 gruppi complessivi. L’ispezione non rileva lacune concrete residue nel perimetro delegato.",
+        "findings": [
+          {
+            "id": "iterfox-injected-ref",
+            "gap": "Injected wire corruption: this path deliberately does not exist in the source snapshot.",
+            "files": [
+              "__iterfox_injected_missing_reference__.md"
+            ],
+            "evidenceIds": []
+          }
+        ],
+        "decisions": [
+          {
+            "choice": "Usare esclusivamente le cinque ricevute correnti come prova dei controlli host.",
+            "basis": "projects-api: 3c82b042-9f7c-4207-8427-fb9c3406ce17; tasks-api: baae52cf-7226-4160-b412-8c863433580a; board-ui: e822bee2-e285-4dbf-b70f-eff14886d902; planning-api: 1065d21b-6b6d-4bb2-ac36-1e7177cfb9ba; planning-ui: e2fafac5-859e-4a51-877b-8def02d67b1b. Le ricevute stale restano storiche."
+          },
+          {
+            "choice": "Preservare il candidato senza ulteriori modifiche.",
+            "basis": "Esaminati src, public, README.md, docs/guida.md e docs/verifiche.md: percorso completo, conflitti, cronologia e riepilogo coerenti con la delega. Diff limitato ai tre documenti, controllo diff superato e 22 collegamenti locali riscontrati. Nessun browser avviato né PNG disponibile; gli esiti UI provengono dalle ricevute host."
+          },
+          {
+            "choice": "Lasciare backup e consegna al successivo esito host.",
+            "basis": "La delega corrente li riserva esplicitamente alla fase successiva. public/index.html, README.md e docs/guida.md dichiarano coerentemente il backup ancora indisponibile."
+          }
+        ],
+        "tasks": [],
+        "operatorQuestion": ""
+      },
+      "stamp": {
+        "head": "d9cb9d910812e6a632d2765b205963466a47c16a",
+        "files": {
+          ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+          "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+          "README.md": "6c3119adcf1a4a81760553de43941f9a5abe329db9cf7b5eff57e77af8b51960",
+          "docs/guida.md": "61607a6c375a3f4132eebb3a3d39208e4a92ddf447d2733cd48368b1bfc084f2",
+          "docs/verifiche.md": "52511bc3053c576e6e65270a41ea914f4c1e44a18d3b7db82e3e5f256106e6be",
+          "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+          "public/index.html": "6fac8f98234b9a2861abc405819c28698f1dd9db91e145cde8956bbcffc79479",
+          "public/svolta.css": "f81904ebcf820f2f00c79464ff76642ab5255ae3af3899183957a915b43f646f",
+          "public/svolta.js": "426e33279a1739e4e43b488deff13b2b9817c1ea6436249a8f78f50bdeb64675",
+          "src/app.mjs": "4d368778a32ca98583d1c0e7e67015bd8f943039b52df577cfaca16b25522d7a",
+          "src/archive.mjs": "1f0dc4aea4cf6d55c122c65e3f111edef4798a48c610a515e175146575a22d03",
+          "src/dates.mjs": "befb2084c723419e957dd976a1e2f9ecd5b92b5c8d768158ba99ce452d794515",
+          "src/errors.mjs": "acbb23489da8c799787caf170d2ff70a9f26c875de462e287cfc911c856baa5f",
+          "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+          "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+          "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+          "src/summary.mjs": "a58abb9c5ef8a37c51f2e6cf434faf761ca5f552fdba000708c6cc61085502e8",
+          "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+          "src/time-entries.mjs": "5a4ff445656c9f15639159e253db1e99e97c010953ee7c2198db4441f0348ebf",
+          "src/week.mjs": "f533bdaed237f9b051608355d588f3b5147653c0d81143e7b5d7148a0dee2eeb",
+          "tests/acceptance.mjs": "ee4f811515605a5cbab795c9ad4e40777774006bad8fe350c54590e1836c3235",
+          "tests/browser.mjs": "fe87ad9b4d5feeae587e1d030403bcffe4d5e78a236dcd6f5f6b1c305edaba84",
+          "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+        },
+        "fingerprint": "17defd4dcff0883747c7d2aa4aa673621ee0c9a8020e81620fc4af7f5c8fc30d"
+      },
+      "noteIds": [
+        "1fd3f030-c625-4d8b-9be4-10d67fe2516d"
+      ],
+      "directionRevision": 1,
+      "reason": "Project findings must reference actual recorded files and known evidence"
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "2fc242a1-8a30-4ea4-b627-a30ceb5bd91f",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 47,
+    "at": "2026-10-20T23:24:49.525Z",
+    "type": "task.planned",
+    "message": "Review the project against its goal",
+    "data": {
+      "node": {
+        "id": "6a1fdea3-fd4b-4709-8bff-e66be393c3ee",
+        "status": "PENDING",
+        "attempt": 2,
+        "files": [],
+        "evidenceIds": [],
+        "kind": "decision",
+        "role": "planner",
+        "title": "Review the project against its goal",
+        "objective": "{\"head\":\"d9cb9d910812e6a632d2765b205963466a47c16a\",\"fingerprint\":\"17defd4dcff0883747c7d2aa4aa673621ee0c9a8020e81620fc4af7f5c8fc30d\",\"version\":1,\"noteIds\":[\"1fd3f030-c625-4d8b-9be4-10d67fe2516d\"],\"directionRevision\":1,\"round\":1}",
+        "reason": "A verified milestone triggers autonomous discovery of the next useful work.",
+        "criterionId": "projects-api"
+      }
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "2a2facd8-df7b-4a27-9ff7-56a9be84ca14",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 48,
+    "at": "2026-10-20T23:24:49.537Z",
+    "type": "task.started",
+    "message": "planner: Review the project against its goal",
+    "data": {
+      "nodeId": "6a1fdea3-fd4b-4709-8bff-e66be393c3ee",
+      "edges": [
+        {
+          "id": "d7a0ec53-fc00-40f2-8938-eebda2415643",
+          "source": "1fa45b7f-3b59-48df-a6a7-521080c9980b",
+          "target": "6a1fdea3-fd4b-4709-8bff-e66be393c3ee",
+          "kind": "next"
+        }
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "527f59e2-014e-43f3-a71f-df2aa7825339",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 49,
+    "at": "2026-10-20T23:24:50.071Z",
+    "type": "agent.thread",
+    "message": "Codex session recorded for recovery.",
+    "data": {
+      "nodeId": "6a1fdea3-fd4b-4709-8bff-e66be393c3ee",
+      "threadId": "01a15ba1-c0b8-7a40-b5bb-0030fc399788"
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "128b610b-a3e2-4d98-9dbc-de41f5ab508e",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 50,
+    "at": "2026-10-20T23:36:49.667Z",
+    "type": "agent.interrupted",
+    "message": "turn-timeout: The operation was aborted due to timeout",
+    "data": {
+      "nodeId": "6a1fdea3-fd4b-4709-8bff-e66be393c3ee",
+      "cause": "turn-timeout",
+      "quiesced": true
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "f2cbdf32-3281-4cef-a52a-3eba877687ca",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 51,
+    "at": "2026-10-20T23:36:50.062Z",
+    "type": "agent.retry.started",
+    "message": "Automatic technical recovery 1/2; previous process group joined, worktree audited, original limits retained.",
+    "data": {
+      "nodeId": "6a1fdea3-fd4b-4709-8bff-e66be393c3ee"
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "f38eb229-09c2-4f1a-8dfd-a19dc92689bc",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 52,
+    "at": "2026-10-20T23:36:50.791Z",
+    "type": "agent.thread",
+    "message": "Codex session recorded for recovery.",
+    "data": {
+      "nodeId": "6a1fdea3-fd4b-4709-8bff-e66be393c3ee",
+      "threadId": "01a15ba1-c0b8-7a40-b5bb-0030fc399788"
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "28c7240f-2cd2-4283-be26-16dab1bba0a9",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 53,
+    "at": "2026-10-20T23:37:11.624Z",
+    "type": "agent.usage",
+    "message": "780134 tokens reported by provider.",
+    "data": {
+      "tokens": 780134
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "553ffe02-b21e-4574-9b87-2a8d076a2ef9",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 54,
+    "at": "2026-10-20T23:37:12.173Z",
+    "type": "task.completed",
+    "message": "Le cinque ricevute correnti risultano passed. Resta da aggiornare la documentazione della verifica r4; dall’ispezione dei sorgenti non emergono ulteriori lacune concrete nell’esito delegato.",
+    "data": {
+      "nodeId": "6a1fdea3-fd4b-4709-8bff-e66be393c3ee",
+      "summary": "Le cinque ricevute correnti risultano passed. Resta da aggiornare la documentazione della verifica r4; dall’ispezione dei sorgenti non emergono ulteriori lacune concrete nell’esito delegato.",
+      "result": {
+        "proposal": {
+          "outcome": "continue",
+          "summary": "Le cinque ricevute correnti risultano passed. Resta da aggiornare la documentazione della verifica r4; dall’ispezione dei sorgenti non emergono ulteriori lacune concrete nell’esito delegato.",
+          "findings": [
+            {
+              "id": "r4-verification-record",
+              "gap": "Le sezioni attuali dichiarano ancora assenti le ricevute host r4 e presentano le verifiche come richieste. Il registro «Missione r4: stato corrente» non documenta i cinque PASS ora forniti dal runtime, lasciando incompleta la tracciabilità della ricertificazione.",
+              "files": [
+                "README.md",
+                "docs/guida.md",
+                "docs/verifiche.md"
+              ],
+              "evidenceIds": [
+                "3c82b042-9f7c-4207-8427-fb9c3406ce17",
+                "baae52cf-7226-4160-b412-8c863433580a",
+                "e822bee2-e285-4dbf-b70f-eff14886d902",
+                "1065d21b-6b6d-4bb2-ac36-1e7177cfb9ba",
+                "e2fafac5-859e-4a51-877b-8def02d67b1b"
+              ]
+            }
+          ],
+          "decisions": [
+            {
+              "choice": "Preservare codice e scelte visuali.",
+              "basis": "Le ricevute correnti coprono tutti i cinque criteri; la lettura dei flussi non giustifica modifiche funzionali. Questa revisione non ha eseguito server o browser."
+            },
+            {
+              "choice": "Lasciare backup e consegna al successivo esito host.",
+              "basis": "La delega weekly-work li riserva esplicitamente al risultato successivo; la loro indisponibilità è dichiarata nell’interfaccia e nella guida."
+            }
+          ],
+          "tasks": [
+            {
+              "title": "Registrare le cinque ricevute correnti r4",
+              "objective": "Aggiornare esclusivamente README.md, docs/guida.md e docs/verifiche.md: registrare nel riepilogo r4 comando, ID completo, risultato PASS e gruppi 6/6/4/7/3 delle ricevute citate; allineare le dichiarazioni di verifiche ancora assenti e descrivere la copertura osservata senza estenderla. Conservare separati storico e controlli locali, senza inventare date, impronte o checkpoint certificati. Qualificare lo stato delle ricevute come fotografia del runtime fornito.",
+              "criterionId": "planning-ui",
+              "findingIds": [
+                "r4-verification-record"
+              ],
+              "waitsFor": []
+            }
+          ],
+          "operatorQuestion": ""
+        },
+        "stamp": {
+          "head": "d9cb9d910812e6a632d2765b205963466a47c16a",
+          "files": {
+            ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+            "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+            "README.md": "6c3119adcf1a4a81760553de43941f9a5abe329db9cf7b5eff57e77af8b51960",
+            "docs/guida.md": "61607a6c375a3f4132eebb3a3d39208e4a92ddf447d2733cd48368b1bfc084f2",
+            "docs/verifiche.md": "52511bc3053c576e6e65270a41ea914f4c1e44a18d3b7db82e3e5f256106e6be",
+            "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+            "public/index.html": "6fac8f98234b9a2861abc405819c28698f1dd9db91e145cde8956bbcffc79479",
+            "public/svolta.css": "f81904ebcf820f2f00c79464ff76642ab5255ae3af3899183957a915b43f646f",
+            "public/svolta.js": "426e33279a1739e4e43b488deff13b2b9817c1ea6436249a8f78f50bdeb64675",
+            "src/app.mjs": "4d368778a32ca98583d1c0e7e67015bd8f943039b52df577cfaca16b25522d7a",
+            "src/archive.mjs": "1f0dc4aea4cf6d55c122c65e3f111edef4798a48c610a515e175146575a22d03",
+            "src/dates.mjs": "befb2084c723419e957dd976a1e2f9ecd5b92b5c8d768158ba99ce452d794515",
+            "src/errors.mjs": "acbb23489da8c799787caf170d2ff70a9f26c875de462e287cfc911c856baa5f",
+            "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+            "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+            "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+            "src/summary.mjs": "a58abb9c5ef8a37c51f2e6cf434faf761ca5f552fdba000708c6cc61085502e8",
+            "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+            "src/time-entries.mjs": "5a4ff445656c9f15639159e253db1e99e97c010953ee7c2198db4441f0348ebf",
+            "src/week.mjs": "f533bdaed237f9b051608355d588f3b5147653c0d81143e7b5d7148a0dee2eeb",
+            "tests/acceptance.mjs": "ee4f811515605a5cbab795c9ad4e40777774006bad8fe350c54590e1836c3235",
+            "tests/browser.mjs": "fe87ad9b4d5feeae587e1d030403bcffe4d5e78a236dcd6f5f6b1c305edaba84",
+            "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+          },
+          "fingerprint": "17defd4dcff0883747c7d2aa4aa673621ee0c9a8020e81620fc4af7f5c8fc30d"
+        },
+        "noteIds": [
+          "1fd3f030-c625-4d8b-9be4-10d67fe2516d"
+        ],
+        "directionRevision": 1
+      }
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "beeccf35-ff01-4adc-977f-bcd099031784",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 55,
+    "at": "2026-10-20T23:37:12.183Z",
+    "type": "project.reviewed",
+    "message": "Project supervisor discovered 1 next implementation unit(s) from the result.",
+    "data": {
+      "nodeId": "6a1fdea3-fd4b-4709-8bff-e66be393c3ee"
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "7e9f1361-7873-468d-bd11-31610cad739e",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 56,
+    "at": "2026-10-20T23:37:12.408Z",
+    "type": "task.started",
+    "message": "builder: Registrare le cinque ricevute correnti r4",
+    "data": {
+      "nodeId": "discovered-6a1fdea3-fd4b-4709-8bff-e66be393c3ee-0",
+      "edges": [
+        {
+          "id": "301a88bf-99f0-4f00-9767-58bfcdbb3b64",
+          "source": "6a1fdea3-fd4b-4709-8bff-e66be393c3ee",
+          "target": "discovered-6a1fdea3-fd4b-4709-8bff-e66be393c3ee-0",
+          "kind": "next"
+        }
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "7f95ab76-bc43-45d6-a530-3a94cdede333",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 57,
+    "at": "2026-10-20T23:37:13.030Z",
+    "type": "agent.thread",
+    "message": "Codex session recorded for recovery.",
+    "data": {
+      "nodeId": "discovered-6a1fdea3-fd4b-4709-8bff-e66be393c3ee-0",
+      "threadId": "01a15bad-169f-7643-92c2-bf8d89fadc88"
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "5b8d5de0-ffd2-484c-90d1-f2ab5f8a26cd",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 58,
+    "at": "2026-10-20T23:39:39.906Z",
+    "type": "agent.usage",
+    "message": "580221 tokens reported by provider.",
+    "data": {
+      "tokens": 580221
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "e4f619fa-00f4-44e8-a078-e57fe5e05ed3",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 59,
+    "at": "2026-10-20T23:39:40.420Z",
+    "type": "code.changed",
+    "message": "3 files changed by this activity.",
+    "data": {
+      "nodeId": "discovered-6a1fdea3-fd4b-4709-8bff-e66be393c3ee-0",
+      "files": [
+        "README.md",
+        "docs/guida.md",
+        "docs/verifiche.md"
+      ],
+      "diff": "diff --git a/README.md b/README.md\nindex f9b8b07..e2ac7d7 100644\n--- a/README.md\n+++ b/README.md\n@@ -16,11 +16,12 @@ conflitti. Il contratto completo, incluse le funzioni successive ancora\n indisponibili, è in [BRIEF.md](BRIEF.md). La descrizione del codice qui presente\n è distinta dalle [evidenze di verifica](docs/verifiche.md).\n \n-Questa missione `long-svolta-20261020-r3` continua dal candidato interrotto,\n-copiato senza certificazione. Le ricevute della prova precedente, riportate\n-sotto e nel registro, sono soltanto storiche. Al momento di questo aggiornamento\n-non sono state fornite nuove ricevute host per nessuno dei cinque criteri della\n-missione r3; la descrizione dell’implementazione non ne attesta il collaudo.\n+Questa missione `long-svolta-20261020-r4` prosegue dal candidato esistente,\n+senza un checkpoint certificato per la missione corrente. Il runtime fornito\n+riporta cinque ricevute host r4 con risultato **PASS**, registrate nello\n+[stato delle verifiche](#stato-delle-verifiche). Lo stato delle ricevute è una\n+fotografia del runtime fornito, limitata alle rispettive esecuzioni. Le prove\n+precedenti restano storiche e i controlli locali dichiarati restano separati.\n \n ## Avvio\n \n@@ -171,8 +172,9 @@ manualmente il file durante l’esecuzione.\n | Backup | **Non ancora disponibile**: nessun download, importazione o ripristino portabile. |\n \n Piano settimanale, sessioni e riepilogo sono disponibili nelle API. Il percorso\n-progetti → settimana → tempo è utilizzabile nel browser; la stima da sola non\n-registra tempo. **Riepilogo** usa `/api/summary` per i conteggi e il tempo della\n+progetti → attività → settimana → sessioni → riepilogo è implementato nel browser;\n+la stima da sola non registra tempo. **Riepilogo** usa `/api/summary` per i\n+conteggi e il tempo della\n settimana scelta. Il totale comprende anche il tempo di attività e progetti\n archiviati; i progetti senza minuti restano elencati con zero. Per una sessione\n la cui attività non è negli elenchi caricati, la cronologia mostra l’ID al posto\n@@ -183,6 +185,7 @@ Tornare nella sezione o nella scheda/finestra rilegge l’ultima data richiesta,\n conservando una nuova data ancora in bozza. Non c’è sincronizzazione continua.\n \n **Backup** mostra esplicitamente l’indisponibilità di esportazione e ripristino.\n+Backup e consegna restano al successivo esito delegato dal supervisore host.\n Non ci sono recupero automatico, migrazioni da altri formati o recupero persistente\n delle bozze. Il file interno `archive.json` non è il backup portabile previsto\n dal contratto: questa versione non offre una procedura di esportazione/ripristino.\n@@ -385,16 +388,50 @@ Gli errori hanno forma `{\"error\":\"Messaggio in italiano\",\"code\":\"CODICE\"}`:\n \n ## Stato delle verifiche\n \n-Per la missione r3 non è disponibile una nuova ricevuta host. I controlli locali\n-e i loro limiti sono riportati nel [registro](docs/verifiche.md).\n-Layout a 390px, flussi completi di Settimana, sessioni e Riepilogo e focus nativo\n-richiedono osservazione nel browser host; non sono attestati dalle ricevute storiche.\n+Per la missione `long-svolta-20261020-r4`, run `20261020T231956-19cf8a63`,\n+contratto v1, il runtime fornito riporta queste cinque ricevute con stato\n+`passed`, risultato **PASS** e codice di uscita 0:\n+\n+| Comando host | ID ricevuta completo | Risultato | Gruppi |\n+| --- | --- | --- | --- |\n+| `node tests/acceptance.mjs projects-api` | `3c82b042-9f7c-4207-8427-fb9c3406ce17` | PASS | 6 |\n+| `node tests/acceptance.mjs tasks-api` | `baae52cf-7226-4160-b412-8c863433580a` | PASS | 6 |\n+| `node tests/acceptance.mjs board-ui` | `e822bee2-e285-4dbf-b70f-eff14886d902` | PASS | 4 |\n+| `node tests/acceptance.mjs planning-api` | `1065d21b-6b6d-4bb2-ac36-1e7177cfb9ba` | PASS | 7 |\n+| `node tests/acceptance.mjs planning-ui` | `e2fafac5-859e-4a51-877b-8def02d67b1b` | PASS | 3 |\n+\n+La copertura osservata comprende:\n+\n+- **Progetti e attività:** valori iniziali, revisioni e conflitti, validazione,\n+  filtri combinati, scritture concorrenti, archiviazione e persistenza al riavvio.\n+- **Interfaccia attività:** creazione, modifica e filtri con riapertura,\n+  conflitto tra due schede con nota locale conservata, testo HTML letterale e\n+  assenza di scorrimento orizzontale a 390px nella vista esercitata.\n+- **Settimana e sessioni API:** sette giorni civili e attività senza scadenza,\n+  rifiuto di inizi non validi, legami delle sessioni e stato dell’attività,\n+  conteggi globali distinti dai minuti settimanali, validazione, eliminazione\n+  di una sessione e cronologia conservata dopo archiviazione e riavvio.\n+- **Pianificazione nel browser:** spostamento di una scadenza nel giorno\n+  corretto, registrazione di 25 minuti riscontrata nel riepilogo e nell’API,\n+  settimana senza scorrimento orizzontale a 390px e sessione ancora presente\n+  nell’API dopo ricaricamento della pagina.\n+\n+Questa è una fotografia del runtime fornito: il PASS riguarda la singola\n+esecuzione e lo stato può cambiare dopo modifiche anche documentali. Per la\n+validità successiva rispetto al worktree consultare il runtime. Non si attesta\n+un checkpoint certificato né si attribuiscono nuove date o impronte a questa patch.\n+La copertura dettagliata, i controlli documentali di questo task, i controlli\n+locali dichiarati in precedenza e le ricevute storiche sono distinti nel\n+[registro r4](docs/verifiche.md#missione-r4-stato-corrente). I controlli UI non\n+esauriscono i flussi, la risoluzione dei conflitti per campo, il focus nativo,\n+l’intero layout o l’accessibilità con lettori di schermo. Backup e ripristino\n+restano al successivo esito.\n \n ### Ricevute storiche della missione r2\n \n Questa è una fotografia storica alla redazione per la missione `long-svolta-20261020-r2`,\n-run `20261020T220700-5ec53331`, contratto v1. Il contesto operativo segnala le\n-seguenti ricevute come `passed`, con risultato **PASS**:\n+run `20261020T220700-5ec53331`, contratto v1. La documentazione ereditata riportava\n+le seguenti ricevute come `passed`, con risultato **PASS**:\n \n | Comando host | ID ricevuta (prefisso disponibile) | Esito registrato | Gruppi |\n | --- | --- | --- | --- |\n@@ -419,7 +456,9 @@ Per queste ricevute storiche sono disponibili solo i prefissi degli ID, i comand\n gli esiti e i conteggi dei gruppi. Date, stamp e output conservati nel\n [registro delle evidenze](docs/verifiche.md#fotografia-delle-evidenze-alla-redazione)\n appartengono alle ricevute precedenti `f60e43e0…`, `d3604e71…` e `98c0ea1d…`,\n-segnalate come `stale` alla redazione, e non vengono attribuiti alle nuove.\n+segnalate come `stale` alla redazione storica, e non vengono attribuiti alle\n+ricevute con il solo prefisso né alla missione r4. Le ricevute originali non sono\n+file presenti nel worktree: questi dati sono resoconti ereditati.\n \n Il risultato PASS documenta la singola esecuzione; lo stato runtime può cambiare\n dopo modifiche agli input, anche documentali. Per lo stato rispetto al worktree\n@@ -427,15 +466,15 @@ successivo occorre consultare il runtime: questa pagina non lo aggiorna in tempo\n reale e non certifica una nuova revisione o impronta dei documenti modificati.\n \n I PASS API della prova originale e l’audit UI separato rimangono nel registro\n-come contesto. Per l’API Settimana sono stati eseguiti controlli mirati delle date\n-in quattro fusi e del gestore richieste in memoria, oltre a sintassi e diff;\n+come contesto. Il registro ereditato dichiara per l’API Settimana controlli mirati\n+delle date in quattro fusi e del gestore richieste in memoria, oltre a sintassi e diff;\n non sono stati avviati server o browser né eseguite suite complete. Questi\n controlli non dimostrano il funzionamento HTTP o una certificazione host.\n-Per sessioni e riepilogo sono passati controlli locali mirati su archivio\n+Per sessioni e riepilogo riferisce controlli locali mirati su archivio\n temporaneo e gestore in memoria: compatibilità dei file, validazione dei\n riferimenti, cronologia dopo riavvio, eliminazione, coda e salvataggio fallito,\n conteggi e confini settimanali in quattro fusi. Anche questi non sono ricevute\n-host e non osservano il browser. La copertura\n+host, non sono nuove esecuzioni r4 e non osservano il browser. La copertura\n registrata non si estende a ogni risoluzione dei conflitti per campo, al focus,\n all’intero layout o all’uso con lettori di schermo. Backup e ripristino\n restano indisponibili come descritto sopra.\ndiff --git a/docs/guida.md b/docs/guida.md\nindex a7c68c5..ce01473 100644\n--- a/docs/guida.md\n+++ b/docs/guida.md\n@@ -1,30 +1,39 @@\n-# Usare Progetti, Settimana, tempo e Riepilogo\n+# Usare Progetti, Attività, Settimana, sessioni e Riepilogo\n \n-Questa guida descrive le funzioni presenti nel candidato della missione r3,\n-ereditato senza certificazione. Per questa missione non sono state fornite nuove\n-ricevute host. La tabella seguente conserva soltanto evidenze storiche della\n-missione r2, allora segnalate come `passed`:\n+Questa guida descrive le funzioni implementate nel candidato della missione\n+`long-svolta-20261020-r4`, senza un checkpoint certificato per questa missione.\n+Il runtime fornito per il run `20261020T231956-19cf8a63`, contratto v1,\n+riporta cinque ricevute host r4 con stato `passed`:\n \n-| Comando host | ID ricevuta (prefisso disponibile) | Esito registrato | Gruppi |\n+| Comando host | ID ricevuta completo | Risultato | Gruppi |\n | --- | --- | --- | --- |\n-| `node tests/acceptance.mjs projects-api` | `012fb1ac…` | PASS | 6 |\n-| `node tests/acceptance.mjs tasks-api` | `244ba0db…` | PASS | 6 |\n-| `node tests/acceptance.mjs board-ui` | `79628235…` | PASS | 4 |\n-\n-I gruppi API coprono persistenza, revisioni, validazione, filtri e conflitti.\n-I quattro gruppi UI coprono creazione, modifica e filtri con riapertura,\n+| `node tests/acceptance.mjs projects-api` | `3c82b042-9f7c-4207-8427-fb9c3406ce17` | PASS | 6 |\n+| `node tests/acceptance.mjs tasks-api` | `baae52cf-7226-4160-b412-8c863433580a` | PASS | 6 |\n+| `node tests/acceptance.mjs board-ui` | `e822bee2-e285-4dbf-b70f-eff14886d902` | PASS | 4 |\n+| `node tests/acceptance.mjs planning-api` | `1065d21b-6b6d-4bb2-ac36-1e7177cfb9ba` | PASS | 7 |\n+| `node tests/acceptance.mjs planning-ui` | `e2fafac5-859e-4a51-877b-8def02d67b1b` | PASS | 3 |\n+\n+I gruppi API coprono persistenza, revisioni, validazione, filtri e conflitti,\n+settimana civile, sessioni e distinzione tra conteggi globali e minuti settimanali.\n+I quattro gruppi `board-ui` coprono creazione, modifica e filtri con riapertura,\n protezione dalle modifiche concorrenti con conservazione della nota locale,\n-testo HTML letterale e layout stretto. Le istruzioni seguenti descrivono anche\n-percorsi che questi controlli non esauriscono. Per le ricevute storiche r2 sono\n-disponibili solo prefissi, comandi, esiti e conteggi 6/6/4; non sono fornite date\n-o stamp. Le precedenti `f60e43e0…`, `d3604e71…` e `98c0ea1d…` sono segnalate come\n-`stale` alla redazione. I loro metadati e output restano separati nel\n-[registro delle evidenze](verifiche.md#fotografia-delle-evidenze-alla-redazione).\n-\n-Il PASS è il risultato registrato di un’esecuzione, distinto dallo stato della\n-ricevuta nel runtime, che può cambiare dopo modifiche anche documentali.\n-Per lo stato successivo rispetto al worktree consultare il runtime. Questo\n-aggiornamento non introduce una nuova revisione verificata.\n+testo HTML letterale e assenza di scorrimento orizzontale a 390px nella vista\n+esercitata. I tre gruppi `planning-ui` osservano riprogrammazione nel giorno\n+corretto, 25 minuti registrati e riscontrati nel riepilogo e nell’API, settimana\n+senza scorrimento orizzontale a 390px e sessione presente nell’API dopo\n+ricaricamento della pagina. Le istruzioni seguenti descrivono anche percorsi\n+che questi controlli non esauriscono; copertura e limiti sono nel\n+[registro r4](verifiche.md#missione-r4-stato-corrente).\n+\n+Lo stato delle ricevute è una fotografia del runtime fornito. Il PASS riguarda\n+la singola esecuzione; lo stato può cambiare dopo modifiche anche documentali.\n+Per la validità successiva rispetto al worktree consultare il runtime. Questo\n+aggiornamento non attesta un checkpoint certificato e non attribuisce nuove\n+date o impronte alla patch. I controlli locali dichiarati restano separati.\n+Le ricevute storiche r2 `012fb1ac…`, `244ba0db…`, `79628235…` (6/6/4 gruppi) e\n+le precedenti `f60e43e0…`, `d3604e71…`, `98c0ea1d…`, allora segnalate come `stale`,\n+restano nel [registro storico](verifiche.md#fotografia-delle-evidenze-alla-redazione),\n+con i soli metadati disponibili per ciascuna prova.\n \n Occorre Node.js 22.13 o successivo. Dalla cartella del progetto avviare\n `node src/server.mjs` oppure `npm start`, senza installare dipendenze. Aprire nel\n@@ -272,9 +281,10 @@ cartella ai riavvii; non modificare il file mentre il server è attivo.\n Per errori di avvio vedere [Cartella dati e affidabilità](../README.md#cartella-dati-e-affidabilità).\n \n **Backup** mostra «Non ancora disponibile». Il percorso\n-**progetti → settimana → tempo → riepilogo → backup** arriva al Riepilogo e alla\n-cronologia delle sessioni; una stima non registra tempo. Il backup portabile con\n-ripristino resta al prossimo esito: il file interno non è quel backup.\n+**progetti → attività → settimana → sessioni → riepilogo → backup** arriva al\n+Riepilogo e alla cronologia delle sessioni; una stima non registra tempo.\n+Il backup portabile con ripristino e la consegna restano al successivo esito\n+delegato dal supervisore host: il file interno non è quel backup.\n Non c’è recupero automatico dei dati o delle bozze.\n \n La lettura della settimana è disponibile tramite\n@@ -296,11 +306,10 @@ Gli archivi precedenti vengono letti con sessioni vuote senza riscrittura all’\n Il server ascolta solo sul dispositivo che lo esegue: il layout adattivo non\n permette di collegare il telefono al computer con lo stesso indirizzo locale.\n Le evidenze API della prova originale, l’audit UI e le ricevute precedenti\n-segnalate come `stale` alla redazione sono separati dalle successive ricevute r2 nel\n-[registro delle evidenze](verifiche.md). I tre PASS riportati riguardano le\n-rispettive esecuzioni, entro i 6/6/4 gruppi registrati; non attestano le funzioni\n-successive né un collaudo completo di accessibilità. Quelle ricevute restano\n-storiche per questa nuova missione. Alla redazione non sono state fornite nuove\n-ricevute host r3 per nessuno dei cinque criteri, comprese API e viste di Settimana,\n-sessioni e Riepilogo. Controlli locali e limiti sono nel registro;\n-non attestano focus nativo, layout o accessibilità.\n+segnalate come `stale` alla redazione storica sono separati dalle successive\n+ricevute r2 nel [registro delle evidenze](verifiche.md). Quelle ricevute restano\n+storiche per la missione r4; gli originali non sono file presenti nel worktree.\n+Le cinque ricevute r4 riportate all’inizio documentano PASS entro i rispettivi\n+6/6/4/7/3 gruppi, come fotografia del runtime fornito. Non attestano tutti i\n+percorsi descritti, il focus nativo, ogni layout o un collaudo completo di\n+accessibilità. Controlli locali dichiarati e limiti restano separati nel registro.\ndiff --git a/docs/verifiche.md b/docs/verifiche.md\nindex db15584..e85cfb2 100644\n--- a/docs/verifiche.md\n+++ b/docs/verifiche.md\n@@ -4,7 +4,97 @@ La descrizione delle funzioni nel [README](../README.md) e nella [guida](guida.m\n è basata sui sorgenti presenti. Una funzione descritta, un controllo locale\n dichiarato, un audit riferito e una ricevuta del runtime sono informazioni diverse.\n \n-## Missione r3: Riepilogo e guida (task attuale)\n+## Missione r4: stato corrente\n+\n+La missione corrente è `long-svolta-20261020-r4`, esito `weekly-work`.\n+La delega indica come provenienza il candidato\n+`d9cb9d910812e6a632d2765b205963466a47c16a` e riferisce cinque criteri verdi\n+nella prova precedente, conclusa senza checkpoint certificato per riferimenti\n+a file o prove non validi. Questo è contesto storico fornito dall’operatore,\n+distinto dalle cinque ricevute host r4 registrate qui sotto.\n+\n+Questo task riallinea soltanto [README.md](../README.md), [docs/guida.md](guida.md)\n+e questo registro. Conserva codice, scelte visuali e contratto in [BRIEF.md](../BRIEF.md).\n+\n+| Informazione | Provenienza e limite |\n+| --- | --- |\n+| Funzioni implementate | README e guida descrivono i sorgenti presenti in `src/` e `public/`: progetti, attività, settimana, sessioni e riepilogo. La lettura non dimostra il funzionamento. |\n+| Controlli locali r4 | Lettura del brief, dei documenti e dei controlli approvati, consultazione in sola lettura delle ricevute nei dati locali del runtime, controllo dei collegamenti e dei riferimenti a file, diff e percorsi modificati. Sono controlli documentali; nessun server, browser o suite API/accettazione è stato avviato in questo task. |\n+| Controlli locali precedenti | Le sezioni storiche sotto riportano dichiarazioni ereditate su sintassi, simulazioni DOM e prove in memoria o su archivio temporaneo. Non sono nuove esecuzioni r4 né ricevute host. |\n+| Ricevute storiche | Prefissi, ID, output e stamp sotto sono resoconti della documentazione ereditata, riferiti alle rispettive prove. Le ricevute originali non sono file presenti nel worktree e non certificano r4. |\n+| Ricevute host r4 | Il runtime fornito riporta le cinque ricevute sotto con stato `passed`, risultato PASS e codice di uscita 0. È una fotografia del runtime fornito, distinta dai controlli locali e dallo storico. |\n+\n+Per la missione `long-svolta-20261020-r4`, run `20261020T231956-19cf8a63`,\n+contratto v1, le ricevute correnti citate dal runtime sono:\n+\n+| Comando host | ID ricevuta completo | Risultato | Gruppi |\n+| --- | --- | --- | --- |\n+| `node tests/acceptance.mjs projects-api` | `3c82b042-9f7c-4207-8427-fb9c3406ce17` | PASS | 6 |\n+| `node tests/acceptance.mjs tasks-api` | `baae52cf-7226-4160-b412-8c863433580a` | PASS | 6 |\n+| `node tests/acceptance.mjs board-ui` | `e822bee2-e285-4dbf-b70f-eff14886d902` | PASS | 4 |\n+| `node tests/acceptance.mjs planning-api` | `1065d21b-6b6d-4bb2-ac36-1e7177cfb9ba` | PASS | 7 |\n+| `node tests/acceptance.mjs planning-ui` | `e2fafac5-859e-4a51-877b-8def02d67b1b` | PASS | 3 |\n+\n+Questi ID identificano ricevute nei dati del runtime, non file del worktree.\n+Comandi, risultati e conteggi sono riscontrati nell’output delle ricevute;\n+la copertura è descritta entro i controlli di\n+[tests/acceptance.mjs](../tests/acceptance.mjs) e\n+[tests/browser.mjs](../tests/browser.mjs):\n+\n+- **`projects-api`, 6 gruppi:** archivio vuoto; creazione con valori iniziali;\n+  modifica con incremento della revisione e rifiuto della revisione obsoleta;\n+  nomi non validi e revisione mancante senza scrittura; archiviazione conservata\n+  al riavvio; ID sconosciuto senza creazione di record.\n+- **`tasks-api`, 6 gruppi:** campi e valori iniziali; modifica, conflitto,\n+  filtri combinati e ricerca senza distinzione di maiuscole; validazione di\n+  date civili, stato e campi numerici; scritture concorrenti con una sola\n+  modifica accettata; progetti archiviati esclusi dall’elenco generale e\n+  rifiuto di nuove attività in progetti archiviati o ignoti; persistenza al\n+  riavvio e JSON malformato senza modifica dei dati.\n+- **`board-ui`, 4 gruppi:** creazione di progetto e attività dal browser;\n+  modifica, filtri e attività conservata dopo riapertura; conflitto tra due\n+  schede con nota locale conservata e titolo dell’altra scheda protetto;\n+  titolo HTML ostile mostrato letteralmente e assenza di scorrimento orizzontale\n+  nella vista Attività a 390 × 844. Non è verificata l’intera risoluzione del\n+  conflitto per campo.\n+- **`planning-api`, 7 gruppi:** piano civile di sette giorni, completate e\n+  attività senza scadenza, con esclusione delle scadenze fuori settimana;\n+  rifiuto di inizi non di lunedì o impossibili e settimana a cavallo d’anno;\n+  sessioni con legami a progetto e attività, filtro per attività e stato\n+  dell’attività invariato; conteggi globali distinti dai minuti della settimana\n+  e totali per progetto; sessioni non valide senza scrittura; eliminazione\n+  di una sola sessione con aggiornamento dei minuti e 404 alla seconda\n+  eliminazione; cronologia conservata dopo archiviazione dell’attività e riavvio.\n+- **`planning-ui`, 3 gruppi:** modifica della scadenza e presenza nel giorno\n+  corretto della settimana, con assenza nel giorno originario; registrazione\n+  di 25 minuti e nota, riscontro nel riepilogo visualizzato e nelle API;\n+  settimana senza scorrimento orizzontale a 390 × 844 e presenza della sessione\n+  nell’API dopo ricaricamento della pagina. Quest’ultimo controllo non è un\n+  riavvio del server né una verifica della cronologia visibile.\n+\n+Nei percorsi UI esercitati non sono stati rilevati errori runtime del browser\n+o richieste esterne dai controlli. I PASS non esauriscono tutti i flussi della\n+guida, il focus nativo, Tab/Escape, i lettori di schermo, l’intero layout o\n+ogni risoluzione dei conflitti per campo. Non coprono backup e ripristino.\n+\n+Lo stato `passed` è una fotografia del runtime fornito; il risultato PASS\n+documenta le singole esecuzioni sui rispettivi input. Modifiche anche\n+documentali possono cambiare lo stato delle ricevute: per la validità\n+successiva rispetto al worktree consultare il runtime. Questo aggiornamento\n+non attesta un checkpoint certificato e non attribuisce date, stamp o impronte\n+nuove alla patch. Eventuali nuovi esiti richiedono nuove ricevute effettive.\n+\n+Il percorso implementato è **progetti → attività → settimana → sessioni → riepilogo**.\n+Backup e ripristino portabili sono ancora indisponibili; backup e consegna\n+restano al successivo esito del supervisore host.\n+\n+## Storico r3: Riepilogo e guida\n+\n+Da questa sezione alla fine il registro conserva resoconti ereditati.\n+«Questo task», «nuove ricevute» e ogni altro riferimento relativo indicano\n+l’intervento storico descritto, mai il task r4 corrente. Anche gli stati di\n+disponibilità delle funzioni sono fotografie di allora: per le istruzioni\n+attuali consultare README e guida.\n \n Il task «Riepilogo leggibile e guida coerente» collega Data di riferimento e\n Aggiorna riepilogo a `GET /api/summary?date=…`. Mostra data e intervallo civile,\n@@ -27,7 +117,7 @@ esplicite e ritorno nella sezione o scheda aggiornano il riepilogo già richiest\n Gli stati delle attività sono attuali: una data passata non è una fotografia\n storica. Backup e ripristino rimangono indisponibili e al prossimo esito.\n \n-Nuovi controlli locali eseguiti per questo task: sintassi di\n+Controlli locali dichiarati per quel task: sintassi di\n `public/svolta.js`, diff e riferimenti statici HTML/ARIA e documentali.\n Una simulazione mirata esegue lo script completo dell’app su un DOM simulato,\n con risposte HTTP simulate e il calcolo esistente di `src/summary.mjs` in memoria.\n@@ -48,7 +138,7 @@ storici. Sono richiesti al runtime `projects-api`, `tasks-api`, `board-ui`,\n verifica non costituisce un esito PASS; solo ricevute effettivamente fornite\n possono documentare l’esito dei controlli host su questa missione.\n \n-## Missione r3: sessioni nel browser (task precedente)\n+## Storico r3: sessioni nel browser\n \n Questa sezione conserva implementazione e controlli dichiarati dal task\n precedente; il Riepilogo completo è descritto sopra. Non è una nuova esecuzione\n@@ -94,7 +184,7 @@ per la missione r3 non sono state fornite nuove prove runtime. Sono richiesti\n evidenze e regressioni; `planning-ui` comprende anche la vista Riepilogo completa,\n che era ancora delegata al task successivo.\n \n-## Missione r3: vista Settimana (task precedente)\n+## Storico r3: vista Settimana\n \n Questo task sostituisce il segnaposto Settimana con il piano letto da\n `GET /api/week?start=…`, senza cambiare API, conteggi o sessioni. Riusa schede,\n@@ -135,13 +225,13 @@ che non erano implementati dal task Settimana; per lo stato attuale vedere sopra\n \n Le sezioni seguenti conservano la fotografia delle prove precedenti e lo stato\n delle funzioni alla loro redazione. «Nuove ricevute» e «intervento corrente»\n-si riferiscono alle prove allora descritte, non alla missione r3. Per lo stato\n+si riferiscono alle prove allora descritte, non alla missione r4. Per lo stato\n attuale delle funzioni consultare README e guida.\n \n ## Fotografia delle evidenze alla redazione\n \n-La missione `long-svolta-20261020-r2`, esito `usable-board`, continua dalla revisione\n-`8fbf6801cdda04de5f9153c737902289d355e59f` (HEAD all’inizio di questo task).\n+La missione storica `long-svolta-20261020-r2`, esito `usable-board`, continuava dalla revisione\n+`8fbf6801cdda04de5f9153c737902289d355e59f` (HEAD dichiarato all’inizio del task r2).\n È il candidato già prodotto, **privo di certificazione all’avvio della missione**.\n La prova originale è stata dichiarata bloccata da un difetto del runtime; le sue\n evidenze restano contesto storico, separato dalle nuove ricevute riportate qui.\n@@ -172,7 +262,7 @@ quelle documentali. Per la validità rispetto a un worktree successivo occorre\n consultare il runtime; i risultati registrati restano evidenze delle rispettive\n esecuzioni e non certificano automaticamente la revisione documentale seguente.\n \n-## Ricevute precedenti della missione: stale alla redazione\n+## Ricevute storiche r2: stale alla redazione di allora\n \n Le ricevute sotto riportate sono segnalate come `stale` nel contesto operativo\n fornito a questo task. Il loro risultato di esecuzione era PASS; la qualifica\n@@ -310,20 +400,20 @@ annuncio `SVOLTA_READY`, richieste HTTP e riavvio sulla stessa cartella.\n Questi riferimenti sono conservati come informazioni del documento ereditato;\n le ricevute originali e il loro output non sono disponibili nel worktree di\n questo task. Non sono nuove osservazioni né rinnovi degli esiti. Non comprendono\n-una ricevuta `board-ui`; le ricevute di questa missione sono documentate\n+una ricevuta `board-ui`; i resoconti delle ricevute r2 sono documentati\n separatamente sopra, con i rispettivi risultati e le informazioni disponibili.\n \n ## Contesto dell’audit UI separato\n \n-La delega corrente riferisce che un audit separato ha esercitato **quattro flussi\n+La documentazione ereditata riferisce che un audit separato ha esercitato **quattro flussi\n UI** sul candidato. Non fornisce qui l’elenco dei quattro flussi, la revisione\n esercitata, i comandi o l’output dell’audit. Questo registro non può quindi\n-attribuirgli una copertura più specifica o usarlo come ricevuta di questa missione per\n+attribuirgli una copertura più specifica o usarlo come ricevuta r4 per\n `board-ui`.\n \n L’audit rimane contesto utile alla continuità del candidato. Non costituisce una\n-certificazione dei tre criteri di questa missione né un nuovo collaudo osservato\n-durante questo task.\n+certificazione dei cinque criteri r4 né un nuovo collaudo osservato\n+nella missione r4.\n \n ## Controlli locali dichiarati nei task precedenti\n \n@@ -343,7 +433,7 @@ nativo, Tab/Escape, lettori di schermo o l’esperienza effettiva nel browser.\n Le prove senza socket non dimostrano il funzionamento HTTP; quelle in memoria\n non dimostrano la persistenza su disco.\n \n-## Controlli documentali e limiti residui\n+## Controlli documentali e limiti dichiarati nel registro storico r2\n \n Questo aggiornamento ha confrontato il contratto e la documentazione con i\n metadati delle ricevute forniti nel contesto operativo e con la copertura\n@@ -359,8 +449,8 @@ scartano le modifiche nei dialoghi. Non c’è recupero persistente delle bozze.\n Se un’attività è stata archiviata altrove, la versione corrente non è consultabile\n negli elenchi per risolvere il conflitto: copiare gli input utili prima di annullare.\n \n-Le viste Settimana, sessioni di tempo, Riepilogo e Backup/ripristino rimangono\n-indisponibili e spettano ai task successivi del supervisore host. Le API per\n+Alla redazione storica r2, le viste Settimana, sessioni di tempo, Riepilogo e\n+Backup/ripristino erano indisponibili e delegate ai task successivi. Le API per\n sessioni e riepilogo sono descritte nell’intervento in fondo; quelle per\n backup/ripristino restano da implementare. Il file\n interno `archive.json` non è un backup portabile; non esiste ancora una procedura\n@@ -374,7 +464,7 @@ pubblicazioni. I criteri automatici non esauriscono la revisione d’uso: confli\n per campo, tastiera, focus, nomi lunghi e assenza di scorrimento orizzontale vanno\n riferiti solo alla copertura realmente osservata.\n \n-## Intervento corrente: date civili e API Settimana\n+## Intervento storico: date civili e API Settimana\n \n Le ricevute riportate sopra appartengono alla prova precedente: sono contesto\n storico e non certificano la nuova missione. Non è disponibile una nuova\n@@ -396,7 +486,7 @@ o suite di accettazione. Non sono prove HTTP, di persistenza o ricevute host.\n Il criterio `planning-api` include anche sessioni e riepilogo: questi controlli\n della sola API Settimana non ne attestano l’esito.\n \n-## Intervento corrente: sessioni persistenti e riepilogo\n+## Intervento storico: sessioni persistenti e riepilogo\n \n Implementati `POST/GET /api/time-entries`, `DELETE /api/time-entries/:id` con\n 204 senza corpo e `GET /api/summary?date=YYYY-MM-DD`. L’archivio valida le sessioni,\n@@ -425,5 +515,7 @@ Nessuna suite completa di accettazione o browser è stata eseguita nella sandbox\n questi controlli non osservano HTTP o l’interfaccia e non sono ricevute host.\n Il criterio richiesto al runtime è `planning-api`; per le regressioni della\n persistenza condivisa sono richiesti anche `projects-api` e `tasks-api`.\n-Non è disponibile alcun nuovo esito host per queste modifiche. Le viste\n-rimangono delegate ai task successivi; backup e ripristino al prossimo esito.\n+Alla redazione di quell’intervento non era disponibile alcun nuovo esito host\n+per quelle modifiche e le viste erano ancora delegate ai task successivi.\n+Lo stato implementato in r4 è descritto in README e guida; backup e ripristino\n+restano al prossimo esito."
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "3289fa2d-5e84-4f6b-8f77-adaf146198c5",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 60,
+    "at": "2026-10-20T23:39:40.452Z",
+    "type": "evidence.invalidated",
+    "message": "Evidence is STALE: README.md, docs/guida.md, docs/verifiche.md. Scope: all repository files.",
+    "data": {
+      "evidenceId": "3c82b042-9f7c-4207-8427-fb9c3406ce17",
+      "changed": [
+        "README.md",
+        "docs/guida.md",
+        "docs/verifiche.md"
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "910e1954-fc28-4dbb-adeb-fc0371bd3020",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 61,
+    "at": "2026-10-20T23:39:40.474Z",
+    "type": "evidence.invalidated",
+    "message": "Evidence is STALE: README.md, docs/guida.md, docs/verifiche.md. Scope: all repository files.",
+    "data": {
+      "evidenceId": "baae52cf-7226-4160-b412-8c863433580a",
+      "changed": [
+        "README.md",
+        "docs/guida.md",
+        "docs/verifiche.md"
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "ca4749c0-1cb4-4c28-b5bd-075b503a9baa",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 62,
+    "at": "2026-10-20T23:39:40.494Z",
+    "type": "evidence.invalidated",
+    "message": "Evidence is STALE: README.md, docs/guida.md, docs/verifiche.md. Scope: all repository files.",
+    "data": {
+      "evidenceId": "e822bee2-e285-4dbf-b70f-eff14886d902",
+      "changed": [
+        "README.md",
+        "docs/guida.md",
+        "docs/verifiche.md"
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "05fca361-52a4-4c0f-8e43-c075c6429b6d",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 63,
+    "at": "2026-10-20T23:39:40.516Z",
+    "type": "evidence.invalidated",
+    "message": "Evidence is STALE: README.md, docs/guida.md, docs/verifiche.md. Scope: all repository files.",
+    "data": {
+      "evidenceId": "1065d21b-6b6d-4bb2-ac36-1e7177cfb9ba",
+      "changed": [
+        "README.md",
+        "docs/guida.md",
+        "docs/verifiche.md"
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "761457b7-a07d-4b4a-b269-fbc3dd03f2b2",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 64,
+    "at": "2026-10-20T23:39:40.538Z",
+    "type": "evidence.invalidated",
+    "message": "Evidence is STALE: README.md, docs/guida.md, docs/verifiche.md. Scope: all repository files.",
+    "data": {
+      "evidenceId": "e2fafac5-859e-4a51-877b-8def02d67b1b",
+      "changed": [
+        "README.md",
+        "docs/guida.md",
+        "docs/verifiche.md"
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "f169ccba-0aeb-43a5-b9e2-b61b1a2567ba",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 65,
+    "at": "2026-10-20T23:39:40.572Z",
+    "type": "task.completed",
+    "message": "Aggiornati esclusivamente README.md, docs/guida.md e docs/verifiche.md: registrate cinque ricevute r4 con comandi, ID completi, PASS e gruppi 6/6/4/7/3. Stato qualificato come fotografia del runtime fornito, con copertura limitata e storico separato. Collegamenti e diff controllati; suite non rieseguite localmente. Nessun checkpoint certificato dichiarato; backup resta successivo.",
+    "data": {
+      "nodeId": "discovered-6a1fdea3-fd4b-4709-8bff-e66be393c3ee-0",
+      "summary": "Aggiornati esclusivamente README.md, docs/guida.md e docs/verifiche.md: registrate cinque ricevute r4 con comandi, ID completi, PASS e gruppi 6/6/4/7/3. Stato qualificato come fotografia del runtime fornito, con copertura limitata e storico separato. Collegamenti e diff controllati; suite non rieseguite localmente. Nessun checkpoint certificato dichiarato; backup resta successivo.",
+      "files": [
+        "README.md",
+        "docs/guida.md",
+        "docs/verifiche.md"
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "44c94333-d19c-4ba0-9177-4e5c36c61c68",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 66,
+    "at": "2026-10-20T23:39:40.622Z",
+    "type": "decision.recorded",
+    "message": "Builder handed verification to the runtime host. Agent-local check limitations are unverified observations; only approved runtime checks can certify results.",
+    "data": {
+      "kind": "verification.handoff",
+      "nodeId": "discovered-6a1fdea3-fd4b-4709-8bff-e66be393c3ee-0",
+      "criterionIds": [
+        "projects-api",
+        "tasks-api",
+        "board-ui",
+        "planning-api",
+        "planning-ui"
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "d624bab3-5382-4f05-9bba-83f0e550273e",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 67,
+    "at": "2026-10-20T23:39:40.631Z",
+    "type": "progress.recorded",
+    "message": "Code fingerprint changed.",
+    "data": {
+      "noProgress": 0
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "091247ee-b66a-4928-b645-17d69a3c5045",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 68,
+    "at": "2026-10-20T23:39:40.751Z",
+    "type": "verification.started",
+    "message": "Verifying: Archivio progetti persistente e revisioni",
+    "data": {
+      "nodeId": "15156033-b1a0-4ad5-a674-52caf6e35951",
+      "node": {
+        "id": "15156033-b1a0-4ad5-a674-52caf6e35951",
+        "status": "PENDING",
+        "attempt": 3,
+        "files": [],
+        "evidenceIds": [],
+        "kind": "verification",
+        "role": "verifier",
+        "title": "Archivio progetti persistente e revisioni",
+        "objective": "Run approved check: [\"node\",\"tests/acceptance.mjs\",\"projects-api\"]",
+        "criterionId": "projects-api",
+        "reason": "Acceptance requires runtime-owned evidence for the approved verification policy."
+      },
+      "edges": [
+        {
+          "id": "4191a4d7-5e99-4f71-a2b2-f3d4c5f55fc5",
+          "source": "6a1fdea3-fd4b-4709-8bff-e66be393c3ee",
+          "target": "15156033-b1a0-4ad5-a674-52caf6e35951",
+          "kind": "next"
+        }
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "d11b755b-eed7-4c8b-8b09-8426bff74ad5",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 69,
+    "at": "2026-10-20T23:39:42.127Z",
+    "type": "verification.passed",
+    "message": "Archivio progetti persistente e revisioni: approved deterministic check satisfied on recorded inputs.",
+    "data": {
+      "nodeId": "15156033-b1a0-4ad5-a674-52caf6e35951",
+      "evidence": {
+        "id": "4a133a1a-745c-4843-ae3a-556453cf99c5",
+        "nodeId": "15156033-b1a0-4ad5-a674-52caf6e35951",
+        "criterionId": "projects-api",
+        "contractVersion": 1,
+        "kind": "deterministic",
+        "status": "passed",
+        "createdAt": "2026-10-20T23:39:42.091Z",
+        "command": [
+          "node",
+          "tests/acceptance.mjs",
+          "projects-api"
+        ],
+        "exitCode": 0,
+        "output": "PASS empty archive\nPASS create project with stable defaults\nPASS optimistic project edit\nPASS invalid names and missing revisions do not write\nPASS project archival survives restart\nPASS unknown project does not create a record\n{\"criterion\":\"projects-api\",\"result\":\"PASS\",\"groups\":6}\n",
+        "durationMs": 1339,
+        "stamp": {
+          "head": "d9cb9d910812e6a632d2765b205963466a47c16a",
+          "files": {
+            ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+            "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+            "README.md": "7a1ae3b34056e816da69888ea6236c12ec2a4a110e84503589978411107090b9",
+            "docs/guida.md": "32402e2a1024fa042f508e9a74cba0420b2596d08b780a937a3e4dfaf13ed5ea",
+            "docs/verifiche.md": "9a2e98bc2d14ea6d2dd904dcd105c54131bd2666d7d8d31e1a5efad0de2b0629",
+            "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+            "public/index.html": "6fac8f98234b9a2861abc405819c28698f1dd9db91e145cde8956bbcffc79479",
+            "public/svolta.css": "f81904ebcf820f2f00c79464ff76642ab5255ae3af3899183957a915b43f646f",
+            "public/svolta.js": "426e33279a1739e4e43b488deff13b2b9817c1ea6436249a8f78f50bdeb64675",
+            "src/app.mjs": "4d368778a32ca98583d1c0e7e67015bd8f943039b52df577cfaca16b25522d7a",
+            "src/archive.mjs": "1f0dc4aea4cf6d55c122c65e3f111edef4798a48c610a515e175146575a22d03",
+            "src/dates.mjs": "befb2084c723419e957dd976a1e2f9ecd5b92b5c8d768158ba99ce452d794515",
+            "src/errors.mjs": "acbb23489da8c799787caf170d2ff70a9f26c875de462e287cfc911c856baa5f",
+            "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+            "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+            "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+            "src/summary.mjs": "a58abb9c5ef8a37c51f2e6cf434faf761ca5f552fdba000708c6cc61085502e8",
+            "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+            "src/time-entries.mjs": "5a4ff445656c9f15639159e253db1e99e97c010953ee7c2198db4441f0348ebf",
+            "src/week.mjs": "f533bdaed237f9b051608355d588f3b5147653c0d81143e7b5d7148a0dee2eeb",
+            "tests/acceptance.mjs": "ee4f811515605a5cbab795c9ad4e40777774006bad8fe350c54590e1836c3235",
+            "tests/browser.mjs": "fe87ad9b4d5feeae587e1d030403bcffe4d5e78a236dcd6f5f6b1c305edaba84",
+            "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+          },
+          "fingerprint": "402bef9f153031be45e695af2d7fc0812ca72ecf55ad52e1c62d44d0a2a5701b"
+        },
+        "scope": [],
+        "inputs": []
+      }
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "26963eb8-1b3d-48f0-be7e-633bed1c7d07",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 70,
+    "at": "2026-10-20T23:39:42.285Z",
+    "type": "verification.started",
+    "message": "Verifying: Attività, filtri e conflitti senza perdita di dati",
+    "data": {
+      "nodeId": "df5449f1-fca6-4782-841f-41ac56475143",
+      "node": {
+        "id": "df5449f1-fca6-4782-841f-41ac56475143",
+        "status": "PENDING",
+        "attempt": 3,
+        "files": [],
+        "evidenceIds": [],
+        "kind": "verification",
+        "role": "verifier",
+        "title": "Attività, filtri e conflitti senza perdita di dati",
+        "objective": "Run approved check: [\"node\",\"tests/acceptance.mjs\",\"tasks-api\"]",
+        "criterionId": "tasks-api",
+        "reason": "Acceptance requires runtime-owned evidence for the approved verification policy."
+      },
+      "edges": [
+        {
+          "id": "fb0e8c96-dc8d-480a-b5aa-398896780a0e",
+          "source": "669034f1-17b5-4c23-b6f7-c05938498573",
+          "target": "df5449f1-fca6-4782-841f-41ac56475143",
+          "kind": "next"
+        }
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "e7fd3c06-684f-40ef-a0e7-6f9e26ecbe23",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 71,
+    "at": "2026-10-20T23:39:43.683Z",
+    "type": "verification.passed",
+    "message": "Attività, filtri e conflitti senza perdita di dati: approved deterministic check satisfied on recorded inputs.",
+    "data": {
+      "nodeId": "df5449f1-fca6-4782-841f-41ac56475143",
+      "evidence": {
+        "id": "d40f7a51-dc52-4c93-8b78-b6842c88c326",
+        "nodeId": "df5449f1-fca6-4782-841f-41ac56475143",
+        "criterionId": "tasks-api",
+        "contractVersion": 1,
+        "kind": "deterministic",
+        "status": "passed",
+        "createdAt": "2026-10-20T23:39:43.644Z",
+        "command": [
+          "node",
+          "tests/acceptance.mjs",
+          "tasks-api"
+        ],
+        "exitCode": 0,
+        "output": "PASS task defaults and exact fields\nPASS task edit, revision conflicts and combined filters\nPASS civil dates, invalid states and numeric validation\nPASS parallel stale writers cannot overwrite each other\nPASS archived projects disappear from general activity list\nPASS task persistence and malformed JSON\n{\"criterion\":\"tasks-api\",\"result\":\"PASS\",\"groups\":6}\n",
+        "durationMs": 1355,
+        "stamp": {
+          "head": "d9cb9d910812e6a632d2765b205963466a47c16a",
+          "files": {
+            ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+            "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+            "README.md": "7a1ae3b34056e816da69888ea6236c12ec2a4a110e84503589978411107090b9",
+            "docs/guida.md": "32402e2a1024fa042f508e9a74cba0420b2596d08b780a937a3e4dfaf13ed5ea",
+            "docs/verifiche.md": "9a2e98bc2d14ea6d2dd904dcd105c54131bd2666d7d8d31e1a5efad0de2b0629",
+            "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+            "public/index.html": "6fac8f98234b9a2861abc405819c28698f1dd9db91e145cde8956bbcffc79479",
+            "public/svolta.css": "f81904ebcf820f2f00c79464ff76642ab5255ae3af3899183957a915b43f646f",
+            "public/svolta.js": "426e33279a1739e4e43b488deff13b2b9817c1ea6436249a8f78f50bdeb64675",
+            "src/app.mjs": "4d368778a32ca98583d1c0e7e67015bd8f943039b52df577cfaca16b25522d7a",
+            "src/archive.mjs": "1f0dc4aea4cf6d55c122c65e3f111edef4798a48c610a515e175146575a22d03",
+            "src/dates.mjs": "befb2084c723419e957dd976a1e2f9ecd5b92b5c8d768158ba99ce452d794515",
+            "src/errors.mjs": "acbb23489da8c799787caf170d2ff70a9f26c875de462e287cfc911c856baa5f",
+            "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+            "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+            "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+            "src/summary.mjs": "a58abb9c5ef8a37c51f2e6cf434faf761ca5f552fdba000708c6cc61085502e8",
+            "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+            "src/time-entries.mjs": "5a4ff445656c9f15639159e253db1e99e97c010953ee7c2198db4441f0348ebf",
+            "src/week.mjs": "f533bdaed237f9b051608355d588f3b5147653c0d81143e7b5d7148a0dee2eeb",
+            "tests/acceptance.mjs": "ee4f811515605a5cbab795c9ad4e40777774006bad8fe350c54590e1836c3235",
+            "tests/browser.mjs": "fe87ad9b4d5feeae587e1d030403bcffe4d5e78a236dcd6f5f6b1c305edaba84",
+            "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+          },
+          "fingerprint": "402bef9f153031be45e695af2d7fc0812ca72ecf55ad52e1c62d44d0a2a5701b"
+        },
+        "scope": [],
+        "inputs": []
+      }
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "8e7c6ee2-4c72-4adc-87b8-b9eedb75775a",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 72,
+    "at": "2026-10-20T23:39:43.895Z",
+    "type": "verification.started",
+    "message": "Verifying: Interfaccia progetti e attività su desktop e mobile",
+    "data": {
+      "nodeId": "8aaf2810-d1c6-4c56-9c2e-cae8b2a2f2a3",
+      "node": {
+        "id": "8aaf2810-d1c6-4c56-9c2e-cae8b2a2f2a3",
+        "status": "PENDING",
+        "attempt": 3,
+        "files": [],
+        "evidenceIds": [],
+        "kind": "verification",
+        "role": "verifier",
+        "title": "Interfaccia progetti e attività su desktop e mobile",
+        "objective": "Run approved check: [\"node\",\"tests/acceptance.mjs\",\"board-ui\"]",
+        "criterionId": "board-ui",
+        "reason": "Acceptance requires runtime-owned evidence for the approved verification policy."
+      },
+      "edges": [
+        {
+          "id": "87255e7a-6757-4cf2-b567-b75be924d009",
+          "source": "ec385023-eb90-4a0e-99cf-5735598c7823",
+          "target": "8aaf2810-d1c6-4c56-9c2e-cae8b2a2f2a3",
+          "kind": "next"
+        }
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "7774f916-4999-4c47-8419-510257dad23e",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 73,
+    "at": "2026-10-20T23:39:46.908Z",
+    "type": "verification.passed",
+    "message": "Interfaccia progetti e attività su desktop e mobile: approved deterministic check satisfied on recorded inputs.",
+    "data": {
+      "nodeId": "8aaf2810-d1c6-4c56-9c2e-cae8b2a2f2a3",
+      "evidence": {
+        "id": "a05b5131-324c-4757-8174-8d497962c355",
+        "nodeId": "8aaf2810-d1c6-4c56-9c2e-cae8b2a2f2a3",
+        "criterionId": "board-ui",
+        "contractVersion": 1,
+        "kind": "deterministic",
+        "status": "passed",
+        "createdAt": "2026-10-20T23:39:46.864Z",
+        "command": [
+          "node",
+          "tests/acceptance.mjs",
+          "board-ui"
+        ],
+        "exitCode": 0,
+        "output": "PASS create a project and task through the actual interface\nPASS edit, filter and preserve the changed activity after reopening\nPASS concurrent interface edits cannot silently overwrite another tab\nPASS literal hostile text and mobile layout\n{\"criterion\":\"board-ui\",\"result\":\"PASS\",\"groups\":4}\n",
+        "durationMs": 2973,
+        "stamp": {
+          "head": "d9cb9d910812e6a632d2765b205963466a47c16a",
+          "files": {
+            ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+            "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+            "README.md": "7a1ae3b34056e816da69888ea6236c12ec2a4a110e84503589978411107090b9",
+            "docs/guida.md": "32402e2a1024fa042f508e9a74cba0420b2596d08b780a937a3e4dfaf13ed5ea",
+            "docs/verifiche.md": "9a2e98bc2d14ea6d2dd904dcd105c54131bd2666d7d8d31e1a5efad0de2b0629",
+            "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+            "public/index.html": "6fac8f98234b9a2861abc405819c28698f1dd9db91e145cde8956bbcffc79479",
+            "public/svolta.css": "f81904ebcf820f2f00c79464ff76642ab5255ae3af3899183957a915b43f646f",
+            "public/svolta.js": "426e33279a1739e4e43b488deff13b2b9817c1ea6436249a8f78f50bdeb64675",
+            "src/app.mjs": "4d368778a32ca98583d1c0e7e67015bd8f943039b52df577cfaca16b25522d7a",
+            "src/archive.mjs": "1f0dc4aea4cf6d55c122c65e3f111edef4798a48c610a515e175146575a22d03",
+            "src/dates.mjs": "befb2084c723419e957dd976a1e2f9ecd5b92b5c8d768158ba99ce452d794515",
+            "src/errors.mjs": "acbb23489da8c799787caf170d2ff70a9f26c875de462e287cfc911c856baa5f",
+            "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+            "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+            "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+            "src/summary.mjs": "a58abb9c5ef8a37c51f2e6cf434faf761ca5f552fdba000708c6cc61085502e8",
+            "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+            "src/time-entries.mjs": "5a4ff445656c9f15639159e253db1e99e97c010953ee7c2198db4441f0348ebf",
+            "src/week.mjs": "f533bdaed237f9b051608355d588f3b5147653c0d81143e7b5d7148a0dee2eeb",
+            "tests/acceptance.mjs": "ee4f811515605a5cbab795c9ad4e40777774006bad8fe350c54590e1836c3235",
+            "tests/browser.mjs": "fe87ad9b4d5feeae587e1d030403bcffe4d5e78a236dcd6f5f6b1c305edaba84",
+            "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+          },
+          "fingerprint": "402bef9f153031be45e695af2d7fc0812ca72ecf55ad52e1c62d44d0a2a5701b"
+        },
+        "scope": [],
+        "inputs": []
+      }
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "b98a8a2f-217c-454e-941b-ef6a5275cc80",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 74,
+    "at": "2026-10-20T23:39:47.165Z",
+    "type": "verification.started",
+    "message": "Verifying: Settimana civile, sessioni e riepilogo coerente",
+    "data": {
+      "nodeId": "406c9dc5-bf72-47ca-8bd1-d7928c77d4a4",
+      "node": {
+        "id": "406c9dc5-bf72-47ca-8bd1-d7928c77d4a4",
+        "status": "PENDING",
+        "attempt": 3,
+        "files": [],
+        "evidenceIds": [],
+        "kind": "verification",
+        "role": "verifier",
+        "title": "Settimana civile, sessioni e riepilogo coerente",
+        "objective": "Run approved check: [\"node\",\"tests/acceptance.mjs\",\"planning-api\"]",
+        "criterionId": "planning-api",
+        "reason": "Acceptance requires runtime-owned evidence for the approved verification policy."
+      },
+      "edges": [
+        {
+          "id": "b9a20d9c-f56a-497e-a774-7c35b375af14",
+          "source": "21b95f9b-0f3c-4411-a61e-d11eb6282839",
+          "target": "406c9dc5-bf72-47ca-8bd1-d7928c77d4a4",
+          "kind": "next"
+        }
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "7ea75f6f-038d-484d-9816-a6936489706d",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 75,
+    "at": "2026-10-20T23:39:48.589Z",
+    "type": "verification.passed",
+    "message": "Settimana civile, sessioni e riepilogo coerente: approved deterministic check satisfied on recorded inputs.",
+    "data": {
+      "nodeId": "406c9dc5-bf72-47ca-8bd1-d7928c77d4a4",
+      "evidence": {
+        "id": "e2261532-1401-4deb-9282-62e0192aaeea",
+        "nodeId": "406c9dc5-bf72-47ca-8bd1-d7928c77d4a4",
+        "criterionId": "planning-api",
+        "contractVersion": 1,
+        "kind": "deterministic",
+        "status": "passed",
+        "createdAt": "2026-10-20T23:39:48.552Z",
+        "command": [
+          "node",
+          "tests/acceptance.mjs",
+          "planning-api"
+        ],
+        "exitCode": 0,
+        "output": "PASS civil seven-day plan and unscheduled work\nPASS Monday and impossible-date rejection\nPASS time records preserve links and task status\nPASS weekly time and full-archive task counts are distinguished\nPASS invalid time entries do not write\nPASS deleting one session updates totals without deleting others\nPASS archiving a task preserves history and restart\n{\"criterion\":\"planning-api\",\"result\":\"PASS\",\"groups\":7}\n",
+        "durationMs": 1378,
+        "stamp": {
+          "head": "d9cb9d910812e6a632d2765b205963466a47c16a",
+          "files": {
+            ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+            "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+            "README.md": "7a1ae3b34056e816da69888ea6236c12ec2a4a110e84503589978411107090b9",
+            "docs/guida.md": "32402e2a1024fa042f508e9a74cba0420b2596d08b780a937a3e4dfaf13ed5ea",
+            "docs/verifiche.md": "9a2e98bc2d14ea6d2dd904dcd105c54131bd2666d7d8d31e1a5efad0de2b0629",
+            "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+            "public/index.html": "6fac8f98234b9a2861abc405819c28698f1dd9db91e145cde8956bbcffc79479",
+            "public/svolta.css": "f81904ebcf820f2f00c79464ff76642ab5255ae3af3899183957a915b43f646f",
+            "public/svolta.js": "426e33279a1739e4e43b488deff13b2b9817c1ea6436249a8f78f50bdeb64675",
+            "src/app.mjs": "4d368778a32ca98583d1c0e7e67015bd8f943039b52df577cfaca16b25522d7a",
+            "src/archive.mjs": "1f0dc4aea4cf6d55c122c65e3f111edef4798a48c610a515e175146575a22d03",
+            "src/dates.mjs": "befb2084c723419e957dd976a1e2f9ecd5b92b5c8d768158ba99ce452d794515",
+            "src/errors.mjs": "acbb23489da8c799787caf170d2ff70a9f26c875de462e287cfc911c856baa5f",
+            "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+            "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+            "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+            "src/summary.mjs": "a58abb9c5ef8a37c51f2e6cf434faf761ca5f552fdba000708c6cc61085502e8",
+            "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+            "src/time-entries.mjs": "5a4ff445656c9f15639159e253db1e99e97c010953ee7c2198db4441f0348ebf",
+            "src/week.mjs": "f533bdaed237f9b051608355d588f3b5147653c0d81143e7b5d7148a0dee2eeb",
+            "tests/acceptance.mjs": "ee4f811515605a5cbab795c9ad4e40777774006bad8fe350c54590e1836c3235",
+            "tests/browser.mjs": "fe87ad9b4d5feeae587e1d030403bcffe4d5e78a236dcd6f5f6b1c305edaba84",
+            "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+          },
+          "fingerprint": "402bef9f153031be45e695af2d7fc0812ca72ecf55ad52e1c62d44d0a2a5701b"
+        },
+        "scope": [],
+        "inputs": []
+      }
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "52b483d1-068c-4168-989b-9312b2b16ddf",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 76,
+    "at": "2026-10-20T23:39:48.911Z",
+    "type": "verification.started",
+    "message": "Verifying: Pianificazione e tempo dal browser",
+    "data": {
+      "nodeId": "6f55dcab-92b6-4362-8441-dfae0f528fc3",
+      "node": {
+        "id": "6f55dcab-92b6-4362-8441-dfae0f528fc3",
+        "status": "PENDING",
+        "attempt": 3,
+        "files": [],
+        "evidenceIds": [],
+        "kind": "verification",
+        "role": "verifier",
+        "title": "Pianificazione e tempo dal browser",
+        "objective": "Run approved check: [\"node\",\"tests/acceptance.mjs\",\"planning-ui\"]",
+        "criterionId": "planning-ui",
+        "reason": "Acceptance requires runtime-owned evidence for the approved verification policy."
+      },
+      "edges": [
+        {
+          "id": "662842bd-f0c9-47f9-824d-980e05775e25",
+          "source": "discovered-6a1fdea3-fd4b-4709-8bff-e66be393c3ee-0",
+          "target": "6f55dcab-92b6-4362-8441-dfae0f528fc3",
+          "kind": "next"
+        }
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "c0d2b6b7-4858-4d29-8055-006f84b8e99f",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 77,
+    "at": "2026-10-20T23:39:51.219Z",
+    "type": "verification.passed",
+    "message": "Pianificazione e tempo dal browser: approved deterministic check satisfied on recorded inputs.",
+    "data": {
+      "nodeId": "6f55dcab-92b6-4362-8441-dfae0f528fc3",
+      "evidence": {
+        "id": "8345fd57-feef-41ff-8748-2372fbc0fffc",
+        "nodeId": "6f55dcab-92b6-4362-8441-dfae0f528fc3",
+        "criterionId": "planning-ui",
+        "contractVersion": 1,
+        "kind": "deterministic",
+        "status": "passed",
+        "createdAt": "2026-10-20T23:39:51.177Z",
+        "command": [
+          "node",
+          "tests/acceptance.mjs",
+          "planning-ui"
+        ],
+        "exitCode": 0,
+        "output": "PASS reschedule a task and see it in its actual weekly day\nPASS time entry changes the real week summary\nPASS weekly mobile layout and persisted sessions\n{\"criterion\":\"planning-ui\",\"result\":\"PASS\",\"groups\":3}\n",
+        "durationMs": 2267,
+        "stamp": {
+          "head": "d9cb9d910812e6a632d2765b205963466a47c16a",
+          "files": {
+            ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+            "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+            "README.md": "7a1ae3b34056e816da69888ea6236c12ec2a4a110e84503589978411107090b9",
+            "docs/guida.md": "32402e2a1024fa042f508e9a74cba0420b2596d08b780a937a3e4dfaf13ed5ea",
+            "docs/verifiche.md": "9a2e98bc2d14ea6d2dd904dcd105c54131bd2666d7d8d31e1a5efad0de2b0629",
+            "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+            "public/index.html": "6fac8f98234b9a2861abc405819c28698f1dd9db91e145cde8956bbcffc79479",
+            "public/svolta.css": "f81904ebcf820f2f00c79464ff76642ab5255ae3af3899183957a915b43f646f",
+            "public/svolta.js": "426e33279a1739e4e43b488deff13b2b9817c1ea6436249a8f78f50bdeb64675",
+            "src/app.mjs": "4d368778a32ca98583d1c0e7e67015bd8f943039b52df577cfaca16b25522d7a",
+            "src/archive.mjs": "1f0dc4aea4cf6d55c122c65e3f111edef4798a48c610a515e175146575a22d03",
+            "src/dates.mjs": "befb2084c723419e957dd976a1e2f9ecd5b92b5c8d768158ba99ce452d794515",
+            "src/errors.mjs": "acbb23489da8c799787caf170d2ff70a9f26c875de462e287cfc911c856baa5f",
+            "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+            "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+            "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+            "src/summary.mjs": "a58abb9c5ef8a37c51f2e6cf434faf761ca5f552fdba000708c6cc61085502e8",
+            "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+            "src/time-entries.mjs": "5a4ff445656c9f15639159e253db1e99e97c010953ee7c2198db4441f0348ebf",
+            "src/week.mjs": "f533bdaed237f9b051608355d588f3b5147653c0d81143e7b5d7148a0dee2eeb",
+            "tests/acceptance.mjs": "ee4f811515605a5cbab795c9ad4e40777774006bad8fe350c54590e1836c3235",
+            "tests/browser.mjs": "fe87ad9b4d5feeae587e1d030403bcffe4d5e78a236dcd6f5f6b1c305edaba84",
+            "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+          },
+          "fingerprint": "402bef9f153031be45e695af2d7fc0812ca72ecf55ad52e1c62d44d0a2a5701b"
+        },
+        "scope": [],
+        "inputs": []
+      }
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "a9818a68-9d97-4a5a-a712-726ef39cbab7",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 78,
+    "at": "2026-10-20T23:39:51.619Z",
+    "type": "task.planned",
+    "message": "Review the project against its goal",
+    "data": {
+      "node": {
+        "id": "029a0bef-39ed-4320-918b-07403516a4e4",
+        "status": "PENDING",
+        "attempt": 1,
+        "files": [],
+        "evidenceIds": [],
+        "kind": "decision",
+        "role": "planner",
+        "title": "Review the project against its goal",
+        "objective": "{\"head\":\"d9cb9d910812e6a632d2765b205963466a47c16a\",\"fingerprint\":\"402bef9f153031be45e695af2d7fc0812ca72ecf55ad52e1c62d44d0a2a5701b\",\"version\":1,\"noteIds\":[\"1fd3f030-c625-4d8b-9be4-10d67fe2516d\"],\"directionRevision\":1,\"round\":2}",
+        "reason": "A verified milestone triggers autonomous discovery of the next useful work.",
+        "criterionId": "projects-api"
+      }
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "7332d6fd-5fc9-4999-9216-b56f605eaf9e",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 79,
+    "at": "2026-10-20T23:39:51.647Z",
+    "type": "task.started",
+    "message": "planner: Review the project against its goal",
+    "data": {
+      "nodeId": "029a0bef-39ed-4320-918b-07403516a4e4",
+      "edges": [
+        {
+          "id": "351401dd-fa9c-4ad6-8b5c-dc45fec59749",
+          "source": "6f55dcab-92b6-4362-8441-dfae0f528fc3",
+          "target": "029a0bef-39ed-4320-918b-07403516a4e4",
+          "kind": "next"
+        }
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "3988c354-4f0e-4c01-8f52-dca0fa4a38ff",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 80,
+    "at": "2026-10-20T23:39:52.233Z",
+    "type": "agent.thread",
+    "message": "Codex session recorded for recovery.",
+    "data": {
+      "nodeId": "029a0bef-39ed-4320-918b-07403516a4e4",
+      "threadId": "01a15baf-84d4-7a20-be29-a17d13d0f503"
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "de2087fc-aa07-44b8-8a30-4a1fd04e2d16",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 81,
+    "at": "2026-10-20T23:41:29.755Z",
+    "type": "agent.usage",
+    "message": "597503 tokens reported by provider.",
+    "data": {
+      "tokens": 597503
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "1a824464-4ab6-43da-98ad-55bbefab3c1b",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 82,
+    "at": "2026-10-20T23:41:30.193Z",
+    "type": "task.completed",
+    "message": "L’esito delegato weekly-work è pronto per la revisione host: cinque ricevute correnti PASS e nessuna lacuna concreta residua emersa dall’ispezione. Backup e consegna restano all’esito successivo. Revisione in sola lettura, senza nuove esecuzioni API/browser.",
+    "data": {
+      "nodeId": "029a0bef-39ed-4320-918b-07403516a4e4",
+      "summary": "L’esito delegato weekly-work è pronto per la revisione host: cinque ricevute correnti PASS e nessuna lacuna concreta residua emersa dall’ispezione. Backup e consegna restano all’esito successivo. Revisione in sola lettura, senza nuove esecuzioni API/browser.",
+      "result": {
+        "proposal": {
+          "outcome": "ready",
+          "summary": "L’esito delegato weekly-work è pronto per la revisione host: cinque ricevute correnti PASS e nessuna lacuna concreta residua emersa dall’ispezione. Backup e consegna restano all’esito successivo. Revisione in sola lettura, senza nuove esecuzioni API/browser.",
+          "findings": [],
+          "decisions": [
+            {
+              "choice": "Basare la valutazione sulle cinque ricevute correnti passed.",
+              "basis": "projects-api: 4a133a1a-745c-4843-ae3a-556453cf99c5; tasks-api: d40f7a51-dc52-4c93-8b78-b6842c88c326; board-ui: a05b5131-324c-4757-8174-8d497962c355; planning-api: e2261532-1401-4deb-9282-62e0192aaeea; planning-ui: 8345fd57-feef-41ff-8748-2372fbc0fffc. Riportano complessivamente 26 gruppi PASS; le ricevute stale non sostengono questa valutazione."
+            },
+            {
+              "choice": "Preservare codice, scelte visuali e patch documentale.",
+              "basis": "Le modifiche riguardano soltanto README.md, docs/guida.md e docs/verifiche.md. I documenti qualificano le ricevute registrate come fotografie delle rispettive esecuzioni. I 24 collegamenti locali risolvono a file e sezioni esistenti; git diff --check passa. L’ispezione di src/ e public/ conferma i collegamenti del percorso progetti → attività → settimana → sessioni → riepilogo senza evidenziare difetti concreti che richiedano modifiche."
+            },
+            {
+              "choice": "Lasciare backup e consegna al successivo esito host.",
+              "basis": "La delega corrente e BRIEF.md separano esplicitamente gli esiti. public/index.html, README.md e docs/guida.md dichiarano coerentemente il backup ancora indisponibile."
+            }
+          ],
+          "tasks": [],
+          "operatorQuestion": ""
+        },
+        "stamp": {
+          "head": "d9cb9d910812e6a632d2765b205963466a47c16a",
+          "files": {
+            ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+            "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+            "README.md": "7a1ae3b34056e816da69888ea6236c12ec2a4a110e84503589978411107090b9",
+            "docs/guida.md": "32402e2a1024fa042f508e9a74cba0420b2596d08b780a937a3e4dfaf13ed5ea",
+            "docs/verifiche.md": "9a2e98bc2d14ea6d2dd904dcd105c54131bd2666d7d8d31e1a5efad0de2b0629",
+            "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+            "public/index.html": "6fac8f98234b9a2861abc405819c28698f1dd9db91e145cde8956bbcffc79479",
+            "public/svolta.css": "f81904ebcf820f2f00c79464ff76642ab5255ae3af3899183957a915b43f646f",
+            "public/svolta.js": "426e33279a1739e4e43b488deff13b2b9817c1ea6436249a8f78f50bdeb64675",
+            "src/app.mjs": "4d368778a32ca98583d1c0e7e67015bd8f943039b52df577cfaca16b25522d7a",
+            "src/archive.mjs": "1f0dc4aea4cf6d55c122c65e3f111edef4798a48c610a515e175146575a22d03",
+            "src/dates.mjs": "befb2084c723419e957dd976a1e2f9ecd5b92b5c8d768158ba99ce452d794515",
+            "src/errors.mjs": "acbb23489da8c799787caf170d2ff70a9f26c875de462e287cfc911c856baa5f",
+            "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+            "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+            "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+            "src/summary.mjs": "a58abb9c5ef8a37c51f2e6cf434faf761ca5f552fdba000708c6cc61085502e8",
+            "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+            "src/time-entries.mjs": "5a4ff445656c9f15639159e253db1e99e97c010953ee7c2198db4441f0348ebf",
+            "src/week.mjs": "f533bdaed237f9b051608355d588f3b5147653c0d81143e7b5d7148a0dee2eeb",
+            "tests/acceptance.mjs": "ee4f811515605a5cbab795c9ad4e40777774006bad8fe350c54590e1836c3235",
+            "tests/browser.mjs": "fe87ad9b4d5feeae587e1d030403bcffe4d5e78a236dcd6f5f6b1c305edaba84",
+            "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+          },
+          "fingerprint": "402bef9f153031be45e695af2d7fc0812ca72ecf55ad52e1c62d44d0a2a5701b"
+        },
+        "noteIds": [
+          "1fd3f030-c625-4d8b-9be4-10d67fe2516d"
+        ],
+        "directionRevision": 1
+      }
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "9f903b40-08b4-499b-a755-a9eafba9b7db",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 83,
+    "at": "2026-10-20T23:41:30.200Z",
+    "type": "project.reviewed",
+    "message": "Project supervisor considers the goal ready for operator review; this is an AI judgment, not independent proof.",
+    "data": {
+      "nodeId": "029a0bef-39ed-4320-918b-07403516a4e4"
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "7ce33a78-9f42-4846-a55a-a18cd7d7d805",
+    "runId": "20261020T231956-19cf8a63",
+    "seq": 84,
+    "at": "2026-10-20T23:41:30.697Z",
+    "type": "workflow.completed",
+    "message": "All approved acceptance policies are satisfied. Consult evidence for deterministic checks and AI assessments.",
+    "data": {}
+  }
+]

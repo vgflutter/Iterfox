@@ -44,8 +44,32 @@ la prima risposta del builder. Iterfox è ripartito da solo e ha completato in
 dell’assistente. La seconda prova usa la versione finale. Le riprese sono limitate
 a due per run, dopo la chiusura dei processi posseduti e il controllo dei file;
 restano validi i limiti originali. Il Morning Brief mostra causa ed esito.
-Sono prove brevi con guasto iniettato; una sessione lunga resta da collaudare.
+Sono prove brevi con guasto iniettato; la prova lunga Svolta è descritta sotto.
 [Protocollo, ledger, dieci casi di recupero e schermate](docs/validation/technical-recovery-20261020/index.html).
+
+## La prova lunga: Svolta
+
+Il 20–21 ottobre 2026 Iterfox ha sviluppato **Svolta**, app locale in italiano
+per progetti, attività, settimana, tempo dedicato e backup. La consegna passa
+**sette criteri host e 8 gruppi di audit esterno**; l’interfaccia è osservata
+su Chrome anche a 390px. Obiettivo e controlli sono stati preparati dall’assistente.
+
+L’esperimento ha richiesto **quattro autorizzazioni tecniche distinte e tre riprese
+preparate dall’assistente**, senza nuovi prompt di sviluppo dell’utente o correzioni
+manuali al codice applicativo. La prima prova resta BLOCKED a 1/4; la seconda
+STOPPED a 1/3 per un valore atteso sbagliato nel test; la terza BLOCKED a 0/2 dopo cinque
+criteri verdi per riferimenti di revisione non validi. Tutti gli stati sono conservati. Dalla prima autorizzazione all’esito finale
+sono trascorsi 194.7 minuti, inclusi gli interventi intermedi.
+
+L’ultima delega completa **due esiti in 45.7 minuti**, con una proposta di revisione scartata
+e 2 riprese tecniche automatiche. Un riferimento inesistente è
+stato aggiunto dopo una risposta SDK reale; una risposta del builder è stata scartata intenzionalmente.
+Il motore ha proseguito entro limiti e scadenza originali. Il riepilogo mostra
+rifiuti e revisioni valide successive; il grafico ora segue pausa, stop e blocco.
+
+La prova documenta lavoro utile durante l’assenza e limiti concreti del supervisore.
+Alcuni selettori browser hanno anche generato adattamenti al test: copertura e
+qualità restano da giudicare. [Rapporto, codice, ledger e schermate](docs/validation/long-svolta-20261020/index.html).
 
 ## Una simulazione di assenza su un’app nuova
 

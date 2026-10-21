@@ -1,0 +1,19 @@
+{
+  "at": "2026-10-20T22:50:28.257Z",
+  "result": "PASS",
+  "kind": "Post-trial UI correction on review branch; frozen SDK trial runtimes unchanged",
+  "sourceSha256": "ef6e3da5086ad325303e6fcb16915e96ce46cbc253c1b7638a262f066954d97a",
+  "frozenLedgerSha256": "8f6e3a93bb68c4400a45c6df418e1580cc2f7068a6e71ad393bdf5fb24256f6d",
+  "sourceFrozenLedgerUnchanged": true,
+  "outcomes": [
+    "CHECKPOINTED",
+    "STOPPED",
+    "PENDING"
+  ],
+  "viewports": [
+    "1440x1080",
+    "390x844"
+  ],
+  "mutations": 0,
+  "pageErrors": []
+}

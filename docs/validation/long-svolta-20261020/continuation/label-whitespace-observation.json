@@ -1,0 +1,13 @@
+{
+  "at": "2026-10-20T23:58:18.463Z",
+  "result": "TEST_ORACLE_LIMIT",
+  "criterion": "backup-ui",
+  "failedAt": "2026-10-20T23:55:25.696Z",
+  "finding": "The exact anchored getByLabel regex matched raw label text, so formatting whitespace around the checkbox/span prevented a match even though the required text and for/id association were present.",
+  "nativeCorrectiveTask": "Normalizzare il testo della label del consenso",
+  "correctionScope": "public/index.html formatting only: remove internal whitespace, keep exact wording, association, attributes, style and consent logic",
+  "classification": "Test-selector adaptation, not evidence of incorrect restore or consent logic",
+  "hostTestsChangedInFlight": false,
+  "manualAppCodeEdits": false,
+  "steeringSentToWorker": false
+}

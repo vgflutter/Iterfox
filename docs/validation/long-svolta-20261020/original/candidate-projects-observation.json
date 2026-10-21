@@ -1,0 +1,98 @@
+{
+  "at": "2026-10-20T21:50:36.873Z",
+  "boundary": "Work-in-progress observation only; separate temporary empty app data, no app edits or feedback to the worker.",
+  "sourceStableDuringObservation": true,
+  "forms": [
+    {
+      "type": "text",
+      "id": "project-name",
+      "placeholder": "Es. Il mio piccolo orto",
+      "ariaLabel": null,
+      "labels": [
+        "Nome progetto (obbligatorio)"
+      ],
+      "visible": true
+    },
+    {
+      "type": "text",
+      "id": "task-title",
+      "placeholder": "Es. Scegliere le prime piantine",
+      "ariaLabel": null,
+      "labels": [
+        "Titolo attività (obbligatorio)"
+      ],
+      "visible": false
+    },
+    {
+      "type": "date",
+      "id": "task-due",
+      "placeholder": "",
+      "ariaLabel": null,
+      "labels": [
+        "Scadenza"
+      ],
+      "visible": false
+    },
+    {
+      "type": "number",
+      "id": "task-estimate",
+      "placeholder": "",
+      "ariaLabel": null,
+      "labels": [
+        "Stima (minuti)"
+      ],
+      "visible": false
+    },
+    {
+      "type": "search",
+      "id": "filter-search",
+      "placeholder": "Nel titolo o nelle note",
+      "ariaLabel": null,
+      "labels": [
+        "Cerca attività"
+      ],
+      "visible": false
+    },
+    {
+      "type": "text",
+      "id": "project-edit-name",
+      "placeholder": "",
+      "ariaLabel": null,
+      "labels": [
+        "Nuovo nome progetto"
+      ],
+      "visible": false
+    },
+    {
+      "type": "text",
+      "id": "task-edit-title",
+      "placeholder": "",
+      "ariaLabel": null,
+      "labels": [
+        "Titolo attività (obbligatorio)"
+      ],
+      "visible": false
+    },
+    {
+      "type": "date",
+      "id": "task-edit-due",
+      "placeholder": "",
+      "ariaLabel": null,
+      "labels": [
+        "Scadenza"
+      ],
+      "visible": false
+    },
+    {
+      "type": "number",
+      "id": "task-edit-estimate",
+      "placeholder": "",
+      "ariaLabel": null,
+      "labels": [
+        "Stima (minuti)"
+      ],
+      "visible": false
+    }
+  ],
+  "pageErrors": []
+}

@@ -1,0 +1,15 @@
+[
+  {
+    "stage": "weekly-work",
+    "mode": "oversee",
+    "runId": "20261020T223531-20d32b1b",
+    "nodeId": "2f42a8f6-ce52-4e29-bc70-e2dd65fbf765",
+    "threadId": null,
+    "at": "2026-10-20T23:02:39.331Z",
+    "kind": "review-in-flight",
+    "details": {
+      "threadId": "01a15b8d-6db6-7c01-b935-88bf4e8ffa24",
+      "delayAfterThreadMs": 1500
+    }
+  }
+]

@@ -1,0 +1,180 @@
+{
+  "spec": {
+    "repository": "/Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/source",
+    "contract": {
+      "goal": "Realizzare Svolta, app locale in italiano per piccoli progetti personali, attività, pianificazione settimanale e tempo dedicato, con backup portabile e gestione coerente degli errori. Consegnare un prodotto utilizzabile su desktop e mobile e una guida onesta. Seguire il contratto pubblico BRIEF.md. Scegliere autonomamente i dettagli reversibili; non introdurre account, servizi, dipendenze o pubblicazione.",
+      "criteria": [
+        {
+          "id": "projects-api",
+          "title": "Archivio progetti persistente e revisioni",
+          "command": [
+            "node",
+            "tests/acceptance.mjs",
+            "projects-api"
+          ],
+          "scope": [],
+          "timeoutMs": 120000
+        },
+        {
+          "id": "tasks-api",
+          "title": "Attività, filtri e conflitti senza perdita di dati",
+          "command": [
+            "node",
+            "tests/acceptance.mjs",
+            "tasks-api"
+          ],
+          "scope": [],
+          "timeoutMs": 120000
+        },
+        {
+          "id": "board-ui",
+          "title": "Interfaccia progetti e attività su desktop e mobile",
+          "command": [
+            "node",
+            "tests/acceptance.mjs",
+            "board-ui"
+          ],
+          "scope": [],
+          "timeoutMs": 120000
+        },
+        {
+          "id": "planning-api",
+          "title": "Settimana civile, sessioni e riepilogo coerente",
+          "command": [
+            "node",
+            "tests/acceptance.mjs",
+            "planning-api"
+          ],
+          "scope": [],
+          "timeoutMs": 120000
+        },
+        {
+          "id": "planning-ui",
+          "title": "Pianificazione e tempo dal browser",
+          "command": [
+            "node",
+            "tests/acceptance.mjs",
+            "planning-ui"
+          ],
+          "scope": [],
+          "timeoutMs": 120000
+        },
+        {
+          "id": "backup-api",
+          "title": "Backup completo e ripristino atomico",
+          "command": [
+            "node",
+            "tests/acceptance.mjs",
+            "backup-api"
+          ],
+          "scope": [],
+          "timeoutMs": 120000
+        },
+        {
+          "id": "backup-ui",
+          "title": "Consenso al ripristino e interfaccia di portabilità",
+          "command": [
+            "node",
+            "tests/acceptance.mjs",
+            "backup-ui"
+          ],
+          "scope": [],
+          "timeoutMs": 120000
+        }
+      ],
+      "allowedPaths": [
+        "src",
+        "public",
+        "README.md",
+        "docs"
+      ],
+      "protectedPaths": [
+        "BRIEF.md",
+        "tests",
+        "package.json",
+        ".gitignore"
+      ],
+      "supervision": {
+        "mode": "project",
+        "maxReviews": 12
+      },
+      "limits": {
+        "maxTurns": 140,
+        "maxAttempts": 4,
+        "maxDurationMs": 14400000,
+        "maxTokens": 100000000,
+        "turnTimeoutMs": 720000,
+        "maxNoProgress": 4
+      }
+    },
+    "milestones": [
+      {
+        "id": "reliable-foundation",
+        "title": "Dati affidabili per progetti e attività",
+        "outcome": "Implementare API e persistenza di progetti e attività, filtri, date e revisioni ottimistiche. Fare controllare i due criteri host e lasciare una base coerente. Non implementare ancora pianificazione, sessioni o backup. Interfaccia minima solo se serve per avviare l’app.",
+        "criterionIds": [
+          "projects-api",
+          "tasks-api"
+        ],
+        "dependsOn": []
+      },
+      {
+        "id": "usable-board",
+        "title": "Un flusso attività che si usa davvero",
+        "outcome": "Costruire il flusso visuale Progetti e Attività: inserimento, modifica, filtri, gestione dei conflitti fra schede senza perdere gli input, testo non fidato letterale e layout mobile. Preservare le API già verificate. Le funzioni Settimana, Riepilogo e Backup possono ancora mostrare uno stato non disponibile esplicito.",
+        "criterionIds": [
+          "board-ui"
+        ],
+        "dependsOn": [
+          "reliable-foundation"
+        ]
+      },
+      {
+        "id": "weekly-work",
+        "title": "Dalla lista al piano settimanale e al tempo reale",
+        "outcome": "Aggiungere pianificazione settimanale, sessioni di tempo con cronologia, riepilogo coerente e relativi flussi browser, preservando attività e conflitti. Gestire date civili senza spostamenti da fuso orario. Backup rimane il prossimo esito.",
+        "criterionIds": [
+          "planning-api",
+          "planning-ui"
+        ],
+        "dependsOn": [
+          "usable-board"
+        ]
+      },
+      {
+        "id": "safe-delivery",
+        "title": "Portabilità e ritorno al prodotto finito",
+        "outcome": "Aggiungere backup completo e ripristino atomico validato con consenso esplicito. Verificare l’integrazione di tutti i flussi e i layout mobili. Completare README e guida pratica in italiano con avvio, dati, limiti e prove effettive, distinguendo affermazioni del modello da controlli host. Risolvere soltanto lacune concrete entro l’obiettivo approvato.",
+        "criterionIds": [
+          "backup-api",
+          "backup-ui"
+        ],
+        "dependsOn": [
+          "weekly-work"
+        ]
+      }
+    ],
+    "environment": {
+      "copyIgnoredPaths": []
+    }
+  },
+  "expectedHead": "595658b48b6d7118f46d604f4d011f681217aaf8",
+  "commonDirectory": "/Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/source/.git",
+  "specHash": "5d7cd586ae6b062d7b629a44922cdcc950eab6b707c6308ad0689b06fd7b597e",
+  "permissions": [
+    "Sequential project missions within this complete approved contract",
+    "Host creates verified local checkpoint commits under refs/iterfox/checkpoints; source HEAD and index stay unchanged",
+    "Historical handoffs are context; each new mission starts with no proofs",
+    "No push, merge, deployment, new check commands or automatic contract changes",
+    "Up to two technical recoveries per mission after the owned Codex process group exits and files are audited; original aggregate limits remain in force"
+  ],
+  "limits": {
+    "maxTurns": 140,
+    "maxAttempts": 4,
+    "maxDurationMs": 14400000,
+    "maxTokens": 100000000,
+    "turnTimeoutMs": 720000,
+    "maxNoProgress": 4
+  },
+  "authorizationRequired": true
+}

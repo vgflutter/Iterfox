@@ -1,0 +1,2388 @@
+[
+  {
+    "schemaVersion": 1,
+    "id": "15951adf-3664-44e3-ac64-023a23a51bfe",
+    "runId": "20261020T220700-5ec53331",
+    "seq": 1,
+    "at": "2026-10-20T22:07:00.109Z",
+    "type": "workflow.created",
+    "message": "Isolated workflow created from committed Git HEAD.",
+    "data": {
+      "state": {
+        "id": "20261020T220700-5ec53331",
+        "seq": 0,
+        "goal": "Realizzare Svolta, app locale in italiano per piccoli progetti personali, attività, pianificazione settimanale e tempo dedicato, con backup portabile e gestione coerente degli errori. Consegnare un prodotto utilizzabile su desktop e mobile e una guida onesta. Seguire il contratto pubblico BRIEF.md. Scegliere autonomamente i dettagli reversibili; non introdurre account, servizi, dipendenze o pubblicazione. Continuazione dichiarata della prova originale bloccata per un difetto del runtime: il candidato già prodotto non è un checkpoint certificato. Conservare interfaccia, comportamento e scelte già implementati; completare soltanto le lacune concrete e i rimanenti esiti, senza ridisegnare da capo. Le prove precedenti sono contesto storico, non certificazione di questa nuova missione.\n\nCurrent delegated outcome: Un flusso attività che si usa davvero\nCertificare e consegnare il candidato di interfaccia già implementato, preservando progetti, attività, bozze e scelte visuali. Le API erano verificate e un audit separato ha esercitato quattro flussi UI; i selettori host del nuovo contratto correggono la sola rigidità su suffissi obbligatori e controlli nascosti. Ottenere nuove prove per tutti e tre i criteri; allineare la guida ai risultati effettivi. Non rifare funzionalità già presenti; gli esiti successivi restano al supervisore host.\nComplete this outcome and preserve earlier verified behavior. Subsequent outcomes remain delegated to the host.",
+        "status": "PREFLIGHT",
+        "provider": "codex",
+        "repository": "/Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020-r2/source",
+        "worktree": "/Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020-r2/data/worktrees/20261020T220700-5ec53331",
+        "branch": "iterfox/20261020T220700-5ec53331",
+        "baseHead": "8fbf6801cdda04de5f9153c737902289d355e59f",
+        "contract": {
+          "goal": "Realizzare Svolta, app locale in italiano per piccoli progetti personali, attività, pianificazione settimanale e tempo dedicato, con backup portabile e gestione coerente degli errori. Consegnare un prodotto utilizzabile su desktop e mobile e una guida onesta. Seguire il contratto pubblico BRIEF.md. Scegliere autonomamente i dettagli reversibili; non introdurre account, servizi, dipendenze o pubblicazione. Continuazione dichiarata della prova originale bloccata per un difetto del runtime: il candidato già prodotto non è un checkpoint certificato. Conservare interfaccia, comportamento e scelte già implementati; completare soltanto le lacune concrete e i rimanenti esiti, senza ridisegnare da capo. Le prove precedenti sono contesto storico, non certificazione di questa nuova missione.\n\nCurrent delegated outcome: Un flusso attività che si usa davvero\nCertificare e consegnare il candidato di interfaccia già implementato, preservando progetti, attività, bozze e scelte visuali. Le API erano verificate e un audit separato ha esercitato quattro flussi UI; i selettori host del nuovo contratto correggono la sola rigidità su suffissi obbligatori e controlli nascosti. Ottenere nuove prove per tutti e tre i criteri; allineare la guida ai risultati effettivi. Non rifare funzionalità già presenti; gli esiti successivi restano al supervisore host.\nComplete this outcome and preserve earlier verified behavior. Subsequent outcomes remain delegated to the host.",
+          "criteria": [
+            {
+              "id": "projects-api",
+              "title": "Archivio progetti persistente e revisioni",
+              "command": [
+                "node",
+                "tests/acceptance.mjs",
+                "projects-api"
+              ],
+              "scope": [],
+              "timeoutMs": 120000
+            },
+            {
+              "id": "tasks-api",
+              "title": "Attività, filtri e conflitti senza perdita di dati",
+              "command": [
+                "node",
+                "tests/acceptance.mjs",
+                "tasks-api"
+              ],
+              "scope": [],
+              "timeoutMs": 120000
+            },
+            {
+              "id": "board-ui",
+              "title": "Interfaccia progetti e attività su desktop e mobile",
+              "command": [
+                "node",
+                "tests/acceptance.mjs",
+                "board-ui"
+              ],
+              "scope": [],
+              "timeoutMs": 120000
+            }
+          ],
+          "allowedPaths": [
+            "src",
+            "public",
+            "README.md",
+            "docs"
+          ],
+          "protectedPaths": [
+            "BRIEF.md",
+            "tests",
+            "package.json",
+            ".gitignore"
+          ],
+          "supervision": {
+            "mode": "project",
+            "maxReviews": 12
+          },
+          "limits": {
+            "maxTurns": 125,
+            "maxAttempts": 4,
+            "maxDurationMs": 9806263,
+            "maxTokens": 94975983,
+            "turnTimeoutMs": 720000,
+            "maxNoProgress": 4
+          }
+        },
+        "contracts": [
+          {
+            "goal": "Realizzare Svolta, app locale in italiano per piccoli progetti personali, attività, pianificazione settimanale e tempo dedicato, con backup portabile e gestione coerente degli errori. Consegnare un prodotto utilizzabile su desktop e mobile e una guida onesta. Seguire il contratto pubblico BRIEF.md. Scegliere autonomamente i dettagli reversibili; non introdurre account, servizi, dipendenze o pubblicazione. Continuazione dichiarata della prova originale bloccata per un difetto del runtime: il candidato già prodotto non è un checkpoint certificato. Conservare interfaccia, comportamento e scelte già implementati; completare soltanto le lacune concrete e i rimanenti esiti, senza ridisegnare da capo. Le prove precedenti sono contesto storico, non certificazione di questa nuova missione.\n\nCurrent delegated outcome: Un flusso attività che si usa davvero\nCertificare e consegnare il candidato di interfaccia già implementato, preservando progetti, attività, bozze e scelte visuali. Le API erano verificate e un audit separato ha esercitato quattro flussi UI; i selettori host del nuovo contratto correggono la sola rigidità su suffissi obbligatori e controlli nascosti. Ottenere nuove prove per tutti e tre i criteri; allineare la guida ai risultati effettivi. Non rifare funzionalità già presenti; gli esiti successivi restano al supervisore host.\nComplete this outcome and preserve earlier verified behavior. Subsequent outcomes remain delegated to the host.",
+            "criteria": [
+              {
+                "id": "projects-api",
+                "title": "Archivio progetti persistente e revisioni",
+                "command": [
+                  "node",
+                  "tests/acceptance.mjs",
+                  "projects-api"
+                ],
+                "scope": [],
+                "timeoutMs": 120000
+              },
+              {
+                "id": "tasks-api",
+                "title": "Attività, filtri e conflitti senza perdita di dati",
+                "command": [
+                  "node",
+                  "tests/acceptance.mjs",
+                  "tasks-api"
+                ],
+                "scope": [],
+                "timeoutMs": 120000
+              },
+              {
+                "id": "board-ui",
+                "title": "Interfaccia progetti e attività su desktop e mobile",
+                "command": [
+                  "node",
+                  "tests/acceptance.mjs",
+                  "board-ui"
+                ],
+                "scope": [],
+                "timeoutMs": 120000
+              }
+            ],
+            "allowedPaths": [
+              "src",
+              "public",
+              "README.md",
+              "docs"
+            ],
+            "protectedPaths": [
+              "BRIEF.md",
+              "tests",
+              "package.json",
+              ".gitignore"
+            ],
+            "supervision": {
+              "mode": "project",
+              "maxReviews": 12
+            },
+            "limits": {
+              "maxTurns": 125,
+              "maxAttempts": 4,
+              "maxDurationMs": 9806263,
+              "maxTokens": 94975983,
+              "turnTimeoutMs": 720000,
+              "maxNoProgress": 4
+            }
+          }
+        ],
+        "contractVersion": 1,
+        "createdAt": "2026-10-20T22:07:00.109Z",
+        "updatedAt": "2026-10-20T22:07:00.109Z",
+        "nodes": [],
+        "edges": [],
+        "criteria": [
+          {
+            "id": "projects-api",
+            "status": "PENDING"
+          },
+          {
+            "id": "tasks-api",
+            "status": "PENDING"
+          },
+          {
+            "id": "board-ui",
+            "status": "PENDING"
+          }
+        ],
+        "evidence": [],
+        "turns": 0,
+        "tokens": 0,
+        "noProgress": 0,
+        "planReady": false
+      }
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "f964d17a-8ad6-4593-8487-45bb111a2d99",
+    "runId": "20261020T220700-5ec53331",
+    "seq": 2,
+    "at": "2026-10-20T22:07:00.110Z",
+    "type": "goal.accepted",
+    "message": "Operator explicitly authorized this goal, acceptance contract and limits.",
+    "data": {
+      "version": 1
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "88856c09-c5e0-4fe8-91a7-5391995a5d73",
+    "runId": "20261020T220700-5ec53331",
+    "seq": 3,
+    "at": "2026-10-20T22:07:00.110Z",
+    "type": "direction.noted",
+    "message": "Operator request: Delegation ba19c3c0-677b-4354-9729-fd66916ed929; approval e06241642dba9398c08e90b66e7b898b29572b004ce0087d8b4ea0a9c506df0c; outcome usable-board.\nPrevious checkpoint 8fbf6801cdda04de5f9153c737902289d355e59f. Historical evidence is context only; this new mission must obtain fresh proof.\nThis is the first delegated mission.",
+    "data": {
+      "noteId": "70bc50ac-cd3e-4a7b-9822-3a8d255a1ccb",
+      "note": {
+        "text": "Delegation ba19c3c0-677b-4354-9729-fd66916ed929; approval e06241642dba9398c08e90b66e7b898b29572b004ce0087d8b4ea0a9c506df0c; outcome usable-board.\nPrevious checkpoint 8fbf6801cdda04de5f9153c737902289d355e59f. Historical evidence is context only; this new mission must obtain fresh proof.\nThis is the first delegated mission.",
+        "kind": "request"
+      }
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "b87f50b8-cd6e-4e86-9229-f88a80626e6e",
+    "runId": "20261020T220700-5ec53331",
+    "seq": 4,
+    "at": "2026-10-20T22:07:00.160Z",
+    "type": "task.planned",
+    "message": "Reconcile the project direction",
+    "data": {
+      "node": {
+        "id": "507ea304-2ea4-4cb0-8142-aaad201e7ce1",
+        "status": "PENDING",
+        "attempt": 1,
+        "files": [],
+        "evidenceIds": [],
+        "kind": "decision",
+        "role": "planner",
+        "title": "Reconcile the project direction",
+        "objective": "{\"sourceIds\":[\"70bc50ac-cd3e-4a7b-9822-3a8d255a1ccb\"],\"version\":1}",
+        "criterionId": "projects-api",
+        "reason": "Operator handoff changed; reconcile once at an activity boundary."
+      }
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "1b0fa341-220c-415c-8271-3375f175c531",
+    "runId": "20261020T220700-5ec53331",
+    "seq": 5,
+    "at": "2026-10-20T22:07:00.161Z",
+    "type": "task.started",
+    "message": "planner: Reconcile the project direction",
+    "data": {
+      "nodeId": "507ea304-2ea4-4cb0-8142-aaad201e7ce1",
+      "edges": []
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "762dc331-9419-4bbc-b028-c63e2eb9d02d",
+    "runId": "20261020T220700-5ec53331",
+    "seq": 6,
+    "at": "2026-10-20T22:07:03.879Z",
+    "type": "agent.thread",
+    "message": "Codex session recorded for recovery.",
+    "data": {
+      "nodeId": "507ea304-2ea4-4cb0-8142-aaad201e7ce1",
+      "threadId": "01a15b5a-8d4f-7bc0-b7d1-013afe493308"
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "eca5c525-c435-40fc-b1fe-e9e787abd2c1",
+    "runId": "20261020T220700-5ec53331",
+    "seq": 7,
+    "at": "2026-10-20T22:08:08.923Z",
+    "type": "agent.usage",
+    "message": "188800 tokens reported by provider.",
+    "data": {
+      "tokens": 188800
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "2e361607-f81a-473c-86cb-78324838a322",
+    "runId": "20261020T220700-5ec53331",
+    "seq": 8,
+    "at": "2026-10-20T22:08:09.384Z",
+    "type": "task.completed",
+    "message": "Handoff consolidated; no completion or acceptance is implied.",
+    "data": {
+      "nodeId": "507ea304-2ea4-4cb0-8142-aaad201e7ce1",
+      "summary": "Direction proposal mapped to the unchanged acceptance contract.",
+      "result": {
+        "proposal": {
+          "focus": "Consegnare il candidato esistente per Progetti e Attività, preservando dati, bozze, conflitti e scelte visuali. Richiedere al runtime nuove prove per projects-api, tasks-api e board-ui; intervenire sul codice soltanto per difetti concreti emersi. Settimana, tempo, riepilogo e backup restano agli esiti successivi del supervisore host.",
+          "nextArtifact": "Una revisione di README.md, docs/guida.md e docs/verifiche.md che documenti la continuazione dal checkpoint 8fbf6801cdda04de5f9153c737902289d355e59f, riporti le nuove ricevute dei tre criteri e distingua risultati osservati, contesto storico e limiti residui.",
+          "assumptions": [
+            "Il candidato potrebbe superare i tre criteri senza modifiche funzionali grazie ai selettori host aggiornati; occorrono le nuove ricevute per confermarlo."
+          ],
+          "notes": [
+            {
+              "noteId": "70bc50ac-cd3e-4a7b-9822-3a8d255a1ccb",
+              "disposition": "applied",
+              "reason": "Incorporata la prima delega usable-board: il checkpoint precedente e le prove storiche sono contesto, mentre tutti e tre i criteri restano PENDING. La lettura conferma la presenza delle implementazioni candidate; non emerge una lacuna che giustifichi una riscrittura. Le verifiche spettano al runtime.",
+              "criterionIds": [
+                "projects-api",
+                "tasks-api",
+                "board-ui"
+              ]
+            }
+          ],
+          "tasks": [
+            {
+              "title": "Allineare guida e registro alla consegna corrente",
+              "objective": "Aggiornare README.md, docs/guida.md e docs/verifiche.md usando le nuove ricevute effettivamente restituite dal runtime per tutti e tre i criteri, con riferimento alla revisione verificata, ai comandi, agli esiti e alla copertura osservata. Separare le precedenti evidenze API e il contesto dell’audit UI dalla certificazione corrente; mantenere espliciti i limiti delle bozze e le funzioni successive indisponibili. In assenza di ricevute mantenere gli esiti in attesa, senza dichiarare PASS o collaudi non osservati.",
+              "criterionId": "board-ui",
+              "waitsFor": [
+                "projects-api",
+                "tasks-api"
+              ]
+            }
+          ]
+        },
+        "sourceIds": [
+          "70bc50ac-cd3e-4a7b-9822-3a8d255a1ccb"
+        ]
+      }
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "2c12c6cb-98b5-4c31-8b92-2f0710a548e7",
+    "runId": "20261020T220700-5ec53331",
+    "seq": 9,
+    "at": "2026-10-20T22:08:09.385Z",
+    "type": "direction.compiled",
+    "message": "Project direction updated. Unstarted work replaced; independent work can continue while operator questions wait.",
+    "data": {
+      "nodeId": "507ea304-2ea4-4cb0-8142-aaad201e7ce1",
+      "sourceIds": [
+        "70bc50ac-cd3e-4a7b-9822-3a8d255a1ccb"
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "691581db-cfca-4184-904f-e5a1dcdbfead",
+    "runId": "20261020T220700-5ec53331",
+    "seq": 10,
+    "at": "2026-10-20T22:08:09.399Z",
+    "type": "verification.started",
+    "message": "Checking existing coverage: Archivio progetti persistente e revisioni",
+    "data": {
+      "nodeId": "9439d9c9-a299-452b-8a7f-773df0f9bd4b",
+      "node": {
+        "id": "9439d9c9-a299-452b-8a7f-773df0f9bd4b",
+        "status": "PENDING",
+        "attempt": 1,
+        "files": [],
+        "evidenceIds": [],
+        "kind": "verification",
+        "role": "verifier",
+        "title": "Archivio progetti persistente e revisioni",
+        "objective": "Run approved check: [\"node\",\"tests/acceptance.mjs\",\"projects-api\"]",
+        "criterionId": "projects-api",
+        "reason": "Probe while planned implementation remains; a negative observation defers correction."
+      },
+      "edges": [
+        {
+          "id": "70f90102-0b51-4209-917b-6b1dc0c3d141",
+          "source": "507ea304-2ea4-4cb0-8142-aaad201e7ce1",
+          "target": "9439d9c9-a299-452b-8a7f-773df0f9bd4b",
+          "kind": "next"
+        }
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "0566c417-5cad-412a-8872-f571ced4d1dc",
+    "runId": "20261020T220700-5ec53331",
+    "seq": 11,
+    "at": "2026-10-20T22:08:10.770Z",
+    "type": "verification.passed",
+    "message": "Archivio progetti persistente e revisioni: approved command already passes on the recorded inputs.",
+    "data": {
+      "nodeId": "9439d9c9-a299-452b-8a7f-773df0f9bd4b",
+      "evidence": {
+        "id": "97d2269d-53e9-49f3-b3c5-62ad578f0774",
+        "nodeId": "9439d9c9-a299-452b-8a7f-773df0f9bd4b",
+        "criterionId": "projects-api",
+        "contractVersion": 1,
+        "kind": "deterministic",
+        "status": "passed",
+        "createdAt": "2026-10-20T22:08:10.721Z",
+        "command": [
+          "node",
+          "tests/acceptance.mjs",
+          "projects-api"
+        ],
+        "exitCode": 0,
+        "output": "PASS empty archive\nPASS create project with stable defaults\nPASS optimistic project edit\nPASS invalid names and missing revisions do not write\nPASS project archival survives restart\nPASS unknown project does not create a record\n{\"criterion\":\"projects-api\",\"result\":\"PASS\",\"groups\":6}\n",
+        "durationMs": 1338,
+        "stamp": {
+          "head": "8fbf6801cdda04de5f9153c737902289d355e59f",
+          "files": {
+            ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+            "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+            "README.md": "a49b5979ee5a746732112c2d0cbaa59213e42856f8b08568aac08094af5cb792",
+            "docs/guida.md": "23ee0b93ee37d5f78a9c8010f9df5a81082d28bd2f37bc365f30151cddfc2c10",
+            "docs/verifiche.md": "e9b4ec6f5a999ef426a7df683225a6307f4c93d9325bc0aee9dfb2ad19450733",
+            "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+            "public/index.html": "1e798be6470daa454678337196f2076ca008b3922756dea7d79bbade5b259dee",
+            "public/svolta.css": "235865d7c676b8cf5cd7a9df2936252c335ffdf87d0d996ce90dd086e888a799",
+            "public/svolta.js": "8494e848b135e8dd8e4ecd4d29bc37705c1256b73ba5322f20438056bb1c5ab4",
+            "src/app.mjs": "04453e9d589045bc64eb12c64ce69766fa55fa541f75fdeeff0ea8e237e3b14b",
+            "src/archive.mjs": "07d8f1c116184f827d5da85b0874f0849f441a3e9a0bff6279b635a7f66de443",
+            "src/dates.mjs": "97166e73d0b44fc0758dba28a8e89c24e643efb97202e484c79cf9903906bde2",
+            "src/errors.mjs": "594ce35930d8da6b7abec818d5c0111a1d2488cd02d2bc2359297f7f12d11996",
+            "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+            "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+            "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+            "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+            "tests/acceptance.mjs": "5759467fd1c94b32c4044e4e7809c8b19afa636bd2b73ec210952d5c2bdcd4da",
+            "tests/browser.mjs": "94c628f46208c5fe55cc5e6b318fd72b43b95e3a73020a028cd2b02248a89d8a",
+            "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+          },
+          "fingerprint": "eeb29ca77eb8037dc0d0ed9a44a057679051daf2e311041da7281c4ca46e62ee"
+        },
+        "scope": [],
+        "inputs": [],
+        "purpose": "probe"
+      }
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "7b7a22c0-fe74-4221-9aea-7600b8384853",
+    "runId": "20261020T220700-5ec53331",
+    "seq": 12,
+    "at": "2026-10-20T22:08:10.782Z",
+    "type": "verification.started",
+    "message": "Checking existing coverage: Attività, filtri e conflitti senza perdita di dati",
+    "data": {
+      "nodeId": "fd68519c-9212-4107-901f-386ade7676b9",
+      "node": {
+        "id": "fd68519c-9212-4107-901f-386ade7676b9",
+        "status": "PENDING",
+        "attempt": 1,
+        "files": [],
+        "evidenceIds": [],
+        "kind": "verification",
+        "role": "verifier",
+        "title": "Attività, filtri e conflitti senza perdita di dati",
+        "objective": "Run approved check: [\"node\",\"tests/acceptance.mjs\",\"tasks-api\"]",
+        "criterionId": "tasks-api",
+        "reason": "Probe while planned implementation remains; a negative observation defers correction."
+      },
+      "edges": [
+        {
+          "id": "a310933a-91a5-4284-9d2f-43e4b1117cc9",
+          "source": "9439d9c9-a299-452b-8a7f-773df0f9bd4b",
+          "target": "fd68519c-9212-4107-901f-386ade7676b9",
+          "kind": "next"
+        }
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "1067488f-2872-46fd-bc6c-06429b99af66",
+    "runId": "20261020T220700-5ec53331",
+    "seq": 13,
+    "at": "2026-10-20T22:08:12.188Z",
+    "type": "verification.passed",
+    "message": "Attività, filtri e conflitti senza perdita di dati: approved command already passes on the recorded inputs.",
+    "data": {
+      "nodeId": "fd68519c-9212-4107-901f-386ade7676b9",
+      "evidence": {
+        "id": "b90d9b34-63e4-4536-ba24-a6efc446d984",
+        "nodeId": "fd68519c-9212-4107-901f-386ade7676b9",
+        "criterionId": "tasks-api",
+        "contractVersion": 1,
+        "kind": "deterministic",
+        "status": "passed",
+        "createdAt": "2026-10-20T22:08:12.144Z",
+        "command": [
+          "node",
+          "tests/acceptance.mjs",
+          "tasks-api"
+        ],
+        "exitCode": 0,
+        "output": "PASS task defaults and exact fields\nPASS task edit, revision conflicts and combined filters\nPASS civil dates, invalid states and numeric validation\nPASS parallel stale writers cannot overwrite each other\nPASS archived projects disappear from general activity list\nPASS task persistence and malformed JSON\n{\"criterion\":\"tasks-api\",\"result\":\"PASS\",\"groups\":6}\n",
+        "durationMs": 1371,
+        "stamp": {
+          "head": "8fbf6801cdda04de5f9153c737902289d355e59f",
+          "files": {
+            ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+            "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+            "README.md": "a49b5979ee5a746732112c2d0cbaa59213e42856f8b08568aac08094af5cb792",
+            "docs/guida.md": "23ee0b93ee37d5f78a9c8010f9df5a81082d28bd2f37bc365f30151cddfc2c10",
+            "docs/verifiche.md": "e9b4ec6f5a999ef426a7df683225a6307f4c93d9325bc0aee9dfb2ad19450733",
+            "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+            "public/index.html": "1e798be6470daa454678337196f2076ca008b3922756dea7d79bbade5b259dee",
+            "public/svolta.css": "235865d7c676b8cf5cd7a9df2936252c335ffdf87d0d996ce90dd086e888a799",
+            "public/svolta.js": "8494e848b135e8dd8e4ecd4d29bc37705c1256b73ba5322f20438056bb1c5ab4",
+            "src/app.mjs": "04453e9d589045bc64eb12c64ce69766fa55fa541f75fdeeff0ea8e237e3b14b",
+            "src/archive.mjs": "07d8f1c116184f827d5da85b0874f0849f441a3e9a0bff6279b635a7f66de443",
+            "src/dates.mjs": "97166e73d0b44fc0758dba28a8e89c24e643efb97202e484c79cf9903906bde2",
+            "src/errors.mjs": "594ce35930d8da6b7abec818d5c0111a1d2488cd02d2bc2359297f7f12d11996",
+            "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+            "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+            "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+            "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+            "tests/acceptance.mjs": "5759467fd1c94b32c4044e4e7809c8b19afa636bd2b73ec210952d5c2bdcd4da",
+            "tests/browser.mjs": "94c628f46208c5fe55cc5e6b318fd72b43b95e3a73020a028cd2b02248a89d8a",
+            "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+          },
+          "fingerprint": "eeb29ca77eb8037dc0d0ed9a44a057679051daf2e311041da7281c4ca46e62ee"
+        },
+        "scope": [],
+        "inputs": [],
+        "purpose": "probe"
+      }
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "bb423408-b0ae-4804-beca-6feb4961c42e",
+    "runId": "20261020T220700-5ec53331",
+    "seq": 14,
+    "at": "2026-10-20T22:08:12.201Z",
+    "type": "verification.started",
+    "message": "Checking existing coverage: Interfaccia progetti e attività su desktop e mobile",
+    "data": {
+      "nodeId": "65f7c09d-1647-4a84-9500-d1bf5abb440b",
+      "node": {
+        "id": "65f7c09d-1647-4a84-9500-d1bf5abb440b",
+        "status": "PENDING",
+        "attempt": 1,
+        "files": [],
+        "evidenceIds": [],
+        "kind": "verification",
+        "role": "verifier",
+        "title": "Interfaccia progetti e attività su desktop e mobile",
+        "objective": "Run approved check: [\"node\",\"tests/acceptance.mjs\",\"board-ui\"]",
+        "criterionId": "board-ui",
+        "reason": "Probe while planned implementation remains; a negative observation defers correction."
+      },
+      "edges": [
+        {
+          "id": "ca194aca-f366-423c-b0eb-f3519640cebb",
+          "source": "fd68519c-9212-4107-901f-386ade7676b9",
+          "target": "65f7c09d-1647-4a84-9500-d1bf5abb440b",
+          "kind": "next"
+        }
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "5b1a735a-aa12-4ef9-b365-a7cc0e144efb",
+    "runId": "20261020T220700-5ec53331",
+    "seq": 15,
+    "at": "2026-10-20T22:08:15.597Z",
+    "type": "verification.passed",
+    "message": "Interfaccia progetti e attività su desktop e mobile: approved command already passes on the recorded inputs.",
+    "data": {
+      "nodeId": "65f7c09d-1647-4a84-9500-d1bf5abb440b",
+      "evidence": {
+        "id": "91a059f9-44b3-4e62-b9ff-2e65c6003350",
+        "nodeId": "65f7c09d-1647-4a84-9500-d1bf5abb440b",
+        "criterionId": "board-ui",
+        "contractVersion": 1,
+        "kind": "deterministic",
+        "status": "passed",
+        "createdAt": "2026-10-20T22:08:15.543Z",
+        "command": [
+          "node",
+          "tests/acceptance.mjs",
+          "board-ui"
+        ],
+        "exitCode": 0,
+        "output": "PASS create a project and task through the actual interface\nPASS edit, filter and preserve the changed activity after reopening\nPASS concurrent interface edits cannot silently overwrite another tab\nPASS literal hostile text and mobile layout\n{\"criterion\":\"board-ui\",\"result\":\"PASS\",\"groups\":4}\n",
+        "durationMs": 3360,
+        "stamp": {
+          "head": "8fbf6801cdda04de5f9153c737902289d355e59f",
+          "files": {
+            ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+            "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+            "README.md": "a49b5979ee5a746732112c2d0cbaa59213e42856f8b08568aac08094af5cb792",
+            "docs/guida.md": "23ee0b93ee37d5f78a9c8010f9df5a81082d28bd2f37bc365f30151cddfc2c10",
+            "docs/verifiche.md": "e9b4ec6f5a999ef426a7df683225a6307f4c93d9325bc0aee9dfb2ad19450733",
+            "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+            "public/index.html": "1e798be6470daa454678337196f2076ca008b3922756dea7d79bbade5b259dee",
+            "public/svolta.css": "235865d7c676b8cf5cd7a9df2936252c335ffdf87d0d996ce90dd086e888a799",
+            "public/svolta.js": "8494e848b135e8dd8e4ecd4d29bc37705c1256b73ba5322f20438056bb1c5ab4",
+            "src/app.mjs": "04453e9d589045bc64eb12c64ce69766fa55fa541f75fdeeff0ea8e237e3b14b",
+            "src/archive.mjs": "07d8f1c116184f827d5da85b0874f0849f441a3e9a0bff6279b635a7f66de443",
+            "src/dates.mjs": "97166e73d0b44fc0758dba28a8e89c24e643efb97202e484c79cf9903906bde2",
+            "src/errors.mjs": "594ce35930d8da6b7abec818d5c0111a1d2488cd02d2bc2359297f7f12d11996",
+            "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+            "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+            "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+            "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+            "tests/acceptance.mjs": "5759467fd1c94b32c4044e4e7809c8b19afa636bd2b73ec210952d5c2bdcd4da",
+            "tests/browser.mjs": "94c628f46208c5fe55cc5e6b318fd72b43b95e3a73020a028cd2b02248a89d8a",
+            "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+          },
+          "fingerprint": "eeb29ca77eb8037dc0d0ed9a44a057679051daf2e311041da7281c4ca46e62ee"
+        },
+        "scope": [],
+        "inputs": [],
+        "purpose": "probe"
+      }
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "eefa4347-e3f3-458b-b6a3-5254bdc96fd9",
+    "runId": "20261020T220700-5ec53331",
+    "seq": 16,
+    "at": "2026-10-20T22:08:15.617Z",
+    "type": "task.started",
+    "message": "builder: Allineare guida e registro alla consegna corrente",
+    "data": {
+      "nodeId": "direction-507ea304-2ea4-4cb0-8142-aaad201e7ce1-0",
+      "edges": [
+        {
+          "id": "15243565-86fc-4953-930d-71976053ba14",
+          "source": "65f7c09d-1647-4a84-9500-d1bf5abb440b",
+          "target": "direction-507ea304-2ea4-4cb0-8142-aaad201e7ce1-0",
+          "kind": "next"
+        }
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "e73ae44e-f171-457c-978c-27c7a3a51fe7",
+    "runId": "20261020T220700-5ec53331",
+    "seq": 17,
+    "at": "2026-10-20T22:08:16.001Z",
+    "type": "agent.thread",
+    "message": "Codex session recorded for recovery.",
+    "data": {
+      "nodeId": "direction-507ea304-2ea4-4cb0-8142-aaad201e7ce1-0",
+      "threadId": "01a15b5b-a844-7840-acf6-5e83cec2de7f"
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "cc256537-c8d9-4cc0-9f8c-d7bcc2bad64b",
+    "runId": "20261020T220700-5ec53331",
+    "seq": 18,
+    "at": "2026-10-20T22:10:58.249Z",
+    "type": "agent.usage",
+    "message": "249694 tokens reported by provider.",
+    "data": {
+      "tokens": 249694
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "d076be79-3b62-4c53-8d92-5aff74903de9",
+    "runId": "20261020T220700-5ec53331",
+    "seq": 19,
+    "at": "2026-10-20T22:10:59.167Z",
+    "type": "code.changed",
+    "message": "3 files changed by this activity.",
+    "data": {
+      "nodeId": "direction-507ea304-2ea4-4cb0-8142-aaad201e7ce1-0",
+      "files": [
+        "README.md",
+        "docs/guida.md",
+        "docs/verifiche.md"
+      ],
+      "diff": "diff --git a/README.md b/README.md\nindex 74a43dd..94b11f7 100644\n--- a/README.md\n+++ b/README.md\n@@ -11,6 +11,12 @@ conflitti. Il contratto completo, incluse le funzioni successive ancora\n indisponibili, è in [BRIEF.md](BRIEF.md). La descrizione del codice qui presente\n è distinta dalle [evidenze di verifica](docs/verifiche.md).\n \n+Questa consegna continua dal candidato\n+`8fbf6801cdda04de5f9153c737902289d355e59f`, che **non è un checkpoint certificato**.\n+La missione corrente non dispone ancora di nuove ricevute host: `projects-api`,\n+`tasks-api` e `board-ui` restano **IN ATTESA**. Le prove precedenti sono contesto\n+storico e non certificano questa consegna.\n+\n ## Avvio\n \n Occorre Node.js **22.13 o successivo** e un browser moderno con JavaScript e\n@@ -253,25 +259,26 @@ Gli errori hanno forma `{\"error\":\"Messaggio in italiano\",\"code\":\"CODICE\"}`:\n \n ## Stato delle verifiche\n \n-Le ricevute del checkpoint precedente riportano **PASS storico** per\n-`projects-api` e `tasks-api` (sei gruppi ciascuno). Non attestano questa versione\n-dell’interfaccia. Il [registro delle evidenze](docs/verifiche.md) ne indica la\n-provenienza e separa le dichiarazioni locali precedenti dalle verifiche correnti.\n-\n-Questo aggiornamento riguarda solo la documentazione: lettura dei sorgenti e\n-controllo dei collegamenti locali. Non sono stati avviati server HTTP o browser\n-né rieseguite suite API o di accettazione; non si dichiara alcun collaudo desktop,\n-mobile a 390px o con lettori di schermo. Non è disponibile qui una nuova ricevuta host.\n+Non sono state restituite nuove ricevute del runtime per la missione corrente.\n+La revisione verificata e la copertura osservata restano quindi **non disponibili**\n+per tutti e tre i criteri. I comandi approvati richiesti al runtime sono:\n \n-Per il flusso corrente sono richieste al runtime nuove esecuzioni dei criteri\n-approvati; questi sono comandi da eseguire sull’host, non esiti osservati:\n-\n-```sh\n-node tests/acceptance.mjs projects-api\n-node tests/acceptance.mjs tasks-api\n-node tests/acceptance.mjs board-ui\n-```\n-\n-Le nuove ricevute del runtime vanno riferite alla revisione verificata e tenute\n-distinte da quelle storiche. Un PASS dei criteri automatici non sostituisce la\n-revisione d’uso, in particolare dei conflitti per campo, del focus e del layout.\n+| Comando host | Esito corrente |\n+| --- | --- |\n+| `node tests/acceptance.mjs projects-api` | IN ATTESA di ricevuta |\n+| `node tests/acceptance.mjs tasks-api` | IN ATTESA di ricevuta |\n+| `node tests/acceptance.mjs board-ui` | IN ATTESA di ricevuta |\n+\n+Il registro ereditato riporta PASS storici per le due API (sei gruppi ciascuno).\n+La delega riferisce inoltre un audit separato su quattro flussi UI. Entrambe\n+sono informazioni di contesto: non equivalgono a ricevute della missione corrente\n+e non consentono di attribuire un PASS a `board-ui`.\n+\n+Questo aggiornamento modifica solo README e documenti in `docs/`; conserva codice,\n+interfaccia e comportamento del candidato. Sono stati controllati i collegamenti\n+locali della documentazione e il diff. Non sono stati avviati server HTTP o browser\n+né rieseguite suite API o di accettazione. Il [registro delle evidenze](docs/verifiche.md)\n+separa provenienza, revisione di partenza, comandi, esiti e copertura osservata.\n+Una richiesta di verifica non è un’esecuzione. Anche un futuro PASS automatico\n+andrà limitato alla copertura della relativa ricevuta: non attesterà da solo\n+ogni conflitto per campo, il focus, il layout o l’uso con lettori di schermo.\ndiff --git a/docs/guida.md b/docs/guida.md\nindex f3da23f..656abbf 100644\n--- a/docs/guida.md\n+++ b/docs/guida.md\n@@ -1,5 +1,13 @@\n # Usare Progetti e Attività\n \n+Questa guida descrive il candidato ereditato dalla revisione\n+`8fbf6801cdda04de5f9153c737902289d355e59f`, non un checkpoint certificato.\n+Per la consegna corrente `projects-api`, `tasks-api` e `board-ui` sono tutti\n+**IN ATTESA** di nuove ricevute host; non è ancora disponibile una revisione\n+verificata. Le istruzioni seguenti descrivono l’implementazione presente,\n+non un nuovo collaudo osservato. Provenienza, comandi ed esiti sono nel\n+[registro delle evidenze](verifiche.md#certificazione-della-missione-corrente).\n+\n Occorre Node.js 22.13 o successivo. Dalla cartella del progetto avviare\n `node src/server.mjs` oppure `npm start`, senza installare dipendenze. Aprire nel\n browser l’indirizzo della riga `SVOLTA_READY http://127.0.0.1:…` e lasciare il\n@@ -126,7 +134,10 @@ Il layout prevede navigazione su più righe, campi in colonna e dialoghi con\n scorrimento verticale su schermi stretti; nomi, note e confronti vanno a capo.\n Il nome completo del progetto selezionato appare sotto i selettori. Gli stati\n sono scritti in italiano oltre al colore, le scadenze come giorno/mese/anno.\n-Queste indicazioni descrivono l’implementazione, non un collaudo browser osservato.\n+Queste indicazioni descrivono l’implementazione. Il contesto della delega riferisce\n+un audit separato su quattro flussi UI, senza una ricevuta corrente `board-ui`.\n+Non è quindi attestato qui un nuovo collaudo desktop o a 390px, del focus nativo\n+o con lettori di schermo.\n \n ## Dati e funzioni successive\n \n@@ -143,5 +154,7 @@ interno non è quel backup. Non c’è recupero automatico dei dati o delle bozz\n \n Il server ascolta solo sul dispositivo che lo esegue: il layout adattivo non\n permette di collegare il telefono al computer con lo stesso indirizzo locale.\n-Le ricevute storiche e le nuove verifiche richieste, senza dichiarare collaudi\n-non osservati, sono descritte nel [registro delle evidenze](verifiche.md).\n+Le evidenze API storiche e il contesto dell’audit UI sono separati dalle verifiche\n+correnti nel [registro delle evidenze](verifiche.md). La richiesta dei tre criteri\n+non certifica questo candidato: fino alla restituzione delle ricevute restano\n+in attesa anche la copertura desktop/mobile e la regressione delle API.\ndiff --git a/docs/verifiche.md b/docs/verifiche.md\nindex 830b392..1643e06 100644\n--- a/docs/verifiche.md\n+++ b/docs/verifiche.md\n@@ -2,34 +2,82 @@\n \n La descrizione delle funzioni nel [README](../README.md) e nella [guida](guida.md)\n è basata sui sorgenti presenti. Una funzione descritta, un controllo locale\n-dichiarato e una ricevuta del runtime sono informazioni diverse.\n-\n-## Ricevute host storiche\n-\n-Il contesto operatore di questa delega riporta dal checkpoint\n+dichiarato, un audit riferito e una ricevuta del runtime sono informazioni diverse.\n+\n+## Certificazione della missione corrente\n+\n+La missione `long-svolta-20261020-r2`, esito `usable-board`, continua dalla revisione\n+`8fbf6801cdda04de5f9153c737902289d355e59f` (HEAD all’inizio di questo task).\n+È il candidato già prodotto, **non un checkpoint certificato**. La prova originale\n+è stata dichiarata bloccata da un difetto del runtime; le sue evidenze restano\n+contesto storico e non certificano questa nuova missione.\n+\n+Questo task aggiorna soltanto `README.md`, `docs/guida.md` e questo registro.\n+Non cambia progetti, attività, gestione delle bozze, conflitti o scelte visuali.\n+La revisione di partenza identifica il candidato ereditato, non una revisione\n+verificata dal runtime sulla consegna corrente.\n+\n+**Nessuna nuova ricevuta host è disponibile in questo task.** I tre criteri del\n+contratto di accettazione v1 restano **IN ATTESA**:\n+\n+| Criterio | Comando approvato | Esito corrente | Revisione verificata | Ricevuta / output corrente | Copertura osservata corrente |\n+| --- | --- | --- | --- | --- | --- |\n+| `projects-api` | `node tests/acceptance.mjs projects-api` | IN ATTESA | Non disponibile | Non restituiti | Nessuna attestata |\n+| `tasks-api` | `node tests/acceptance.mjs tasks-api` | IN ATTESA | Non disponibile | Non restituiti | Nessuna attestata |\n+| `board-ui` | `node tests/acceptance.mjs board-ui` | IN ATTESA | Non disponibile | Non restituiti | Nessuna attestata |\n+\n+La verifica richiesta riguarda l’archivio persistente e le revisioni dei progetti,\n+le attività con filtri e conflitti senza perdita di dati, e il flusso dell’interfaccia\n+su desktop e mobile. Questi sono gli obiettivi dei criteri, non copertura osservata.\n+Il contesto della delega segnala che i selettori host aggiornati correggono la\n+rigidità sui suffissi obbligatori e sui controlli nascosti: questa modifica del\n+contratto di verifica non è un risultato di esecuzione.\n+\n+La richiesta dei comandi al runtime non equivale a una loro esecuzione né a un\n+PASS. Per aggiornare ogni riga occorrono la ricevuta effettivamente restituita,\n+il riferimento alla revisione controllata, il comando, l’esito e la copertura\n+ricavabile dall’output. Un esito di un criterio non si estende agli altri due;\n+una ricevuta su un’altra revisione non certifica automaticamente questa consegna.\n+\n+## Evidenze API storiche riportate\n+\n+Il registro ereditato attribuisce al checkpoint\n `d3e570da7f20fb6f81fa5f6d8af89f710e9926d1` (run sorgente\n `20261020T205056-641e33a8`, sequenza 64) questi risultati:\n \n-| Comando approvato | Esito riportato dal checkpoint | Gruppi |\n+| Comando approvato | Esito storico riportato | Gruppi |\n | --- | --- | --- |\n | `node tests/acceptance.mjs projects-api` | PASS storico | 6 |\n | `node tests/acceptance.mjs tasks-api` | PASS storico | 6 |\n \n-La copertura riportata per `projects-api` comprende archivio vuoto, creazione e\n-normalizzazione del nome, aggiornamento con revisione, conflitto senza\n+La copertura storica riportata per `projects-api` comprende archivio vuoto,\n+creazione e normalizzazione del nome, aggiornamento con revisione, conflitto senza\n sovrascrittura, validazione, archiviazione persistente dopo riavvio e ID ignoto.\n \n Per `tasks-api` comprende valori predefiniti, aggiornamento e conflitti,\n filtri combinati e ricerca, validazione dei campi e delle date civili,\n concorrenza con un solo successo, progetti archiviati o sconosciuti,\n persistenza dopo riavvio e JSON malformato senza modifica dei dati.\n-Il checkpoint riferisce anche avvio con `PORT=0`, cartella dati temporanea,\n+Il registro riferisce anche avvio con `PORT=0`, cartella dati temporanea,\n annuncio `SVOLTA_READY`, richieste HTTP e riavvio sulla stessa cartella.\n \n-Questa documentazione riporta il contesto ricevuto; non riproduce né rinnova\n-quegli esiti. Non c’è in esso una ricevuta `board-ui`. I PASS API storici non\n-verificano la nuova interfaccia né dimostrano la conservazione delle API nella\n-versione corrente.\n+Questi riferimenti sono conservati come informazioni del documento ereditato;\n+le ricevute originali e il loro output non sono disponibili nel worktree di\n+questo task. Non sono nuove osservazioni né rinnovi degli esiti. Non comprendono\n+una ricevuta `board-ui` e non dimostrano la conservazione delle API nella revisione\n+corrente.\n+\n+## Contesto dell’audit UI separato\n+\n+La delega corrente riferisce che un audit separato ha esercitato **quattro flussi\n+UI** sul candidato. Non fornisce qui l’elenco dei quattro flussi, la revisione\n+esercitata, i comandi o l’output dell’audit. Questo registro non può quindi\n+attribuirgli una copertura più specifica o usarlo come ricevuta corrente di\n+`board-ui`.\n+\n+L’audit rimane contesto utile alla continuità del candidato. Non costituisce una\n+certificazione dei tre criteri di questa missione né un nuovo collaudo osservato\n+durante questo task.\n \n ## Controlli locali dichiarati nei task precedenti\n \n@@ -49,31 +97,28 @@ nativo, Tab/Escape, lettori di schermo o l’esperienza effettiva nel browser.\n Le prove senza socket non dimostrano il funzionamento HTTP; quelle in memoria\n non dimostrano la persistenza su disco.\n \n-## Aggiornamento corrente della documentazione\n-\n-In questo task sono stati letti i sorgenti server, archivio, API e interfaccia\n-per allineare le istruzioni alle etichette e ai percorsi presenti. È stato\n-eseguito un controllo dei collegamenti locali della documentazione. Non sono\n-state modificate le API o gli asset, avviati server/browser o rieseguite suite\n-API o di accettazione. Questo controllo documentale non attesta il funzionamento\n-dell’app. Non è stata osservata qui una nuova ricevuta host.\n-\n-I criteri da richiedere al runtime per il flusso attuale sono:\n-\n-| Comando approvato | Scopo | Nuova evidenza disponibile in questo task |\n-| --- | --- | --- |\n-| `node tests/acceptance.mjs projects-api` | Regressione dell’archivio e delle API progetti | Nessuna |\n-| `node tests/acceptance.mjs tasks-api` | Regressione delle attività, dei filtri e dei conflitti API | Nessuna |\n-| `node tests/acceptance.mjs board-ui` | Flusso visuale su desktop e schermo stretto | Nessuna |\n-\n-Una richiesta di verifica non equivale a un’esecuzione o a un PASS. Le ricevute\n-che il runtime produrrà successivamente saranno nuove evidenze: riferirle alla\n-revisione controllata, al comando, all’esito e al relativo output, senza\n-sostituire retroattivamente lo storico o attribuirgli la copertura corrente.\n-\n-Non si dichiarano collaudi browser, desktop/mobile o con lettori di schermo\n-osservati in questo task, né una revisione indipendente o una pubblicazione.\n-I criteri automatici non esauriscono la revisione d’uso, in particolare per\n-scelte nei conflitti, tastiera, focus, nomi lunghi e assenza di scorrimento\n-orizzontale. Settimana, sessioni di tempo, Riepilogo e Backup/ripristino sono\n-indisponibili, senza dichiarazioni di implementazione o collaudo.\n+## Controlli documentali e limiti residui\n+\n+In questo task sono stati letti il contratto, i documenti ereditati e i sorgenti\n+pertinenti all’avvio, alle API disponibili, alle bozze e ai conflitti. Sono stati\n+controllati i collegamenti locali della documentazione e il diff, senza modifiche\n+funzionali. Non sono stati avviati server o browser né rieseguite suite API o di\n+accettazione. Questi controlli documentali non attestano il funzionamento dell’app.\n+\n+Le bozze rimangono solo nella pagina: il cambio sezione e l’aggiornamento degli\n+elenchi le conservano; ricaricare o chiudere la pagina le perde. Annulla o Escape\n+scartano le modifiche nei dialoghi. Non c’è recupero persistente delle bozze.\n+Se un’attività è stata archiviata altrove, la versione corrente non è consultabile\n+negli elenchi per risolvere il conflitto: copiare gli input utili prima di annullare.\n+\n+Settimana, sessioni di tempo, Riepilogo e Backup/ripristino rimangono indisponibili\n+anche nelle API e spettano agli esiti successivi del supervisore host. Il file\n+interno `archive.json` non è un backup portabile; non esiste ancora una procedura\n+di esportazione o ripristino. Una stima non registra tempo e una scadenza non\n+genera una vista settimanale. Il layout per schermi stretti non abilita l’accesso\n+dal telefono al server del computer, che ascolta solo su `127.0.0.1`.\n+\n+Non si dichiarano qui nuovi collaudi desktop/mobile, con lettori di schermo,\n+revisioni indipendenti o pubblicazioni. I criteri automatici non esauriscono la\n+revisione d’uso: conflitti per campo, tastiera, focus, nomi lunghi e assenza di\n+scorrimento orizzontale vanno riferiti solo alla copertura realmente osservata."
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "e05a500e-ef23-4a7e-ab67-afe7307e75ea",
+    "runId": "20261020T220700-5ec53331",
+    "seq": 20,
+    "at": "2026-10-20T22:10:59.184Z",
+    "type": "evidence.invalidated",
+    "message": "Evidence is STALE: README.md, docs/guida.md, docs/verifiche.md. Scope: all repository files.",
+    "data": {
+      "evidenceId": "97d2269d-53e9-49f3-b3c5-62ad578f0774",
+      "changed": [
+        "README.md",
+        "docs/guida.md",
+        "docs/verifiche.md"
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "15a39d18-8cde-4fdc-86d5-815078785bf6",
+    "runId": "20261020T220700-5ec53331",
+    "seq": 21,
+    "at": "2026-10-20T22:10:59.199Z",
+    "type": "evidence.invalidated",
+    "message": "Evidence is STALE: README.md, docs/guida.md, docs/verifiche.md. Scope: all repository files.",
+    "data": {
+      "evidenceId": "b90d9b34-63e4-4536-ba24-a6efc446d984",
+      "changed": [
+        "README.md",
+        "docs/guida.md",
+        "docs/verifiche.md"
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "77c09e54-fb33-4058-9da4-0499a9f7f733",
+    "runId": "20261020T220700-5ec53331",
+    "seq": 22,
+    "at": "2026-10-20T22:10:59.218Z",
+    "type": "evidence.invalidated",
+    "message": "Evidence is STALE: README.md, docs/guida.md, docs/verifiche.md. Scope: all repository files.",
+    "data": {
+      "evidenceId": "91a059f9-44b3-4e62-b9ff-2e65c6003350",
+      "changed": [
+        "README.md",
+        "docs/guida.md",
+        "docs/verifiche.md"
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "714313c1-eb95-4684-ae99-d08bef7f8fe6",
+    "runId": "20261020T220700-5ec53331",
+    "seq": 23,
+    "at": "2026-10-20T22:10:59.255Z",
+    "type": "task.completed",
+    "message": "Aggiornati README.md, docs/guida.md e docs/verifiche.md con riferimento al candidato 8fbf6801cdda04de5f9153c737902289d355e59f. Separate evidenze API storiche e audit UI dalla certificazione corrente: tutti e tre i criteri restano IN ATTESA, senza nuove ricevute. Conservati i limiti delle bozze e delle funzioni indisponibili. Controllati 13 collegamenti locali e il diff; nessuna modifica funzionale o suite API/browser eseguita.",
+    "data": {
+      "nodeId": "direction-507ea304-2ea4-4cb0-8142-aaad201e7ce1-0",
+      "summary": "Aggiornati README.md, docs/guida.md e docs/verifiche.md con riferimento al candidato 8fbf6801cdda04de5f9153c737902289d355e59f. Separate evidenze API storiche e audit UI dalla certificazione corrente: tutti e tre i criteri restano IN ATTESA, senza nuove ricevute. Conservati i limiti delle bozze e delle funzioni indisponibili. Controllati 13 collegamenti locali e il diff; nessuna modifica funzionale o suite API/browser eseguita.",
+      "files": [
+        "README.md",
+        "docs/guida.md",
+        "docs/verifiche.md"
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "e5f8bc24-8442-4835-aa17-006fbfef1d05",
+    "runId": "20261020T220700-5ec53331",
+    "seq": 24,
+    "at": "2026-10-20T22:10:59.262Z",
+    "type": "decision.recorded",
+    "message": "Builder handed verification to the runtime host. Agent-local check limitations are unverified observations; only approved runtime checks can certify results.",
+    "data": {
+      "kind": "verification.handoff",
+      "nodeId": "direction-507ea304-2ea4-4cb0-8142-aaad201e7ce1-0",
+      "criterionIds": [
+        "projects-api",
+        "tasks-api",
+        "board-ui"
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "1e77d016-eeb4-44b1-a59b-8444986ceb60",
+    "runId": "20261020T220700-5ec53331",
+    "seq": 25,
+    "at": "2026-10-20T22:10:59.265Z",
+    "type": "progress.recorded",
+    "message": "Code fingerprint changed.",
+    "data": {
+      "noProgress": 0
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "28ac61fc-d0ed-4c15-b20c-ffb7c0515795",
+    "runId": "20261020T220700-5ec53331",
+    "seq": 26,
+    "at": "2026-10-20T22:10:59.294Z",
+    "type": "verification.started",
+    "message": "Verifying: Archivio progetti persistente e revisioni",
+    "data": {
+      "nodeId": "80920d3b-8234-4d17-9ddb-5b43389d9ff0",
+      "node": {
+        "id": "80920d3b-8234-4d17-9ddb-5b43389d9ff0",
+        "status": "PENDING",
+        "attempt": 2,
+        "files": [],
+        "evidenceIds": [],
+        "kind": "verification",
+        "role": "verifier",
+        "title": "Archivio progetti persistente e revisioni",
+        "objective": "Run approved check: [\"node\",\"tests/acceptance.mjs\",\"projects-api\"]",
+        "criterionId": "projects-api",
+        "reason": "Acceptance requires runtime-owned evidence for the approved verification policy."
+      },
+      "edges": [
+        {
+          "id": "9e43b247-0226-45bb-a0dc-367e854ded9d",
+          "source": "9439d9c9-a299-452b-8a7f-773df0f9bd4b",
+          "target": "80920d3b-8234-4d17-9ddb-5b43389d9ff0",
+          "kind": "next"
+        }
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "86451420-fd2d-4e70-8dc6-4ee6b07efd56",
+    "runId": "20261020T220700-5ec53331",
+    "seq": 27,
+    "at": "2026-10-20T22:11:00.790Z",
+    "type": "verification.passed",
+    "message": "Archivio progetti persistente e revisioni: approved deterministic check satisfied on recorded inputs.",
+    "data": {
+      "nodeId": "80920d3b-8234-4d17-9ddb-5b43389d9ff0",
+      "evidence": {
+        "id": "f60e43e0-fa6a-41d4-86b6-66d60162424a",
+        "nodeId": "80920d3b-8234-4d17-9ddb-5b43389d9ff0",
+        "criterionId": "projects-api",
+        "contractVersion": 1,
+        "kind": "deterministic",
+        "status": "passed",
+        "createdAt": "2026-10-20T22:11:00.744Z",
+        "command": [
+          "node",
+          "tests/acceptance.mjs",
+          "projects-api"
+        ],
+        "exitCode": 0,
+        "output": "PASS empty archive\nPASS create project with stable defaults\nPASS optimistic project edit\nPASS invalid names and missing revisions do not write\nPASS project archival survives restart\nPASS unknown project does not create a record\n{\"criterion\":\"projects-api\",\"result\":\"PASS\",\"groups\":6}\n",
+        "durationMs": 1457,
+        "stamp": {
+          "head": "8fbf6801cdda04de5f9153c737902289d355e59f",
+          "files": {
+            ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+            "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+            "README.md": "ed5835bbad43e33033a4d6efc3b6808c9ea06fed425315fa3f987c257c359aae",
+            "docs/guida.md": "d8c7676057d0bde0ef32eb76362e9d59d370a576f40be66643879bc65d4235c6",
+            "docs/verifiche.md": "c058cd635fa69b67ef514a62bb4c89bb8ce47214229bdf5881183049ff9d7e32",
+            "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+            "public/index.html": "1e798be6470daa454678337196f2076ca008b3922756dea7d79bbade5b259dee",
+            "public/svolta.css": "235865d7c676b8cf5cd7a9df2936252c335ffdf87d0d996ce90dd086e888a799",
+            "public/svolta.js": "8494e848b135e8dd8e4ecd4d29bc37705c1256b73ba5322f20438056bb1c5ab4",
+            "src/app.mjs": "04453e9d589045bc64eb12c64ce69766fa55fa541f75fdeeff0ea8e237e3b14b",
+            "src/archive.mjs": "07d8f1c116184f827d5da85b0874f0849f441a3e9a0bff6279b635a7f66de443",
+            "src/dates.mjs": "97166e73d0b44fc0758dba28a8e89c24e643efb97202e484c79cf9903906bde2",
+            "src/errors.mjs": "594ce35930d8da6b7abec818d5c0111a1d2488cd02d2bc2359297f7f12d11996",
+            "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+            "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+            "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+            "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+            "tests/acceptance.mjs": "5759467fd1c94b32c4044e4e7809c8b19afa636bd2b73ec210952d5c2bdcd4da",
+            "tests/browser.mjs": "94c628f46208c5fe55cc5e6b318fd72b43b95e3a73020a028cd2b02248a89d8a",
+            "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+          },
+          "fingerprint": "5018d26a1347ca6ff55f4882ac5d05e8fc86806a1eb296f961a235fa4db2012f"
+        },
+        "scope": [],
+        "inputs": []
+      }
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "f29240d2-55a3-4e7f-ac6d-65ac2786a9a0",
+    "runId": "20261020T220700-5ec53331",
+    "seq": 28,
+    "at": "2026-10-20T22:11:00.856Z",
+    "type": "verification.started",
+    "message": "Verifying: Attività, filtri e conflitti senza perdita di dati",
+    "data": {
+      "nodeId": "a37a1e50-78ce-435f-a7e5-1c9ee0f84da2",
+      "node": {
+        "id": "a37a1e50-78ce-435f-a7e5-1c9ee0f84da2",
+        "status": "PENDING",
+        "attempt": 2,
+        "files": [],
+        "evidenceIds": [],
+        "kind": "verification",
+        "role": "verifier",
+        "title": "Attività, filtri e conflitti senza perdita di dati",
+        "objective": "Run approved check: [\"node\",\"tests/acceptance.mjs\",\"tasks-api\"]",
+        "criterionId": "tasks-api",
+        "reason": "Acceptance requires runtime-owned evidence for the approved verification policy."
+      },
+      "edges": [
+        {
+          "id": "81db2f37-2fa0-4521-bca8-0acdcbf52815",
+          "source": "fd68519c-9212-4107-901f-386ade7676b9",
+          "target": "a37a1e50-78ce-435f-a7e5-1c9ee0f84da2",
+          "kind": "next"
+        }
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "20edd841-8207-4d91-9ecc-c273cf150e72",
+    "runId": "20261020T220700-5ec53331",
+    "seq": 29,
+    "at": "2026-10-20T22:11:02.362Z",
+    "type": "verification.passed",
+    "message": "Attività, filtri e conflitti senza perdita di dati: approved deterministic check satisfied on recorded inputs.",
+    "data": {
+      "nodeId": "a37a1e50-78ce-435f-a7e5-1c9ee0f84da2",
+      "evidence": {
+        "id": "d3604e71-b3db-4e32-b9d1-bcad4d646638",
+        "nodeId": "a37a1e50-78ce-435f-a7e5-1c9ee0f84da2",
+        "criterionId": "tasks-api",
+        "contractVersion": 1,
+        "kind": "deterministic",
+        "status": "passed",
+        "createdAt": "2026-10-20T22:11:02.315Z",
+        "command": [
+          "node",
+          "tests/acceptance.mjs",
+          "tasks-api"
+        ],
+        "exitCode": 0,
+        "output": "PASS task defaults and exact fields\nPASS task edit, revision conflicts and combined filters\nPASS civil dates, invalid states and numeric validation\nPASS parallel stale writers cannot overwrite each other\nPASS archived projects disappear from general activity list\nPASS task persistence and malformed JSON\n{\"criterion\":\"tasks-api\",\"result\":\"PASS\",\"groups\":6}\n",
+        "durationMs": 1472,
+        "stamp": {
+          "head": "8fbf6801cdda04de5f9153c737902289d355e59f",
+          "files": {
+            ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+            "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+            "README.md": "ed5835bbad43e33033a4d6efc3b6808c9ea06fed425315fa3f987c257c359aae",
+            "docs/guida.md": "d8c7676057d0bde0ef32eb76362e9d59d370a576f40be66643879bc65d4235c6",
+            "docs/verifiche.md": "c058cd635fa69b67ef514a62bb4c89bb8ce47214229bdf5881183049ff9d7e32",
+            "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+            "public/index.html": "1e798be6470daa454678337196f2076ca008b3922756dea7d79bbade5b259dee",
+            "public/svolta.css": "235865d7c676b8cf5cd7a9df2936252c335ffdf87d0d996ce90dd086e888a799",
+            "public/svolta.js": "8494e848b135e8dd8e4ecd4d29bc37705c1256b73ba5322f20438056bb1c5ab4",
+            "src/app.mjs": "04453e9d589045bc64eb12c64ce69766fa55fa541f75fdeeff0ea8e237e3b14b",
+            "src/archive.mjs": "07d8f1c116184f827d5da85b0874f0849f441a3e9a0bff6279b635a7f66de443",
+            "src/dates.mjs": "97166e73d0b44fc0758dba28a8e89c24e643efb97202e484c79cf9903906bde2",
+            "src/errors.mjs": "594ce35930d8da6b7abec818d5c0111a1d2488cd02d2bc2359297f7f12d11996",
+            "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+            "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+            "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+            "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+            "tests/acceptance.mjs": "5759467fd1c94b32c4044e4e7809c8b19afa636bd2b73ec210952d5c2bdcd4da",
+            "tests/browser.mjs": "94c628f46208c5fe55cc5e6b318fd72b43b95e3a73020a028cd2b02248a89d8a",
+            "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+          },
+          "fingerprint": "5018d26a1347ca6ff55f4882ac5d05e8fc86806a1eb296f961a235fa4db2012f"
+        },
+        "scope": [],
+        "inputs": []
+      }
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "5860fdf0-b5f8-40c1-a8ce-76f1a52bced5",
+    "runId": "20261020T220700-5ec53331",
+    "seq": 30,
+    "at": "2026-10-20T22:11:02.465Z",
+    "type": "verification.started",
+    "message": "Verifying: Interfaccia progetti e attività su desktop e mobile",
+    "data": {
+      "nodeId": "7e41768e-0482-4fd3-bb28-98264a3b2594",
+      "node": {
+        "id": "7e41768e-0482-4fd3-bb28-98264a3b2594",
+        "status": "PENDING",
+        "attempt": 2,
+        "files": [],
+        "evidenceIds": [],
+        "kind": "verification",
+        "role": "verifier",
+        "title": "Interfaccia progetti e attività su desktop e mobile",
+        "objective": "Run approved check: [\"node\",\"tests/acceptance.mjs\",\"board-ui\"]",
+        "criterionId": "board-ui",
+        "reason": "Acceptance requires runtime-owned evidence for the approved verification policy."
+      },
+      "edges": [
+        {
+          "id": "57c5f06f-28b0-4122-87d9-26b94d1f2b27",
+          "source": "65f7c09d-1647-4a84-9500-d1bf5abb440b",
+          "target": "7e41768e-0482-4fd3-bb28-98264a3b2594",
+          "kind": "next"
+        }
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "49673ddd-17af-4fda-af77-0c7aabbac045",
+    "runId": "20261020T220700-5ec53331",
+    "seq": 31,
+    "at": "2026-10-20T22:11:06.505Z",
+    "type": "verification.passed",
+    "message": "Interfaccia progetti e attività su desktop e mobile: approved deterministic check satisfied on recorded inputs.",
+    "data": {
+      "nodeId": "7e41768e-0482-4fd3-bb28-98264a3b2594",
+      "evidence": {
+        "id": "98c0ea1d-4856-4507-ac1f-7be70ff53f2c",
+        "nodeId": "7e41768e-0482-4fd3-bb28-98264a3b2594",
+        "criterionId": "board-ui",
+        "contractVersion": 1,
+        "kind": "deterministic",
+        "status": "passed",
+        "createdAt": "2026-10-20T22:11:06.451Z",
+        "command": [
+          "node",
+          "tests/acceptance.mjs",
+          "board-ui"
+        ],
+        "exitCode": 0,
+        "output": "PASS create a project and task through the actual interface\nPASS edit, filter and preserve the changed activity after reopening\nPASS concurrent interface edits cannot silently overwrite another tab\nPASS literal hostile text and mobile layout\n{\"criterion\":\"board-ui\",\"result\":\"PASS\",\"groups\":4}\n",
+        "durationMs": 4002,
+        "stamp": {
+          "head": "8fbf6801cdda04de5f9153c737902289d355e59f",
+          "files": {
+            ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+            "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+            "README.md": "ed5835bbad43e33033a4d6efc3b6808c9ea06fed425315fa3f987c257c359aae",
+            "docs/guida.md": "d8c7676057d0bde0ef32eb76362e9d59d370a576f40be66643879bc65d4235c6",
+            "docs/verifiche.md": "c058cd635fa69b67ef514a62bb4c89bb8ce47214229bdf5881183049ff9d7e32",
+            "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+            "public/index.html": "1e798be6470daa454678337196f2076ca008b3922756dea7d79bbade5b259dee",
+            "public/svolta.css": "235865d7c676b8cf5cd7a9df2936252c335ffdf87d0d996ce90dd086e888a799",
+            "public/svolta.js": "8494e848b135e8dd8e4ecd4d29bc37705c1256b73ba5322f20438056bb1c5ab4",
+            "src/app.mjs": "04453e9d589045bc64eb12c64ce69766fa55fa541f75fdeeff0ea8e237e3b14b",
+            "src/archive.mjs": "07d8f1c116184f827d5da85b0874f0849f441a3e9a0bff6279b635a7f66de443",
+            "src/dates.mjs": "97166e73d0b44fc0758dba28a8e89c24e643efb97202e484c79cf9903906bde2",
+            "src/errors.mjs": "594ce35930d8da6b7abec818d5c0111a1d2488cd02d2bc2359297f7f12d11996",
+            "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+            "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+            "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+            "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+            "tests/acceptance.mjs": "5759467fd1c94b32c4044e4e7809c8b19afa636bd2b73ec210952d5c2bdcd4da",
+            "tests/browser.mjs": "94c628f46208c5fe55cc5e6b318fd72b43b95e3a73020a028cd2b02248a89d8a",
+            "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+          },
+          "fingerprint": "5018d26a1347ca6ff55f4882ac5d05e8fc86806a1eb296f961a235fa4db2012f"
+        },
+        "scope": [],
+        "inputs": []
+      }
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "64da2ae0-f8c6-454e-887c-45716a36d3ab",
+    "runId": "20261020T220700-5ec53331",
+    "seq": 32,
+    "at": "2026-10-20T22:11:06.707Z",
+    "type": "task.planned",
+    "message": "Review the project against its goal",
+    "data": {
+      "node": {
+        "id": "e9df4ddb-ab84-46e6-b867-c31618d7120e",
+        "status": "PENDING",
+        "attempt": 1,
+        "files": [],
+        "evidenceIds": [],
+        "kind": "decision",
+        "role": "planner",
+        "title": "Review the project against its goal",
+        "objective": "{\"head\":\"8fbf6801cdda04de5f9153c737902289d355e59f\",\"fingerprint\":\"5018d26a1347ca6ff55f4882ac5d05e8fc86806a1eb296f961a235fa4db2012f\",\"version\":1,\"noteIds\":[\"70bc50ac-cd3e-4a7b-9822-3a8d255a1ccb\"],\"directionRevision\":1,\"round\":1}",
+        "reason": "A verified milestone triggers autonomous discovery of the next useful work.",
+        "criterionId": "projects-api"
+      }
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "1e281386-3a0b-4a0a-812b-0604904e59e7",
+    "runId": "20261020T220700-5ec53331",
+    "seq": 33,
+    "at": "2026-10-20T22:11:06.716Z",
+    "type": "task.started",
+    "message": "planner: Review the project against its goal",
+    "data": {
+      "nodeId": "e9df4ddb-ab84-46e6-b867-c31618d7120e",
+      "edges": [
+        {
+          "id": "f3c63a57-ee2b-420c-9caf-1821890d3a2e",
+          "source": "7e41768e-0482-4fd3-bb28-98264a3b2594",
+          "target": "e9df4ddb-ab84-46e6-b867-c31618d7120e",
+          "kind": "next"
+        }
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "7a6777e4-1102-4d0c-8be1-3b78b7f5062e",
+    "runId": "20261020T220700-5ec53331",
+    "seq": 34,
+    "at": "2026-10-20T22:11:07.503Z",
+    "type": "agent.thread",
+    "message": "Codex session recorded for recovery.",
+    "data": {
+      "nodeId": "e9df4ddb-ab84-46e6-b867-c31618d7120e",
+      "threadId": "01a15b5e-4501-74e1-9b71-3d28599866d4"
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "1498da39-4a2a-4a7c-b394-c49ca5defb78",
+    "runId": "20261020T220700-5ec53331",
+    "seq": 35,
+    "at": "2026-10-20T22:12:20.846Z",
+    "type": "agent.usage",
+    "message": "375448 tokens reported by provider.",
+    "data": {
+      "tokens": 375448
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "916b4e48-da5f-4721-9385-95e02e37bc3a",
+    "runId": "20261020T220700-5ec53331",
+    "seq": 36,
+    "at": "2026-10-20T22:12:21.481Z",
+    "type": "task.completed",
+    "message": "Le ricevute correnti riportano PASS per tutti e tre i criteri (6, 6 e 4 gruppi). Dall’ispezione dei sorgenti non emergono ulteriori lacune funzionali concrete nell’esito delegato; resta da allineare la documentazione ai risultati disponibili.",
+    "data": {
+      "nodeId": "e9df4ddb-ab84-46e6-b867-c31618d7120e",
+      "summary": "Le ricevute correnti riportano PASS per tutti e tre i criteri (6, 6 e 4 gruppi). Dall’ispezione dei sorgenti non emergono ulteriori lacune funzionali concrete nell’esito delegato; resta da allineare la documentazione ai risultati disponibili.",
+      "result": {
+        "proposal": {
+          "outcome": "continue",
+          "summary": "Le ricevute correnti riportano PASS per tutti e tre i criteri (6, 6 e 4 gruppi). Dall’ispezione dei sorgenti non emergono ulteriori lacune funzionali concrete nell’esito delegato; resta da allineare la documentazione ai risultati disponibili.",
+          "findings": [
+            {
+              "id": "review-1",
+              "gap": "README.md, docs/guida.md e docs/verifiche.md dichiarano ancora tutti i criteri IN ATTESA e nessuna ricevuta corrente disponibile. Queste affermazioni contraddicono le tre nuove ricevute passed e lasciano incompleta la consegna documentale richiesta.",
+              "files": [
+                "README.md",
+                "docs/guida.md",
+                "docs/verifiche.md"
+              ],
+              "evidenceIds": [
+                "f60e43e0-fa6a-41d4-86b6-66d60162424a",
+                "d3604e71-b3db-4e32-b9d1-bcad4d646638",
+                "98c0ea1d-4856-4507-ac1f-7be70ff53f2c"
+              ]
+            }
+          ],
+          "decisions": [
+            {
+              "choice": "Preservare l’implementazione e limitare il prossimo intervento alla documentazione.",
+              "basis": "La lettura di API, persistenza, interfaccia, bozze, filtri e conflitti non individua difetti concreti che giustifichino modifiche funzionali. Settimana, tempo, riepilogo e backup restano agli esiti successivi."
+            },
+            {
+              "choice": "Documentare i PASS correnti entro la copertura effettivamente restituita.",
+              "basis": "Le ricevute stale e l’audit precedente restano contesto storico. board-ui osserva quattro gruppi, senza dimostrare ogni percorso di risoluzione dei conflitti, focus o uso con lettori di schermo. Questa revisione è stata svolta sui sorgenti, senza avviare browser."
+            }
+          ],
+          "tasks": [
+            {
+              "title": "Allineare guida e registro alle ricevute correnti",
+              "objective": "Aggiornare README.md, docs/guida.md e docs/verifiche.md sostituendo le dichiarazioni IN ATTESA con i risultati delle tre ricevute passed: comandi, ID, PASS e copertura osservata di 6/6/4 gruppi. Collegare i risultati al candidato e ai metadati disponibili senza inventare revisioni verificate. Conservare la distinzione dalle evidenze storiche e i limiti reali di bozze, accessibilità e funzioni successive. Nessuna modifica funzionale.",
+              "criterionId": "board-ui",
+              "findingIds": [
+                "review-1"
+              ],
+              "waitsFor": [
+                "projects-api",
+                "tasks-api"
+              ]
+            }
+          ],
+          "operatorQuestion": ""
+        },
+        "stamp": {
+          "head": "8fbf6801cdda04de5f9153c737902289d355e59f",
+          "files": {
+            ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+            "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+            "README.md": "ed5835bbad43e33033a4d6efc3b6808c9ea06fed425315fa3f987c257c359aae",
+            "docs/guida.md": "d8c7676057d0bde0ef32eb76362e9d59d370a576f40be66643879bc65d4235c6",
+            "docs/verifiche.md": "c058cd635fa69b67ef514a62bb4c89bb8ce47214229bdf5881183049ff9d7e32",
+            "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+            "public/index.html": "1e798be6470daa454678337196f2076ca008b3922756dea7d79bbade5b259dee",
+            "public/svolta.css": "235865d7c676b8cf5cd7a9df2936252c335ffdf87d0d996ce90dd086e888a799",
+            "public/svolta.js": "8494e848b135e8dd8e4ecd4d29bc37705c1256b73ba5322f20438056bb1c5ab4",
+            "src/app.mjs": "04453e9d589045bc64eb12c64ce69766fa55fa541f75fdeeff0ea8e237e3b14b",
+            "src/archive.mjs": "07d8f1c116184f827d5da85b0874f0849f441a3e9a0bff6279b635a7f66de443",
+            "src/dates.mjs": "97166e73d0b44fc0758dba28a8e89c24e643efb97202e484c79cf9903906bde2",
+            "src/errors.mjs": "594ce35930d8da6b7abec818d5c0111a1d2488cd02d2bc2359297f7f12d11996",
+            "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+            "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+            "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+            "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+            "tests/acceptance.mjs": "5759467fd1c94b32c4044e4e7809c8b19afa636bd2b73ec210952d5c2bdcd4da",
+            "tests/browser.mjs": "94c628f46208c5fe55cc5e6b318fd72b43b95e3a73020a028cd2b02248a89d8a",
+            "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+          },
+          "fingerprint": "5018d26a1347ca6ff55f4882ac5d05e8fc86806a1eb296f961a235fa4db2012f"
+        },
+        "noteIds": [
+          "70bc50ac-cd3e-4a7b-9822-3a8d255a1ccb"
+        ],
+        "directionRevision": 1
+      }
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "d58d851b-c114-4a59-ba7a-6c550f334dbb",
+    "runId": "20261020T220700-5ec53331",
+    "seq": 37,
+    "at": "2026-10-20T22:12:21.489Z",
+    "type": "project.reviewed",
+    "message": "Project supervisor discovered 1 next implementation unit(s) from the result.",
+    "data": {
+      "nodeId": "e9df4ddb-ab84-46e6-b867-c31618d7120e"
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "0ab90268-dcf0-4548-98c8-8fb1a9cd8a80",
+    "runId": "20261020T220700-5ec53331",
+    "seq": 38,
+    "at": "2026-10-20T22:12:21.678Z",
+    "type": "task.started",
+    "message": "builder: Allineare guida e registro alle ricevute correnti",
+    "data": {
+      "nodeId": "discovered-e9df4ddb-ab84-46e6-b867-c31618d7120e-0",
+      "edges": [
+        {
+          "id": "3baa0de1-1eeb-4766-a8e2-53bcf9ed1d54",
+          "source": "e9df4ddb-ab84-46e6-b867-c31618d7120e",
+          "target": "discovered-e9df4ddb-ab84-46e6-b867-c31618d7120e-0",
+          "kind": "next"
+        }
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "c7c2c9b3-36e2-4159-b288-c993a58c2f07",
+    "runId": "20261020T220700-5ec53331",
+    "seq": 39,
+    "at": "2026-10-20T22:12:22.518Z",
+    "type": "agent.thread",
+    "message": "Codex session recorded for recovery.",
+    "data": {
+      "nodeId": "discovered-e9df4ddb-ab84-46e6-b867-c31618d7120e-0",
+      "threadId": "01a15b5f-69d0-73d3-96fd-2c6f3ce70650"
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "bd041af7-f15d-4259-849d-e10f9edf24f3",
+    "runId": "20261020T220700-5ec53331",
+    "seq": 40,
+    "at": "2026-10-20T22:15:34.368Z",
+    "type": "agent.usage",
+    "message": "473150 tokens reported by provider.",
+    "data": {
+      "tokens": 473150
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "de8a2539-9294-4b59-b644-76342ae38237",
+    "runId": "20261020T220700-5ec53331",
+    "seq": 41,
+    "at": "2026-10-20T22:15:35.010Z",
+    "type": "code.changed",
+    "message": "3 files changed by this activity.",
+    "data": {
+      "nodeId": "discovered-e9df4ddb-ab84-46e6-b867-c31618d7120e-0",
+      "files": [
+        "README.md",
+        "docs/guida.md",
+        "docs/verifiche.md"
+      ],
+      "diff": "diff --git a/README.md b/README.md\nindex 74a43dd..f6a0002 100644\n--- a/README.md\n+++ b/README.md\n@@ -11,6 +11,13 @@ conflitti. Il contratto completo, incluse le funzioni successive ancora\n indisponibili, è in [BRIEF.md](BRIEF.md). La descrizione del codice qui presente\n è distinta dalle [evidenze di verifica](docs/verifiche.md).\n \n+Questa consegna continua dal candidato\n+`8fbf6801cdda04de5f9153c737902289d355e59f`, ereditato senza certificazione.\n+Il runtime della missione corrente ha restituito tre ricevute **PASS**:\n+`projects-api` e `tasks-api` con 6 gruppi ciascuno, `board-ui` con 4 gruppi.\n+Comandi, ID e copertura sono riportati sotto e nel registro delle evidenze.\n+Le prove precedenti restano contesto storico, distinto da queste nuove ricevute.\n+\n ## Avvio\n \n Occorre Node.js **22.13 o successivo** e un browser moderno con JavaScript e\n@@ -253,25 +260,39 @@ Gli errori hanno forma `{\"error\":\"Messaggio in italiano\",\"code\":\"CODICE\"}`:\n \n ## Stato delle verifiche\n \n-Le ricevute del checkpoint precedente riportano **PASS storico** per\n-`projects-api` e `tasks-api` (sei gruppi ciascuno). Non attestano questa versione\n-dell’interfaccia. Il [registro delle evidenze](docs/verifiche.md) ne indica la\n-provenienza e separa le dichiarazioni locali precedenti dalle verifiche correnti.\n-\n-Questo aggiornamento riguarda solo la documentazione: lettura dei sorgenti e\n-controllo dei collegamenti locali. Non sono stati avviati server HTTP o browser\n-né rieseguite suite API o di accettazione; non si dichiara alcun collaudo desktop,\n-mobile a 390px o con lettori di schermo. Non è disponibile qui una nuova ricevuta host.\n-\n-Per il flusso corrente sono richieste al runtime nuove esecuzioni dei criteri\n-approvati; questi sono comandi da eseguire sull’host, non esiti osservati:\n-\n-```sh\n-node tests/acceptance.mjs projects-api\n-node tests/acceptance.mjs tasks-api\n-node tests/acceptance.mjs board-ui\n-```\n-\n-Le nuove ricevute del runtime vanno riferite alla revisione verificata e tenute\n-distinte da quelle storiche. Un PASS dei criteri automatici non sostituisce la\n-revisione d’uso, in particolare dei conflitti per campo, del focus e del layout.\n+Il runtime host ha restituito questi risultati per la missione\n+`long-svolta-20261020-r2`, run `20261020T220700-5ec53331`, contratto v1.\n+Tutte e tre le ricevute hanno stato `passed`, uscita 0 e risultato **PASS**:\n+\n+| Comando host | ID ricevuta corrente | Esito | Gruppi |\n+| --- | --- | --- | --- |\n+| `node tests/acceptance.mjs projects-api` | `f60e43e0-fa6a-41d4-86b6-66d60162424a` | PASS | 6 |\n+| `node tests/acceptance.mjs tasks-api` | `d3604e71-b3db-4e32-b9d1-bcad4d646638` | PASS | 6 |\n+| `node tests/acceptance.mjs board-ui` | `98c0ea1d-4856-4507-ac1f-7be70ff53f2c` | PASS | 4 |\n+\n+La copertura osservata comprende:\n+\n+- **Progetti:** archivio vuoto, creazione e valori iniziali, modifica con revisione\n+  e rifiuto del conflitto, validazione senza scrittura, archiviazione dopo riavvio\n+  e ID sconosciuto.\n+- **Attività:** valori iniziali, modifica e conflitti, filtri combinati e ricerca,\n+  validazione di campi e date, scritture concorrenti, progetti archiviati,\n+  persistenza dopo riavvio e JSON malformato senza perdita dei dati.\n+- **Interfaccia:** creazione di progetto e attività, modifica e filtri con dati\n+  conservati alla riapertura, conflitto tra due schede con nota locale conservata\n+  e modifica altrui protetta, testo HTML letterale e layout a 390px senza\n+  scorrimento orizzontale nella vista esercitata.\n+\n+Le ricevute registrano `stamp.head` pari al candidato di partenza e la stessa\n+impronta degli input, riportata con date UTC e output nel\n+[registro delle evidenze](docs/verifiche.md#certificazione-della-missione-corrente).\n+Questo aggiornamento documentale è successivo alle esecuzioni: non gli si\n+attribuisce una nuova revisione verificata né la stessa impronta. Conserva codice,\n+interfaccia e comportamento del candidato.\n+\n+I PASS API storici e l’audit UI separato rimangono nel registro come contesto.\n+I controlli locali di questo task riguardano collegamenti e diff; non sono stati\n+avviati server o browser né rieseguite suite. I PASS correnti attestano la copertura\n+registrata, senza estendersi a ogni risoluzione dei conflitti per campo, al focus,\n+all’intero layout o all’uso con lettori di schermo. Le funzioni successive restano\n+indisponibili come descritto sopra.\ndiff --git a/docs/guida.md b/docs/guida.md\nindex f3da23f..8c4bf43 100644\n--- a/docs/guida.md\n+++ b/docs/guida.md\n@@ -1,5 +1,25 @@\n # Usare Progetti e Attività\n \n+Questa guida descrive il candidato ereditato dalla revisione\n+`8fbf6801cdda04de5f9153c737902289d355e59f`, privo di certificazione all’avvio\n+della missione. Il runtime host ha ora restituito tre ricevute correnti:\n+\n+| Comando host | ID ricevuta | Esito | Gruppi |\n+| --- | --- | --- | --- |\n+| `node tests/acceptance.mjs projects-api` | `f60e43e0-fa6a-41d4-86b6-66d60162424a` | PASS | 6 |\n+| `node tests/acceptance.mjs tasks-api` | `d3604e71-b3db-4e32-b9d1-bcad4d646638` | PASS | 6 |\n+| `node tests/acceptance.mjs board-ui` | `98c0ea1d-4856-4507-ac1f-7be70ff53f2c` | PASS | 4 |\n+\n+I gruppi API coprono persistenza, revisioni, validazione, filtri e conflitti.\n+I quattro gruppi UI osservano creazione, modifica e filtri con riapertura,\n+protezione dalle modifiche concorrenti con conservazione della nota locale,\n+testo HTML letterale e layout stretto. Le istruzioni seguenti descrivono anche\n+percorsi che questi controlli non esauriscono. Le ricevute registrano il candidato\n+di partenza in `stamp.head` e un’impronta comune degli input; questo aggiornamento\n+documentale segue quelle esecuzioni e non introduce una nuova revisione verificata.\n+Provenienza, date, metadati e copertura dettagliata sono nel\n+[registro delle evidenze](verifiche.md#certificazione-della-missione-corrente).\n+\n Occorre Node.js 22.13 o successivo. Dalla cartella del progetto avviare\n `node src/server.mjs` oppure `npm start`, senza installare dipendenze. Aprire nel\n browser l’indirizzo della riga `SVOLTA_READY http://127.0.0.1:…` e lasciare il\n@@ -126,7 +146,12 @@ Il layout prevede navigazione su più righe, campi in colonna e dialoghi con\n scorrimento verticale su schermi stretti; nomi, note e confronti vanno a capo.\n Il nome completo del progetto selezionato appare sotto i selettori. Gli stati\n sono scritti in italiano oltre al colore, le scadenze come giorno/mese/anno.\n-Queste indicazioni descrivono l’implementazione, non un collaudo browser osservato.\n+Queste indicazioni descrivono l’implementazione. La ricevuta corrente `board-ui`\n+riporta quattro gruppi PASS nel browser: il comando usa una vista desktop\n+1440×1000 e controlla a 390×844 l’assenza di scorrimento orizzontale nella vista\n+esercitata. Non copre ogni dialogo su mobile, la navigazione completa con Tab,\n+il ritorno del focus o l’uso con lettori di schermo. L’audit UI separato rimane\n+contesto storico, distinto dalla ricevuta corrente.\n \n ## Dati e funzioni successive\n \n@@ -143,5 +168,8 @@ interno non è quel backup. Non c’è recupero automatico dei dati o delle bozz\n \n Il server ascolta solo sul dispositivo che lo esegue: il layout adattivo non\n permette di collegare il telefono al computer con lo stesso indirizzo locale.\n-Le ricevute storiche e le nuove verifiche richieste, senza dichiarare collaudi\n-non osservati, sono descritte nel [registro delle evidenze](verifiche.md).\n+Le evidenze API storiche e il contesto dell’audit UI sono separati dalle verifiche\n+correnti nel [registro delle evidenze](verifiche.md). I tre PASS correnti riguardano\n+il candidato e gli input registrati, entro i 6/6/4 gruppi osservati; non attestano\n+le funzioni successive né un collaudo completo di accessibilità. Questo task\n+aggiorna solo la documentazione e non riesegue i controlli host.\ndiff --git a/docs/verifiche.md b/docs/verifiche.md\nindex 830b392..126ee28 100644\n--- a/docs/verifiche.md\n+++ b/docs/verifiche.md\n@@ -2,34 +2,163 @@\n \n La descrizione delle funzioni nel [README](../README.md) e nella [guida](guida.md)\n è basata sui sorgenti presenti. Una funzione descritta, un controllo locale\n-dichiarato e una ricevuta del runtime sono informazioni diverse.\n-\n-## Ricevute host storiche\n-\n-Il contesto operatore di questa delega riporta dal checkpoint\n+dichiarato, un audit riferito e una ricevuta del runtime sono informazioni diverse.\n+\n+## Certificazione della missione corrente\n+\n+La missione `long-svolta-20261020-r2`, esito `usable-board`, continua dalla revisione\n+`8fbf6801cdda04de5f9153c737902289d355e59f` (HEAD all’inizio di questo task).\n+È il candidato già prodotto, **privo di certificazione all’avvio della missione**.\n+La prova originale è stata dichiarata bloccata da un difetto del runtime; le sue\n+evidenze restano contesto storico, separato dalle nuove ricevute riportate qui.\n+\n+Questo task aggiorna soltanto `README.md`, `docs/guida.md` e questo registro.\n+Non cambia progetti, attività, gestione delle bozze, conflitti o scelte visuali.\n+\n+Il registro del runtime host contiene ora **tre ricevute correnti PASS** per il\n+run `20261020T220700-5ec53331`, contratto di accettazione v1. La fonte sono gli\n+eventi `verification.passed` alle sequenze 27, 29 e 31, successivi al primo\n+aggiornamento documentale. Ogni ricevuta è di tipo `deterministic`, ha stato\n+`passed`, codice di uscita 0 e output finale con `result: \"PASS\"`:\n+\n+| Criterio | Comando approvato | ID ricevuta corrente | Esito | Gruppi osservati |\n+| --- | --- | --- | --- | --- |\n+| `projects-api` | `node tests/acceptance.mjs projects-api` | `f60e43e0-fa6a-41d4-86b6-66d60162424a` | PASS | 6 |\n+| `tasks-api` | `node tests/acceptance.mjs tasks-api` | `d3604e71-b3db-4e32-b9d1-bcad4d646638` | PASS | 6 |\n+| `board-ui` | `node tests/acceptance.mjs board-ui` | `98c0ea1d-4856-4507-ac1f-7be70ff53f2c` | PASS | 4 |\n+\n+I metadati temporali sono quelli delle ricevute (`createdAt`, in UTC):\n+\n+| Criterio | Sequenza evento | Data UTC | Durata |\n+| --- | --- | --- | --- |\n+| `projects-api` | 27 | `2026-10-20T22:11:00.744Z` | 1457 ms |\n+| `tasks-api` | 29 | `2026-10-20T22:11:02.315Z` | 1472 ms |\n+| `board-ui` | 31 | `2026-10-20T22:11:06.451Z` | 4002 ms |\n+\n+Tutte e tre registrano gli stessi riferimenti agli input:\n+\n+- `stamp.head`: `8fbf6801cdda04de5f9153c737902289d355e59f`;\n+- `stamp.fingerprint`: `5018d26a1347ca6ff55f4882ac5d05e8fc86806a1eb296f961a235fa4db2012f`.\n+\n+Lo stamp comprende anche le impronte dei singoli file. `stamp.head` collega le\n+ricevute al candidato di partenza; l’impronta identifica gli input registrati,\n+compresa la documentazione allora presente nel worktree. Questo aggiornamento\n+documentale è successivo alle ricevute: non si dichiara una nuova revisione Git\n+verificata né si attribuisce l’impronta precedente ai documenti aggiornati.\n+I risultati seguenti sono osservazioni del runtime host su quegli input, non\n+esecuzioni dell’agente né una certificazione di tutte le funzioni del contratto.\n+\n+### Copertura corrente di `projects-api`: 6 gruppi\n+\n+L’output della ricevuta riporta:\n+\n+```text\n+PASS empty archive\n+PASS create project with stable defaults\n+PASS optimistic project edit\n+PASS invalid names and missing revisions do not write\n+PASS project archival survives restart\n+PASS unknown project does not create a record\n+{\"criterion\":\"projects-api\",\"result\":\"PASS\",\"groups\":6}\n+```\n+\n+Sono osservati archivio vuoto, creazione con nome normalizzato e valori iniziali,\n+modifica con incremento della revisione e rifiuto di una revisione obsoleta senza\n+sovrascrittura, nomi invalidi e revisione mancante senza scrittura, archiviazione\n+persistente dopo riavvio e ID sconosciuto senza creazione di record.\n+\n+### Copertura corrente di `tasks-api`: 6 gruppi\n+\n+L’output della ricevuta riporta:\n+\n+```text\n+PASS task defaults and exact fields\n+PASS task edit, revision conflicts and combined filters\n+PASS civil dates, invalid states and numeric validation\n+PASS parallel stale writers cannot overwrite each other\n+PASS archived projects disappear from general activity list\n+PASS task persistence and malformed JSON\n+{\"criterion\":\"tasks-api\",\"result\":\"PASS\",\"groups\":6}\n+```\n+\n+Sono osservati valori iniziali e campi delle attività, modifica e conflitto di\n+revisione, filtri combinati e ricerca senza distinzione di maiuscole, validazione\n+di date civili, stato e valori numerici, scritture concorrenti con un solo successo,\n+esclusione dei progetti archiviati dalla lista generale e rifiuto della creazione\n+su progetti archiviati o sconosciuti. Il riavvio conserva i dati e il JSON\n+malformato viene rifiutato senza modificarli.\n+\n+### Copertura corrente di `board-ui`: 4 gruppi\n+\n+L’output della ricevuta riporta:\n+\n+```text\n+PASS create a project and task through the actual interface\n+PASS edit, filter and preserve the changed activity after reopening\n+PASS concurrent interface edits cannot silently overwrite another tab\n+PASS literal hostile text and mobile layout\n+{\"criterion\":\"board-ui\",\"result\":\"PASS\",\"groups\":4}\n+```\n+\n+Il comando esercita nel browser la creazione di progetto e attività con dettagli,\n+la modifica di titolo e stato, ricerca e filtro per stato, quindi la riapertura\n+con dati conservati. Due schede modificano la stessa attività: il conflitto\n+conserva la nota locale e non sovrascrive il titolo salvato dall’altra scheda.\n+Un titolo contenente HTML ostile rimane testo senza eseguire il codice incluso.\n+\n+Il comando usa una vista desktop 1440×1000 e passa a 390×844 per controllare che\n+la vista esercitata non abbia scorrimento orizzontale. Controlla anche l’assenza\n+di errori JavaScript del browser e richieste HTTP esterne nella pagina osservata.\n+Questo non equivale a provare ogni dialogo su mobile o su un telefono fisico.\n+Il gruppo sul conflitto verifica il rifiuto e la conservazione degli input,\n+senza completare tutte le scelte di risoluzione per campo. Non sono attestati\n+la navigazione completa con Tab, il ritorno del focus o i lettori di schermo.\n+\n+Il contesto della delega segnala che i selettori host aggiornati correggono la\n+rigidità sui suffissi obbligatori e sui controlli nascosti. La correzione dei\n+selettori è distinta dai risultati di esecuzione sopra riportati. Una richiesta\n+di verifica non è un PASS; qui gli esiti derivano dalle tre ricevute effettive.\n+Un esito non si estende ad altri criteri o a una diversa impronta degli input.\n+\n+## Evidenze API storiche riportate\n+\n+Il registro ereditato attribuisce al checkpoint\n `d3e570da7f20fb6f81fa5f6d8af89f710e9926d1` (run sorgente\n `20261020T205056-641e33a8`, sequenza 64) questi risultati:\n \n-| Comando approvato | Esito riportato dal checkpoint | Gruppi |\n+| Comando approvato | Esito storico riportato | Gruppi |\n | --- | --- | --- |\n | `node tests/acceptance.mjs projects-api` | PASS storico | 6 |\n | `node tests/acceptance.mjs tasks-api` | PASS storico | 6 |\n \n-La copertura riportata per `projects-api` comprende archivio vuoto, creazione e\n-normalizzazione del nome, aggiornamento con revisione, conflitto senza\n+La copertura storica riportata per `projects-api` comprende archivio vuoto,\n+creazione e normalizzazione del nome, aggiornamento con revisione, conflitto senza\n sovrascrittura, validazione, archiviazione persistente dopo riavvio e ID ignoto.\n \n Per `tasks-api` comprende valori predefiniti, aggiornamento e conflitti,\n filtri combinati e ricerca, validazione dei campi e delle date civili,\n concorrenza con un solo successo, progetti archiviati o sconosciuti,\n persistenza dopo riavvio e JSON malformato senza modifica dei dati.\n-Il checkpoint riferisce anche avvio con `PORT=0`, cartella dati temporanea,\n+Il registro riferisce anche avvio con `PORT=0`, cartella dati temporanea,\n annuncio `SVOLTA_READY`, richieste HTTP e riavvio sulla stessa cartella.\n \n-Questa documentazione riporta il contesto ricevuto; non riproduce né rinnova\n-quegli esiti. Non c’è in esso una ricevuta `board-ui`. I PASS API storici non\n-verificano la nuova interfaccia né dimostrano la conservazione delle API nella\n-versione corrente.\n+Questi riferimenti sono conservati come informazioni del documento ereditato;\n+le ricevute originali e il loro output non sono disponibili nel worktree di\n+questo task. Non sono nuove osservazioni né rinnovi degli esiti. Non comprendono\n+una ricevuta `board-ui`; la copertura corrente delle API e dell’interfaccia è\n+documentata separatamente nelle tre nuove ricevute sopra riportate.\n+\n+## Contesto dell’audit UI separato\n+\n+La delega corrente riferisce che un audit separato ha esercitato **quattro flussi\n+UI** sul candidato. Non fornisce qui l’elenco dei quattro flussi, la revisione\n+esercitata, i comandi o l’output dell’audit. Questo registro non può quindi\n+attribuirgli una copertura più specifica o usarlo come ricevuta corrente di\n+`board-ui`.\n+\n+L’audit rimane contesto utile alla continuità del candidato. Non costituisce una\n+certificazione dei tre criteri di questa missione né un nuovo collaudo osservato\n+durante questo task.\n \n ## Controlli locali dichiarati nei task precedenti\n \n@@ -49,31 +178,30 @@ nativo, Tab/Escape, lettori di schermo o l’esperienza effettiva nel browser.\n Le prove senza socket non dimostrano il funzionamento HTTP; quelle in memoria\n non dimostrano la persistenza su disco.\n \n-## Aggiornamento corrente della documentazione\n-\n-In questo task sono stati letti i sorgenti server, archivio, API e interfaccia\n-per allineare le istruzioni alle etichette e ai percorsi presenti. È stato\n-eseguito un controllo dei collegamenti locali della documentazione. Non sono\n-state modificate le API o gli asset, avviati server/browser o rieseguite suite\n-API o di accettazione. Questo controllo documentale non attesta il funzionamento\n-dell’app. Non è stata osservata qui una nuova ricevuta host.\n-\n-I criteri da richiedere al runtime per il flusso attuale sono:\n-\n-| Comando approvato | Scopo | Nuova evidenza disponibile in questo task |\n-| --- | --- | --- |\n-| `node tests/acceptance.mjs projects-api` | Regressione dell’archivio e delle API progetti | Nessuna |\n-| `node tests/acceptance.mjs tasks-api` | Regressione delle attività, dei filtri e dei conflitti API | Nessuna |\n-| `node tests/acceptance.mjs board-ui` | Flusso visuale su desktop e schermo stretto | Nessuna |\n-\n-Una richiesta di verifica non equivale a un’esecuzione o a un PASS. Le ricevute\n-che il runtime produrrà successivamente saranno nuove evidenze: riferirle alla\n-revisione controllata, al comando, all’esito e al relativo output, senza\n-sostituire retroattivamente lo storico o attribuirgli la copertura corrente.\n-\n-Non si dichiarano collaudi browser, desktop/mobile o con lettori di schermo\n-osservati in questo task, né una revisione indipendente o una pubblicazione.\n-I criteri automatici non esauriscono la revisione d’uso, in particolare per\n-scelte nei conflitti, tastiera, focus, nomi lunghi e assenza di scorrimento\n-orizzontale. Settimana, sessioni di tempo, Riepilogo e Backup/ripristino sono\n-indisponibili, senza dichiarazioni di implementazione o collaudo.\n+## Controlli documentali e limiti residui\n+\n+Questo aggiornamento ha confrontato il contratto e la documentazione con le tre\n+ricevute correnti e con la copertura dei comandi approvati. Sono stati controllati\n+i collegamenti locali della documentazione e il diff, senza modifiche funzionali.\n+Non sono stati avviati server o browser né rieseguite suite API o di accettazione\n+nella sandbox dell’agente. I risultati API e browser sopra riportati appartengono\n+al runtime host; i controlli documentali non sono nuove prove di funzionamento.\n+\n+Le bozze rimangono solo nella pagina: il cambio sezione e l’aggiornamento degli\n+elenchi le conservano; ricaricare o chiudere la pagina le perde. Annulla o Escape\n+scartano le modifiche nei dialoghi. Non c’è recupero persistente delle bozze.\n+Se un’attività è stata archiviata altrove, la versione corrente non è consultabile\n+negli elenchi per risolvere il conflitto: copiare gli input utili prima di annullare.\n+\n+Settimana, sessioni di tempo, Riepilogo e Backup/ripristino rimangono indisponibili\n+anche nelle API e spettano agli esiti successivi del supervisore host. Il file\n+interno `archive.json` non è un backup portabile; non esiste ancora una procedura\n+di esportazione o ripristino. Una stima non registra tempo e una scadenza non\n+genera una vista settimanale. Il layout per schermi stretti non abilita l’accesso\n+dal telefono al server del computer, che ascolta solo su `127.0.0.1`.\n+\n+Oltre alla copertura di `board-ui` registrata sopra, non si dichiarano ulteriori\n+collaudi desktop/mobile o con lettori di schermo, revisioni indipendenti o\n+pubblicazioni. I criteri automatici non esauriscono la revisione d’uso: conflitti\n+per campo, tastiera, focus, nomi lunghi e assenza di scorrimento orizzontale vanno\n+riferiti solo alla copertura realmente osservata."
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "665305fd-392d-4f2d-92c0-52b436c16e93",
+    "runId": "20261020T220700-5ec53331",
+    "seq": 42,
+    "at": "2026-10-20T22:15:35.041Z",
+    "type": "evidence.invalidated",
+    "message": "Evidence is STALE: README.md, docs/guida.md, docs/verifiche.md. Scope: all repository files.",
+    "data": {
+      "evidenceId": "f60e43e0-fa6a-41d4-86b6-66d60162424a",
+      "changed": [
+        "README.md",
+        "docs/guida.md",
+        "docs/verifiche.md"
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "66dd35be-28be-4e9a-b719-9bea4b534bf3",
+    "runId": "20261020T220700-5ec53331",
+    "seq": 43,
+    "at": "2026-10-20T22:15:35.063Z",
+    "type": "evidence.invalidated",
+    "message": "Evidence is STALE: README.md, docs/guida.md, docs/verifiche.md. Scope: all repository files.",
+    "data": {
+      "evidenceId": "d3604e71-b3db-4e32-b9d1-bcad4d646638",
+      "changed": [
+        "README.md",
+        "docs/guida.md",
+        "docs/verifiche.md"
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "eea8cc05-0c44-4e1b-8c8e-f553b449363b",
+    "runId": "20261020T220700-5ec53331",
+    "seq": 44,
+    "at": "2026-10-20T22:15:35.086Z",
+    "type": "evidence.invalidated",
+    "message": "Evidence is STALE: README.md, docs/guida.md, docs/verifiche.md. Scope: all repository files.",
+    "data": {
+      "evidenceId": "98c0ea1d-4856-4507-ac1f-7be70ff53f2c",
+      "changed": [
+        "README.md",
+        "docs/guida.md",
+        "docs/verifiche.md"
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "0adc5184-0769-405c-8e4c-e44159d7dc95",
+    "runId": "20261020T220700-5ec53331",
+    "seq": 45,
+    "at": "2026-10-20T22:15:35.124Z",
+    "type": "task.completed",
+    "message": "Aggiornati README.md, docs/guida.md e docs/verifiche.md con comandi, ID, PASS, copertura 6/6/4 e metadati delle ricevute correnti. Distinti storico e limiti residui, senza attribuire nuove revisioni verificate. Nessuna modifica funzionale. Controllati ricevute, collegamenti e diff; nessuna suite rieseguita.",
+    "data": {
+      "nodeId": "discovered-e9df4ddb-ab84-46e6-b867-c31618d7120e-0",
+      "summary": "Aggiornati README.md, docs/guida.md e docs/verifiche.md con comandi, ID, PASS, copertura 6/6/4 e metadati delle ricevute correnti. Distinti storico e limiti residui, senza attribuire nuove revisioni verificate. Nessuna modifica funzionale. Controllati ricevute, collegamenti e diff; nessuna suite rieseguita.",
+      "files": [
+        "README.md",
+        "docs/guida.md",
+        "docs/verifiche.md"
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "7108d542-f302-41a9-a385-f77395becc3c",
+    "runId": "20261020T220700-5ec53331",
+    "seq": 46,
+    "at": "2026-10-20T22:15:35.127Z",
+    "type": "progress.recorded",
+    "message": "Code fingerprint changed.",
+    "data": {
+      "noProgress": 0
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "5c793196-f279-4573-aee2-8235826b8947",
+    "runId": "20261020T220700-5ec53331",
+    "seq": 47,
+    "at": "2026-10-20T22:15:35.208Z",
+    "type": "verification.started",
+    "message": "Verifying: Archivio progetti persistente e revisioni",
+    "data": {
+      "nodeId": "4bd41373-b2a0-45e0-a8b1-be43621f6031",
+      "node": {
+        "id": "4bd41373-b2a0-45e0-a8b1-be43621f6031",
+        "status": "PENDING",
+        "attempt": 3,
+        "files": [],
+        "evidenceIds": [],
+        "kind": "verification",
+        "role": "verifier",
+        "title": "Archivio progetti persistente e revisioni",
+        "objective": "Run approved check: [\"node\",\"tests/acceptance.mjs\",\"projects-api\"]",
+        "criterionId": "projects-api",
+        "reason": "Acceptance requires runtime-owned evidence for the approved verification policy."
+      },
+      "edges": [
+        {
+          "id": "4492601b-d464-437a-a9df-f15618e60875",
+          "source": "e9df4ddb-ab84-46e6-b867-c31618d7120e",
+          "target": "4bd41373-b2a0-45e0-a8b1-be43621f6031",
+          "kind": "next"
+        }
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "aec23897-8b86-4e10-8b11-1217381b3356",
+    "runId": "20261020T220700-5ec53331",
+    "seq": 48,
+    "at": "2026-10-20T22:15:36.703Z",
+    "type": "verification.passed",
+    "message": "Archivio progetti persistente e revisioni: approved deterministic check satisfied on recorded inputs.",
+    "data": {
+      "nodeId": "4bd41373-b2a0-45e0-a8b1-be43621f6031",
+      "evidence": {
+        "id": "012fb1ac-b472-4c52-b1eb-4d0cc555cf80",
+        "nodeId": "4bd41373-b2a0-45e0-a8b1-be43621f6031",
+        "criterionId": "projects-api",
+        "contractVersion": 1,
+        "kind": "deterministic",
+        "status": "passed",
+        "createdAt": "2026-10-20T22:15:36.655Z",
+        "command": [
+          "node",
+          "tests/acceptance.mjs",
+          "projects-api"
+        ],
+        "exitCode": 0,
+        "output": "PASS empty archive\nPASS create project with stable defaults\nPASS optimistic project edit\nPASS invalid names and missing revisions do not write\nPASS project archival survives restart\nPASS unknown project does not create a record\n{\"criterion\":\"projects-api\",\"result\":\"PASS\",\"groups\":6}\n",
+        "durationMs": 1453,
+        "stamp": {
+          "head": "8fbf6801cdda04de5f9153c737902289d355e59f",
+          "files": {
+            ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+            "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+            "README.md": "738837a336aa73e06a8871a8940155b3a8bbb5ca584030e061adbf38fc981331",
+            "docs/guida.md": "eea62d44262ce1b43248181d59127b2ea9088aec2dfd89f8bba27929b983548f",
+            "docs/verifiche.md": "77f66c0dafb56eafa79c1cab9ba88458d01eb89d9257ba83ae7619d2f24b258b",
+            "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+            "public/index.html": "1e798be6470daa454678337196f2076ca008b3922756dea7d79bbade5b259dee",
+            "public/svolta.css": "235865d7c676b8cf5cd7a9df2936252c335ffdf87d0d996ce90dd086e888a799",
+            "public/svolta.js": "8494e848b135e8dd8e4ecd4d29bc37705c1256b73ba5322f20438056bb1c5ab4",
+            "src/app.mjs": "04453e9d589045bc64eb12c64ce69766fa55fa541f75fdeeff0ea8e237e3b14b",
+            "src/archive.mjs": "07d8f1c116184f827d5da85b0874f0849f441a3e9a0bff6279b635a7f66de443",
+            "src/dates.mjs": "97166e73d0b44fc0758dba28a8e89c24e643efb97202e484c79cf9903906bde2",
+            "src/errors.mjs": "594ce35930d8da6b7abec818d5c0111a1d2488cd02d2bc2359297f7f12d11996",
+            "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+            "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+            "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+            "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+            "tests/acceptance.mjs": "5759467fd1c94b32c4044e4e7809c8b19afa636bd2b73ec210952d5c2bdcd4da",
+            "tests/browser.mjs": "94c628f46208c5fe55cc5e6b318fd72b43b95e3a73020a028cd2b02248a89d8a",
+            "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+          },
+          "fingerprint": "3af16ec1562c27e0384a73f196827a0d0cae1cbb568f2b325a2592ccd9a096d6"
+        },
+        "scope": [],
+        "inputs": []
+      }
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "f980115b-b4a9-4bef-8a1b-1a62599f072a",
+    "runId": "20261020T220700-5ec53331",
+    "seq": 49,
+    "at": "2026-10-20T22:15:36.833Z",
+    "type": "verification.started",
+    "message": "Verifying: Attività, filtri e conflitti senza perdita di dati",
+    "data": {
+      "nodeId": "b78547f1-1182-47de-81cd-0b4cc3bebfcc",
+      "node": {
+        "id": "b78547f1-1182-47de-81cd-0b4cc3bebfcc",
+        "status": "PENDING",
+        "attempt": 3,
+        "files": [],
+        "evidenceIds": [],
+        "kind": "verification",
+        "role": "verifier",
+        "title": "Attività, filtri e conflitti senza perdita di dati",
+        "objective": "Run approved check: [\"node\",\"tests/acceptance.mjs\",\"tasks-api\"]",
+        "criterionId": "tasks-api",
+        "reason": "Acceptance requires runtime-owned evidence for the approved verification policy."
+      },
+      "edges": [
+        {
+          "id": "7fe65093-17f0-44eb-ab19-6b17c2b7d289",
+          "source": "a37a1e50-78ce-435f-a7e5-1c9ee0f84da2",
+          "target": "b78547f1-1182-47de-81cd-0b4cc3bebfcc",
+          "kind": "next"
+        }
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "a53966ec-c41c-4f85-97d4-90b5d821e7a4",
+    "runId": "20261020T220700-5ec53331",
+    "seq": 50,
+    "at": "2026-10-20T22:15:38.358Z",
+    "type": "verification.passed",
+    "message": "Attività, filtri e conflitti senza perdita di dati: approved deterministic check satisfied on recorded inputs.",
+    "data": {
+      "nodeId": "b78547f1-1182-47de-81cd-0b4cc3bebfcc",
+      "evidence": {
+        "id": "244ba0db-8f0b-49e0-bd9b-4de958ed08fe",
+        "nodeId": "b78547f1-1182-47de-81cd-0b4cc3bebfcc",
+        "criterionId": "tasks-api",
+        "contractVersion": 1,
+        "kind": "deterministic",
+        "status": "passed",
+        "createdAt": "2026-10-20T22:15:38.307Z",
+        "command": [
+          "node",
+          "tests/acceptance.mjs",
+          "tasks-api"
+        ],
+        "exitCode": 0,
+        "output": "PASS task defaults and exact fields\nPASS task edit, revision conflicts and combined filters\nPASS civil dates, invalid states and numeric validation\nPASS parallel stale writers cannot overwrite each other\nPASS archived projects disappear from general activity list\nPASS task persistence and malformed JSON\n{\"criterion\":\"tasks-api\",\"result\":\"PASS\",\"groups\":6}\n",
+        "durationMs": 1483,
+        "stamp": {
+          "head": "8fbf6801cdda04de5f9153c737902289d355e59f",
+          "files": {
+            ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+            "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+            "README.md": "738837a336aa73e06a8871a8940155b3a8bbb5ca584030e061adbf38fc981331",
+            "docs/guida.md": "eea62d44262ce1b43248181d59127b2ea9088aec2dfd89f8bba27929b983548f",
+            "docs/verifiche.md": "77f66c0dafb56eafa79c1cab9ba88458d01eb89d9257ba83ae7619d2f24b258b",
+            "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+            "public/index.html": "1e798be6470daa454678337196f2076ca008b3922756dea7d79bbade5b259dee",
+            "public/svolta.css": "235865d7c676b8cf5cd7a9df2936252c335ffdf87d0d996ce90dd086e888a799",
+            "public/svolta.js": "8494e848b135e8dd8e4ecd4d29bc37705c1256b73ba5322f20438056bb1c5ab4",
+            "src/app.mjs": "04453e9d589045bc64eb12c64ce69766fa55fa541f75fdeeff0ea8e237e3b14b",
+            "src/archive.mjs": "07d8f1c116184f827d5da85b0874f0849f441a3e9a0bff6279b635a7f66de443",
+            "src/dates.mjs": "97166e73d0b44fc0758dba28a8e89c24e643efb97202e484c79cf9903906bde2",
+            "src/errors.mjs": "594ce35930d8da6b7abec818d5c0111a1d2488cd02d2bc2359297f7f12d11996",
+            "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+            "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+            "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+            "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+            "tests/acceptance.mjs": "5759467fd1c94b32c4044e4e7809c8b19afa636bd2b73ec210952d5c2bdcd4da",
+            "tests/browser.mjs": "94c628f46208c5fe55cc5e6b318fd72b43b95e3a73020a028cd2b02248a89d8a",
+            "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+          },
+          "fingerprint": "3af16ec1562c27e0384a73f196827a0d0cae1cbb568f2b325a2592ccd9a096d6"
+        },
+        "scope": [],
+        "inputs": []
+      }
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "9f658f1e-47af-4152-be39-34e69817bc74",
+    "runId": "20261020T220700-5ec53331",
+    "seq": 51,
+    "at": "2026-10-20T22:15:38.540Z",
+    "type": "verification.started",
+    "message": "Verifying: Interfaccia progetti e attività su desktop e mobile",
+    "data": {
+      "nodeId": "4d13611a-f20f-4609-84a5-d12b7516a044",
+      "node": {
+        "id": "4d13611a-f20f-4609-84a5-d12b7516a044",
+        "status": "PENDING",
+        "attempt": 3,
+        "files": [],
+        "evidenceIds": [],
+        "kind": "verification",
+        "role": "verifier",
+        "title": "Interfaccia progetti e attività su desktop e mobile",
+        "objective": "Run approved check: [\"node\",\"tests/acceptance.mjs\",\"board-ui\"]",
+        "criterionId": "board-ui",
+        "reason": "Acceptance requires runtime-owned evidence for the approved verification policy."
+      },
+      "edges": [
+        {
+          "id": "a70cca6b-9c22-46b4-8da6-4102e43a7a0e",
+          "source": "discovered-e9df4ddb-ab84-46e6-b867-c31618d7120e-0",
+          "target": "4d13611a-f20f-4609-84a5-d12b7516a044",
+          "kind": "next"
+        }
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "c4102d63-3b8b-40d7-95a3-2914a4146e20",
+    "runId": "20261020T220700-5ec53331",
+    "seq": 52,
+    "at": "2026-10-20T22:15:42.117Z",
+    "type": "verification.passed",
+    "message": "Interfaccia progetti e attività su desktop e mobile: approved deterministic check satisfied on recorded inputs.",
+    "data": {
+      "nodeId": "4d13611a-f20f-4609-84a5-d12b7516a044",
+      "evidence": {
+        "id": "79628235-3e15-4575-acb6-131502408579",
+        "nodeId": "4d13611a-f20f-4609-84a5-d12b7516a044",
+        "criterionId": "board-ui",
+        "contractVersion": 1,
+        "kind": "deterministic",
+        "status": "passed",
+        "createdAt": "2026-10-20T22:15:42.058Z",
+        "command": [
+          "node",
+          "tests/acceptance.mjs",
+          "board-ui"
+        ],
+        "exitCode": 0,
+        "output": "PASS create a project and task through the actual interface\nPASS edit, filter and preserve the changed activity after reopening\nPASS concurrent interface edits cannot silently overwrite another tab\nPASS literal hostile text and mobile layout\n{\"criterion\":\"board-ui\",\"result\":\"PASS\",\"groups\":4}\n",
+        "durationMs": 3522,
+        "stamp": {
+          "head": "8fbf6801cdda04de5f9153c737902289d355e59f",
+          "files": {
+            ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+            "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+            "README.md": "738837a336aa73e06a8871a8940155b3a8bbb5ca584030e061adbf38fc981331",
+            "docs/guida.md": "eea62d44262ce1b43248181d59127b2ea9088aec2dfd89f8bba27929b983548f",
+            "docs/verifiche.md": "77f66c0dafb56eafa79c1cab9ba88458d01eb89d9257ba83ae7619d2f24b258b",
+            "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+            "public/index.html": "1e798be6470daa454678337196f2076ca008b3922756dea7d79bbade5b259dee",
+            "public/svolta.css": "235865d7c676b8cf5cd7a9df2936252c335ffdf87d0d996ce90dd086e888a799",
+            "public/svolta.js": "8494e848b135e8dd8e4ecd4d29bc37705c1256b73ba5322f20438056bb1c5ab4",
+            "src/app.mjs": "04453e9d589045bc64eb12c64ce69766fa55fa541f75fdeeff0ea8e237e3b14b",
+            "src/archive.mjs": "07d8f1c116184f827d5da85b0874f0849f441a3e9a0bff6279b635a7f66de443",
+            "src/dates.mjs": "97166e73d0b44fc0758dba28a8e89c24e643efb97202e484c79cf9903906bde2",
+            "src/errors.mjs": "594ce35930d8da6b7abec818d5c0111a1d2488cd02d2bc2359297f7f12d11996",
+            "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+            "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+            "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+            "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+            "tests/acceptance.mjs": "5759467fd1c94b32c4044e4e7809c8b19afa636bd2b73ec210952d5c2bdcd4da",
+            "tests/browser.mjs": "94c628f46208c5fe55cc5e6b318fd72b43b95e3a73020a028cd2b02248a89d8a",
+            "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+          },
+          "fingerprint": "3af16ec1562c27e0384a73f196827a0d0cae1cbb568f2b325a2592ccd9a096d6"
+        },
+        "scope": [],
+        "inputs": []
+      }
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "c9191ac9-f5b9-4aee-8708-47b7039772c5",
+    "runId": "20261020T220700-5ec53331",
+    "seq": 53,
+    "at": "2026-10-20T22:15:42.431Z",
+    "type": "task.planned",
+    "message": "Review the project against its goal",
+    "data": {
+      "node": {
+        "id": "77579d3b-a896-4dda-95b3-20b59509cbf3",
+        "status": "PENDING",
+        "attempt": 1,
+        "files": [],
+        "evidenceIds": [],
+        "kind": "decision",
+        "role": "planner",
+        "title": "Review the project against its goal",
+        "objective": "{\"head\":\"8fbf6801cdda04de5f9153c737902289d355e59f\",\"fingerprint\":\"3af16ec1562c27e0384a73f196827a0d0cae1cbb568f2b325a2592ccd9a096d6\",\"version\":1,\"noteIds\":[\"70bc50ac-cd3e-4a7b-9822-3a8d255a1ccb\"],\"directionRevision\":1,\"round\":2}",
+        "reason": "A verified milestone triggers autonomous discovery of the next useful work.",
+        "criterionId": "projects-api"
+      }
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "7efb58e3-dc3e-4876-a2d4-b977111906be",
+    "runId": "20261020T220700-5ec53331",
+    "seq": 54,
+    "at": "2026-10-20T22:15:42.452Z",
+    "type": "task.started",
+    "message": "planner: Review the project against its goal",
+    "data": {
+      "nodeId": "77579d3b-a896-4dda-95b3-20b59509cbf3",
+      "edges": [
+        {
+          "id": "bf398092-2600-44c3-9c35-b19438090b35",
+          "source": "4d13611a-f20f-4609-84a5-d12b7516a044",
+          "target": "77579d3b-a896-4dda-95b3-20b59509cbf3",
+          "kind": "next"
+        }
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "65653a6c-87a3-4591-a581-6ee56ad26b6d",
+    "runId": "20261020T220700-5ec53331",
+    "seq": 55,
+    "at": "2026-10-20T22:15:43.207Z",
+    "type": "agent.thread",
+    "message": "Codex session recorded for recovery.",
+    "data": {
+      "nodeId": "77579d3b-a896-4dda-95b3-20b59509cbf3",
+      "threadId": "01a15b62-79f6-7761-a451-c62bae7313ad"
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "8212a9a2-10d8-46fe-8365-888ba25b70bc",
+    "runId": "20261020T220700-5ec53331",
+    "seq": 56,
+    "at": "2026-10-20T22:17:11.234Z",
+    "type": "agent.usage",
+    "message": "432230 tokens reported by provider.",
+    "data": {
+      "tokens": 432230
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "91aca236-4f3d-4ead-94f9-75cdcc82f090",
+    "runId": "20261020T220700-5ec53331",
+    "seq": 57,
+    "at": "2026-10-20T22:17:11.736Z",
+    "type": "task.completed",
+    "message": "Le tre ricevute correnti riportano PASS (6/6/4 gruppi). L’ispezione dei sorgenti non individua ulteriori lacune funzionali concrete nell’esito delegato. Resta un’incoerenza documentale: la guida presenta come correnti ricevute ora stale.",
+    "data": {
+      "nodeId": "77579d3b-a896-4dda-95b3-20b59509cbf3",
+      "summary": "Le tre ricevute correnti riportano PASS (6/6/4 gruppi). L’ispezione dei sorgenti non individua ulteriori lacune funzionali concrete nell’esito delegato. Resta un’incoerenza documentale: la guida presenta come correnti ricevute ora stale.",
+      "result": {
+        "proposal": {
+          "outcome": "continue",
+          "summary": "Le tre ricevute correnti riportano PASS (6/6/4 gruppi). L’ispezione dei sorgenti non individua ulteriori lacune funzionali concrete nell’esito delegato. Resta un’incoerenza documentale: la guida presenta come correnti ricevute ora stale.",
+          "findings": [
+            {
+              "id": "review-2",
+              "gap": "README.md:267, docs/guida.md:5 e docs/verifiche.md:18 chiamano correnti e passed le ricevute f60e43e0…, d3604e71… e 98c0ea1d…, ora marcate stale. Le ricevute passed disponibili sono invece 012fb1ac…, 244ba0db… e 79628235…. Occorre distinguere il risultato registrato di un’esecuzione dal suo stato corrente nel runtime, evitando che ogni aggiornamento documentale renda nuovamente inesatta la guida.",
+              "files": [
+                "README.md",
+                "docs/guida.md",
+                "docs/verifiche.md"
+              ],
+              "evidenceIds": [
+                "f60e43e0-fa6a-41d4-86b6-66d60162424a",
+                "d3604e71-b3db-4e32-b9d1-bcad4d646638",
+                "98c0ea1d-4856-4507-ac1f-7be70ff53f2c",
+                "012fb1ac-b472-4c52-b1eb-4d0cc555cf80",
+                "244ba0db-8f0b-49e0-bd9b-4de958ed08fe",
+                "79628235-3e15-4575-acb6-131502408579"
+              ]
+            }
+          ],
+          "decisions": [
+            {
+              "choice": "Preservare codice, interfaccia e comportamento del candidato.",
+              "basis": "Lettura di persistenza, API, filtri, salvataggi e conflitti senza ulteriori difetti concreti individuati. Settimana, tempo, riepilogo e backup restano agli esiti successivi."
+            },
+            {
+              "choice": "Documentare le verifiche come fotografia delle evidenze disponibili alla redazione.",
+              "basis": "Una guida statica può riportare ID, risultati e copertura osservata senza promettere uno stato runtime continuamente aggiornato. Le ricevute correnti sostengono questa revisione; quelle stale restano riferimenti storici."
+            },
+            {
+              "choice": "Limitare il giudizio alle osservazioni disponibili.",
+              "basis": "Revisione svolta in sola lettura, senza avviare server o browser. I PASS provengono dal runtime host; non attestano ogni percorso di conflitto o accessibilità."
+            }
+          ],
+          "tasks": [
+            {
+              "title": "Stabilizzare il registro documentale delle verifiche",
+              "objective": "Aggiornare README.md, docs/guida.md e docs/verifiche.md presentando le evidenze come fotografia alla redazione. Registrare le tre ricevute passed 012fb1ac…, 244ba0db… e 79628235… con comandi e copertura 6/6/4; distinguere le precedenti ricevute ora stale. Eliminare le affermazioni di stato runtime permanente. Riportare soltanto metadati disponibili, senza attribuire alle nuove ricevute date o stamp delle precedenti. Conservare limiti, istruzioni d’uso e distinzione dallo storico, senza modifiche funzionali.",
+              "criterionId": "board-ui",
+              "findingIds": [
+                "review-2"
+              ],
+              "waitsFor": [
+                "projects-api",
+                "tasks-api"
+              ]
+            }
+          ],
+          "operatorQuestion": ""
+        },
+        "stamp": {
+          "head": "8fbf6801cdda04de5f9153c737902289d355e59f",
+          "files": {
+            ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+            "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+            "README.md": "738837a336aa73e06a8871a8940155b3a8bbb5ca584030e061adbf38fc981331",
+            "docs/guida.md": "eea62d44262ce1b43248181d59127b2ea9088aec2dfd89f8bba27929b983548f",
+            "docs/verifiche.md": "77f66c0dafb56eafa79c1cab9ba88458d01eb89d9257ba83ae7619d2f24b258b",
+            "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+            "public/index.html": "1e798be6470daa454678337196f2076ca008b3922756dea7d79bbade5b259dee",
+            "public/svolta.css": "235865d7c676b8cf5cd7a9df2936252c335ffdf87d0d996ce90dd086e888a799",
+            "public/svolta.js": "8494e848b135e8dd8e4ecd4d29bc37705c1256b73ba5322f20438056bb1c5ab4",
+            "src/app.mjs": "04453e9d589045bc64eb12c64ce69766fa55fa541f75fdeeff0ea8e237e3b14b",
+            "src/archive.mjs": "07d8f1c116184f827d5da85b0874f0849f441a3e9a0bff6279b635a7f66de443",
+            "src/dates.mjs": "97166e73d0b44fc0758dba28a8e89c24e643efb97202e484c79cf9903906bde2",
+            "src/errors.mjs": "594ce35930d8da6b7abec818d5c0111a1d2488cd02d2bc2359297f7f12d11996",
+            "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+            "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+            "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+            "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+            "tests/acceptance.mjs": "5759467fd1c94b32c4044e4e7809c8b19afa636bd2b73ec210952d5c2bdcd4da",
+            "tests/browser.mjs": "94c628f46208c5fe55cc5e6b318fd72b43b95e3a73020a028cd2b02248a89d8a",
+            "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+          },
+          "fingerprint": "3af16ec1562c27e0384a73f196827a0d0cae1cbb568f2b325a2592ccd9a096d6"
+        },
+        "noteIds": [
+          "70bc50ac-cd3e-4a7b-9822-3a8d255a1ccb"
+        ],
+        "directionRevision": 1
+      }
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "cebf7c64-4c7a-46a7-9e2c-0360c9fd335f",
+    "runId": "20261020T220700-5ec53331",
+    "seq": 58,
+    "at": "2026-10-20T22:17:11.750Z",
+    "type": "project.reviewed",
+    "message": "Project supervisor discovered 1 next implementation unit(s) from the result.",
+    "data": {
+      "nodeId": "77579d3b-a896-4dda-95b3-20b59509cbf3"
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "c92184f9-2890-4ef5-8ecc-e8365a97e097",
+    "runId": "20261020T220700-5ec53331",
+    "seq": 59,
+    "at": "2026-10-20T22:17:11.986Z",
+    "type": "task.started",
+    "message": "builder: Stabilizzare il registro documentale delle verifiche",
+    "data": {
+      "nodeId": "discovered-77579d3b-a896-4dda-95b3-20b59509cbf3-0",
+      "edges": [
+        {
+          "id": "12b95ff8-87fe-443b-ac77-5bf210ef8c6b",
+          "source": "77579d3b-a896-4dda-95b3-20b59509cbf3",
+          "target": "discovered-77579d3b-a896-4dda-95b3-20b59509cbf3-0",
+          "kind": "next"
+        }
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "f7439bc5-6e06-4219-9c0c-efdea9a1220d",
+    "runId": "20261020T220700-5ec53331",
+    "seq": 60,
+    "at": "2026-10-20T22:17:12.809Z",
+    "type": "agent.thread",
+    "message": "Codex session recorded for recovery.",
+    "data": {
+      "nodeId": "discovered-77579d3b-a896-4dda-95b3-20b59509cbf3-0",
+      "threadId": "01a15b63-d7ea-7a61-850b-d17729e5ed40"
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "82014f2a-a8bc-476c-a746-84702ecb05e2",
+    "runId": "20261020T220700-5ec53331",
+    "seq": 61,
+    "at": "2026-10-20T22:19:20.827Z",
+    "type": "agent.usage",
+    "message": "234231 tokens reported by provider.",
+    "data": {
+      "tokens": 234231
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "b0376310-0543-4eb6-b674-5a3dabc1371b",
+    "runId": "20261020T220700-5ec53331",
+    "seq": 62,
+    "at": "2026-10-20T22:19:21.671Z",
+    "type": "code.changed",
+    "message": "3 files changed by this activity.",
+    "data": {
+      "nodeId": "discovered-77579d3b-a896-4dda-95b3-20b59509cbf3-0",
+      "files": [
+        "README.md",
+        "docs/guida.md",
+        "docs/verifiche.md"
+      ],
+      "diff": "diff --git a/README.md b/README.md\nindex 74a43dd..55fff0f 100644\n--- a/README.md\n+++ b/README.md\n@@ -11,6 +11,15 @@ conflitti. Il contratto completo, incluse le funzioni successive ancora\n indisponibili, è in [BRIEF.md](BRIEF.md). La descrizione del codice qui presente\n è distinta dalle [evidenze di verifica](docs/verifiche.md).\n \n+Questa consegna continua dal candidato\n+`8fbf6801cdda04de5f9153c737902289d355e59f`, ereditato senza certificazione.\n+Alla redazione, il contesto operativo riporta tre nuove ricevute con esito **PASS**\n+e stato `passed`: `projects-api` e `tasks-api` con 6 gruppi ciascuno, `board-ui`\n+con 4 gruppi. Comandi, prefissi degli ID disponibili e copertura sono riportati\n+sotto e nel registro delle evidenze. È una fotografia delle evidenze alla\n+redazione: il risultato registrato di un’esecuzione resta distinto dallo stato\n+successivo della ricevuta nel runtime. Le prove precedenti restano contesto storico.\n+\n ## Avvio\n \n Occorre Node.js **22.13 o successivo** e un browser moderno con JavaScript e\n@@ -253,25 +262,43 @@ Gli errori hanno forma `{\"error\":\"Messaggio in italiano\",\"code\":\"CODICE\"}`:\n \n ## Stato delle verifiche\n \n-Le ricevute del checkpoint precedente riportano **PASS storico** per\n-`projects-api` e `tasks-api` (sei gruppi ciascuno). Non attestano questa versione\n-dell’interfaccia. Il [registro delle evidenze](docs/verifiche.md) ne indica la\n-provenienza e separa le dichiarazioni locali precedenti dalle verifiche correnti.\n-\n-Questo aggiornamento riguarda solo la documentazione: lettura dei sorgenti e\n-controllo dei collegamenti locali. Non sono stati avviati server HTTP o browser\n-né rieseguite suite API o di accettazione; non si dichiara alcun collaudo desktop,\n-mobile a 390px o con lettori di schermo. Non è disponibile qui una nuova ricevuta host.\n-\n-Per il flusso corrente sono richieste al runtime nuove esecuzioni dei criteri\n-approvati; questi sono comandi da eseguire sull’host, non esiti osservati:\n-\n-```sh\n-node tests/acceptance.mjs projects-api\n-node tests/acceptance.mjs tasks-api\n-node tests/acceptance.mjs board-ui\n-```\n-\n-Le nuove ricevute del runtime vanno riferite alla revisione verificata e tenute\n-distinte da quelle storiche. Un PASS dei criteri automatici non sostituisce la\n-revisione d’uso, in particolare dei conflitti per campo, del focus e del layout.\n+Questa è una fotografia alla redazione per la missione `long-svolta-20261020-r2`,\n+run `20261020T220700-5ec53331`, contratto v1. Il contesto operativo segnala le\n+seguenti ricevute come `passed`, con risultato **PASS**:\n+\n+| Comando host | ID ricevuta (prefisso disponibile) | Esito registrato | Gruppi |\n+| --- | --- | --- | --- |\n+| `node tests/acceptance.mjs projects-api` | `012fb1ac…` | PASS | 6 |\n+| `node tests/acceptance.mjs tasks-api` | `244ba0db…` | PASS | 6 |\n+| `node tests/acceptance.mjs board-ui` | `79628235…` | PASS | 4 |\n+\n+I comandi coprono, entro i limiti descritti nel registro:\n+\n+- **Progetti:** archivio vuoto, creazione e valori iniziali, modifica con revisione\n+  e rifiuto del conflitto, validazione senza scrittura, archiviazione dopo riavvio\n+  e ID sconosciuto.\n+- **Attività:** valori iniziali, modifica e conflitti, filtri combinati e ricerca,\n+  validazione di campi e date, scritture concorrenti, progetti archiviati,\n+  persistenza dopo riavvio e JSON malformato senza perdita dei dati.\n+- **Interfaccia:** creazione di progetto e attività, modifica e filtri con dati\n+  conservati alla riapertura, conflitto tra due schede con nota locale conservata\n+  e modifica altrui protetta, testo HTML letterale e layout a 390px senza\n+  scorrimento orizzontale nella vista esercitata.\n+\n+Per queste nuove ricevute sono disponibili solo i prefissi degli ID, i comandi,\n+gli esiti e i conteggi dei gruppi. Date, stamp e output conservati nel\n+[registro delle evidenze](docs/verifiche.md#fotografia-delle-evidenze-alla-redazione)\n+appartengono alle ricevute precedenti `f60e43e0…`, `d3604e71…` e `98c0ea1d…`,\n+segnalate come `stale` alla redazione, e non vengono attribuiti alle nuove.\n+\n+Il risultato PASS documenta la singola esecuzione; lo stato runtime può cambiare\n+dopo modifiche agli input, anche documentali. Per lo stato rispetto al worktree\n+successivo occorre consultare il runtime: questa pagina non lo aggiorna in tempo\n+reale e non certifica una nuova revisione o impronta dei documenti modificati.\n+\n+I PASS API della prova originale e l’audit UI separato rimangono nel registro\n+come contesto. I controlli locali di questo task riguardano collegamenti e diff;\n+non sono stati avviati server o browser né rieseguite suite. La copertura\n+registrata non si estende a ogni risoluzione dei conflitti per campo, al focus,\n+all’intero layout o all’uso con lettori di schermo. Le funzioni successive\n+restano indisponibili come descritto sopra.\ndiff --git a/docs/guida.md b/docs/guida.md\nindex f3da23f..80b1a8f 100644\n--- a/docs/guida.md\n+++ b/docs/guida.md\n@@ -1,5 +1,31 @@\n # Usare Progetti e Attività\n \n+Questa guida descrive il candidato ereditato dalla revisione\n+`8fbf6801cdda04de5f9153c737902289d355e59f`, privo di certificazione all’avvio\n+della missione. Questa è una fotografia delle evidenze alla redazione: il\n+contesto operativo segnala le seguenti nuove ricevute come `passed`:\n+\n+| Comando host | ID ricevuta (prefisso disponibile) | Esito registrato | Gruppi |\n+| --- | --- | --- | --- |\n+| `node tests/acceptance.mjs projects-api` | `012fb1ac…` | PASS | 6 |\n+| `node tests/acceptance.mjs tasks-api` | `244ba0db…` | PASS | 6 |\n+| `node tests/acceptance.mjs board-ui` | `79628235…` | PASS | 4 |\n+\n+I gruppi API coprono persistenza, revisioni, validazione, filtri e conflitti.\n+I quattro gruppi UI coprono creazione, modifica e filtri con riapertura,\n+protezione dalle modifiche concorrenti con conservazione della nota locale,\n+testo HTML letterale e layout stretto. Le istruzioni seguenti descrivono anche\n+percorsi che questi controlli non esauriscono. Per le nuove ricevute sono\n+disponibili solo prefissi, comandi, esiti e conteggi 6/6/4; non sono fornite date\n+o stamp. Le precedenti `f60e43e0…`, `d3604e71…` e `98c0ea1d…` sono segnalate come\n+`stale` alla redazione. I loro metadati e output restano separati nel\n+[registro delle evidenze](verifiche.md#fotografia-delle-evidenze-alla-redazione).\n+\n+Il PASS è il risultato registrato di un’esecuzione, distinto dallo stato della\n+ricevuta nel runtime, che può cambiare dopo modifiche anche documentali.\n+Per lo stato successivo rispetto al worktree consultare il runtime. Questo\n+aggiornamento non introduce una nuova revisione verificata.\n+\n Occorre Node.js 22.13 o successivo. Dalla cartella del progetto avviare\n `node src/server.mjs` oppure `npm start`, senza installare dipendenze. Aprire nel\n browser l’indirizzo della riga `SVOLTA_READY http://127.0.0.1:…` e lasciare il\n@@ -126,7 +152,12 @@ Il layout prevede navigazione su più righe, campi in colonna e dialoghi con\n scorrimento verticale su schermi stretti; nomi, note e confronti vanno a capo.\n Il nome completo del progetto selezionato appare sotto i selettori. Gli stati\n sono scritti in italiano oltre al colore, le scadenze come giorno/mese/anno.\n-Queste indicazioni descrivono l’implementazione, non un collaudo browser osservato.\n+Queste indicazioni descrivono l’implementazione. Il risultato `board-ui`\n+riportato alla redazione è PASS con quattro gruppi: il comando usa una vista desktop\n+1440×1000 e controlla a 390×844 l’assenza di scorrimento orizzontale nella vista\n+esercitata. Non copre ogni dialogo su mobile, la navigazione completa con Tab,\n+il ritorno del focus o l’uso con lettori di schermo. L’audit UI separato rimane\n+contesto storico, distinto dalle ricevute della missione.\n \n ## Dati e funzioni successive\n \n@@ -143,5 +174,9 @@ interno non è quel backup. Non c’è recupero automatico dei dati o delle bozz\n \n Il server ascolta solo sul dispositivo che lo esegue: il layout adattivo non\n permette di collegare il telefono al computer con lo stesso indirizzo locale.\n-Le ricevute storiche e le nuove verifiche richieste, senza dichiarare collaudi\n-non osservati, sono descritte nel [registro delle evidenze](verifiche.md).\n+Le evidenze API della prova originale, l’audit UI e le ricevute precedenti\n+segnalate come `stale` alla redazione sono separati dalle nuove ricevute nel\n+[registro delle evidenze](verifiche.md). I tre PASS riportati riguardano le\n+rispettive esecuzioni, entro i 6/6/4 gruppi registrati; non attestano le funzioni\n+successive né un collaudo completo di accessibilità. Questo task aggiorna solo\n+la documentazione e non riesegue i controlli host.\ndiff --git a/docs/verifiche.md b/docs/verifiche.md\nindex 830b392..df6e362 100644\n--- a/docs/verifiche.md\n+++ b/docs/verifiche.md\n@@ -2,34 +2,194 @@\n \n La descrizione delle funzioni nel [README](../README.md) e nella [guida](guida.md)\n è basata sui sorgenti presenti. Una funzione descritta, un controllo locale\n-dichiarato e una ricevuta del runtime sono informazioni diverse.\n-\n-## Ricevute host storiche\n-\n-Il contesto operatore di questa delega riporta dal checkpoint\n+dichiarato, un audit riferito e una ricevuta del runtime sono informazioni diverse.\n+\n+## Fotografia delle evidenze alla redazione\n+\n+La missione `long-svolta-20261020-r2`, esito `usable-board`, continua dalla revisione\n+`8fbf6801cdda04de5f9153c737902289d355e59f` (HEAD all’inizio di questo task).\n+È il candidato già prodotto, **privo di certificazione all’avvio della missione**.\n+La prova originale è stata dichiarata bloccata da un difetto del runtime; le sue\n+evidenze restano contesto storico, separato dalle nuove ricevute riportate qui.\n+\n+Questo task aggiorna soltanto `README.md`, `docs/guida.md` e questo registro.\n+Non cambia progetti, attività, gestione delle bozze, conflitti o scelte visuali.\n+\n+Per il run `20261020T220700-5ec53331`, contratto di accettazione v1, il contesto\n+operativo fornito a questo task segnala le seguenti **tre nuove ricevute PASS**\n+con stato `passed` alla redazione:\n+\n+| Criterio | Comando approvato | ID ricevuta (prefisso disponibile) | Esito registrato | Gruppi |\n+| --- | --- | --- | --- | --- |\n+| `projects-api` | `node tests/acceptance.mjs projects-api` | `012fb1ac…` | PASS | 6 |\n+| `tasks-api` | `node tests/acceptance.mjs tasks-api` | `244ba0db…` | PASS | 6 |\n+| `board-ui` | `node tests/acceptance.mjs board-ui` | `79628235…` | PASS | 4 |\n+\n+Sono disponibili soltanto i prefissi degli ID, i criteri con i comandi approvati,\n+gli esiti e i conteggi dei gruppi. Non sono forniti gli ID completi, date, durate,\n+sequenze evento, codici di uscita, output integrali o stamp di queste nuove\n+ricevute. I metadati delle precedenti non vengono attribuiti alle nuove; in\n+particolare non si deduce una revisione o un’impronta verificata da tali prefissi.\n+\n+Questo registro è una fotografia alla redazione, non un indicatore in tempo\n+reale. Il risultato PASS descrive l’esecuzione registrata. Lo stato runtime\n+della ricevuta può cambiare, anche in `stale`, dopo modifiche agli input comprese\n+quelle documentali. Per la validità rispetto a un worktree successivo occorre\n+consultare il runtime; i risultati registrati restano evidenze delle rispettive\n+esecuzioni e non certificano automaticamente la revisione documentale seguente.\n+\n+## Ricevute precedenti della missione: stale alla redazione\n+\n+Le ricevute sotto riportate sono segnalate come `stale` nel contesto operativo\n+fornito a questo task. Il loro risultato di esecuzione era PASS; la qualifica\n+`stale` riguarda la loro validità rispetto agli input successivi. Sono distinte\n+dalle nuove ricevute sopra elencate e dalle evidenze della prova originale.\n+\n+| Criterio | Comando approvato | ID ricevuta precedente | Esito registrato | Stato alla redazione | Gruppi |\n+| --- | --- | --- | --- | --- | --- |\n+| `projects-api` | `node tests/acceptance.mjs projects-api` | `f60e43e0-fa6a-41d4-86b6-66d60162424a` | PASS | `stale` | 6 |\n+| `tasks-api` | `node tests/acceptance.mjs tasks-api` | `d3604e71-b3db-4e32-b9d1-bcad4d646638` | PASS | `stale` | 6 |\n+| `board-ui` | `node tests/acceptance.mjs board-ui` | `98c0ea1d-4856-4507-ac1f-7be70ff53f2c` | PASS | `stale` | 4 |\n+\n+Il documento ereditato riportava per queste ricevute eventi `verification.passed`\n+alle sequenze 27, 29 e 31, tipo `deterministic`, uscita 0 e output finale con\n+`result: \"PASS\"`. Conservava i seguenti metadati temporali (`createdAt`, in UTC),\n+riferiti esclusivamente a queste ricevute precedenti:\n+\n+| Criterio | Sequenza evento | Data UTC | Durata |\n+| --- | --- | --- | --- |\n+| `projects-api` | 27 | `2026-10-20T22:11:00.744Z` | 1457 ms |\n+| `tasks-api` | 29 | `2026-10-20T22:11:02.315Z` | 1472 ms |\n+| `board-ui` | 31 | `2026-10-20T22:11:06.451Z` | 4002 ms |\n+\n+Il documento ereditato riportava per le tre ricevute precedenti gli stessi\n+riferimenti agli input:\n+\n+- `stamp.head`: `8fbf6801cdda04de5f9153c737902289d355e59f`;\n+- `stamp.fingerprint`: `5018d26a1347ca6ff55f4882ac5d05e8fc86806a1eb296f961a235fa4db2012f`.\n+\n+Lo stamp precedente comprendeva anche le impronte dei singoli file, inclusa la\n+documentazione allora presente nel worktree. È conservato per provenienza:\n+non viene attribuito alle nuove ricevute né ai documenti aggiornati.\n+\n+Le sezioni seguenti conservano l’output e la copertura descritti nel registro\n+precedente per i tre comandi approvati. Sono risultati riferiti alle esecuzioni\n+precedenti su quegli input, non output integrali delle nuove ricevute né\n+esecuzioni dell’agente o una certificazione di tutte le funzioni del contratto.\n+Per le nuove ricevute il contesto fornisce gli esiti e i conteggi 6/6/4 sopra\n+registrati, senza ulteriori output.\n+\n+### Copertura documentata di `projects-api`: 6 gruppi\n+\n+L’output conservato per la ricevuta precedente riporta:\n+\n+```text\n+PASS empty archive\n+PASS create project with stable defaults\n+PASS optimistic project edit\n+PASS invalid names and missing revisions do not write\n+PASS project archival survives restart\n+PASS unknown project does not create a record\n+{\"criterion\":\"projects-api\",\"result\":\"PASS\",\"groups\":6}\n+```\n+\n+Sono osservati archivio vuoto, creazione con nome normalizzato e valori iniziali,\n+modifica con incremento della revisione e rifiuto di una revisione obsoleta senza\n+sovrascrittura, nomi invalidi e revisione mancante senza scrittura, archiviazione\n+persistente dopo riavvio e ID sconosciuto senza creazione di record.\n+\n+### Copertura documentata di `tasks-api`: 6 gruppi\n+\n+L’output conservato per la ricevuta precedente riporta:\n+\n+```text\n+PASS task defaults and exact fields\n+PASS task edit, revision conflicts and combined filters\n+PASS civil dates, invalid states and numeric validation\n+PASS parallel stale writers cannot overwrite each other\n+PASS archived projects disappear from general activity list\n+PASS task persistence and malformed JSON\n+{\"criterion\":\"tasks-api\",\"result\":\"PASS\",\"groups\":6}\n+```\n+\n+Sono osservati valori iniziali e campi delle attività, modifica e conflitto di\n+revisione, filtri combinati e ricerca senza distinzione di maiuscole, validazione\n+di date civili, stato e valori numerici, scritture concorrenti con un solo successo,\n+esclusione dei progetti archiviati dalla lista generale e rifiuto della creazione\n+su progetti archiviati o sconosciuti. Il riavvio conserva i dati e il JSON\n+malformato viene rifiutato senza modificarli.\n+\n+### Copertura documentata di `board-ui`: 4 gruppi\n+\n+L’output conservato per la ricevuta precedente riporta:\n+\n+```text\n+PASS create a project and task through the actual interface\n+PASS edit, filter and preserve the changed activity after reopening\n+PASS concurrent interface edits cannot silently overwrite another tab\n+PASS literal hostile text and mobile layout\n+{\"criterion\":\"board-ui\",\"result\":\"PASS\",\"groups\":4}\n+```\n+\n+Il comando esercita nel browser la creazione di progetto e attività con dettagli,\n+la modifica di titolo e stato, ricerca e filtro per stato, quindi la riapertura\n+con dati conservati. Due schede modificano la stessa attività: il conflitto\n+conserva la nota locale e non sovrascrive il titolo salvato dall’altra scheda.\n+Un titolo contenente HTML ostile rimane testo senza eseguire il codice incluso.\n+\n+Il comando usa una vista desktop 1440×1000 e passa a 390×844 per controllare che\n+la vista esercitata non abbia scorrimento orizzontale. Controlla anche l’assenza\n+di errori JavaScript del browser e richieste HTTP esterne nella pagina osservata.\n+Questo non equivale a provare ogni dialogo su mobile o su un telefono fisico.\n+Il gruppo sul conflitto verifica il rifiuto e la conservazione degli input,\n+senza completare tutte le scelte di risoluzione per campo. Non sono attestati\n+la navigazione completa con Tab, il ritorno del focus o i lettori di schermo.\n+\n+Il contesto della delega segnala che i selettori host aggiornati correggono la\n+rigidità sui suffissi obbligatori e sui controlli nascosti. La correzione dei\n+selettori è distinta dai risultati di esecuzione sopra riportati. Una richiesta\n+di verifica non è un PASS; gli esiti riportati sono quelli delle rispettive ricevute.\n+Un esito non si estende ad altri criteri o a una diversa impronta degli input.\n+\n+## Evidenze API storiche riportate\n+\n+Il registro ereditato attribuisce al checkpoint\n `d3e570da7f20fb6f81fa5f6d8af89f710e9926d1` (run sorgente\n `20261020T205056-641e33a8`, sequenza 64) questi risultati:\n \n-| Comando approvato | Esito riportato dal checkpoint | Gruppi |\n+| Comando approvato | Esito storico riportato | Gruppi |\n | --- | --- | --- |\n | `node tests/acceptance.mjs projects-api` | PASS storico | 6 |\n | `node tests/acceptance.mjs tasks-api` | PASS storico | 6 |\n \n-La copertura riportata per `projects-api` comprende archivio vuoto, creazione e\n-normalizzazione del nome, aggiornamento con revisione, conflitto senza\n+La copertura storica riportata per `projects-api` comprende archivio vuoto,\n+creazione e normalizzazione del nome, aggiornamento con revisione, conflitto senza\n sovrascrittura, validazione, archiviazione persistente dopo riavvio e ID ignoto.\n \n Per `tasks-api` comprende valori predefiniti, aggiornamento e conflitti,\n filtri combinati e ricerca, validazione dei campi e delle date civili,\n concorrenza con un solo successo, progetti archiviati o sconosciuti,\n persistenza dopo riavvio e JSON malformato senza modifica dei dati.\n-Il checkpoint riferisce anche avvio con `PORT=0`, cartella dati temporanea,\n+Il registro riferisce anche avvio con `PORT=0`, cartella dati temporanea,\n annuncio `SVOLTA_READY`, richieste HTTP e riavvio sulla stessa cartella.\n \n-Questa documentazione riporta il contesto ricevuto; non riproduce né rinnova\n-quegli esiti. Non c’è in esso una ricevuta `board-ui`. I PASS API storici non\n-verificano la nuova interfaccia né dimostrano la conservazione delle API nella\n-versione corrente.\n+Questi riferimenti sono conservati come informazioni del documento ereditato;\n+le ricevute originali e il loro output non sono disponibili nel worktree di\n+questo task. Non sono nuove osservazioni né rinnovi degli esiti. Non comprendono\n+una ricevuta `board-ui`; le ricevute di questa missione sono documentate\n+separatamente sopra, con i rispettivi risultati e le informazioni disponibili.\n+\n+## Contesto dell’audit UI separato\n+\n+La delega corrente riferisce che un audit separato ha esercitato **quattro flussi\n+UI** sul candidato. Non fornisce qui l’elenco dei quattro flussi, la revisione\n+esercitata, i comandi o l’output dell’audit. Questo registro non può quindi\n+attribuirgli una copertura più specifica o usarlo come ricevuta di questa missione per\n+`board-ui`.\n+\n+L’audit rimane contesto utile alla continuità del candidato. Non costituisce una\n+certificazione dei tre criteri di questa missione né un nuovo collaudo osservato\n+durante questo task.\n \n ## Controlli locali dichiarati nei task precedenti\n \n@@ -49,31 +209,31 @@ nativo, Tab/Escape, lettori di schermo o l’esperienza effettiva nel browser.\n Le prove senza socket non dimostrano il funzionamento HTTP; quelle in memoria\n non dimostrano la persistenza su disco.\n \n-## Aggiornamento corrente della documentazione\n-\n-In questo task sono stati letti i sorgenti server, archivio, API e interfaccia\n-per allineare le istruzioni alle etichette e ai percorsi presenti. È stato\n-eseguito un controllo dei collegamenti locali della documentazione. Non sono\n-state modificate le API o gli asset, avviati server/browser o rieseguite suite\n-API o di accettazione. Questo controllo documentale non attesta il funzionamento\n-dell’app. Non è stata osservata qui una nuova ricevuta host.\n-\n-I criteri da richiedere al runtime per il flusso attuale sono:\n-\n-| Comando approvato | Scopo | Nuova evidenza disponibile in questo task |\n-| --- | --- | --- |\n-| `node tests/acceptance.mjs projects-api` | Regressione dell’archivio e delle API progetti | Nessuna |\n-| `node tests/acceptance.mjs tasks-api` | Regressione delle attività, dei filtri e dei conflitti API | Nessuna |\n-| `node tests/acceptance.mjs board-ui` | Flusso visuale su desktop e schermo stretto | Nessuna |\n-\n-Una richiesta di verifica non equivale a un’esecuzione o a un PASS. Le ricevute\n-che il runtime produrrà successivamente saranno nuove evidenze: riferirle alla\n-revisione controllata, al comando, all’esito e al relativo output, senza\n-sostituire retroattivamente lo storico o attribuirgli la copertura corrente.\n-\n-Non si dichiarano collaudi browser, desktop/mobile o con lettori di schermo\n-osservati in questo task, né una revisione indipendente o una pubblicazione.\n-I criteri automatici non esauriscono la revisione d’uso, in particolare per\n-scelte nei conflitti, tastiera, focus, nomi lunghi e assenza di scorrimento\n-orizzontale. Settimana, sessioni di tempo, Riepilogo e Backup/ripristino sono\n-indisponibili, senza dichiarazioni di implementazione o collaudo.\n+## Controlli documentali e limiti residui\n+\n+Questo aggiornamento ha confrontato il contratto e la documentazione con i\n+metadati delle ricevute forniti nel contesto operativo e con la copertura\n+documentata dei comandi approvati. Sono stati controllati i collegamenti locali\n+della documentazione e il diff, senza modifiche funzionali.\n+Non sono stati avviati server o browser né rieseguite suite API o di accettazione\n+nella sandbox dell’agente. I risultati API e browser sopra riportati appartengono\n+al runtime host; i controlli documentali non sono nuove prove di funzionamento.\n+\n+Le bozze rimangono solo nella pagina: il cambio sezione e l’aggiornamento degli\n+elenchi le conservano; ricaricare o chiudere la pagina le perde. Annulla o Escape\n+scartano le modifiche nei dialoghi. Non c’è recupero persistente delle bozze.\n+Se un’attività è stata archiviata altrove, la versione corrente non è consultabile\n+negli elenchi per risolvere il conflitto: copiare gli input utili prima di annullare.\n+\n+Settimana, sessioni di tempo, Riepilogo e Backup/ripristino rimangono indisponibili\n+anche nelle API e spettano agli esiti successivi del supervisore host. Il file\n+interno `archive.json` non è un backup portabile; non esiste ancora una procedura\n+di esportazione o ripristino. Una stima non registra tempo e una scadenza non\n+genera una vista settimanale. Il layout per schermi stretti non abilita l’accesso\n+dal telefono al server del computer, che ascolta solo su `127.0.0.1`.\n+\n+Oltre alla copertura di `board-ui` registrata sopra, non si dichiarano ulteriori\n+collaudi desktop/mobile o con lettori di schermo, revisioni indipendenti o\n+pubblicazioni. I criteri automatici non esauriscono la revisione d’uso: conflitti\n+per campo, tastiera, focus, nomi lunghi e assenza di scorrimento orizzontale vanno\n+riferiti solo alla copertura realmente osservata."
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "5eedfd3a-702c-4067-bbbc-54d0f624cdb3",
+    "runId": "20261020T220700-5ec53331",
+    "seq": 63,
+    "at": "2026-10-20T22:19:21.726Z",
+    "type": "evidence.invalidated",
+    "message": "Evidence is STALE: README.md, docs/guida.md, docs/verifiche.md. Scope: all repository files.",
+    "data": {
+      "evidenceId": "012fb1ac-b472-4c52-b1eb-4d0cc555cf80",
+      "changed": [
+        "README.md",
+        "docs/guida.md",
+        "docs/verifiche.md"
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "3a74fc04-3b5d-45b1-889a-d0f28aca029b",
+    "runId": "20261020T220700-5ec53331",
+    "seq": 64,
+    "at": "2026-10-20T22:19:21.759Z",
+    "type": "evidence.invalidated",
+    "message": "Evidence is STALE: README.md, docs/guida.md, docs/verifiche.md. Scope: all repository files.",
+    "data": {
+      "evidenceId": "244ba0db-8f0b-49e0-bd9b-4de958ed08fe",
+      "changed": [
+        "README.md",
+        "docs/guida.md",
+        "docs/verifiche.md"
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "e8568b7f-bdaa-42de-a9ab-ab9207a57432",
+    "runId": "20261020T220700-5ec53331",
+    "seq": 65,
+    "at": "2026-10-20T22:19:21.791Z",
+    "type": "evidence.invalidated",
+    "message": "Evidence is STALE: README.md, docs/guida.md, docs/verifiche.md. Scope: all repository files.",
+    "data": {
+      "evidenceId": "79628235-3e15-4575-acb6-131502408579",
+      "changed": [
+        "README.md",
+        "docs/guida.md",
+        "docs/verifiche.md"
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "f6a3ad54-88e9-4f5d-9696-e4db99445f67",
+    "runId": "20261020T220700-5ec53331",
+    "seq": 66,
+    "at": "2026-10-20T22:19:21.840Z",
+    "type": "task.completed",
+    "message": "Aggiornati README.md, docs/guida.md e docs/verifiche.md come fotografia alla redazione: registrate le ricevute 012fb1ac…, 244ba0db… e 79628235… con comandi e copertura 6/6/4; separate le precedenti stale, senza trasferire date o stamp. Conservati istruzioni, limiti e storico. Nessuna modifica funzionale. Controllati 13 collegamenti e ancore e il diff; suite non rieseguite localmente.",
+    "data": {
+      "nodeId": "discovered-77579d3b-a896-4dda-95b3-20b59509cbf3-0",
+      "summary": "Aggiornati README.md, docs/guida.md e docs/verifiche.md come fotografia alla redazione: registrate le ricevute 012fb1ac…, 244ba0db… e 79628235… con comandi e copertura 6/6/4; separate le precedenti stale, senza trasferire date o stamp. Conservati istruzioni, limiti e storico. Nessuna modifica funzionale. Controllati 13 collegamenti e ancore e il diff; suite non rieseguite localmente.",
+      "files": [
+        "README.md",
+        "docs/guida.md",
+        "docs/verifiche.md"
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "8e2431b5-c21a-4a7b-a55b-7a345cc469d4",
+    "runId": "20261020T220700-5ec53331",
+    "seq": 67,
+    "at": "2026-10-20T22:19:21.883Z",
+    "type": "decision.recorded",
+    "message": "Builder handed verification to the runtime host. Agent-local check limitations are unverified observations; only approved runtime checks can certify results.",
+    "data": {
+      "kind": "verification.handoff",
+      "nodeId": "discovered-77579d3b-a896-4dda-95b3-20b59509cbf3-0",
+      "criterionIds": [
+        "projects-api",
+        "tasks-api",
+        "board-ui"
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "0683c064-d974-4754-bf96-e5b8495c7c66",
+    "runId": "20261020T220700-5ec53331",
+    "seq": 68,
+    "at": "2026-10-20T22:19:21.896Z",
+    "type": "progress.recorded",
+    "message": "Code fingerprint changed.",
+    "data": {
+      "noProgress": 0
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "e2e0f478-f9ce-494b-a2f1-48d7f3b342ae",
+    "runId": "20261020T220700-5ec53331",
+    "seq": 69,
+    "at": "2026-10-20T22:19:22.073Z",
+    "type": "verification.started",
+    "message": "Verifying: Archivio progetti persistente e revisioni",
+    "data": {
+      "nodeId": "5fbbc497-2ca7-4ebf-9335-37eea15d1c2b",
+      "node": {
+        "id": "5fbbc497-2ca7-4ebf-9335-37eea15d1c2b",
+        "status": "PENDING",
+        "attempt": 4,
+        "files": [],
+        "evidenceIds": [],
+        "kind": "verification",
+        "role": "verifier",
+        "title": "Archivio progetti persistente e revisioni",
+        "objective": "Run approved check: [\"node\",\"tests/acceptance.mjs\",\"projects-api\"]",
+        "criterionId": "projects-api",
+        "reason": "Acceptance requires runtime-owned evidence for the approved verification policy."
+      },
+      "edges": [
+        {
+          "id": "3bf149f6-898a-431c-971e-e9599ce7c211",
+          "source": "77579d3b-a896-4dda-95b3-20b59509cbf3",
+          "target": "5fbbc497-2ca7-4ebf-9335-37eea15d1c2b",
+          "kind": "next"
+        }
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "371b4cad-a450-4666-80cd-6c48cb3ff43e",
+    "runId": "20261020T220700-5ec53331",
+    "seq": 70,
+    "at": "2026-10-20T22:19:23.710Z",
+    "type": "verification.passed",
+    "message": "Archivio progetti persistente e revisioni: approved deterministic check satisfied on recorded inputs.",
+    "data": {
+      "nodeId": "5fbbc497-2ca7-4ebf-9335-37eea15d1c2b",
+      "evidence": {
+        "id": "5f535d8a-91b0-45fe-b9ef-4489ba300b07",
+        "nodeId": "5fbbc497-2ca7-4ebf-9335-37eea15d1c2b",
+        "criterionId": "projects-api",
+        "contractVersion": 1,
+        "kind": "deterministic",
+        "status": "passed",
+        "createdAt": "2026-10-20T22:19:23.645Z",
+        "command": [
+          "node",
+          "tests/acceptance.mjs",
+          "projects-api"
+        ],
+        "exitCode": 0,
+        "output": "PASS empty archive\nPASS create project with stable defaults\nPASS optimistic project edit\nPASS invalid names and missing revisions do not write\nPASS project archival survives restart\nPASS unknown project does not create a record\n{\"criterion\":\"projects-api\",\"result\":\"PASS\",\"groups\":6}\n",
+        "durationMs": 1581,
+        "stamp": {
+          "head": "8fbf6801cdda04de5f9153c737902289d355e59f",
+          "files": {
+            ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+            "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+            "README.md": "523d22b76bbc924c28e294948cf3f58df7e5538a6a213c2bb35f268843f1a1ea",
+            "docs/guida.md": "b1569ab12898d516e41102be8826c0b288732808d6fb4457752cf3eeb58ac299",
+            "docs/verifiche.md": "9ee108947948d7d61720498b3ddc7311fbef9236707eae753427b2b2b91e1e5b",
+            "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+            "public/index.html": "1e798be6470daa454678337196f2076ca008b3922756dea7d79bbade5b259dee",
+            "public/svolta.css": "235865d7c676b8cf5cd7a9df2936252c335ffdf87d0d996ce90dd086e888a799",
+            "public/svolta.js": "8494e848b135e8dd8e4ecd4d29bc37705c1256b73ba5322f20438056bb1c5ab4",
+            "src/app.mjs": "04453e9d589045bc64eb12c64ce69766fa55fa541f75fdeeff0ea8e237e3b14b",
+            "src/archive.mjs": "07d8f1c116184f827d5da85b0874f0849f441a3e9a0bff6279b635a7f66de443",
+            "src/dates.mjs": "97166e73d0b44fc0758dba28a8e89c24e643efb97202e484c79cf9903906bde2",
+            "src/errors.mjs": "594ce35930d8da6b7abec818d5c0111a1d2488cd02d2bc2359297f7f12d11996",
+            "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+            "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+            "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+            "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+            "tests/acceptance.mjs": "5759467fd1c94b32c4044e4e7809c8b19afa636bd2b73ec210952d5c2bdcd4da",
+            "tests/browser.mjs": "94c628f46208c5fe55cc5e6b318fd72b43b95e3a73020a028cd2b02248a89d8a",
+            "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+          },
+          "fingerprint": "fdf4560566f456b5e8f9822309f40f6d4811f38c36d77e47642fd17325014a2d"
+        },
+        "scope": [],
+        "inputs": []
+      }
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "09214287-8b33-4eb3-a7c5-8a2d909a833c",
+    "runId": "20261020T220700-5ec53331",
+    "seq": 71,
+    "at": "2026-10-20T22:19:23.953Z",
+    "type": "verification.started",
+    "message": "Verifying: Attività, filtri e conflitti senza perdita di dati",
+    "data": {
+      "nodeId": "bdf77f32-448d-464e-8e1d-a841a1b117ae",
+      "node": {
+        "id": "bdf77f32-448d-464e-8e1d-a841a1b117ae",
+        "status": "PENDING",
+        "attempt": 4,
+        "files": [],
+        "evidenceIds": [],
+        "kind": "verification",
+        "role": "verifier",
+        "title": "Attività, filtri e conflitti senza perdita di dati",
+        "objective": "Run approved check: [\"node\",\"tests/acceptance.mjs\",\"tasks-api\"]",
+        "criterionId": "tasks-api",
+        "reason": "Acceptance requires runtime-owned evidence for the approved verification policy."
+      },
+      "edges": [
+        {
+          "id": "c541a2f3-337e-4f40-93eb-fbc00909fe52",
+          "source": "b78547f1-1182-47de-81cd-0b4cc3bebfcc",
+          "target": "bdf77f32-448d-464e-8e1d-a841a1b117ae",
+          "kind": "next"
+        }
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "c94e57d8-97b4-4278-8728-c27f3f31a902",
+    "runId": "20261020T220700-5ec53331",
+    "seq": 72,
+    "at": "2026-10-20T22:19:25.526Z",
+    "type": "verification.passed",
+    "message": "Attività, filtri e conflitti senza perdita di dati: approved deterministic check satisfied on recorded inputs.",
+    "data": {
+      "nodeId": "bdf77f32-448d-464e-8e1d-a841a1b117ae",
+      "evidence": {
+        "id": "d16b6c2c-ec8f-4e1c-8c37-8017bc280f17",
+        "nodeId": "bdf77f32-448d-464e-8e1d-a841a1b117ae",
+        "criterionId": "tasks-api",
+        "contractVersion": 1,
+        "kind": "deterministic",
+        "status": "passed",
+        "createdAt": "2026-10-20T22:19:25.473Z",
+        "command": [
+          "node",
+          "tests/acceptance.mjs",
+          "tasks-api"
+        ],
+        "exitCode": 0,
+        "output": "PASS task defaults and exact fields\nPASS task edit, revision conflicts and combined filters\nPASS civil dates, invalid states and numeric validation\nPASS parallel stale writers cannot overwrite each other\nPASS archived projects disappear from general activity list\nPASS task persistence and malformed JSON\n{\"criterion\":\"tasks-api\",\"result\":\"PASS\",\"groups\":6}\n",
+        "durationMs": 1516,
+        "stamp": {
+          "head": "8fbf6801cdda04de5f9153c737902289d355e59f",
+          "files": {
+            ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+            "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+            "README.md": "523d22b76bbc924c28e294948cf3f58df7e5538a6a213c2bb35f268843f1a1ea",
+            "docs/guida.md": "b1569ab12898d516e41102be8826c0b288732808d6fb4457752cf3eeb58ac299",
+            "docs/verifiche.md": "9ee108947948d7d61720498b3ddc7311fbef9236707eae753427b2b2b91e1e5b",
+            "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+            "public/index.html": "1e798be6470daa454678337196f2076ca008b3922756dea7d79bbade5b259dee",
+            "public/svolta.css": "235865d7c676b8cf5cd7a9df2936252c335ffdf87d0d996ce90dd086e888a799",
+            "public/svolta.js": "8494e848b135e8dd8e4ecd4d29bc37705c1256b73ba5322f20438056bb1c5ab4",
+            "src/app.mjs": "04453e9d589045bc64eb12c64ce69766fa55fa541f75fdeeff0ea8e237e3b14b",
+            "src/archive.mjs": "07d8f1c116184f827d5da85b0874f0849f441a3e9a0bff6279b635a7f66de443",
+            "src/dates.mjs": "97166e73d0b44fc0758dba28a8e89c24e643efb97202e484c79cf9903906bde2",
+            "src/errors.mjs": "594ce35930d8da6b7abec818d5c0111a1d2488cd02d2bc2359297f7f12d11996",
+            "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+            "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+            "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+            "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+            "tests/acceptance.mjs": "5759467fd1c94b32c4044e4e7809c8b19afa636bd2b73ec210952d5c2bdcd4da",
+            "tests/browser.mjs": "94c628f46208c5fe55cc5e6b318fd72b43b95e3a73020a028cd2b02248a89d8a",
+            "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+          },
+          "fingerprint": "fdf4560566f456b5e8f9822309f40f6d4811f38c36d77e47642fd17325014a2d"
+        },
+        "scope": [],
+        "inputs": []
+      }
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "c8c1bfaf-e350-47d3-b67b-f7968f14751c",
+    "runId": "20261020T220700-5ec53331",
+    "seq": 73,
+    "at": "2026-10-20T22:19:25.818Z",
+    "type": "verification.started",
+    "message": "Verifying: Interfaccia progetti e attività su desktop e mobile",
+    "data": {
+      "nodeId": "83e010ac-177b-4dd6-8aaf-054ec8b63501",
+      "node": {
+        "id": "83e010ac-177b-4dd6-8aaf-054ec8b63501",
+        "status": "PENDING",
+        "attempt": 4,
+        "files": [],
+        "evidenceIds": [],
+        "kind": "verification",
+        "role": "verifier",
+        "title": "Interfaccia progetti e attività su desktop e mobile",
+        "objective": "Run approved check: [\"node\",\"tests/acceptance.mjs\",\"board-ui\"]",
+        "criterionId": "board-ui",
+        "reason": "Acceptance requires runtime-owned evidence for the approved verification policy."
+      },
+      "edges": [
+        {
+          "id": "aea3c8c5-824e-46c3-b9d7-122e2ab2cbc1",
+          "source": "discovered-77579d3b-a896-4dda-95b3-20b59509cbf3-0",
+          "target": "83e010ac-177b-4dd6-8aaf-054ec8b63501",
+          "kind": "next"
+        }
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "c99295f9-9dfa-41db-867d-b19072cd6c3c",
+    "runId": "20261020T220700-5ec53331",
+    "seq": 74,
+    "at": "2026-10-20T22:19:29.411Z",
+    "type": "verification.passed",
+    "message": "Interfaccia progetti e attività su desktop e mobile: approved deterministic check satisfied on recorded inputs.",
+    "data": {
+      "nodeId": "83e010ac-177b-4dd6-8aaf-054ec8b63501",
+      "evidence": {
+        "id": "7151d55d-fa40-43d0-b0c2-4a2772e999e6",
+        "nodeId": "83e010ac-177b-4dd6-8aaf-054ec8b63501",
+        "criterionId": "board-ui",
+        "contractVersion": 1,
+        "kind": "deterministic",
+        "status": "passed",
+        "createdAt": "2026-10-20T22:19:29.350Z",
+        "command": [
+          "node",
+          "tests/acceptance.mjs",
+          "board-ui"
+        ],
+        "exitCode": 0,
+        "output": "PASS create a project and task through the actual interface\nPASS edit, filter and preserve the changed activity after reopening\nPASS concurrent interface edits cannot silently overwrite another tab\nPASS literal hostile text and mobile layout\n{\"criterion\":\"board-ui\",\"result\":\"PASS\",\"groups\":4}\n",
+        "durationMs": 3540,
+        "stamp": {
+          "head": "8fbf6801cdda04de5f9153c737902289d355e59f",
+          "files": {
+            ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+            "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+            "README.md": "523d22b76bbc924c28e294948cf3f58df7e5538a6a213c2bb35f268843f1a1ea",
+            "docs/guida.md": "b1569ab12898d516e41102be8826c0b288732808d6fb4457752cf3eeb58ac299",
+            "docs/verifiche.md": "9ee108947948d7d61720498b3ddc7311fbef9236707eae753427b2b2b91e1e5b",
+            "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+            "public/index.html": "1e798be6470daa454678337196f2076ca008b3922756dea7d79bbade5b259dee",
+            "public/svolta.css": "235865d7c676b8cf5cd7a9df2936252c335ffdf87d0d996ce90dd086e888a799",
+            "public/svolta.js": "8494e848b135e8dd8e4ecd4d29bc37705c1256b73ba5322f20438056bb1c5ab4",
+            "src/app.mjs": "04453e9d589045bc64eb12c64ce69766fa55fa541f75fdeeff0ea8e237e3b14b",
+            "src/archive.mjs": "07d8f1c116184f827d5da85b0874f0849f441a3e9a0bff6279b635a7f66de443",
+            "src/dates.mjs": "97166e73d0b44fc0758dba28a8e89c24e643efb97202e484c79cf9903906bde2",
+            "src/errors.mjs": "594ce35930d8da6b7abec818d5c0111a1d2488cd02d2bc2359297f7f12d11996",
+            "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+            "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+            "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+            "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+            "tests/acceptance.mjs": "5759467fd1c94b32c4044e4e7809c8b19afa636bd2b73ec210952d5c2bdcd4da",
+            "tests/browser.mjs": "94c628f46208c5fe55cc5e6b318fd72b43b95e3a73020a028cd2b02248a89d8a",
+            "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+          },
+          "fingerprint": "fdf4560566f456b5e8f9822309f40f6d4811f38c36d77e47642fd17325014a2d"
+        },
+        "scope": [],
+        "inputs": []
+      }
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "ba6ca111-c634-4733-a010-df1582fe0929",
+    "runId": "20261020T220700-5ec53331",
+    "seq": 75,
+    "at": "2026-10-20T22:19:29.838Z",
+    "type": "task.planned",
+    "message": "Review the project against its goal",
+    "data": {
+      "node": {
+        "id": "1dcc9470-675a-4930-b7af-a398770072d2",
+        "status": "PENDING",
+        "attempt": 1,
+        "files": [],
+        "evidenceIds": [],
+        "kind": "decision",
+        "role": "planner",
+        "title": "Review the project against its goal",
+        "objective": "{\"head\":\"8fbf6801cdda04de5f9153c737902289d355e59f\",\"fingerprint\":\"fdf4560566f456b5e8f9822309f40f6d4811f38c36d77e47642fd17325014a2d\",\"version\":1,\"noteIds\":[\"70bc50ac-cd3e-4a7b-9822-3a8d255a1ccb\"],\"directionRevision\":1,\"round\":3}",
+        "reason": "A verified milestone triggers autonomous discovery of the next useful work.",
+        "criterionId": "projects-api"
+      }
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "1b8f5ab3-f2bb-4d7f-995f-8ca9eac6dd37",
+    "runId": "20261020T220700-5ec53331",
+    "seq": 76,
+    "at": "2026-10-20T22:19:29.877Z",
+    "type": "task.started",
+    "message": "planner: Review the project against its goal",
+    "data": {
+      "nodeId": "1dcc9470-675a-4930-b7af-a398770072d2",
+      "edges": [
+        {
+          "id": "edc215e1-9f0c-4064-b7ff-37cc69f15190",
+          "source": "83e010ac-177b-4dd6-8aaf-054ec8b63501",
+          "target": "1dcc9470-675a-4930-b7af-a398770072d2",
+          "kind": "next"
+        }
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "78afb9c3-fd92-488e-8229-69c9447da7ae",
+    "runId": "20261020T220700-5ec53331",
+    "seq": 77,
+    "at": "2026-10-20T22:19:30.703Z",
+    "type": "agent.thread",
+    "message": "Codex session recorded for recovery.",
+    "data": {
+      "nodeId": "1dcc9470-675a-4930-b7af-a398770072d2",
+      "threadId": "01a15b65-f284-74a2-9840-f95b1ad1ef1b"
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "769b2671-2f80-4c35-85f5-da4e674f985b",
+    "runId": "20261020T220700-5ec53331",
+    "seq": 78,
+    "at": "2026-10-20T22:20:32.856Z",
+    "type": "agent.usage",
+    "message": "463752 tokens reported by provider.",
+    "data": {
+      "tokens": 463752
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "b971aa2e-7ed6-4906-9150-21ee8978dc3a",
+    "runId": "20261020T220700-5ec53331",
+    "seq": 79,
+    "at": "2026-10-20T22:20:33.490Z",
+    "type": "task.completed",
+    "message": "L’esito delegato Progetti e Attività è pronto per la revisione dell’operatore. Le ricevute correnti riportano PASS per tutti e tre i criteri; l’ispezione dei sorgenti e della guida non individua lacune concrete residue nel perimetro approvato.",
+    "data": {
+      "nodeId": "1dcc9470-675a-4930-b7af-a398770072d2",
+      "summary": "L’esito delegato Progetti e Attività è pronto per la revisione dell’operatore. Le ricevute correnti riportano PASS per tutti e tre i criteri; l’ispezione dei sorgenti e della guida non individua lacune concrete residue nel perimetro approvato.",
+      "result": {
+        "proposal": {
+          "outcome": "ready",
+          "summary": "L’esito delegato Progetti e Attività è pronto per la revisione dell’operatore. Le ricevute correnti riportano PASS per tutti e tre i criteri; l’ispezione dei sorgenti e della guida non individua lacune concrete residue nel perimetro approvato.",
+          "findings": [],
+          "decisions": [
+            {
+              "choice": "Preservare l’implementazione esistente.",
+              "basis": "Esaminati persistenza, API, interfaccia, filtri, bozze e conflitti. Il diff riguarda soltanto README.md, docs/guida.md e docs/verifiche.md; non emergono motivi concreti per modifiche funzionali."
+            },
+            {
+              "choice": "Usare le ricevute passed correnti a sostegno della consegna.",
+              "basis": "projects-api: 5f535d8a-91b0-45fe-b9ef-4489ba300b07, 6 gruppi; tasks-api: d16b6c2c-ec8f-4e1c-8c37-8017bc280f17, 6 gruppi; board-ui: 7151d55d-fa40-43d0-b0c2-4a2772e999e6, 4 gruppi. Tutte riportano PASS."
+            },
+            {
+              "choice": "Accettare il registro documentale come fotografia alla redazione.",
+              "basis": "I tre documenti distinguono risultato registrato e stato runtime successivo, separano lo storico e dichiarano i limiti osservati. Le ricevute citate divenute stale non richiedono un ulteriore aggiornamento della fotografia."
+            },
+            {
+              "choice": "Limitare la prontezza all’esito usable-board.",
+              "basis": "Settimana, tempo, riepilogo e backup restano agli esiti successivi, come dichiarato nell’interfaccia e nella guida. Questa revisione è stata svolta in sola lettura, senza eseguire suite o browser; i PASS provengono dal runtime host e non attestano ogni percorso mobile o di accessibilità."
+            }
+          ],
+          "tasks": [],
+          "operatorQuestion": ""
+        },
+        "stamp": {
+          "head": "8fbf6801cdda04de5f9153c737902289d355e59f",
+          "files": {
+            ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+            "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+            "README.md": "523d22b76bbc924c28e294948cf3f58df7e5538a6a213c2bb35f268843f1a1ea",
+            "docs/guida.md": "b1569ab12898d516e41102be8826c0b288732808d6fb4457752cf3eeb58ac299",
+            "docs/verifiche.md": "9ee108947948d7d61720498b3ddc7311fbef9236707eae753427b2b2b91e1e5b",
+            "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+            "public/index.html": "1e798be6470daa454678337196f2076ca008b3922756dea7d79bbade5b259dee",
+            "public/svolta.css": "235865d7c676b8cf5cd7a9df2936252c335ffdf87d0d996ce90dd086e888a799",
+            "public/svolta.js": "8494e848b135e8dd8e4ecd4d29bc37705c1256b73ba5322f20438056bb1c5ab4",
+            "src/app.mjs": "04453e9d589045bc64eb12c64ce69766fa55fa541f75fdeeff0ea8e237e3b14b",
+            "src/archive.mjs": "07d8f1c116184f827d5da85b0874f0849f441a3e9a0bff6279b635a7f66de443",
+            "src/dates.mjs": "97166e73d0b44fc0758dba28a8e89c24e643efb97202e484c79cf9903906bde2",
+            "src/errors.mjs": "594ce35930d8da6b7abec818d5c0111a1d2488cd02d2bc2359297f7f12d11996",
+            "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+            "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+            "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+            "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+            "tests/acceptance.mjs": "5759467fd1c94b32c4044e4e7809c8b19afa636bd2b73ec210952d5c2bdcd4da",
+            "tests/browser.mjs": "94c628f46208c5fe55cc5e6b318fd72b43b95e3a73020a028cd2b02248a89d8a",
+            "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+          },
+          "fingerprint": "fdf4560566f456b5e8f9822309f40f6d4811f38c36d77e47642fd17325014a2d"
+        },
+        "noteIds": [
+          "70bc50ac-cd3e-4a7b-9822-3a8d255a1ccb"
+        ],
+        "directionRevision": 1
+      }
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "0bcc0df6-bf5c-4656-9d11-a7db25c3f9e4",
+    "runId": "20261020T220700-5ec53331",
+    "seq": 80,
+    "at": "2026-10-20T22:20:33.498Z",
+    "type": "project.reviewed",
+    "message": "Project supervisor considers the goal ready for operator review; this is an AI judgment, not independent proof.",
+    "data": {
+      "nodeId": "1dcc9470-675a-4930-b7af-a398770072d2"
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "310a31c2-0490-40fe-b1ac-9c6dee112f11",
+    "runId": "20261020T220700-5ec53331",
+    "seq": 81,
+    "at": "2026-10-20T22:20:33.999Z",
+    "type": "workflow.completed",
+    "message": "All approved acceptance policies are satisfied. Consult evidence for deterministic checks and AI assessments.",
+    "data": {}
+  }
+]

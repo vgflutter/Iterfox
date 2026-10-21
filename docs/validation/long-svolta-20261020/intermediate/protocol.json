@@ -1,0 +1,73 @@
+{
+  "createdAt": "2026-10-20T22:06:59.680Z",
+  "kind": "Declared continuation after an engineering intervention; not an uninterrupted success of the original trial",
+  "originalDelegation": "de2c27e8-446b-492c-9825-2f2abe2e0e57",
+  "originalStatus": "BLOCKED 1/4",
+  "runtimeCommit": "dc1285523842938f2db9822e1bf9abdbcbc7ce11",
+  "sourceSnapshot": "UNCERTIFIED review snapshot; application code unchanged by assistant",
+  "testCorrection": {
+    "file": "tests/browser.mjs",
+    "originalSha256": "91d0c735d934707dce7b495c2815058a123ed1fe7008327a6e4d6a97f030cac6",
+    "newSha256": "7399fd23b01229972bc2da81260ec14eca840ffdf2efbfae73f2741bc25101ee",
+    "scope": "Only input label matching accepts optional (obbligatorio), uses visible controls, and Playwright import path relocated. Browser actions/assertions unchanged."
+  },
+  "protectedInputHashes": {
+    "BRIEF.md": "4b0d5c8467bf7ca91ddef6c89d3f077fab4121c3245404d97cf19dc681e250cb",
+    "package.json": "860de3ed7de7d0b08bc8e01ded1fcc61403a77b4918a1f1178802d9af60a8cc1",
+    ".gitignore": "d7374edf9ed6b2549bc7b02c7bd49e8031bae04000b61a59e57dc2f8f375a52d",
+    "tests/harness.mjs": "67c21916ab5cc5da82310c2abd7c84bd42e73ef65acf5e93afe9c6ce129db8d1",
+    "tests/acceptance.mjs": "9723e15b08ecb6f43bbe9310b0c8ccb99fa46e6239764e85211b865977dc11bc",
+    "tests/browser.mjs": "7399fd23b01229972bc2da81260ec14eca840ffdf2efbfae73f2741bc25101ee"
+  },
+  "model": "gpt-6.1-sol",
+  "sdk": "0.163.0",
+  "manualApplicationEditsAfterAuthorizationAllowed": false,
+  "manualResumeWithinContinuationAllowed": false,
+  "remainingFaults": [
+    {
+      "stage": "weekly-work",
+      "mode": "oversee",
+      "trigger": "Abort the first read-only project review 1.5 seconds after actual thread.started."
+    },
+    {
+      "stage": "safe-delivery",
+      "mode": "build",
+      "trigger": "Lose the first actual builder structured response after its turn.completed usage receipt."
+    }
+  ],
+  "priorFaultAlreadyHandled": "usable-board observed-partial-edit in original run",
+  "budget": {
+    "originalDelegation": "de2c27e8-446b-492c-9825-2f2abe2e0e57",
+    "originalAuthorizedAt": "2026-10-20T20:50:56.207Z",
+    "originalDeadline": "2026-10-21T00:50:56.207Z",
+    "originalLimits": {
+      "maxTurns": 140,
+      "maxAttempts": 4,
+      "maxDurationMs": 14400000,
+      "maxTokens": 100000000,
+      "turnTimeoutMs": 720000,
+      "maxNoProgress": 4
+    },
+    "used": {
+      "turns": 15,
+      "reportedTokens": 5024017
+    },
+    "remainingTurns": 125,
+    "remainingReportedTokens": 94975983,
+    "marginMs": 30000,
+    "incompleteTurnTokens": "Unreported by provider; no claim of a hard in-flight spend cap."
+  },
+  "driverSha256": "7930e65d7721441aca0f8ac2327bb30c3a2e9141c8370cab47f72b0b2be359dc",
+  "externalAuditSha256": "eaf7276ed57432e48da55006ac3d54d17a8bb43076c63f15f08a953eaa3ba74e",
+  "externalAuditDefinitionsUnchangedExceptPaths": true,
+  "engineeringInterventionsAcrossWholeExperiment": 1,
+  "finalizedAt": "2026-10-20T22:06:59.942Z",
+  "finalRemainingLimits": {
+    "maxTurns": 125,
+    "maxAttempts": 4,
+    "maxDurationMs": 9806266,
+    "maxTokens": 94975983,
+    "turnTimeoutMs": 720000,
+    "maxNoProgress": 4
+  }
+}

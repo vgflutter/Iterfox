@@ -1,0 +1,39 @@
+{
+  "at": "2026-10-21T00:12:19.804Z",
+  "result": "PASS_WITH_NOTES",
+  "reviewer": "Same assistant conducting the experiment; source review plus actual Chrome screenshots, not an independent human evaluator",
+  "sourceCheckpoint": "09feec68a2410b467f9df7a93f3d07e5d411a68b",
+  "applicationCodeManuallyEdited": false,
+  "syntheticPreview": true,
+  "observations": [
+    {
+      "area": "Desktop",
+      "observation": "Gerarchia leggibile, navigazione stabile e palette coerente. Stati delle attività espressi con parole e colori; creazione, filtri e azioni rimangono distinguibili."
+    },
+    {
+      "area": "Settimana e riepilogo",
+      "observation": "Giorni vuoti, attività completate e lavoro senza scadenza sono distinti. Il riepilogo separa i conteggi attuali dal tempo della settimana e dalla cronologia globale; i 45 minuti sintetici sono mostrati correttamente."
+    },
+    {
+      "area": "Backup",
+      "observation": "Esportazione e ripristino hanno pannelli separati. Il testo spiega la sostituzione dei dati e l’invio resta disabilitato senza file valido e consenso. Gli esiti funzionali del ripristino provengono dalle prove host e dall’audit aggiuntivo."
+    },
+    {
+      "area": "Mobile: miglioramento necessario",
+      "observation": "Nessun overflow a 390px e controlli leggibili. Il primo task compare a 1809px dall’inizio su viewport alta 844px: modulo e filtri prima dell’elenco rendono lenta la consultazione. Un modulo richiudibile o una lista prioritaria sarebbe il prossimo miglioramento."
+    },
+    {
+      "area": "Documentazione",
+      "observation": "Avvio, dati, backup e limiti sono descritti con comandi coerenti ai sorgenti. README e guide incorporano molto storico Iterfox: utili per l’audit, pesanti per il primo utilizzo. Le ricevute citate sono una fotografia precedente all’ultimo controllo; il ledger del checkpoint è la provenienza finale."
+    },
+    {
+      "area": "Qualità delle verifiche",
+      "observation": "I passaggi correttivi comprendono un difetto reale (chiusura del dialogo tempo) e adattamenti a selettori rigidi (testo in pannelli nascosti e whitespace della label). I secondi non dimostrano ulteriori difetti funzionali del prodotto."
+    }
+  ],
+  "limitations": [
+    "Viewport mobile emulata, nessun telefono fisico o lettore di schermo.",
+    "Nessuna sessione di otto ore, pubblicazione remota o confronto controllato con Codex diretto.",
+    "Un artefatto grafico nella cattura dopo il resize è stato ricontrollato in un contesto Chrome mobile nuovo: un solo header nel DOM e nella nuova immagine; prima cattura conservata separatamente."
+  ]
+}

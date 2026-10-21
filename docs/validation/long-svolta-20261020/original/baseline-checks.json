@@ -1,0 +1,40 @@
+{
+  "at": "2026-10-20T20:48:55.023Z",
+  "results": [
+    {
+      "id": "projects-api",
+      "exit": 1,
+      "output": "\nnode:internal/modules/run_main:123\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: GET /api/projects: {\"error\":\"Not implemented\"}\n\n404 !== 200\n\n    at api (file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/source/tests/harness.mjs:34:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/source/tests/acceptance.mjs:11:59\n    at async check (file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/source/tests/acceptance.mjs:7:31)\n    at async projects-api (file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/source/tests/acceptance.mjs:11:5)\n    at async file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/source/tests/acceptance.mjs:56:49\n    at async appTest (file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/source/tests/harness.mjs:42:28)\n    at async file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/source/tests/acceptance.mjs:56:1 {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: 404,\n  expected: 200,\n  operator: 'strictEqual',\n  diff: 'simple'\n}\n\nNode.js v22.21.1\n"
+    },
+    {
+      "id": "tasks-api",
+      "exit": 1,
+      "output": "\nnode:internal/modules/run_main:123\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: POST /api/projects: {\"error\":\"Not implemented\"}\n\n404 !== 201\n\n    at api (file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/source/tests/harness.mjs:34:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async tasks-api (file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/source/tests/acceptance.mjs:22:47)\n    at async file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/source/tests/acceptance.mjs:56:49\n    at async appTest (file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/source/tests/harness.mjs:42:28)\n    at async file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/source/tests/acceptance.mjs:56:1 {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: 404,\n  expected: 201,\n  operator: 'strictEqual',\n  diff: 'simple'\n}\n\nNode.js v22.21.1\n"
+    },
+    {
+      "id": "board-ui",
+      "exit": 1,
+      "output": "\nnode:internal/modules/run_main:123\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: GET /api/projects: {\"error\":\"Not implemented\"}\n\n404 !== 200\n\n    at Object.api (file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/source/tests/harness.mjs:34:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/source/tests/acceptance.mjs:56:84\n    at async appTest (file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/source/tests/harness.mjs:42:28)\n    at async file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/source/tests/acceptance.mjs:56:1 {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: 404,\n  expected: 200,\n  operator: 'strictEqual',\n  diff: 'simple'\n}\n\nNode.js v22.21.1\n"
+    },
+    {
+      "id": "planning-api",
+      "exit": 1,
+      "output": "\nnode:internal/modules/run_main:123\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: POST /api/projects: {\"error\":\"Not implemented\"}\n\n404 !== 201\n\n    at api (file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/source/tests/harness.mjs:34:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async planning-api (file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/source/tests/acceptance.mjs:33:47)\n    at async file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/source/tests/acceptance.mjs:56:49\n    at async appTest (file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/source/tests/harness.mjs:42:28)\n    at async file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/source/tests/acceptance.mjs:56:1 {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: 404,\n  expected: 201,\n  operator: 'strictEqual',\n  diff: 'simple'\n}\n\nNode.js v22.21.1\n"
+    },
+    {
+      "id": "planning-ui",
+      "exit": 1,
+      "output": "\nnode:internal/modules/run_main:123\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: GET /api/projects: {\"error\":\"Not implemented\"}\n\n404 !== 200\n\n    at Object.api (file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/source/tests/harness.mjs:34:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/source/tests/acceptance.mjs:56:84\n    at async appTest (file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/source/tests/harness.mjs:42:28)\n    at async file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/source/tests/acceptance.mjs:56:1 {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: 404,\n  expected: 200,\n  operator: 'strictEqual',\n  diff: 'simple'\n}\n\nNode.js v22.21.1\n"
+    },
+    {
+      "id": "backup-api",
+      "exit": 1,
+      "output": "\nnode:internal/modules/run_main:123\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: POST /api/projects: {\"error\":\"Not implemented\"}\n\n404 !== 201\n\n    at api (file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/source/tests/harness.mjs:34:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async backup-api (file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/source/tests/acceptance.mjs:46:47)\n    at async file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/source/tests/acceptance.mjs:56:49\n    at async appTest (file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/source/tests/harness.mjs:42:28)\n    at async file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/source/tests/acceptance.mjs:56:1 {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: 404,\n  expected: 201,\n  operator: 'strictEqual',\n  diff: 'simple'\n}\n\nNode.js v22.21.1\n"
+    },
+    {
+      "id": "backup-ui",
+      "exit": 1,
+      "output": "\nnode:internal/modules/run_main:123\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: GET /api/projects: {\"error\":\"Not implemented\"}\n\n404 !== 200\n\n    at Object.api (file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/source/tests/harness.mjs:34:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/source/tests/acceptance.mjs:56:84\n    at async appTest (file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/source/tests/harness.mjs:42:28)\n    at async file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/source/tests/acceptance.mjs:56:1 {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: 404,\n  expected: 200,\n  operator: 'strictEqual',\n  diff: 'simple'\n}\n\nNode.js v22.21.1\n"
+    }
+  ]
+}

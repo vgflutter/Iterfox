@@ -35,8 +35,35 @@ the first builder response. Iterfox retried automatically and completed in
 Resume. The second trial uses the final version. Up to two technical retries per
 run require owned processes to exit and files to pass audit; the original
 authorization and budgets remain in force. The Morning Brief records the cause
-and outcome. These are short injected-fault trials; a long session remains to test.
+and outcome. These are short injected-fault trials; the longer Svolta case is recorded below.
 [Protocol, ledger, ten recovery cases and screenshots](docs/validation/technical-recovery-20261020/index.html).
+
+## A longer trial: Svolta
+
+On 20–21 October 2026, Iterfox developed **Svolta**, a local Italian application
+for projects, tasks, weekly planning, time tracking and backup. The delivery passes
+**seven host criteria and 8 external audit groups**, with actual Chrome views
+at 390px. The assistant prepared the goal and checks.
+
+The experiment required **four separate technical authorizations and three
+assistant-prepared continuations**, with no additional user development prompts
+or manual application-code corrections. The original remains BLOCKED at 1/4;
+the second STOPPED at 1/3 after an incorrect test expectation; the third BLOCKED at 0/2
+despite five green criteria because its review used invalid references. All original
+states are preserved. From the first authorization to the final outcome: 194.7 minutes,
+including the intermediate engineering work.
+
+The last delegation completes **two outcomes in 45.7 minutes**, with 1 rejected
+review proposal and 2 automatic technical retries. One absent-file reference
+was added after a real SDK response; a builder response was deliberately lost.
+The engine continued within the original shared limits and deadline. The brief
+shows rejected proposals and later valid reviews; the graph now reflects pause,
+stop and blocked states.
+
+This records useful work while the operator is away and concrete supervisor
+limitations. Some rigid browser selectors also generated adaptations to the test;
+coverage and product quality still need judgment.
+[Protocol, source, ledger and screenshots](docs/validation/long-svolta-20261020/index.html).
 
 ## A simulated absence on a new application
 

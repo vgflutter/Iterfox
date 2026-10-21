@@ -1,0 +1,11 @@
+{
+  "at": "2026-10-20T23:02:50.014Z",
+  "result": "TEST_ORACLE_LIMIT",
+  "failureAt": "2026-10-20T23:00:45.534Z",
+  "finding": "Host planning UI check uses getByText(projectName).first().waitFor visible; first occurrence belongs to a correctly hidden inactive panel, although the active summary may render the same text visibly.",
+  "nativeCorrectiveTask": "Portare la vista attiva prima dei pannelli nascosti",
+  "interpretation": "A brittle selector constrains DOM order. Moving the active panel first can satisfy the fixed check without changing domain behavior. This is not evidence of a functional user-visible defect and must be distinguished from the preceding saved-dialog-close failure.",
+  "hostTestsChangedInFlight": false,
+  "manualAppCodeEdits": false,
+  "steeringSentToWorker": false
+}

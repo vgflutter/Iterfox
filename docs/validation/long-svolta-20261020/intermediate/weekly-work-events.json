@@ -1,0 +1,2230 @@
+[
+  {
+    "schemaVersion": 1,
+    "id": "210153a9-3c3a-4d06-be0c-6d5a9d92b63c",
+    "runId": "20261020T222034-5d68bce5",
+    "seq": 1,
+    "at": "2026-10-20T22:20:34.450Z",
+    "type": "workflow.created",
+    "message": "Isolated workflow created from committed Git HEAD.",
+    "data": {
+      "state": {
+        "id": "20261020T222034-5d68bce5",
+        "seq": 0,
+        "goal": "Realizzare Svolta, app locale in italiano per piccoli progetti personali, attività, pianificazione settimanale e tempo dedicato, con backup portabile e gestione coerente degli errori. Consegnare un prodotto utilizzabile su desktop e mobile e una guida onesta. Seguire il contratto pubblico BRIEF.md. Scegliere autonomamente i dettagli reversibili; non introdurre account, servizi, dipendenze o pubblicazione. Continuazione dichiarata della prova originale bloccata per un difetto del runtime: il candidato già prodotto non è un checkpoint certificato. Conservare interfaccia, comportamento e scelte già implementati; completare soltanto le lacune concrete e i rimanenti esiti, senza ridisegnare da capo. Le prove precedenti sono contesto storico, non certificazione di questa nuova missione.\n\nCurrent delegated outcome: Dalla lista al piano settimanale e al tempo reale\nAggiungere pianificazione settimanale, sessioni di tempo con cronologia, riepilogo coerente e relativi flussi browser, preservando attività e conflitti. Gestire date civili senza spostamenti da fuso orario. Backup rimane il prossimo esito.\nComplete this outcome and preserve earlier verified behavior. Subsequent outcomes remain delegated to the host.",
+        "status": "PREFLIGHT",
+        "provider": "codex",
+        "repository": "/Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020-r2/source",
+        "worktree": "/Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020-r2/data/worktrees/20261020T222034-5d68bce5",
+        "branch": "iterfox/20261020T222034-5d68bce5",
+        "baseHead": "f765280cde7671df2ede74245b56dcb3e3b5496b",
+        "contract": {
+          "goal": "Realizzare Svolta, app locale in italiano per piccoli progetti personali, attività, pianificazione settimanale e tempo dedicato, con backup portabile e gestione coerente degli errori. Consegnare un prodotto utilizzabile su desktop e mobile e una guida onesta. Seguire il contratto pubblico BRIEF.md. Scegliere autonomamente i dettagli reversibili; non introdurre account, servizi, dipendenze o pubblicazione. Continuazione dichiarata della prova originale bloccata per un difetto del runtime: il candidato già prodotto non è un checkpoint certificato. Conservare interfaccia, comportamento e scelte già implementati; completare soltanto le lacune concrete e i rimanenti esiti, senza ridisegnare da capo. Le prove precedenti sono contesto storico, non certificazione di questa nuova missione.\n\nCurrent delegated outcome: Dalla lista al piano settimanale e al tempo reale\nAggiungere pianificazione settimanale, sessioni di tempo con cronologia, riepilogo coerente e relativi flussi browser, preservando attività e conflitti. Gestire date civili senza spostamenti da fuso orario. Backup rimane il prossimo esito.\nComplete this outcome and preserve earlier verified behavior. Subsequent outcomes remain delegated to the host.",
+          "criteria": [
+            {
+              "id": "projects-api",
+              "title": "Archivio progetti persistente e revisioni",
+              "command": [
+                "node",
+                "tests/acceptance.mjs",
+                "projects-api"
+              ],
+              "scope": [],
+              "timeoutMs": 120000
+            },
+            {
+              "id": "tasks-api",
+              "title": "Attività, filtri e conflitti senza perdita di dati",
+              "command": [
+                "node",
+                "tests/acceptance.mjs",
+                "tasks-api"
+              ],
+              "scope": [],
+              "timeoutMs": 120000
+            },
+            {
+              "id": "board-ui",
+              "title": "Interfaccia progetti e attività su desktop e mobile",
+              "command": [
+                "node",
+                "tests/acceptance.mjs",
+                "board-ui"
+              ],
+              "scope": [],
+              "timeoutMs": 120000
+            },
+            {
+              "id": "planning-api",
+              "title": "Settimana civile, sessioni e riepilogo coerente",
+              "command": [
+                "node",
+                "tests/acceptance.mjs",
+                "planning-api"
+              ],
+              "scope": [],
+              "timeoutMs": 120000
+            },
+            {
+              "id": "planning-ui",
+              "title": "Pianificazione e tempo dal browser",
+              "command": [
+                "node",
+                "tests/acceptance.mjs",
+                "planning-ui"
+              ],
+              "scope": [],
+              "timeoutMs": 120000
+            }
+          ],
+          "allowedPaths": [
+            "src",
+            "public",
+            "README.md",
+            "docs"
+          ],
+          "protectedPaths": [
+            "BRIEF.md",
+            "tests",
+            "package.json",
+            ".gitignore"
+          ],
+          "supervision": {
+            "mode": "project",
+            "maxReviews": 12
+          },
+          "limits": {
+            "maxTurns": 118,
+            "maxAttempts": 4,
+            "maxDurationMs": 8991941,
+            "maxTokens": 92558678,
+            "turnTimeoutMs": 720000,
+            "maxNoProgress": 4
+          }
+        },
+        "contracts": [
+          {
+            "goal": "Realizzare Svolta, app locale in italiano per piccoli progetti personali, attività, pianificazione settimanale e tempo dedicato, con backup portabile e gestione coerente degli errori. Consegnare un prodotto utilizzabile su desktop e mobile e una guida onesta. Seguire il contratto pubblico BRIEF.md. Scegliere autonomamente i dettagli reversibili; non introdurre account, servizi, dipendenze o pubblicazione. Continuazione dichiarata della prova originale bloccata per un difetto del runtime: il candidato già prodotto non è un checkpoint certificato. Conservare interfaccia, comportamento e scelte già implementati; completare soltanto le lacune concrete e i rimanenti esiti, senza ridisegnare da capo. Le prove precedenti sono contesto storico, non certificazione di questa nuova missione.\n\nCurrent delegated outcome: Dalla lista al piano settimanale e al tempo reale\nAggiungere pianificazione settimanale, sessioni di tempo con cronologia, riepilogo coerente e relativi flussi browser, preservando attività e conflitti. Gestire date civili senza spostamenti da fuso orario. Backup rimane il prossimo esito.\nComplete this outcome and preserve earlier verified behavior. Subsequent outcomes remain delegated to the host.",
+            "criteria": [
+              {
+                "id": "projects-api",
+                "title": "Archivio progetti persistente e revisioni",
+                "command": [
+                  "node",
+                  "tests/acceptance.mjs",
+                  "projects-api"
+                ],
+                "scope": [],
+                "timeoutMs": 120000
+              },
+              {
+                "id": "tasks-api",
+                "title": "Attività, filtri e conflitti senza perdita di dati",
+                "command": [
+                  "node",
+                  "tests/acceptance.mjs",
+                  "tasks-api"
+                ],
+                "scope": [],
+                "timeoutMs": 120000
+              },
+              {
+                "id": "board-ui",
+                "title": "Interfaccia progetti e attività su desktop e mobile",
+                "command": [
+                  "node",
+                  "tests/acceptance.mjs",
+                  "board-ui"
+                ],
+                "scope": [],
+                "timeoutMs": 120000
+              },
+              {
+                "id": "planning-api",
+                "title": "Settimana civile, sessioni e riepilogo coerente",
+                "command": [
+                  "node",
+                  "tests/acceptance.mjs",
+                  "planning-api"
+                ],
+                "scope": [],
+                "timeoutMs": 120000
+              },
+              {
+                "id": "planning-ui",
+                "title": "Pianificazione e tempo dal browser",
+                "command": [
+                  "node",
+                  "tests/acceptance.mjs",
+                  "planning-ui"
+                ],
+                "scope": [],
+                "timeoutMs": 120000
+              }
+            ],
+            "allowedPaths": [
+              "src",
+              "public",
+              "README.md",
+              "docs"
+            ],
+            "protectedPaths": [
+              "BRIEF.md",
+              "tests",
+              "package.json",
+              ".gitignore"
+            ],
+            "supervision": {
+              "mode": "project",
+              "maxReviews": 12
+            },
+            "limits": {
+              "maxTurns": 118,
+              "maxAttempts": 4,
+              "maxDurationMs": 8991941,
+              "maxTokens": 92558678,
+              "turnTimeoutMs": 720000,
+              "maxNoProgress": 4
+            }
+          }
+        ],
+        "contractVersion": 1,
+        "createdAt": "2026-10-20T22:20:34.450Z",
+        "updatedAt": "2026-10-20T22:20:34.450Z",
+        "nodes": [],
+        "edges": [],
+        "criteria": [
+          {
+            "id": "projects-api",
+            "status": "PENDING"
+          },
+          {
+            "id": "tasks-api",
+            "status": "PENDING"
+          },
+          {
+            "id": "board-ui",
+            "status": "PENDING"
+          },
+          {
+            "id": "planning-api",
+            "status": "PENDING"
+          },
+          {
+            "id": "planning-ui",
+            "status": "PENDING"
+          }
+        ],
+        "evidence": [],
+        "turns": 0,
+        "tokens": 0,
+        "noProgress": 0,
+        "planReady": false
+      }
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "db3010ac-61b0-413b-a45f-e85c96f092a9",
+    "runId": "20261020T222034-5d68bce5",
+    "seq": 2,
+    "at": "2026-10-20T22:20:34.450Z",
+    "type": "goal.accepted",
+    "message": "Operator explicitly authorized this goal, acceptance contract and limits.",
+    "data": {
+      "version": 1
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "2d105b44-270c-4ff7-9722-71e55f03ffcb",
+    "runId": "20261020T222034-5d68bce5",
+    "seq": 3,
+    "at": "2026-10-20T22:20:34.450Z",
+    "type": "direction.noted",
+    "message": "Operator request: Delegation ba19c3c0-677b-4354-9729-fd66916ed929; approval e06241642dba9398c08e90b66e7b898b29572b004ce0087d8b4ea0a9c506df0c; outcome weekly-work.\nPrevious checkpoint f765280cde7671df2ede74245b56dcb3e3b5496b. Historical evidence is context only; this new mission must obtain fresh proof.\nSource run 20261020T220700-5ec53331, sequence 81.\nUnverified implementation claims:\nAggiornati README.md, docs/guida.md e docs/verifiche.md con riferimento al candidato 8fbf6801cdda04de5f9153c737902289d355e59f. Separate evidenze API storiche e audit UI dalla certificazione corrente: tutti e tre i criteri restano IN ATTESA, senza nuove ricevute. Conservati i limiti delle bozze e delle funzioni indisponibili. Controllati 13 collegamenti locali e il diff; nessuna modifica funzionale o suite API/browser eseguita.\nAggiornati README.md, docs/guida.md e docs/verifiche.md con comandi, ID, PASS, copertura 6/6/4 e metadati delle ricevute correnti. Distinti storico e limiti residui, senza attribuire nuove revisioni verificate. Nessuna modifica funzionale. Controllati ricevute, collegamenti e diff; nessuna suite rieseguita.\nAggiornati README.md, docs/guida.md e docs/verifiche.md come fotografia alla redazione: registrate le ricevute 012fb1ac…, 244ba0db… e 79628235… con comandi e copertura 6/6/4; separate le precedenti stale, senza trasferire date o stamp. Conservati istruzioni, limiti e storico. Nessuna modifica funzionale. Controllati 13 collegamenti e ancore e il diff; suite non rieseguite localmente.",
+    "data": {
+      "noteId": "411682d9-e96a-47d0-b73d-09e1a33a183f",
+      "note": {
+        "text": "Delegation ba19c3c0-677b-4354-9729-fd66916ed929; approval e06241642dba9398c08e90b66e7b898b29572b004ce0087d8b4ea0a9c506df0c; outcome weekly-work.\nPrevious checkpoint f765280cde7671df2ede74245b56dcb3e3b5496b. Historical evidence is context only; this new mission must obtain fresh proof.\nSource run 20261020T220700-5ec53331, sequence 81.\nUnverified implementation claims:\nAggiornati README.md, docs/guida.md e docs/verifiche.md con riferimento al candidato 8fbf6801cdda04de5f9153c737902289d355e59f. Separate evidenze API storiche e audit UI dalla certificazione corrente: tutti e tre i criteri restano IN ATTESA, senza nuove ricevute. Conservati i limiti delle bozze e delle funzioni indisponibili. Controllati 13 collegamenti locali e il diff; nessuna modifica funzionale o suite API/browser eseguita.\nAggiornati README.md, docs/guida.md e docs/verifiche.md con comandi, ID, PASS, copertura 6/6/4 e metadati delle ricevute correnti. Distinti storico e limiti residui, senza attribuire nuove revisioni verificate. Nessuna modifica funzionale. Controllati ricevute, collegamenti e diff; nessuna suite rieseguita.\nAggiornati README.md, docs/guida.md e docs/verifiche.md come fotografia alla redazione: registrate le ricevute 012fb1ac…, 244ba0db… e 79628235… con comandi e copertura 6/6/4; separate le precedenti stale, senza trasferire date o stamp. Conservati istruzioni, limiti e storico. Nessuna modifica funzionale. Controllati 13 collegamenti e ancore e il diff; suite non rieseguite localmente.",
+        "kind": "request"
+      }
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "5e855659-0270-4905-873b-2e6f95153230",
+    "runId": "20261020T222034-5d68bce5",
+    "seq": 4,
+    "at": "2026-10-20T22:20:34.539Z",
+    "type": "task.planned",
+    "message": "Reconcile the project direction",
+    "data": {
+      "node": {
+        "id": "719ce746-27af-40d0-9697-3fb5a20ab54e",
+        "status": "PENDING",
+        "attempt": 1,
+        "files": [],
+        "evidenceIds": [],
+        "kind": "decision",
+        "role": "planner",
+        "title": "Reconcile the project direction",
+        "objective": "{\"sourceIds\":[\"411682d9-e96a-47d0-b73d-09e1a33a183f\"],\"version\":1}",
+        "criterionId": "projects-api",
+        "reason": "Operator handoff changed; reconcile once at an activity boundary."
+      }
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "79bc3109-8d27-4874-8892-8996811ede28",
+    "runId": "20261020T222034-5d68bce5",
+    "seq": 5,
+    "at": "2026-10-20T22:20:34.540Z",
+    "type": "task.started",
+    "message": "planner: Reconcile the project direction",
+    "data": {
+      "nodeId": "719ce746-27af-40d0-9697-3fb5a20ab54e",
+      "edges": []
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "c83ee216-041b-4800-a002-03e0633d8601",
+    "runId": "20261020T222034-5d68bce5",
+    "seq": 6,
+    "at": "2026-10-20T22:20:35.265Z",
+    "type": "agent.thread",
+    "message": "Codex session recorded for recovery.",
+    "data": {
+      "nodeId": "719ce746-27af-40d0-9697-3fb5a20ab54e",
+      "threadId": "01a15b66-eed8-7aa2-a4f0-779651aaaba7"
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "730310ce-2b59-4c53-95f3-dd526a3255e6",
+    "runId": "20261020T222034-5d68bce5",
+    "seq": 7,
+    "at": "2026-10-20T22:22:41.024Z",
+    "type": "agent.usage",
+    "message": "256090 tokens reported by provider.",
+    "data": {
+      "tokens": 256090
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "df6c5f16-3b9b-4d5c-ae93-e7d46e22266a",
+    "runId": "20261020T222034-5d68bce5",
+    "seq": 8,
+    "at": "2026-10-20T22:22:41.657Z",
+    "type": "task.completed",
+    "message": "Handoff consolidated; no completion or acceptance is implied.",
+    "data": {
+      "nodeId": "719ce746-27af-40d0-9697-3fb5a20ab54e",
+      "summary": "Direction proposal mapped to the unchanged acceptance contract.",
+      "result": {
+        "proposal": {
+          "focus": "Completare l’esito weekly-work aggiungendo settimana civile, sessioni persistenti, cronologia e riepilogo alle funzioni esistenti. Conservare interfaccia, attività, filtri, bozze e conflitti. Backup e ripristino restano all’esito successivo. Tutti i cinque criteri risultano attualmente PENDING.",
+          "nextArtifact": "Una sezione Settimana collegata a GET /api/week, con sette giorni civili, attività senza scadenza e riprogrammazione tramite l’editor esistente, utilizzabile anche a 390px.",
+          "assumptions": [
+            "L’archivio JSON atomico dovrebbe poter accogliere timeEntries mantenendo leggibili gli archivi precedenti tramite integrazione in memoria dei campi mancanti.",
+            "Si assume provvisoriamente che i minuti delle sessioni conservate continuino a contribuire al riepilogo settimanale anche dopo l’archiviazione dell’attività o del progetto."
+          ],
+          "notes": [
+            {
+              "noteId": "411682d9-e96a-47d0-b73d-09e1a33a183f",
+              "disposition": "applied",
+              "reason": "Incorporata la continuità del candidato e delle scelte esistenti. Le dichiarazioni documentali e i PASS 6/6/4 del run sorgente restano contesto storico: non certificano questo esito, per il quale non sono fornite prove correnti. Il piano interviene sulle lacune riscontrate nei sorgenti e aggiorna la guida senza attribuire verifiche non osservate.",
+              "criterionIds": [
+                "projects-api",
+                "tasks-api",
+                "board-ui",
+                "planning-api",
+                "planning-ui"
+              ]
+            }
+          ],
+          "tasks": [
+            {
+              "title": "Date civili e settimana nelle API",
+              "objective": "Estendere src/dates.mjs con aritmetica civile indipendente dal fuso e implementare GET /api/week. Rifiutare date impossibili e inizi diversi dal lunedì; restituire sette giorni ordinati e attività senza scadenza, limitando la pianificazione alle attività non archiviate di progetti attivi. Conservare distinguibili le completate e gestire attraversamenti di mese, anno e bisestili.",
+              "criterionId": "planning-api",
+              "waitsFor": [
+                "projects-api",
+                "tasks-api"
+              ]
+            },
+            {
+              "title": "Sessioni persistenti e riepilogo coerente",
+              "objective": "Estendere archivio e validazione con timeEntries, compatibilità dei file precedenti e riferimenti coerenti. Implementare POST/GET e DELETE delle sessioni con limiti contrattuali, risposta 204 e ID ignoti 404. Serializzare controlli e scritture senza modificare stato o revisione delle attività; conservare lo storico dopo archiviazione e riavvio. Implementare /api/summary usando la stessa aritmetica civile: conteggi delle attività attive, arretrati e minuti della settimana inclusiva, con dettaglio per progetto.",
+              "criterionId": "planning-api",
+              "waitsFor": [
+                "projects-api",
+                "tasks-api"
+              ]
+            },
+            {
+              "title": "Settimana navigabile e riprogrammazione",
+              "objective": "Sostituire il segnaposto Settimana con Inizio settimana, Mostra settimana, sette contenitori data-date e attività senza scadenza. Riutilizzare l’editor e il confronto dei conflitti per cambiare scadenza; aggiornare il piano dopo il salvataggio senza alterare filtri o bozze. Integrare stati vuoti, caricamento, errori e layout senza scorrimento orizzontale a 390px.",
+              "criterionId": "planning-ui",
+              "waitsFor": [
+                "board-ui",
+                "planning-api"
+              ]
+            },
+            {
+              "title": "Registrazione e cronologia del tempo",
+              "objective": "Aggiungere alle schede Registra tempo per <titolo> e il dialogo Registra tempo con Data, Minuti, Nota sessione e Salva sessione. Rendere consultabile la cronologia anche delle attività archiviate e consentire l’eliminazione della singola sessione. Adeguare il client HTTP ai metodi senza corpo e alle risposte 204. Conservare gli input sugli errori, impedire invii concorrenti e mantenere testo letterale, annunci accessibili e ritorno del focus.",
+              "criterionId": "planning-ui",
+              "waitsFor": [
+                "board-ui",
+                "planning-api"
+              ]
+            },
+            {
+              "title": "Riepilogo e aggiornamenti tra viste",
+              "objective": "Sostituire il segnaposto Riepilogo con Data di riferimento, Aggiorna riepilogo, intervallo settimanale, conteggi e minuti per progetto. Aggiornare le viste interessate dopo modifiche ad attività, progetti e sessioni e al ritorno nella pagina; scartare risposte obsolete conservando selezioni ed editor aperti. Mostrare errori e conferme con i ruoli previsti.",
+              "criterionId": "planning-ui",
+              "waitsFor": [
+                "board-ui",
+                "planning-api"
+              ]
+            },
+            {
+              "title": "Guida del flusso settimanale ed evidenze",
+              "objective": "Aggiornare README.md, docs/guida.md e docs/verifiche.md dopo l’implementazione: spiegare pianificazione, registrazione, cronologia, eliminazione e riepilogo, compatibilità dell’archivio e limiti reali. Mantenere esplicita l’indisponibilità del backup portabile. Separare le evidenze storiche dallo stato corrente e riportare soltanto ricevute effettivamente fornite dal runtime, senza trasferire certificazioni o aggiungere attività dedicate alle sole verifiche.",
+              "criterionId": "planning-ui",
+              "waitsFor": [
+                "board-ui",
+                "planning-api"
+              ]
+            }
+          ]
+        },
+        "sourceIds": [
+          "411682d9-e96a-47d0-b73d-09e1a33a183f"
+        ]
+      }
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "ef3a7b41-ed5d-498b-9b68-e3d87514b2f3",
+    "runId": "20261020T222034-5d68bce5",
+    "seq": 9,
+    "at": "2026-10-20T22:22:41.658Z",
+    "type": "direction.compiled",
+    "message": "Project direction updated. Unstarted work replaced; independent work can continue while operator questions wait.",
+    "data": {
+      "nodeId": "719ce746-27af-40d0-9697-3fb5a20ab54e",
+      "sourceIds": [
+        "411682d9-e96a-47d0-b73d-09e1a33a183f"
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "7987290e-7045-4e3c-82eb-98baad2921ca",
+    "runId": "20261020T222034-5d68bce5",
+    "seq": 10,
+    "at": "2026-10-20T22:22:41.680Z",
+    "type": "verification.started",
+    "message": "Checking existing coverage: Archivio progetti persistente e revisioni",
+    "data": {
+      "nodeId": "92f15eea-e043-44f3-a88a-ae2b42e5ed05",
+      "node": {
+        "id": "92f15eea-e043-44f3-a88a-ae2b42e5ed05",
+        "status": "PENDING",
+        "attempt": 1,
+        "files": [],
+        "evidenceIds": [],
+        "kind": "verification",
+        "role": "verifier",
+        "title": "Archivio progetti persistente e revisioni",
+        "objective": "Run approved check: [\"node\",\"tests/acceptance.mjs\",\"projects-api\"]",
+        "criterionId": "projects-api",
+        "reason": "Probe while planned implementation remains; a negative observation defers correction."
+      },
+      "edges": [
+        {
+          "id": "b1c43aa3-5d16-49e9-b502-8ebbdd28bd65",
+          "source": "719ce746-27af-40d0-9697-3fb5a20ab54e",
+          "target": "92f15eea-e043-44f3-a88a-ae2b42e5ed05",
+          "kind": "next"
+        }
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "f9d61679-6611-4404-b12e-a5d9a7165efe",
+    "runId": "20261020T222034-5d68bce5",
+    "seq": 11,
+    "at": "2026-10-20T22:22:43.216Z",
+    "type": "verification.passed",
+    "message": "Archivio progetti persistente e revisioni: approved command already passes on the recorded inputs.",
+    "data": {
+      "nodeId": "92f15eea-e043-44f3-a88a-ae2b42e5ed05",
+      "evidence": {
+        "id": "e1ad0c37-19cb-4f63-a9d6-a88bac7af2d1",
+        "nodeId": "92f15eea-e043-44f3-a88a-ae2b42e5ed05",
+        "criterionId": "projects-api",
+        "contractVersion": 1,
+        "kind": "deterministic",
+        "status": "passed",
+        "createdAt": "2026-10-20T22:22:43.150Z",
+        "command": [
+          "node",
+          "tests/acceptance.mjs",
+          "projects-api"
+        ],
+        "exitCode": 0,
+        "output": "PASS empty archive\nPASS create project with stable defaults\nPASS optimistic project edit\nPASS invalid names and missing revisions do not write\nPASS project archival survives restart\nPASS unknown project does not create a record\n{\"criterion\":\"projects-api\",\"result\":\"PASS\",\"groups\":6}\n",
+        "durationMs": 1482,
+        "stamp": {
+          "head": "f765280cde7671df2ede74245b56dcb3e3b5496b",
+          "files": {
+            ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+            "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+            "README.md": "523d22b76bbc924c28e294948cf3f58df7e5538a6a213c2bb35f268843f1a1ea",
+            "docs/guida.md": "b1569ab12898d516e41102be8826c0b288732808d6fb4457752cf3eeb58ac299",
+            "docs/verifiche.md": "9ee108947948d7d61720498b3ddc7311fbef9236707eae753427b2b2b91e1e5b",
+            "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+            "public/index.html": "1e798be6470daa454678337196f2076ca008b3922756dea7d79bbade5b259dee",
+            "public/svolta.css": "235865d7c676b8cf5cd7a9df2936252c335ffdf87d0d996ce90dd086e888a799",
+            "public/svolta.js": "8494e848b135e8dd8e4ecd4d29bc37705c1256b73ba5322f20438056bb1c5ab4",
+            "src/app.mjs": "04453e9d589045bc64eb12c64ce69766fa55fa541f75fdeeff0ea8e237e3b14b",
+            "src/archive.mjs": "07d8f1c116184f827d5da85b0874f0849f441a3e9a0bff6279b635a7f66de443",
+            "src/dates.mjs": "97166e73d0b44fc0758dba28a8e89c24e643efb97202e484c79cf9903906bde2",
+            "src/errors.mjs": "594ce35930d8da6b7abec818d5c0111a1d2488cd02d2bc2359297f7f12d11996",
+            "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+            "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+            "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+            "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+            "tests/acceptance.mjs": "5759467fd1c94b32c4044e4e7809c8b19afa636bd2b73ec210952d5c2bdcd4da",
+            "tests/browser.mjs": "94c628f46208c5fe55cc5e6b318fd72b43b95e3a73020a028cd2b02248a89d8a",
+            "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+          },
+          "fingerprint": "fdf4560566f456b5e8f9822309f40f6d4811f38c36d77e47642fd17325014a2d"
+        },
+        "scope": [],
+        "inputs": [],
+        "purpose": "probe"
+      }
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "12a8d09e-61f8-4f64-997b-48aef107de65",
+    "runId": "20261020T222034-5d68bce5",
+    "seq": 12,
+    "at": "2026-10-20T22:22:43.236Z",
+    "type": "verification.started",
+    "message": "Checking existing coverage: Attività, filtri e conflitti senza perdita di dati",
+    "data": {
+      "nodeId": "1c9c4887-9d23-42ba-a12c-4cd7bf29dc71",
+      "node": {
+        "id": "1c9c4887-9d23-42ba-a12c-4cd7bf29dc71",
+        "status": "PENDING",
+        "attempt": 1,
+        "files": [],
+        "evidenceIds": [],
+        "kind": "verification",
+        "role": "verifier",
+        "title": "Attività, filtri e conflitti senza perdita di dati",
+        "objective": "Run approved check: [\"node\",\"tests/acceptance.mjs\",\"tasks-api\"]",
+        "criterionId": "tasks-api",
+        "reason": "Probe while planned implementation remains; a negative observation defers correction."
+      },
+      "edges": [
+        {
+          "id": "42bb5558-63ff-4bc7-95af-fe21528c7cd2",
+          "source": "92f15eea-e043-44f3-a88a-ae2b42e5ed05",
+          "target": "1c9c4887-9d23-42ba-a12c-4cd7bf29dc71",
+          "kind": "next"
+        }
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "62b19c1f-a20c-46ea-baa6-87845371fe67",
+    "runId": "20261020T222034-5d68bce5",
+    "seq": 13,
+    "at": "2026-10-20T22:22:44.814Z",
+    "type": "verification.passed",
+    "message": "Attività, filtri e conflitti senza perdita di dati: approved command already passes on the recorded inputs.",
+    "data": {
+      "nodeId": "1c9c4887-9d23-42ba-a12c-4cd7bf29dc71",
+      "evidence": {
+        "id": "ca94df04-723a-4a93-9ee0-fb32f895677e",
+        "nodeId": "1c9c4887-9d23-42ba-a12c-4cd7bf29dc71",
+        "criterionId": "tasks-api",
+        "contractVersion": 1,
+        "kind": "deterministic",
+        "status": "passed",
+        "createdAt": "2026-10-20T22:22:44.746Z",
+        "command": [
+          "node",
+          "tests/acceptance.mjs",
+          "tasks-api"
+        ],
+        "exitCode": 0,
+        "output": "PASS task defaults and exact fields\nPASS task edit, revision conflicts and combined filters\nPASS civil dates, invalid states and numeric validation\nPASS parallel stale writers cannot overwrite each other\nPASS archived projects disappear from general activity list\nPASS task persistence and malformed JSON\n{\"criterion\":\"tasks-api\",\"result\":\"PASS\",\"groups\":6}\n",
+        "durationMs": 1521,
+        "stamp": {
+          "head": "f765280cde7671df2ede74245b56dcb3e3b5496b",
+          "files": {
+            ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+            "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+            "README.md": "523d22b76bbc924c28e294948cf3f58df7e5538a6a213c2bb35f268843f1a1ea",
+            "docs/guida.md": "b1569ab12898d516e41102be8826c0b288732808d6fb4457752cf3eeb58ac299",
+            "docs/verifiche.md": "9ee108947948d7d61720498b3ddc7311fbef9236707eae753427b2b2b91e1e5b",
+            "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+            "public/index.html": "1e798be6470daa454678337196f2076ca008b3922756dea7d79bbade5b259dee",
+            "public/svolta.css": "235865d7c676b8cf5cd7a9df2936252c335ffdf87d0d996ce90dd086e888a799",
+            "public/svolta.js": "8494e848b135e8dd8e4ecd4d29bc37705c1256b73ba5322f20438056bb1c5ab4",
+            "src/app.mjs": "04453e9d589045bc64eb12c64ce69766fa55fa541f75fdeeff0ea8e237e3b14b",
+            "src/archive.mjs": "07d8f1c116184f827d5da85b0874f0849f441a3e9a0bff6279b635a7f66de443",
+            "src/dates.mjs": "97166e73d0b44fc0758dba28a8e89c24e643efb97202e484c79cf9903906bde2",
+            "src/errors.mjs": "594ce35930d8da6b7abec818d5c0111a1d2488cd02d2bc2359297f7f12d11996",
+            "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+            "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+            "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+            "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+            "tests/acceptance.mjs": "5759467fd1c94b32c4044e4e7809c8b19afa636bd2b73ec210952d5c2bdcd4da",
+            "tests/browser.mjs": "94c628f46208c5fe55cc5e6b318fd72b43b95e3a73020a028cd2b02248a89d8a",
+            "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+          },
+          "fingerprint": "fdf4560566f456b5e8f9822309f40f6d4811f38c36d77e47642fd17325014a2d"
+        },
+        "scope": [],
+        "inputs": [],
+        "purpose": "probe"
+      }
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "a84dbce3-6e55-4e75-8502-1af515efb896",
+    "runId": "20261020T222034-5d68bce5",
+    "seq": 14,
+    "at": "2026-10-20T22:22:44.834Z",
+    "type": "verification.started",
+    "message": "Checking existing coverage: Interfaccia progetti e attività su desktop e mobile",
+    "data": {
+      "nodeId": "9ba0dd7b-baf6-4dc9-8faa-b3c086bf7461",
+      "node": {
+        "id": "9ba0dd7b-baf6-4dc9-8faa-b3c086bf7461",
+        "status": "PENDING",
+        "attempt": 1,
+        "files": [],
+        "evidenceIds": [],
+        "kind": "verification",
+        "role": "verifier",
+        "title": "Interfaccia progetti e attività su desktop e mobile",
+        "objective": "Run approved check: [\"node\",\"tests/acceptance.mjs\",\"board-ui\"]",
+        "criterionId": "board-ui",
+        "reason": "Probe while planned implementation remains; a negative observation defers correction."
+      },
+      "edges": [
+        {
+          "id": "4d70f9b4-5093-470c-936a-93f4db0c1d13",
+          "source": "1c9c4887-9d23-42ba-a12c-4cd7bf29dc71",
+          "target": "9ba0dd7b-baf6-4dc9-8faa-b3c086bf7461",
+          "kind": "next"
+        }
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "a34d447b-11f5-4091-b7a0-d42cf7e20d3f",
+    "runId": "20261020T222034-5d68bce5",
+    "seq": 15,
+    "at": "2026-10-20T22:22:48.671Z",
+    "type": "verification.passed",
+    "message": "Interfaccia progetti e attività su desktop e mobile: approved command already passes on the recorded inputs.",
+    "data": {
+      "nodeId": "9ba0dd7b-baf6-4dc9-8faa-b3c086bf7461",
+      "evidence": {
+        "id": "a64369e4-7b3e-4afb-b96a-19c9d79915b0",
+        "nodeId": "9ba0dd7b-baf6-4dc9-8faa-b3c086bf7461",
+        "criterionId": "board-ui",
+        "contractVersion": 1,
+        "kind": "deterministic",
+        "status": "passed",
+        "createdAt": "2026-10-20T22:22:48.604Z",
+        "command": [
+          "node",
+          "tests/acceptance.mjs",
+          "board-ui"
+        ],
+        "exitCode": 0,
+        "output": "PASS create a project and task through the actual interface\nPASS edit, filter and preserve the changed activity after reopening\nPASS concurrent interface edits cannot silently overwrite another tab\nPASS literal hostile text and mobile layout\n{\"criterion\":\"board-ui\",\"result\":\"PASS\",\"groups\":4}\n",
+        "durationMs": 3786,
+        "stamp": {
+          "head": "f765280cde7671df2ede74245b56dcb3e3b5496b",
+          "files": {
+            ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+            "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+            "README.md": "523d22b76bbc924c28e294948cf3f58df7e5538a6a213c2bb35f268843f1a1ea",
+            "docs/guida.md": "b1569ab12898d516e41102be8826c0b288732808d6fb4457752cf3eeb58ac299",
+            "docs/verifiche.md": "9ee108947948d7d61720498b3ddc7311fbef9236707eae753427b2b2b91e1e5b",
+            "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+            "public/index.html": "1e798be6470daa454678337196f2076ca008b3922756dea7d79bbade5b259dee",
+            "public/svolta.css": "235865d7c676b8cf5cd7a9df2936252c335ffdf87d0d996ce90dd086e888a799",
+            "public/svolta.js": "8494e848b135e8dd8e4ecd4d29bc37705c1256b73ba5322f20438056bb1c5ab4",
+            "src/app.mjs": "04453e9d589045bc64eb12c64ce69766fa55fa541f75fdeeff0ea8e237e3b14b",
+            "src/archive.mjs": "07d8f1c116184f827d5da85b0874f0849f441a3e9a0bff6279b635a7f66de443",
+            "src/dates.mjs": "97166e73d0b44fc0758dba28a8e89c24e643efb97202e484c79cf9903906bde2",
+            "src/errors.mjs": "594ce35930d8da6b7abec818d5c0111a1d2488cd02d2bc2359297f7f12d11996",
+            "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+            "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+            "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+            "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+            "tests/acceptance.mjs": "5759467fd1c94b32c4044e4e7809c8b19afa636bd2b73ec210952d5c2bdcd4da",
+            "tests/browser.mjs": "94c628f46208c5fe55cc5e6b318fd72b43b95e3a73020a028cd2b02248a89d8a",
+            "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+          },
+          "fingerprint": "fdf4560566f456b5e8f9822309f40f6d4811f38c36d77e47642fd17325014a2d"
+        },
+        "scope": [],
+        "inputs": [],
+        "purpose": "probe"
+      }
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "c243425c-deac-4620-a026-17821d141400",
+    "runId": "20261020T222034-5d68bce5",
+    "seq": 16,
+    "at": "2026-10-20T22:22:48.695Z",
+    "type": "verification.started",
+    "message": "Checking existing coverage: Settimana civile, sessioni e riepilogo coerente",
+    "data": {
+      "nodeId": "cb9accb8-edeb-43f3-8eeb-843ca819fcb4",
+      "node": {
+        "id": "cb9accb8-edeb-43f3-8eeb-843ca819fcb4",
+        "status": "PENDING",
+        "attempt": 1,
+        "files": [],
+        "evidenceIds": [],
+        "kind": "verification",
+        "role": "verifier",
+        "title": "Settimana civile, sessioni e riepilogo coerente",
+        "objective": "Run approved check: [\"node\",\"tests/acceptance.mjs\",\"planning-api\"]",
+        "criterionId": "planning-api",
+        "reason": "Probe while planned implementation remains; a negative observation defers correction."
+      },
+      "edges": [
+        {
+          "id": "e87d952d-ea38-40f8-bd24-a9db6c7e625f",
+          "source": "9ba0dd7b-baf6-4dc9-8faa-b3c086bf7461",
+          "target": "cb9accb8-edeb-43f3-8eeb-843ca819fcb4",
+          "kind": "next"
+        }
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "a341c2f0-1445-4e68-8349-4907a9bc35e0",
+    "runId": "20261020T222034-5d68bce5",
+    "seq": 17,
+    "at": "2026-10-20T22:22:49.240Z",
+    "type": "verification.deferred",
+    "message": "Settimana civile, sessioni e riepilogo coerente: not yet satisfied; planned implementation remains. No failure retry or corrective model call consumed.",
+    "data": {
+      "nodeId": "cb9accb8-edeb-43f3-8eeb-843ca819fcb4",
+      "evidence": {
+        "id": "bc87c720-080c-4409-98cb-ea3896fea6b0",
+        "nodeId": "cb9accb8-edeb-43f3-8eeb-843ca819fcb4",
+        "criterionId": "planning-api",
+        "contractVersion": 1,
+        "kind": "deterministic",
+        "status": "recorded",
+        "createdAt": "2026-10-20T22:22:49.172Z",
+        "command": [
+          "node",
+          "tests/acceptance.mjs",
+          "planning-api"
+        ],
+        "exitCode": 1,
+        "output": "node:internal/modules/run_main:123\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: GET /api/week?start=2026-10-19: {\"error\":\"Indirizzo non trovato.\",\"code\":\"NOT_FOUND\"}\n\n404 !== 200\n\n    at api (file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020-r2/data/worktrees/20261020T222034-5d68bce5/tests/harness.mjs:34:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020-r2/data/worktrees/20261020T222034-5d68bce5/tests/acceptance.mjs:36:82\n    at async check (file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020-r2/data/worktrees/20261020T222034-5d68bce5/tests/acceptance.mjs:7:31)\n    at async planning-api (file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020-r2/data/worktrees/20261020T222034-5d68bce5/tests/acceptance.mjs:36:5)\n    at async file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020-r2/data/worktrees/20261020T222034-5d68bce5/tests/acceptance.mjs:56:49\n    at async appTest (file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020-r2/data/worktrees/20261020T222034-5d68bce5/tests/harness.mjs:42:28)\n    at async file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020-r2/data/worktrees/20261020T222034-5d68bce5/tests/acceptance.mjs:56:1 {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: 404,\n  expected: 200,\n  operator: 'strictEqual',\n  diff: 'simple'\n}\n\nNode.js v22.21.1\n",
+        "durationMs": 492,
+        "stamp": {
+          "head": "f765280cde7671df2ede74245b56dcb3e3b5496b",
+          "files": {
+            ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+            "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+            "README.md": "523d22b76bbc924c28e294948cf3f58df7e5538a6a213c2bb35f268843f1a1ea",
+            "docs/guida.md": "b1569ab12898d516e41102be8826c0b288732808d6fb4457752cf3eeb58ac299",
+            "docs/verifiche.md": "9ee108947948d7d61720498b3ddc7311fbef9236707eae753427b2b2b91e1e5b",
+            "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+            "public/index.html": "1e798be6470daa454678337196f2076ca008b3922756dea7d79bbade5b259dee",
+            "public/svolta.css": "235865d7c676b8cf5cd7a9df2936252c335ffdf87d0d996ce90dd086e888a799",
+            "public/svolta.js": "8494e848b135e8dd8e4ecd4d29bc37705c1256b73ba5322f20438056bb1c5ab4",
+            "src/app.mjs": "04453e9d589045bc64eb12c64ce69766fa55fa541f75fdeeff0ea8e237e3b14b",
+            "src/archive.mjs": "07d8f1c116184f827d5da85b0874f0849f441a3e9a0bff6279b635a7f66de443",
+            "src/dates.mjs": "97166e73d0b44fc0758dba28a8e89c24e643efb97202e484c79cf9903906bde2",
+            "src/errors.mjs": "594ce35930d8da6b7abec818d5c0111a1d2488cd02d2bc2359297f7f12d11996",
+            "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+            "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+            "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+            "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+            "tests/acceptance.mjs": "5759467fd1c94b32c4044e4e7809c8b19afa636bd2b73ec210952d5c2bdcd4da",
+            "tests/browser.mjs": "94c628f46208c5fe55cc5e6b318fd72b43b95e3a73020a028cd2b02248a89d8a",
+            "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+          },
+          "fingerprint": "fdf4560566f456b5e8f9822309f40f6d4811f38c36d77e47642fd17325014a2d"
+        },
+        "scope": [],
+        "inputs": [],
+        "purpose": "probe"
+      }
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "73923bf7-6237-45bd-9b45-4cf2213a6723",
+    "runId": "20261020T222034-5d68bce5",
+    "seq": 18,
+    "at": "2026-10-20T22:22:49.273Z",
+    "type": "verification.started",
+    "message": "Checking existing coverage: Pianificazione e tempo dal browser",
+    "data": {
+      "nodeId": "ca38c058-66e3-4a19-b35a-e582d5d74c63",
+      "node": {
+        "id": "ca38c058-66e3-4a19-b35a-e582d5d74c63",
+        "status": "PENDING",
+        "attempt": 1,
+        "files": [],
+        "evidenceIds": [],
+        "kind": "verification",
+        "role": "verifier",
+        "title": "Pianificazione e tempo dal browser",
+        "objective": "Run approved check: [\"node\",\"tests/acceptance.mjs\",\"planning-ui\"]",
+        "criterionId": "planning-ui",
+        "reason": "Probe while planned implementation remains; a negative observation defers correction."
+      },
+      "edges": [
+        {
+          "id": "6b5a53b1-0424-4b3f-a57f-fd9a2ad72cd8",
+          "source": "cb9accb8-edeb-43f3-8eeb-843ca819fcb4",
+          "target": "ca38c058-66e3-4a19-b35a-e582d5d74c63",
+          "kind": "next"
+        }
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "67358d6c-20c9-4555-ac3b-66d253dfa77c",
+    "runId": "20261020T222034-5d68bce5",
+    "seq": 19,
+    "at": "2026-10-20T22:23:20.664Z",
+    "type": "verification.deferred",
+    "message": "Pianificazione e tempo dal browser: not yet satisfied; planned implementation remains. No failure retry or corrective model call consumed.",
+    "data": {
+      "nodeId": "ca38c058-66e3-4a19-b35a-e582d5d74c63",
+      "evidence": {
+        "id": "ebcfc4a4-2d01-41e6-949f-da491ac64c19",
+        "nodeId": "ca38c058-66e3-4a19-b35a-e582d5d74c63",
+        "criterionId": "planning-ui",
+        "contractVersion": 1,
+        "kind": "deterministic",
+        "status": "recorded",
+        "createdAt": "2026-10-20T22:23:20.616Z",
+        "command": [
+          "node",
+          "tests/acceptance.mjs",
+          "planning-ui"
+        ],
+        "exitCode": 1,
+        "output": "node:internal/modules/run_main:123\n    triggerUncaughtException(\n    ^\n\nlocator.fill: Timeout 30000ms exceeded.\nCall log:\n  - waiting for getByLabel(/^(?:Inizio settimana)(?:\\s*\\(obbligatorio\\))?$/).visible()\n\n    at /Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020-r2/data/worktrees/20261020T222034-5d68bce5/tests/browser.mjs:23:569\n    at async check (/Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020-r2/data/worktrees/20261020T222034-5d68bce5/tests/browser.mjs:9:31)\n    at async browserCheck (/Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020-r2/data/worktrees/20261020T222034-5d68bce5/tests/browser.mjs:23:4)\n    at async file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020-r2/data/worktrees/20261020T222034-5d68bce5/tests/acceptance.mjs:56:120\n    at async appTest (/Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020-r2/data/worktrees/20261020T222034-5d68bce5/tests/harness.mjs:42:28)\n    at async file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020-r2/data/worktrees/20261020T222034-5d68bce5/tests/acceptance.mjs:56:1 {\n  log: [\n    '  - waiting for getByLabel(/^(?:Inizio settimana)(?:\\\\s*\\\\(obbligatorio\\\\))?$/).visible()'\n  ],\n  name: 'TimeoutError'\n}\n\nNode.js v22.21.1\n",
+        "durationMs": 31337,
+        "stamp": {
+          "head": "f765280cde7671df2ede74245b56dcb3e3b5496b",
+          "files": {
+            ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+            "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+            "README.md": "523d22b76bbc924c28e294948cf3f58df7e5538a6a213c2bb35f268843f1a1ea",
+            "docs/guida.md": "b1569ab12898d516e41102be8826c0b288732808d6fb4457752cf3eeb58ac299",
+            "docs/verifiche.md": "9ee108947948d7d61720498b3ddc7311fbef9236707eae753427b2b2b91e1e5b",
+            "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+            "public/index.html": "1e798be6470daa454678337196f2076ca008b3922756dea7d79bbade5b259dee",
+            "public/svolta.css": "235865d7c676b8cf5cd7a9df2936252c335ffdf87d0d996ce90dd086e888a799",
+            "public/svolta.js": "8494e848b135e8dd8e4ecd4d29bc37705c1256b73ba5322f20438056bb1c5ab4",
+            "src/app.mjs": "04453e9d589045bc64eb12c64ce69766fa55fa541f75fdeeff0ea8e237e3b14b",
+            "src/archive.mjs": "07d8f1c116184f827d5da85b0874f0849f441a3e9a0bff6279b635a7f66de443",
+            "src/dates.mjs": "97166e73d0b44fc0758dba28a8e89c24e643efb97202e484c79cf9903906bde2",
+            "src/errors.mjs": "594ce35930d8da6b7abec818d5c0111a1d2488cd02d2bc2359297f7f12d11996",
+            "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+            "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+            "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+            "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+            "tests/acceptance.mjs": "5759467fd1c94b32c4044e4e7809c8b19afa636bd2b73ec210952d5c2bdcd4da",
+            "tests/browser.mjs": "94c628f46208c5fe55cc5e6b318fd72b43b95e3a73020a028cd2b02248a89d8a",
+            "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+          },
+          "fingerprint": "fdf4560566f456b5e8f9822309f40f6d4811f38c36d77e47642fd17325014a2d"
+        },
+        "scope": [],
+        "inputs": [],
+        "purpose": "probe"
+      }
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "28c47d6c-4029-48d3-b3fe-30ff6f47cfd0",
+    "runId": "20261020T222034-5d68bce5",
+    "seq": 20,
+    "at": "2026-10-20T22:23:20.681Z",
+    "type": "task.started",
+    "message": "builder: Date civili e settimana nelle API",
+    "data": {
+      "nodeId": "direction-719ce746-27af-40d0-9697-3fb5a20ab54e-0",
+      "edges": [
+        {
+          "id": "570afa7b-6ef0-4a52-a8c7-ca1e598a25dd",
+          "source": "ca38c058-66e3-4a19-b35a-e582d5d74c63",
+          "target": "direction-719ce746-27af-40d0-9697-3fb5a20ab54e-0",
+          "kind": "next"
+        }
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "2d7d5219-87ef-491e-bd41-989ecd6015ca",
+    "runId": "20261020T222034-5d68bce5",
+    "seq": 21,
+    "at": "2026-10-20T22:23:21.517Z",
+    "type": "agent.thread",
+    "message": "Codex session recorded for recovery.",
+    "data": {
+      "nodeId": "direction-719ce746-27af-40d0-9697-3fb5a20ab54e-0",
+      "threadId": "01a15b69-7841-7b11-99c4-c95e57f49bf9"
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "a735ef9e-a0f1-4ce9-bb9c-7f3d2ee3cd59",
+    "runId": "20261020T222034-5d68bce5",
+    "seq": 22,
+    "at": "2026-10-20T22:26:40.300Z",
+    "type": "agent.usage",
+    "message": "335136 tokens reported by provider.",
+    "data": {
+      "tokens": 335136
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "bfe72602-ad5b-41d9-bc98-9ddf6ea91c2c",
+    "runId": "20261020T222034-5d68bce5",
+    "seq": 23,
+    "at": "2026-10-20T22:26:40.918Z",
+    "type": "code.changed",
+    "message": "6 files changed by this activity.",
+    "data": {
+      "nodeId": "direction-719ce746-27af-40d0-9697-3fb5a20ab54e-0",
+      "files": [
+        "README.md",
+        "docs/guida.md",
+        "docs/verifiche.md",
+        "src/app.mjs",
+        "src/dates.mjs",
+        "src/week.mjs"
+      ],
+      "diff": "diff --git a/README.md b/README.md\nindex 55fff0f..ddf5c7d 100644\n--- a/README.md\n+++ b/README.md\n@@ -20,6 +20,10 @@ sotto e nel registro delle evidenze. È una fotografia delle evidenze alla\n redazione: il risultato registrato di un’esecuzione resta distinto dallo stato\n successivo della ricevuta nel runtime. Le prove precedenti restano contesto storico.\n \n+Le ricevute descritte qui appartengono alla prova precedente e non certificano\n+questa nuova missione. L’intervento corrente aggiunge solo l’API Settimana;\n+non è ancora disponibile una ricevuta host per questa modifica.\n+\n ## Avvio\n \n Occorre Node.js **22.13 o successivo** e un browser moderno con JavaScript e\n@@ -131,13 +135,14 @@ manualmente il file durante l’esecuzione.\n \n | Funzione | Stato attuale |\n | --- | --- |\n-| Settimana | **Non ancora disponibile**: nessuna vista o pianificazione settimanale. |\n+| Settimana | API `GET /api/week` disponibile; vista nel browser **non ancora disponibile**. |\n | Registrazione del tempo | Non disponibile: una stima non registra minuti dedicati né sessioni. |\n | Riepilogo | **Non ancora disponibile**: nessun conteggio o riepilogo del tempo. |\n | Backup | **Non ancora disponibile**: nessun download, importazione o ripristino portabile. |\n \n-Queste funzioni non sono implementate nemmeno nelle API; i pulsanti **Settimana**,\n-**Riepilogo** e **Backup** mostrano esplicitamente l’indisponibilità. Non ci sono\n+Solo la lettura del piano settimanale è disponibile nelle API; tempo, riepilogo e\n+backup restano da implementare. I pulsanti **Settimana**, **Riepilogo** e **Backup**\n+mostrano esplicitamente l’indisponibilità delle rispettive viste. Non ci sono\n recupero automatico, migrazioni da altri formati o recupero persistente delle\n bozze. Il file interno `archive.json` non è il backup portabile previsto dal\n contratto: questa versione non offre una procedura di esportazione/ripristino.\n@@ -237,6 +242,24 @@ curl -X PATCH -H 'Content-Type: application/json' \\\n   http://127.0.0.1:4386/api/tasks/ID_ATTIVITA\n ```\n \n+### Settimana (API)\n+\n+`GET /api/week?start=2026-10-19` restituisce `{start,days,unscheduled}`:\n+`days` contiene sette oggetti `{date,tasks}`, ordinati da lunedì a domenica,\n+anche quando un giorno è vuoto. Le attività senza scadenza sono in `unscheduled`.\n+Sono incluse solo attività non archiviate di progetti attivi; le completate\n+restano presenti con `status: \"done\"`. Le attività con scadenza fuori dalla\n+settimana sono escluse. In ogni elenco resta l’ordine di creazione e i record\n+conservano tutti i campi, comprese le revisioni.\n+\n+`start` è obbligatorio e deve essere un lunedì reale nel formato `YYYY-MM-DD`.\n+Valori mancanti, date impossibili e giorni diversi dal lunedì danno 400.\n+Il calcolo usa il calendario gregoriano senza conversioni di fuso e gestisce\n+cambi di mese, anno e bisestili. Tutti e sette i giorni devono rientrare negli\n+anni 0001–9999: una settimana che supera questo intervallo dà 400.\n+La lettura non modifica attività, revisioni o archivio. La vista **Settimana**\n+nel browser resta da implementare.\n+\n ### Revisioni ed errori\n \n Per modificare, leggere prima la revisione corrente e inviarla nel PATCH.\n@@ -297,8 +320,10 @@ successivo occorre consultare il runtime: questa pagina non lo aggiorna in tempo\n reale e non certifica una nuova revisione o impronta dei documenti modificati.\n \n I PASS API della prova originale e l’audit UI separato rimangono nel registro\n-come contesto. I controlli locali di questo task riguardano collegamenti e diff;\n-non sono stati avviati server o browser né rieseguite suite. La copertura\n+come contesto. Per l’API Settimana sono stati eseguiti controlli mirati delle date\n+in quattro fusi e del gestore richieste in memoria, oltre a sintassi e diff;\n+non sono stati avviati server o browser né eseguite suite complete. Questi\n+controlli non dimostrano il funzionamento HTTP o una certificazione host. La copertura\n registrata non si estende a ogni risoluzione dei conflitti per campo, al focus,\n all’intero layout o all’uso con lettori di schermo. Le funzioni successive\n restano indisponibili come descritto sopra.\ndiff --git a/docs/guida.md b/docs/guida.md\nindex 80b1a8f..8f3348d 100644\n--- a/docs/guida.md\n+++ b/docs/guida.md\n@@ -172,11 +172,17 @@ attività: una scadenza non genera una vista settimanale e una stima non registr\n sessioni. Mancano conteggi, riepiloghi, backup portabile e ripristino; il file\n interno non è quel backup. Non c’è recupero automatico dei dati o delle bozze.\n \n+La sola lettura della settimana è ora disponibile tramite\n+[`GET /api/week`](../README.md#settimana-api): restituisce sette giorni da un\n+lunedì e le attività senza scadenza, senza includere attività o progetti\n+archiviati. Questa aggiunta non abilita ancora la vista nel browser.\n+\n Il server ascolta solo sul dispositivo che lo esegue: il layout adattivo non\n permette di collegare il telefono al computer con lo stesso indirizzo locale.\n Le evidenze API della prova originale, l’audit UI e le ricevute precedenti\n segnalate come `stale` alla redazione sono separati dalle nuove ricevute nel\n [registro delle evidenze](verifiche.md). I tre PASS riportati riguardano le\n rispettive esecuzioni, entro i 6/6/4 gruppi registrati; non attestano le funzioni\n-successive né un collaudo completo di accessibilità. Questo task aggiorna solo\n-la documentazione e non riesegue i controlli host.\n+successive né un collaudo completo di accessibilità. Quelle ricevute restano\n+storiche per questa nuova missione; l’intervento sull’API Settimana ha solo\n+controlli locali mirati, senza nuove ricevute host.\ndiff --git a/docs/verifiche.md b/docs/verifiche.md\nindex df6e362..1c5b669 100644\n--- a/docs/verifiche.md\n+++ b/docs/verifiche.md\n@@ -225,8 +225,9 @@ scartano le modifiche nei dialoghi. Non c’è recupero persistente delle bozze.\n Se un’attività è stata archiviata altrove, la versione corrente non è consultabile\n negli elenchi per risolvere il conflitto: copiare gli input utili prima di annullare.\n \n-Settimana, sessioni di tempo, Riepilogo e Backup/ripristino rimangono indisponibili\n-anche nelle API e spettano agli esiti successivi del supervisore host. Il file\n+La vista Settimana, sessioni di tempo, Riepilogo e Backup/ripristino rimangono\n+indisponibili e spettano ai task successivi del supervisore host. Le API per\n+sessioni, riepilogo e backup/ripristino restano da implementare. Il file\n interno `archive.json` non è un backup portabile; non esiste ancora una procedura\n di esportazione o ripristino. Una stima non registra tempo e una scadenza non\n genera una vista settimanale. Il layout per schermi stretti non abilita l’accesso\n@@ -237,3 +238,25 @@ collaudi desktop/mobile o con lettori di schermo, revisioni indipendenti o\n pubblicazioni. I criteri automatici non esauriscono la revisione d’uso: conflitti\n per campo, tastiera, focus, nomi lunghi e assenza di scorrimento orizzontale vanno\n riferiti solo alla copertura realmente osservata.\n+\n+## Intervento corrente: date civili e API Settimana\n+\n+Le ricevute riportate sopra appartengono alla prova precedente: sono contesto\n+storico e non certificano la nuova missione. Non è disponibile una nuova\n+ricevuta host per l’intervento qui descritto.\n+\n+Sono stati aggiunti `addCivilDays` e `civilWeekday` in `src/dates.mjs` e\n+`GET /api/week?start=YYYY-MM-DD`. Il piano include attività non archiviate di\n+progetti attivi, conserva completate e revisioni e separa quelle senza scadenza.\n+La scelta per il limite del calendario è rifiutare con 400 una settimana che\n+oltrepassa gli anni 0001–9999; non si troncano i sette giorni.\n+\n+Nella sandbox sono passati controlli mirati eseguiti direttamente con Node:\n+validazione e aritmetica delle date in quattro fusi, cambi di mese e anno,\n+bisestili secolari, anni iniziali e limiti; gestore richieste in memoria con\n+filtri degli archivi, completate, giorni vuoti, input errati, risposta 405 e\n+assenza di mutazioni. Sono passati anche controllo sintattico dei moduli\n+modificati e `git diff --check`. Non sono stati aperti socket né avviati browser\n+o suite di accettazione. Non sono prove HTTP, di persistenza o ricevute host.\n+Il criterio `planning-api` include anche sessioni e riepilogo, ancora da\n+implementare nei task successivi: questi controlli non ne attestano l’esito.\ndiff --git a/src/app.mjs b/src/app.mjs\nindex f0db111..d540cd4 100644\n--- a/src/app.mjs\n+++ b/src/app.mjs\n@@ -1,6 +1,7 @@\n import { AppError, sendError, sendJSON } from './errors.mjs';\n import { createProject, updateProject } from './projects.mjs';\n import { createTask, listTasks, updateTask } from './tasks.mjs';\n+import { getWeek } from './week.mjs';\n import { servePublic } from './public.mjs';\n \n const MAX_BODY_BYTES = 2 * 1024 * 1024;\n@@ -98,6 +99,14 @@ export function createRequestHandler(archive) {\n         }\n         return;\n       }\n+      if (path === '/api/week') {\n+        if (request.method === 'GET') {\n+          sendJSON(response, 200, getWeek(archive.snapshot(), url.searchParams.get('start')));\n+        } else {\n+          methodNotAllowed(response, ['GET']);\n+        }\n+        return;\n+      }\n       const taskMatch = path.match(/^\\/api\\/tasks\\/([^/]+)$/);\n       if (taskMatch) {\n         if (request.method !== 'PATCH') {\ndiff --git a/src/dates.mjs b/src/dates.mjs\nindex b1932cb..0cdb6fb 100644\n--- a/src/dates.mjs\n+++ b/src/dates.mjs\n@@ -1,11 +1,62 @@\n // Civil dates are calendar values, never instants in the machine's timezone.\n+const MONTH_DAYS = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];\n+\n+function daysInMonth(year, month) {\n+  const leap = year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0);\n+  return month === 2 && leap ? 29 : MONTH_DAYS[month - 1];\n+}\n+\n export function isCivilDate(value) {\n   if (typeof value !== 'string' || value.length !== 10 || !/^\\d{4}-\\d{2}-\\d{2}$/.test(value)) return false;\n   const year = Number(value.slice(0, 4));\n   const month = Number(value.slice(5, 7));\n   const day = Number(value.slice(8, 10));\n   if (year < 1 || month < 1 || month > 12 || day < 1) return false;\n-  const leap = year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0);\n-  const days = [31, leap ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];\n-  return day <= days[month - 1];\n+  return day <= daysInMonth(year, month);\n+}\n+\n+function daysBeforeYear(year) {\n+  const previous = year - 1;\n+  return previous * 365 + Math.floor(previous / 4)\n+    - Math.floor(previous / 100) + Math.floor(previous / 400);\n+}\n+\n+// Zero is 0001-01-01, a Monday in the proleptic Gregorian calendar.\n+function civilDayNumber(value) {\n+  if (!isCivilDate(value)) {\n+    throw new RangeError('La data deve essere reale nel formato YYYY-MM-DD, con anno da 0001 a 9999.');\n+  }\n+  const [year, month, day] = value.split('-').map(Number);\n+  let number = daysBeforeYear(year) + day - 1;\n+  for (let current = 1; current < month; current++) number += daysInMonth(year, current);\n+  return number;\n+}\n+\n+// Monday = 0, ..., Sunday = 6. No Date, UTC conversion or daylight-saving rules.\n+export function civilWeekday(value) {\n+  return civilDayNumber(value) % 7;\n+}\n+\n+export function addCivilDays(value, amount) {\n+  if (!Number.isSafeInteger(amount)) throw new RangeError('Il numero di giorni deve essere un intero sicuro.');\n+  const number = civilDayNumber(value) + amount;\n+  if (!Number.isSafeInteger(number) || number < 0 || number >= daysBeforeYear(10000)) {\n+    throw new RangeError('La data risultante deve avere un anno da 0001 a 9999.');\n+  }\n+\n+  // Find the year with integer comparisons, including years 0001–0099.\n+  let year = 1;\n+  let upper = 10000;\n+  while (year + 1 < upper) {\n+    const middle = Math.floor((year + upper) / 2);\n+    if (daysBeforeYear(middle) <= number) year = middle;\n+    else upper = middle;\n+  }\n+  let day = number - daysBeforeYear(year);\n+  let month = 1;\n+  while (day >= daysInMonth(year, month)) {\n+    day -= daysInMonth(year, month);\n+    month++;\n+  }\n+  return `${String(year).padStart(4, '0')}-${String(month).padStart(2, '0')}-${String(day + 1).padStart(2, '0')}`;\n }\ndiff --git a/src/week.mjs b/src/week.mjs\nnew file\n--- /dev/null\n+++ b/src/week.mjs\n+import { addCivilDays, civilWeekday, isCivilDate } from './dates.mjs';\n+import { AppError } from './errors.mjs';\n+import { listTasks } from './tasks.mjs';\n+\n+export function getWeek(data, start) {\n+  if (!isCivilDate(start) || civilWeekday(start) !== 0) {\n+    throw new AppError(400, 'INVALID_WEEK_START',\n+      'L’inizio settimana deve essere un lunedì reale nel formato YYYY-MM-DD, con anno da 0001 a 9999.');\n+  }\n+\n+  let days;\n+  try {\n+    days = Array.from({ length: 7 }, (_, offset) => ({\n+      date: addCivilDays(start, offset),\n+      tasks: [],\n+    }));\n+  } catch (error) {\n+    if (!(error instanceof RangeError)) throw error;\n+    throw new AppError(400, 'WEEK_OUT_OF_RANGE',\n+      'Tutti e sette i giorni della settimana devono avere un anno da 0001 a 9999.');\n+  }\n+\n+  const tasksByDate = new Map(days.map(day => [day.date, day.tasks]));\n+  const unscheduled = [];\n+  // The general task list excludes archived tasks and archived projects,\n+  // while retaining completed tasks and their status, revision and other fields.\n+  for (const task of listTasks(data, new URLSearchParams())) {\n+    if (task.dueDate === null) unscheduled.push(task);\n+    else tasksByDate.get(task.dueDate)?.push(task);\n+  }\n+  return { start, days, unscheduled };\n+}\n+"
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "cec783f0-2197-4476-9385-0b4aff753c4c",
+    "runId": "20261020T222034-5d68bce5",
+    "seq": 24,
+    "at": "2026-10-20T22:26:40.935Z",
+    "type": "evidence.invalidated",
+    "message": "Evidence is STALE: README.md, docs/guida.md, docs/verifiche.md, src/app.mjs, src/dates.mjs, src/week.mjs. Scope: all repository files.",
+    "data": {
+      "evidenceId": "e1ad0c37-19cb-4f63-a9d6-a88bac7af2d1",
+      "changed": [
+        "README.md",
+        "docs/guida.md",
+        "docs/verifiche.md",
+        "src/app.mjs",
+        "src/dates.mjs",
+        "src/week.mjs"
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "cdcdfcd2-0a44-4bf2-a163-7a88a29503c3",
+    "runId": "20261020T222034-5d68bce5",
+    "seq": 25,
+    "at": "2026-10-20T22:26:40.950Z",
+    "type": "evidence.invalidated",
+    "message": "Evidence is STALE: README.md, docs/guida.md, docs/verifiche.md, src/app.mjs, src/dates.mjs, src/week.mjs. Scope: all repository files.",
+    "data": {
+      "evidenceId": "ca94df04-723a-4a93-9ee0-fb32f895677e",
+      "changed": [
+        "README.md",
+        "docs/guida.md",
+        "docs/verifiche.md",
+        "src/app.mjs",
+        "src/dates.mjs",
+        "src/week.mjs"
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "90ea170b-83cf-48fd-bcbe-66424444baa1",
+    "runId": "20261020T222034-5d68bce5",
+    "seq": 26,
+    "at": "2026-10-20T22:26:40.967Z",
+    "type": "evidence.invalidated",
+    "message": "Evidence is STALE: README.md, docs/guida.md, docs/verifiche.md, src/app.mjs, src/dates.mjs, src/week.mjs. Scope: all repository files.",
+    "data": {
+      "evidenceId": "a64369e4-7b3e-4afb-b96a-19c9d79915b0",
+      "changed": [
+        "README.md",
+        "docs/guida.md",
+        "docs/verifiche.md",
+        "src/app.mjs",
+        "src/dates.mjs",
+        "src/week.mjs"
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "df53bfa3-227c-4c05-b102-6cb5f61c8a44",
+    "runId": "20261020T222034-5d68bce5",
+    "seq": 27,
+    "at": "2026-10-20T22:26:40.997Z",
+    "type": "task.completed",
+    "message": "Implementate aritmetica civile indipendente dal fuso e GET /api/week: sette giorni ordinati, attività senza scadenza, completate distinguibili ed esclusione degli archivi. Date impossibili e inizi non lunedì restituiscono 400. Documentazione aggiornata. Controlli mirati locali passati; HTTP e browser non osservati. Sessioni e riepilogo restano ai task successivi.",
+    "data": {
+      "nodeId": "direction-719ce746-27af-40d0-9697-3fb5a20ab54e-0",
+      "summary": "Implementate aritmetica civile indipendente dal fuso e GET /api/week: sette giorni ordinati, attività senza scadenza, completate distinguibili ed esclusione degli archivi. Date impossibili e inizi non lunedì restituiscono 400. Documentazione aggiornata. Controlli mirati locali passati; HTTP e browser non osservati. Sessioni e riepilogo restano ai task successivi.",
+      "files": [
+        "README.md",
+        "docs/guida.md",
+        "docs/verifiche.md",
+        "src/app.mjs",
+        "src/dates.mjs",
+        "src/week.mjs"
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "952c0988-d78e-460b-b515-e120f43b32b7",
+    "runId": "20261020T222034-5d68bce5",
+    "seq": 28,
+    "at": "2026-10-20T22:26:41.004Z",
+    "type": "decision.recorded",
+    "message": "Builder handed verification to the runtime host. Agent-local check limitations are unverified observations; only approved runtime checks can certify results.",
+    "data": {
+      "kind": "verification.handoff",
+      "nodeId": "direction-719ce746-27af-40d0-9697-3fb5a20ab54e-0",
+      "criterionIds": [
+        "tasks-api",
+        "planning-api"
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "e340005d-6b40-484c-ad5e-98ea9a7a2f25",
+    "runId": "20261020T222034-5d68bce5",
+    "seq": 29,
+    "at": "2026-10-20T22:26:41.037Z",
+    "type": "verification.started",
+    "message": "Checking existing coverage: Attività, filtri e conflitti senza perdita di dati",
+    "data": {
+      "nodeId": "12c66656-8cc9-4dc2-95b1-b2d7b2bd717a",
+      "node": {
+        "id": "12c66656-8cc9-4dc2-95b1-b2d7b2bd717a",
+        "status": "PENDING",
+        "attempt": 2,
+        "files": [],
+        "evidenceIds": [],
+        "kind": "verification",
+        "role": "verifier",
+        "title": "Attività, filtri e conflitti senza perdita di dati",
+        "objective": "Run approved check: [\"node\",\"tests/acceptance.mjs\",\"tasks-api\"]",
+        "criterionId": "tasks-api",
+        "reason": "Probe while planned implementation remains; a negative observation defers correction."
+      },
+      "edges": [
+        {
+          "id": "490878b0-43d7-441f-bcf2-8b7d390fc933",
+          "source": "ca38c058-66e3-4a19-b35a-e582d5d74c63",
+          "target": "12c66656-8cc9-4dc2-95b1-b2d7b2bd717a",
+          "kind": "next"
+        }
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "9368d9c0-a6e9-4225-a0c0-afc44b979ac6",
+    "runId": "20261020T222034-5d68bce5",
+    "seq": 30,
+    "at": "2026-10-20T22:26:42.488Z",
+    "type": "verification.passed",
+    "message": "Attività, filtri e conflitti senza perdita di dati: approved command already passes on the recorded inputs.",
+    "data": {
+      "nodeId": "12c66656-8cc9-4dc2-95b1-b2d7b2bd717a",
+      "evidence": {
+        "id": "5bd95a14-21a8-4681-bec9-e5f822d643a1",
+        "nodeId": "12c66656-8cc9-4dc2-95b1-b2d7b2bd717a",
+        "criterionId": "tasks-api",
+        "contractVersion": 1,
+        "kind": "deterministic",
+        "status": "passed",
+        "createdAt": "2026-10-20T22:26:42.433Z",
+        "command": [
+          "node",
+          "tests/acceptance.mjs",
+          "tasks-api"
+        ],
+        "exitCode": 0,
+        "output": "PASS task defaults and exact fields\nPASS task edit, revision conflicts and combined filters\nPASS civil dates, invalid states and numeric validation\nPASS parallel stale writers cannot overwrite each other\nPASS archived projects disappear from general activity list\nPASS task persistence and malformed JSON\n{\"criterion\":\"tasks-api\",\"result\":\"PASS\",\"groups\":6}\n",
+        "durationMs": 1391,
+        "stamp": {
+          "head": "f765280cde7671df2ede74245b56dcb3e3b5496b",
+          "files": {
+            ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+            "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+            "README.md": "ebbb8f89ac82039aefd206b70be3180972a0c3a20e8d62ac6e907f86e539476b",
+            "docs/guida.md": "2bddc3b0cc50a4011cea95a871acc1048f407cdaaf36999e4a4c5f4a123c1f9f",
+            "docs/verifiche.md": "546567044e127025a86c5d0d409ab7b24cfc67ad9e55fbf5c75d28b2897c68e2",
+            "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+            "public/index.html": "1e798be6470daa454678337196f2076ca008b3922756dea7d79bbade5b259dee",
+            "public/svolta.css": "235865d7c676b8cf5cd7a9df2936252c335ffdf87d0d996ce90dd086e888a799",
+            "public/svolta.js": "8494e848b135e8dd8e4ecd4d29bc37705c1256b73ba5322f20438056bb1c5ab4",
+            "src/app.mjs": "b1ea18c955068368c3d6b8c8fd6e55f004102d0b1c5838fcb991847b082272d5",
+            "src/archive.mjs": "07d8f1c116184f827d5da85b0874f0849f441a3e9a0bff6279b635a7f66de443",
+            "src/dates.mjs": "befb2084c723419e957dd976a1e2f9ecd5b92b5c8d768158ba99ce452d794515",
+            "src/errors.mjs": "594ce35930d8da6b7abec818d5c0111a1d2488cd02d2bc2359297f7f12d11996",
+            "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+            "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+            "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+            "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+            "src/week.mjs": "f533bdaed237f9b051608355d588f3b5147653c0d81143e7b5d7148a0dee2eeb",
+            "tests/acceptance.mjs": "5759467fd1c94b32c4044e4e7809c8b19afa636bd2b73ec210952d5c2bdcd4da",
+            "tests/browser.mjs": "94c628f46208c5fe55cc5e6b318fd72b43b95e3a73020a028cd2b02248a89d8a",
+            "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+          },
+          "fingerprint": "3207e548bf17ccd13894715b4353c54a82e315572d5e63a24baf4223f63c12bf"
+        },
+        "scope": [],
+        "inputs": [],
+        "purpose": "probe"
+      }
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "2b04bb73-b7e1-4cfd-8ede-d6fd7bf17983",
+    "runId": "20261020T222034-5d68bce5",
+    "seq": 31,
+    "at": "2026-10-20T22:26:42.516Z",
+    "type": "verification.started",
+    "message": "Checking existing coverage: Settimana civile, sessioni e riepilogo coerente",
+    "data": {
+      "nodeId": "8e56a770-0e86-458c-b085-c02b3ad98d0f",
+      "node": {
+        "id": "8e56a770-0e86-458c-b085-c02b3ad98d0f",
+        "status": "PENDING",
+        "attempt": 2,
+        "files": [],
+        "evidenceIds": [],
+        "kind": "verification",
+        "role": "verifier",
+        "title": "Settimana civile, sessioni e riepilogo coerente",
+        "objective": "Run approved check: [\"node\",\"tests/acceptance.mjs\",\"planning-api\"]",
+        "criterionId": "planning-api",
+        "reason": "Probe while planned implementation remains; a negative observation defers correction."
+      },
+      "edges": [
+        {
+          "id": "78714d56-0a43-4a22-94a3-3395580b7217",
+          "source": "12c66656-8cc9-4dc2-95b1-b2d7b2bd717a",
+          "target": "8e56a770-0e86-458c-b085-c02b3ad98d0f",
+          "kind": "next"
+        }
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "9a7bc8c2-43ee-4098-bf5e-d92e76ea9480",
+    "runId": "20261020T222034-5d68bce5",
+    "seq": 32,
+    "at": "2026-10-20T22:26:42.902Z",
+    "type": "verification.deferred",
+    "message": "Settimana civile, sessioni e riepilogo coerente: not yet satisfied; planned implementation remains. No failure retry or corrective model call consumed.",
+    "data": {
+      "nodeId": "8e56a770-0e86-458c-b085-c02b3ad98d0f",
+      "evidence": {
+        "id": "0d8f19ed-0d99-488b-8959-094500cbbcaf",
+        "nodeId": "8e56a770-0e86-458c-b085-c02b3ad98d0f",
+        "criterionId": "planning-api",
+        "contractVersion": 1,
+        "kind": "deterministic",
+        "status": "recorded",
+        "createdAt": "2026-10-20T22:26:42.852Z",
+        "command": [
+          "node",
+          "tests/acceptance.mjs",
+          "planning-api"
+        ],
+        "exitCode": 1,
+        "output": "PASS civil seven-day plan and unscheduled work\nPASS Monday and impossible-date rejection\nnode:internal/modules/run_main:123\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: POST /api/time-entries: {\"error\":\"Indirizzo non trovato.\",\"code\":\"NOT_FOUND\"}\n\n404 !== 201\n\n    at api (file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020-r2/data/worktrees/20261020T222034-5d68bce5/tests/harness.mjs:34:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async planning-api (file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020-r2/data/worktrees/20261020T222034-5d68bce5/tests/acceptance.mjs:38:17)\n    at async file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020-r2/data/worktrees/20261020T222034-5d68bce5/tests/acceptance.mjs:56:49\n    at async appTest (file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020-r2/data/worktrees/20261020T222034-5d68bce5/tests/harness.mjs:42:28)\n    at async file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020-r2/data/worktrees/20261020T222034-5d68bce5/tests/acceptance.mjs:56:1 {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: 404,\n  expected: 201,\n  operator: 'strictEqual',\n  diff: 'simple'\n}\n\nNode.js v22.21.1\n",
+        "durationMs": 336,
+        "stamp": {
+          "head": "f765280cde7671df2ede74245b56dcb3e3b5496b",
+          "files": {
+            ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+            "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+            "README.md": "ebbb8f89ac82039aefd206b70be3180972a0c3a20e8d62ac6e907f86e539476b",
+            "docs/guida.md": "2bddc3b0cc50a4011cea95a871acc1048f407cdaaf36999e4a4c5f4a123c1f9f",
+            "docs/verifiche.md": "546567044e127025a86c5d0d409ab7b24cfc67ad9e55fbf5c75d28b2897c68e2",
+            "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+            "public/index.html": "1e798be6470daa454678337196f2076ca008b3922756dea7d79bbade5b259dee",
+            "public/svolta.css": "235865d7c676b8cf5cd7a9df2936252c335ffdf87d0d996ce90dd086e888a799",
+            "public/svolta.js": "8494e848b135e8dd8e4ecd4d29bc37705c1256b73ba5322f20438056bb1c5ab4",
+            "src/app.mjs": "b1ea18c955068368c3d6b8c8fd6e55f004102d0b1c5838fcb991847b082272d5",
+            "src/archive.mjs": "07d8f1c116184f827d5da85b0874f0849f441a3e9a0bff6279b635a7f66de443",
+            "src/dates.mjs": "befb2084c723419e957dd976a1e2f9ecd5b92b5c8d768158ba99ce452d794515",
+            "src/errors.mjs": "594ce35930d8da6b7abec818d5c0111a1d2488cd02d2bc2359297f7f12d11996",
+            "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+            "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+            "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+            "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+            "src/week.mjs": "f533bdaed237f9b051608355d588f3b5147653c0d81143e7b5d7148a0dee2eeb",
+            "tests/acceptance.mjs": "5759467fd1c94b32c4044e4e7809c8b19afa636bd2b73ec210952d5c2bdcd4da",
+            "tests/browser.mjs": "94c628f46208c5fe55cc5e6b318fd72b43b95e3a73020a028cd2b02248a89d8a",
+            "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+          },
+          "fingerprint": "3207e548bf17ccd13894715b4353c54a82e315572d5e63a24baf4223f63c12bf"
+        },
+        "scope": [],
+        "inputs": [],
+        "purpose": "probe"
+      }
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "ca067c10-83fe-4aba-b3cb-d009a48cd035",
+    "runId": "20261020T222034-5d68bce5",
+    "seq": 33,
+    "at": "2026-10-20T22:26:42.905Z",
+    "type": "progress.recorded",
+    "message": "Code fingerprint changed.",
+    "data": {
+      "noProgress": 0
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "21ee69cf-15fc-408c-aaa0-b08b562f673c",
+    "runId": "20261020T222034-5d68bce5",
+    "seq": 34,
+    "at": "2026-10-20T22:26:42.981Z",
+    "type": "verification.started",
+    "message": "Checking existing coverage: Archivio progetti persistente e revisioni",
+    "data": {
+      "nodeId": "f450636a-272f-4f15-bc0e-b79b2c7067d9",
+      "node": {
+        "id": "f450636a-272f-4f15-bc0e-b79b2c7067d9",
+        "status": "PENDING",
+        "attempt": 2,
+        "files": [],
+        "evidenceIds": [],
+        "kind": "verification",
+        "role": "verifier",
+        "title": "Archivio progetti persistente e revisioni",
+        "objective": "Run approved check: [\"node\",\"tests/acceptance.mjs\",\"projects-api\"]",
+        "criterionId": "projects-api",
+        "reason": "Probe while planned implementation remains; a negative observation defers correction."
+      },
+      "edges": [
+        {
+          "id": "9b60ce71-1f76-48d0-b0a3-8e6bf86aa1de",
+          "source": "8e56a770-0e86-458c-b085-c02b3ad98d0f",
+          "target": "f450636a-272f-4f15-bc0e-b79b2c7067d9",
+          "kind": "next"
+        }
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "865f15c8-6df2-41bb-846d-deaf9c945761",
+    "runId": "20261020T222034-5d68bce5",
+    "seq": 35,
+    "at": "2026-10-20T22:26:44.370Z",
+    "type": "verification.passed",
+    "message": "Archivio progetti persistente e revisioni: approved command already passes on the recorded inputs.",
+    "data": {
+      "nodeId": "f450636a-272f-4f15-bc0e-b79b2c7067d9",
+      "evidence": {
+        "id": "4168430f-9a8d-467b-8a58-1a2c5805c1c9",
+        "nodeId": "f450636a-272f-4f15-bc0e-b79b2c7067d9",
+        "criterionId": "projects-api",
+        "contractVersion": 1,
+        "kind": "deterministic",
+        "status": "passed",
+        "createdAt": "2026-10-20T22:26:44.317Z",
+        "command": [
+          "node",
+          "tests/acceptance.mjs",
+          "projects-api"
+        ],
+        "exitCode": 0,
+        "output": "PASS empty archive\nPASS create project with stable defaults\nPASS optimistic project edit\nPASS invalid names and missing revisions do not write\nPASS project archival survives restart\nPASS unknown project does not create a record\n{\"criterion\":\"projects-api\",\"result\":\"PASS\",\"groups\":6}\n",
+        "durationMs": 1346,
+        "stamp": {
+          "head": "f765280cde7671df2ede74245b56dcb3e3b5496b",
+          "files": {
+            ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+            "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+            "README.md": "ebbb8f89ac82039aefd206b70be3180972a0c3a20e8d62ac6e907f86e539476b",
+            "docs/guida.md": "2bddc3b0cc50a4011cea95a871acc1048f407cdaaf36999e4a4c5f4a123c1f9f",
+            "docs/verifiche.md": "546567044e127025a86c5d0d409ab7b24cfc67ad9e55fbf5c75d28b2897c68e2",
+            "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+            "public/index.html": "1e798be6470daa454678337196f2076ca008b3922756dea7d79bbade5b259dee",
+            "public/svolta.css": "235865d7c676b8cf5cd7a9df2936252c335ffdf87d0d996ce90dd086e888a799",
+            "public/svolta.js": "8494e848b135e8dd8e4ecd4d29bc37705c1256b73ba5322f20438056bb1c5ab4",
+            "src/app.mjs": "b1ea18c955068368c3d6b8c8fd6e55f004102d0b1c5838fcb991847b082272d5",
+            "src/archive.mjs": "07d8f1c116184f827d5da85b0874f0849f441a3e9a0bff6279b635a7f66de443",
+            "src/dates.mjs": "befb2084c723419e957dd976a1e2f9ecd5b92b5c8d768158ba99ce452d794515",
+            "src/errors.mjs": "594ce35930d8da6b7abec818d5c0111a1d2488cd02d2bc2359297f7f12d11996",
+            "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+            "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+            "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+            "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+            "src/week.mjs": "f533bdaed237f9b051608355d588f3b5147653c0d81143e7b5d7148a0dee2eeb",
+            "tests/acceptance.mjs": "5759467fd1c94b32c4044e4e7809c8b19afa636bd2b73ec210952d5c2bdcd4da",
+            "tests/browser.mjs": "94c628f46208c5fe55cc5e6b318fd72b43b95e3a73020a028cd2b02248a89d8a",
+            "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+          },
+          "fingerprint": "3207e548bf17ccd13894715b4353c54a82e315572d5e63a24baf4223f63c12bf"
+        },
+        "scope": [],
+        "inputs": [],
+        "purpose": "probe"
+      }
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "1d2b22e0-6bfb-4f63-b9ac-c663d6bee012",
+    "runId": "20261020T222034-5d68bce5",
+    "seq": 36,
+    "at": "2026-10-20T22:26:44.407Z",
+    "type": "verification.started",
+    "message": "Checking existing coverage: Interfaccia progetti e attività su desktop e mobile",
+    "data": {
+      "nodeId": "27f30758-1194-4758-b517-306061ad2050",
+      "node": {
+        "id": "27f30758-1194-4758-b517-306061ad2050",
+        "status": "PENDING",
+        "attempt": 2,
+        "files": [],
+        "evidenceIds": [],
+        "kind": "verification",
+        "role": "verifier",
+        "title": "Interfaccia progetti e attività su desktop e mobile",
+        "objective": "Run approved check: [\"node\",\"tests/acceptance.mjs\",\"board-ui\"]",
+        "criterionId": "board-ui",
+        "reason": "Probe while planned implementation remains; a negative observation defers correction."
+      },
+      "edges": [
+        {
+          "id": "ca1686a4-e056-423e-b457-9c6f216e68b8",
+          "source": "f450636a-272f-4f15-bc0e-b79b2c7067d9",
+          "target": "27f30758-1194-4758-b517-306061ad2050",
+          "kind": "next"
+        }
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "db04d0ec-3248-49f4-aa2a-94c93fb50ff3",
+    "runId": "20261020T222034-5d68bce5",
+    "seq": 37,
+    "at": "2026-10-20T22:26:47.527Z",
+    "type": "verification.passed",
+    "message": "Interfaccia progetti e attività su desktop e mobile: approved command already passes on the recorded inputs.",
+    "data": {
+      "nodeId": "27f30758-1194-4758-b517-306061ad2050",
+      "evidence": {
+        "id": "8903fe29-4669-4e21-97cd-c120bcf7783f",
+        "nodeId": "27f30758-1194-4758-b517-306061ad2050",
+        "criterionId": "board-ui",
+        "contractVersion": 1,
+        "kind": "deterministic",
+        "status": "passed",
+        "createdAt": "2026-10-20T22:26:47.473Z",
+        "command": [
+          "node",
+          "tests/acceptance.mjs",
+          "board-ui"
+        ],
+        "exitCode": 0,
+        "output": "PASS create a project and task through the actual interface\nPASS edit, filter and preserve the changed activity after reopening\nPASS concurrent interface edits cannot silently overwrite another tab\nPASS literal hostile text and mobile layout\n{\"criterion\":\"board-ui\",\"result\":\"PASS\",\"groups\":4}\n",
+        "durationMs": 3077,
+        "stamp": {
+          "head": "f765280cde7671df2ede74245b56dcb3e3b5496b",
+          "files": {
+            ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+            "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+            "README.md": "ebbb8f89ac82039aefd206b70be3180972a0c3a20e8d62ac6e907f86e539476b",
+            "docs/guida.md": "2bddc3b0cc50a4011cea95a871acc1048f407cdaaf36999e4a4c5f4a123c1f9f",
+            "docs/verifiche.md": "546567044e127025a86c5d0d409ab7b24cfc67ad9e55fbf5c75d28b2897c68e2",
+            "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+            "public/index.html": "1e798be6470daa454678337196f2076ca008b3922756dea7d79bbade5b259dee",
+            "public/svolta.css": "235865d7c676b8cf5cd7a9df2936252c335ffdf87d0d996ce90dd086e888a799",
+            "public/svolta.js": "8494e848b135e8dd8e4ecd4d29bc37705c1256b73ba5322f20438056bb1c5ab4",
+            "src/app.mjs": "b1ea18c955068368c3d6b8c8fd6e55f004102d0b1c5838fcb991847b082272d5",
+            "src/archive.mjs": "07d8f1c116184f827d5da85b0874f0849f441a3e9a0bff6279b635a7f66de443",
+            "src/dates.mjs": "befb2084c723419e957dd976a1e2f9ecd5b92b5c8d768158ba99ce452d794515",
+            "src/errors.mjs": "594ce35930d8da6b7abec818d5c0111a1d2488cd02d2bc2359297f7f12d11996",
+            "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+            "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+            "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+            "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+            "src/week.mjs": "f533bdaed237f9b051608355d588f3b5147653c0d81143e7b5d7148a0dee2eeb",
+            "tests/acceptance.mjs": "5759467fd1c94b32c4044e4e7809c8b19afa636bd2b73ec210952d5c2bdcd4da",
+            "tests/browser.mjs": "94c628f46208c5fe55cc5e6b318fd72b43b95e3a73020a028cd2b02248a89d8a",
+            "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+          },
+          "fingerprint": "3207e548bf17ccd13894715b4353c54a82e315572d5e63a24baf4223f63c12bf"
+        },
+        "scope": [],
+        "inputs": [],
+        "purpose": "probe"
+      }
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "c697436b-4fcf-480a-b18d-594d3f9fceac",
+    "runId": "20261020T222034-5d68bce5",
+    "seq": 38,
+    "at": "2026-10-20T22:26:47.578Z",
+    "type": "verification.started",
+    "message": "Checking existing coverage: Pianificazione e tempo dal browser",
+    "data": {
+      "nodeId": "84646b88-6a56-4910-a02b-42e04395185e",
+      "node": {
+        "id": "84646b88-6a56-4910-a02b-42e04395185e",
+        "status": "PENDING",
+        "attempt": 2,
+        "files": [],
+        "evidenceIds": [],
+        "kind": "verification",
+        "role": "verifier",
+        "title": "Pianificazione e tempo dal browser",
+        "objective": "Run approved check: [\"node\",\"tests/acceptance.mjs\",\"planning-ui\"]",
+        "criterionId": "planning-ui",
+        "reason": "Probe while planned implementation remains; a negative observation defers correction."
+      },
+      "edges": [
+        {
+          "id": "a28a5a9d-d43b-4d24-8c4a-1c4a77303685",
+          "source": "27f30758-1194-4758-b517-306061ad2050",
+          "target": "84646b88-6a56-4910-a02b-42e04395185e",
+          "kind": "next"
+        }
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "fe268f76-ac93-4aa5-8283-9f2ef90035ea",
+    "runId": "20261020T222034-5d68bce5",
+    "seq": 39,
+    "at": "2026-10-20T22:27:18.659Z",
+    "type": "verification.deferred",
+    "message": "Pianificazione e tempo dal browser: not yet satisfied; planned implementation remains. No failure retry or corrective model call consumed.",
+    "data": {
+      "nodeId": "84646b88-6a56-4910-a02b-42e04395185e",
+      "evidence": {
+        "id": "504680c9-8bed-47be-82fe-764d3ac6c95d",
+        "nodeId": "84646b88-6a56-4910-a02b-42e04395185e",
+        "criterionId": "planning-ui",
+        "contractVersion": 1,
+        "kind": "deterministic",
+        "status": "recorded",
+        "createdAt": "2026-10-20T22:27:18.607Z",
+        "command": [
+          "node",
+          "tests/acceptance.mjs",
+          "planning-ui"
+        ],
+        "exitCode": 1,
+        "output": "node:internal/modules/run_main:123\n    triggerUncaughtException(\n    ^\n\nlocator.fill: Timeout 30000ms exceeded.\nCall log:\n  - waiting for getByLabel(/^(?:Inizio settimana)(?:\\s*\\(obbligatorio\\))?$/).visible()\n\n    at /Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020-r2/data/worktrees/20261020T222034-5d68bce5/tests/browser.mjs:23:569\n    at async check (/Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020-r2/data/worktrees/20261020T222034-5d68bce5/tests/browser.mjs:9:31)\n    at async browserCheck (/Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020-r2/data/worktrees/20261020T222034-5d68bce5/tests/browser.mjs:23:4)\n    at async file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020-r2/data/worktrees/20261020T222034-5d68bce5/tests/acceptance.mjs:56:120\n    at async appTest (/Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020-r2/data/worktrees/20261020T222034-5d68bce5/tests/harness.mjs:42:28)\n    at async file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020-r2/data/worktrees/20261020T222034-5d68bce5/tests/acceptance.mjs:56:1 {\n  log: [\n    '  - waiting for getByLabel(/^(?:Inizio settimana)(?:\\\\s*\\\\(obbligatorio\\\\))?$/).visible()'\n  ],\n  name: 'TimeoutError'\n}\n\nNode.js v22.21.1\n",
+        "durationMs": 31037,
+        "stamp": {
+          "head": "f765280cde7671df2ede74245b56dcb3e3b5496b",
+          "files": {
+            ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+            "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+            "README.md": "ebbb8f89ac82039aefd206b70be3180972a0c3a20e8d62ac6e907f86e539476b",
+            "docs/guida.md": "2bddc3b0cc50a4011cea95a871acc1048f407cdaaf36999e4a4c5f4a123c1f9f",
+            "docs/verifiche.md": "546567044e127025a86c5d0d409ab7b24cfc67ad9e55fbf5c75d28b2897c68e2",
+            "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+            "public/index.html": "1e798be6470daa454678337196f2076ca008b3922756dea7d79bbade5b259dee",
+            "public/svolta.css": "235865d7c676b8cf5cd7a9df2936252c335ffdf87d0d996ce90dd086e888a799",
+            "public/svolta.js": "8494e848b135e8dd8e4ecd4d29bc37705c1256b73ba5322f20438056bb1c5ab4",
+            "src/app.mjs": "b1ea18c955068368c3d6b8c8fd6e55f004102d0b1c5838fcb991847b082272d5",
+            "src/archive.mjs": "07d8f1c116184f827d5da85b0874f0849f441a3e9a0bff6279b635a7f66de443",
+            "src/dates.mjs": "befb2084c723419e957dd976a1e2f9ecd5b92b5c8d768158ba99ce452d794515",
+            "src/errors.mjs": "594ce35930d8da6b7abec818d5c0111a1d2488cd02d2bc2359297f7f12d11996",
+            "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+            "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+            "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+            "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+            "src/week.mjs": "f533bdaed237f9b051608355d588f3b5147653c0d81143e7b5d7148a0dee2eeb",
+            "tests/acceptance.mjs": "5759467fd1c94b32c4044e4e7809c8b19afa636bd2b73ec210952d5c2bdcd4da",
+            "tests/browser.mjs": "94c628f46208c5fe55cc5e6b318fd72b43b95e3a73020a028cd2b02248a89d8a",
+            "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+          },
+          "fingerprint": "3207e548bf17ccd13894715b4353c54a82e315572d5e63a24baf4223f63c12bf"
+        },
+        "scope": [],
+        "inputs": [],
+        "purpose": "probe"
+      }
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "9f554527-a9a0-4c7a-893e-bf41c395411a",
+    "runId": "20261020T222034-5d68bce5",
+    "seq": 40,
+    "at": "2026-10-20T22:27:18.695Z",
+    "type": "task.started",
+    "message": "builder: Sessioni persistenti e riepilogo coerente",
+    "data": {
+      "nodeId": "direction-719ce746-27af-40d0-9697-3fb5a20ab54e-1",
+      "edges": [
+        {
+          "id": "c9b4bdaa-4358-4680-a0c4-7403a08f258f",
+          "source": "84646b88-6a56-4910-a02b-42e04395185e",
+          "target": "direction-719ce746-27af-40d0-9697-3fb5a20ab54e-1",
+          "kind": "next"
+        }
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "97cd9eb3-d20a-4cc1-8ace-403dc12f6c52",
+    "runId": "20261020T222034-5d68bce5",
+    "seq": 41,
+    "at": "2026-10-20T22:27:19.408Z",
+    "type": "agent.thread",
+    "message": "Codex session recorded for recovery.",
+    "data": {
+      "nodeId": "direction-719ce746-27af-40d0-9697-3fb5a20ab54e-1",
+      "threadId": "01a15b6d-199a-70e1-9700-4a90a3d8d7d5"
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "c0f56ac0-8c57-4291-ace4-c72647c5b677",
+    "runId": "20261020T222034-5d68bce5",
+    "seq": 42,
+    "at": "2026-10-20T22:31:50.391Z",
+    "type": "agent.usage",
+    "message": "434204 tokens reported by provider.",
+    "data": {
+      "tokens": 434204
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "3f2e6416-ecdc-4986-9caf-ce2f23aa392b",
+    "runId": "20261020T222034-5d68bce5",
+    "seq": 43,
+    "at": "2026-10-20T22:31:51.027Z",
+    "type": "code.changed",
+    "message": "8 files changed by this activity.",
+    "data": {
+      "nodeId": "direction-719ce746-27af-40d0-9697-3fb5a20ab54e-1",
+      "files": [
+        "README.md",
+        "docs/guida.md",
+        "docs/verifiche.md",
+        "src/app.mjs",
+        "src/archive.mjs",
+        "src/errors.mjs",
+        "src/summary.mjs",
+        "src/time-entries.mjs"
+      ],
+      "diff": "diff --git a/README.md b/README.md\nindex 55fff0f..b4d4483 100644\n--- a/README.md\n+++ b/README.md\n@@ -20,6 +20,10 @@ sotto e nel registro delle evidenze. È una fotografia delle evidenze alla\n redazione: il risultato registrato di un’esecuzione resta distinto dallo stato\n successivo della ricevuta nel runtime. Le prove precedenti restano contesto storico.\n \n+Le ricevute descritte qui appartengono alla prova precedente e non certificano\n+questa nuova missione. Alle API della settimana si aggiungono sessioni persistenti\n+e riepilogo; non è ancora disponibile una ricevuta host per queste modifiche.\n+\n ## Avvio\n \n Occorre Node.js **22.13 o successivo** e un browser moderno con JavaScript e\n@@ -101,10 +105,12 @@ La cartella predefinita è `~/.local/share/svolta`, fuori dai sorgenti.\n cartella di avvio. Se cartella o `archive.json` non esistono, vengono creati con\n un archivio vuoto, senza dati dimostrativi. Cambiare cartella non trasferisce i dati.\n \n-`archive.json` contiene il formato interno versione 1, progetti e attività,\n-inclusi i record archiviati. Un archivio precedente con soli progetti viene\n-letto aggiungendo un elenco attività vuoto in memoria, senza cambiare ID, nomi\n-o revisioni; il file è aggiornato solo alla prima modifica salvata.\n+`archive.json` contiene il formato interno versione 1, progetti, attività e\n+`timeEntries`, inclusi i record archiviati e il loro tempo. Gli archivi precedenti\n+con soli progetti o con progetti e attività vengono letti aggiungendo gli elenchi\n+mancanti vuoti in memoria, senza cambiare ID, nomi o revisioni; il file è aggiornato\n+solo alla prima modifica salvata. Campi presenti ma invalidi, sessioni duplicate\n+o riferimenti incoerenti interrompono l’avvio conservando il file originale.\n \n Ogni scrittura prepara un file temporaneo nella stessa cartella, ne sincronizza\n i contenuti e sostituisce il principale con una rinomina atomica. Il successo\n@@ -131,13 +137,14 @@ manualmente il file durante l’esecuzione.\n \n | Funzione | Stato attuale |\n | --- | --- |\n-| Settimana | **Non ancora disponibile**: nessuna vista o pianificazione settimanale. |\n-| Registrazione del tempo | Non disponibile: una stima non registra minuti dedicati né sessioni. |\n-| Riepilogo | **Non ancora disponibile**: nessun conteggio o riepilogo del tempo. |\n+| Settimana | API `GET /api/week` disponibile; vista nel browser **non ancora disponibile**. |\n+| Registrazione del tempo | API di inserimento, cronologia ed eliminazione disponibili; comandi nel browser **non ancora disponibili**. |\n+| Riepilogo | API disponibile con conteggi e minuti per progetto; vista nel browser **non ancora disponibile**. |\n | Backup | **Non ancora disponibile**: nessun download, importazione o ripristino portabile. |\n \n-Queste funzioni non sono implementate nemmeno nelle API; i pulsanti **Settimana**,\n-**Riepilogo** e **Backup** mostrano esplicitamente l’indisponibilità. Non ci sono\n+Piano settimanale, sessioni e riepilogo sono disponibili nelle API; le rispettive\n+viste e il backup restano da implementare. I pulsanti **Settimana**, **Riepilogo** e **Backup**\n+mostrano esplicitamente l’indisponibilità delle rispettive viste. Non ci sono\n recupero automatico, migrazioni da altri formati o recupero persistente delle\n bozze. Il file interno `archive.json` non è il backup portabile previsto dal\n contratto: questa versione non offre una procedura di esportazione/ripristino.\n@@ -145,7 +152,8 @@ Il percorso futuro progetti → settimana → tempo → backup si ferma alle att\n \n ## Uso delle API\n \n-Le risposte sono JSON. Per inviare dati usare `Content-Type: application/json`.\n+Le risposte sono JSON, salvo il 204 senza corpo dopo l’eliminazione di una sessione.\n+Per inviare dati usare `Content-Type: application/json`.\n Il corpo di una richiesta può occupare al massimo 2 MiB. Gli ID negli esempi\n sono segnaposto da sostituire con quelli restituiti dal server.\n \n@@ -237,12 +245,69 @@ curl -X PATCH -H 'Content-Type: application/json' \\\n   http://127.0.0.1:4386/api/tasks/ID_ATTIVITA\n ```\n \n+### Settimana (API)\n+\n+`GET /api/week?start=2026-10-19` restituisce `{start,days,unscheduled}`:\n+`days` contiene sette oggetti `{date,tasks}`, ordinati da lunedì a domenica,\n+anche quando un giorno è vuoto. Le attività senza scadenza sono in `unscheduled`.\n+Sono incluse solo attività non archiviate di progetti attivi; le completate\n+restano presenti con `status: \"done\"`. Le attività con scadenza fuori dalla\n+settimana sono escluse. In ogni elenco resta l’ordine di creazione e i record\n+conservano tutti i campi, comprese le revisioni.\n+\n+`start` è obbligatorio e deve essere un lunedì reale nel formato `YYYY-MM-DD`.\n+Valori mancanti, date impossibili e giorni diversi dal lunedì danno 400.\n+Il calcolo usa il calendario gregoriano senza conversioni di fuso e gestisce\n+cambi di mese, anno e bisestili. Tutti e sette i giorni devono rientrare negli\n+anni 0001–9999: una settimana che supera questo intervallo dà 400.\n+La lettura non modifica attività, revisioni o archivio. La vista **Settimana**\n+nel browser resta da implementare.\n+\n+### Sessioni di tempo (API)\n+\n+| Richiesta | Corpo o filtri | Risultato |\n+| --- | --- | --- |\n+| `POST /api/time-entries` | `{\"taskId\":\"<id>\",\"date\":\"2026-10-21\",\"minutes\":25,\"note\":\"Capitolo 1\"}` | 201, sessione salvata con `id` e `projectId` assegnati dal server |\n+| `GET /api/time-entries` | — | Tutte le sessioni in ordine di registrazione, anche di attività o progetti archiviati |\n+| `GET /api/time-entries?taskId=<id>` | ID di un’attività esistente, anche archiviata | Solo le sessioni di quella attività |\n+| `DELETE /api/time-entries/<id>` | Nessun corpo richiesto | 204 senza corpo, elimina solo la sessione indicata |\n+\n+La registrazione richiede un’attività e un progetto non archiviati; è ammessa anche\n+per attività completate. `date` è una data civile reale `YYYY-MM-DD`, `minutes` è\n+un numero intero da 1 a 1440 e `note` è testo letterale di massimo 2000 caratteri\n+Unicode (default `\"\"`). Le stringhe numeriche e i campi non previsti sono rifiutati.\n+Un ID di attività o sessione sconosciuto dà 404. Registrare o eliminare una sessione\n+non cambia stato, campi o revisione dell’attività. L’archiviazione conserva la\n+cronologia e l’eliminazione resta possibile anche dopo l’archiviazione.\n+\n+### Riepilogo (API)\n+\n+`GET /api/summary?date=2026-10-21` restituisce `date`, `weekStart`, `weekEnd`,\n+`totals` e `byProject`. La data è obbligatoria e segue le stesse regole civili\n+della settimana, senza conversioni di fuso; nell’esempio l’intervallo incluso\n+è `2026-10-19`–`2026-10-25`. Una data invalida o una settimana che oltrepassa\n+gli anni 0001–9999 dà 400.\n+\n+`totals.todo`, `doing` e `done` contano tutte le attività non archiviate di progetti\n+attivi, anche fuori settimana. `overdue` conta quelle non completate con scadenza\n+anteriore alla data di riferimento, escludendo le attività senza scadenza.\n+`minutesThisWeek` somma solo le sessioni dal lunedì alla domenica inclusi.\n+\n+La scelta attuale è conservare nel totale anche il tempo di attività e progetti\n+archiviati: l’archiviazione non cancella il lavoro svolto. `byProject` include\n+tutti i progetti nell’ordine di creazione, con `projectId`, nome corrente,\n+`minutesThisWeek` e numero di attività attive `done`. Un progetto archiviato ha\n+quindi `done: 0`, ma può avere minuti. Le somme di minuti e `done` per progetto\n+coincidono con i rispettivi totali; eliminare una sessione aggiorna i minuti\n+senza alterare i conteggi delle attività.\n+Questa lettura non modifica l’archivio. La vista nel browser resta da implementare.\n+\n ### Revisioni ed errori\n \n Per modificare, leggere prima la revisione corrente e inviarla nel PATCH.\n Ogni aggiornamento riuscito incrementa la revisione di uno, anche a valori\n-invariati. Progetti e attività condividono una coda: confronto della revisione,\n-controllo del progetto attivo alla creazione e salvataggio sono serializzati.\n+invariati. Progetti, attività e sessioni condividono una coda: confronto della\n+revisione, controlli dei riferimenti e dell’archiviazione e salvataggio sono serializzati.\n Due aggiornamenti concorrenti dello stesso record con la stessa revisione\n producono un successo e un 409, se il salvataggio riesce. Il client deve\n conservare i propri input su un conflitto, rileggere i dati e scegliere cosa\n@@ -297,8 +362,15 @@ successivo occorre consultare il runtime: questa pagina non lo aggiorna in tempo\n reale e non certifica una nuova revisione o impronta dei documenti modificati.\n \n I PASS API della prova originale e l’audit UI separato rimangono nel registro\n-come contesto. I controlli locali di questo task riguardano collegamenti e diff;\n-non sono stati avviati server o browser né rieseguite suite. La copertura\n+come contesto. Per l’API Settimana sono stati eseguiti controlli mirati delle date\n+in quattro fusi e del gestore richieste in memoria, oltre a sintassi e diff;\n+non sono stati avviati server o browser né eseguite suite complete. Questi\n+controlli non dimostrano il funzionamento HTTP o una certificazione host.\n+Per sessioni e riepilogo sono passati controlli locali mirati su archivio\n+temporaneo e gestore in memoria: compatibilità dei file, validazione dei\n+riferimenti, cronologia dopo riavvio, eliminazione, coda e salvataggio fallito,\n+conteggi e confini settimanali in quattro fusi. Anche questi non sono ricevute\n+host e non osservano il browser. La copertura\n registrata non si estende a ogni risoluzione dei conflitti per campo, al focus,\n all’intero layout o all’uso con lettori di schermo. Le funzioni successive\n restano indisponibili come descritto sopra.\ndiff --git a/docs/guida.md b/docs/guida.md\nindex 80b1a8f..d67afcd 100644\n--- a/docs/guida.md\n+++ b/docs/guida.md\n@@ -169,8 +169,24 @@ Per errori di avvio vedere [Cartella dati e affidabilità](../README.md#cartella\n **Settimana**, **Riepilogo** e **Backup** mostrano «Non ancora disponibile».\n Il percorso futuro **progetti → settimana → tempo → backup** si ferma qui alle\n attività: una scadenza non genera una vista settimanale e una stima non registra\n-sessioni. Mancano conteggi, riepiloghi, backup portabile e ripristino; il file\n-interno non è quel backup. Non c’è recupero automatico dei dati o delle bozze.\n+sessioni nel browser. Mancano le viste di conteggi e riepiloghi, backup portabile\n+e ripristino; il file interno non è quel backup. Non c’è recupero automatico dei\n+dati o delle bozze.\n+\n+La lettura della settimana è disponibile tramite\n+[`GET /api/week`](../README.md#settimana-api): restituisce sette giorni da un\n+lunedì e le attività senza scadenza, senza includere attività o progetti\n+archiviati. Questa aggiunta non abilita ancora la vista nel browser.\n+\n+Sono disponibili anche le API per [registrare, consultare ed eliminare sessioni](../README.md#sessioni-di-tempo-api)\n+e per il [riepilogo](../README.md#riepilogo-api). Le sessioni richiedono attività\n+e progetti attivi, una data reale e da 1 a 1440 minuti; non cambiano lo stato o\n+la revisione dell’attività. La cronologia rimane consultabile dopo archiviazione\n+e riavvio. Nel riepilogo i conteggi riguardano solo le attività non archiviate di\n+progetti attivi, mentre il tempo settimanale comprende anche lo storico archiviato.\n+Eliminare una sessione toglie soltanto quei minuti. Sono funzioni API: il dialogo\n+di registrazione, la cronologia e la vista Riepilogo non sono ancora nel browser.\n+Gli archivi precedenti vengono letti con sessioni vuote senza riscrittura all’avvio.\n \n Il server ascolta solo sul dispositivo che lo esegue: il layout adattivo non\n permette di collegare il telefono al computer con lo stesso indirizzo locale.\n@@ -178,5 +194,6 @@ Le evidenze API della prova originale, l’audit UI e le ricevute precedenti\n segnalate come `stale` alla redazione sono separati dalle nuove ricevute nel\n [registro delle evidenze](verifiche.md). I tre PASS riportati riguardano le\n rispettive esecuzioni, entro i 6/6/4 gruppi registrati; non attestano le funzioni\n-successive né un collaudo completo di accessibilità. Questo task aggiorna solo\n-la documentazione e non riesegue i controlli host.\n+successive né un collaudo completo di accessibilità. Quelle ricevute restano\n+storiche per questa nuova missione; gli interventi sulle API Settimana, sessioni\n+e riepilogo hanno solo controlli locali mirati, senza nuove ricevute host.\ndiff --git a/docs/verifiche.md b/docs/verifiche.md\nindex df6e362..bb59c3a 100644\n--- a/docs/verifiche.md\n+++ b/docs/verifiche.md\n@@ -225,8 +225,10 @@ scartano le modifiche nei dialoghi. Non c’è recupero persistente delle bozze.\n Se un’attività è stata archiviata altrove, la versione corrente non è consultabile\n negli elenchi per risolvere il conflitto: copiare gli input utili prima di annullare.\n \n-Settimana, sessioni di tempo, Riepilogo e Backup/ripristino rimangono indisponibili\n-anche nelle API e spettano agli esiti successivi del supervisore host. Il file\n+Le viste Settimana, sessioni di tempo, Riepilogo e Backup/ripristino rimangono\n+indisponibili e spettano ai task successivi del supervisore host. Le API per\n+sessioni e riepilogo sono descritte nell’intervento in fondo; quelle per\n+backup/ripristino restano da implementare. Il file\n interno `archive.json` non è un backup portabile; non esiste ancora una procedura\n di esportazione o ripristino. Una stima non registra tempo e una scadenza non\n genera una vista settimanale. Il layout per schermi stretti non abilita l’accesso\n@@ -237,3 +239,57 @@ collaudi desktop/mobile o con lettori di schermo, revisioni indipendenti o\n pubblicazioni. I criteri automatici non esauriscono la revisione d’uso: conflitti\n per campo, tastiera, focus, nomi lunghi e assenza di scorrimento orizzontale vanno\n riferiti solo alla copertura realmente osservata.\n+\n+## Intervento corrente: date civili e API Settimana\n+\n+Le ricevute riportate sopra appartengono alla prova precedente: sono contesto\n+storico e non certificano la nuova missione. Non è disponibile una nuova\n+ricevuta host per l’intervento qui descritto.\n+\n+Sono stati aggiunti `addCivilDays` e `civilWeekday` in `src/dates.mjs` e\n+`GET /api/week?start=YYYY-MM-DD`. Il piano include attività non archiviate di\n+progetti attivi, conserva completate e revisioni e separa quelle senza scadenza.\n+La scelta per il limite del calendario è rifiutare con 400 una settimana che\n+oltrepassa gli anni 0001–9999; non si troncano i sette giorni.\n+\n+Nella sandbox sono passati controlli mirati eseguiti direttamente con Node:\n+validazione e aritmetica delle date in quattro fusi, cambi di mese e anno,\n+bisestili secolari, anni iniziali e limiti; gestore richieste in memoria con\n+filtri degli archivi, completate, giorni vuoti, input errati, risposta 405 e\n+assenza di mutazioni. Sono passati anche controllo sintattico dei moduli\n+modificati e `git diff --check`. Non sono stati aperti socket né avviati browser\n+o suite di accettazione. Non sono prove HTTP, di persistenza o ricevute host.\n+Il criterio `planning-api` include anche sessioni e riepilogo: questi controlli\n+della sola API Settimana non ne attestano l’esito.\n+\n+## Intervento corrente: sessioni persistenti e riepilogo\n+\n+Implementati `POST/GET /api/time-entries`, `DELETE /api/time-entries/:id` con\n+204 senza corpo e `GET /api/summary?date=YYYY-MM-DD`. L’archivio valida le sessioni,\n+gli ID duplicati e i riferimenti all’attività e allo stesso progetto. I file\n+precedenti senza sessioni vengono integrati solo in memoria all’apertura.\n+Controlli e scritture usano la coda esistente senza cambiare revisioni o stato\n+delle attività; la cronologia resta leggibile dopo archiviazione e riavvio.\n+\n+Scelte esplicite: il tempo archiviato continua a contribuire al riepilogo nella\n+settimana della sessione; `byProject` include tutti i progetti, anche archiviati\n+e senza minuti, mentre i conteggi delle attività escludono entrambi gli archivi.\n+Il riepilogo riusa l’aritmetica civile della settimana, con estremi inclusi e\n+400 per settimane che oltrepassano gli anni 0001–9999.\n+\n+Controlli mirati locali passati con Node, senza socket: gestore in memoria per\n+limiti e input invalidi, JSON malformato, 204/404/405, lettura della cronologia,\n+revisioni immutate, conteggi e minuti. Su filesystem temporaneo sono stati\n+controllati riavvio, compatibilità senza riscrittura, rifiuto di record e grafi\n+corrotti conservando il file, archiviazione concorrente alla registrazione,\n+scrittura fallita senza pubblicazione e successivo riutilizzo della coda,\n+salvataggi concorrenti senza perdere sessioni. I calcoli sono stati confrontati\n+in quattro fusi, su cambio d’anno, bisestili e cambio d’ora. Passati inoltre\n+controllo sintattico dei moduli modificati e `git diff --check`.\n+\n+Nessuna suite completa di accettazione o browser è stata eseguita nella sandbox;\n+questi controlli non osservano HTTP o l’interfaccia e non sono ricevute host.\n+Il criterio richiesto al runtime è `planning-api`; per le regressioni della\n+persistenza condivisa sono richiesti anche `projects-api` e `tasks-api`.\n+Non è disponibile alcun nuovo esito host per queste modifiche. Le viste\n+rimangono delegate ai task successivi; backup e ripristino al prossimo esito.\ndiff --git a/src/app.mjs b/src/app.mjs\nindex f0db111..718ceac 100644\n--- a/src/app.mjs\n+++ b/src/app.mjs\n@@ -1,6 +1,9 @@\n-import { AppError, sendError, sendJSON } from './errors.mjs';\n+import { AppError, sendError, sendJSON, sendNoContent } from './errors.mjs';\n import { createProject, updateProject } from './projects.mjs';\n import { createTask, listTasks, updateTask } from './tasks.mjs';\n+import { getWeek } from './week.mjs';\n+import { createTimeEntry, deleteTimeEntry, listTimeEntries } from './time-entries.mjs';\n+import { getSummary } from './summary.mjs';\n import { servePublic } from './public.mjs';\n \n const MAX_BODY_BYTES = 2 * 1024 * 1024;\n@@ -98,6 +101,54 @@ export function createRequestHandler(archive) {\n         }\n         return;\n       }\n+      if (path === '/api/week') {\n+        if (request.method === 'GET') {\n+          sendJSON(response, 200, getWeek(archive.snapshot(), url.searchParams.get('start')));\n+        } else {\n+          methodNotAllowed(response, ['GET']);\n+        }\n+        return;\n+      }\n+      if (path === '/api/time-entries') {\n+        if (request.method === 'GET') {\n+          sendJSON(response, 200, listTimeEntries(archive.snapshot(), url.searchParams));\n+        } else if (request.method === 'POST') {\n+          const input = await readJSON(request);\n+          const entry = await archive.mutate(data => {\n+            const next = createTimeEntry(input, data);\n+            data.timeEntries.push(next);\n+            return next;\n+          });\n+          sendJSON(response, 201, entry);\n+        } else {\n+          methodNotAllowed(response, ['GET', 'POST']);\n+        }\n+        return;\n+      }\n+      if (path === '/api/summary') {\n+        if (request.method === 'GET') {\n+          sendJSON(response, 200, getSummary(archive.snapshot(), url.searchParams.get('date')));\n+        } else {\n+          methodNotAllowed(response, ['GET']);\n+        }\n+        return;\n+      }\n+      const entryMatch = path.match(/^\\/api\\/time-entries\\/([^/]+)$/);\n+      if (entryMatch) {\n+        if (request.method !== 'DELETE') {\n+          methodNotAllowed(response, ['DELETE']);\n+          return;\n+        }\n+        let id;\n+        try {\n+          id = decodeURIComponent(entryMatch[1]);\n+        } catch {\n+          throw new AppError(400, 'INVALID_ID', 'L’identificativo della sessione non è valido.');\n+        }\n+        await archive.mutate(data => deleteTimeEntry(data, id));\n+        sendNoContent(response);\n+        return;\n+      }\n       const taskMatch = path.match(/^\\/api\\/tasks\\/([^/]+)$/);\n       if (taskMatch) {\n         if (request.method !== 'PATCH') {\ndiff --git a/src/archive.mjs b/src/archive.mjs\nindex 1f2a810..e899006 100644\n--- a/src/archive.mjs\n+++ b/src/archive.mjs\n@@ -4,11 +4,13 @@ import { join, resolve } from 'node:path';\n import { AppError } from './errors.mjs';\n import { validateStoredProject } from './projects.mjs';\n import { validateStoredTask } from './tasks.mjs';\n+import { validateStoredTimeEntry } from './time-entries.mjs';\n \n function validateArchive(archive) {\n   if (archive === null || typeof archive !== 'object' || Array.isArray(archive)\n       || archive.version !== 1 || !Array.isArray(archive.projects) || !Array.isArray(archive.tasks)\n-      || Object.keys(archive).some(key => !['version', 'projects', 'tasks'].includes(key))) {\n+      || !Array.isArray(archive.timeEntries)\n+      || Object.keys(archive).some(key => !['version', 'projects', 'tasks', 'timeEntries'].includes(key))) {\n     throw new Error('Formato dell’archivio non riconosciuto.');\n   }\n   const ids = new Set();\n@@ -17,12 +19,23 @@ function validateArchive(archive) {\n     if (ids.has(project.id)) throw new Error('Identificativi di progetto duplicati.');\n     ids.add(project.id);\n   }\n-  const taskIds = new Set();\n+  const tasksById = new Map();\n   for (const task of archive.tasks) {\n     validateStoredTask(task);\n-    if (taskIds.has(task.id)) throw new Error('Identificativi di attività duplicati.');\n+    if (tasksById.has(task.id)) throw new Error('Identificativi di attività duplicati.');\n     if (!ids.has(task.projectId)) throw new Error('Attività con riferimento a un progetto inesistente.');\n-    taskIds.add(task.id);\n+    tasksById.set(task.id, task);\n+  }\n+  const entryIds = new Set();\n+  for (const entry of archive.timeEntries) {\n+    validateStoredTimeEntry(entry);\n+    if (entryIds.has(entry.id)) throw new Error('Identificativi di sessione duplicati.');\n+    const task = tasksById.get(entry.taskId);\n+    if (!task) throw new Error('Sessione con riferimento a un’attività inesistente.');\n+    if (task.projectId !== entry.projectId) {\n+      throw new Error('Il progetto della sessione non corrisponde a quello dell’attività.');\n+    }\n+    entryIds.add(entry.id);\n   }\n }\n \n@@ -76,7 +89,7 @@ export class Archive {\n \n     let data;\n     if (source === undefined) {\n-      data = { version: 1, projects: [], tasks: [] };\n+      data = { version: 1, projects: [], tasks: [], timeEntries: [] };\n       await writeAtomic(absolute, data);\n     } else {\n       try {\n@@ -86,6 +99,8 @@ export class Archive {\n         // Upgrade in memory; opening an archive never overwrites its contents.\n         if (data !== null && typeof data === 'object' && !Array.isArray(data)\n             && data.version === 1 && !Object.hasOwn(data, 'tasks')) data.tasks = [];\n+        if (data !== null && typeof data === 'object' && !Array.isArray(data)\n+            && data.version === 1 && !Object.hasOwn(data, 'timeEntries')) data.timeEntries = [];\n         validateArchive(data);\n       } catch (cause) {\n         throw new Error(`L’archivio ${file} è illeggibile o non valido. Avvio interrotto; il file è conservato.`, { cause });\ndiff --git a/src/dates.mjs b/src/dates.mjs\nindex b1932cb..0cdb6fb 100644\n--- a/src/dates.mjs\n+++ b/src/dates.mjs\n@@ -1,11 +1,62 @@\n // Civil dates are calendar values, never instants in the machine's timezone.\n+const MONTH_DAYS = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];\n+\n+function daysInMonth(year, month) {\n+  const leap = year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0);\n+  return month === 2 && leap ? 29 : MONTH_DAYS[month - 1];\n+}\n+\n export function isCivilDate(value) {\n   if (typeof value !== 'string' || value.length !== 10 || !/^\\d{4}-\\d{2}-\\d{2}$/.test(value)) return false;\n   const year = Number(value.slice(0, 4));\n   const month = Number(value.slice(5, 7));\n   const day = Number(value.slice(8, 10));\n   if (year < 1 || month < 1 || month > 12 || day < 1) return false;\n-  const leap = year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0);\n-  const days = [31, leap ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];\n-  return day <= days[month - 1];\n+  return day <= daysInMonth(year, month);\n+}\n+\n+function daysBeforeYear(year) {\n+  const previous = year - 1;\n+  return previous * 365 + Math.floor(previous / 4)\n+    - Math.floor(previous / 100) + Math.floor(previous / 400);\n+}\n+\n+// Zero is 0001-01-01, a Monday in the proleptic Gregorian calendar.\n+function civilDayNumber(value) {\n+  if (!isCivilDate(value)) {\n+    throw new RangeError('La data deve essere reale nel formato YYYY-MM-DD, con anno da 0001 a 9999.');\n+  }\n+  const [year, month, day] = value.split('-').map(Number);\n+  let number = daysBeforeYear(year) + day - 1;\n+  for (let current = 1; current < month; current++) number += daysInMonth(year, current);\n+  return number;\n+}\n+\n+// Monday = 0, ..., Sunday = 6. No Date, UTC conversion or daylight-saving rules.\n+export function civilWeekday(value) {\n+  return civilDayNumber(value) % 7;\n+}\n+\n+export function addCivilDays(value, amount) {\n+  if (!Number.isSafeInteger(amount)) throw new RangeError('Il numero di giorni deve essere un intero sicuro.');\n+  const number = civilDayNumber(value) + amount;\n+  if (!Number.isSafeInteger(number) || number < 0 || number >= daysBeforeYear(10000)) {\n+    throw new RangeError('La data risultante deve avere un anno da 0001 a 9999.');\n+  }\n+\n+  // Find the year with integer comparisons, including years 0001–0099.\n+  let year = 1;\n+  let upper = 10000;\n+  while (year + 1 < upper) {\n+    const middle = Math.floor((year + upper) / 2);\n+    if (daysBeforeYear(middle) <= number) year = middle;\n+    else upper = middle;\n+  }\n+  let day = number - daysBeforeYear(year);\n+  let month = 1;\n+  while (day >= daysInMonth(year, month)) {\n+    day -= daysInMonth(year, month);\n+    month++;\n+  }\n+  return `${String(year).padStart(4, '0')}-${String(month).padStart(2, '0')}-${String(day + 1).padStart(2, '0')}`;\n }\ndiff --git a/src/errors.mjs b/src/errors.mjs\nindex 15b5603..b4a15fa 100644\n--- a/src/errors.mjs\n+++ b/src/errors.mjs\n@@ -20,6 +20,15 @@ export function sendJSON(response, status, value, headers = {}) {\n   response.end(body);\n }\n \n+export function sendNoContent(response) {\n+  if (response.destroyed || response.writableEnded) return;\n+  response.writeHead(204, {\n+    'cache-control': 'no-store',\n+    'x-content-type-options': 'nosniff',\n+  });\n+  response.end();\n+}\n+\n export function sendError(response, error) {\n   const known = error instanceof AppError;\n   if (!known || error.status >= 500) console.error('Svolta:', error);\ndiff --git a/src/summary.mjs b/src/summary.mjs\nnew file\n--- /dev/null\n+++ b/src/summary.mjs\n+import { addCivilDays, civilWeekday, isCivilDate } from './dates.mjs';\n+import { AppError } from './errors.mjs';\n+import { listTasks } from './tasks.mjs';\n+\n+export function getSummary(data, date) {\n+  if (!isCivilDate(date)) {\n+    throw new AppError(400, 'INVALID_SUMMARY_DATE',\n+      'La data di riferimento deve essere reale nel formato YYYY-MM-DD, con anno da 0001 a 9999.');\n+  }\n+\n+  let weekStart;\n+  let weekEnd;\n+  try {\n+    weekStart = addCivilDays(date, -civilWeekday(date));\n+    weekEnd = addCivilDays(weekStart, 6);\n+  } catch (error) {\n+    if (!(error instanceof RangeError)) throw error;\n+    throw new AppError(400, 'WEEK_OUT_OF_RANGE',\n+      'Tutti e sette i giorni della settimana devono avere un anno da 0001 a 9999.');\n+  }\n+\n+  const totals = { todo: 0, doing: 0, done: 0, overdue: 0, minutesThisWeek: 0 };\n+  // Include archived projects too: their saved time still belongs to them.\n+  const byProject = data.projects.map(project => ({\n+    projectId: project.id,\n+    name: project.name,\n+    minutesThisWeek: 0,\n+    done: 0,\n+  }));\n+  const projectsById = new Map(byProject.map(project => [project.projectId, project]));\n+\n+  for (const task of listTasks(data, new URLSearchParams())) {\n+    totals[task.status]++;\n+    if (task.status === 'done') projectsById.get(task.projectId).done++;\n+    else if (task.dueDate !== null && task.dueDate < date) totals.overdue++;\n+  }\n+\n+  // Valid fixed-width civil dates compare in calendar order, without timezones.\n+  for (const entry of data.timeEntries) {\n+    if (entry.date >= weekStart && entry.date <= weekEnd) {\n+      totals.minutesThisWeek += entry.minutes;\n+      projectsById.get(entry.projectId).minutesThisWeek += entry.minutes;\n+    }\n+  }\n+  return { date, weekStart, weekEnd, totals, byProject };\n+}\n+\ndiff --git a/src/time-entries.mjs b/src/time-entries.mjs\nnew file\n--- /dev/null\n+++ b/src/time-entries.mjs\n+import { randomUUID } from 'node:crypto';\n+import { isCivilDate } from './dates.mjs';\n+import { AppError } from './errors.mjs';\n+\n+const INPUT_FIELDS = ['taskId', 'date', 'minutes', 'note'];\n+\n+function invalid(message) {\n+  throw new AppError(400, 'INVALID_TIME_ENTRY', message);\n+}\n+\n+function objectWithFields(value, allowed) {\n+  if (value === null || typeof value !== 'object' || Array.isArray(value)) {\n+    invalid('Invia un oggetto JSON con i campi della sessione.');\n+  }\n+  if (Object.keys(value).some(key => !allowed.includes(key))) {\n+    invalid('La sessione contiene campi non previsti per questa operazione.');\n+  }\n+}\n+\n+function identifier(value) {\n+  return typeof value === 'string' && value.length > 0 && value.trim() === value;\n+}\n+\n+export function validateStoredTimeEntry(entry) {\n+  objectWithFields(entry, ['id', 'projectId', ...INPUT_FIELDS]);\n+  if (!identifier(entry.id)) invalid('Identificativo della sessione non valido.');\n+  if (!identifier(entry.taskId)) invalid('Identificativo dell’attività non valido.');\n+  if (!identifier(entry.projectId)) invalid('Identificativo del progetto non valido.');\n+  if (!isCivilDate(entry.date)) {\n+    invalid('La data della sessione deve essere reale nel formato YYYY-MM-DD, con anno da 0001 a 9999.');\n+  }\n+  if (!Number.isInteger(entry.minutes) || entry.minutes < 1 || entry.minutes > 1440) {\n+    invalid('I minuti della sessione devono essere un numero intero tra 1 e 1440.');\n+  }\n+  if (typeof entry.note !== 'string' || [...entry.note].length > 2000) {\n+    invalid('La nota della sessione deve essere un testo di massimo 2000 caratteri.');\n+  }\n+}\n+\n+export function createTimeEntry(input, data) {\n+  objectWithFields(input, INPUT_FIELDS);\n+  if (!identifier(input.taskId)) invalid('Scegli un’attività per la sessione.');\n+  const task = data.tasks.find(item => item.id === input.taskId);\n+  if (!task) throw new AppError(404, 'TASK_NOT_FOUND', 'L’attività richiesta non esiste.');\n+  if (task.archived) {\n+    throw new AppError(400, 'TASK_ARCHIVED', 'L’attività è archiviata. Riattivala prima di registrare tempo.');\n+  }\n+  const project = data.projects.find(item => item.id === task.projectId);\n+  if (!project) throw new AppError(404, 'PROJECT_NOT_FOUND', 'Il progetto richiesto non esiste.');\n+  if (project.archived) {\n+    throw new AppError(400, 'PROJECT_ARCHIVED', 'Il progetto è archiviato. Riattivalo prima di registrare tempo.');\n+  }\n+\n+  const entry = {\n+    id: randomUUID(),\n+    taskId: task.id,\n+    projectId: project.id,\n+    date: input.date,\n+    minutes: input.minutes,\n+    note: Object.hasOwn(input, 'note') ? input.note : '',\n+  };\n+  validateStoredTimeEntry(entry);\n+  return entry;\n+}\n+\n+export function listTimeEntries(data, searchParams) {\n+  const taskId = searchParams.get('taskId');\n+  if (taskId === null) return data.timeEntries;\n+  if (!identifier(taskId)) {\n+    throw new AppError(400, 'INVALID_TIME_ENTRY_FILTER', 'Il filtro attività richiede un identificativo non vuoto.');\n+  }\n+  if (!data.tasks.some(task => task.id === taskId)) {\n+    throw new AppError(404, 'TASK_NOT_FOUND', 'L’attività richiesta non esiste.');\n+  }\n+  // History remains readable even when the task or its project is archived.\n+  return data.timeEntries.filter(entry => entry.taskId === taskId);\n+}\n+\n+export function deleteTimeEntry(data, id) {\n+  const index = data.timeEntries.findIndex(entry => entry.id === id);\n+  if (index === -1) {\n+    throw new AppError(404, 'TIME_ENTRY_NOT_FOUND', 'La sessione richiesta non esiste.');\n+  }\n+  data.timeEntries.splice(index, 1);\n+}\n+\ndiff --git a/src/week.mjs b/src/week.mjs\nnew file\n--- /dev/null\n+++ b/src/week.mjs\n+import { addCivilDays, civilWeekday, isCivilDate } from './dates.mjs';\n+import { AppError } from './errors.mjs';\n+import { listTasks } from './tasks.mjs';\n+\n+export function getWeek(data, start) {\n+  if (!isCivilDate(start) || civilWeekday(start) !== 0) {\n+    throw new AppError(400, 'INVALID_WEEK_START',\n+      'L’inizio settimana deve essere un lunedì reale nel formato YYYY-MM-DD, con anno da 0001 a 9999.');\n+  }\n+\n+  let days;\n+  try {\n+    days = Array.from({ length: 7 }, (_, offset) => ({\n+      date: addCivilDays(start, offset),\n+      tasks: [],\n+    }));\n+  } catch (error) {\n+    if (!(error instanceof RangeError)) throw error;\n+    throw new AppError(400, 'WEEK_OUT_OF_RANGE',\n+      'Tutti e sette i giorni della settimana devono avere un anno da 0001 a 9999.');\n+  }\n+\n+  const tasksByDate = new Map(days.map(day => [day.date, day.tasks]));\n+  const unscheduled = [];\n+  // The general task list excludes archived tasks and archived projects,\n+  // while retaining completed tasks and their status, revision and other fields.\n+  for (const task of listTasks(data, new URLSearchParams())) {\n+    if (task.dueDate === null) unscheduled.push(task);\n+    else tasksByDate.get(task.dueDate)?.push(task);\n+  }\n+  return { start, days, unscheduled };\n+}\n+"
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "ce53b7be-15f5-4367-a2ae-2d5358d1201e",
+    "runId": "20261020T222034-5d68bce5",
+    "seq": 44,
+    "at": "2026-10-20T22:31:51.059Z",
+    "type": "evidence.invalidated",
+    "message": "Evidence is STALE: README.md, docs/guida.md, docs/verifiche.md, src/app.mjs, src/archive.mjs, src/errors.mjs, src/summary.mjs, src/time-entries.mjs. Scope: all repository files.",
+    "data": {
+      "evidenceId": "5bd95a14-21a8-4681-bec9-e5f822d643a1",
+      "changed": [
+        "README.md",
+        "docs/guida.md",
+        "docs/verifiche.md",
+        "src/app.mjs",
+        "src/archive.mjs",
+        "src/errors.mjs",
+        "src/summary.mjs",
+        "src/time-entries.mjs"
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "9d88f443-33d3-45ee-8bca-fe6f613042af",
+    "runId": "20261020T222034-5d68bce5",
+    "seq": 45,
+    "at": "2026-10-20T22:31:51.079Z",
+    "type": "evidence.invalidated",
+    "message": "Evidence is STALE: README.md, docs/guida.md, docs/verifiche.md, src/app.mjs, src/archive.mjs, src/errors.mjs, src/summary.mjs, src/time-entries.mjs. Scope: all repository files.",
+    "data": {
+      "evidenceId": "4168430f-9a8d-467b-8a58-1a2c5805c1c9",
+      "changed": [
+        "README.md",
+        "docs/guida.md",
+        "docs/verifiche.md",
+        "src/app.mjs",
+        "src/archive.mjs",
+        "src/errors.mjs",
+        "src/summary.mjs",
+        "src/time-entries.mjs"
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "e0de6e69-ead6-4f8d-835c-e990198228c0",
+    "runId": "20261020T222034-5d68bce5",
+    "seq": 46,
+    "at": "2026-10-20T22:31:51.103Z",
+    "type": "evidence.invalidated",
+    "message": "Evidence is STALE: README.md, docs/guida.md, docs/verifiche.md, src/app.mjs, src/archive.mjs, src/errors.mjs, src/summary.mjs, src/time-entries.mjs. Scope: all repository files.",
+    "data": {
+      "evidenceId": "8903fe29-4669-4e21-97cd-c120bcf7783f",
+      "changed": [
+        "README.md",
+        "docs/guida.md",
+        "docs/verifiche.md",
+        "src/app.mjs",
+        "src/archive.mjs",
+        "src/errors.mjs",
+        "src/summary.mjs",
+        "src/time-entries.mjs"
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "1fc0d7e6-9d2e-4215-92ee-57078070e5a2",
+    "runId": "20261020T222034-5d68bce5",
+    "seq": 47,
+    "at": "2026-10-20T22:31:51.134Z",
+    "type": "task.completed",
+    "message": "Implementate sessioni persistenti POST/GET/DELETE con validazione, risposte 204/404, compatibilità degli archivi e storico dopo archiviazione e riavvio, senza modificare le revisioni delle attività. Aggiunto riepilogo con conteggi attivi e minuti settimanali inclusivi, indipendente dal fuso. Documentazione aggiornata. Controlli locali mirati superati; HTTP/browser e verifiche host non osservati. Interfaccia e backup restano delegati.",
+    "data": {
+      "nodeId": "direction-719ce746-27af-40d0-9697-3fb5a20ab54e-1",
+      "summary": "Implementate sessioni persistenti POST/GET/DELETE con validazione, risposte 204/404, compatibilità degli archivi e storico dopo archiviazione e riavvio, senza modificare le revisioni delle attività. Aggiunto riepilogo con conteggi attivi e minuti settimanali inclusivi, indipendente dal fuso. Documentazione aggiornata. Controlli locali mirati superati; HTTP/browser e verifiche host non osservati. Interfaccia e backup restano delegati.",
+      "files": [
+        "README.md",
+        "docs/guida.md",
+        "docs/verifiche.md",
+        "src/app.mjs",
+        "src/archive.mjs",
+        "src/errors.mjs",
+        "src/summary.mjs",
+        "src/time-entries.mjs"
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "75e3a1c7-7b2b-4e10-b7d4-736e3b90bc79",
+    "runId": "20261020T222034-5d68bce5",
+    "seq": 48,
+    "at": "2026-10-20T22:31:51.158Z",
+    "type": "decision.recorded",
+    "message": "Builder handed verification to the runtime host. Agent-local check limitations are unverified observations; only approved runtime checks can certify results.",
+    "data": {
+      "kind": "verification.handoff",
+      "nodeId": "direction-719ce746-27af-40d0-9697-3fb5a20ab54e-1",
+      "criterionIds": [
+        "projects-api",
+        "tasks-api",
+        "planning-api"
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "160db961-f90c-4365-b342-f19c43602441",
+    "runId": "20261020T222034-5d68bce5",
+    "seq": 49,
+    "at": "2026-10-20T22:31:51.220Z",
+    "type": "verification.started",
+    "message": "Checking existing coverage: Archivio progetti persistente e revisioni",
+    "data": {
+      "nodeId": "e9980789-d8fb-4154-964a-d6f61c749c2a",
+      "node": {
+        "id": "e9980789-d8fb-4154-964a-d6f61c749c2a",
+        "status": "PENDING",
+        "attempt": 3,
+        "files": [],
+        "evidenceIds": [],
+        "kind": "verification",
+        "role": "verifier",
+        "title": "Archivio progetti persistente e revisioni",
+        "objective": "Run approved check: [\"node\",\"tests/acceptance.mjs\",\"projects-api\"]",
+        "criterionId": "projects-api",
+        "reason": "Probe while planned implementation remains; a negative observation defers correction."
+      },
+      "edges": [
+        {
+          "id": "4073564b-70a7-492c-b001-651716d742e1",
+          "source": "84646b88-6a56-4910-a02b-42e04395185e",
+          "target": "e9980789-d8fb-4154-964a-d6f61c749c2a",
+          "kind": "next"
+        }
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "fe976e4f-8eee-425b-8e31-12963230246f",
+    "runId": "20261020T222034-5d68bce5",
+    "seq": 50,
+    "at": "2026-10-20T22:31:52.608Z",
+    "type": "verification.passed",
+    "message": "Archivio progetti persistente e revisioni: approved command already passes on the recorded inputs.",
+    "data": {
+      "nodeId": "e9980789-d8fb-4154-964a-d6f61c749c2a",
+      "evidence": {
+        "id": "402dc1c0-fdaa-469c-93c0-bc6e2e65c05d",
+        "nodeId": "e9980789-d8fb-4154-964a-d6f61c749c2a",
+        "criterionId": "projects-api",
+        "contractVersion": 1,
+        "kind": "deterministic",
+        "status": "passed",
+        "createdAt": "2026-10-20T22:31:52.556Z",
+        "command": [
+          "node",
+          "tests/acceptance.mjs",
+          "projects-api"
+        ],
+        "exitCode": 0,
+        "output": "PASS empty archive\nPASS create project with stable defaults\nPASS optimistic project edit\nPASS invalid names and missing revisions do not write\nPASS project archival survives restart\nPASS unknown project does not create a record\n{\"criterion\":\"projects-api\",\"result\":\"PASS\",\"groups\":6}\n",
+        "durationMs": 1341,
+        "stamp": {
+          "head": "f765280cde7671df2ede74245b56dcb3e3b5496b",
+          "files": {
+            ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+            "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+            "README.md": "80aed329d1575ddaa960ec01496d7bf14e532532b9b7f84235799c5d28aa78ea",
+            "docs/guida.md": "0671bc6a3f4b7ebacfc10aa5c13456fcecf9a810c809ba3ee944a611c65d7abd",
+            "docs/verifiche.md": "8d2982949c2f0aefd4e201751d7b7f59e44d34106306c5ef964bcc109c687462",
+            "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+            "public/index.html": "1e798be6470daa454678337196f2076ca008b3922756dea7d79bbade5b259dee",
+            "public/svolta.css": "235865d7c676b8cf5cd7a9df2936252c335ffdf87d0d996ce90dd086e888a799",
+            "public/svolta.js": "8494e848b135e8dd8e4ecd4d29bc37705c1256b73ba5322f20438056bb1c5ab4",
+            "src/app.mjs": "4d368778a32ca98583d1c0e7e67015bd8f943039b52df577cfaca16b25522d7a",
+            "src/archive.mjs": "1f0dc4aea4cf6d55c122c65e3f111edef4798a48c610a515e175146575a22d03",
+            "src/dates.mjs": "befb2084c723419e957dd976a1e2f9ecd5b92b5c8d768158ba99ce452d794515",
+            "src/errors.mjs": "acbb23489da8c799787caf170d2ff70a9f26c875de462e287cfc911c856baa5f",
+            "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+            "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+            "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+            "src/summary.mjs": "a58abb9c5ef8a37c51f2e6cf434faf761ca5f552fdba000708c6cc61085502e8",
+            "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+            "src/time-entries.mjs": "5a4ff445656c9f15639159e253db1e99e97c010953ee7c2198db4441f0348ebf",
+            "src/week.mjs": "f533bdaed237f9b051608355d588f3b5147653c0d81143e7b5d7148a0dee2eeb",
+            "tests/acceptance.mjs": "5759467fd1c94b32c4044e4e7809c8b19afa636bd2b73ec210952d5c2bdcd4da",
+            "tests/browser.mjs": "94c628f46208c5fe55cc5e6b318fd72b43b95e3a73020a028cd2b02248a89d8a",
+            "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+          },
+          "fingerprint": "3bd6d410d7cdf338af4dab1cc63696345da53f490db31b788be94b3125c8b800"
+        },
+        "scope": [],
+        "inputs": [],
+        "purpose": "probe"
+      }
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "192be2fc-dd81-44f2-94bd-35d3b18e4f89",
+    "runId": "20261020T222034-5d68bce5",
+    "seq": 51,
+    "at": "2026-10-20T22:31:52.651Z",
+    "type": "verification.started",
+    "message": "Checking existing coverage: Attività, filtri e conflitti senza perdita di dati",
+    "data": {
+      "nodeId": "85100046-8385-4516-9b55-62a93216b945",
+      "node": {
+        "id": "85100046-8385-4516-9b55-62a93216b945",
+        "status": "PENDING",
+        "attempt": 3,
+        "files": [],
+        "evidenceIds": [],
+        "kind": "verification",
+        "role": "verifier",
+        "title": "Attività, filtri e conflitti senza perdita di dati",
+        "objective": "Run approved check: [\"node\",\"tests/acceptance.mjs\",\"tasks-api\"]",
+        "criterionId": "tasks-api",
+        "reason": "Probe while planned implementation remains; a negative observation defers correction."
+      },
+      "edges": [
+        {
+          "id": "98a94887-552d-415b-bc26-05f4d1e4d419",
+          "source": "e9980789-d8fb-4154-964a-d6f61c749c2a",
+          "target": "85100046-8385-4516-9b55-62a93216b945",
+          "kind": "next"
+        }
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "1865ed49-cafa-428b-8aac-1173077670e4",
+    "runId": "20261020T222034-5d68bce5",
+    "seq": 52,
+    "at": "2026-10-20T22:31:54.077Z",
+    "type": "verification.passed",
+    "message": "Attività, filtri e conflitti senza perdita di dati: approved command already passes on the recorded inputs.",
+    "data": {
+      "nodeId": "85100046-8385-4516-9b55-62a93216b945",
+      "evidence": {
+        "id": "c61de25d-24e9-4ad2-9f7f-a0f8917872bd",
+        "nodeId": "85100046-8385-4516-9b55-62a93216b945",
+        "criterionId": "tasks-api",
+        "contractVersion": 1,
+        "kind": "deterministic",
+        "status": "passed",
+        "createdAt": "2026-10-20T22:31:54.019Z",
+        "command": [
+          "node",
+          "tests/acceptance.mjs",
+          "tasks-api"
+        ],
+        "exitCode": 0,
+        "output": "PASS task defaults and exact fields\nPASS task edit, revision conflicts and combined filters\nPASS civil dates, invalid states and numeric validation\nPASS parallel stale writers cannot overwrite each other\nPASS archived projects disappear from general activity list\nPASS task persistence and malformed JSON\n{\"criterion\":\"tasks-api\",\"result\":\"PASS\",\"groups\":6}\n",
+        "durationMs": 1367,
+        "stamp": {
+          "head": "f765280cde7671df2ede74245b56dcb3e3b5496b",
+          "files": {
+            ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+            "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+            "README.md": "80aed329d1575ddaa960ec01496d7bf14e532532b9b7f84235799c5d28aa78ea",
+            "docs/guida.md": "0671bc6a3f4b7ebacfc10aa5c13456fcecf9a810c809ba3ee944a611c65d7abd",
+            "docs/verifiche.md": "8d2982949c2f0aefd4e201751d7b7f59e44d34106306c5ef964bcc109c687462",
+            "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+            "public/index.html": "1e798be6470daa454678337196f2076ca008b3922756dea7d79bbade5b259dee",
+            "public/svolta.css": "235865d7c676b8cf5cd7a9df2936252c335ffdf87d0d996ce90dd086e888a799",
+            "public/svolta.js": "8494e848b135e8dd8e4ecd4d29bc37705c1256b73ba5322f20438056bb1c5ab4",
+            "src/app.mjs": "4d368778a32ca98583d1c0e7e67015bd8f943039b52df577cfaca16b25522d7a",
+            "src/archive.mjs": "1f0dc4aea4cf6d55c122c65e3f111edef4798a48c610a515e175146575a22d03",
+            "src/dates.mjs": "befb2084c723419e957dd976a1e2f9ecd5b92b5c8d768158ba99ce452d794515",
+            "src/errors.mjs": "acbb23489da8c799787caf170d2ff70a9f26c875de462e287cfc911c856baa5f",
+            "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+            "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+            "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+            "src/summary.mjs": "a58abb9c5ef8a37c51f2e6cf434faf761ca5f552fdba000708c6cc61085502e8",
+            "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+            "src/time-entries.mjs": "5a4ff445656c9f15639159e253db1e99e97c010953ee7c2198db4441f0348ebf",
+            "src/week.mjs": "f533bdaed237f9b051608355d588f3b5147653c0d81143e7b5d7148a0dee2eeb",
+            "tests/acceptance.mjs": "5759467fd1c94b32c4044e4e7809c8b19afa636bd2b73ec210952d5c2bdcd4da",
+            "tests/browser.mjs": "94c628f46208c5fe55cc5e6b318fd72b43b95e3a73020a028cd2b02248a89d8a",
+            "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+          },
+          "fingerprint": "3bd6d410d7cdf338af4dab1cc63696345da53f490db31b788be94b3125c8b800"
+        },
+        "scope": [],
+        "inputs": [],
+        "purpose": "probe"
+      }
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "19295c89-dc4c-46c5-be90-ba82f2d41d62",
+    "runId": "20261020T222034-5d68bce5",
+    "seq": 53,
+    "at": "2026-10-20T22:31:54.121Z",
+    "type": "verification.started",
+    "message": "Checking existing coverage: Settimana civile, sessioni e riepilogo coerente",
+    "data": {
+      "nodeId": "43652ae2-6740-4408-a034-4f07626213c8",
+      "node": {
+        "id": "43652ae2-6740-4408-a034-4f07626213c8",
+        "status": "PENDING",
+        "attempt": 3,
+        "files": [],
+        "evidenceIds": [],
+        "kind": "verification",
+        "role": "verifier",
+        "title": "Settimana civile, sessioni e riepilogo coerente",
+        "objective": "Run approved check: [\"node\",\"tests/acceptance.mjs\",\"planning-api\"]",
+        "criterionId": "planning-api",
+        "reason": "Probe while planned implementation remains; a negative observation defers correction."
+      },
+      "edges": [
+        {
+          "id": "81bb98c8-d308-498f-936c-5620134019ee",
+          "source": "85100046-8385-4516-9b55-62a93216b945",
+          "target": "43652ae2-6740-4408-a034-4f07626213c8",
+          "kind": "next"
+        }
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "8ee314b6-44d5-4f1a-a5ff-44e3b9ce9b43",
+    "runId": "20261020T222034-5d68bce5",
+    "seq": 54,
+    "at": "2026-10-20T22:31:54.504Z",
+    "type": "verification.deferred",
+    "message": "Settimana civile, sessioni e riepilogo coerente: not yet satisfied; planned implementation remains. No failure retry or corrective model call consumed.",
+    "data": {
+      "nodeId": "43652ae2-6740-4408-a034-4f07626213c8",
+      "evidence": {
+        "id": "2491f697-733c-4cbb-8ccb-2bf4f12a9bb5",
+        "nodeId": "43652ae2-6740-4408-a034-4f07626213c8",
+        "criterionId": "planning-api",
+        "contractVersion": 1,
+        "kind": "deterministic",
+        "status": "recorded",
+        "createdAt": "2026-10-20T22:31:54.451Z",
+        "command": [
+          "node",
+          "tests/acceptance.mjs",
+          "planning-api"
+        ],
+        "exitCode": 1,
+        "output": "PASS civil seven-day plan and unscheduled work\nPASS Monday and impossible-date rejection\nPASS time records preserve links and task status\nnode:internal/modules/run_main:123\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n  {\n    doing: 1,\n    done: 1,\n    minutesThisWeek: 60,\n+   overdue: 2,\n-   overdue: 1,\n    todo: 3\n  }\n\n    at file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020-r2/data/worktrees/20261020T222034-5d68bce5/tests/acceptance.mjs:40:255\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async check (file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020-r2/data/worktrees/20261020T222034-5d68bce5/tests/acceptance.mjs:7:31)\n    at async planning-api (file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020-r2/data/worktrees/20261020T222034-5d68bce5/tests/acceptance.mjs:40:5)\n    at async file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020-r2/data/worktrees/20261020T222034-5d68bce5/tests/acceptance.mjs:56:49\n    at async appTest (file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020-r2/data/worktrees/20261020T222034-5d68bce5/tests/harness.mjs:42:28)\n    at async file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020-r2/data/worktrees/20261020T222034-5d68bce5/tests/acceptance.mjs:56:1 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: { todo: 3, doing: 1, done: 1, overdue: 2, minutesThisWeek: 60 },\n  expected: { todo: 3, doing: 1, done: 1, overdue: 1, minutesThisWeek: 60 },\n  operator: 'deepStrictEqual',\n  diff: 'simple'\n}\n\nNode.js v22.21.1\n",
+        "durationMs": 336,
+        "stamp": {
+          "head": "f765280cde7671df2ede74245b56dcb3e3b5496b",
+          "files": {
+            ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+            "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+            "README.md": "80aed329d1575ddaa960ec01496d7bf14e532532b9b7f84235799c5d28aa78ea",
+            "docs/guida.md": "0671bc6a3f4b7ebacfc10aa5c13456fcecf9a810c809ba3ee944a611c65d7abd",
+            "docs/verifiche.md": "8d2982949c2f0aefd4e201751d7b7f59e44d34106306c5ef964bcc109c687462",
+            "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+            "public/index.html": "1e798be6470daa454678337196f2076ca008b3922756dea7d79bbade5b259dee",
+            "public/svolta.css": "235865d7c676b8cf5cd7a9df2936252c335ffdf87d0d996ce90dd086e888a799",
+            "public/svolta.js": "8494e848b135e8dd8e4ecd4d29bc37705c1256b73ba5322f20438056bb1c5ab4",
+            "src/app.mjs": "4d368778a32ca98583d1c0e7e67015bd8f943039b52df577cfaca16b25522d7a",
+            "src/archive.mjs": "1f0dc4aea4cf6d55c122c65e3f111edef4798a48c610a515e175146575a22d03",
+            "src/dates.mjs": "befb2084c723419e957dd976a1e2f9ecd5b92b5c8d768158ba99ce452d794515",
+            "src/errors.mjs": "acbb23489da8c799787caf170d2ff70a9f26c875de462e287cfc911c856baa5f",
+            "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+            "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+            "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+            "src/summary.mjs": "a58abb9c5ef8a37c51f2e6cf434faf761ca5f552fdba000708c6cc61085502e8",
+            "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+            "src/time-entries.mjs": "5a4ff445656c9f15639159e253db1e99e97c010953ee7c2198db4441f0348ebf",
+            "src/week.mjs": "f533bdaed237f9b051608355d588f3b5147653c0d81143e7b5d7148a0dee2eeb",
+            "tests/acceptance.mjs": "5759467fd1c94b32c4044e4e7809c8b19afa636bd2b73ec210952d5c2bdcd4da",
+            "tests/browser.mjs": "94c628f46208c5fe55cc5e6b318fd72b43b95e3a73020a028cd2b02248a89d8a",
+            "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+          },
+          "fingerprint": "3bd6d410d7cdf338af4dab1cc63696345da53f490db31b788be94b3125c8b800"
+        },
+        "scope": [],
+        "inputs": [],
+        "purpose": "probe"
+      }
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "79c190df-7057-4b9f-b28d-6554439c3695",
+    "runId": "20261020T222034-5d68bce5",
+    "seq": 55,
+    "at": "2026-10-20T22:31:54.509Z",
+    "type": "progress.recorded",
+    "message": "Code fingerprint changed.",
+    "data": {
+      "noProgress": 0
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "57982ec9-7ebe-41e9-8750-51e9cb5ff0df",
+    "runId": "20261020T222034-5d68bce5",
+    "seq": 56,
+    "at": "2026-10-20T22:31:54.675Z",
+    "type": "verification.started",
+    "message": "Checking existing coverage: Interfaccia progetti e attività su desktop e mobile",
+    "data": {
+      "nodeId": "e6b57dee-b9ce-4279-989b-e81e5a53ad7e",
+      "node": {
+        "id": "e6b57dee-b9ce-4279-989b-e81e5a53ad7e",
+        "status": "PENDING",
+        "attempt": 3,
+        "files": [],
+        "evidenceIds": [],
+        "kind": "verification",
+        "role": "verifier",
+        "title": "Interfaccia progetti e attività su desktop e mobile",
+        "objective": "Run approved check: [\"node\",\"tests/acceptance.mjs\",\"board-ui\"]",
+        "criterionId": "board-ui",
+        "reason": "Probe while planned implementation remains; a negative observation defers correction."
+      },
+      "edges": [
+        {
+          "id": "8f536e67-d209-489e-96c8-57b3b06c0a6e",
+          "source": "43652ae2-6740-4408-a034-4f07626213c8",
+          "target": "e6b57dee-b9ce-4279-989b-e81e5a53ad7e",
+          "kind": "next"
+        }
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "5d345336-724e-4634-bf08-17fc9af64c9d",
+    "runId": "20261020T222034-5d68bce5",
+    "seq": 57,
+    "at": "2026-10-20T22:31:57.803Z",
+    "type": "verification.passed",
+    "message": "Interfaccia progetti e attività su desktop e mobile: approved command already passes on the recorded inputs.",
+    "data": {
+      "nodeId": "e6b57dee-b9ce-4279-989b-e81e5a53ad7e",
+      "evidence": {
+        "id": "c8a96f99-266e-4e71-a378-472dab292b26",
+        "nodeId": "e6b57dee-b9ce-4279-989b-e81e5a53ad7e",
+        "criterionId": "board-ui",
+        "contractVersion": 1,
+        "kind": "deterministic",
+        "status": "passed",
+        "createdAt": "2026-10-20T22:31:57.743Z",
+        "command": [
+          "node",
+          "tests/acceptance.mjs",
+          "board-ui"
+        ],
+        "exitCode": 0,
+        "output": "PASS create a project and task through the actual interface\nPASS edit, filter and preserve the changed activity after reopening\nPASS concurrent interface edits cannot silently overwrite another tab\nPASS literal hostile text and mobile layout\n{\"criterion\":\"board-ui\",\"result\":\"PASS\",\"groups\":4}\n",
+        "durationMs": 3074,
+        "stamp": {
+          "head": "f765280cde7671df2ede74245b56dcb3e3b5496b",
+          "files": {
+            ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+            "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+            "README.md": "80aed329d1575ddaa960ec01496d7bf14e532532b9b7f84235799c5d28aa78ea",
+            "docs/guida.md": "0671bc6a3f4b7ebacfc10aa5c13456fcecf9a810c809ba3ee944a611c65d7abd",
+            "docs/verifiche.md": "8d2982949c2f0aefd4e201751d7b7f59e44d34106306c5ef964bcc109c687462",
+            "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+            "public/index.html": "1e798be6470daa454678337196f2076ca008b3922756dea7d79bbade5b259dee",
+            "public/svolta.css": "235865d7c676b8cf5cd7a9df2936252c335ffdf87d0d996ce90dd086e888a799",
+            "public/svolta.js": "8494e848b135e8dd8e4ecd4d29bc37705c1256b73ba5322f20438056bb1c5ab4",
+            "src/app.mjs": "4d368778a32ca98583d1c0e7e67015bd8f943039b52df577cfaca16b25522d7a",
+            "src/archive.mjs": "1f0dc4aea4cf6d55c122c65e3f111edef4798a48c610a515e175146575a22d03",
+            "src/dates.mjs": "befb2084c723419e957dd976a1e2f9ecd5b92b5c8d768158ba99ce452d794515",
+            "src/errors.mjs": "acbb23489da8c799787caf170d2ff70a9f26c875de462e287cfc911c856baa5f",
+            "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+            "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+            "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+            "src/summary.mjs": "a58abb9c5ef8a37c51f2e6cf434faf761ca5f552fdba000708c6cc61085502e8",
+            "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+            "src/time-entries.mjs": "5a4ff445656c9f15639159e253db1e99e97c010953ee7c2198db4441f0348ebf",
+            "src/week.mjs": "f533bdaed237f9b051608355d588f3b5147653c0d81143e7b5d7148a0dee2eeb",
+            "tests/acceptance.mjs": "5759467fd1c94b32c4044e4e7809c8b19afa636bd2b73ec210952d5c2bdcd4da",
+            "tests/browser.mjs": "94c628f46208c5fe55cc5e6b318fd72b43b95e3a73020a028cd2b02248a89d8a",
+            "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+          },
+          "fingerprint": "3bd6d410d7cdf338af4dab1cc63696345da53f490db31b788be94b3125c8b800"
+        },
+        "scope": [],
+        "inputs": [],
+        "purpose": "probe"
+      }
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "26496fb5-765c-45ec-a374-4a32aab18166",
+    "runId": "20261020T222034-5d68bce5",
+    "seq": 58,
+    "at": "2026-10-20T22:31:57.883Z",
+    "type": "verification.started",
+    "message": "Checking existing coverage: Pianificazione e tempo dal browser",
+    "data": {
+      "nodeId": "54207cda-b0a8-4d54-bf15-9a4e07f029be",
+      "node": {
+        "id": "54207cda-b0a8-4d54-bf15-9a4e07f029be",
+        "status": "PENDING",
+        "attempt": 3,
+        "files": [],
+        "evidenceIds": [],
+        "kind": "verification",
+        "role": "verifier",
+        "title": "Pianificazione e tempo dal browser",
+        "objective": "Run approved check: [\"node\",\"tests/acceptance.mjs\",\"planning-ui\"]",
+        "criterionId": "planning-ui",
+        "reason": "Probe while planned implementation remains; a negative observation defers correction."
+      },
+      "edges": [
+        {
+          "id": "6e064e4d-58d2-4398-8174-cd3dda00818f",
+          "source": "e6b57dee-b9ce-4279-989b-e81e5a53ad7e",
+          "target": "54207cda-b0a8-4d54-bf15-9a4e07f029be",
+          "kind": "next"
+        }
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "b5a868a5-bc63-4cdf-9a74-df37a56271fb",
+    "runId": "20261020T222034-5d68bce5",
+    "seq": 59,
+    "at": "2026-10-20T22:32:28.932Z",
+    "type": "verification.deferred",
+    "message": "Pianificazione e tempo dal browser: not yet satisfied; planned implementation remains. No failure retry or corrective model call consumed.",
+    "data": {
+      "nodeId": "54207cda-b0a8-4d54-bf15-9a4e07f029be",
+      "evidence": {
+        "id": "3a8357ef-fdf3-4496-9648-e3f9cea2d999",
+        "nodeId": "54207cda-b0a8-4d54-bf15-9a4e07f029be",
+        "criterionId": "planning-ui",
+        "contractVersion": 1,
+        "kind": "deterministic",
+        "status": "recorded",
+        "createdAt": "2026-10-20T22:32:28.876Z",
+        "command": [
+          "node",
+          "tests/acceptance.mjs",
+          "planning-ui"
+        ],
+        "exitCode": 1,
+        "output": "node:internal/modules/run_main:123\n    triggerUncaughtException(\n    ^\n\nlocator.fill: Timeout 30000ms exceeded.\nCall log:\n  - waiting for getByLabel(/^(?:Inizio settimana)(?:\\s*\\(obbligatorio\\))?$/).visible()\n\n    at /Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020-r2/data/worktrees/20261020T222034-5d68bce5/tests/browser.mjs:23:569\n    at async check (/Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020-r2/data/worktrees/20261020T222034-5d68bce5/tests/browser.mjs:9:31)\n    at async browserCheck (/Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020-r2/data/worktrees/20261020T222034-5d68bce5/tests/browser.mjs:23:4)\n    at async file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020-r2/data/worktrees/20261020T222034-5d68bce5/tests/acceptance.mjs:56:120\n    at async appTest (/Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020-r2/data/worktrees/20261020T222034-5d68bce5/tests/harness.mjs:42:28)\n    at async file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020-r2/data/worktrees/20261020T222034-5d68bce5/tests/acceptance.mjs:56:1 {\n  log: [\n    '  - waiting for getByLabel(/^(?:Inizio settimana)(?:\\\\s*\\\\(obbligatorio\\\\))?$/).visible()'\n  ],\n  name: 'TimeoutError'\n}\n\nNode.js v22.21.1\n",
+        "durationMs": 30995,
+        "stamp": {
+          "head": "f765280cde7671df2ede74245b56dcb3e3b5496b",
+          "files": {
+            ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+            "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+            "README.md": "80aed329d1575ddaa960ec01496d7bf14e532532b9b7f84235799c5d28aa78ea",
+            "docs/guida.md": "0671bc6a3f4b7ebacfc10aa5c13456fcecf9a810c809ba3ee944a611c65d7abd",
+            "docs/verifiche.md": "8d2982949c2f0aefd4e201751d7b7f59e44d34106306c5ef964bcc109c687462",
+            "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+            "public/index.html": "1e798be6470daa454678337196f2076ca008b3922756dea7d79bbade5b259dee",
+            "public/svolta.css": "235865d7c676b8cf5cd7a9df2936252c335ffdf87d0d996ce90dd086e888a799",
+            "public/svolta.js": "8494e848b135e8dd8e4ecd4d29bc37705c1256b73ba5322f20438056bb1c5ab4",
+            "src/app.mjs": "4d368778a32ca98583d1c0e7e67015bd8f943039b52df577cfaca16b25522d7a",
+            "src/archive.mjs": "1f0dc4aea4cf6d55c122c65e3f111edef4798a48c610a515e175146575a22d03",
+            "src/dates.mjs": "befb2084c723419e957dd976a1e2f9ecd5b92b5c8d768158ba99ce452d794515",
+            "src/errors.mjs": "acbb23489da8c799787caf170d2ff70a9f26c875de462e287cfc911c856baa5f",
+            "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+            "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+            "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+            "src/summary.mjs": "a58abb9c5ef8a37c51f2e6cf434faf761ca5f552fdba000708c6cc61085502e8",
+            "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+            "src/time-entries.mjs": "5a4ff445656c9f15639159e253db1e99e97c010953ee7c2198db4441f0348ebf",
+            "src/week.mjs": "f533bdaed237f9b051608355d588f3b5147653c0d81143e7b5d7148a0dee2eeb",
+            "tests/acceptance.mjs": "5759467fd1c94b32c4044e4e7809c8b19afa636bd2b73ec210952d5c2bdcd4da",
+            "tests/browser.mjs": "94c628f46208c5fe55cc5e6b318fd72b43b95e3a73020a028cd2b02248a89d8a",
+            "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+          },
+          "fingerprint": "3bd6d410d7cdf338af4dab1cc63696345da53f490db31b788be94b3125c8b800"
+        },
+        "scope": [],
+        "inputs": [],
+        "purpose": "probe"
+      }
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "13099d7a-9974-482c-aeab-d23526e08856",
+    "runId": "20261020T222034-5d68bce5",
+    "seq": 60,
+    "at": "2026-10-20T22:32:28.992Z",
+    "type": "task.started",
+    "message": "builder: Settimana navigabile e riprogrammazione",
+    "data": {
+      "nodeId": "direction-719ce746-27af-40d0-9697-3fb5a20ab54e-2",
+      "edges": [
+        {
+          "id": "dfc302b5-146d-4130-80fb-669c6cdaec07",
+          "source": "54207cda-b0a8-4d54-bf15-9a4e07f029be",
+          "target": "direction-719ce746-27af-40d0-9697-3fb5a20ab54e-2",
+          "kind": "next"
+        }
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "6a6286c2-f5fa-40f2-bf0e-a7d563161b06",
+    "runId": "20261020T222034-5d68bce5",
+    "seq": 61,
+    "at": "2026-10-20T22:32:29.803Z",
+    "type": "agent.thread",
+    "message": "Codex session recorded for recovery.",
+    "data": {
+      "nodeId": "direction-719ce746-27af-40d0-9697-3fb5a20ab54e-2",
+      "threadId": "01a15b71-d5fd-7763-868e-3ed0da1c3e68"
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "0f6f42cd-fd09-4e5c-a0e2-48acb225e097",
+    "runId": "20261020T222034-5d68bce5",
+    "seq": 62,
+    "at": "2026-10-20T22:33:17.027Z",
+    "type": "task.interrupted",
+    "message": "Operator requested stop",
+    "data": {
+      "nodeId": "direction-719ce746-27af-40d0-9697-3fb5a20ab54e-2"
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "0401f135-8468-4b79-ab34-d5795dfcd2f8",
+    "runId": "20261020T222034-5d68bce5",
+    "seq": 63,
+    "at": "2026-10-20T22:33:17.110Z",
+    "type": "workflow.stopped",
+    "message": "Operator requested stop. Operator requested stop",
+    "data": {}
+  }
+]

@@ -1,0 +1,181 @@
+{
+  "id": "ba19c3c0-677b-4354-9729-fd66916ed929",
+  "revision": 1,
+  "spec": {
+    "repository": "/Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020-r2/source",
+    "contract": {
+      "goal": "Realizzare Svolta, app locale in italiano per piccoli progetti personali, attività, pianificazione settimanale e tempo dedicato, con backup portabile e gestione coerente degli errori. Consegnare un prodotto utilizzabile su desktop e mobile e una guida onesta. Seguire il contratto pubblico BRIEF.md. Scegliere autonomamente i dettagli reversibili; non introdurre account, servizi, dipendenze o pubblicazione. Continuazione dichiarata della prova originale bloccata per un difetto del runtime: il candidato già prodotto non è un checkpoint certificato. Conservare interfaccia, comportamento e scelte già implementati; completare soltanto le lacune concrete e i rimanenti esiti, senza ridisegnare da capo. Le prove precedenti sono contesto storico, non certificazione di questa nuova missione.",
+      "criteria": [
+        {
+          "id": "projects-api",
+          "title": "Archivio progetti persistente e revisioni",
+          "command": [
+            "node",
+            "tests/acceptance.mjs",
+            "projects-api"
+          ],
+          "scope": [],
+          "timeoutMs": 120000
+        },
+        {
+          "id": "tasks-api",
+          "title": "Attività, filtri e conflitti senza perdita di dati",
+          "command": [
+            "node",
+            "tests/acceptance.mjs",
+            "tasks-api"
+          ],
+          "scope": [],
+          "timeoutMs": 120000
+        },
+        {
+          "id": "board-ui",
+          "title": "Interfaccia progetti e attività su desktop e mobile",
+          "command": [
+            "node",
+            "tests/acceptance.mjs",
+            "board-ui"
+          ],
+          "scope": [],
+          "timeoutMs": 120000
+        },
+        {
+          "id": "planning-api",
+          "title": "Settimana civile, sessioni e riepilogo coerente",
+          "command": [
+            "node",
+            "tests/acceptance.mjs",
+            "planning-api"
+          ],
+          "scope": [],
+          "timeoutMs": 120000
+        },
+        {
+          "id": "planning-ui",
+          "title": "Pianificazione e tempo dal browser",
+          "command": [
+            "node",
+            "tests/acceptance.mjs",
+            "planning-ui"
+          ],
+          "scope": [],
+          "timeoutMs": 120000
+        },
+        {
+          "id": "backup-api",
+          "title": "Backup completo e ripristino atomico",
+          "command": [
+            "node",
+            "tests/acceptance.mjs",
+            "backup-api"
+          ],
+          "scope": [],
+          "timeoutMs": 120000
+        },
+        {
+          "id": "backup-ui",
+          "title": "Consenso al ripristino e interfaccia di portabilità",
+          "command": [
+            "node",
+            "tests/acceptance.mjs",
+            "backup-ui"
+          ],
+          "scope": [],
+          "timeoutMs": 120000
+        }
+      ],
+      "allowedPaths": [
+        "src",
+        "public",
+        "README.md",
+        "docs"
+      ],
+      "protectedPaths": [
+        "BRIEF.md",
+        "tests",
+        "package.json",
+        ".gitignore"
+      ],
+      "supervision": {
+        "mode": "project",
+        "maxReviews": 12
+      },
+      "limits": {
+        "maxTurns": 125,
+        "maxAttempts": 4,
+        "maxDurationMs": 9806266,
+        "maxTokens": 94975983,
+        "turnTimeoutMs": 720000,
+        "maxNoProgress": 4
+      }
+    },
+    "milestones": [
+      {
+        "id": "usable-board",
+        "title": "Un flusso attività che si usa davvero",
+        "outcome": "Certificare e consegnare il candidato di interfaccia già implementato, preservando progetti, attività, bozze e scelte visuali. Le API erano verificate e un audit separato ha esercitato quattro flussi UI; i selettori host del nuovo contratto correggono la sola rigidità su suffissi obbligatori e controlli nascosti. Ottenere nuove prove per tutti e tre i criteri; allineare la guida ai risultati effettivi. Non rifare funzionalità già presenti; gli esiti successivi restano al supervisore host.",
+        "criterionIds": [
+          "projects-api",
+          "tasks-api",
+          "board-ui"
+        ],
+        "dependsOn": []
+      },
+      {
+        "id": "weekly-work",
+        "title": "Dalla lista al piano settimanale e al tempo reale",
+        "outcome": "Aggiungere pianificazione settimanale, sessioni di tempo con cronologia, riepilogo coerente e relativi flussi browser, preservando attività e conflitti. Gestire date civili senza spostamenti da fuso orario. Backup rimane il prossimo esito.",
+        "criterionIds": [
+          "planning-api",
+          "planning-ui"
+        ],
+        "dependsOn": [
+          "usable-board"
+        ]
+      },
+      {
+        "id": "safe-delivery",
+        "title": "Portabilità e ritorno al prodotto finito",
+        "outcome": "Aggiungere backup completo e ripristino atomico validato con consenso esplicito. Verificare l’integrazione di tutti i flussi e i layout mobili. Completare README e guida pratica in italiano con avvio, dati, limiti e prove effettive, distinguendo affermazioni del modello da controlli host. Risolvere soltanto lacune concrete entro l’obiettivo approvato.",
+        "criterionIds": [
+          "backup-api",
+          "backup-ui"
+        ],
+        "dependsOn": [
+          "weekly-work"
+        ]
+      }
+    ],
+    "environment": {
+      "copyIgnoredPaths": []
+    }
+  },
+  "specHash": "e06241642dba9398c08e90b66e7b898b29572b004ce0087d8b4ea0a9c506df0c",
+  "sourceHead": "8fbf6801cdda04de5f9153c737902289d355e59f",
+  "commonDirectory": "/Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020-r2/source/.git",
+  "provider": "codex",
+  "authorizedAt": "2026-10-20T22:07:00.066Z",
+  "updatedAt": "2026-10-20T22:07:00.066Z",
+  "status": "AUTHORIZED",
+  "stages": [
+    {
+      "id": "usable-board",
+      "status": "PENDING"
+    },
+    {
+      "id": "weekly-work",
+      "status": "PENDING"
+    },
+    {
+      "id": "safe-delivery",
+      "status": "PENDING"
+    }
+  ],
+  "events": [
+    {
+      "at": "2026-10-20T22:07:00.066Z",
+      "kind": "authorized",
+      "message": "Operator authorized the complete bounded delegation, including local verified checkpoint commits."
+    }
+  ]
+}

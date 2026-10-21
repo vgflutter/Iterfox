@@ -1,0 +1,68 @@
+
+Running 2 tests using 1 worker
+
+(node:33828) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/browser/delegations.spec.ts:85:3 › an interrupted PAUSED delegation does not show its unfinished outcome as running (5.8s)
+(node:34050) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  2 tests/browser/delegations.spec.ts:85:3 › an interrupted STOPPED delegation does not show its unfinished outcome as running (5.7s)
+
+
+  1) tests/browser/delegations.spec.ts:85:3 › an interrupted PAUSED delegation does not show its unfinished outcome as running 
+
+    Error: expect(locator).toHaveText(expected) failed
+
+    Locator:  getByRole('region', { name: 'Delegated outcome graph' }).getByRole('article').first().locator('.eyebrow')
+    Expected: "PAUSED"
+    Received: "RUNNING"
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveText" getByRole('region', { name: 'Delegated outcome graph' }).getByRole('article').first().locator('.eyebrow') with timeout 5000ms
+      - waiting for getByRole('region', { name: 'Delegated outcome graph' }).getByRole('article').first().locator('.eyebrow')
+        14 × locator resolved to <p class="eyebrow">RUNNING</p>
+           - unexpected value "RUNNING"
+
+
+      112 |       .getByRole('region', { name: 'Delegated outcome graph' })
+      113 |       .getByRole('article');
+    > 114 |     await expect(cards.first().locator('.eyebrow')).toHaveText(status);
+          |                                                     ^
+      115 |     await expect(cards.nth(1).locator('.eyebrow')).toHaveText('PENDING');
+      116 |     await page.setViewportSize({ width: 390, height: 844 });
+      117 |     await expect(cards.first().locator('.eyebrow')).toHaveText(status);
+        at /Users/vins/work/iterfox/.iterfox/development/long-delegation-review/tests/browser/delegations.spec.ts:114:53
+
+    Error Context: ../../../../../../../private/tmp/iterfox-graph-qa-results-20261020/delegations-an-interrupted-e4488-finished-outcome-as-running/error-context.md
+
+  2) tests/browser/delegations.spec.ts:85:3 › an interrupted STOPPED delegation does not show its unfinished outcome as running 
+
+    Error: expect(locator).toHaveText(expected) failed
+
+    Locator:  getByRole('region', { name: 'Delegated outcome graph' }).getByRole('article').first().locator('.eyebrow')
+    Expected: "STOPPED"
+    Received: "RUNNING"
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveText" getByRole('region', { name: 'Delegated outcome graph' }).getByRole('article').first().locator('.eyebrow') with timeout 5000ms
+      - waiting for getByRole('region', { name: 'Delegated outcome graph' }).getByRole('article').first().locator('.eyebrow')
+        14 × locator resolved to <p class="eyebrow">RUNNING</p>
+           - unexpected value "RUNNING"
+
+
+      112 |       .getByRole('region', { name: 'Delegated outcome graph' })
+      113 |       .getByRole('article');
+    > 114 |     await expect(cards.first().locator('.eyebrow')).toHaveText(status);
+          |                                                     ^
+      115 |     await expect(cards.nth(1).locator('.eyebrow')).toHaveText('PENDING');
+      116 |     await page.setViewportSize({ width: 390, height: 844 });
+      117 |     await expect(cards.first().locator('.eyebrow')).toHaveText(status);
+        at /Users/vins/work/iterfox/.iterfox/development/long-delegation-review/tests/browser/delegations.spec.ts:114:53
+
+    Error Context: ../../../../../../../private/tmp/iterfox-graph-qa-results-20261020/delegations-an-interrupted-ffe72-finished-outcome-as-running/error-context.md
+
+  2 failed
+    tests/browser/delegations.spec.ts:85:3 › an interrupted PAUSED delegation does not show its unfinished outcome as running 
+    tests/browser/delegations.spec.ts:85:3 › an interrupted STOPPED delegation does not show its unfinished outcome as running 

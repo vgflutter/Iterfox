@@ -1,0 +1,40 @@
+{
+  "at": "2026-10-20T22:05:42.060Z",
+  "kind": "UNCERTIFIED review snapshot, not a native checkpoint",
+  "fromDelegation": "de2c27e8-446b-492c-9825-2f2abe2e0e57",
+  "fromRun": "20261020T211511-838aa23e",
+  "fromSeq": 108,
+  "originalStatus": "BLOCKED",
+  "applicationCodeManuallyChanged": false,
+  "applicationFileHashes": {
+    "README.md": "8104a95b6316084478d01b18c80928e86a7cc9865bcb8e013e5f7f8a8b227ab7",
+    "docs/guida.md": "0b2cdc0e452b6eaf58a3413b0afc815e0bdbc2ff7a71e1c8ccdd9913558224bb",
+    "docs/verifiche.md": "6f0d1e0bde53912ef9cb910ebbdac541151f8ab5af7f948401e7cea1f983724d",
+    "public/index.html": "cfa8e772cb9511025aaf1a48ca6d9dac5e0ab2064081116f51544cbdaf8b7ca8",
+    "public/svolta.css": "5b160a24d5a49ce5532f6c4c219e5dc2a524cb01b70bb7a4e63a008dfef6ae90",
+    "public/svolta.js": "f49df696f7a1e64a30e5b86b59a9058fd57f311f13f0b157848a93cbe5c02f46",
+    "src/app.mjs": "fba9d82c30392aa4b07db93a2e530a44e348af784a16b12c1ca01cc9884eddff",
+    "src/archive.mjs": "83b5b33624b1ac64e45df79ccd60c0f06509e9fdf6f7f154920a122e160a5974",
+    "src/dates.mjs": "e683c8a9dc4310ef9662f011d956771f392ac76867ad5e5a9a4ca1d1e238c4d0",
+    "src/errors.mjs": "25ce7647da75296e9342d8b217a8061c4312ec6db9c8ab81ff232c75d5356812",
+    "src/projects.mjs": "d7eed400f71adeab89250600c9ba2f55d129852e365593a8b9a6de871ba09a86",
+    "src/public.mjs": "a92ee000b91ba51078b41fb1fbf4c1b651504911519c71ba21683e81bbfa27b4",
+    "src/server.mjs": "441f8ab439afbc7aa64c4ffb4adaa6d6e9e7dfae02819a02a21810a589d67a9f",
+    "src/tasks.mjs": "adf26165e9111fd4a3f6a315ba2ab1d349633f98c40e671fbee6b7d16d61ba0d"
+  },
+  "runtimeFixCommit": "dc1285523842938f2db9822e1bf9abdbcbc7ce11",
+  "testChange": {
+    "file": "tests/browser.mjs",
+    "originalSha256": "91d0c735d934707dce7b495c2815058a123ed1fe7008327a6e4d6a97f030cac6",
+    "newSha256": "7399fd23b01229972bc2da81260ec14eca840ffdf2efbfae73f2741bc25101ee",
+    "scope": "Only input label matching accepts optional (obbligatorio), uses visible controls, and Playwright import path relocated. Browser actions/assertions unchanged."
+  },
+  "protectedFiles": {
+    "BRIEF.md": "4b0d5c8467bf7ca91ddef6c89d3f077fab4121c3245404d97cf19dc681e250cb",
+    "package.json": "860de3ed7de7d0b08bc8e01ded1fcc61403a77b4918a1f1178802d9af60a8cc1",
+    ".gitignore": "d7374edf9ed6b2549bc7b02c7bd49e8031bae04000b61a59e57dc2f8f375a52d",
+    "tests/harness.mjs": "67c21916ab5cc5da82310c2abd7c84bd42e73ef65acf5e93afe9c6ce129db8d1",
+    "tests/acceptance.mjs": "9723e15b08ecb6f43bbe9310b0c8ccb99fa46e6239764e85211b865977dc11bc",
+    "tests/browser.mjs": "7399fd23b01229972bc2da81260ec14eca840ffdf2efbfae73f2741bc25101ee"
+  }
+}

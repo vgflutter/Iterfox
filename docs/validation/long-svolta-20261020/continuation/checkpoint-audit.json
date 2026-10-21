@@ -1,0 +1,31 @@
+{
+  "at": "2026-10-21T00:07:43.451Z",
+  "result": "PASS",
+  "delegationStatus": "COMPLETED",
+  "checkpoints": [
+    {
+      "stage": "weekly-work",
+      "runId": "20261020T231956-19cf8a63",
+      "sourceSeq": 84,
+      "head": "a8cebbaa4e32b45f46a04fc0b2c30d95511cf473",
+      "criteria": 5,
+      "recoveries": 1,
+      "ready": true,
+      "freshSourceFingerprint": "402bef9f153031be45e695af2d7fc0812ca72ecf55ad52e1c62d44d0a2a5701b"
+    },
+    {
+      "stage": "safe-delivery",
+      "runId": "20261020T234131-6d40b050",
+      "sourceSeq": 159,
+      "head": "09feec68a2410b467f9df7a93f3d07e5d411a68b",
+      "criteria": 7,
+      "recoveries": 1,
+      "ready": true,
+      "freshSourceFingerprint": "67046245adee6046d208b80a9b71936d3a24807e9220b47c93bd6857fb2ae377"
+    }
+  ],
+  "immutableAuthorization": true,
+  "protectedInputsUnchanged": true,
+  "driverUnchanged": true,
+  "externalAuditUnchanged": true
+}

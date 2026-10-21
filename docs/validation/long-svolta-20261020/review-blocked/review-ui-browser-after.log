@@ -1,0 +1,29 @@
+
+Running 14 tests using 5 workers
+
+(node:35720) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:35721) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:35722) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:35723) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:35719) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   5 tests/browser/goal-launch.spec.ts:81:1 › late draft IDs are cancelled, edits invalidate review, and no UI-state fixture authorizes a run (1.1s)
+  ✓   3 tests/browser/projects.spec.ts:5:1 › project memory and milestone graph survive reload and prepare an editable next-session goal (1.7s)
+  ✓   2 tests/browser/graph-control.spec.ts:3:1 › selected Live Trail work accepts durable contextual direction without resuming a paused run (2.3s)
+  ✓   1 tests/browser/delegations.spec.ts:27:1 › continuous delegation preflight creates no work; authorization and outcome control fit mobile (2.5s)
+  ✓   6 tests/browser/goal-launch.spec.ts:181:1 › mobile uncertain-launch recovery keeps inputs and opens existing runs without reauthorizing (1.5s)
+  ✓   4 tests/browser/ui.spec.ts:3:1 › the graph, ledger, refresh, replay and brief all reflect the same durable workflow (3.0s)
+  ✓   7 tests/browser/delegations.spec.ts:50:1 › lost real authorization response is recovered without another delegation submission (743ms)
+  ✓   8 tests/browser/ui.spec.ts:55:1 › mobile layout, reduced motion, and explicit Night Run preflight are usable (567ms)
+  ✓   9 tests/browser/delegations.spec.ts:85:3 › an interrupted PAUSED delegation does not show its unfinished outcome as running (726ms)
+  ✓  10 tests/browser/ui.spec.ts:77:1 › actual screenshot artifacts and explicit qualitative provenance are inspectable on desktop and mobile (921ms)
+  ✓  11 tests/browser/delegations.spec.ts:85:3 › an interrupted STOPPED delegation does not show its unfinished outcome as running (703ms)
+  ✓  13 tests/browser/delegations.spec.ts:85:3 › an interrupted BLOCKED delegation does not show its unfinished outcome as running (725ms)
+  ✓  12 tests/browser/ui.spec.ts:126:1 › Project Compass accounts for instructions, persists a new thought, and resumes dependent work after a linked answer (2.7s)
+  ✓  14 tests/browser/ui.spec.ts:178:1 › autonomous checkpoints explain goal work discovered after green regression checks (526ms)
+
+  14 passed (8.9s)

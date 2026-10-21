@@ -1,0 +1,13 @@
+{
+  "at": "2026-10-20T22:34:56.188Z",
+  "result": "PASS",
+  "command": [
+    "node",
+    "tests/acceptance.mjs",
+    "planning-api"
+  ],
+  "groups": 7,
+  "applicationCodeChanged": false,
+  "correctedOverdueExpectation": 2,
+  "scope": "API already implemented by Iterfox before assistant stop. This preauthorization check is not a native checkpoint."
+}

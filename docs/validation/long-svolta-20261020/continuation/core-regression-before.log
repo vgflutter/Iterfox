@@ -1,0 +1,60 @@
+TAP version 13
+# (node:25180) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: host verification handoff continues planned work when its probe passes
+ok 1 - host verification handoff continues planned work when its probe passes
+  ---
+  duration_ms: 1103.051709
+  type: 'test'
+  ...
+# Subtest: host verification handoff continues planned work when its probe still needs later implementation
+ok 2 - host verification handoff continues planned work when its probe still needs later implementation
+  ---
+  duration_ms: 1056.997958
+  type: 'test'
+  ...
+# Subtest: handoff cannot invent checks and genuine implementation blockers still stop execution
+ok 3 - handoff cannot invent checks and genuine implementation blockers still stop execution
+  ---
+  duration_ms: 599.678667
+  type: 'test'
+  ...
+# Subtest: a final planned task requesting host verification enters real diagnosis and correction when its check fails
+not ok 4 - a final planned task requesting host verification enters real diagnosis and correction when its check fails
+  ---
+  duration_ms: 429.099667
+  type: 'test'
+  location: '/Users/vins/work/iterfox/.iterfox/development/final-handoff-fix/tests/verification-handoff.test.ts:1:3956'
+  failureType: 'testCodeFailure'
+  error: |-
+    A deferred check requires unfinished planned work and a non-passing probe
+    + actual - expected
+    
+    + 'BLOCKED'
+    - 'COMPLETED'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'COMPLETED'
+  actual: 'BLOCKED'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/Users/vins/work/iterfox/.iterfox/development/final-handoff-fix/tests/verification-handoff.test.ts:174:12)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: a final planned task requesting host verification passes normally
+ok 5 - a final planned task requesting host verification passes normally
+  ---
+  duration_ms: 460.883666
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 4
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 4390.260625

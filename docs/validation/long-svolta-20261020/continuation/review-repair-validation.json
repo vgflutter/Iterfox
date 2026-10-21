@@ -1,0 +1,19 @@
+{
+  "at": "2026-10-20T23:19:09.307Z",
+  "result": "PASS",
+  "commit": "5ac6eca8cbc83d6baf5990ddd039e5fce6d35520",
+  "backendPassed": 108,
+  "optionalSkipped": 7,
+  "chromeCasesPassed": 14,
+  "additionalBrowserFlowsPassed": 3,
+  "typecheck": "PASS",
+  "build": "PASS",
+  "beforeFixRegression": "BLOCKED instead of COMPLETED on an invalid project file reference",
+  "policies": [
+    "Rejected proposal preserved, supplies no executable work or acceptance",
+    "maxAttempts and original turn/token/time limits retained",
+    "Explicit resume does not reset rejection count",
+    "Pause/stop and read-only source audit prevent another call"
+  ],
+  "browserExecution": "Installed Chrome; manual unmodified tests/browser/server.ts fixture on localhost4393 with explicit temporary Playwright config. Three additional flows use ITERFOX_BROWSER_CHANNEL=chrome."
+}

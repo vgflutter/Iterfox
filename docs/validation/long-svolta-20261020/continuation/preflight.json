@@ -1,0 +1,160 @@
+{
+  "spec": {
+    "repository": "/Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020-r4/source",
+    "contract": {
+      "goal": "Realizzare Svolta, app locale in italiano per progetti, attività, settimana, tempo dedicato e backup. Proseguire sul candidato esistente, che ha già cinque criteri host verdi ma non un checkpoint certificato: la revisione precedente si è fermata per riferimenti a file o prove non validi. Il nuovo runtime può chiedere una revisione corretta entro maxAttempts, mantenendo invariati contratto, prove e limiti. Ricertificare da zero e completare il backup e la consegna, conservando funzionalità e scelte visuali già implementate. Non rifare flussi già funzionanti. Correggere solo lacune concrete osservate. Seguire BRIEF.md; scelte reversibili autonome, niente servizi esterni, dipendenze o pubblicazione. Le evidenze precedenti restano contesto storico.",
+      "criteria": [
+        {
+          "id": "projects-api",
+          "title": "Archivio progetti persistente e revisioni",
+          "command": [
+            "node",
+            "tests/acceptance.mjs",
+            "projects-api"
+          ],
+          "scope": [],
+          "timeoutMs": 120000
+        },
+        {
+          "id": "tasks-api",
+          "title": "Attività, filtri e conflitti senza perdita di dati",
+          "command": [
+            "node",
+            "tests/acceptance.mjs",
+            "tasks-api"
+          ],
+          "scope": [],
+          "timeoutMs": 120000
+        },
+        {
+          "id": "board-ui",
+          "title": "Interfaccia progetti e attività su desktop e mobile",
+          "command": [
+            "node",
+            "tests/acceptance.mjs",
+            "board-ui"
+          ],
+          "scope": [],
+          "timeoutMs": 120000
+        },
+        {
+          "id": "planning-api",
+          "title": "Settimana civile, sessioni e riepilogo coerente",
+          "command": [
+            "node",
+            "tests/acceptance.mjs",
+            "planning-api"
+          ],
+          "scope": [],
+          "timeoutMs": 120000
+        },
+        {
+          "id": "planning-ui",
+          "title": "Pianificazione e tempo dal browser",
+          "command": [
+            "node",
+            "tests/acceptance.mjs",
+            "planning-ui"
+          ],
+          "scope": [],
+          "timeoutMs": 120000
+        },
+        {
+          "id": "backup-api",
+          "title": "Backup completo e ripristino atomico",
+          "command": [
+            "node",
+            "tests/acceptance.mjs",
+            "backup-api"
+          ],
+          "scope": [],
+          "timeoutMs": 120000
+        },
+        {
+          "id": "backup-ui",
+          "title": "Consenso al ripristino e interfaccia di portabilità",
+          "command": [
+            "node",
+            "tests/acceptance.mjs",
+            "backup-ui"
+          ],
+          "scope": [],
+          "timeoutMs": 120000
+        }
+      ],
+      "allowedPaths": [
+        "src",
+        "public",
+        "README.md",
+        "docs"
+      ],
+      "protectedPaths": [
+        "BRIEF.md",
+        "tests",
+        "package.json",
+        ".gitignore"
+      ],
+      "supervision": {
+        "mode": "project",
+        "maxReviews": 12
+      },
+      "limits": {
+        "maxTurns": 104,
+        "maxAttempts": 4,
+        "maxDurationMs": 5429746,
+        "maxTokens": 86305444,
+        "turnTimeoutMs": 720000,
+        "maxNoProgress": 4
+      }
+    },
+    "milestones": [
+      {
+        "id": "weekly-work",
+        "title": "Dalla lista al piano settimanale e al tempo reale",
+        "outcome": "Ricertificare tutti e cinque i criteri sul candidato già sviluppato: progetti, attività, interfaccia, settimana e sessioni API/UI. Questi cinque controlli passavano nella prova precedente; preservare il codice. Colmare soltanto eventuali lacune concrete della guida o dell’esperienza individuate dalle nuove prove e dalla revisione. Il backup resta il risultato successivo.",
+        "criterionIds": [
+          "projects-api",
+          "tasks-api",
+          "board-ui",
+          "planning-api",
+          "planning-ui"
+        ],
+        "dependsOn": []
+      },
+      {
+        "id": "safe-delivery",
+        "title": "Portabilità e ritorno al prodotto finito",
+        "outcome": "Aggiungere backup completo e ripristino atomico validato con consenso esplicito. Verificare l’integrazione di tutti i flussi e i layout mobili. Completare README e guida pratica in italiano con avvio, dati, limiti e prove effettive, distinguendo affermazioni del modello da controlli host. Risolvere soltanto lacune concrete entro l’obiettivo approvato.",
+        "criterionIds": [
+          "backup-api",
+          "backup-ui"
+        ],
+        "dependsOn": [
+          "weekly-work"
+        ]
+      }
+    ],
+    "environment": {
+      "copyIgnoredPaths": []
+    }
+  },
+  "expectedHead": "d9cb9d910812e6a632d2765b205963466a47c16a",
+  "commonDirectory": "/Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020-r4/source/.git",
+  "specHash": "d709e9d758158e91b750d0c97fde876f700f2f0f034ce22dd0e747af56c2e70a",
+  "permissions": [
+    "Sequential project missions within this complete approved contract",
+    "Host creates verified local checkpoint commits under refs/iterfox/checkpoints; source HEAD and index stay unchanged",
+    "Historical handoffs are context; each new mission starts with no proofs",
+    "No push, merge, deployment, new check commands or automatic contract changes",
+    "Up to two technical recoveries per mission after the owned Codex process group exits and files are audited; original aggregate limits remain in force"
+  ],
+  "limits": {
+    "maxTurns": 104,
+    "maxAttempts": 4,
+    "maxDurationMs": 5429746,
+    "maxTokens": 86305444,
+    "turnTimeoutMs": 720000,
+    "maxNoProgress": 4
+  },
+  "authorizationRequired": true
+}
