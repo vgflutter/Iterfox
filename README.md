@@ -1,567 +1,151 @@
 # Iterfox
 
-**Delegate the work. Wake up to evidence.**
+**Delegate project development to your agent. Let Iterfox keep the work moving.**
 
-[Guida pratica in italiano: come avviare e governare il lavoro](README.it.md)
+[Italiano: come si usa](README.it.md) · [Agent runbook](docs/agent-guide.md) · [Documentation](docs/README.md)
 
-Iterfox develops toward a project goal while you are away. Give it direction and
-checks you trust. In project mode it implements, verifies a milestone, inspects the
-actual result and discovers the next useful work without another prompt. Reversible
-choices stay with the agent. Return to inspect the result, evidence and decisions.
+Iterfox is a local supervisor for Codex. Give your assistant a project goal and a
+work window. The assistant prepares a roadmap, checks and boundaries, then starts
+Iterfox within your authorization. A background worker develops each approved
+outcome, verifies it, corrects failures and continues to the next outcome.
 
-This is an early working MVP. Only Codex is supported. It does not automatically
-push, merge or deploy. A completed agent turn is not a passing acceptance check.
+You can close the conversation and browser. Return to a product you can inspect,
+a record of what passed and a clear explanation of anything still blocked.
 
-## Continuous work while you are away
+This is an **MVP**. Real applications have been delivered, but the long trial also
+needed assistant-prepared recoveries. Full-night unattended reliability remains
+to be demonstrated. [Measured results and limitations](docs/evidence.md).
 
-Use **Delegations** for a bounded chain of outcomes. Approve the outcome graph,
-checks, edit boundaries and shared work window once. The host develops and verifies
-each eligible outcome, saves a local checkpoint and starts the next mission from
-that code. Each mission gathers fresh evidence. Pause or stop the whole delegation;
-review the product before integration.
+## Use it through your assistant
 
-Return through **Delegations → Read project brief** for outcomes, remaining work,
-attention and source-mission links. Export JSON, Markdown or **Download project
-report HTML** for offline reading. **Projects** stores project memory and a roadmap;
-**New run** prepares one mission. A full delegation still needs technical
-configuration, which an assistant can prepare from your goal before review. The
-current UI does not generate a complete verified outcome graph from a sentence.
+An assistant with terminal access can operate Iterfox through its CLI. **You do
+not need to write its JSON configuration or supply every next coding prompt.**
+The assistant does that preparation; the detached worker owns continued execution.
+Development inside Iterfox currently uses sequential Codex roles.
 
-## Technical recovery demonstrated
+Start with a message like this:
 
-After Custode exposed the interruption gap, **two real Codex trials** discarded
-the first builder response. Iterfox retried automatically and completed in
-**2 min 10 s and 2 min 7 s**, each with two verified criteria and no assistant
-Resume. The second trial uses the final version. Up to two technical retries per
-run require owned processes to exit and files to pass audit; the original
-authorization and budgets remain in force. The Morning Brief records the cause
-and outcome. These are short injected-fault trials; the longer Svolta case is recorded below.
-[Protocol, ledger, ten recovery cases and screenshots](docs/validation/technical-recovery-20261020/index.html).
+> Use Iterfox to develop [project/result] in [repository path]. Prepare the
+> roadmap, checks and environment yourself. Explain the proposed delivery,
+> editable files and decisions reserved for me. Work within [duration] and the
+> agreed boundaries. Once authorized, launch in the background, save a session
+> receipt and return the usable result, evidence and remaining issues.
+> Follow Iterfox's AGENTS.md and docs/agent-guide.md.
 
-## A longer trial: Svolta
+The workflow is:
 
-On 20–21 October 2026, Iterfox developed **Svolta**, a local Italian application
-for projects, tasks, weekly planning, time tracking and backup. The delivery passes
-**seven host criteria and 8 external audit groups**, with actual Chrome views
-at 390px. The assistant prepared the goal and checks.
+1. **You describe the result.** The assistant reads the repository and prepares
+   usable outcomes, fixed checks, edit boundaries and limits.
+2. **You authorize that scope.** A preflight shows exactly what will run. Existing
+   authorization applies; normal coding tasks need no new confirmation.
+3. **Iterfox works.** Codex plans, builds, diagnoses failures and reviews progress.
+   The runtime runs approved checks and checkpoints each completed outcome.
+4. **You govern when needed.** Ask your assistant for status, give direction,
+   pause or stop. The same controls are available in the graph.
+5. **You inspect the delivery.** Read the report, try the product and decide how
+   to integrate it. A checkpoint keeps code in an isolated Git worktree.
 
-The experiment required **four separate technical authorizations and three
-assistant-prepared continuations**, with no additional user development prompts
-or manual application-code corrections. The original remains BLOCKED at 1/4;
-the second STOPPED at 1/3 after an incorrect test expectation; the third BLOCKED at 0/2
-despite five green criteria because its review used invalid references. All original
-states are preserved. From the first authorization to the final outcome: 194.7 minutes,
-including the intermediate engineering work.
+There is no automatic connection to an arbitrary chat or its Steer queue. This
+workflow requires an assistant that can invoke the local CLI. The assistant should
+save the delegation ID and absolute data/configuration paths in a session receipt
+so another conversation can pick up the same job. [Exact agent procedure](docs/agent-guide.md).
 
-The last delegation completes **two outcomes in 45.7 minutes**, with 1 rejected
-review proposal and 2 automatic technical retries. One absent-file reference
-was added after a real SDK response; a builder response was deliberately lost.
-The engine continued within the original shared limits and deadline. The brief
-shows rejected proposals and later valid reviews; the graph now reflects pause,
-stop and blocked states.
+## Install and try the interface
 
-This records useful work while the operator is away and concrete supervisor
-limitations. Some rigid browser selectors also generated adaptations to the test;
-coverage and product quality still need judgment.
-[Protocol, source, ledger and screenshots](docs/validation/long-svolta-20261020/index.html).
-
-## A simulated absence on a new application
-
-On 20 October 2026, one delegation built **Custode**, a local household inventory,
-maintenance and backup app, without further user prompts. The assistant prepared
-the configuration and six fixed checks. The first worker remained active for
-152.0 minutes, saved three checkpoints and verified the fourth outcome’s functionality,
-then blocked on an aborted model call. **It did not recover automatically and
-remains recorded as 3/4.**
-
-One assistant recovery used an explicitly uncertified review snapshot and a
-separate authorization to finish integration and guidance in 17.3 minutes. No additional
-user prompt or manual application-code correction was needed. Four guides received
-a post-run editorial correction distinguishing runtime receipts and same-integration
-AI source review.
-
-The delivery passes six host criteria, **12 external audit groups and three
-dropped-response recovery scenarios**, with browser layouts at 390px. This measures
-useful work while the operator is away and exposes autonomous interruption recovery
-as the concrete reliability gap; it does not prove universal superiority to direct Codex.
-[Protocol, results, source and actual screenshots](docs/validation/night-custode-20261020/index.html).
-
-## Demonstrated on Iterfox itself
-
-On 20 October 2026, one delegation completed three real Codex outcomes on Iterfox:
-an evidence-derived project brief, its return-to-work interface and an offline
-HTML report. Code and prepared dependencies moved between three missions with
-local checkpoints and fresh cumulative gates: 5, then 6, then 7. Project review
-also discovered and implemented a documentation task after green checks.
-
-**One assistant recovery was required during the last mission.** Expensive history
-replay in a 100 ms monitor caused long delays. The assistant paused the same
-delegation, preserved the original runtime and resumed with a separately frozen
-fixed runtime. Original authorization time, checks, limits, run IDs and checkpoints
-were retained. An earlier pre-model startup failure also required a dependency
-preparation fix. No additional user decision was requested. This is not a fully
-unattended run or an overnight reliability claim.
-[Protocol, results, interventions and real screenshots](docs/validation/continuous-project-real-20261020.html).
-
-The delivered checks pass 86 backend cases, with 7 optional cases skipped, plus
-11 Chrome cases and three additional browser workflows. The final three exports
-and offline HTML were also exercised against the actual completed Codex ledger
-without changing its history.
-
-Earlier [product missions](docs/validation/project-continuity-real.html) and the
-[paired Valigia case](docs/validation/valigia-comparison-20261020.html) retain their
-original results. Valigia showed equal functional results with prepared criteria;
-this trial measures cross-mission continuity and required recoveries, not universal
-superiority over direct Codex.
-
-## Who governs the process?
-
-**You approve the destination and boundaries. Iterfox chooses and adapts the work
-inside them. You review the result before integrating it.**
-
-| Decision                                                                     | Who controls it?                                                                                                                                             |
-| ---------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Goal, success criteria, exact check commands, editable paths and work window | You review the draft and explicitly authorize them before launch.                                                                                            |
-| Implementation order, corrections and further work toward the same goal      | Iterfox plans and adapts these during the run. Enable project development to discover work after green checks.                                               |
-| Reversible implementation and design choices                                 | Delegated to the agent unless you explicitly reserve a decision in the handoff.                                                                              |
-| Following approved delegation outcomes and making local checkpoint commits   | The host worker does this within the authorized graph, cumulative checks and original limits. The coding agent cannot commit or authorize the next contract. |
-| New priorities and context during work                                       | You add requests, decisions or hypotheses in Project Compass. They apply after the current activity.                                                         |
-| Changing approved success criteria or limits                                 | You pause and explicitly approve a versioned contract revision through the CLI. A Compass note cannot authorize it.                                          |
-| Integrating, publishing or deploying the result                              | You do this after reviewing the isolated worktree and evidence.                                                                                              |
-
-A **run** is one authorized session. Its **contract** stores the approved goal,
-checks, edit boundaries and limits. Its **handoff** is optional additional context:
-priorities, settled choices, hypotheses and decisions reserved for you. The handoff
-can evolve while the contract remains in force.
-
-**Projects** keeps a durable brief and milestone roadmap independently of a run.
-Create or revisit a project, edit decisions and provisional hypotheses separately,
-inspect prerequisite links and revision history, link existing sessions, capture
-audited handoffs and inspect their provenance. Prepare a selected milestone in the
-existing editable New Run flow; drafting, review and authorization remain required.
-Operator-reviewed milestones and historical handoffs do not certify future runtime
-checks. The opening summary brings current work and linked sessions forward; expand
-**Project brief and editing** for the full memory and history. After a stale or
-uncertain save, retain your draft, inspect saved state and reconcile explicitly.
-Data persist in the selected data directory's `ledger.sqlite`; unsaved browser inputs
-remain page-local. In the manual New Run flow, continuing code requires a reviewed
-committed checkpoint because New Run copies committed HEAD. Read the
-[workflow, recovery and observed limits](docs/project-workspace.md).
-
-For your first real session:
-
-1. Open **New run → From a goal**, choose a committed Git repository and describe
-   what should work when you return.
-2. Keep **Develop the project autonomously** selected. In the optional handoff,
-   explain priorities and which decisions require you.
-3. Generate the Codex draft. Review the goal, checks, paths and work window. An
-   existing regression command may protect old behavior without checking the new
-   feature: make sure the proposed criteria actually cover your desired result.
-4. Choose **Review preflight**, inspect the final values, then **Authorize & start
-   Night Run**. This starts the worker; drafting alone does not.
-5. Leave it running, or open **Project Compass** to steer. **Pause** interrupts the
-   current activity; **Resume** continues within the original limits. **Stop** also
-   interrupts work and keeps the files/history; it can be explicitly resumed.
-6. Return to **Morning Brief**, inspect **Proof Ledger** and review the worktree
-   diff. `COMPLETED` means the configured policies are satisfied and, in project
-   mode, the supervisor considers the goal ready. Your product review still matters.
-
-When a decision is parked in Compass, independent work can continue. Use **Answer
-this question** for a linked reply. If the run has become `BLOCKED`, resolve its
-displayed reason and explicitly resume. A note saved on an inactive run does not
-restart it. Work stops when the goal is ready, progress needs your intervention or
-an approved limit is reached; eight hours is a maximum window, not work to fill.
-Paused time counts toward that window. Neither resume nor a new note extends it.
-
-When a successfully returned structured Compass direction has invalid criterion
-references, dependencies, note accounting or question handling, Iterfox can ask
-for correction with validation feedback. The first attempt counts toward the
-original `maxAttempts`; calls share the remaining turn, token and time budgets.
-Rejected proposals and reasons remain replayable without becoming active work or
-proof. Ordered handoffs and linked questions are preserved. Audits gate each
-correction; provider/authentication/timeout/network/sandbox failures, source
-integrity failures and protected edits still block.
-
-The [recovery record](docs/autonomous-recovery.md) documents the first mission's
-explicit recovery, the stopped conflicting attempt and the operator's reviewed
-timeout/semantic-rejection reconciliation. Locally, seven protected recovery
-fixtures and eight Compass cases passed, including 40 frozen replay prefixes;
-TypeScript passed. Separate runtime host receipts for the post-implementation
-snapshot (`ccde5f1b4a4d…`, 2026-10-19 22:22–22:23 UTC) record **7/7 recovery cases,
-73 regression passes with 7 optional skips, successful server/UI typecheck and
-production build, and 9 passing Chrome cases**. The build retains the existing
-Vite advisory: a 668.44 kB minified JavaScript chunk exceeds 500 kB. The record
-includes receipt IDs and the full tested fingerprint. These receipts precede this
-documentation update; subsequent freshness checks and required project review
-remain with the unchanged runtime acceptance process.
-
-Acceptance became current again and the product mission reached **COMPLETED**.
-After collection, the optional real-SDK injected-fault probe passed on the reviewed
-code in **4 min 20 s**: two actual orientation calls, three verified fixture
-criteria and structural contract equality. Its seeded task and injected error are
-explicit fixtures, separate from the product mission.
-[Full provenance and limits](docs/validation/project-continuity-real.json).
-
-For an example handoff, state meanings and intervention steps, read the
-[Italian operating guide](README.it.md). The [English Compass guide](docs/project-compass.md)
-covers steering, and the [goal launch guide](docs/goal-launch.md) covers draft review
-and recovery. Notes entered in a separate Codex chat are not imported into Iterfox.
-
-### Returning to a multi-mission delegation
-
-An approved continuous delegation covers a finite graph of outcomes under one
-contract. The host starts the next eligible mission, repeats cumulative approved
-checks and records a local checkpoint before continuing within the original shared
-limits. The coding agent owns ordinary reversible implementation choices inside
-its current mission. It cannot change the contract, protections or permissions,
-commit, or authorize further work. A host checkpoint is a technical result;
-operator product acceptance and any push, merge, deployment or publication remain
-separate decisions. **Projects** milestones retain their operator review process.
-
-Open **Delegations**, select a delegation and choose **Read project brief**. The
-**Project morning brief** brings saved outcome progress, remaining work and
-questions or blocks together, with source-mission links and expandable provenance.
-**Export project brief JSON** and **Export project brief Markdown** retain the
-existing `.json` and `.md` downloads.
-
-For a portable report, choose **Download project report HTML** in **Project morning
-brief**, beside the JSON and Markdown exports. The button fetches authenticated
-`GET /api/delegations/:id/report` and supplies the `X-Iterfox-Token` request header
-for you. The route returns a `text/html` attachment with a safe `.html` filename
-under the same local-host and same-origin guards as the brief routes; opening a
-bare URL without that header does not authorize a download. Save the attachment
-and open it locally in a browser. Inline styles and native expandable
-details work offline without scripts, remote resources, a running Iterfox server
-or model calls. Saved strings, commands and artifact paths are escaped text;
-referenced evidence files are not bundled.
-
-The report preserves the original goal and limits, reported usage, saved attention,
-criterion results and checkpoint SHA/ref/fingerprint/sequence. It reads saved
-records without starting work, spending model tokens or rerunning checks. Missing
-mission history makes usage partial and remaining turn/token budgets unknown;
-unreported usage and monetary cost are unavailable. Later recorded mission state
-is separate from checkpoint proof; unavailable provenance stays unavailable.
-The read time is not a current-source freshness check, and the offline file does
-not refresh itself. AI claims and technical checkpoints do not establish operator
-product acceptance. See the [delegation guide](docs/continuous-delegation.md) for
-routes, refresh/recovery behavior and the current trial's validation limits.
-
-The original trial's protected browser case covered JSON/Markdown and 390px
-without the HTML interaction. The delivered regular UI suite now also checks the
-HTML download, offline reading with JavaScript disabled and delayed/failed brief
-responses. A separate browser audit exercised the completed real Codex ledger.
-[Results and the required technical recovery](docs/validation/continuous-project-real-20261020.html).
-Product review and release decisions remain with the operator.
-
-### Governing through the graph
-
-Select an activity or acceptance node in **Live Trail** to inspect its state and
-evidence. **Steer selected work** shows the selected title and criterion before
-you enter an **Instruction for selected work** and choose **Send instruction**.
-Requests, operator decisions and provisional hypotheses are saved as Compass
-notes with the exact contract version and optional activity reference. **Draft a
-priority request** prepares text for review; it promises no execution order.
-
-Saving records context for existing activity-boundary reconciliation. It starts no
-worker and changes no acceptance result. Inactive runs require explicit **Resume**;
-terminal runs require a follow-up session, which an approved delegation can create
-for its next eligible outcome. **Review Compass history** opens the
-recorded note. Live Trail drafts survive selection/view changes and errors while
-the page stays open; uncertain saves require history inspection before a manual
-retry. Pending/unconfirmed text stays read-only and copyable; unlocking a manual
-retry does not send it. Terminal runs keep the text for copying into a reviewed
-follow-up. Tab then Enter/Space selects a graph node with visible focus; Escape or
-closing details returns focus to that node. Replay is read-only. Linked answers
-remain in Project Compass, and approved
-contract revisions retain their existing approval flow.
-
-**Recorded instructions** in the inspector lists matching notes, including after
-reload, with links to each note in Compass. The note's criterion/activity reference
-and contract version stay distinct from its planning disposition and reconciliation
-version. Historical references retain their original criterion title after contract
-revisions. Morning Brief JSON and Markdown exports preserve these references;
-saved instructions and plans do not establish runtime acceptance.
-
-Compass reconciliation also receives a bounded, reference-only description of the
-exact selected activity, including checks and decisions: ID, title, kind and
-objective, plus the criterion's title at the recorded contract version. This
-resolves “this result” when several activities share a criterion, without changing
-the stored note or granting execution or acceptance authority.
-
-The final delivery exercised a contextual instruction on an actual model-planned
-product activity; it is recorded as **In the plan** with its original reference
-and reconciliation reason. Eight additional Chrome checks on the final code
-cover drafts, errors, delayed/lost responses, keyboard submission, replay, mobile
-and terminal runs using explicit fixtures. A separate real-Codex probe corrected
-one deliberately injected semantic error, completed three fixture criteria and
-preserved structural contract equality without another operator message after
-the initial Resume. This does not measure a causal priority advantage.
-
-Read the [dated delivery report](docs/validation/project-continuity-real.html) for
-versions, actual screenshots, interventions and limits. The
-[selected-work guide](docs/graph-controls.md#observation-status-for-this-change)
-retains the earlier observations, including the JSON-order comparison defect in
-an old report; the final harness uses structural equality. Qualitative judgments
-are ASSESSED by the same integration, not independent certification. Keyboard
-coverage is partial. Nodes cannot be dragged or connected to edit execution or
-acceptance. The older DEMO image below remains historical context.
-
-![Actual Live Trail showing a recorded DEMO run](docs/screenshots/live-trail.png)
-
-_Real UI screenshot of the labeled DEMO fixture: a failed command check caused a
-corrective task, invalidated an earlier proof, and triggered a recheck. The screenshot
-is not a real-Codex run. Real integration evidence is linked below._
-
-## Quickstart
-
-Requires **Node 22.13+**, npm and Git. macOS is locally validated; a Linux/macOS CI
-matrix is included. Native Windows unattended execution has not been validated.
-Node 22 may print an experimental warning for its built-in SQLite module.
-
-Install from this source checkout; no npm release is assumed:
+Requires **Node 22.13+**, npm and Git. Install from this checkout:
 
 ```sh
 npm ci
 npm run build
 npm run demo
-npm run iterfox -- ui
+npm run iterfox -- ui --data .iterfox --port 4310
 ```
 
-Open **http://127.0.0.1:4310**. The demo makes a fresh small Git repository, runs real
-Node tests, fixes two fixture defects with a **DEMO** provider, and consumes no model
-tokens. Its provider behavior is intentionally scripted; the production engine is not.
-Use the graph, click a node, inspect the Proof Ledger, or replay the recorded failure.
+Open **http://127.0.0.1:4310**. This demo executes actual Node checks using an
+explicitly scripted **DEMO provider**; it does not call a model. Select a graph
+node, inspect the failed check and correction, then open Morning Brief or replay.
+Real development needs working Codex authentication and network access.
 
-To add the CLI to your local PATH after building:
+Use `node /absolute/path/to/Iterfox/dist/cli.js` from an assistant, or install the
+built checkout on your PATH with `npm install --global .` to use `iterfox`.
+The [agent runbook](docs/agent-guide.md#try-the-two-outcome-example) includes a
+complete two-outcome example and a preflight you can inspect without model calls.
+
+## What the graph controls
+
+| View                      | Use it for                                                                                           |
+| ------------------------- | ---------------------------------------------------------------------------------------------------- |
+| **Delegations**           | The approved outcomes, prerequisites and checkpoints; pause/resume/stop the whole job.               |
+| **Live Trail**            | Open a mission, select an activity or criterion, inspect evidence and send a contextual instruction. |
+| **Project morning brief** | Results, open work, attention and downloadable reports.                                              |
+| **Projects**              | Persistent project memory and a manually maintained roadmap. Saving it does not start work.          |
+| **New run**               | Draft and authorize one mission from a goal or configuration.                                        |
+
+The graph follows recorded events. Dragging or connecting nodes does not edit the
+workflow. A recorded instruction influences planning at an activity boundary;
+it cannot silently change approved checks or certify a result.
+
+![Live Trail, recorded DEMO fixture](docs/screenshots/live-trail.png)
+
+_Actual UI capture of the scripted DEMO, not a real-Codex validation run._
+
+## The commands an agent uses
+
+For a multi-outcome delegation, the assistant prepares `delegation.json`, then:
 
 ```sh
-npm install --global .
-iterfox status
+iterfox delegation preflight --config delegation.json --out preflight.json
+iterfox delegation run --config delegation.json --preflight preflight.json --data /absolute/data --night --yes
+iterfox delegation status DELEGATION_ID --data /absolute/data --json
+iterfox delegation report DELEGATION_ID --data /absolute/data --format json
+iterfox delegation pause DELEGATION_ID --data /absolute/data
+iterfox delegation resume DELEGATION_ID --data /absolute/data --night
+iterfox delegation stop DELEGATION_ID --data /absolute/data
+iterfox delegation report DELEGATION_ID --data /absolute/data --format html --out result.html
 ```
 
-You can always use `node /absolute/path/to/Iterfox/dist/cli.js` without a global install.
+Keep configuration, preflight and reports outside the target source repository.
+Use the **same absolute data directory** for every command and for the UI.
+`--yes` expresses authorization; `--preflight` pins the reviewed HEAD and parsed
+configuration. Neither a preflight nor a generated configuration grants permission.
+Preflight starts no worker and executes no checks. Reports read saved evidence;
+they do not reverify current source. For a single mission use `iterfox run` with
+`--project`; see [project development](docs/project-development.md).
 
-## Run real Codex
+## What runs while you are away
 
-The official SDK includes a Codex CLI. It uses your existing Codex authentication;
-you need a Codex account/login or a supported API-key setup and network access to
-the Codex service. Iterfox does not store or ask you to paste credentials. Authenticate
-with your installed official `codex login` if needed. See the
-[official SDK documentation](https://learn.chatgpt.com/docs/codex-sdk).
+A detached local worker survives closing the browser, conversation or launching
+terminal. **The computer must remain awake and connected.** On macOS the worker
+requests idle-sleep inhibition; explicit sleep, shutdown and power loss interrupt
+execution. A dead worker requires inspection and explicit resume; this is not an
+OS service that restarts after reboot. You do not need a server for local work.
 
-```sh
-# Same fixture, real Codex. Review the printed preflight and type yes.
-npm run iterfox -- demo --codex
+Within the authorized scope, Iterfox can revise implementation plans, fix defects,
+rerun checks and move between outcomes without new user prompts. Known technical
+interruptions have bounded automatic recovery. Original time/turn/token limits
+persist across pauses and resumes. New permissions, acceptance changes and
+reserved decisions remain under operator control.
 
-# A real repository, with explicit authorization of the reviewed configuration.
-node /path/to/Iterfox/dist/cli.js run \
-  --repo /path/to/my-project \
-  --config /path/to/my-project/iterfox.json \
-  --data /path/to/my-project/.iterfox \
-  --project --night --yes
-```
+The runtime records deterministic checks separately from screenshots and AI
+judgments. An agent's “done” is not a passed check. Changed inputs can make earlier
+proof stale. Qualitative review comes from the same Codex integration and is not
+independent certification. [Verification](docs/verification.md) · [Safety and recovery](docs/safety.md).
 
-Only committed HEAD is copied into a separate `iterfox/<run-id>` worktree. Your
-uncommitted source work stays intact. Prepare any dependencies needed by the checks
-in that worktree yourself; the runtime does not install packages or grant network
-access to agent commands. Missing dependencies produce failed checks or a blocker.
+## Current scope and evidence
 
-`ITERFOX_MODEL` optionally selects a model available to your account.
-`ITERFOX_CODEX_PATH` optionally selects an absolute path to a compatible official CLI.
-The runtime disables external integrations and verifies MCP restrictions before each
-turn. Unsupported CLI/configuration combinations are blocked with an actionable error.
+The Svolta trial delivered a local project/task/week/time/backup app with **7 host
+criteria and 8 additional audit groups passing**. It required four distinct
+technical authorizations and three assistant-prepared continuations, without new
+user development prompts or manual application-code edits. Useful work during
+absence is observed; one uninterrupted autonomous night is not established.
+[Full report, code and preserved failures](docs/validation/long-svolta-20261020/index.html).
 
-## Define what success means
+The runtime is local and headless-first, with an optional browser UI. An SSH runner
+for an existing host is implemented; a real Linux SSH/systemd deployment remains
+unvalidated. There are no parallel agent teams, generic provider integrations,
+automatic merges/deployments or monetary-cost estimates.
 
-In the local UI, open **New run → From a goal**, choose a Git repository and describe
-the desired result in ordinary language, including Italian. Codex drafts editable
-criteria, exact check arguments, edit boundaries and a work window from a bounded
-snapshot of committed HEAD. Review the source excerpts, assumptions and any check
-gaps. Drafting and preflight do not execute the proposed checks or create a run;
-**Authorize & start Night Run** explicitly starts the isolated runtime.
+For contributors, `npm run check` runs type checking, deterministic tests and the
+production build. Real-Codex tests are opt-in. [Contributing](CONTRIBUTING.md).
 
-The review keeps the goal, criteria, exact argv, edit boundaries and work window
-visible, with a summary of turn and reported-token limits. New drafts normally
-propose **8 hours, 150 turns and 100,000,000 tokens**, adapting to specific guidance
-in the goal. These are editable proposals requiring authorization, not observed
-evidence or a promise of completion. Enter the window in hours and minutes; add
-seconds when needed. **Advanced session settings** contains turn/token controls,
-retries, turn timeout, no-progress and project-review limits. Each check's
-**Check details** contains its ID, scope and timeout. Invalid advanced fields open
-on validation, and structured error links return you to the affected field.
-
-**From a configuration file** remains available and loads the full existing
-configuration, including advanced verification fields. The CLI configuration route
-also remains available. The preflight summarizes the actual server-returned values;
-loading a file preserves its limits and precision. See [the goal launch flow](docs/goal-launch.md)
-for review, recovery and current validation limits.
-
-For the configuration route, use explicit command checks. For example:
-
-```json
-{
-  "goal": "Fix the parser without changing its public behavior or weakening tests.",
-  "criteria": [
-    {
-      "id": "parser",
-      "title": "Parser regression suite passes",
-      "command": ["node", "--test", "tests/parser.test.mjs"],
-      "scope": ["src", "tests", "package.json"],
-      "timeoutMs": 60000
-    }
-  ],
-  "allowedPaths": ["src"],
-  "protectedPaths": ["tests", "package.json", "iterfox.json"],
-  "limits": {
-    "maxTurns": 12,
-    "maxAttempts": 3,
-    "maxDurationMs": 3600000,
-    "maxTokens": 500000,
-    "turnTimeoutMs": 180000,
-    "maxNoProgress": 3
-  }
-}
-```
-
-Scopes are literal file/directory prefixes. Omit `scope` for a conservative
-whole-repository fingerprint. Include all relevant inputs when narrowing it.
-Commands run as trusted local programs with exact argv, without an implicit shell.
-Review commands and repository code before approving them.
-
-The scheduler groups adjacent steps sharing a check and defers corrections until
-planned implementation is finished. Current deterministic evidence can skip already
-covered tasks; stale evidence reopens them. Preliminary negative observations are
-recorded without spending corrective retries.
-
-The runtime owns acceptance state, checks, retry limits and scheduling. Codex can
-propose work but cannot change the contract or certify its own implementation.
-Test/config/secret edits and out-of-scope changes block further certification.
-Fingerprints make affected proofs STALE; unrelated scoped evidence remains valid.
-
-## A run you can understand
-
-- **Autonomous project development:** after green checks, a supervisor compares the
-  result to the whole goal and can discover further implementation work. The loop
-  continues without an operator prompt. New Run enables this mode by default;
-  CLI `--project` opts in. See the [project workflow and an eight-hour work window](docs/project-development.md).
-- **Project Compass (experimental):** add requests, settled decisions and provisional
-  hypotheses while work runs. Batch reconciliation replaces only unstarted work;
-  operator questions hold dependent criteria while independent work continues.
-  Every instruction has an explicit disposition. Read the [handoff workflow](docs/project-compass.md).
-- **Live Trail:** execution activities and separate acceptance nodes, linked to
-  evidence; real events over SSE; zoom, criterion filtering, grouped checks and
-  reduced-motion support. Planner, builder and diagnosis are sequential roles of
-  the same Codex integration, not independent reviewers.
-- **Proof Ledger:** command, exit code, output, elapsed time, contract version,
-  Git HEAD and input fingerprints, plus screenshot/diff artifacts and scored
-  qualitative rubrics. Deterministic PASS and AI-assessed results remain separate. Historical failed/stale checks remain visible.
-- **Morning Brief:** accomplished criteria, open work, failures, corrections,
-  plan decisions, resources, uncertainty and the worktree diff. Export Markdown or JSON.
-- **Decision replay:** rebuild any recorded event boundary without rerunning an
-  agent or spending tokens. Pause, resume and stop are available in the UI and CLI.
-
-![Actual Morning Brief for the DEMO fixture](docs/screenshots/morning-brief.png)
-
-## Working commands
-
-```sh
-iterfox run --config iterfox.json              # interactive preflight
-iterfox run --config iterfox.json --night --yes # explicitly authorize detached work
-iterfox run --config iterfox.json --project --night --yes # develop toward the project goal
-iterfox status                                # list runs; audit idle evidence
-iterfox status RUN_ID --json
-iterfox ui --port 4310
-iterfox pause RUN_ID
-iterfox resume RUN_ID --night
-iterfox stop RUN_ID
-iterfox events RUN_ID
-iterfox steer RUN_ID --message "Make one complete preview before polishing the landing."
-iterfox steer RUN_ID --kind decision --reply-to NOTE_ID --message "Use Faro as the name."
-iterfox brief RUN_ID --out morning.md
-iterfox brief RUN_ID --json --out morning.json
-iterfox contract RUN_ID --propose revised.json
-iterfox contract RUN_ID --approve --yes
-```
-
-Local commands accept `--data /absolute/path/to/.iterfox`. Use the same directory
-across terminals. Contract revisions require a paused/stopped/blocked run and an
-explicit operator approval; old versions and invalidated proofs remain in history.
-
-`--night` runs a detached local worker with a SQLite event ledger. Closing the page
-or the launching terminal is safe. **A local worker cannot execute during sleep or
-shutdown.** It is not an auto-starting OS service. While the worker remains alive,
-a timed-out call or recognized transport interruption can recover automatically
-up to **twice per run**, after the owned Codex processes exit and the worktree is
-audited. Retries preserve the original deadline, turn and reported-token limits.
-Pause/stop, a dead worker, unconfirmed process termination, protected edits and
-reserved operator decisions require explicit intervention. The **Morning Brief →
-Technical recovery** records each cause and retry. Budgets persist across resumes.
-[Real lost-response trial](docs/validation/technical-recovery-20261020/index.html). Read [safety and recovery](docs/safety.md) before unattended use.
-
-On macOS, workers request idle-sleep inhibition for their lifetime with the built-in
-`caffeinate` helper. Explicit sleep/shutdown still interrupt execution. Add
-`--handoff /path/to/notes.txt` at launch or use Project Compass while working. An
-evolving direction does not change the approved acceptance contract or limits.
-
-## Validation and honest limits
-
-```sh
-npm run check                  # type checks, deterministic tests, production build
-npx playwright install chromium
-npm run test:visual            # real screenshot mismatch/correction and artifact checks
-npm run test:ui                # graph, evidence gallery, rubric and mobile browser checks
-npm run test:assessor          # OPT IN: one real Codex qualitative assessment
-npm run test:codex             # OPT IN: real Codex, tokens and authentication required
-npm run test:compass           # OPT IN: real evolving handoff and parked decision trial
-npm run test:project           # OPT IN: autonomous discovery beyond green regression checks
-npm run compare:codex          # OPT IN: single-turn Codex reference measurement
-```
-
-On a machine with Chrome installed, `ITERFOX_BROWSER_CHANNEL=chrome npm run test:ui`
-uses it instead of downloading Chromium. CI does not call real Codex or require secrets.
-
-The 2026-10-19 self-development session completed this flow with five current host
-gates and two project reviews. After green checks, the supervisor discovered and
-implemented missing mobile run recovery. A separate browser audit exercised an
-Italian goal through a real Codex draft, edits, preflight and actual worker start;
-a deliberately lost authorization response was recovered on mobile without a
-duplicate run. The disposable audit workers were then stopped. See
-[recorded scope and remaining interaction checks](docs/goal-launch.md#implementation-choices-and-validation-status).
-This bounded case is not an eight-hour reliability result or a matched comparison
-with direct Codex. Passing regression suites alone does not establish a whole goal.
-
-The real Codex integration has been exercised through a failing check, diagnosis,
-dynamic correction and verified completion. See [recorded evidence and measured
-results](docs/validation.md), including the one-shot Codex reference. This small
-fixture does **not** establish a competitive advantage. Codex alone completed it
-with less time and reported usage in the recorded sample. Goals and Fabro remain
-unmeasured practical comparisons; a reproducible protocol is documented.
-
-A later complex Relaybox follow-up passed 48 protected tests and four additional
-holdout groups, and certified all five criteria after a scheduling fix. It still
-used 2.39× the elapsed time and 2.89× the reported tokens of the earlier direct-Codex
-sample. This was a single follow-up with historical references, not a new matched
-pair. Net value and developer review-time savings remain unproven; see the
-[measured follow-up](docs/validation.md#relaybox-scheduling-follow-up--2026-10-17).
-
-Command gates, real browser screenshot comparison and explicit qualitative rubrics
-are available. AI judgments use a separate **ASSESSED** status, never deterministic
-PASS. See [visual/qualitative verification](docs/verification.md), with runnable
-`examples/visual-lab` and `examples/qualitative-lab` fixtures. Baselines require
-operator review; screenshot similarity does not establish design quality.
-
-An SSH runner for an existing Linux host is implemented with systemd user services,
-preflight commit/contract pinning, a localhost UI tunnel and checked result downloads.
-See [cloud runner setup](docs/cloud-runner.md) and `deploy/cloud.example.json`.
-No paid server is created. Remote-agent protocol/detachment was tested locally;
-**a real SSH host and Linux service lifecycle have not yet been validated**.
-
-No workflow editor, parallel agents, automatic test-change approval, hard in-flight
-spend ceiling or monetary cost estimation is claimed. Passing configured checks
-does not prove the absence of other bugs.
-
-See [architecture](docs/architecture.md), [product decisions and sources](docs/product-decisions.md),
-[safety](docs/safety.md), [roadmap](docs/roadmap.md) and [contributing](CONTRIBUTING.md).
-
-MIT licensed. No proprietary orchestration service is required; real runs depend
-on Codex and its authentication/service availability.
+[Documentation index](docs/README.md) · [Architecture](docs/architecture.md) · [Roadmap](docs/roadmap.md) · [MIT license](LICENSE)

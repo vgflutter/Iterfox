@@ -35,8 +35,10 @@ const help = `Iterfox — Delegate the work. Wake up to evidence.
   iterfox pause|resume|stop <run-id> [--night]
   iterfox brief <run-id> [--json] [--out brief.md]
   iterfox events <run-id>
-  iterfox delegation run --config delegation.json [--night] [--yes]
+  iterfox delegation preflight --config delegation.json [--out preflight.json]
+  iterfox delegation run --config delegation.json [--preflight preflight.json] [--night] [--yes]
   iterfox delegation status|pause|resume|stop|brief <delegation-id>
+  iterfox delegation report <delegation-id> [--format markdown|json|html] [--out file]
   iterfox steer <run-id> --message "..." [--kind request|decision|hypothesis] [--reply-to note-id]
   iterfox contract <run-id> --propose contract.json
   iterfox contract <run-id> --approve --yes

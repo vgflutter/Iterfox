@@ -18,13 +18,27 @@ keeps its request ID; refresh and inspect instead of creating another delegation
 The CLI supports:
 
 ```sh
-iterfox delegation run --config delegation.json --night --yes
+iterfox delegation preflight --config delegation.json --out preflight.json
+iterfox delegation run --config delegation.json --preflight preflight.json --night --yes
 iterfox delegation status <id>
 iterfox delegation pause <id>
 iterfox delegation resume <id> --night
 iterfox delegation stop <id>
 iterfox delegation brief <id>
+iterfox delegation report <id> --format json
+iterfox delegation report <id> --format html --out result.html
 ```
+
+For an assistant preparing and operating the job, start with the
+[agent runbook](agent-guide.md). Preflight performs source/configuration validation
+without creating a ledger or starting work. Keep its output outside the source
+repository. Optional `run --preflight` refuses a different HEAD or normalized
+configuration hash; it does not grant authorization. Use the same absolute
+`--data` path for run, controls, reports and UI. `delegation report` exposes the
+same aggregate saved-record generator as the UI, including mission evidence.
+The older `brief` remains a short summary; `brief --json` returns raw delegation
+metadata. Reports support `--format markdown|json|html` and `--out` (replaces the
+named output file), without recovering workers or auditing current files.
 
 `--yes` authorizes the printed preflight. `--night` detaches the entire delegation,
 which remains independent of the page/terminal. On macOS the worker requests idle
