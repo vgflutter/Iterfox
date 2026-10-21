@@ -1,0 +1,26 @@
+{
+  "at": "2026-10-20T18:44:52.739Z",
+  "planned": "One authorization, four checkpointed outcomes, no assistant recovery during primary observation",
+  "observed": "Original delegation BLOCKED after three checkpoints. All six current functional gates passed but final integration and ready review were unfinished. No operator pause/stop was recorded.",
+  "failure": "Outcome safe-return requires attention: BLOCKED: The operation was aborted",
+  "primaryPreserved": true,
+  "recovery": {
+    "interventions": [
+      {
+        "at": "2026-10-20T18:26:40.232Z",
+        "kind": "Assistant recovery after primary blocked",
+        "action": "Preserved original ledger and worktree, made explicitly uncertified local review snapshot and prepared a new finite delegation without modifying the original approval/runtime/checks.",
+        "primaryResult": "3/4 checkpointed; all six current checks passed; final review/integration unfinished",
+        "userPromptsAfterInitialAuthorization": 0
+      }
+    ],
+    "method": "Separate finite authorization from a manually preserved review snapshot; no original clock reset, no change to original runtime or approved acceptance.",
+    "source": "recovery-delegation.json"
+  },
+  "claimsExcluded": [
+    "Primary run completed unattended",
+    "Four original certified checkpoints",
+    "Automatic recovery from the abort",
+    "Universal superiority to direct Codex"
+  ]
+}

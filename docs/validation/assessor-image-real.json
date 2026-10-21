@@ -1,0 +1,36 @@
+{
+  "status": "BLOCKED",
+  "evidenceStatus": "unverified",
+  "assessor": "real Codex SDK",
+  "otherRoles": "no-edit test fixtures",
+  "pngInput": true,
+  "durationMs": 21056,
+  "reportedTokens": 12340,
+  "assessment": {
+    "outcome": "uncertain",
+    "ratings": [
+      {
+        "id": "responsive",
+        "score": 3,
+        "explanation": "Rowan directly answers Mira. Mira’s turn-back offer addresses brevity indirectly, but acknowledgment of the shade preference is unclear."
+      },
+      {
+        "id": "clear",
+        "score": 4,
+        "explanation": "The three turns are concise, understandable, and free of confusing repetition."
+      },
+      {
+        "id": "avatar-image",
+        "score": 4,
+        "explanation": "I can see the PNG: it shows a round green avatar with a light peach face and two dark eyes."
+      }
+    ],
+    "summary": "Clarity and the avatar meet the rubric. Full acknowledgment of Rowan’s preference remains ambiguous.",
+    "limitations": [
+      "Three short text turns provide limited evidence of conversational naturalness, tone, or pacing.",
+      "The transcript does not establish whether the riverside loop is short or shaded."
+    ],
+    "reviewer": "codex",
+    "independent": false
+  }
+}

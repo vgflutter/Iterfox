@@ -1,0 +1,1636 @@
+{
+  "schemaVersion": 1,
+  "delegationId": "de2c27e8-446b-492c-9825-2f2abe2e0e57",
+  "goal": "Realizzare Svolta, app locale in italiano per piccoli progetti personali, attività, pianificazione settimanale e tempo dedicato, con backup portabile e gestione coerente degli errori. Consegnare un prodotto utilizzabile su desktop e mobile e una guida onesta. Seguire il contratto pubblico BRIEF.md. Scegliere autonomamente i dettagli reversibili; non introdurre account, servizi, dipendenze o pubblicazione.",
+  "status": "BLOCKED",
+  "reason": "Outcome usable-board requires attention: BLOCKED: A deferred check requires unfinished planned work and a non-passing probe",
+  "requiresProductReview": true,
+  "productAcceptance": "Not established by technical checkpoints; operator product review is required.",
+  "revision": 10,
+  "updatedAt": "2026-10-20T21:56:23.105Z",
+  "authorizedAt": "2026-10-20T20:50:56.207Z",
+  "observedAt": "2026-10-20T21:56:23.145Z",
+  "approval": {
+    "specHash": "5d7cd586ae6b062d7b629a44922cdcc950eab6b707c6308ad0689b06fd7b597e",
+    "sourceHead": "595658b48b6d7118f46d604f4d011f681217aaf8",
+    "repository": "/Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/source",
+    "provider": "codex"
+  },
+  "completedOutcomeCount": 1,
+  "pendingOutcomeCount": 3,
+  "limits": {
+    "maxTurns": 140,
+    "maxAttempts": 4,
+    "maxDurationMs": 14400000,
+    "maxTokens": 100000000,
+    "turnTimeoutMs": 720000,
+    "maxNoProgress": 4
+  },
+  "usage": {
+    "turns": 15,
+    "tokens": 5024017,
+    "runIds": [
+      "20261020T205056-641e33a8",
+      "20261020T211511-838aa23e"
+    ],
+    "unavailableRunIds": [],
+    "complete": true,
+    "missions": [
+      {
+        "runId": "20261020T205056-641e33a8",
+        "sourceSeq": 64,
+        "turns": 7,
+        "tokens": 1192620
+      },
+      {
+        "runId": "20261020T211511-838aa23e",
+        "sourceSeq": 108,
+        "turns": 8,
+        "tokens": 3831397
+      }
+    ],
+    "authorizedAt": "2026-10-20T20:50:56.207Z",
+    "observedAt": "2026-10-20T21:56:23.145Z",
+    "elapsedMs": 3926938,
+    "authorizationDeadline": "2026-10-21T00:50:56.207Z",
+    "remainingDurationMs": 10473062,
+    "remainingTurns": 125,
+    "remainingTokens": 94975983,
+    "accounting": "Reported turns and tokens are summed once per unique mission linked to an approved outcome. Unrelated missions are excluded. Unreported or interrupted-turn token usage and monetary cost are unavailable. The authorization window includes pauses and is never reset by a mission or resume. Missing ledgers make totals partial and remaining turn/token budgets unavailable."
+  },
+  "outcomes": [
+    {
+      "id": "reliable-foundation",
+      "title": "Dati affidabili per progetti e attività",
+      "outcome": "Implementare API e persistenza di progetti e attività, filtri, date e revisioni ottimistiche. Fare controllare i due criteri host e lasciare una base coerente. Non implementare ancora pianificazione, sessioni o backup. Interfaccia minima solo se serve per avviare l’app.",
+      "dependsOn": [],
+      "status": "CHECKPOINTED",
+      "runId": "20261020T205056-641e33a8",
+      "checkpoint": {
+        "head": "d3e570da7f20fb6f81fa5f6d8af89f710e9926d1",
+        "ref": "refs/iterfox/checkpoints/de2c27e8-446b-492c-9825-2f2abe2e0e57/reliable-foundation",
+        "sourceFingerprint": "d4be2d94025d39f88c9a5cd35afec5cc9a90c6f6eb72f4379eec3cc751dd2ba5",
+        "sourceSeq": 64,
+        "at": "2026-10-20T21:15:11.840Z"
+      },
+      "checkpointEvidence": {
+        "status": "AVAILABLE",
+        "sourceRunId": "20261020T205056-641e33a8",
+        "sourceSeq": 64,
+        "contractVersion": 1,
+        "runStatus": "COMPLETED",
+        "boundaryEvent": {
+          "runId": "20261020T205056-641e33a8",
+          "seq": 64,
+          "eventId": "de25c0ae-ff97-488d-a126-1a5d0ab99cb9",
+          "at": "2026-10-20T21:15:11.578Z",
+          "type": "workflow.completed"
+        },
+        "unavailableReason": null
+      },
+      "criteria": [
+        {
+          "id": "projects-api",
+          "title": "Archivio progetti persistente e revisioni",
+          "command": [
+            "node",
+            "tests/acceptance.mjs",
+            "projects-api"
+          ],
+          "scope": [],
+          "timeoutMs": 120000,
+          "status": "PASSED",
+          "basis": "checkpoint",
+          "sourceRunId": "20261020T205056-641e33a8",
+          "sourceSeq": 64,
+          "contractVersion": 1,
+          "recordedCriterion": {
+            "id": "projects-api",
+            "title": "Archivio progetti persistente e revisioni",
+            "command": [
+              "node",
+              "tests/acceptance.mjs",
+              "projects-api"
+            ],
+            "scope": [],
+            "timeoutMs": 120000
+          },
+          "evidenceId": "d50c766f-671c-406f-a5a3-9cfde4cc9a92",
+          "evidence": {
+            "id": "d50c766f-671c-406f-a5a3-9cfde4cc9a92",
+            "nodeId": "44fbf43b-84e5-45f9-9e34-c907bb882ba3",
+            "criterionId": "projects-api",
+            "contractVersion": 1,
+            "kind": "deterministic",
+            "status": "passed",
+            "createdAt": "2026-10-20T21:14:17.305Z",
+            "command": [
+              "node",
+              "tests/acceptance.mjs",
+              "projects-api"
+            ],
+            "exitCode": 0,
+            "output": "PASS empty archive\nPASS create project with stable defaults\nPASS optimistic project edit\nPASS invalid names and missing revisions do not write\nPASS project archival survives restart\nPASS unknown project does not create a record\n{\"criterion\":\"projects-api\",\"result\":\"PASS\",\"groups\":6}\n",
+            "durationMs": 1362,
+            "stamp": {
+              "head": "595658b48b6d7118f46d604f4d011f681217aaf8",
+              "files": {
+                ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+                "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+                "README.md": "fb16cd1afd76ee3bfa0c56360bac582c0f65bf0ee19bd4916d0f636c550270c7",
+                "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+                "src/app.mjs": "1e0b4f3bd0bbfbdf6dd1704bc7a445e95b29b3a5296308f04bd2fff89dec100d",
+                "src/archive.mjs": "07d8f1c116184f827d5da85b0874f0849f441a3e9a0bff6279b635a7f66de443",
+                "src/dates.mjs": "97166e73d0b44fc0758dba28a8e89c24e643efb97202e484c79cf9903906bde2",
+                "src/errors.mjs": "594ce35930d8da6b7abec818d5c0111a1d2488cd02d2bc2359297f7f12d11996",
+                "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+                "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+                "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+                "tests/acceptance.mjs": "5759467fd1c94b32c4044e4e7809c8b19afa636bd2b73ec210952d5c2bdcd4da",
+                "tests/browser.mjs": "e1cf12b45480219881ec514b1a2d830ab98ca4285153b941cbaa01ac5c9f26e8",
+                "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+              },
+              "fingerprint": "d4be2d94025d39f88c9a5cd35afec5cc9a90c6f6eb72f4379eec3cc751dd2ba5"
+            },
+            "scope": [],
+            "inputs": [],
+            "source": {
+              "runId": "20261020T205056-641e33a8",
+              "throughSeq": 64,
+              "contractVersion": 1,
+              "recordedEvent": {
+                "runId": "20261020T205056-641e33a8",
+                "seq": 55,
+                "eventId": "ecfcc413-3d23-45dd-bb66-aef92cffde89",
+                "at": "2026-10-20T21:14:17.345Z",
+                "type": "verification.passed"
+              }
+            }
+          },
+          "unavailableReason": null
+        },
+        {
+          "id": "tasks-api",
+          "title": "Attività, filtri e conflitti senza perdita di dati",
+          "command": [
+            "node",
+            "tests/acceptance.mjs",
+            "tasks-api"
+          ],
+          "scope": [],
+          "timeoutMs": 120000,
+          "status": "PASSED",
+          "basis": "checkpoint",
+          "sourceRunId": "20261020T205056-641e33a8",
+          "sourceSeq": 64,
+          "contractVersion": 1,
+          "recordedCriterion": {
+            "id": "tasks-api",
+            "title": "Attività, filtri e conflitti senza perdita di dati",
+            "command": [
+              "node",
+              "tests/acceptance.mjs",
+              "tasks-api"
+            ],
+            "scope": [],
+            "timeoutMs": 120000
+          },
+          "evidenceId": "c1bec71d-4fbf-4965-bb8c-78fd23c28a26",
+          "evidence": {
+            "id": "c1bec71d-4fbf-4965-bb8c-78fd23c28a26",
+            "nodeId": "c377b679-1951-43f6-81b4-544af0181b8e",
+            "criterionId": "tasks-api",
+            "contractVersion": 1,
+            "kind": "deterministic",
+            "status": "passed",
+            "createdAt": "2026-10-20T21:14:18.839Z",
+            "command": [
+              "node",
+              "tests/acceptance.mjs",
+              "tasks-api"
+            ],
+            "exitCode": 0,
+            "output": "PASS task defaults and exact fields\nPASS task edit, revision conflicts and combined filters\nPASS civil dates, invalid states and numeric validation\nPASS parallel stale writers cannot overwrite each other\nPASS archived projects disappear from general activity list\nPASS task persistence and malformed JSON\n{\"criterion\":\"tasks-api\",\"result\":\"PASS\",\"groups\":6}\n",
+            "durationMs": 1381,
+            "stamp": {
+              "head": "595658b48b6d7118f46d604f4d011f681217aaf8",
+              "files": {
+                ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+                "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+                "README.md": "fb16cd1afd76ee3bfa0c56360bac582c0f65bf0ee19bd4916d0f636c550270c7",
+                "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+                "src/app.mjs": "1e0b4f3bd0bbfbdf6dd1704bc7a445e95b29b3a5296308f04bd2fff89dec100d",
+                "src/archive.mjs": "07d8f1c116184f827d5da85b0874f0849f441a3e9a0bff6279b635a7f66de443",
+                "src/dates.mjs": "97166e73d0b44fc0758dba28a8e89c24e643efb97202e484c79cf9903906bde2",
+                "src/errors.mjs": "594ce35930d8da6b7abec818d5c0111a1d2488cd02d2bc2359297f7f12d11996",
+                "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+                "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+                "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+                "tests/acceptance.mjs": "5759467fd1c94b32c4044e4e7809c8b19afa636bd2b73ec210952d5c2bdcd4da",
+                "tests/browser.mjs": "e1cf12b45480219881ec514b1a2d830ab98ca4285153b941cbaa01ac5c9f26e8",
+                "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+              },
+              "fingerprint": "d4be2d94025d39f88c9a5cd35afec5cc9a90c6f6eb72f4379eec3cc751dd2ba5"
+            },
+            "scope": [],
+            "inputs": [],
+            "source": {
+              "runId": "20261020T205056-641e33a8",
+              "throughSeq": 64,
+              "contractVersion": 1,
+              "recordedEvent": {
+                "runId": "20261020T205056-641e33a8",
+                "seq": 57,
+                "eventId": "dc5e3332-456f-41d6-ba67-f58d9475d80e",
+                "at": "2026-10-20T21:14:18.881Z",
+                "type": "verification.passed"
+              }
+            }
+          },
+          "unavailableReason": null
+        }
+      ],
+      "evidence": [
+        {
+          "id": "08dd668a-edf7-4c40-b3a6-f909614b8811",
+          "nodeId": "10a86370-abba-4dff-a97b-1cb35585be51",
+          "criterionId": "projects-api",
+          "contractVersion": 1,
+          "kind": "deterministic",
+          "status": "recorded",
+          "createdAt": "2026-10-20T20:52:06.673Z",
+          "command": [
+            "node",
+            "tests/acceptance.mjs",
+            "projects-api"
+          ],
+          "exitCode": 1,
+          "output": "node:internal/modules/run_main:123\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: GET /api/projects: {\"error\":\"Not implemented\"}\n\n404 !== 200\n\n    at api (file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/data/worktrees/20261020T205056-641e33a8/tests/harness.mjs:34:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/data/worktrees/20261020T205056-641e33a8/tests/acceptance.mjs:11:59\n    at async check (file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/data/worktrees/20261020T205056-641e33a8/tests/acceptance.mjs:7:31)\n    at async projects-api (file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/data/worktrees/20261020T205056-641e33a8/tests/acceptance.mjs:11:5)\n    at async file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/data/worktrees/20261020T205056-641e33a8/tests/acceptance.mjs:56:49\n    at async appTest (file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/data/worktrees/20261020T205056-641e33a8/tests/harness.mjs:42:28)\n    at async file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/data/worktrees/20261020T205056-641e33a8/tests/acceptance.mjs:56:1 {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: 404,\n  expected: 200,\n  operator: 'strictEqual',\n  diff: 'simple'\n}\n\nNode.js v22.21.1\n",
+          "durationMs": 410,
+          "stamp": {
+            "head": "595658b48b6d7118f46d604f4d011f681217aaf8",
+            "files": {
+              ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+              "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+              "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+              "src/server.mjs": "c6d8459ab636f19e47738475483394bde026bd2be06ca399d0b021f5dbb89174",
+              "tests/acceptance.mjs": "5759467fd1c94b32c4044e4e7809c8b19afa636bd2b73ec210952d5c2bdcd4da",
+              "tests/browser.mjs": "e1cf12b45480219881ec514b1a2d830ab98ca4285153b941cbaa01ac5c9f26e8",
+              "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+            },
+            "fingerprint": "01f78f59ad8edcbe291b80b52debd6d16ea67c98c50df68bd155d04d799d7154"
+          },
+          "scope": [],
+          "inputs": [],
+          "purpose": "probe",
+          "source": {
+            "runId": "20261020T205056-641e33a8",
+            "throughSeq": 64,
+            "contractVersion": 1,
+            "recordedEvent": {
+              "runId": "20261020T205056-641e33a8",
+              "seq": 11,
+              "eventId": "8f4f0111-d188-466b-902f-c669fc6149a7",
+              "at": "2026-10-20T20:52:06.745Z",
+              "type": "verification.deferred"
+            }
+          }
+        },
+        {
+          "id": "8bf7dec4-cfea-4b75-b2c6-7678ad759d01",
+          "nodeId": "c78663f2-f654-44e3-b98c-5152550cad17",
+          "criterionId": "tasks-api",
+          "contractVersion": 1,
+          "kind": "deterministic",
+          "status": "recorded",
+          "createdAt": "2026-10-20T20:52:07.126Z",
+          "command": [
+            "node",
+            "tests/acceptance.mjs",
+            "tasks-api"
+          ],
+          "exitCode": 1,
+          "output": "node:internal/modules/run_main:123\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: POST /api/projects: {\"error\":\"Not implemented\"}\n\n404 !== 201\n\n    at api (file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/data/worktrees/20261020T205056-641e33a8/tests/harness.mjs:34:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async tasks-api (file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/data/worktrees/20261020T205056-641e33a8/tests/acceptance.mjs:22:47)\n    at async file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/data/worktrees/20261020T205056-641e33a8/tests/acceptance.mjs:56:49\n    at async appTest (file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/data/worktrees/20261020T205056-641e33a8/tests/harness.mjs:42:28)\n    at async file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/data/worktrees/20261020T205056-641e33a8/tests/acceptance.mjs:56:1 {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: 404,\n  expected: 201,\n  operator: 'strictEqual',\n  diff: 'simple'\n}\n\nNode.js v22.21.1\n",
+          "durationMs": 371,
+          "stamp": {
+            "head": "595658b48b6d7118f46d604f4d011f681217aaf8",
+            "files": {
+              ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+              "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+              "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+              "src/server.mjs": "c6d8459ab636f19e47738475483394bde026bd2be06ca399d0b021f5dbb89174",
+              "tests/acceptance.mjs": "5759467fd1c94b32c4044e4e7809c8b19afa636bd2b73ec210952d5c2bdcd4da",
+              "tests/browser.mjs": "e1cf12b45480219881ec514b1a2d830ab98ca4285153b941cbaa01ac5c9f26e8",
+              "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+            },
+            "fingerprint": "01f78f59ad8edcbe291b80b52debd6d16ea67c98c50df68bd155d04d799d7154"
+          },
+          "scope": [],
+          "inputs": [],
+          "purpose": "probe",
+          "source": {
+            "runId": "20261020T205056-641e33a8",
+            "throughSeq": 64,
+            "contractVersion": 1,
+            "recordedEvent": {
+              "runId": "20261020T205056-641e33a8",
+              "seq": 13,
+              "eventId": "5ad00337-1dee-4b56-94dd-03fde307d2b8",
+              "at": "2026-10-20T20:52:07.186Z",
+              "type": "verification.deferred"
+            }
+          }
+        },
+        {
+          "id": "08ddf1d7-4230-4a26-a9ff-1ed0b057b6a1",
+          "nodeId": "0219adec-b3b0-4e21-9bf1-385e6858b447",
+          "criterionId": "projects-api",
+          "contractVersion": 1,
+          "kind": "deterministic",
+          "status": "stale",
+          "createdAt": "2026-10-20T20:56:53.235Z",
+          "command": [
+            "node",
+            "tests/acceptance.mjs",
+            "projects-api"
+          ],
+          "exitCode": 0,
+          "output": "PASS empty archive\nPASS create project with stable defaults\nPASS optimistic project edit\nPASS invalid names and missing revisions do not write\nPASS project archival survives restart\nPASS unknown project does not create a record\n{\"criterion\":\"projects-api\",\"result\":\"PASS\",\"groups\":6}\n",
+          "durationMs": 1316,
+          "stamp": {
+            "head": "595658b48b6d7118f46d604f4d011f681217aaf8",
+            "files": {
+              ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+              "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+              "README.md": "f10ede74ee1398ee61003875d7f94b27a5041af5f07ecc1041578833956a1446",
+              "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+              "src/app.mjs": "0b6920c88f3d6996c1525c4b483a538cc9ea5a86a4f95459fadda6e1210f7582",
+              "src/archive.mjs": "2e048492308c1c04da492cf74fad706292df713394c2a3180c5ab9b761f7e97d",
+              "src/errors.mjs": "594ce35930d8da6b7abec818d5c0111a1d2488cd02d2bc2359297f7f12d11996",
+              "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+              "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+              "tests/acceptance.mjs": "5759467fd1c94b32c4044e4e7809c8b19afa636bd2b73ec210952d5c2bdcd4da",
+              "tests/browser.mjs": "e1cf12b45480219881ec514b1a2d830ab98ca4285153b941cbaa01ac5c9f26e8",
+              "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+            },
+            "fingerprint": "2a1e311317bf81e9e1c0b03c5dd43ff278c57b5cc0d928326861ae1d3c77cbdb"
+          },
+          "scope": [],
+          "inputs": [],
+          "purpose": "probe",
+          "invalidatedReason": "Evidence is STALE: README.md, src/app.mjs, src/archive.mjs, src/dates.mjs, src/tasks.mjs. Scope: all repository files.",
+          "source": {
+            "runId": "20261020T205056-641e33a8",
+            "throughSeq": 64,
+            "contractVersion": 1,
+            "recordedEvent": {
+              "runId": "20261020T205056-641e33a8",
+              "seq": 21,
+              "eventId": "de4cc06f-da46-48e4-88d9-9beb4f5555df",
+              "at": "2026-10-20T20:56:53.274Z",
+              "type": "verification.passed"
+            }
+          }
+        },
+        {
+          "id": "1d081c31-2df1-4435-9ac4-00da81b1e3a9",
+          "nodeId": "03eeb7dc-93ba-46ce-81b3-dd121f230e42",
+          "criterionId": "tasks-api",
+          "contractVersion": 1,
+          "kind": "deterministic",
+          "status": "recorded",
+          "createdAt": "2026-10-20T20:56:53.571Z",
+          "command": [
+            "node",
+            "tests/acceptance.mjs",
+            "tasks-api"
+          ],
+          "exitCode": 1,
+          "output": "node:internal/modules/run_main:123\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: POST /api/tasks: {\"error\":\"Indirizzo non trovato.\",\"code\":\"NOT_FOUND\"}\n\n404 !== 201\n\n    at api (file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/data/worktrees/20261020T205056-641e33a8/tests/harness.mjs:34:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async tasks-api (file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/data/worktrees/20261020T205056-641e33a8/tests/acceptance.mjs:23:13)\n    at async file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/data/worktrees/20261020T205056-641e33a8/tests/acceptance.mjs:56:49\n    at async appTest (file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/data/worktrees/20261020T205056-641e33a8/tests/harness.mjs:42:28)\n    at async file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/data/worktrees/20261020T205056-641e33a8/tests/acceptance.mjs:56:1 {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: 404,\n  expected: 201,\n  operator: 'strictEqual',\n  diff: 'simple'\n}\n\nNode.js v22.21.1\n",
+          "durationMs": 273,
+          "stamp": {
+            "head": "595658b48b6d7118f46d604f4d011f681217aaf8",
+            "files": {
+              ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+              "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+              "README.md": "f10ede74ee1398ee61003875d7f94b27a5041af5f07ecc1041578833956a1446",
+              "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+              "src/app.mjs": "0b6920c88f3d6996c1525c4b483a538cc9ea5a86a4f95459fadda6e1210f7582",
+              "src/archive.mjs": "2e048492308c1c04da492cf74fad706292df713394c2a3180c5ab9b761f7e97d",
+              "src/errors.mjs": "594ce35930d8da6b7abec818d5c0111a1d2488cd02d2bc2359297f7f12d11996",
+              "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+              "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+              "tests/acceptance.mjs": "5759467fd1c94b32c4044e4e7809c8b19afa636bd2b73ec210952d5c2bdcd4da",
+              "tests/browser.mjs": "e1cf12b45480219881ec514b1a2d830ab98ca4285153b941cbaa01ac5c9f26e8",
+              "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+            },
+            "fingerprint": "2a1e311317bf81e9e1c0b03c5dd43ff278c57b5cc0d928326861ae1d3c77cbdb"
+          },
+          "scope": [],
+          "inputs": [],
+          "purpose": "probe",
+          "source": {
+            "runId": "20261020T205056-641e33a8",
+            "throughSeq": 64,
+            "contractVersion": 1,
+            "recordedEvent": {
+              "runId": "20261020T205056-641e33a8",
+              "seq": 24,
+              "eventId": "dd9ec382-4118-4f8e-960c-66a72ce9657e",
+              "at": "2026-10-20T20:56:53.612Z",
+              "type": "verification.deferred"
+            }
+          }
+        },
+        {
+          "id": "e78a317d-c39d-4224-88a3-7365f033c348",
+          "nodeId": "9f7ec34e-ba7d-4f03-ba17-50d99250e3bf",
+          "criterionId": "projects-api",
+          "contractVersion": 1,
+          "kind": "deterministic",
+          "status": "stale",
+          "createdAt": "2026-10-20T21:01:03.303Z",
+          "command": [
+            "node",
+            "tests/acceptance.mjs",
+            "projects-api"
+          ],
+          "exitCode": 0,
+          "output": "PASS empty archive\nPASS create project with stable defaults\nPASS optimistic project edit\nPASS invalid names and missing revisions do not write\nPASS project archival survives restart\nPASS unknown project does not create a record\n{\"criterion\":\"projects-api\",\"result\":\"PASS\",\"groups\":6}\n",
+          "durationMs": 1325,
+          "stamp": {
+            "head": "595658b48b6d7118f46d604f4d011f681217aaf8",
+            "files": {
+              ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+              "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+              "README.md": "1143a9fcd0794cf7ad3dd2fd2e9967d4c14e7c3fd616bd1297723ec2385ebc3e",
+              "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+              "src/app.mjs": "1e0b4f3bd0bbfbdf6dd1704bc7a445e95b29b3a5296308f04bd2fff89dec100d",
+              "src/archive.mjs": "07d8f1c116184f827d5da85b0874f0849f441a3e9a0bff6279b635a7f66de443",
+              "src/dates.mjs": "97166e73d0b44fc0758dba28a8e89c24e643efb97202e484c79cf9903906bde2",
+              "src/errors.mjs": "594ce35930d8da6b7abec818d5c0111a1d2488cd02d2bc2359297f7f12d11996",
+              "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+              "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+              "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+              "tests/acceptance.mjs": "5759467fd1c94b32c4044e4e7809c8b19afa636bd2b73ec210952d5c2bdcd4da",
+              "tests/browser.mjs": "e1cf12b45480219881ec514b1a2d830ab98ca4285153b941cbaa01ac5c9f26e8",
+              "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+            },
+            "fingerprint": "5028bdf81d91b81c6c60c4dd496fa852ab46785458931adee5371825df93527b"
+          },
+          "scope": [],
+          "inputs": [],
+          "purpose": "probe",
+          "invalidatedReason": "Evidence is STALE: README.md. Scope: all repository files.",
+          "source": {
+            "runId": "20261020T205056-641e33a8",
+            "throughSeq": 64,
+            "contractVersion": 1,
+            "recordedEvent": {
+              "runId": "20261020T205056-641e33a8",
+              "seq": 33,
+              "eventId": "f61f4dfc-9738-4204-b389-708e35a4d730",
+              "at": "2026-10-20T21:01:03.352Z",
+              "type": "verification.passed"
+            }
+          }
+        },
+        {
+          "id": "18f6f4f8-e4e5-458d-8d4b-bac69931e9a2",
+          "nodeId": "3347bfcc-4c7a-4333-ba15-eaca42ab9f8d",
+          "criterionId": "tasks-api",
+          "contractVersion": 1,
+          "kind": "deterministic",
+          "status": "stale",
+          "createdAt": "2026-10-20T21:01:04.702Z",
+          "command": [
+            "node",
+            "tests/acceptance.mjs",
+            "tasks-api"
+          ],
+          "exitCode": 0,
+          "output": "PASS task defaults and exact fields\nPASS task edit, revision conflicts and combined filters\nPASS civil dates, invalid states and numeric validation\nPASS parallel stale writers cannot overwrite each other\nPASS archived projects disappear from general activity list\nPASS task persistence and malformed JSON\n{\"criterion\":\"tasks-api\",\"result\":\"PASS\",\"groups\":6}\n",
+          "durationMs": 1336,
+          "stamp": {
+            "head": "595658b48b6d7118f46d604f4d011f681217aaf8",
+            "files": {
+              ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+              "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+              "README.md": "1143a9fcd0794cf7ad3dd2fd2e9967d4c14e7c3fd616bd1297723ec2385ebc3e",
+              "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+              "src/app.mjs": "1e0b4f3bd0bbfbdf6dd1704bc7a445e95b29b3a5296308f04bd2fff89dec100d",
+              "src/archive.mjs": "07d8f1c116184f827d5da85b0874f0849f441a3e9a0bff6279b635a7f66de443",
+              "src/dates.mjs": "97166e73d0b44fc0758dba28a8e89c24e643efb97202e484c79cf9903906bde2",
+              "src/errors.mjs": "594ce35930d8da6b7abec818d5c0111a1d2488cd02d2bc2359297f7f12d11996",
+              "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+              "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+              "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+              "tests/acceptance.mjs": "5759467fd1c94b32c4044e4e7809c8b19afa636bd2b73ec210952d5c2bdcd4da",
+              "tests/browser.mjs": "e1cf12b45480219881ec514b1a2d830ab98ca4285153b941cbaa01ac5c9f26e8",
+              "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+            },
+            "fingerprint": "5028bdf81d91b81c6c60c4dd496fa852ab46785458931adee5371825df93527b"
+          },
+          "scope": [],
+          "inputs": [],
+          "purpose": "probe",
+          "invalidatedReason": "Evidence is STALE: README.md. Scope: all repository files.",
+          "source": {
+            "runId": "20261020T205056-641e33a8",
+            "throughSeq": 64,
+            "contractVersion": 1,
+            "recordedEvent": {
+              "runId": "20261020T205056-641e33a8",
+              "seq": 35,
+              "eventId": "dcf411a9-4b2a-44c5-9222-4a25b2fdd8c5",
+              "at": "2026-10-20T21:01:04.744Z",
+              "type": "verification.passed"
+            }
+          }
+        },
+        {
+          "id": "d50c766f-671c-406f-a5a3-9cfde4cc9a92",
+          "nodeId": "44fbf43b-84e5-45f9-9e34-c907bb882ba3",
+          "criterionId": "projects-api",
+          "contractVersion": 1,
+          "kind": "deterministic",
+          "status": "passed",
+          "createdAt": "2026-10-20T21:14:17.305Z",
+          "command": [
+            "node",
+            "tests/acceptance.mjs",
+            "projects-api"
+          ],
+          "exitCode": 0,
+          "output": "PASS empty archive\nPASS create project with stable defaults\nPASS optimistic project edit\nPASS invalid names and missing revisions do not write\nPASS project archival survives restart\nPASS unknown project does not create a record\n{\"criterion\":\"projects-api\",\"result\":\"PASS\",\"groups\":6}\n",
+          "durationMs": 1362,
+          "stamp": {
+            "head": "595658b48b6d7118f46d604f4d011f681217aaf8",
+            "files": {
+              ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+              "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+              "README.md": "fb16cd1afd76ee3bfa0c56360bac582c0f65bf0ee19bd4916d0f636c550270c7",
+              "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+              "src/app.mjs": "1e0b4f3bd0bbfbdf6dd1704bc7a445e95b29b3a5296308f04bd2fff89dec100d",
+              "src/archive.mjs": "07d8f1c116184f827d5da85b0874f0849f441a3e9a0bff6279b635a7f66de443",
+              "src/dates.mjs": "97166e73d0b44fc0758dba28a8e89c24e643efb97202e484c79cf9903906bde2",
+              "src/errors.mjs": "594ce35930d8da6b7abec818d5c0111a1d2488cd02d2bc2359297f7f12d11996",
+              "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+              "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+              "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+              "tests/acceptance.mjs": "5759467fd1c94b32c4044e4e7809c8b19afa636bd2b73ec210952d5c2bdcd4da",
+              "tests/browser.mjs": "e1cf12b45480219881ec514b1a2d830ab98ca4285153b941cbaa01ac5c9f26e8",
+              "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+            },
+            "fingerprint": "d4be2d94025d39f88c9a5cd35afec5cc9a90c6f6eb72f4379eec3cc751dd2ba5"
+          },
+          "scope": [],
+          "inputs": [],
+          "source": {
+            "runId": "20261020T205056-641e33a8",
+            "throughSeq": 64,
+            "contractVersion": 1,
+            "recordedEvent": {
+              "runId": "20261020T205056-641e33a8",
+              "seq": 55,
+              "eventId": "ecfcc413-3d23-45dd-bb66-aef92cffde89",
+              "at": "2026-10-20T21:14:17.345Z",
+              "type": "verification.passed"
+            }
+          }
+        },
+        {
+          "id": "c1bec71d-4fbf-4965-bb8c-78fd23c28a26",
+          "nodeId": "c377b679-1951-43f6-81b4-544af0181b8e",
+          "criterionId": "tasks-api",
+          "contractVersion": 1,
+          "kind": "deterministic",
+          "status": "passed",
+          "createdAt": "2026-10-20T21:14:18.839Z",
+          "command": [
+            "node",
+            "tests/acceptance.mjs",
+            "tasks-api"
+          ],
+          "exitCode": 0,
+          "output": "PASS task defaults and exact fields\nPASS task edit, revision conflicts and combined filters\nPASS civil dates, invalid states and numeric validation\nPASS parallel stale writers cannot overwrite each other\nPASS archived projects disappear from general activity list\nPASS task persistence and malformed JSON\n{\"criterion\":\"tasks-api\",\"result\":\"PASS\",\"groups\":6}\n",
+          "durationMs": 1381,
+          "stamp": {
+            "head": "595658b48b6d7118f46d604f4d011f681217aaf8",
+            "files": {
+              ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+              "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+              "README.md": "fb16cd1afd76ee3bfa0c56360bac582c0f65bf0ee19bd4916d0f636c550270c7",
+              "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+              "src/app.mjs": "1e0b4f3bd0bbfbdf6dd1704bc7a445e95b29b3a5296308f04bd2fff89dec100d",
+              "src/archive.mjs": "07d8f1c116184f827d5da85b0874f0849f441a3e9a0bff6279b635a7f66de443",
+              "src/dates.mjs": "97166e73d0b44fc0758dba28a8e89c24e643efb97202e484c79cf9903906bde2",
+              "src/errors.mjs": "594ce35930d8da6b7abec818d5c0111a1d2488cd02d2bc2359297f7f12d11996",
+              "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+              "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+              "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+              "tests/acceptance.mjs": "5759467fd1c94b32c4044e4e7809c8b19afa636bd2b73ec210952d5c2bdcd4da",
+              "tests/browser.mjs": "e1cf12b45480219881ec514b1a2d830ab98ca4285153b941cbaa01ac5c9f26e8",
+              "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+            },
+            "fingerprint": "d4be2d94025d39f88c9a5cd35afec5cc9a90c6f6eb72f4379eec3cc751dd2ba5"
+          },
+          "scope": [],
+          "inputs": [],
+          "source": {
+            "runId": "20261020T205056-641e33a8",
+            "throughSeq": 64,
+            "contractVersion": 1,
+            "recordedEvent": {
+              "runId": "20261020T205056-641e33a8",
+              "seq": 57,
+              "eventId": "dc5e3332-456f-41d6-ba67-f58d9475d80e",
+              "at": "2026-10-20T21:14:18.881Z",
+              "type": "verification.passed"
+            }
+          }
+        }
+      ],
+      "latestRecordedState": {
+        "availability": "AVAILABLE",
+        "unavailableReason": null,
+        "runId": "20261020T205056-641e33a8",
+        "seq": 64,
+        "at": "2026-10-20T21:15:11.578Z",
+        "status": "COMPLETED",
+        "reason": null,
+        "contractVersion": 1,
+        "hasLaterEvents": false,
+        "criteria": [
+          {
+            "id": "projects-api",
+            "title": "Archivio progetti persistente e revisioni",
+            "command": [
+              "node",
+              "tests/acceptance.mjs",
+              "projects-api"
+            ],
+            "scope": [],
+            "timeoutMs": 120000,
+            "status": "PASSED",
+            "basis": "latest-recorded-state",
+            "sourceRunId": "20261020T205056-641e33a8",
+            "sourceSeq": 64,
+            "contractVersion": 1,
+            "recordedCriterion": {
+              "id": "projects-api",
+              "title": "Archivio progetti persistente e revisioni",
+              "command": [
+                "node",
+                "tests/acceptance.mjs",
+                "projects-api"
+              ],
+              "scope": [],
+              "timeoutMs": 120000
+            },
+            "evidenceId": "d50c766f-671c-406f-a5a3-9cfde4cc9a92",
+            "evidence": {
+              "id": "d50c766f-671c-406f-a5a3-9cfde4cc9a92",
+              "nodeId": "44fbf43b-84e5-45f9-9e34-c907bb882ba3",
+              "criterionId": "projects-api",
+              "contractVersion": 1,
+              "kind": "deterministic",
+              "status": "passed",
+              "createdAt": "2026-10-20T21:14:17.305Z",
+              "command": [
+                "node",
+                "tests/acceptance.mjs",
+                "projects-api"
+              ],
+              "exitCode": 0,
+              "output": "PASS empty archive\nPASS create project with stable defaults\nPASS optimistic project edit\nPASS invalid names and missing revisions do not write\nPASS project archival survives restart\nPASS unknown project does not create a record\n{\"criterion\":\"projects-api\",\"result\":\"PASS\",\"groups\":6}\n",
+              "durationMs": 1362,
+              "stamp": {
+                "head": "595658b48b6d7118f46d604f4d011f681217aaf8",
+                "files": {
+                  ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+                  "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+                  "README.md": "fb16cd1afd76ee3bfa0c56360bac582c0f65bf0ee19bd4916d0f636c550270c7",
+                  "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+                  "src/app.mjs": "1e0b4f3bd0bbfbdf6dd1704bc7a445e95b29b3a5296308f04bd2fff89dec100d",
+                  "src/archive.mjs": "07d8f1c116184f827d5da85b0874f0849f441a3e9a0bff6279b635a7f66de443",
+                  "src/dates.mjs": "97166e73d0b44fc0758dba28a8e89c24e643efb97202e484c79cf9903906bde2",
+                  "src/errors.mjs": "594ce35930d8da6b7abec818d5c0111a1d2488cd02d2bc2359297f7f12d11996",
+                  "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+                  "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+                  "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+                  "tests/acceptance.mjs": "5759467fd1c94b32c4044e4e7809c8b19afa636bd2b73ec210952d5c2bdcd4da",
+                  "tests/browser.mjs": "e1cf12b45480219881ec514b1a2d830ab98ca4285153b941cbaa01ac5c9f26e8",
+                  "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+                },
+                "fingerprint": "d4be2d94025d39f88c9a5cd35afec5cc9a90c6f6eb72f4379eec3cc751dd2ba5"
+              },
+              "scope": [],
+              "inputs": [],
+              "source": {
+                "runId": "20261020T205056-641e33a8",
+                "throughSeq": 64,
+                "contractVersion": 1,
+                "recordedEvent": {
+                  "runId": "20261020T205056-641e33a8",
+                  "seq": 55,
+                  "eventId": "ecfcc413-3d23-45dd-bb66-aef92cffde89",
+                  "at": "2026-10-20T21:14:17.345Z",
+                  "type": "verification.passed"
+                }
+              }
+            },
+            "unavailableReason": null
+          },
+          {
+            "id": "tasks-api",
+            "title": "Attività, filtri e conflitti senza perdita di dati",
+            "command": [
+              "node",
+              "tests/acceptance.mjs",
+              "tasks-api"
+            ],
+            "scope": [],
+            "timeoutMs": 120000,
+            "status": "PASSED",
+            "basis": "latest-recorded-state",
+            "sourceRunId": "20261020T205056-641e33a8",
+            "sourceSeq": 64,
+            "contractVersion": 1,
+            "recordedCriterion": {
+              "id": "tasks-api",
+              "title": "Attività, filtri e conflitti senza perdita di dati",
+              "command": [
+                "node",
+                "tests/acceptance.mjs",
+                "tasks-api"
+              ],
+              "scope": [],
+              "timeoutMs": 120000
+            },
+            "evidenceId": "c1bec71d-4fbf-4965-bb8c-78fd23c28a26",
+            "evidence": {
+              "id": "c1bec71d-4fbf-4965-bb8c-78fd23c28a26",
+              "nodeId": "c377b679-1951-43f6-81b4-544af0181b8e",
+              "criterionId": "tasks-api",
+              "contractVersion": 1,
+              "kind": "deterministic",
+              "status": "passed",
+              "createdAt": "2026-10-20T21:14:18.839Z",
+              "command": [
+                "node",
+                "tests/acceptance.mjs",
+                "tasks-api"
+              ],
+              "exitCode": 0,
+              "output": "PASS task defaults and exact fields\nPASS task edit, revision conflicts and combined filters\nPASS civil dates, invalid states and numeric validation\nPASS parallel stale writers cannot overwrite each other\nPASS archived projects disappear from general activity list\nPASS task persistence and malformed JSON\n{\"criterion\":\"tasks-api\",\"result\":\"PASS\",\"groups\":6}\n",
+              "durationMs": 1381,
+              "stamp": {
+                "head": "595658b48b6d7118f46d604f4d011f681217aaf8",
+                "files": {
+                  ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+                  "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+                  "README.md": "fb16cd1afd76ee3bfa0c56360bac582c0f65bf0ee19bd4916d0f636c550270c7",
+                  "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+                  "src/app.mjs": "1e0b4f3bd0bbfbdf6dd1704bc7a445e95b29b3a5296308f04bd2fff89dec100d",
+                  "src/archive.mjs": "07d8f1c116184f827d5da85b0874f0849f441a3e9a0bff6279b635a7f66de443",
+                  "src/dates.mjs": "97166e73d0b44fc0758dba28a8e89c24e643efb97202e484c79cf9903906bde2",
+                  "src/errors.mjs": "594ce35930d8da6b7abec818d5c0111a1d2488cd02d2bc2359297f7f12d11996",
+                  "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+                  "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+                  "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+                  "tests/acceptance.mjs": "5759467fd1c94b32c4044e4e7809c8b19afa636bd2b73ec210952d5c2bdcd4da",
+                  "tests/browser.mjs": "e1cf12b45480219881ec514b1a2d830ab98ca4285153b941cbaa01ac5c9f26e8",
+                  "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+                },
+                "fingerprint": "d4be2d94025d39f88c9a5cd35afec5cc9a90c6f6eb72f4379eec3cc751dd2ba5"
+              },
+              "scope": [],
+              "inputs": [],
+              "source": {
+                "runId": "20261020T205056-641e33a8",
+                "throughSeq": 64,
+                "contractVersion": 1,
+                "recordedEvent": {
+                  "runId": "20261020T205056-641e33a8",
+                  "seq": 57,
+                  "eventId": "dc5e3332-456f-41d6-ba67-f58d9475d80e",
+                  "at": "2026-10-20T21:14:18.881Z",
+                  "type": "verification.passed"
+                }
+              }
+            },
+            "unavailableReason": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "usable-board",
+      "title": "Un flusso attività che si usa davvero",
+      "outcome": "Costruire il flusso visuale Progetti e Attività: inserimento, modifica, filtri, gestione dei conflitti fra schede senza perdere gli input, testo non fidato letterale e layout mobile. Preservare le API già verificate. Le funzioni Settimana, Riepilogo e Backup possono ancora mostrare uno stato non disponibile esplicito.",
+      "dependsOn": [
+        "reliable-foundation"
+      ],
+      "status": "RUNNING",
+      "runId": "20261020T211511-838aa23e",
+      "checkpoint": null,
+      "checkpointEvidence": {
+        "status": "NOT_RECORDED",
+        "sourceRunId": "20261020T211511-838aa23e",
+        "sourceSeq": null,
+        "contractVersion": null,
+        "runStatus": null,
+        "boundaryEvent": null,
+        "unavailableReason": "No checkpoint receipt is recorded."
+      },
+      "criteria": [
+        {
+          "id": "board-ui",
+          "title": "Interfaccia progetti e attività su desktop e mobile",
+          "command": [
+            "node",
+            "tests/acceptance.mjs",
+            "board-ui"
+          ],
+          "scope": [],
+          "timeoutMs": 120000,
+          "status": "BLOCKED",
+          "basis": "latest-recorded-state",
+          "sourceRunId": "20261020T211511-838aa23e",
+          "sourceSeq": 108,
+          "contractVersion": 1,
+          "recordedCriterion": {
+            "id": "board-ui",
+            "title": "Interfaccia progetti e attività su desktop e mobile",
+            "command": [
+              "node",
+              "tests/acceptance.mjs",
+              "board-ui"
+            ],
+            "scope": [],
+            "timeoutMs": 120000
+          },
+          "evidenceId": "05dba237-7f3c-4a87-81a7-a542c033d0c8",
+          "evidence": {
+            "id": "05dba237-7f3c-4a87-81a7-a542c033d0c8",
+            "nodeId": "17ae0d92-59b5-4c00-85ef-7b2004869db0",
+            "criterionId": "board-ui",
+            "contractVersion": 1,
+            "kind": "deterministic",
+            "status": "recorded",
+            "createdAt": "2026-10-20T21:52:04.373Z",
+            "command": [
+              "node",
+              "tests/acceptance.mjs",
+              "board-ui"
+            ],
+            "exitCode": 1,
+            "output": "node:internal/modules/run_main:123\n    triggerUncaughtException(\n    ^\n\nlocator.fill: Timeout 30000ms exceeded.\nCall log:\n  - waiting for getByLabel('Nome progetto', { exact: true })\n\n    at /Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/data/worktrees/20261020T211511-838aa23e/tests/browser.mjs:16:157\n    at async check (/Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/data/worktrees/20261020T211511-838aa23e/tests/browser.mjs:9:31)\n    at async browserCheck (/Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/data/worktrees/20261020T211511-838aa23e/tests/browser.mjs:16:4)\n    at async file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/data/worktrees/20261020T211511-838aa23e/tests/acceptance.mjs:56:120\n    at async appTest (/Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/data/worktrees/20261020T211511-838aa23e/tests/harness.mjs:42:28)\n    at async file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/data/worktrees/20261020T211511-838aa23e/tests/acceptance.mjs:56:1 {\n  log: [ \"  - waiting for getByLabel('Nome progetto', { exact: true })\" ],\n  name: 'TimeoutError'\n}\n\nNode.js v22.21.1\n",
+            "durationMs": 31405,
+            "stamp": {
+              "head": "d3e570da7f20fb6f81fa5f6d8af89f710e9926d1",
+              "files": {
+                ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+                "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+                "README.md": "0edeee1bc8cec8745a00d26e1cec41a0fb957b350845fe84efe9c79a04a7c2a8",
+                "docs/guida.md": "29e65f8d77b71695ee987ab24d2bd7a569ccd2499236a080948c59c754ce2e0e",
+                "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+                "public/index.html": "1e798be6470daa454678337196f2076ca008b3922756dea7d79bbade5b259dee",
+                "public/svolta.css": "235865d7c676b8cf5cd7a9df2936252c335ffdf87d0d996ce90dd086e888a799",
+                "public/svolta.js": "8494e848b135e8dd8e4ecd4d29bc37705c1256b73ba5322f20438056bb1c5ab4",
+                "src/app.mjs": "04453e9d589045bc64eb12c64ce69766fa55fa541f75fdeeff0ea8e237e3b14b",
+                "src/archive.mjs": "07d8f1c116184f827d5da85b0874f0849f441a3e9a0bff6279b635a7f66de443",
+                "src/dates.mjs": "97166e73d0b44fc0758dba28a8e89c24e643efb97202e484c79cf9903906bde2",
+                "src/errors.mjs": "594ce35930d8da6b7abec818d5c0111a1d2488cd02d2bc2359297f7f12d11996",
+                "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+                "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+                "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+                "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+                "tests/acceptance.mjs": "5759467fd1c94b32c4044e4e7809c8b19afa636bd2b73ec210952d5c2bdcd4da",
+                "tests/browser.mjs": "e1cf12b45480219881ec514b1a2d830ab98ca4285153b941cbaa01ac5c9f26e8",
+                "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+              },
+              "fingerprint": "3ad48ac83770199444b9a0b3f34e14a1a9b3033538849235912a916b42c5f4ef"
+            },
+            "scope": [],
+            "inputs": [],
+            "purpose": "probe",
+            "source": {
+              "runId": "20261020T211511-838aa23e",
+              "throughSeq": 108,
+              "contractVersion": 1,
+              "recordedEvent": {
+                "runId": "20261020T211511-838aa23e",
+                "seq": 88,
+                "eventId": "b3134ba9-8b16-4391-b140-3fb655dd2f02",
+                "at": "2026-10-20T21:52:04.453Z",
+                "type": "verification.deferred"
+              }
+            }
+          },
+          "unavailableReason": null
+        }
+      ],
+      "evidence": [
+        {
+          "id": "c4d0629d-1956-4ae2-b89f-eb9572ead8ca",
+          "nodeId": "a0518719-a538-48a3-b2c3-060b25f3448a",
+          "criterionId": "board-ui",
+          "contractVersion": 1,
+          "kind": "deterministic",
+          "status": "recorded",
+          "createdAt": "2026-10-20T21:17:41.368Z",
+          "command": [
+            "node",
+            "tests/acceptance.mjs",
+            "board-ui"
+          ],
+          "exitCode": 1,
+          "output": "node:internal/modules/run_main:123\n    triggerUncaughtException(\n    ^\n\nlocator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for getByRole('heading', { name: 'Svolta', exact: true }).first() to be visible\n\n    at browserCheck (/Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/data/worktrees/20261020T211511-838aa23e/tests/browser.mjs:14:96)\n    at async file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/data/worktrees/20261020T211511-838aa23e/tests/acceptance.mjs:56:120\n    at async appTest (/Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/data/worktrees/20261020T211511-838aa23e/tests/harness.mjs:42:28)\n    at async file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/data/worktrees/20261020T211511-838aa23e/tests/acceptance.mjs:56:1 {\n  log: [\n    \"  - waiting for getByRole('heading', { name: 'Svolta', exact: true }).first() to be visible\"\n  ],\n  name: 'TimeoutError'\n}\n\nNode.js v22.21.1\n",
+          "durationMs": 31012,
+          "stamp": {
+            "head": "d3e570da7f20fb6f81fa5f6d8af89f710e9926d1",
+            "files": {
+              ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+              "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+              "README.md": "fb16cd1afd76ee3bfa0c56360bac582c0f65bf0ee19bd4916d0f636c550270c7",
+              "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+              "src/app.mjs": "1e0b4f3bd0bbfbdf6dd1704bc7a445e95b29b3a5296308f04bd2fff89dec100d",
+              "src/archive.mjs": "07d8f1c116184f827d5da85b0874f0849f441a3e9a0bff6279b635a7f66de443",
+              "src/dates.mjs": "97166e73d0b44fc0758dba28a8e89c24e643efb97202e484c79cf9903906bde2",
+              "src/errors.mjs": "594ce35930d8da6b7abec818d5c0111a1d2488cd02d2bc2359297f7f12d11996",
+              "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+              "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+              "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+              "tests/acceptance.mjs": "5759467fd1c94b32c4044e4e7809c8b19afa636bd2b73ec210952d5c2bdcd4da",
+              "tests/browser.mjs": "e1cf12b45480219881ec514b1a2d830ab98ca4285153b941cbaa01ac5c9f26e8",
+              "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+            },
+            "fingerprint": "d4be2d94025d39f88c9a5cd35afec5cc9a90c6f6eb72f4379eec3cc751dd2ba5"
+          },
+          "scope": [],
+          "inputs": [],
+          "purpose": "probe",
+          "source": {
+            "runId": "20261020T211511-838aa23e",
+            "throughSeq": 108,
+            "contractVersion": 1,
+            "recordedEvent": {
+              "runId": "20261020T211511-838aa23e",
+              "seq": 15,
+              "eventId": "88f41392-a427-46cc-9184-bc1edca46f2b",
+              "at": "2026-10-20T21:17:41.420Z",
+              "type": "verification.deferred"
+            }
+          }
+        },
+        {
+          "id": "101f1fe1-60c6-4482-b8c8-a257f0822ca4",
+          "nodeId": "571840b8-c7dc-44b5-88c8-3e500dc49b66",
+          "criterionId": "board-ui",
+          "contractVersion": 1,
+          "kind": "deterministic",
+          "status": "recorded",
+          "createdAt": "2026-10-20T21:24:14.683Z",
+          "command": [
+            "node",
+            "tests/acceptance.mjs",
+            "board-ui"
+          ],
+          "exitCode": 1,
+          "output": "node:internal/modules/run_main:123\n    triggerUncaughtException(\n    ^\n\nlocator.fill: Timeout 30000ms exceeded.\nCall log:\n  - waiting for getByLabel('Nome progetto', { exact: true })\n\n    at /Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/data/worktrees/20261020T211511-838aa23e/tests/browser.mjs:16:157\n    at async check (/Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/data/worktrees/20261020T211511-838aa23e/tests/browser.mjs:9:31)\n    at async browserCheck (/Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/data/worktrees/20261020T211511-838aa23e/tests/browser.mjs:16:4)\n    at async file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/data/worktrees/20261020T211511-838aa23e/tests/acceptance.mjs:56:120\n    at async appTest (/Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/data/worktrees/20261020T211511-838aa23e/tests/harness.mjs:42:28)\n    at async file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/data/worktrees/20261020T211511-838aa23e/tests/acceptance.mjs:56:1 {\n  log: [ \"  - waiting for getByLabel('Nome progetto', { exact: true })\" ],\n  name: 'TimeoutError'\n}\n\nNode.js v22.21.1\n",
+          "durationMs": 31601,
+          "stamp": {
+            "head": "d3e570da7f20fb6f81fa5f6d8af89f710e9926d1",
+            "files": {
+              ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+              "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+              "README.md": "deb38e1a8f9d136735a26be7c5834326c2c28b9663e3adee25327f6139093ddb",
+              "docs/guida.md": "662843f3be53a8d23e1dd5133ff5c8c67f232a91a91cfb5f6580e5aaebe0caa6",
+              "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+              "public/index.html": "54d142dfd688a3d899301aa995a59cd6ddf7a209aeb71dd97b7ab69dbc58429a",
+              "public/svolta.css": "d87f4f6af017dce1e0374d5154141b2bfdbe4eaafb7881e08423fa24835349f1",
+              "public/svolta.js": "1119062d6300ec2b684e59846eff96d0d5a5cca65a29bfd6ac8112a7d148f29c",
+              "src/app.mjs": "04453e9d589045bc64eb12c64ce69766fa55fa541f75fdeeff0ea8e237e3b14b",
+              "src/archive.mjs": "07d8f1c116184f827d5da85b0874f0849f441a3e9a0bff6279b635a7f66de443",
+              "src/dates.mjs": "97166e73d0b44fc0758dba28a8e89c24e643efb97202e484c79cf9903906bde2",
+              "src/errors.mjs": "594ce35930d8da6b7abec818d5c0111a1d2488cd02d2bc2359297f7f12d11996",
+              "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+              "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+              "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+              "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+              "tests/acceptance.mjs": "5759467fd1c94b32c4044e4e7809c8b19afa636bd2b73ec210952d5c2bdcd4da",
+              "tests/browser.mjs": "e1cf12b45480219881ec514b1a2d830ab98ca4285153b941cbaa01ac5c9f26e8",
+              "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+            },
+            "fingerprint": "eea0efe5afeeb7eaf4323c66599ebde7c3fe58af92c4bad21b21994420651be0"
+          },
+          "scope": [],
+          "inputs": [],
+          "purpose": "probe",
+          "source": {
+            "runId": "20261020T211511-838aa23e",
+            "throughSeq": 108,
+            "contractVersion": 1,
+            "recordedEvent": {
+              "runId": "20261020T211511-838aa23e",
+              "seq": 32,
+              "eventId": "4cbead07-4d00-4fda-ab81-1fda73087ae9",
+              "at": "2026-10-20T21:24:14.764Z",
+              "type": "verification.deferred"
+            }
+          }
+        },
+        {
+          "id": "391149d6-c7b7-47c3-8106-135fe7136842",
+          "nodeId": "e24fe956-d65b-4a64-a30d-d35dd921ec66",
+          "criterionId": "board-ui",
+          "contractVersion": 1,
+          "kind": "deterministic",
+          "status": "recorded",
+          "createdAt": "2026-10-20T21:31:26.184Z",
+          "command": [
+            "node",
+            "tests/acceptance.mjs",
+            "board-ui"
+          ],
+          "exitCode": 1,
+          "output": "node:internal/modules/run_main:123\n    triggerUncaughtException(\n    ^\n\nlocator.fill: Timeout 30000ms exceeded.\nCall log:\n  - waiting for getByLabel('Nome progetto', { exact: true })\n\n    at /Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/data/worktrees/20261020T211511-838aa23e/tests/browser.mjs:16:157\n    at async check (/Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/data/worktrees/20261020T211511-838aa23e/tests/browser.mjs:9:31)\n    at async browserCheck (/Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/data/worktrees/20261020T211511-838aa23e/tests/browser.mjs:16:4)\n    at async file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/data/worktrees/20261020T211511-838aa23e/tests/acceptance.mjs:56:120\n    at async appTest (/Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/data/worktrees/20261020T211511-838aa23e/tests/harness.mjs:42:28)\n    at async file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/data/worktrees/20261020T211511-838aa23e/tests/acceptance.mjs:56:1 {\n  log: [ \"  - waiting for getByLabel('Nome progetto', { exact: true })\" ],\n  name: 'TimeoutError'\n}\n\nNode.js v22.21.1\n",
+          "durationMs": 31513,
+          "stamp": {
+            "head": "d3e570da7f20fb6f81fa5f6d8af89f710e9926d1",
+            "files": {
+              ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+              "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+              "README.md": "4ce70885e821dd4f9eeccd0dda2614c68865971e7f06314b4f4b9e37d6a19c26",
+              "docs/guida.md": "033a52c783aee913b397b402cae335eee194b3b6a4d1e8fb80318a863b95fac5",
+              "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+              "public/index.html": "428611a89fa028c112544f32c55af921465ee09493a391151a228081af531b7d",
+              "public/svolta.css": "e442b8b50e0469a280f43bbdc6fc989b404ec3511152655c920231abb2e9a9be",
+              "public/svolta.js": "1bef7eae9f2b8d16341ae0f618d64527665c58d5468811cc1a254ec0d16b3101",
+              "src/app.mjs": "04453e9d589045bc64eb12c64ce69766fa55fa541f75fdeeff0ea8e237e3b14b",
+              "src/archive.mjs": "07d8f1c116184f827d5da85b0874f0849f441a3e9a0bff6279b635a7f66de443",
+              "src/dates.mjs": "97166e73d0b44fc0758dba28a8e89c24e643efb97202e484c79cf9903906bde2",
+              "src/errors.mjs": "594ce35930d8da6b7abec818d5c0111a1d2488cd02d2bc2359297f7f12d11996",
+              "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+              "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+              "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+              "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+              "tests/acceptance.mjs": "5759467fd1c94b32c4044e4e7809c8b19afa636bd2b73ec210952d5c2bdcd4da",
+              "tests/browser.mjs": "e1cf12b45480219881ec514b1a2d830ab98ca4285153b941cbaa01ac5c9f26e8",
+              "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+            },
+            "fingerprint": "265b5079fd52e7b579bdcece3d1e1b45ab9129a8d426097fe54d8d17ecf92e22"
+          },
+          "scope": [],
+          "inputs": [],
+          "purpose": "probe",
+          "source": {
+            "runId": "20261020T211511-838aa23e",
+            "throughSeq": 108,
+            "contractVersion": 1,
+            "recordedEvent": {
+              "runId": "20261020T211511-838aa23e",
+              "seq": 47,
+              "eventId": "7c94f7c2-3e4d-4f08-8c89-3d69bed8a714",
+              "at": "2026-10-20T21:31:26.236Z",
+              "type": "verification.deferred"
+            }
+          }
+        },
+        {
+          "id": "d35a4703-f59e-43a7-9aaa-1f25bc47c658",
+          "nodeId": "5f8373f3-cfe9-46b3-b848-d094731ad138",
+          "criterionId": "board-ui",
+          "contractVersion": 1,
+          "kind": "deterministic",
+          "status": "recorded",
+          "createdAt": "2026-10-20T21:39:08.718Z",
+          "command": [
+            "node",
+            "tests/acceptance.mjs",
+            "board-ui"
+          ],
+          "exitCode": 1,
+          "output": "node:internal/modules/run_main:123\n    triggerUncaughtException(\n    ^\n\nlocator.fill: Timeout 30000ms exceeded.\nCall log:\n  - waiting for getByLabel('Nome progetto', { exact: true })\n\n    at /Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/data/worktrees/20261020T211511-838aa23e/tests/browser.mjs:16:157\n    at async check (/Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/data/worktrees/20261020T211511-838aa23e/tests/browser.mjs:9:31)\n    at async browserCheck (/Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/data/worktrees/20261020T211511-838aa23e/tests/browser.mjs:16:4)\n    at async file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/data/worktrees/20261020T211511-838aa23e/tests/acceptance.mjs:56:120\n    at async appTest (/Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/data/worktrees/20261020T211511-838aa23e/tests/harness.mjs:42:28)\n    at async file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/data/worktrees/20261020T211511-838aa23e/tests/acceptance.mjs:56:1 {\n  log: [ \"  - waiting for getByLabel('Nome progetto', { exact: true })\" ],\n  name: 'TimeoutError'\n}\n\nNode.js v22.21.1\n",
+          "durationMs": 30978,
+          "stamp": {
+            "head": "d3e570da7f20fb6f81fa5f6d8af89f710e9926d1",
+            "files": {
+              ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+              "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+              "README.md": "4680a4aafe95c7e58ce5f94de178009505b040824c60b56f548791d706b7d5a2",
+              "docs/guida.md": "13bba8b84b56704a20b1b3ec490cbcdd3d5fb94cd68e8412047bcda8873086ab",
+              "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+              "public/index.html": "b4ce4da79a42097bf035c29d48b3b91c286df1ddd2c48c6ea2f23eecb7d0a33e",
+              "public/svolta.css": "fa3a2a62e6cd7dbcb7cd06fac711577f0bd06ae528b61437932fac3b469482a2",
+              "public/svolta.js": "6074e4790b8e88456454d492bdd932160acea0809c0cebb3b3af2dacf9040b3f",
+              "src/app.mjs": "04453e9d589045bc64eb12c64ce69766fa55fa541f75fdeeff0ea8e237e3b14b",
+              "src/archive.mjs": "07d8f1c116184f827d5da85b0874f0849f441a3e9a0bff6279b635a7f66de443",
+              "src/dates.mjs": "97166e73d0b44fc0758dba28a8e89c24e643efb97202e484c79cf9903906bde2",
+              "src/errors.mjs": "594ce35930d8da6b7abec818d5c0111a1d2488cd02d2bc2359297f7f12d11996",
+              "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+              "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+              "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+              "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+              "tests/acceptance.mjs": "5759467fd1c94b32c4044e4e7809c8b19afa636bd2b73ec210952d5c2bdcd4da",
+              "tests/browser.mjs": "e1cf12b45480219881ec514b1a2d830ab98ca4285153b941cbaa01ac5c9f26e8",
+              "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+            },
+            "fingerprint": "3d214565a79575ad04da65a9cfd910abfad38493030e9fc073cca8bebac8c0e6"
+          },
+          "scope": [],
+          "inputs": [],
+          "purpose": "probe",
+          "source": {
+            "runId": "20261020T211511-838aa23e",
+            "throughSeq": 108,
+            "contractVersion": 1,
+            "recordedEvent": {
+              "runId": "20261020T211511-838aa23e",
+              "seq": 62,
+              "eventId": "cb36588e-c222-4667-a3cf-cf863b5aa546",
+              "at": "2026-10-20T21:39:08.786Z",
+              "type": "verification.deferred"
+            }
+          }
+        },
+        {
+          "id": "07b80e3b-7446-4c19-98b1-5e50f558eb2e",
+          "nodeId": "913ebd1a-c1ab-4246-b549-fe90e4948451",
+          "criterionId": "board-ui",
+          "contractVersion": 1,
+          "kind": "deterministic",
+          "status": "recorded",
+          "createdAt": "2026-10-20T21:45:53.637Z",
+          "command": [
+            "node",
+            "tests/acceptance.mjs",
+            "board-ui"
+          ],
+          "exitCode": 1,
+          "output": "node:internal/modules/run_main:123\n    triggerUncaughtException(\n    ^\n\nlocator.fill: Timeout 30000ms exceeded.\nCall log:\n  - waiting for getByLabel('Nome progetto', { exact: true })\n\n    at /Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/data/worktrees/20261020T211511-838aa23e/tests/browser.mjs:16:157\n    at async check (/Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/data/worktrees/20261020T211511-838aa23e/tests/browser.mjs:9:31)\n    at async browserCheck (/Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/data/worktrees/20261020T211511-838aa23e/tests/browser.mjs:16:4)\n    at async file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/data/worktrees/20261020T211511-838aa23e/tests/acceptance.mjs:56:120\n    at async appTest (/Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/data/worktrees/20261020T211511-838aa23e/tests/harness.mjs:42:28)\n    at async file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/data/worktrees/20261020T211511-838aa23e/tests/acceptance.mjs:56:1 {\n  log: [ \"  - waiting for getByLabel('Nome progetto', { exact: true })\" ],\n  name: 'TimeoutError'\n}\n\nNode.js v22.21.1\n",
+          "durationMs": 31242,
+          "stamp": {
+            "head": "d3e570da7f20fb6f81fa5f6d8af89f710e9926d1",
+            "files": {
+              ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+              "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+              "README.md": "db1da3b33fb8c113f256abfe8cf76d32b1781ff5600fc540166bd4ed716606d3",
+              "docs/guida.md": "56e4f0cbc343a9847d575cc9a0aa5b31d2cc8d5200a51ae757ba7e29b4bf3478",
+              "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+              "public/index.html": "fb117be67ebf66b9d3994f774665d2c15dd2f9e27a6d82543706dbe13e548070",
+              "public/svolta.css": "cb296f0daa7285a27ceecb1167ad6309ec3022ca393aaa1141626fd3bc712dca",
+              "public/svolta.js": "91f042dfe033c00b3c55f73e832896afe20c843a3a6e32195159b46464ea9d57",
+              "src/app.mjs": "04453e9d589045bc64eb12c64ce69766fa55fa541f75fdeeff0ea8e237e3b14b",
+              "src/archive.mjs": "07d8f1c116184f827d5da85b0874f0849f441a3e9a0bff6279b635a7f66de443",
+              "src/dates.mjs": "97166e73d0b44fc0758dba28a8e89c24e643efb97202e484c79cf9903906bde2",
+              "src/errors.mjs": "594ce35930d8da6b7abec818d5c0111a1d2488cd02d2bc2359297f7f12d11996",
+              "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+              "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+              "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+              "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+              "tests/acceptance.mjs": "5759467fd1c94b32c4044e4e7809c8b19afa636bd2b73ec210952d5c2bdcd4da",
+              "tests/browser.mjs": "e1cf12b45480219881ec514b1a2d830ab98ca4285153b941cbaa01ac5c9f26e8",
+              "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+            },
+            "fingerprint": "269bb7983d2582e2472d646c31c188cc6422df23b34887c56950ddb73ae62655"
+          },
+          "scope": [],
+          "inputs": [],
+          "purpose": "probe",
+          "source": {
+            "runId": "20261020T211511-838aa23e",
+            "throughSeq": 108,
+            "contractVersion": 1,
+            "recordedEvent": {
+              "runId": "20261020T211511-838aa23e",
+              "seq": 73,
+              "eventId": "53df6d89-a996-4d14-87f4-cea9b6d98bb3",
+              "at": "2026-10-20T21:45:53.704Z",
+              "type": "verification.deferred"
+            }
+          }
+        },
+        {
+          "id": "05dba237-7f3c-4a87-81a7-a542c033d0c8",
+          "nodeId": "17ae0d92-59b5-4c00-85ef-7b2004869db0",
+          "criterionId": "board-ui",
+          "contractVersion": 1,
+          "kind": "deterministic",
+          "status": "recorded",
+          "createdAt": "2026-10-20T21:52:04.373Z",
+          "command": [
+            "node",
+            "tests/acceptance.mjs",
+            "board-ui"
+          ],
+          "exitCode": 1,
+          "output": "node:internal/modules/run_main:123\n    triggerUncaughtException(\n    ^\n\nlocator.fill: Timeout 30000ms exceeded.\nCall log:\n  - waiting for getByLabel('Nome progetto', { exact: true })\n\n    at /Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/data/worktrees/20261020T211511-838aa23e/tests/browser.mjs:16:157\n    at async check (/Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/data/worktrees/20261020T211511-838aa23e/tests/browser.mjs:9:31)\n    at async browserCheck (/Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/data/worktrees/20261020T211511-838aa23e/tests/browser.mjs:16:4)\n    at async file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/data/worktrees/20261020T211511-838aa23e/tests/acceptance.mjs:56:120\n    at async appTest (/Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/data/worktrees/20261020T211511-838aa23e/tests/harness.mjs:42:28)\n    at async file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/data/worktrees/20261020T211511-838aa23e/tests/acceptance.mjs:56:1 {\n  log: [ \"  - waiting for getByLabel('Nome progetto', { exact: true })\" ],\n  name: 'TimeoutError'\n}\n\nNode.js v22.21.1\n",
+          "durationMs": 31405,
+          "stamp": {
+            "head": "d3e570da7f20fb6f81fa5f6d8af89f710e9926d1",
+            "files": {
+              ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+              "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+              "README.md": "0edeee1bc8cec8745a00d26e1cec41a0fb957b350845fe84efe9c79a04a7c2a8",
+              "docs/guida.md": "29e65f8d77b71695ee987ab24d2bd7a569ccd2499236a080948c59c754ce2e0e",
+              "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+              "public/index.html": "1e798be6470daa454678337196f2076ca008b3922756dea7d79bbade5b259dee",
+              "public/svolta.css": "235865d7c676b8cf5cd7a9df2936252c335ffdf87d0d996ce90dd086e888a799",
+              "public/svolta.js": "8494e848b135e8dd8e4ecd4d29bc37705c1256b73ba5322f20438056bb1c5ab4",
+              "src/app.mjs": "04453e9d589045bc64eb12c64ce69766fa55fa541f75fdeeff0ea8e237e3b14b",
+              "src/archive.mjs": "07d8f1c116184f827d5da85b0874f0849f441a3e9a0bff6279b635a7f66de443",
+              "src/dates.mjs": "97166e73d0b44fc0758dba28a8e89c24e643efb97202e484c79cf9903906bde2",
+              "src/errors.mjs": "594ce35930d8da6b7abec818d5c0111a1d2488cd02d2bc2359297f7f12d11996",
+              "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+              "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+              "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+              "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+              "tests/acceptance.mjs": "5759467fd1c94b32c4044e4e7809c8b19afa636bd2b73ec210952d5c2bdcd4da",
+              "tests/browser.mjs": "e1cf12b45480219881ec514b1a2d830ab98ca4285153b941cbaa01ac5c9f26e8",
+              "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+            },
+            "fingerprint": "3ad48ac83770199444b9a0b3f34e14a1a9b3033538849235912a916b42c5f4ef"
+          },
+          "scope": [],
+          "inputs": [],
+          "purpose": "probe",
+          "source": {
+            "runId": "20261020T211511-838aa23e",
+            "throughSeq": 108,
+            "contractVersion": 1,
+            "recordedEvent": {
+              "runId": "20261020T211511-838aa23e",
+              "seq": 88,
+              "eventId": "b3134ba9-8b16-4391-b140-3fb655dd2f02",
+              "at": "2026-10-20T21:52:04.453Z",
+              "type": "verification.deferred"
+            }
+          }
+        }
+      ],
+      "latestRecordedState": {
+        "availability": "AVAILABLE",
+        "unavailableReason": null,
+        "runId": "20261020T211511-838aa23e",
+        "seq": 108,
+        "at": "2026-10-20T21:56:23.077Z",
+        "status": "BLOCKED",
+        "reason": "A deferred check requires unfinished planned work and a non-passing probe",
+        "contractVersion": 1,
+        "hasLaterEvents": null,
+        "criteria": [
+          {
+            "id": "board-ui",
+            "title": "Interfaccia progetti e attività su desktop e mobile",
+            "command": [
+              "node",
+              "tests/acceptance.mjs",
+              "board-ui"
+            ],
+            "scope": [],
+            "timeoutMs": 120000,
+            "status": "BLOCKED",
+            "basis": "latest-recorded-state",
+            "sourceRunId": "20261020T211511-838aa23e",
+            "sourceSeq": 108,
+            "contractVersion": 1,
+            "recordedCriterion": {
+              "id": "board-ui",
+              "title": "Interfaccia progetti e attività su desktop e mobile",
+              "command": [
+                "node",
+                "tests/acceptance.mjs",
+                "board-ui"
+              ],
+              "scope": [],
+              "timeoutMs": 120000
+            },
+            "evidenceId": "05dba237-7f3c-4a87-81a7-a542c033d0c8",
+            "evidence": {
+              "id": "05dba237-7f3c-4a87-81a7-a542c033d0c8",
+              "nodeId": "17ae0d92-59b5-4c00-85ef-7b2004869db0",
+              "criterionId": "board-ui",
+              "contractVersion": 1,
+              "kind": "deterministic",
+              "status": "recorded",
+              "createdAt": "2026-10-20T21:52:04.373Z",
+              "command": [
+                "node",
+                "tests/acceptance.mjs",
+                "board-ui"
+              ],
+              "exitCode": 1,
+              "output": "node:internal/modules/run_main:123\n    triggerUncaughtException(\n    ^\n\nlocator.fill: Timeout 30000ms exceeded.\nCall log:\n  - waiting for getByLabel('Nome progetto', { exact: true })\n\n    at /Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/data/worktrees/20261020T211511-838aa23e/tests/browser.mjs:16:157\n    at async check (/Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/data/worktrees/20261020T211511-838aa23e/tests/browser.mjs:9:31)\n    at async browserCheck (/Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/data/worktrees/20261020T211511-838aa23e/tests/browser.mjs:16:4)\n    at async file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/data/worktrees/20261020T211511-838aa23e/tests/acceptance.mjs:56:120\n    at async appTest (/Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/data/worktrees/20261020T211511-838aa23e/tests/harness.mjs:42:28)\n    at async file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020/data/worktrees/20261020T211511-838aa23e/tests/acceptance.mjs:56:1 {\n  log: [ \"  - waiting for getByLabel('Nome progetto', { exact: true })\" ],\n  name: 'TimeoutError'\n}\n\nNode.js v22.21.1\n",
+              "durationMs": 31405,
+              "stamp": {
+                "head": "d3e570da7f20fb6f81fa5f6d8af89f710e9926d1",
+                "files": {
+                  ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+                  "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+                  "README.md": "0edeee1bc8cec8745a00d26e1cec41a0fb957b350845fe84efe9c79a04a7c2a8",
+                  "docs/guida.md": "29e65f8d77b71695ee987ab24d2bd7a569ccd2499236a080948c59c754ce2e0e",
+                  "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+                  "public/index.html": "1e798be6470daa454678337196f2076ca008b3922756dea7d79bbade5b259dee",
+                  "public/svolta.css": "235865d7c676b8cf5cd7a9df2936252c335ffdf87d0d996ce90dd086e888a799",
+                  "public/svolta.js": "8494e848b135e8dd8e4ecd4d29bc37705c1256b73ba5322f20438056bb1c5ab4",
+                  "src/app.mjs": "04453e9d589045bc64eb12c64ce69766fa55fa541f75fdeeff0ea8e237e3b14b",
+                  "src/archive.mjs": "07d8f1c116184f827d5da85b0874f0849f441a3e9a0bff6279b635a7f66de443",
+                  "src/dates.mjs": "97166e73d0b44fc0758dba28a8e89c24e643efb97202e484c79cf9903906bde2",
+                  "src/errors.mjs": "594ce35930d8da6b7abec818d5c0111a1d2488cd02d2bc2359297f7f12d11996",
+                  "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+                  "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+                  "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+                  "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+                  "tests/acceptance.mjs": "5759467fd1c94b32c4044e4e7809c8b19afa636bd2b73ec210952d5c2bdcd4da",
+                  "tests/browser.mjs": "e1cf12b45480219881ec514b1a2d830ab98ca4285153b941cbaa01ac5c9f26e8",
+                  "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+                },
+                "fingerprint": "3ad48ac83770199444b9a0b3f34e14a1a9b3033538849235912a916b42c5f4ef"
+              },
+              "scope": [],
+              "inputs": [],
+              "purpose": "probe",
+              "source": {
+                "runId": "20261020T211511-838aa23e",
+                "throughSeq": 108,
+                "contractVersion": 1,
+                "recordedEvent": {
+                  "runId": "20261020T211511-838aa23e",
+                  "seq": 88,
+                  "eventId": "b3134ba9-8b16-4391-b140-3fb655dd2f02",
+                  "at": "2026-10-20T21:52:04.453Z",
+                  "type": "verification.deferred"
+                }
+              }
+            },
+            "unavailableReason": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "weekly-work",
+      "title": "Dalla lista al piano settimanale e al tempo reale",
+      "outcome": "Aggiungere pianificazione settimanale, sessioni di tempo con cronologia, riepilogo coerente e relativi flussi browser, preservando attività e conflitti. Gestire date civili senza spostamenti da fuso orario. Backup rimane il prossimo esito.",
+      "dependsOn": [
+        "usable-board"
+      ],
+      "status": "PENDING",
+      "runId": null,
+      "checkpoint": null,
+      "checkpointEvidence": {
+        "status": "NOT_RECORDED",
+        "sourceRunId": null,
+        "sourceSeq": null,
+        "contractVersion": null,
+        "runStatus": null,
+        "boundaryEvent": null,
+        "unavailableReason": "No checkpoint receipt is recorded."
+      },
+      "criteria": [
+        {
+          "id": "planning-api",
+          "title": "Settimana civile, sessioni e riepilogo coerente",
+          "command": [
+            "node",
+            "tests/acceptance.mjs",
+            "planning-api"
+          ],
+          "scope": [],
+          "timeoutMs": 120000,
+          "status": "UNAVAILABLE",
+          "basis": "latest-recorded-state",
+          "sourceRunId": null,
+          "sourceSeq": null,
+          "contractVersion": null,
+          "recordedCriterion": null,
+          "evidenceId": null,
+          "evidence": null,
+          "unavailableReason": "No criterion state is available at this evidence boundary."
+        },
+        {
+          "id": "planning-ui",
+          "title": "Pianificazione e tempo dal browser",
+          "command": [
+            "node",
+            "tests/acceptance.mjs",
+            "planning-ui"
+          ],
+          "scope": [],
+          "timeoutMs": 120000,
+          "status": "UNAVAILABLE",
+          "basis": "latest-recorded-state",
+          "sourceRunId": null,
+          "sourceSeq": null,
+          "contractVersion": null,
+          "recordedCriterion": null,
+          "evidenceId": null,
+          "evidence": null,
+          "unavailableReason": "No criterion state is available at this evidence boundary."
+        }
+      ],
+      "evidence": [],
+      "latestRecordedState": {
+        "availability": "UNAVAILABLE",
+        "unavailableReason": "No mission is linked yet.",
+        "runId": null,
+        "seq": null,
+        "at": null,
+        "status": null,
+        "reason": null,
+        "contractVersion": null,
+        "hasLaterEvents": null,
+        "criteria": [
+          {
+            "id": "planning-api",
+            "title": "Settimana civile, sessioni e riepilogo coerente",
+            "command": [
+              "node",
+              "tests/acceptance.mjs",
+              "planning-api"
+            ],
+            "scope": [],
+            "timeoutMs": 120000,
+            "status": "UNAVAILABLE",
+            "basis": "latest-recorded-state",
+            "sourceRunId": null,
+            "sourceSeq": null,
+            "contractVersion": null,
+            "recordedCriterion": null,
+            "evidenceId": null,
+            "evidence": null,
+            "unavailableReason": "No criterion state is available at this evidence boundary."
+          },
+          {
+            "id": "planning-ui",
+            "title": "Pianificazione e tempo dal browser",
+            "command": [
+              "node",
+              "tests/acceptance.mjs",
+              "planning-ui"
+            ],
+            "scope": [],
+            "timeoutMs": 120000,
+            "status": "UNAVAILABLE",
+            "basis": "latest-recorded-state",
+            "sourceRunId": null,
+            "sourceSeq": null,
+            "contractVersion": null,
+            "recordedCriterion": null,
+            "evidenceId": null,
+            "evidence": null,
+            "unavailableReason": "No criterion state is available at this evidence boundary."
+          }
+        ]
+      }
+    },
+    {
+      "id": "safe-delivery",
+      "title": "Portabilità e ritorno al prodotto finito",
+      "outcome": "Aggiungere backup completo e ripristino atomico validato con consenso esplicito. Verificare l’integrazione di tutti i flussi e i layout mobili. Completare README e guida pratica in italiano con avvio, dati, limiti e prove effettive, distinguendo affermazioni del modello da controlli host. Risolvere soltanto lacune concrete entro l’obiettivo approvato.",
+      "dependsOn": [
+        "weekly-work"
+      ],
+      "status": "PENDING",
+      "runId": null,
+      "checkpoint": null,
+      "checkpointEvidence": {
+        "status": "NOT_RECORDED",
+        "sourceRunId": null,
+        "sourceSeq": null,
+        "contractVersion": null,
+        "runStatus": null,
+        "boundaryEvent": null,
+        "unavailableReason": "No checkpoint receipt is recorded."
+      },
+      "criteria": [
+        {
+          "id": "backup-api",
+          "title": "Backup completo e ripristino atomico",
+          "command": [
+            "node",
+            "tests/acceptance.mjs",
+            "backup-api"
+          ],
+          "scope": [],
+          "timeoutMs": 120000,
+          "status": "UNAVAILABLE",
+          "basis": "latest-recorded-state",
+          "sourceRunId": null,
+          "sourceSeq": null,
+          "contractVersion": null,
+          "recordedCriterion": null,
+          "evidenceId": null,
+          "evidence": null,
+          "unavailableReason": "No criterion state is available at this evidence boundary."
+        },
+        {
+          "id": "backup-ui",
+          "title": "Consenso al ripristino e interfaccia di portabilità",
+          "command": [
+            "node",
+            "tests/acceptance.mjs",
+            "backup-ui"
+          ],
+          "scope": [],
+          "timeoutMs": 120000,
+          "status": "UNAVAILABLE",
+          "basis": "latest-recorded-state",
+          "sourceRunId": null,
+          "sourceSeq": null,
+          "contractVersion": null,
+          "recordedCriterion": null,
+          "evidenceId": null,
+          "evidence": null,
+          "unavailableReason": "No criterion state is available at this evidence boundary."
+        }
+      ],
+      "evidence": [],
+      "latestRecordedState": {
+        "availability": "UNAVAILABLE",
+        "unavailableReason": "No mission is linked yet.",
+        "runId": null,
+        "seq": null,
+        "at": null,
+        "status": null,
+        "reason": null,
+        "contractVersion": null,
+        "hasLaterEvents": null,
+        "criteria": [
+          {
+            "id": "backup-api",
+            "title": "Backup completo e ripristino atomico",
+            "command": [
+              "node",
+              "tests/acceptance.mjs",
+              "backup-api"
+            ],
+            "scope": [],
+            "timeoutMs": 120000,
+            "status": "UNAVAILABLE",
+            "basis": "latest-recorded-state",
+            "sourceRunId": null,
+            "sourceSeq": null,
+            "contractVersion": null,
+            "recordedCriterion": null,
+            "evidenceId": null,
+            "evidence": null,
+            "unavailableReason": "No criterion state is available at this evidence boundary."
+          },
+          {
+            "id": "backup-ui",
+            "title": "Consenso al ripristino e interfaccia di portabilità",
+            "command": [
+              "node",
+              "tests/acceptance.mjs",
+              "backup-ui"
+            ],
+            "scope": [],
+            "timeoutMs": 120000,
+            "status": "UNAVAILABLE",
+            "basis": "latest-recorded-state",
+            "sourceRunId": null,
+            "sourceSeq": null,
+            "contractVersion": null,
+            "recordedCriterion": null,
+            "evidenceId": null,
+            "evidence": null,
+            "unavailableReason": "No criterion state is available at this evidence boundary."
+          }
+        ]
+      }
+    }
+  ],
+  "attention": [
+    {
+      "kind": "delegation-reason",
+      "text": "Outcome usable-board requires attention: BLOCKED: A deferred check requires unfinished planned work and a non-passing probe",
+      "source": {
+        "delegationId": "de2c27e8-446b-492c-9825-2f2abe2e0e57",
+        "revision": 10,
+        "at": "2026-10-20T21:56:23.105Z"
+      }
+    },
+    {
+      "kind": "mission-reason",
+      "text": "A deferred check requires unfinished planned work and a non-passing probe",
+      "source": {
+        "runId": "20261020T211511-838aa23e",
+        "seq": 108,
+        "at": "2026-10-20T21:56:23.077Z",
+        "contractVersion": 1,
+        "outcomeIds": [
+          "usable-board"
+        ]
+      }
+    }
+  ],
+  "sourceFreshness": {
+    "status": "UNOBSERVED",
+    "explanation": "No current source files, Git refs or evidence artifacts were inspected or verified to generate this report."
+  },
+  "evidenceBoundary": "Checkpoint evidence is historical proof from the source mission event prefix through the recorded sourceSeq. Later recorded state is shown separately and cannot rewrite that checkpoint. Current source freshness is unobserved: this read-only report does not inspect worktrees, audit evidence or rerun checks. Each future mission needs fresh verification. AI assessments and project reviews are claims from the same integration, not independent proof or operator acceptance. A checkpoint is a technical result; product review and acceptance remain with the operator."
+}

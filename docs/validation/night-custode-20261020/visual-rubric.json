@@ -1,0 +1,28 @@
+{
+  "createdAt": "2026-10-20T14:49:48.245Z",
+  "method": "Assistant post-run visual product review on actual browser screenshots and source; qualitative judgment, separate from deterministic checks. Prepared before inspecting the delivered interface; not supplied as model feedback during the primary run.",
+  "scale": "1 unusable, 2 serious friction, 3 usable with limitations, 4 coherent usable product, 5 unusually strong execution",
+  "rubric": [
+    {
+      "id": "clarity",
+      "question": "Can a returning user understand what this app does and find the next action?"
+    },
+    {
+      "id": "flows",
+      "question": "Do inventory, maintenance, completion history and backups form a coherent usable whole?"
+    },
+    {
+      "id": "mobile",
+      "question": "Are text, forms, controls and navigation readable and usable at 390px?"
+    },
+    {
+      "id": "trust",
+      "question": "Are persistence, destructive actions, restore consent, errors and local-only limitations clearly communicated?"
+    },
+    {
+      "id": "finish",
+      "question": "Are empty/loading/error states, typography, spacing and content consistent and free from obvious broken or placeholder elements?"
+    }
+  ],
+  "reserved": "This scores this app, not universal superiority or overnight reliability."
+}

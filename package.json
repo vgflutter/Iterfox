@@ -1,0 +1,68 @@
+{
+  "name": "iterfox",
+  "version": "0.1.0",
+  "description": "A local, acceptance-driven supervisor for Codex. Delegate the work. Wake up to evidence.",
+  "type": "module",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vgflutter/Iterfox.git"
+  },
+  "homepage": "https://github.com/vgflutter/Iterfox#readme",
+  "bin": {
+    "iterfox": "dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "examples",
+    "docs",
+    "README.md",
+    "README.it.md",
+    "AGENTS.md",
+    "LICENSE",
+    "deploy"
+  ],
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.server.json && vite build",
+    "typecheck": "tsc --noEmit && tsc -p tsconfig.server.json --noEmit",
+    "dev": "node --import tsx src/cli.ts ui",
+    "iterfox": "node --import tsx src/cli.ts",
+    "demo": "node --import tsx src/cli.ts demo --yes",
+    "test": "node --import tsx --test tests/*.test.ts tests/continuous/*.case.mjs",
+    "test:codex": "ITERFOX_REAL_CODEX=1 node --import tsx --test tests/codex.test.ts",
+    "test:ui": "playwright test && node --import tsx tests/continuous/brief-browser.mjs && node --import tsx tests/continuous/report-browser.mjs && node --import tsx tests/continuous/async-browser.mjs",
+    "compare:codex": "node --import tsx scripts/compare-codex.ts",
+    "format": "prettier --write src tests scripts docs *.json *.ts *.md .github/workflows/*.yml",
+    "prepack": "npm run build",
+    "check": "npm run typecheck && npm test && npm run build",
+    "test:visual": "ITERFOX_VISUAL_TESTS=1 node --import tsx --test tests/visual.test.ts",
+    "test:assessor": "ITERFOX_REAL_ASSESSOR=1 node --import tsx --test tests/assessment-codex.test.ts",
+    "test:compass": "ITERFOX_REAL_COMPASS=1 node --import tsx --test tests/compass-codex.test.ts",
+    "test:project": "ITERFOX_REAL_PROJECT=1 node --import tsx --test tests/project-codex.test.ts"
+  },
+  "dependencies": {
+    "@openai/codex-sdk": "0.163.0",
+    "@xyflow/react": "12.12.0",
+    "pixelmatch": "8.0.0",
+    "playwright": "1.64.1",
+    "pngjs": "7.0.0",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.64.1",
+    "@types/node": "22.20.5",
+    "@types/pngjs": "6.0.5",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "@vitejs/plugin-react": "6.1.2",
+    "prettier": "3.9.10",
+    "tsx": "4.23.15",
+    "typescript": "7.0.2",
+    "vite": "8.3.4"
+  }
+}

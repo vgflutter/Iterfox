@@ -1,0 +1,57 @@
+{
+  "at": "2026-10-20T19:09:29.566Z",
+  "result": "PASS",
+  "boundary": "Two original saved histories retained separately; no models or workers started by this browser audit.",
+  "results": [
+    {
+      "phase": "primary",
+      "status": "BLOCKED",
+      "completed": 3,
+      "total": 4,
+      "downloads": [
+        {
+          "name": "primary-project-brief.json",
+          "suggested": "iterfox-project-brief-4067d97a-eaea-4343-b726-7b33c05bdf7d.json"
+        },
+        {
+          "name": "primary-project-brief.md",
+          "suggested": "iterfox-project-brief-4067d97a-eaea-4343-b726-7b33c05bdf7d.md"
+        },
+        {
+          "name": "primary-project-report.html",
+          "suggested": "iterfox-project-report-4067d97a-eaea-4343-b726-7b33c05bdf7d.html"
+        }
+      ],
+      "mobileOverflow": false,
+      "offlineWithoutJavaScript": true,
+      "noRemoteReportRequests": true,
+      "noHistoryWrites": true,
+      "noBrowserWrites": true
+    },
+    {
+      "phase": "recovery",
+      "status": "COMPLETED",
+      "completed": 1,
+      "total": 1,
+      "downloads": [
+        {
+          "name": "project-brief.json",
+          "suggested": "iterfox-project-brief-c59044fd-9fc4-4362-bfd5-2f35522c4d47.json"
+        },
+        {
+          "name": "project-brief.md",
+          "suggested": "iterfox-project-brief-c59044fd-9fc4-4362-bfd5-2f35522c4d47.md"
+        },
+        {
+          "name": "project-report.html",
+          "suggested": "iterfox-project-report-c59044fd-9fc4-4362-bfd5-2f35522c4d47.html"
+        }
+      ],
+      "mobileOverflow": false,
+      "offlineWithoutJavaScript": true,
+      "noRemoteReportRequests": true,
+      "noHistoryWrites": true,
+      "noBrowserWrites": true
+    }
+  ]
+}

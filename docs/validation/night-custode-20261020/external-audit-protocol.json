@@ -1,0 +1,9 @@
+{
+  "at": "2026-10-20T14:39:07.586Z",
+  "method": "Prepared before product completion; not supplied as model feedback. Separate from the six approved host gates.",
+  "hashes": {
+    "independent-audit.mjs": "39d897f859f9549606f171556a3b902e6eebf0cdca7ae70400575665faf57fb1",
+    "ledger-audit.mjs": "799ced590c7e32c1c5463e8eca47afb7d85b596b611f3917b51f5f803065e079",
+    "observe.mjs": "1f8fd8fb377026b6f22bf7ba146f532fe4bc573d83af71ec27fc1ea645b39578"
+  }
+}

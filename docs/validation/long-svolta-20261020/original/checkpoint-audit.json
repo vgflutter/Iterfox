@@ -1,0 +1,21 @@
+{
+  "at": "2026-10-20T21:15:56.604Z",
+  "result": "PASS",
+  "delegationStatus": "RUNNING",
+  "checkpoints": [
+    {
+      "stage": "reliable-foundation",
+      "runId": "20261020T205056-641e33a8",
+      "sourceSeq": 64,
+      "head": "d3e570da7f20fb6f81fa5f6d8af89f710e9926d1",
+      "criteria": 2,
+      "recoveries": 1,
+      "ready": true,
+      "freshSourceFingerprint": "d4be2d94025d39f88c9a5cd35afec5cc9a90c6f6eb72f4379eec3cc751dd2ba5"
+    }
+  ],
+  "immutableAuthorization": true,
+  "protectedInputsUnchanged": true,
+  "driverUnchanged": true,
+  "externalAuditUnchanged": true
+}

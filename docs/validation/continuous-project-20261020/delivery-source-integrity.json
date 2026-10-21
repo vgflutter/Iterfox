@@ -1,0 +1,7 @@
+{
+  "at": "2026-10-20T13:27:33.735Z",
+  "result": "PASS",
+  "checked": "All source and test file bytes plus package/compiler/browser configuration match the candidate that passed 86 backend cases, types, build, eleven Chrome cases and three browser drivers. Only documentation may differ. Copied build came from that identical code.",
+  "deliveredPath": "/Users/vins/work/iterfox/.iterfox/development/continuous-return-review",
+  "checkpoint": "23f6ff670897de624de59f6d2c508a948ea846b0"
+}

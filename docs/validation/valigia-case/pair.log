@@ -1,0 +1,16 @@
+(node:59301) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+macOS idle sleep inhibition requested for this worker PID. Explicit sleep, shutdown and power loss still interrupt the run.
+{"phase":"baseline checked","order":["iterfox","direct"]}
+{"arm":"iterfox","seq":4,"type":"task.started","message":"planner: Plan the accepted goal"}
+{"arm":"iterfox","seq":7,"type":"task.completed","message":"Plan proposal validated against the acceptance contract."}
+{"arm":"iterfox","seq":15,"type":"task.started","message":"builder: Implementare il dominio e il formato dei backup"}
+{"arm":"iterfox","seq":19,"type":"task.completed","message":"Completato src/domain.mjs con operazioni immutabili, validazione rigorosa, ID univoci, riepiloghi per quantità e backup JSON. Unicode e testo HTML preservati. Sintassi e controllo diretto superati; suite completa da verificare sull’host."}
+{"arm":"iterfox","seq":22,"type":"verification.passed","message":"Data operations, validation, summaries and backup preserve all stated invariants: approved command already passes on the recorded inputs."}
+{"arm":"iterfox","seq":26,"type":"task.started","message":"builder: Realizzare l’app completa, accessibile e persistente"}
+{"arm":"iterfox","seq":31,"type":"task.completed","message":"Completata l’app con gestione oggetti, totali globali, filtri, persistenza, avvisi di errore, backup JSON e README. Sintassi verificata; suite complete e layout a 390px non osservati in sandbox, da verificare sull’host."}
+{"arm":"iterfox","seq":34,"type":"verification.passed","message":"Data operations, validation, summaries and backup preserve all stated invariants: approved command already passes on the recorded inputs."}
+{"arm":"iterfox","seq":36,"type":"verification.passed","message":"Real Chrome completes the list, recovery and mobile workflows: approved command already passes on the recorded inputs."}
+{"arm":"iterfox","seq":39,"type":"task.started","message":"planner: Review the project against its goal"}
+{"arm":"iterfox","status":"COMPLETED","solveElapsedMs":981010,"modelCalls":4,"reportedTokens":836777,"criteriaPassed":2,"additionalPassed":6,"additionalTotal":6}
+{"arm":"direct","status":"RETURNED","solveElapsedMs":703697,"modelCalls":1,"reportedTokens":423271,"criteriaPassed":2,"additionalPassed":6,"additionalTotal":6}

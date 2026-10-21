@@ -1,0 +1,20 @@
+{
+  "at": "2026-10-20T13:24:30.651Z",
+  "planned": "One frozen runtime and one worker launch with no root recovery between three outcomes.",
+  "observed": "Two verified outcome checkpoints and the third mission were launched automatically. During the third mission a parent monitor performance defect required one root technical recovery: pause, freeze a separate fixed runtime, explicitly resume the same delegation.",
+  "unchanged": [
+    "Original goal and acceptance commands",
+    "Allowed/protected paths",
+    "Original authorization timestamp and shared limits",
+    "All existing run IDs, code worktrees, event history and checkpoint refs"
+  ],
+  "counts": {
+    "parentAuthorizations": 1,
+    "workerStarts": 2,
+    "rootTechnicalRecoveriesDuringMainTrial": 1,
+    "rootModelCoachingNotes": 0,
+    "additionalUserDecisions": 0
+  },
+  "previousAttempt": "One earlier attempt failed before any model call and required a separate setup fix. That attempt and its logs remain preserved.",
+  "claimBoundary": "The main trial must not be called fully unattended or zero-intervention."
+}

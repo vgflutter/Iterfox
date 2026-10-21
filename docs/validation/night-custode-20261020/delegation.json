@@ -1,0 +1,147 @@
+{
+  "repository": "/Users/vins/work/iterfox/.iterfox/missions/night-custode-20261020/source",
+  "contract": {
+    "goal": "Build Custode, a useful Italian local application for household inventory and maintenance, from the product objective in BRIEF.md. Own ordinary implementation, design and product decisions and deliver a coherent end-to-end result. Read the fixed brief for the API/accessibility interfaces required for host verification. Work only on the current outcome, preserve previous behavior and leave later outcomes to automatic continuation. Do not ask the operator to choose routine details. Green tests are a minimum: inspect the actual result, discover and repair concrete goal gaps within scope. Do not create demo user data. No network, package installation, external notifications, publication, push or merge. Use host verificationRequest for browser/listener tests; sandbox observation limits do not block implementation. The operator is absent: report a real boundary blocker honestly, rather than changing acceptance or claiming success.",
+    "criteria": [
+      {
+        "id": "inventory",
+        "title": "Inventory API stores valid searchable data across a process restart",
+        "command": [
+          "node",
+          "tests/acceptance.mjs",
+          "inventory"
+        ],
+        "timeoutMs": 120000,
+        "scope": []
+      },
+      {
+        "id": "inventory-ui",
+        "title": "Accessible responsive inventory supports create/search/edit and reload",
+        "command": [
+          "node",
+          "tests/acceptance.mjs",
+          "inventory-ui"
+        ],
+        "timeoutMs": 120000,
+        "scope": []
+      },
+      {
+        "id": "maintenance",
+        "title": "Linked one-off and recurring maintenance has civil-date and durable history semantics",
+        "command": [
+          "node",
+          "tests/acceptance.mjs",
+          "maintenance"
+        ],
+        "timeoutMs": 120000,
+        "scope": []
+      },
+      {
+        "id": "maintenance-ui",
+        "title": "User can schedule and complete maintenance end-to-end",
+        "command": [
+          "node",
+          "tests/acceptance.mjs",
+          "maintenance-ui"
+        ],
+        "timeoutMs": 120000,
+        "scope": []
+      },
+      {
+        "id": "backup",
+        "title": "Exact backup/restore is validated, atomic and documented",
+        "command": [
+          "node",
+          "tests/acceptance.mjs",
+          "backup"
+        ],
+        "timeoutMs": 120000,
+        "scope": []
+      },
+      {
+        "id": "backup-ui",
+        "title": "User downloads and explicitly confirms data replacement in the interface",
+        "command": [
+          "node",
+          "tests/acceptance.mjs",
+          "backup-ui"
+        ],
+        "timeoutMs": 120000,
+        "scope": []
+      }
+    ],
+    "allowedPaths": [
+      "src",
+      "public",
+      "README.md",
+      "docs"
+    ],
+    "protectedPaths": [
+      "tests",
+      "BRIEF.md",
+      "package.json",
+      ".gitignore"
+    ],
+    "supervision": {
+      "mode": "project",
+      "maxReviews": 16
+    },
+    "limits": {
+      "maxTurns": 180,
+      "maxAttempts": 5,
+      "maxDurationMs": 14400000,
+      "maxTokens": 100000000,
+      "turnTimeoutMs": 1200000,
+      "maxNoProgress": 8
+    }
+  },
+  "milestones": [
+    {
+      "id": "reliable-inventory",
+      "title": "Reliable inventory",
+      "outcome": "Implement outcome 1 in BRIEF.md: real validated inventory HTTP API, case-insensitive combined search and durable storage. No UI or maintenance/backup behavior is required in this first outcome. Future acceptance cases are not active yet.",
+      "criterionIds": [
+        "inventory"
+      ],
+      "dependsOn": []
+    },
+    {
+      "id": "usable-inventory",
+      "title": "Usable visual inventory",
+      "outcome": "Implement outcome 2 in BRIEF.md: coherent Italian inventory UI, accessible real forms and actions, search, edit/delete with confirmation, empty/error states, desktop and phone layout. Preserve the inventory API. Maintenance and backup are following outcomes.",
+      "criterionIds": [
+        "inventory-ui"
+      ],
+      "dependsOn": [
+        "reliable-inventory"
+      ]
+    },
+    {
+      "id": "maintenance-workflow",
+      "title": "Maintenance from due date to history",
+      "outcome": "Implement outcome 3 in BRIEF.md: validated maintenance API, overview, one-off and recurring completions, durable history and integrated interface. Preserve all inventory behavior and fix concrete end-to-end gaps. Backup remains the next outcome.",
+      "criterionIds": [
+        "maintenance",
+        "maintenance-ui"
+      ],
+      "dependsOn": [
+        "usable-inventory"
+      ]
+    },
+    {
+      "id": "safe-return",
+      "title": "Safe return and complete handover",
+      "outcome": "Implement outcome 4 in BRIEF.md: exact JSON backup/download and validated atomic explicit restore in API and UI, recovery/error states, truthful README with startup/data/backup/limits. Review the whole final product and resolve material gaps against the approved goal; deliver something the returning operator can use without technical coaching.",
+      "criterionIds": [
+        "backup",
+        "backup-ui"
+      ],
+      "dependsOn": [
+        "maintenance-workflow"
+      ]
+    }
+  ],
+  "environment": {
+    "copyIgnoredPaths": []
+  }
+}

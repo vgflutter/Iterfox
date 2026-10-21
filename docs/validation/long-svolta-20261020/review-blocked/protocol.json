@@ -1,0 +1,82 @@
+{
+  "createdAt": "2026-10-20T22:34:34.956Z",
+  "kind": "Second declared continuation after assistant test-oracle correction; three separate authorizations, not an uninterrupted original success",
+  "originalDelegation": "de2c27e8-446b-492c-9825-2f2abe2e0e57",
+  "priorDelegation": "ba19c3c0-677b-4354-9729-fd66916ed929",
+  "priorStatus": "STOPPED",
+  "runtimeCommit": "dc1285523842938f2db9822e1bf9abdbcbc7ce11",
+  "testCorrection": {
+    "file": "tests/acceptance.mjs",
+    "beforeSha256": "9723e15b08ecb6f43bbe9310b0c8ccb99fa46e6239764e85211b865977dc11bc",
+    "afterSha256": "292079cdc1622e83651930181bb3732990dad3bf8cefa103c64f64283c576e81",
+    "change": "Only expected summary overdue count 1 -> 2. Both the todo task due Oct18 and doing task due Oct20 are before reference Oct21, as BRIEF.md requires. Application code is unchanged."
+  },
+  "protectedInputHashes": {
+    "BRIEF.md": "4b0d5c8467bf7ca91ddef6c89d3f077fab4121c3245404d97cf19dc681e250cb",
+    "package.json": "860de3ed7de7d0b08bc8e01ded1fcc61403a77b4918a1f1178802d9af60a8cc1",
+    ".gitignore": "d7374edf9ed6b2549bc7b02c7bd49e8031bae04000b61a59e57dc2f8f375a52d",
+    "tests/harness.mjs": "67c21916ab5cc5da82310c2abd7c84bd42e73ef65acf5e93afe9c6ce129db8d1",
+    "tests/acceptance.mjs": "292079cdc1622e83651930181bb3732990dad3bf8cefa103c64f64283c576e81",
+    "tests/browser.mjs": "2675ee576af7202a6639c1a2961c7a47e7ad2221baf2182f9b39f7bcaa921e8d"
+  },
+  "model": "gpt-6.1-sol",
+  "sdk": "0.163.0",
+  "manualApplicationEditsAfterAuthorizationAllowed": false,
+  "manualResumeWithinContinuationAllowed": false,
+  "remainingFaults": [
+    {
+      "stage": "weekly-work",
+      "mode": "oversee",
+      "trigger": "Abort first actual read-only project review 1.5sec after thread.started"
+    },
+    {
+      "stage": "safe-delivery",
+      "mode": "build",
+      "trigger": "Lose first actual builder response after turn.completed usage"
+    }
+  ],
+  "budget": {
+    "originalDelegation": "de2c27e8-446b-492c-9825-2f2abe2e0e57",
+    "originalAuthorizedAt": "2026-10-20T20:50:56.207Z",
+    "originalDeadline": "2026-10-21T00:50:56.207Z",
+    "originalLimits": {
+      "maxTurns": 140,
+      "maxAttempts": 4,
+      "maxDurationMs": 14400000,
+      "maxTokens": 100000000,
+      "turnTimeoutMs": 720000,
+      "maxNoProgress": 4
+    },
+    "used": {
+      "turns": 26,
+      "reportedTokens": 8466752
+    },
+    "remainingTurns": 114,
+    "remainingReportedTokens": 91533248,
+    "marginMs": 30000,
+    "incompleteTurnTokens": "Unreported by provider; no claim of a hard in-flight spend cap.",
+    "priorDelegations": [
+      {
+        "id": "de2c27e8-446b-492c-9825-2f2abe2e0e57",
+        "status": "BLOCKED"
+      },
+      {
+        "id": "ba19c3c0-677b-4354-9729-fd66916ed929",
+        "status": "STOPPED"
+      }
+    ]
+  },
+  "driverSha256": "2aa93f054caa742e43cebad1d4cf6306d7271fbb64c2421c8728511fa2989a97",
+  "externalAuditSha256": "5985e62ce06c00a46826099a0b46789d4c9cc26f39b7053edadd773a61e0466f",
+  "externalAuditDefinitionsUnchangedExceptPaths": true,
+  "engineeringInterventionsAcrossWholeExperiment": 2,
+  "finalizedAt": "2026-10-20T22:35:31.184Z",
+  "finalRemainingLimits": {
+    "maxTurns": 114,
+    "maxAttempts": 4,
+    "maxDurationMs": 8095024,
+    "maxTokens": 91533248,
+    "turnTimeoutMs": 720000,
+    "maxNoProgress": 4
+  }
+}

@@ -1,0 +1,34 @@
+import assert from 'node:assert/strict';
+import {readFile,writeFile,stat,readlink} from 'node:fs/promises';
+import {join} from 'node:path';
+import {pathToFileURL} from 'node:url';
+import {createHash} from 'node:crypto';
+import {execFileSync} from 'node:child_process';
+const root=process.argv[2]??'/Users/vins/work/iterfox/.iterfox/missions/continuous-project-20261020-r2';
+const {openStore}=await import(pathToFileURL(root+'/runtime/dist/service.js'));
+const {DelegationStore}=await import(pathToFileURL(root+'/runtime/dist/delegations/service.js'));
+const {stamp,auditChanges}=await import(pathToFileURL(root+'/runtime/dist/core/workspace.js'));
+const {projectReviewCurrent}=await import(pathToFileURL(root+'/runtime/dist/core/supervision.js'));
+const before=JSON.parse(await readFile(root+'/evidence/before.json','utf8'));const recovery=JSON.parse(await readFile(root+'/evidence/recovery-runtime.json','utf8'));const interventions=JSON.parse(await readFile(root+'/evidence/interventions.json','utf8'));assert.equal(interventions.length,1);
+const git=(cwd,args)=>execFileSync('/usr/bin/git',args,{cwd,encoding:'utf8'}).trim();
+const runs=openStore(root+'/data');
+try{
+ const d=new DelegationStore(runs).list()[0];assert.equal(d.status,'COMPLETED',d.reason);assert.equal(d.stages.length,3);assert.equal(d.events.filter(e=>e.kind==='authorized').length,1);assert.equal(d.events.filter(e=>e.kind==='worker-started').length,2);assert.equal(d.events.filter(e=>e.kind==='resumed').length,1);assert.equal(d.events.filter(e=>e.kind==='control-requested').length,1);assert.equal(d.events.filter(e=>e.kind==='worker-lost').length,0);assert.equal(runs.list().length,3);
+ for(const [name,hash]of Object.entries(before.frozenHashes))assert.equal(createHash('sha256').update(await readFile(join(root,name))).digest('hex'),hash,name+' changed');
+ for(const [name,hash]of Object.entries(recovery.hashes))assert.equal(createHash('sha256').update(await readFile(join(recovery.runtime,name))).digest('hex'),hash,'Recovered runtime '+name+' changed');
+ assert.equal(git(before.source,['rev-parse','HEAD']),before.sourceHead);assert.equal(git(before.source,['write-tree']),before.sourceIndex);assert.equal(git(before.source,['status','--porcelain']),'');
+ let parent=before.sourceHead;const stages=[];let spentTurns=0,spentTokens=0;const covered=new Set();
+ for(const [i,stage]of d.stages.entries()){
+  assert.equal(stage.status,'CHECKPOINTED');assert.equal(stage.environmentPrepared,true);const run=runs.get(stage.runId);const events=runs.events(run.id),initial=events.find(e=>e.type==='workflow.created').data.state;
+  for(const c of d.spec.milestones[i].criterionIds)covered.add(c);assert.deepEqual(run.contract.criteria,d.spec.contract.criteria.filter(c=>covered.has(c.id)));assert.deepEqual(run.contract.allowedPaths,d.spec.contract.allowedPaths);assert.deepEqual(run.contract.protectedPaths,d.spec.contract.protectedPaths);assert.equal(run.contract.limits.maxTurns,d.spec.contract.limits.maxTurns-spentTurns);assert.equal(run.contract.limits.maxTokens,d.spec.contract.limits.maxTokens-spentTokens);assert(run.contract.limits.maxDurationMs<=d.spec.contract.limits.maxDurationMs);spentTurns+=run.turns;spentTokens+=run.tokens;assert.equal(runs.lease(run.id),undefined);
+  assert.equal(run.provider,'codex');assert.equal(run.status,'COMPLETED');assert.equal(run.baseHead,parent);assert.equal(initial.evidence.length,0);assert(initial.criteria.every(c=>c.status==='PENDING'));assert(run.criteria.every(c=>c.status==='PASSED'));
+  const dependency='node_modules/typescript/package.json';assert.notEqual((await stat(join(run.worktree,dependency))).ino,(await stat(join(before.source,dependency))).ino);assert.equal(await readlink(join(run.worktree,'node_modules/.bin/tsx')),await readlink(join(before.source,'node_modules/.bin/tsx')));
+  for(const criterion of run.criteria){const proof=run.evidence.find(e=>e.id===criterion.evidenceId);assert(proof,'Missing current criterion receipt');assert.equal(proof.kind,'deterministic');assert.equal(proof.status,'passed');assert.equal(proof.exitCode,0);assert.equal(proof.contractVersion,run.contractVersion);assert.deepEqual(proof.command,run.contract.criteria.find(c=>c.id===criterion.id).command);const observed=await stamp(run.worktree,proof.scope,proof.inputs);assert.equal(observed.head,proof.stamp.head);assert.equal(observed.fingerprint,proof.stamp.fingerprint);}
+  const current=await stamp(run.worktree);assert.equal(current.head,run.baseHead);assert.equal(current.fingerprint,stage.checkpoint.sourceFingerprint);assert(projectReviewCurrent(run,current));assert.equal(git(run.worktree,['rev-parse',stage.checkpoint.ref]),stage.checkpoint.head);assert.equal(git(run.worktree,['rev-parse',stage.checkpoint.head+'^']),parent);assert.equal(git(run.worktree,['write-tree']),git(run.worktree,['rev-parse',run.baseHead+'^{tree}']));await auditChanges(run);
+  const directions=events.filter(e=>e.type==='direction.noted');assert.equal(directions.length,1);assert(directions[0].data.note.text.startsWith('Delegation '+d.id+'; approval '+d.specHash+'; outcome '+stage.id+'.'));assert(directions[0].data.note.text.includes('Previous checkpoint '+run.baseHead+'.'));assert.match(directions[0].data.note.text,/Historical evidence/);
+  stages.push({id:stage.id,runId:run.id,baseHead:run.baseHead,checkpoint:stage.checkpoint,turns:run.turns,tokens:run.tokens,createdAt:run.createdAt,updatedAt:run.updatedAt,criteria:run.criteria.map(c=>({id:c.id,status:c.status})),currentChecks:run.evidence.filter(e=>e.status==='passed').map(e=>({id:e.id,criterionId:e.criterionId,output:e.output.slice(-1200),code:e.stamp})),reviews:run.projectReviews,changes:await auditChanges(run),eventCounts:Object.fromEntries([...new Set(events.map(e=>e.type))].map(type=>[type,events.filter(e=>e.type===type).length]))});
+  parent=stage.checkpoint.head;
+ }
+ assert.equal(new DelegationStore(runs).lease(d.id),undefined);const result={auditedAt:new Date().toISOString(),result:'PASS',delegation:d,sourcePreserved:true,frozenRuntimeAndAcceptancePreserved:true,oneParentApproval:true,workerLaunches:2,manualRunNotes:0,pauseStopResumeCount:2,technicalInterventions:interventions,recoveryRuntime:recovery,stages,totalTurns:stages.reduce((n,s)=>n+s.turns,0),totalTokens:stages.reduce((n,s)=>n+s.tokens,0),durationMs:Date.parse(d.events.findLast(e=>e.kind==='completed').at)-Date.parse(d.authorizedAt),previousAttempt:before.previousAttempt,limits:'Bounded three-mission trial with prepared acceptance; not an overnight soak or proof against all direct-Codex approaches.'};
+ await writeFile(root+'/evidence/audit.json',JSON.stringify(result,null,2)+'\n');console.log(JSON.stringify({result:result.result,stages:stages.map(s=>({id:s.id,runId:s.runId,checkpoint:s.checkpoint.head,criteria:s.criteria.length})),durationMs:result.durationMs,totalTurns:result.totalTurns}));
+}finally{runs.close();}

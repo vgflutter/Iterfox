@@ -1,0 +1,167 @@
+{
+  "id": "156e137f-0bca-49f1-bc68-34fe60c1ef29",
+  "revision": 1,
+  "spec": {
+    "repository": "/Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020-r3/source",
+    "contract": {
+      "goal": "Realizzare Svolta, app locale in italiano per progetti personali, attività, pianificazione settimanale, tempo dedicato e backup, con interfaccia desktop e mobile utilizzabile e guida onesta. Seguire BRIEF.md. Continuazione dichiarata: il primo tentativo si è bloccato per un difetto del runtime corretto; il secondo è stato fermato dall’assistente per un errore nel valore atteso di un test host, ora corretto prima di questa autorizzazione. Il conteggio overdue deve includere tutte le attività non done scadute, comprese quelle doing, come già implementato. Il codice del prodotto è una copia invariata del candidato interrotto, non un checkpoint certificato: ottenere nuove prove. Conservare interfaccia e lavoro già presente; completare soltanto lacune concrete e i due esiti rimanenti, senza rifare il prodotto. Scegliere autonomamente i dettagli reversibili; niente account, servizi esterni, dipendenze o pubblicazione. Le prove storiche non certificano questa nuova missione.",
+      "criteria": [
+        {
+          "id": "projects-api",
+          "title": "Archivio progetti persistente e revisioni",
+          "command": [
+            "node",
+            "tests/acceptance.mjs",
+            "projects-api"
+          ],
+          "scope": [],
+          "timeoutMs": 120000
+        },
+        {
+          "id": "tasks-api",
+          "title": "Attività, filtri e conflitti senza perdita di dati",
+          "command": [
+            "node",
+            "tests/acceptance.mjs",
+            "tasks-api"
+          ],
+          "scope": [],
+          "timeoutMs": 120000
+        },
+        {
+          "id": "board-ui",
+          "title": "Interfaccia progetti e attività su desktop e mobile",
+          "command": [
+            "node",
+            "tests/acceptance.mjs",
+            "board-ui"
+          ],
+          "scope": [],
+          "timeoutMs": 120000
+        },
+        {
+          "id": "planning-api",
+          "title": "Settimana civile, sessioni e riepilogo coerente",
+          "command": [
+            "node",
+            "tests/acceptance.mjs",
+            "planning-api"
+          ],
+          "scope": [],
+          "timeoutMs": 120000
+        },
+        {
+          "id": "planning-ui",
+          "title": "Pianificazione e tempo dal browser",
+          "command": [
+            "node",
+            "tests/acceptance.mjs",
+            "planning-ui"
+          ],
+          "scope": [],
+          "timeoutMs": 120000
+        },
+        {
+          "id": "backup-api",
+          "title": "Backup completo e ripristino atomico",
+          "command": [
+            "node",
+            "tests/acceptance.mjs",
+            "backup-api"
+          ],
+          "scope": [],
+          "timeoutMs": 120000
+        },
+        {
+          "id": "backup-ui",
+          "title": "Consenso al ripristino e interfaccia di portabilità",
+          "command": [
+            "node",
+            "tests/acceptance.mjs",
+            "backup-ui"
+          ],
+          "scope": [],
+          "timeoutMs": 120000
+        }
+      ],
+      "allowedPaths": [
+        "src",
+        "public",
+        "README.md",
+        "docs"
+      ],
+      "protectedPaths": [
+        "BRIEF.md",
+        "tests",
+        "package.json",
+        ".gitignore"
+      ],
+      "supervision": {
+        "mode": "project",
+        "maxReviews": 12
+      },
+      "limits": {
+        "maxTurns": 114,
+        "maxAttempts": 4,
+        "maxDurationMs": 8095024,
+        "maxTokens": 91533248,
+        "turnTimeoutMs": 720000,
+        "maxNoProgress": 4
+      }
+    },
+    "milestones": [
+      {
+        "id": "weekly-work",
+        "title": "Dalla lista al piano settimanale e al tempo reale",
+        "outcome": "Completare settimana, sessioni di tempo, riepilogo e relativi flussi browser conservando il codice esistente. Date civili, conteggi e sessioni API sono già presenti e vanno verificati, non rifatti. Completare quanto manca nell’interfaccia e nella guida, senza reinventare il flusso attività o riaprire scelte visuali già realizzate. Backup rimane il prossimo esito.",
+        "criterionIds": [
+          "projects-api",
+          "tasks-api",
+          "board-ui",
+          "planning-api",
+          "planning-ui"
+        ],
+        "dependsOn": []
+      },
+      {
+        "id": "safe-delivery",
+        "title": "Portabilità e ritorno al prodotto finito",
+        "outcome": "Aggiungere backup completo e ripristino atomico validato con consenso esplicito. Verificare l’integrazione di tutti i flussi e i layout mobili. Completare README e guida pratica in italiano con avvio, dati, limiti e prove effettive, distinguendo affermazioni del modello da controlli host. Risolvere soltanto lacune concrete entro l’obiettivo approvato.",
+        "criterionIds": [
+          "backup-api",
+          "backup-ui"
+        ],
+        "dependsOn": [
+          "weekly-work"
+        ]
+      }
+    ],
+    "environment": {
+      "copyIgnoredPaths": []
+    }
+  },
+  "specHash": "2bd037cf9a1126be2e0a53841816013de1c04f91da4afe167e61712c095f7c74",
+  "sourceHead": "980d9648d2dadfda664aca92b4dfa032b91622dd",
+  "commonDirectory": "/Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020-r3/source/.git",
+  "provider": "codex",
+  "authorizedAt": "2026-10-20T22:35:31.318Z",
+  "updatedAt": "2026-10-20T22:35:31.318Z",
+  "status": "AUTHORIZED",
+  "stages": [
+    {
+      "id": "weekly-work",
+      "status": "PENDING"
+    },
+    {
+      "id": "safe-delivery",
+      "status": "PENDING"
+    }
+  ],
+  "events": [
+    {
+      "at": "2026-10-20T22:35:31.318Z",
+      "kind": "authorized",
+      "message": "Operator authorized the complete bounded delegation, including local verified checkpoint commits."
+    }
+  ]
+}

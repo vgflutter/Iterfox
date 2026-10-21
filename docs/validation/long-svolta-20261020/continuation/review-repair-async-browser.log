@@ -1,0 +1,13 @@
+(node:63062) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+Iterfox UI: http://127.0.0.1:63805
+Worker state persists independently of this page. Keep the execution host awake for Night Runs.
+{
+  "result": "PASS",
+  "boundary": "Adversarial Chrome transport audit with two explicit DEMO fixture delegations; no model worker.",
+  "cases": [
+    "Late response for a prior selection cannot replace the selected project brief.",
+    "A failed refresh preserves the previous selected snapshot and exposes retry.",
+    "Retry recovers read-only, without POSTs, page errors or appended run/delegation history."
+  ]
+}

@@ -1,0 +1,58 @@
+
+> iterfox@0.1.0 test:ui
+> playwright test && node --import tsx tests/continuous/brief-browser.mjs && node --import tsx tests/continuous/report-browser.mjs && node --import tsx tests/continuous/async-browser.mjs
+
+[WebServer] (node:4208) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:4208) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:4208) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+
+Running 11 tests using 5 workers
+
+(node:10909) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:10907) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:10911) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:10910) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:10908) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   3 tests/browser/goal-launch.spec.ts:81:1 › late draft IDs are cancelled, edits invalidate review, and no UI-state fixture authorizes a run (1.1s)
+  ✓   1 tests/browser/projects.spec.ts:5:1 › project memory and milestone graph survive reload and prepare an editable next-session goal (1.6s)
+  ✓   4 tests/browser/graph-control.spec.ts:3:1 › selected Live Trail work accepts durable contextual direction without resuming a paused run (2.2s)
+  ✓   2 tests/browser/delegations.spec.ts:27:1 › continuous delegation preflight creates no work; authorization and outcome control fit mobile (2.4s)
+  ✓   5 tests/browser/ui.spec.ts:3:1 › the graph, ledger, refresh, replay and brief all reflect the same durable workflow (2.6s)
+  ✓   6 tests/browser/goal-launch.spec.ts:181:1 › mobile uncertain-launch recovery keeps inputs and opens existing runs without reauthorizing (1.7s)
+  ✓   7 tests/browser/delegations.spec.ts:50:1 › lost real authorization response is recovered without another delegation submission (807ms)
+  ✓   8 tests/browser/ui.spec.ts:55:1 › mobile layout, reduced motion, and explicit Night Run preflight are usable (1.0s)
+  ✓   9 tests/browser/ui.spec.ts:77:1 › actual screenshot artifacts and explicit qualitative provenance are inspectable on desktop and mobile (795ms)
+  ✓  10 tests/browser/ui.spec.ts:126:1 › Project Compass accounts for instructions, persists a new thought, and resumes dependent work after a linked answer (2.7s)
+  ✓  11 tests/browser/ui.spec.ts:178:1 › autonomous checkpoints explain goal work discovered after green regression checks (518ms)
+
+  11 passed (17.5s)
+(node:18431) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+Iterfox UI: http://127.0.0.1:52604
+Worker state persists independently of this page. Keep the execution host awake for Night Runs.
+PASS real cross-mission project brief, JSON/Markdown downloads, 390px and no page errors; explicit DEMO fixture, no model worker.
+(node:21602) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+Iterfox UI: http://127.0.0.1:52614
+Worker state persists independently of this page. Keep the execution host awake for Night Runs.
+PASS explicit DEMO HTML download, real checkpoint references, offline report with JavaScript disabled, native details, 390px and read-only history.
+(node:24911) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+Iterfox UI: http://127.0.0.1:52627
+Worker state persists independently of this page. Keep the execution host awake for Night Runs.
+{
+  "result": "PASS",
+  "boundary": "Adversarial Chrome transport audit with two explicit DEMO fixture delegations; no model worker.",
+  "cases": [
+    "Late response for a prior selection cannot replace the selected project brief.",
+    "A failed refresh preserves the previous selected snapshot and exposes retry.",
+    "Retry recovers read-only, without POSTs, page errors or appended run/delegation history."
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "at": "2026-10-20T12:43:28.483Z",
+  "delegation": "0ddbbc29-d183-4571-8529-3cac71ce71e6",
+  "status": "BLOCKED",
+  "reason": "Command failed: /usr/bin/git --no-lazy-fetch --literal-pathspecs -c core.hooksPath=/dev/null -c core.fsmonitor=false -c commit.gpgsign=false -c core.autocrlf=false check-ignore -q -- node_modules\nfatal: node_modules: pathspec magic not supported by this command: 'literal'\n",
+  "events": [
+    {
+      "at": "2026-10-20T12:01:54.007Z",
+      "kind": "mission-creating",
+      "message": "Preparing An evidence-derived project brief",
+      "stageId": "evidence-brief"
+    },
+    {
+      "at": "2026-10-20T12:01:54.090Z",
+      "kind": "mission-created",
+      "message": "Fresh mission authorized by the stored delegation.",
+      "stageId": "evidence-brief",
+      "runId": "20261020T120154-0d564520"
+    },
+    {
+      "at": "2026-10-20T12:01:54.101Z",
+      "kind": "worker-ended",
+      "message": "Command failed: /usr/bin/git --no-lazy-fetch --literal-pathspecs -c core.hooksPath=/dev/null -c core.fsmonitor=false -c commit.gpgsign=false -c core.autocrlf=false check-ignore -q -- node_modules\nfatal: node_modules: pathspec magic not supported by this command: 'literal'\n"
+    }
+  ],
+  "stages": [
+    {
+      "id": "evidence-brief",
+      "status": "RUNNING",
+      "runId": "20261020T120154-0d564520"
+    },
+    {
+      "id": "return-view",
+      "status": "PENDING"
+    },
+    {
+      "id": "portable-report",
+      "status": "PENDING"
+    }
+  ],
+  "runs": [
+    {
+      "id": "20261020T120154-0d564520",
+      "status": "RUNNING",
+      "baseHead": "9aebdd5fd3369ebc147e3cbbf3923e7f2c2f6ab2",
+      "turns": 0,
+      "tokens": 0,
+      "seq": 3,
+      "worktree": "/Users/vins/work/iterfox/.iterfox/missions/continuous-project-20261020/data/worktrees/20261020T120154-0d564520",
+      "criteria": [
+        {
+          "id": "brief-api",
+          "status": "PENDING"
+        },
+        {
+          "id": "regression",
+          "status": "PENDING"
+        },
+        {
+          "id": "types",
+          "status": "PENDING"
+        },
+        {
+          "id": "build",
+          "status": "PENDING"
+        },
+        {
+          "id": "interface",
+          "status": "PENDING"
+        }
+      ],
+      "nodes": []
+    }
+  ]
+}

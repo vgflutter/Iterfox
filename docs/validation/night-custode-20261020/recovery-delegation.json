@@ -1,0 +1,117 @@
+{
+  "repository": "/Users/vins/work/iterfox/.iterfox/missions/night-custode-20261020/recovery-source",
+  "contract": {
+    "goal": "Finish and independently review Custode from the preserved interrupted candidate. Read BRIEF.md for the original approved product goal. Inventory, maintenance, backup API and interface already exist; inspect actual code and current evidence rather than rebuilding them. Finish only material remaining integration, recovery/error states and truthful README/guide gaps, then request fresh host checks and a source-based ready review. The preceding independent absence trial stopped during an aborted Codex call; this is a separately authorized recovery, not a continuation with a reset clock. Own reversible decisions, do not ask for routine choices. Preserve protected acceptance and all earlier behavior. No network, dependencies, publication, push or merge.",
+    "criteria": [
+      {
+        "id": "inventory",
+        "title": "Inventory API stores valid searchable data across a process restart",
+        "command": [
+          "node",
+          "tests/acceptance.mjs",
+          "inventory"
+        ],
+        "timeoutMs": 120000,
+        "scope": []
+      },
+      {
+        "id": "inventory-ui",
+        "title": "Accessible responsive inventory supports create/search/edit and reload",
+        "command": [
+          "node",
+          "tests/acceptance.mjs",
+          "inventory-ui"
+        ],
+        "timeoutMs": 120000,
+        "scope": []
+      },
+      {
+        "id": "maintenance",
+        "title": "Linked one-off and recurring maintenance has civil-date and durable history semantics",
+        "command": [
+          "node",
+          "tests/acceptance.mjs",
+          "maintenance"
+        ],
+        "timeoutMs": 120000,
+        "scope": []
+      },
+      {
+        "id": "maintenance-ui",
+        "title": "User can schedule and complete maintenance end-to-end",
+        "command": [
+          "node",
+          "tests/acceptance.mjs",
+          "maintenance-ui"
+        ],
+        "timeoutMs": 120000,
+        "scope": []
+      },
+      {
+        "id": "backup",
+        "title": "Exact backup/restore is validated, atomic and documented",
+        "command": [
+          "node",
+          "tests/acceptance.mjs",
+          "backup"
+        ],
+        "timeoutMs": 120000,
+        "scope": []
+      },
+      {
+        "id": "backup-ui",
+        "title": "User downloads and explicitly confirms data replacement in the interface",
+        "command": [
+          "node",
+          "tests/acceptance.mjs",
+          "backup-ui"
+        ],
+        "timeoutMs": 120000,
+        "scope": []
+      }
+    ],
+    "allowedPaths": [
+      "src",
+      "public",
+      "README.md",
+      "docs"
+    ],
+    "protectedPaths": [
+      "tests",
+      "BRIEF.md",
+      "package.json",
+      ".gitignore"
+    ],
+    "supervision": {
+      "mode": "project",
+      "maxReviews": 16
+    },
+    "limits": {
+      "maxTurns": 80,
+      "maxAttempts": 5,
+      "maxDurationMs": 7200000,
+      "maxTokens": 100000000,
+      "turnTimeoutMs": 1200000,
+      "maxNoProgress": 8
+    }
+  },
+  "milestones": [
+    {
+      "id": "complete-return",
+      "title": "Complete the preserved Custode product",
+      "outcome": "Inspect the existing preserved candidate against BRIEF.md. Finish material missing error recovery, archive-change integration and factual user guidance; do not repeat implemented features or polish indefinitely. Verify all six fixed host checks and resolve real gaps before returning ready.",
+      "criterionIds": [
+        "inventory",
+        "inventory-ui",
+        "maintenance",
+        "maintenance-ui",
+        "backup",
+        "backup-ui"
+      ],
+      "dependsOn": []
+    }
+  ],
+  "environment": {
+    "copyIgnoredPaths": []
+  }
+}

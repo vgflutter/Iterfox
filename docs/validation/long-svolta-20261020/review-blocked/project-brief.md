@@ -1,0 +1,2803 @@
+# Project brief
+
+Delegation: 156e137f-0bca-49f1-bc68-34fe60c1ef29; saved status: BLOCKED; revision: 6.
+Saved update: 2026-10-20T23:04:37.262Z; report observed at: 2026-10-20T23:04:37.298Z.
+
+0/2 outcomes checkpointed; 2 pending. Repeated cumulative checks do not count as additional outcomes.
+
+Product review required: true. Not established by technical checkpoints; operator product review is required.
+
+## Original goal
+
+```text
+Realizzare Svolta, app locale in italiano per progetti personali, attività, pianificazione settimanale, tempo dedicato e backup, con interfaccia desktop e mobile utilizzabile e guida onesta. Seguire BRIEF.md. Continuazione dichiarata: il primo tentativo si è bloccato per un difetto del runtime corretto; il secondo è stato fermato dall’assistente per un errore nel valore atteso di un test host, ora corretto prima di questa autorizzazione. Il conteggio overdue deve includere tutte le attività non done scadute, comprese quelle doing, come già implementato. Il codice del prodotto è una copia invariata del candidato interrotto, non un checkpoint certificato: ottenere nuove prove. Conservare interfaccia e lavoro già presente; completare soltanto lacune concrete e i due esiti rimanenti, senza rifare il prodotto. Scegliere autonomamente i dettagli reversibili; niente account, servizi esterni, dipendenze o pubblicazione. Le prove storiche non certificano questa nuova missione.
+```
+
+## Original authorization and limits
+
+Authorized at: 2026-10-20T22:35:31.318Z. Approval hash: 2bd037cf9a1126be2e0a53841816013de1c04f91da4afe167e61712c095f7c74. Original source HEAD: 980d9648d2dadfda664aca92b4dfa032b91622dd.
+Repository: /Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020-r3/source; provider: codex.
+
+```json
+{
+  "maxTurns": 114,
+  "maxAttempts": 4,
+  "maxDurationMs": 8095024,
+  "maxTokens": 91533248,
+  "turnTimeoutMs": 720000,
+  "maxNoProgress": 4
+}
+```
+
+## Shared usage and remaining budgets
+
+10 reported turns; 5227804 reported tokens. Totals cover all linked missions.
+
+Reported turns and tokens are summed once per unique mission linked to an approved outcome. Unrelated missions are excluded. Unreported or interrupted-turn token usage and monetary cost are unavailable. The authorization window includes pauses and is never reset by a mission or resume. Missing ledgers make totals partial and remaining turn/token budgets unavailable.
+
+```json
+{
+  "turns": 10,
+  "tokens": 5227804,
+  "runIds": [
+    "20261020T223531-20d32b1b"
+  ],
+  "unavailableRunIds": [],
+  "complete": true,
+  "missions": [
+    {
+      "runId": "20261020T223531-20d32b1b",
+      "sourceSeq": 135,
+      "turns": 10,
+      "tokens": 5227804
+    }
+  ],
+  "authorizedAt": "2026-10-20T22:35:31.318Z",
+  "observedAt": "2026-10-20T23:04:37.298Z",
+  "elapsedMs": 1745980,
+  "authorizationDeadline": "2026-10-21T00:50:26.342Z",
+  "remainingDurationMs": 6349044,
+  "remainingTurns": 104,
+  "remainingTokens": 86305444,
+  "accounting": "Reported turns and tokens are summed once per unique mission linked to an approved outcome. Unrelated missions are excluded. Unreported or interrupted-turn token usage and monetary cost are unavailable. The authorization window includes pauses and is never reset by a mission or resume. Missing ledgers make totals partial and remaining turn/token budgets unavailable."
+}
+```
+
+## Attention
+
+- Outcome weekly-work requires attention: BLOCKED: Project findings must reference actual recorded files and known evidence (delegation-reason)
+
+```json
+{
+  "delegationId": "156e137f-0bca-49f1-bc68-34fe60c1ef29",
+  "revision": 6,
+  "at": "2026-10-20T23:04:37.262Z"
+}
+```
+
+- Project findings must reference actual recorded files and known evidence (mission-reason)
+
+```json
+{
+  "runId": "20261020T223531-20d32b1b",
+  "seq": 135,
+  "at": "2026-10-20T23:04:37.228Z",
+  "contractVersion": 1,
+  "outcomeIds": [
+    "weekly-work"
+  ]
+}
+```
+
+## Outcomes
+
+### Dalla lista al piano settimanale e al tempo reale (weekly-work)
+
+Saved outcome status: RUNNING. Source run: 20261020T223531-20d32b1b.
+
+```text
+Completare settimana, sessioni di tempo, riepilogo e relativi flussi browser conservando il codice esistente. Date civili, conteggi e sessioni API sono già presenti e vanno verificati, non rifatti. Completare quanto manca nell’interfaccia e nella guida, senza reinventare il flusso attività o riaprire scelte visuali già realizzate. Backup rimane il prossimo esito.
+```
+
+Prerequisite outcomes: none.
+
+#### Recorded checkpoint
+
+Checkpoint receipt unavailable: no checkpoint is recorded.
+
+```json
+{
+  "status": "NOT_RECORDED",
+  "sourceRunId": "20261020T223531-20d32b1b",
+  "sourceSeq": null,
+  "contractVersion": null,
+  "runStatus": null,
+  "boundaryEvent": null,
+  "unavailableReason": "No checkpoint receipt is recorded."
+}
+```
+
+#### Criteria (latest recorded state; no checkpoint proof)
+
+- projects-api: Archivio progetti persistente e revisioni — PASSED; evidence ID: 741155fd-9919-4749-9fb7-ef54155d4e5a.
+
+```json
+{
+  "id": "projects-api",
+  "title": "Archivio progetti persistente e revisioni",
+  "command": [
+    "node",
+    "tests/acceptance.mjs",
+    "projects-api"
+  ],
+  "scope": [],
+  "timeoutMs": 120000,
+  "status": "PASSED",
+  "basis": "latest-recorded-state",
+  "sourceRunId": "20261020T223531-20d32b1b",
+  "sourceSeq": 135,
+  "contractVersion": 1,
+  "recordedCriterion": {
+    "id": "projects-api",
+    "title": "Archivio progetti persistente e revisioni",
+    "command": [
+      "node",
+      "tests/acceptance.mjs",
+      "projects-api"
+    ],
+    "scope": [],
+    "timeoutMs": 120000
+  },
+  "evidenceId": "741155fd-9919-4749-9fb7-ef54155d4e5a",
+  "evidence": {
+    "id": "741155fd-9919-4749-9fb7-ef54155d4e5a",
+    "nodeId": "3ef66725-2c7d-490b-81fe-9ae32dac9c2b",
+    "criterionId": "projects-api",
+    "contractVersion": 1,
+    "kind": "deterministic",
+    "status": "passed",
+    "createdAt": "2026-10-20T23:02:28.811Z",
+    "command": [
+      "node",
+      "tests/acceptance.mjs",
+      "projects-api"
+    ],
+    "exitCode": 0,
+    "output": "PASS empty archive\nPASS create project with stable defaults\nPASS optimistic project edit\nPASS invalid names and missing revisions do not write\nPASS project archival survives restart\nPASS unknown project does not create a record\n{\"criterion\":\"projects-api\",\"result\":\"PASS\",\"groups\":6}\n",
+    "durationMs": 1335,
+    "stamp": {
+      "head": "980d9648d2dadfda664aca92b4dfa032b91622dd",
+      "files": {
+        ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+        "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+        "README.md": "66888882a54cfc1141b2b069976a7c1d83b54d28f3f65d60d61d835545e35ed4",
+        "docs/guida.md": "1674703f22a654a73d601fcabdfd0f998fd5c59a05cbe829aced1f95467e036f",
+        "docs/verifiche.md": "56c6354ccd853948940dd67c6579bef72fff630f01941d064ed58eb78da64090",
+        "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+        "public/index.html": "6fac8f98234b9a2861abc405819c28698f1dd9db91e145cde8956bbcffc79479",
+        "public/svolta.css": "f81904ebcf820f2f00c79464ff76642ab5255ae3af3899183957a915b43f646f",
+        "public/svolta.js": "426e33279a1739e4e43b488deff13b2b9817c1ea6436249a8f78f50bdeb64675",
+        "src/app.mjs": "4d368778a32ca98583d1c0e7e67015bd8f943039b52df577cfaca16b25522d7a",
+        "src/archive.mjs": "1f0dc4aea4cf6d55c122c65e3f111edef4798a48c610a515e175146575a22d03",
+        "src/dates.mjs": "befb2084c723419e957dd976a1e2f9ecd5b92b5c8d768158ba99ce452d794515",
+        "src/errors.mjs": "acbb23489da8c799787caf170d2ff70a9f26c875de462e287cfc911c856baa5f",
+        "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+        "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+        "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+        "src/summary.mjs": "a58abb9c5ef8a37c51f2e6cf434faf761ca5f552fdba000708c6cc61085502e8",
+        "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+        "src/time-entries.mjs": "5a4ff445656c9f15639159e253db1e99e97c010953ee7c2198db4441f0348ebf",
+        "src/week.mjs": "f533bdaed237f9b051608355d588f3b5147653c0d81143e7b5d7148a0dee2eeb",
+        "tests/acceptance.mjs": "ee4f811515605a5cbab795c9ad4e40777774006bad8fe350c54590e1836c3235",
+        "tests/browser.mjs": "6831d64e0d524554f959084e5a3c25b86f5255a5f850da9365a824149632a952",
+        "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+      },
+      "fingerprint": "e345b5b2df948900485f522971dc1104b80f8505aa278f9aeee9582767dca2dd"
+    },
+    "scope": [],
+    "inputs": [],
+    "source": {
+      "runId": "20261020T223531-20d32b1b",
+      "throughSeq": 135,
+      "contractVersion": 1,
+      "recordedEvent": {
+        "runId": "20261020T223531-20d32b1b",
+        "seq": 120,
+        "eventId": "16c95961-0203-4ebf-88f4-d16b1d797cdb",
+        "at": "2026-10-20T23:02:28.866Z",
+        "type": "verification.passed"
+      }
+    }
+  },
+  "unavailableReason": null
+}
+```
+
+- tasks-api: Attività, filtri e conflitti senza perdita di dati — PASSED; evidence ID: 5ac7cdca-127f-4808-b783-9701aabd76d1.
+
+```json
+{
+  "id": "tasks-api",
+  "title": "Attività, filtri e conflitti senza perdita di dati",
+  "command": [
+    "node",
+    "tests/acceptance.mjs",
+    "tasks-api"
+  ],
+  "scope": [],
+  "timeoutMs": 120000,
+  "status": "PASSED",
+  "basis": "latest-recorded-state",
+  "sourceRunId": "20261020T223531-20d32b1b",
+  "sourceSeq": 135,
+  "contractVersion": 1,
+  "recordedCriterion": {
+    "id": "tasks-api",
+    "title": "Attività, filtri e conflitti senza perdita di dati",
+    "command": [
+      "node",
+      "tests/acceptance.mjs",
+      "tasks-api"
+    ],
+    "scope": [],
+    "timeoutMs": 120000
+  },
+  "evidenceId": "5ac7cdca-127f-4808-b783-9701aabd76d1",
+  "evidence": {
+    "id": "5ac7cdca-127f-4808-b783-9701aabd76d1",
+    "nodeId": "beebb4a9-0986-48d9-9dc8-175d79263459",
+    "criterionId": "tasks-api",
+    "contractVersion": 1,
+    "kind": "deterministic",
+    "status": "passed",
+    "createdAt": "2026-10-20T23:02:30.857Z",
+    "command": [
+      "node",
+      "tests/acceptance.mjs",
+      "tasks-api"
+    ],
+    "exitCode": 0,
+    "output": "PASS task defaults and exact fields\nPASS task edit, revision conflicts and combined filters\nPASS civil dates, invalid states and numeric validation\nPASS parallel stale writers cannot overwrite each other\nPASS archived projects disappear from general activity list\nPASS task persistence and malformed JSON\n{\"criterion\":\"tasks-api\",\"result\":\"PASS\",\"groups\":6}\n",
+    "durationMs": 1352,
+    "stamp": {
+      "head": "980d9648d2dadfda664aca92b4dfa032b91622dd",
+      "files": {
+        ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+        "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+        "README.md": "66888882a54cfc1141b2b069976a7c1d83b54d28f3f65d60d61d835545e35ed4",
+        "docs/guida.md": "1674703f22a654a73d601fcabdfd0f998fd5c59a05cbe829aced1f95467e036f",
+        "docs/verifiche.md": "56c6354ccd853948940dd67c6579bef72fff630f01941d064ed58eb78da64090",
+        "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+        "public/index.html": "6fac8f98234b9a2861abc405819c28698f1dd9db91e145cde8956bbcffc79479",
+        "public/svolta.css": "f81904ebcf820f2f00c79464ff76642ab5255ae3af3899183957a915b43f646f",
+        "public/svolta.js": "426e33279a1739e4e43b488deff13b2b9817c1ea6436249a8f78f50bdeb64675",
+        "src/app.mjs": "4d368778a32ca98583d1c0e7e67015bd8f943039b52df577cfaca16b25522d7a",
+        "src/archive.mjs": "1f0dc4aea4cf6d55c122c65e3f111edef4798a48c610a515e175146575a22d03",
+        "src/dates.mjs": "befb2084c723419e957dd976a1e2f9ecd5b92b5c8d768158ba99ce452d794515",
+        "src/errors.mjs": "acbb23489da8c799787caf170d2ff70a9f26c875de462e287cfc911c856baa5f",
+        "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+        "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+        "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+        "src/summary.mjs": "a58abb9c5ef8a37c51f2e6cf434faf761ca5f552fdba000708c6cc61085502e8",
+        "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+        "src/time-entries.mjs": "5a4ff445656c9f15639159e253db1e99e97c010953ee7c2198db4441f0348ebf",
+        "src/week.mjs": "f533bdaed237f9b051608355d588f3b5147653c0d81143e7b5d7148a0dee2eeb",
+        "tests/acceptance.mjs": "ee4f811515605a5cbab795c9ad4e40777774006bad8fe350c54590e1836c3235",
+        "tests/browser.mjs": "6831d64e0d524554f959084e5a3c25b86f5255a5f850da9365a824149632a952",
+        "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+      },
+      "fingerprint": "e345b5b2df948900485f522971dc1104b80f8505aa278f9aeee9582767dca2dd"
+    },
+    "scope": [],
+    "inputs": [],
+    "source": {
+      "runId": "20261020T223531-20d32b1b",
+      "throughSeq": 135,
+      "contractVersion": 1,
+      "recordedEvent": {
+        "runId": "20261020T223531-20d32b1b",
+        "seq": 122,
+        "eventId": "896112f4-ea42-48d3-94c5-0daa04f21591",
+        "at": "2026-10-20T23:02:30.914Z",
+        "type": "verification.passed"
+      }
+    }
+  },
+  "unavailableReason": null
+}
+```
+
+- board-ui: Interfaccia progetti e attività su desktop e mobile — PASSED; evidence ID: 43117f10-727c-4e72-9468-98055d56843d.
+
+```json
+{
+  "id": "board-ui",
+  "title": "Interfaccia progetti e attività su desktop e mobile",
+  "command": [
+    "node",
+    "tests/acceptance.mjs",
+    "board-ui"
+  ],
+  "scope": [],
+  "timeoutMs": 120000,
+  "status": "PASSED",
+  "basis": "latest-recorded-state",
+  "sourceRunId": "20261020T223531-20d32b1b",
+  "sourceSeq": 135,
+  "contractVersion": 1,
+  "recordedCriterion": {
+    "id": "board-ui",
+    "title": "Interfaccia progetti e attività su desktop e mobile",
+    "command": [
+      "node",
+      "tests/acceptance.mjs",
+      "board-ui"
+    ],
+    "scope": [],
+    "timeoutMs": 120000
+  },
+  "evidenceId": "43117f10-727c-4e72-9468-98055d56843d",
+  "evidence": {
+    "id": "43117f10-727c-4e72-9468-98055d56843d",
+    "nodeId": "8b4ee42f-d7eb-4d39-ac92-2ed8202596c5",
+    "criterionId": "board-ui",
+    "contractVersion": 1,
+    "kind": "deterministic",
+    "status": "passed",
+    "createdAt": "2026-10-20T23:02:34.157Z",
+    "command": [
+      "node",
+      "tests/acceptance.mjs",
+      "board-ui"
+    ],
+    "exitCode": 0,
+    "output": "PASS create a project and task through the actual interface\nPASS edit, filter and preserve the changed activity after reopening\nPASS concurrent interface edits cannot silently overwrite another tab\nPASS literal hostile text and mobile layout\n{\"criterion\":\"board-ui\",\"result\":\"PASS\",\"groups\":4}\n",
+    "durationMs": 2462,
+    "stamp": {
+      "head": "980d9648d2dadfda664aca92b4dfa032b91622dd",
+      "files": {
+        ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+        "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+        "README.md": "66888882a54cfc1141b2b069976a7c1d83b54d28f3f65d60d61d835545e35ed4",
+        "docs/guida.md": "1674703f22a654a73d601fcabdfd0f998fd5c59a05cbe829aced1f95467e036f",
+        "docs/verifiche.md": "56c6354ccd853948940dd67c6579bef72fff630f01941d064ed58eb78da64090",
+        "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+        "public/index.html": "6fac8f98234b9a2861abc405819c28698f1dd9db91e145cde8956bbcffc79479",
+        "public/svolta.css": "f81904ebcf820f2f00c79464ff76642ab5255ae3af3899183957a915b43f646f",
+        "public/svolta.js": "426e33279a1739e4e43b488deff13b2b9817c1ea6436249a8f78f50bdeb64675",
+        "src/app.mjs": "4d368778a32ca98583d1c0e7e67015bd8f943039b52df577cfaca16b25522d7a",
+        "src/archive.mjs": "1f0dc4aea4cf6d55c122c65e3f111edef4798a48c610a515e175146575a22d03",
+        "src/dates.mjs": "befb2084c723419e957dd976a1e2f9ecd5b92b5c8d768158ba99ce452d794515",
+        "src/errors.mjs": "acbb23489da8c799787caf170d2ff70a9f26c875de462e287cfc911c856baa5f",
+        "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+        "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+        "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+        "src/summary.mjs": "a58abb9c5ef8a37c51f2e6cf434faf761ca5f552fdba000708c6cc61085502e8",
+        "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+        "src/time-entries.mjs": "5a4ff445656c9f15639159e253db1e99e97c010953ee7c2198db4441f0348ebf",
+        "src/week.mjs": "f533bdaed237f9b051608355d588f3b5147653c0d81143e7b5d7148a0dee2eeb",
+        "tests/acceptance.mjs": "ee4f811515605a5cbab795c9ad4e40777774006bad8fe350c54590e1836c3235",
+        "tests/browser.mjs": "6831d64e0d524554f959084e5a3c25b86f5255a5f850da9365a824149632a952",
+        "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+      },
+      "fingerprint": "e345b5b2df948900485f522971dc1104b80f8505aa278f9aeee9582767dca2dd"
+    },
+    "scope": [],
+    "inputs": [],
+    "source": {
+      "runId": "20261020T223531-20d32b1b",
+      "throughSeq": 135,
+      "contractVersion": 1,
+      "recordedEvent": {
+        "runId": "20261020T223531-20d32b1b",
+        "seq": 124,
+        "eventId": "bf338bdd-6d00-4b22-82b2-bf1e35537aeb",
+        "at": "2026-10-20T23:02:34.213Z",
+        "type": "verification.passed"
+      }
+    }
+  },
+  "unavailableReason": null
+}
+```
+
+- planning-api: Settimana civile, sessioni e riepilogo coerente — PASSED; evidence ID: 727ce172-3411-4f45-a166-cbfe3f25efcc.
+
+```json
+{
+  "id": "planning-api",
+  "title": "Settimana civile, sessioni e riepilogo coerente",
+  "command": [
+    "node",
+    "tests/acceptance.mjs",
+    "planning-api"
+  ],
+  "scope": [],
+  "timeoutMs": 120000,
+  "status": "PASSED",
+  "basis": "latest-recorded-state",
+  "sourceRunId": "20261020T223531-20d32b1b",
+  "sourceSeq": 135,
+  "contractVersion": 1,
+  "recordedCriterion": {
+    "id": "planning-api",
+    "title": "Settimana civile, sessioni e riepilogo coerente",
+    "command": [
+      "node",
+      "tests/acceptance.mjs",
+      "planning-api"
+    ],
+    "scope": [],
+    "timeoutMs": 120000
+  },
+  "evidenceId": "727ce172-3411-4f45-a166-cbfe3f25efcc",
+  "evidence": {
+    "id": "727ce172-3411-4f45-a166-cbfe3f25efcc",
+    "nodeId": "8fc4eab9-9a7c-46f9-83b2-813fe218587f",
+    "criterionId": "planning-api",
+    "contractVersion": 1,
+    "kind": "deterministic",
+    "status": "passed",
+    "createdAt": "2026-10-20T23:02:36.465Z",
+    "command": [
+      "node",
+      "tests/acceptance.mjs",
+      "planning-api"
+    ],
+    "exitCode": 0,
+    "output": "PASS civil seven-day plan and unscheduled work\nPASS Monday and impossible-date rejection\nPASS time records preserve links and task status\nPASS weekly time and full-archive task counts are distinguished\nPASS invalid time entries do not write\nPASS deleting one session updates totals without deleting others\nPASS archiving a task preserves history and restart\n{\"criterion\":\"planning-api\",\"result\":\"PASS\",\"groups\":7}\n",
+    "durationMs": 1395,
+    "stamp": {
+      "head": "980d9648d2dadfda664aca92b4dfa032b91622dd",
+      "files": {
+        ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+        "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+        "README.md": "66888882a54cfc1141b2b069976a7c1d83b54d28f3f65d60d61d835545e35ed4",
+        "docs/guida.md": "1674703f22a654a73d601fcabdfd0f998fd5c59a05cbe829aced1f95467e036f",
+        "docs/verifiche.md": "56c6354ccd853948940dd67c6579bef72fff630f01941d064ed58eb78da64090",
+        "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+        "public/index.html": "6fac8f98234b9a2861abc405819c28698f1dd9db91e145cde8956bbcffc79479",
+        "public/svolta.css": "f81904ebcf820f2f00c79464ff76642ab5255ae3af3899183957a915b43f646f",
+        "public/svolta.js": "426e33279a1739e4e43b488deff13b2b9817c1ea6436249a8f78f50bdeb64675",
+        "src/app.mjs": "4d368778a32ca98583d1c0e7e67015bd8f943039b52df577cfaca16b25522d7a",
+        "src/archive.mjs": "1f0dc4aea4cf6d55c122c65e3f111edef4798a48c610a515e175146575a22d03",
+        "src/dates.mjs": "befb2084c723419e957dd976a1e2f9ecd5b92b5c8d768158ba99ce452d794515",
+        "src/errors.mjs": "acbb23489da8c799787caf170d2ff70a9f26c875de462e287cfc911c856baa5f",
+        "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+        "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+        "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+        "src/summary.mjs": "a58abb9c5ef8a37c51f2e6cf434faf761ca5f552fdba000708c6cc61085502e8",
+        "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+        "src/time-entries.mjs": "5a4ff445656c9f15639159e253db1e99e97c010953ee7c2198db4441f0348ebf",
+        "src/week.mjs": "f533bdaed237f9b051608355d588f3b5147653c0d81143e7b5d7148a0dee2eeb",
+        "tests/acceptance.mjs": "ee4f811515605a5cbab795c9ad4e40777774006bad8fe350c54590e1836c3235",
+        "tests/browser.mjs": "6831d64e0d524554f959084e5a3c25b86f5255a5f850da9365a824149632a952",
+        "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+      },
+      "fingerprint": "e345b5b2df948900485f522971dc1104b80f8505aa278f9aeee9582767dca2dd"
+    },
+    "scope": [],
+    "inputs": [],
+    "source": {
+      "runId": "20261020T223531-20d32b1b",
+      "throughSeq": 135,
+      "contractVersion": 1,
+      "recordedEvent": {
+        "runId": "20261020T223531-20d32b1b",
+        "seq": 126,
+        "eventId": "61b4b826-c919-4053-bf4a-76a51bc650a8",
+        "at": "2026-10-20T23:02:36.533Z",
+        "type": "verification.passed"
+      }
+    }
+  },
+  "unavailableReason": null
+}
+```
+
+- planning-ui: Pianificazione e tempo dal browser — PASSED; evidence ID: 7d4e78d1-6312-4087-8cd1-bf98be6f9248.
+
+```json
+{
+  "id": "planning-ui",
+  "title": "Pianificazione e tempo dal browser",
+  "command": [
+    "node",
+    "tests/acceptance.mjs",
+    "planning-ui"
+  ],
+  "scope": [],
+  "timeoutMs": 120000,
+  "status": "PASSED",
+  "basis": "latest-recorded-state",
+  "sourceRunId": "20261020T223531-20d32b1b",
+  "sourceSeq": 135,
+  "contractVersion": 1,
+  "recordedCriterion": {
+    "id": "planning-ui",
+    "title": "Pianificazione e tempo dal browser",
+    "command": [
+      "node",
+      "tests/acceptance.mjs",
+      "planning-ui"
+    ],
+    "scope": [],
+    "timeoutMs": 120000
+  },
+  "evidenceId": "7d4e78d1-6312-4087-8cd1-bf98be6f9248",
+  "evidence": {
+    "id": "7d4e78d1-6312-4087-8cd1-bf98be6f9248",
+    "nodeId": "d280828a-b647-432a-a92f-aecb2882c731",
+    "criterionId": "planning-ui",
+    "contractVersion": 1,
+    "kind": "deterministic",
+    "status": "passed",
+    "createdAt": "2026-10-20T23:02:26.872Z",
+    "command": [
+      "node",
+      "tests/acceptance.mjs",
+      "planning-ui"
+    ],
+    "exitCode": 0,
+    "output": "PASS reschedule a task and see it in its actual weekly day\nPASS time entry changes the real week summary\nPASS weekly mobile layout and persisted sessions\n{\"criterion\":\"planning-ui\",\"result\":\"PASS\",\"groups\":3}\n",
+    "durationMs": 2453,
+    "stamp": {
+      "head": "980d9648d2dadfda664aca92b4dfa032b91622dd",
+      "files": {
+        ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+        "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+        "README.md": "66888882a54cfc1141b2b069976a7c1d83b54d28f3f65d60d61d835545e35ed4",
+        "docs/guida.md": "1674703f22a654a73d601fcabdfd0f998fd5c59a05cbe829aced1f95467e036f",
+        "docs/verifiche.md": "56c6354ccd853948940dd67c6579bef72fff630f01941d064ed58eb78da64090",
+        "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+        "public/index.html": "6fac8f98234b9a2861abc405819c28698f1dd9db91e145cde8956bbcffc79479",
+        "public/svolta.css": "f81904ebcf820f2f00c79464ff76642ab5255ae3af3899183957a915b43f646f",
+        "public/svolta.js": "426e33279a1739e4e43b488deff13b2b9817c1ea6436249a8f78f50bdeb64675",
+        "src/app.mjs": "4d368778a32ca98583d1c0e7e67015bd8f943039b52df577cfaca16b25522d7a",
+        "src/archive.mjs": "1f0dc4aea4cf6d55c122c65e3f111edef4798a48c610a515e175146575a22d03",
+        "src/dates.mjs": "befb2084c723419e957dd976a1e2f9ecd5b92b5c8d768158ba99ce452d794515",
+        "src/errors.mjs": "acbb23489da8c799787caf170d2ff70a9f26c875de462e287cfc911c856baa5f",
+        "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+        "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+        "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+        "src/summary.mjs": "a58abb9c5ef8a37c51f2e6cf434faf761ca5f552fdba000708c6cc61085502e8",
+        "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+        "src/time-entries.mjs": "5a4ff445656c9f15639159e253db1e99e97c010953ee7c2198db4441f0348ebf",
+        "src/week.mjs": "f533bdaed237f9b051608355d588f3b5147653c0d81143e7b5d7148a0dee2eeb",
+        "tests/acceptance.mjs": "ee4f811515605a5cbab795c9ad4e40777774006bad8fe350c54590e1836c3235",
+        "tests/browser.mjs": "6831d64e0d524554f959084e5a3c25b86f5255a5f850da9365a824149632a952",
+        "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+      },
+      "fingerprint": "e345b5b2df948900485f522971dc1104b80f8505aa278f9aeee9582767dca2dd"
+    },
+    "scope": [],
+    "inputs": [],
+    "source": {
+      "runId": "20261020T223531-20d32b1b",
+      "throughSeq": 135,
+      "contractVersion": 1,
+      "recordedEvent": {
+        "runId": "20261020T223531-20d32b1b",
+        "seq": 118,
+        "eventId": "18ca5ea8-6e13-4e58-a52c-91fe1d7dd53d",
+        "at": "2026-10-20T23:02:26.926Z",
+        "type": "verification.passed"
+      }
+    }
+  },
+  "unavailableReason": null
+}
+```
+
+#### Evidence at this boundary
+
+Evidence IDs, source run/sequence, contract versions, original timestamps and code stamps are retained below. AI assessments remain distinct from deterministic checks.
+
+```json
+[
+  {
+    "id": "3f56cd66-5935-4dc7-93e6-0ea691602356",
+    "nodeId": "fb960696-57bc-47f0-8b83-a98091a0b553",
+    "criterionId": "projects-api",
+    "contractVersion": 1,
+    "kind": "deterministic",
+    "status": "stale",
+    "createdAt": "2026-10-20T22:37:33.576Z",
+    "command": [
+      "node",
+      "tests/acceptance.mjs",
+      "projects-api"
+    ],
+    "exitCode": 0,
+    "output": "PASS empty archive\nPASS create project with stable defaults\nPASS optimistic project edit\nPASS invalid names and missing revisions do not write\nPASS project archival survives restart\nPASS unknown project does not create a record\n{\"criterion\":\"projects-api\",\"result\":\"PASS\",\"groups\":6}\n",
+    "durationMs": 1361,
+    "stamp": {
+      "head": "980d9648d2dadfda664aca92b4dfa032b91622dd",
+      "files": {
+        ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+        "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+        "README.md": "80aed329d1575ddaa960ec01496d7bf14e532532b9b7f84235799c5d28aa78ea",
+        "docs/guida.md": "0671bc6a3f4b7ebacfc10aa5c13456fcecf9a810c809ba3ee944a611c65d7abd",
+        "docs/verifiche.md": "8d2982949c2f0aefd4e201751d7b7f59e44d34106306c5ef964bcc109c687462",
+        "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+        "public/index.html": "1e798be6470daa454678337196f2076ca008b3922756dea7d79bbade5b259dee",
+        "public/svolta.css": "235865d7c676b8cf5cd7a9df2936252c335ffdf87d0d996ce90dd086e888a799",
+        "public/svolta.js": "8494e848b135e8dd8e4ecd4d29bc37705c1256b73ba5322f20438056bb1c5ab4",
+        "src/app.mjs": "4d368778a32ca98583d1c0e7e67015bd8f943039b52df577cfaca16b25522d7a",
+        "src/archive.mjs": "1f0dc4aea4cf6d55c122c65e3f111edef4798a48c610a515e175146575a22d03",
+        "src/dates.mjs": "befb2084c723419e957dd976a1e2f9ecd5b92b5c8d768158ba99ce452d794515",
+        "src/errors.mjs": "acbb23489da8c799787caf170d2ff70a9f26c875de462e287cfc911c856baa5f",
+        "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+        "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+        "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+        "src/summary.mjs": "a58abb9c5ef8a37c51f2e6cf434faf761ca5f552fdba000708c6cc61085502e8",
+        "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+        "src/time-entries.mjs": "5a4ff445656c9f15639159e253db1e99e97c010953ee7c2198db4441f0348ebf",
+        "src/week.mjs": "f533bdaed237f9b051608355d588f3b5147653c0d81143e7b5d7148a0dee2eeb",
+        "tests/acceptance.mjs": "ee4f811515605a5cbab795c9ad4e40777774006bad8fe350c54590e1836c3235",
+        "tests/browser.mjs": "6831d64e0d524554f959084e5a3c25b86f5255a5f850da9365a824149632a952",
+        "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+      },
+      "fingerprint": "c86065ed833747bf4c188fca334e2df768718ccceed96dc78ba7a5356009e9e9"
+    },
+    "scope": [],
+    "inputs": [],
+    "purpose": "probe",
+    "invalidatedReason": "Evidence is STALE: README.md, docs/guida.md, docs/verifiche.md, public/index.html, public/svolta.css, public/svolta.js. Scope: all repository files.",
+    "source": {
+      "runId": "20261020T223531-20d32b1b",
+      "throughSeq": 135,
+      "contractVersion": 1,
+      "recordedEvent": {
+        "runId": "20261020T223531-20d32b1b",
+        "seq": 11,
+        "eventId": "4d148857-e50a-4079-8ce2-a7e27bf45386",
+        "at": "2026-10-20T22:37:33.618Z",
+        "type": "verification.passed"
+      }
+    }
+  },
+  {
+    "id": "c0a423c0-d36e-4872-8c13-bfe86e26f8ce",
+    "nodeId": "b2e6665f-b1e1-47aa-b021-ed478a9b6d7d",
+    "criterionId": "tasks-api",
+    "contractVersion": 1,
+    "kind": "deterministic",
+    "status": "stale",
+    "createdAt": "2026-10-20T22:37:34.970Z",
+    "command": [
+      "node",
+      "tests/acceptance.mjs",
+      "tasks-api"
+    ],
+    "exitCode": 0,
+    "output": "PASS task defaults and exact fields\nPASS task edit, revision conflicts and combined filters\nPASS civil dates, invalid states and numeric validation\nPASS parallel stale writers cannot overwrite each other\nPASS archived projects disappear from general activity list\nPASS task persistence and malformed JSON\n{\"criterion\":\"tasks-api\",\"result\":\"PASS\",\"groups\":6}\n",
+    "durationMs": 1348,
+    "stamp": {
+      "head": "980d9648d2dadfda664aca92b4dfa032b91622dd",
+      "files": {
+        ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+        "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+        "README.md": "80aed329d1575ddaa960ec01496d7bf14e532532b9b7f84235799c5d28aa78ea",
+        "docs/guida.md": "0671bc6a3f4b7ebacfc10aa5c13456fcecf9a810c809ba3ee944a611c65d7abd",
+        "docs/verifiche.md": "8d2982949c2f0aefd4e201751d7b7f59e44d34106306c5ef964bcc109c687462",
+        "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+        "public/index.html": "1e798be6470daa454678337196f2076ca008b3922756dea7d79bbade5b259dee",
+        "public/svolta.css": "235865d7c676b8cf5cd7a9df2936252c335ffdf87d0d996ce90dd086e888a799",
+        "public/svolta.js": "8494e848b135e8dd8e4ecd4d29bc37705c1256b73ba5322f20438056bb1c5ab4",
+        "src/app.mjs": "4d368778a32ca98583d1c0e7e67015bd8f943039b52df577cfaca16b25522d7a",
+        "src/archive.mjs": "1f0dc4aea4cf6d55c122c65e3f111edef4798a48c610a515e175146575a22d03",
+        "src/dates.mjs": "befb2084c723419e957dd976a1e2f9ecd5b92b5c8d768158ba99ce452d794515",
+        "src/errors.mjs": "acbb23489da8c799787caf170d2ff70a9f26c875de462e287cfc911c856baa5f",
+        "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+        "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+        "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+        "src/summary.mjs": "a58abb9c5ef8a37c51f2e6cf434faf761ca5f552fdba000708c6cc61085502e8",
+        "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+        "src/time-entries.mjs": "5a4ff445656c9f15639159e253db1e99e97c010953ee7c2198db4441f0348ebf",
+        "src/week.mjs": "f533bdaed237f9b051608355d588f3b5147653c0d81143e7b5d7148a0dee2eeb",
+        "tests/acceptance.mjs": "ee4f811515605a5cbab795c9ad4e40777774006bad8fe350c54590e1836c3235",
+        "tests/browser.mjs": "6831d64e0d524554f959084e5a3c25b86f5255a5f850da9365a824149632a952",
+        "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+      },
+      "fingerprint": "c86065ed833747bf4c188fca334e2df768718ccceed96dc78ba7a5356009e9e9"
+    },
+    "scope": [],
+    "inputs": [],
+    "purpose": "probe",
+    "invalidatedReason": "Evidence is STALE: README.md, docs/guida.md, docs/verifiche.md, public/index.html, public/svolta.css, public/svolta.js. Scope: all repository files.",
+    "source": {
+      "runId": "20261020T223531-20d32b1b",
+      "throughSeq": 135,
+      "contractVersion": 1,
+      "recordedEvent": {
+        "runId": "20261020T223531-20d32b1b",
+        "seq": 13,
+        "eventId": "b6405ac1-2fd4-4d9a-bb77-118479be9996",
+        "at": "2026-10-20T22:37:35.014Z",
+        "type": "verification.passed"
+      }
+    }
+  },
+  {
+    "id": "ec47daf5-36d5-44b9-a3ab-bfa81fe82ddb",
+    "nodeId": "5f5f635e-7476-47c2-98fb-dde1de2e4434",
+    "criterionId": "board-ui",
+    "contractVersion": 1,
+    "kind": "deterministic",
+    "status": "stale",
+    "createdAt": "2026-10-20T22:37:38.126Z",
+    "command": [
+      "node",
+      "tests/acceptance.mjs",
+      "board-ui"
+    ],
+    "exitCode": 0,
+    "output": "PASS create a project and task through the actual interface\nPASS edit, filter and preserve the changed activity after reopening\nPASS concurrent interface edits cannot silently overwrite another tab\nPASS literal hostile text and mobile layout\n{\"criterion\":\"board-ui\",\"result\":\"PASS\",\"groups\":4}\n",
+    "durationMs": 3108,
+    "stamp": {
+      "head": "980d9648d2dadfda664aca92b4dfa032b91622dd",
+      "files": {
+        ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+        "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+        "README.md": "80aed329d1575ddaa960ec01496d7bf14e532532b9b7f84235799c5d28aa78ea",
+        "docs/guida.md": "0671bc6a3f4b7ebacfc10aa5c13456fcecf9a810c809ba3ee944a611c65d7abd",
+        "docs/verifiche.md": "8d2982949c2f0aefd4e201751d7b7f59e44d34106306c5ef964bcc109c687462",
+        "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+        "public/index.html": "1e798be6470daa454678337196f2076ca008b3922756dea7d79bbade5b259dee",
+        "public/svolta.css": "235865d7c676b8cf5cd7a9df2936252c335ffdf87d0d996ce90dd086e888a799",
+        "public/svolta.js": "8494e848b135e8dd8e4ecd4d29bc37705c1256b73ba5322f20438056bb1c5ab4",
+        "src/app.mjs": "4d368778a32ca98583d1c0e7e67015bd8f943039b52df577cfaca16b25522d7a",
+        "src/archive.mjs": "1f0dc4aea4cf6d55c122c65e3f111edef4798a48c610a515e175146575a22d03",
+        "src/dates.mjs": "befb2084c723419e957dd976a1e2f9ecd5b92b5c8d768158ba99ce452d794515",
+        "src/errors.mjs": "acbb23489da8c799787caf170d2ff70a9f26c875de462e287cfc911c856baa5f",
+        "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+        "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+        "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+        "src/summary.mjs": "a58abb9c5ef8a37c51f2e6cf434faf761ca5f552fdba000708c6cc61085502e8",
+        "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+        "src/time-entries.mjs": "5a4ff445656c9f15639159e253db1e99e97c010953ee7c2198db4441f0348ebf",
+        "src/week.mjs": "f533bdaed237f9b051608355d588f3b5147653c0d81143e7b5d7148a0dee2eeb",
+        "tests/acceptance.mjs": "ee4f811515605a5cbab795c9ad4e40777774006bad8fe350c54590e1836c3235",
+        "tests/browser.mjs": "6831d64e0d524554f959084e5a3c25b86f5255a5f850da9365a824149632a952",
+        "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+      },
+      "fingerprint": "c86065ed833747bf4c188fca334e2df768718ccceed96dc78ba7a5356009e9e9"
+    },
+    "scope": [],
+    "inputs": [],
+    "purpose": "probe",
+    "invalidatedReason": "Evidence is STALE: README.md, docs/guida.md, docs/verifiche.md, public/index.html, public/svolta.css, public/svolta.js. Scope: all repository files.",
+    "source": {
+      "runId": "20261020T223531-20d32b1b",
+      "throughSeq": 135,
+      "contractVersion": 1,
+      "recordedEvent": {
+        "runId": "20261020T223531-20d32b1b",
+        "seq": 15,
+        "eventId": "f7074859-39fb-4e7d-bfcc-43b643f93e3d",
+        "at": "2026-10-20T22:37:38.170Z",
+        "type": "verification.passed"
+      }
+    }
+  },
+  {
+    "id": "064612cf-5c49-45dc-ba29-a66881465ead",
+    "nodeId": "5c729b0b-7d5e-4b0e-aef0-dbb1d9fc5d52",
+    "criterionId": "planning-api",
+    "contractVersion": 1,
+    "kind": "deterministic",
+    "status": "stale",
+    "createdAt": "2026-10-20T22:37:39.551Z",
+    "command": [
+      "node",
+      "tests/acceptance.mjs",
+      "planning-api"
+    ],
+    "exitCode": 0,
+    "output": "PASS civil seven-day plan and unscheduled work\nPASS Monday and impossible-date rejection\nPASS time records preserve links and task status\nPASS weekly time and full-archive task counts are distinguished\nPASS invalid time entries do not write\nPASS deleting one session updates totals without deleting others\nPASS archiving a task preserves history and restart\n{\"criterion\":\"planning-api\",\"result\":\"PASS\",\"groups\":7}\n",
+    "durationMs": 1377,
+    "stamp": {
+      "head": "980d9648d2dadfda664aca92b4dfa032b91622dd",
+      "files": {
+        ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+        "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+        "README.md": "80aed329d1575ddaa960ec01496d7bf14e532532b9b7f84235799c5d28aa78ea",
+        "docs/guida.md": "0671bc6a3f4b7ebacfc10aa5c13456fcecf9a810c809ba3ee944a611c65d7abd",
+        "docs/verifiche.md": "8d2982949c2f0aefd4e201751d7b7f59e44d34106306c5ef964bcc109c687462",
+        "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+        "public/index.html": "1e798be6470daa454678337196f2076ca008b3922756dea7d79bbade5b259dee",
+        "public/svolta.css": "235865d7c676b8cf5cd7a9df2936252c335ffdf87d0d996ce90dd086e888a799",
+        "public/svolta.js": "8494e848b135e8dd8e4ecd4d29bc37705c1256b73ba5322f20438056bb1c5ab4",
+        "src/app.mjs": "4d368778a32ca98583d1c0e7e67015bd8f943039b52df577cfaca16b25522d7a",
+        "src/archive.mjs": "1f0dc4aea4cf6d55c122c65e3f111edef4798a48c610a515e175146575a22d03",
+        "src/dates.mjs": "befb2084c723419e957dd976a1e2f9ecd5b92b5c8d768158ba99ce452d794515",
+        "src/errors.mjs": "acbb23489da8c799787caf170d2ff70a9f26c875de462e287cfc911c856baa5f",
+        "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+        "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+        "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+        "src/summary.mjs": "a58abb9c5ef8a37c51f2e6cf434faf761ca5f552fdba000708c6cc61085502e8",
+        "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+        "src/time-entries.mjs": "5a4ff445656c9f15639159e253db1e99e97c010953ee7c2198db4441f0348ebf",
+        "src/week.mjs": "f533bdaed237f9b051608355d588f3b5147653c0d81143e7b5d7148a0dee2eeb",
+        "tests/acceptance.mjs": "ee4f811515605a5cbab795c9ad4e40777774006bad8fe350c54590e1836c3235",
+        "tests/browser.mjs": "6831d64e0d524554f959084e5a3c25b86f5255a5f850da9365a824149632a952",
+        "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+      },
+      "fingerprint": "c86065ed833747bf4c188fca334e2df768718ccceed96dc78ba7a5356009e9e9"
+    },
+    "scope": [],
+    "inputs": [],
+    "purpose": "probe",
+    "invalidatedReason": "Evidence is STALE: README.md, docs/guida.md, docs/verifiche.md, public/index.html, public/svolta.css, public/svolta.js. Scope: all repository files.",
+    "source": {
+      "runId": "20261020T223531-20d32b1b",
+      "throughSeq": 135,
+      "contractVersion": 1,
+      "recordedEvent": {
+        "runId": "20261020T223531-20d32b1b",
+        "seq": 17,
+        "eventId": "b3b3c25b-3172-4f8c-aace-d7a0d1a4ea32",
+        "at": "2026-10-20T22:37:39.596Z",
+        "type": "verification.passed"
+      }
+    }
+  },
+  {
+    "id": "83062788-62d0-4b77-bc15-ee73ccc5bff4",
+    "nodeId": "ed749e63-29fc-457f-9703-f2b960320f1e",
+    "criterionId": "planning-ui",
+    "contractVersion": 1,
+    "kind": "deterministic",
+    "status": "recorded",
+    "createdAt": "2026-10-20T22:38:10.805Z",
+    "command": [
+      "node",
+      "tests/acceptance.mjs",
+      "planning-ui"
+    ],
+    "exitCode": 1,
+    "output": "node:internal/modules/run_main:123\n    triggerUncaughtException(\n    ^\n\nlocator.fill: Timeout 30000ms exceeded.\nCall log:\n  - waiting for getByLabel(/^(?:Inizio settimana)(?:\\s*\\(obbligatorio\\))?$/).visible()\n\n    at /Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020-r3/data/worktrees/20261020T223531-20d32b1b/tests/browser.mjs:23:569\n    at async check (/Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020-r3/data/worktrees/20261020T223531-20d32b1b/tests/browser.mjs:9:31)\n    at async browserCheck (/Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020-r3/data/worktrees/20261020T223531-20d32b1b/tests/browser.mjs:23:4)\n    at async file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020-r3/data/worktrees/20261020T223531-20d32b1b/tests/acceptance.mjs:56:120\n    at async appTest (/Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020-r3/data/worktrees/20261020T223531-20d32b1b/tests/harness.mjs:42:28)\n    at async file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020-r3/data/worktrees/20261020T223531-20d32b1b/tests/acceptance.mjs:56:1 {\n  log: [\n    '  - waiting for getByLabel(/^(?:Inizio settimana)(?:\\\\s*\\\\(obbligatorio\\\\))?$/).visible()'\n  ],\n  name: 'TimeoutError'\n}\n\nNode.js v22.21.1\n",
+    "durationMs": 31206,
+    "stamp": {
+      "head": "980d9648d2dadfda664aca92b4dfa032b91622dd",
+      "files": {
+        ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+        "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+        "README.md": "80aed329d1575ddaa960ec01496d7bf14e532532b9b7f84235799c5d28aa78ea",
+        "docs/guida.md": "0671bc6a3f4b7ebacfc10aa5c13456fcecf9a810c809ba3ee944a611c65d7abd",
+        "docs/verifiche.md": "8d2982949c2f0aefd4e201751d7b7f59e44d34106306c5ef964bcc109c687462",
+        "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+        "public/index.html": "1e798be6470daa454678337196f2076ca008b3922756dea7d79bbade5b259dee",
+        "public/svolta.css": "235865d7c676b8cf5cd7a9df2936252c335ffdf87d0d996ce90dd086e888a799",
+        "public/svolta.js": "8494e848b135e8dd8e4ecd4d29bc37705c1256b73ba5322f20438056bb1c5ab4",
+        "src/app.mjs": "4d368778a32ca98583d1c0e7e67015bd8f943039b52df577cfaca16b25522d7a",
+        "src/archive.mjs": "1f0dc4aea4cf6d55c122c65e3f111edef4798a48c610a515e175146575a22d03",
+        "src/dates.mjs": "befb2084c723419e957dd976a1e2f9ecd5b92b5c8d768158ba99ce452d794515",
+        "src/errors.mjs": "acbb23489da8c799787caf170d2ff70a9f26c875de462e287cfc911c856baa5f",
+        "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+        "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+        "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+        "src/summary.mjs": "a58abb9c5ef8a37c51f2e6cf434faf761ca5f552fdba000708c6cc61085502e8",
+        "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+        "src/time-entries.mjs": "5a4ff445656c9f15639159e253db1e99e97c010953ee7c2198db4441f0348ebf",
+        "src/week.mjs": "f533bdaed237f9b051608355d588f3b5147653c0d81143e7b5d7148a0dee2eeb",
+        "tests/acceptance.mjs": "ee4f811515605a5cbab795c9ad4e40777774006bad8fe350c54590e1836c3235",
+        "tests/browser.mjs": "6831d64e0d524554f959084e5a3c25b86f5255a5f850da9365a824149632a952",
+        "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+      },
+      "fingerprint": "c86065ed833747bf4c188fca334e2df768718ccceed96dc78ba7a5356009e9e9"
+    },
+    "scope": [],
+    "inputs": [],
+    "purpose": "probe",
+    "source": {
+      "runId": "20261020T223531-20d32b1b",
+      "throughSeq": 135,
+      "contractVersion": 1,
+      "recordedEvent": {
+        "runId": "20261020T223531-20d32b1b",
+        "seq": 19,
+        "eventId": "7033c55a-c725-48ae-856c-384e1dd442e7",
+        "at": "2026-10-20T22:38:10.860Z",
+        "type": "verification.deferred"
+      }
+    }
+  },
+  {
+    "id": "00a25cf4-ddff-4df4-b92b-b64b1986f5b5",
+    "nodeId": "c814a547-c2df-43c8-a61b-b0a68be01c8b",
+    "criterionId": "projects-api",
+    "contractVersion": 1,
+    "kind": "deterministic",
+    "status": "stale",
+    "createdAt": "2026-10-20T22:44:24.060Z",
+    "command": [
+      "node",
+      "tests/acceptance.mjs",
+      "projects-api"
+    ],
+    "exitCode": 0,
+    "output": "PASS empty archive\nPASS create project with stable defaults\nPASS optimistic project edit\nPASS invalid names and missing revisions do not write\nPASS project archival survives restart\nPASS unknown project does not create a record\n{\"criterion\":\"projects-api\",\"result\":\"PASS\",\"groups\":6}\n",
+    "durationMs": 1327,
+    "stamp": {
+      "head": "980d9648d2dadfda664aca92b4dfa032b91622dd",
+      "files": {
+        ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+        "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+        "README.md": "62eb4f65648691489c3d01d0c7f389f8012b20e9e228ddd534bda3769ce5f38d",
+        "docs/guida.md": "5fcd608d390aa6c125e40feb4ce30361182ccc99d99c0b25e3c0bb7ebeb7db75",
+        "docs/verifiche.md": "99e7c0cd8a2acbb22f1ba7667b4462449446ed6306b4ca2eb6e7432a3d3f5209",
+        "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+        "public/index.html": "b7a6838c3b76982991fb05598b07613185a0f61e19c706bf6585f846cd9b18ed",
+        "public/svolta.css": "437c05e12ef80babc071ec122485fa57176ee217cd06fc7f49eef1da301101b0",
+        "public/svolta.js": "91e3dec41a31997b849f040cbee996d1e5ee8790888c16664c716deacd5f7f01",
+        "src/app.mjs": "4d368778a32ca98583d1c0e7e67015bd8f943039b52df577cfaca16b25522d7a",
+        "src/archive.mjs": "1f0dc4aea4cf6d55c122c65e3f111edef4798a48c610a515e175146575a22d03",
+        "src/dates.mjs": "befb2084c723419e957dd976a1e2f9ecd5b92b5c8d768158ba99ce452d794515",
+        "src/errors.mjs": "acbb23489da8c799787caf170d2ff70a9f26c875de462e287cfc911c856baa5f",
+        "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+        "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+        "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+        "src/summary.mjs": "a58abb9c5ef8a37c51f2e6cf434faf761ca5f552fdba000708c6cc61085502e8",
+        "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+        "src/time-entries.mjs": "5a4ff445656c9f15639159e253db1e99e97c010953ee7c2198db4441f0348ebf",
+        "src/week.mjs": "f533bdaed237f9b051608355d588f3b5147653c0d81143e7b5d7148a0dee2eeb",
+        "tests/acceptance.mjs": "ee4f811515605a5cbab795c9ad4e40777774006bad8fe350c54590e1836c3235",
+        "tests/browser.mjs": "6831d64e0d524554f959084e5a3c25b86f5255a5f850da9365a824149632a952",
+        "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+      },
+      "fingerprint": "38a56da7a3b05574fa6c639721e0de80bc855ae84286ababd089dc8f1bffc1c6"
+    },
+    "scope": [],
+    "inputs": [],
+    "purpose": "probe",
+    "invalidatedReason": "Evidence is STALE: README.md, docs/guida.md, docs/verifiche.md, public/index.html, public/svolta.css, public/svolta.js. Scope: all repository files.",
+    "source": {
+      "runId": "20261020T223531-20d32b1b",
+      "throughSeq": 135,
+      "contractVersion": 1,
+      "recordedEvent": {
+        "runId": "20261020T223531-20d32b1b",
+        "seq": 31,
+        "eventId": "ce646098-50ff-4e0b-983b-4309d0c94a3a",
+        "at": "2026-10-20T22:44:24.107Z",
+        "type": "verification.passed"
+      }
+    }
+  },
+  {
+    "id": "74f8157b-c440-4061-a2d3-92457840a232",
+    "nodeId": "d03158d8-a3bc-46c0-bdf9-7e0b81c95f7f",
+    "criterionId": "tasks-api",
+    "contractVersion": 1,
+    "kind": "deterministic",
+    "status": "stale",
+    "createdAt": "2026-10-20T22:44:25.463Z",
+    "command": [
+      "node",
+      "tests/acceptance.mjs",
+      "tasks-api"
+    ],
+    "exitCode": 0,
+    "output": "PASS task defaults and exact fields\nPASS task edit, revision conflicts and combined filters\nPASS civil dates, invalid states and numeric validation\nPASS parallel stale writers cannot overwrite each other\nPASS archived projects disappear from general activity list\nPASS task persistence and malformed JSON\n{\"criterion\":\"tasks-api\",\"result\":\"PASS\",\"groups\":6}\n",
+    "durationMs": 1339,
+    "stamp": {
+      "head": "980d9648d2dadfda664aca92b4dfa032b91622dd",
+      "files": {
+        ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+        "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+        "README.md": "62eb4f65648691489c3d01d0c7f389f8012b20e9e228ddd534bda3769ce5f38d",
+        "docs/guida.md": "5fcd608d390aa6c125e40feb4ce30361182ccc99d99c0b25e3c0bb7ebeb7db75",
+        "docs/verifiche.md": "99e7c0cd8a2acbb22f1ba7667b4462449446ed6306b4ca2eb6e7432a3d3f5209",
+        "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+        "public/index.html": "b7a6838c3b76982991fb05598b07613185a0f61e19c706bf6585f846cd9b18ed",
+        "public/svolta.css": "437c05e12ef80babc071ec122485fa57176ee217cd06fc7f49eef1da301101b0",
+        "public/svolta.js": "91e3dec41a31997b849f040cbee996d1e5ee8790888c16664c716deacd5f7f01",
+        "src/app.mjs": "4d368778a32ca98583d1c0e7e67015bd8f943039b52df577cfaca16b25522d7a",
+        "src/archive.mjs": "1f0dc4aea4cf6d55c122c65e3f111edef4798a48c610a515e175146575a22d03",
+        "src/dates.mjs": "befb2084c723419e957dd976a1e2f9ecd5b92b5c8d768158ba99ce452d794515",
+        "src/errors.mjs": "acbb23489da8c799787caf170d2ff70a9f26c875de462e287cfc911c856baa5f",
+        "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+        "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+        "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+        "src/summary.mjs": "a58abb9c5ef8a37c51f2e6cf434faf761ca5f552fdba000708c6cc61085502e8",
+        "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+        "src/time-entries.mjs": "5a4ff445656c9f15639159e253db1e99e97c010953ee7c2198db4441f0348ebf",
+        "src/week.mjs": "f533bdaed237f9b051608355d588f3b5147653c0d81143e7b5d7148a0dee2eeb",
+        "tests/acceptance.mjs": "ee4f811515605a5cbab795c9ad4e40777774006bad8fe350c54590e1836c3235",
+        "tests/browser.mjs": "6831d64e0d524554f959084e5a3c25b86f5255a5f850da9365a824149632a952",
+        "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+      },
+      "fingerprint": "38a56da7a3b05574fa6c639721e0de80bc855ae84286ababd089dc8f1bffc1c6"
+    },
+    "scope": [],
+    "inputs": [],
+    "purpose": "probe",
+    "invalidatedReason": "Evidence is STALE: README.md, docs/guida.md, docs/verifiche.md, public/index.html, public/svolta.css, public/svolta.js. Scope: all repository files.",
+    "source": {
+      "runId": "20261020T223531-20d32b1b",
+      "throughSeq": 135,
+      "contractVersion": 1,
+      "recordedEvent": {
+        "runId": "20261020T223531-20d32b1b",
+        "seq": 33,
+        "eventId": "bacf42f2-951e-4067-9bc7-c72ac12d4083",
+        "at": "2026-10-20T22:44:25.512Z",
+        "type": "verification.passed"
+      }
+    }
+  },
+  {
+    "id": "ff1b3af1-2c0f-4d46-afef-e6028b33ca98",
+    "nodeId": "6853c1e7-613d-4c62-bd58-2495e4151fb6",
+    "criterionId": "board-ui",
+    "contractVersion": 1,
+    "kind": "deterministic",
+    "status": "stale",
+    "createdAt": "2026-10-20T22:44:28.514Z",
+    "command": [
+      "node",
+      "tests/acceptance.mjs",
+      "board-ui"
+    ],
+    "exitCode": 0,
+    "output": "PASS create a project and task through the actual interface\nPASS edit, filter and preserve the changed activity after reopening\nPASS concurrent interface edits cannot silently overwrite another tab\nPASS literal hostile text and mobile layout\n{\"criterion\":\"board-ui\",\"result\":\"PASS\",\"groups\":4}\n",
+    "durationMs": 2984,
+    "stamp": {
+      "head": "980d9648d2dadfda664aca92b4dfa032b91622dd",
+      "files": {
+        ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+        "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+        "README.md": "62eb4f65648691489c3d01d0c7f389f8012b20e9e228ddd534bda3769ce5f38d",
+        "docs/guida.md": "5fcd608d390aa6c125e40feb4ce30361182ccc99d99c0b25e3c0bb7ebeb7db75",
+        "docs/verifiche.md": "99e7c0cd8a2acbb22f1ba7667b4462449446ed6306b4ca2eb6e7432a3d3f5209",
+        "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+        "public/index.html": "b7a6838c3b76982991fb05598b07613185a0f61e19c706bf6585f846cd9b18ed",
+        "public/svolta.css": "437c05e12ef80babc071ec122485fa57176ee217cd06fc7f49eef1da301101b0",
+        "public/svolta.js": "91e3dec41a31997b849f040cbee996d1e5ee8790888c16664c716deacd5f7f01",
+        "src/app.mjs": "4d368778a32ca98583d1c0e7e67015bd8f943039b52df577cfaca16b25522d7a",
+        "src/archive.mjs": "1f0dc4aea4cf6d55c122c65e3f111edef4798a48c610a515e175146575a22d03",
+        "src/dates.mjs": "befb2084c723419e957dd976a1e2f9ecd5b92b5c8d768158ba99ce452d794515",
+        "src/errors.mjs": "acbb23489da8c799787caf170d2ff70a9f26c875de462e287cfc911c856baa5f",
+        "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+        "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+        "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+        "src/summary.mjs": "a58abb9c5ef8a37c51f2e6cf434faf761ca5f552fdba000708c6cc61085502e8",
+        "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+        "src/time-entries.mjs": "5a4ff445656c9f15639159e253db1e99e97c010953ee7c2198db4441f0348ebf",
+        "src/week.mjs": "f533bdaed237f9b051608355d588f3b5147653c0d81143e7b5d7148a0dee2eeb",
+        "tests/acceptance.mjs": "ee4f811515605a5cbab795c9ad4e40777774006bad8fe350c54590e1836c3235",
+        "tests/browser.mjs": "6831d64e0d524554f959084e5a3c25b86f5255a5f850da9365a824149632a952",
+        "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+      },
+      "fingerprint": "38a56da7a3b05574fa6c639721e0de80bc855ae84286ababd089dc8f1bffc1c6"
+    },
+    "scope": [],
+    "inputs": [],
+    "purpose": "probe",
+    "invalidatedReason": "Evidence is STALE: README.md, docs/guida.md, docs/verifiche.md, public/index.html, public/svolta.css, public/svolta.js. Scope: all repository files.",
+    "source": {
+      "runId": "20261020T223531-20d32b1b",
+      "throughSeq": 135,
+      "contractVersion": 1,
+      "recordedEvent": {
+        "runId": "20261020T223531-20d32b1b",
+        "seq": 35,
+        "eventId": "760105f3-b771-4a0d-b9c5-30a058c11411",
+        "at": "2026-10-20T22:44:28.563Z",
+        "type": "verification.passed"
+      }
+    }
+  },
+  {
+    "id": "441cbf4b-5ccd-4023-8b1e-b1b1219eca29",
+    "nodeId": "fe13e25c-66bf-411c-9a02-a1865e53c353",
+    "criterionId": "planning-api",
+    "contractVersion": 1,
+    "kind": "deterministic",
+    "status": "stale",
+    "createdAt": "2026-10-20T22:44:29.978Z",
+    "command": [
+      "node",
+      "tests/acceptance.mjs",
+      "planning-api"
+    ],
+    "exitCode": 0,
+    "output": "PASS civil seven-day plan and unscheduled work\nPASS Monday and impossible-date rejection\nPASS time records preserve links and task status\nPASS weekly time and full-archive task counts are distinguished\nPASS invalid time entries do not write\nPASS deleting one session updates totals without deleting others\nPASS archiving a task preserves history and restart\n{\"criterion\":\"planning-api\",\"result\":\"PASS\",\"groups\":7}\n",
+    "durationMs": 1392,
+    "stamp": {
+      "head": "980d9648d2dadfda664aca92b4dfa032b91622dd",
+      "files": {
+        ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+        "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+        "README.md": "62eb4f65648691489c3d01d0c7f389f8012b20e9e228ddd534bda3769ce5f38d",
+        "docs/guida.md": "5fcd608d390aa6c125e40feb4ce30361182ccc99d99c0b25e3c0bb7ebeb7db75",
+        "docs/verifiche.md": "99e7c0cd8a2acbb22f1ba7667b4462449446ed6306b4ca2eb6e7432a3d3f5209",
+        "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+        "public/index.html": "b7a6838c3b76982991fb05598b07613185a0f61e19c706bf6585f846cd9b18ed",
+        "public/svolta.css": "437c05e12ef80babc071ec122485fa57176ee217cd06fc7f49eef1da301101b0",
+        "public/svolta.js": "91e3dec41a31997b849f040cbee996d1e5ee8790888c16664c716deacd5f7f01",
+        "src/app.mjs": "4d368778a32ca98583d1c0e7e67015bd8f943039b52df577cfaca16b25522d7a",
+        "src/archive.mjs": "1f0dc4aea4cf6d55c122c65e3f111edef4798a48c610a515e175146575a22d03",
+        "src/dates.mjs": "befb2084c723419e957dd976a1e2f9ecd5b92b5c8d768158ba99ce452d794515",
+        "src/errors.mjs": "acbb23489da8c799787caf170d2ff70a9f26c875de462e287cfc911c856baa5f",
+        "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+        "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+        "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+        "src/summary.mjs": "a58abb9c5ef8a37c51f2e6cf434faf761ca5f552fdba000708c6cc61085502e8",
+        "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+        "src/time-entries.mjs": "5a4ff445656c9f15639159e253db1e99e97c010953ee7c2198db4441f0348ebf",
+        "src/week.mjs": "f533bdaed237f9b051608355d588f3b5147653c0d81143e7b5d7148a0dee2eeb",
+        "tests/acceptance.mjs": "ee4f811515605a5cbab795c9ad4e40777774006bad8fe350c54590e1836c3235",
+        "tests/browser.mjs": "6831d64e0d524554f959084e5a3c25b86f5255a5f850da9365a824149632a952",
+        "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+      },
+      "fingerprint": "38a56da7a3b05574fa6c639721e0de80bc855ae84286ababd089dc8f1bffc1c6"
+    },
+    "scope": [],
+    "inputs": [],
+    "purpose": "probe",
+    "invalidatedReason": "Evidence is STALE: README.md, docs/guida.md, docs/verifiche.md, public/index.html, public/svolta.css, public/svolta.js. Scope: all repository files.",
+    "source": {
+      "runId": "20261020T223531-20d32b1b",
+      "throughSeq": 135,
+      "contractVersion": 1,
+      "recordedEvent": {
+        "runId": "20261020T223531-20d32b1b",
+        "seq": 37,
+        "eventId": "448877d9-d8e5-4b34-af41-d7ab1d42567e",
+        "at": "2026-10-20T22:44:30.027Z",
+        "type": "verification.passed"
+      }
+    }
+  },
+  {
+    "id": "ccb5d708-f994-47fd-b3df-e21d7acd66d2",
+    "nodeId": "c8a153a5-0404-4a58-bf37-5740c0025f43",
+    "criterionId": "planning-ui",
+    "contractVersion": 1,
+    "kind": "deterministic",
+    "status": "recorded",
+    "createdAt": "2026-10-20T22:45:01.066Z",
+    "command": [
+      "node",
+      "tests/acceptance.mjs",
+      "planning-ui"
+    ],
+    "exitCode": 1,
+    "output": "PASS reschedule a task and see it in its actual weekly day\nnode:internal/modules/run_main:123\n    triggerUncaughtException(\n    ^\n\nlocator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Registra tempo per Studiare un capitolo', exact: true })\n\n    at /Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020-r3/data/worktrees/20261020T223531-20d32b1b/tests/browser.mjs:24:182\n    at async check (/Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020-r3/data/worktrees/20261020T223531-20d32b1b/tests/browser.mjs:9:31)\n    at async browserCheck (/Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020-r3/data/worktrees/20261020T223531-20d32b1b/tests/browser.mjs:24:4)\n    at async file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020-r3/data/worktrees/20261020T223531-20d32b1b/tests/acceptance.mjs:56:120\n    at async appTest (/Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020-r3/data/worktrees/20261020T223531-20d32b1b/tests/harness.mjs:42:28)\n    at async file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020-r3/data/worktrees/20261020T223531-20d32b1b/tests/acceptance.mjs:56:1 {\n  log: [\n    \"  - waiting for getByRole('button', { name: 'Registra tempo per Studiare un capitolo', exact: true })\"\n  ],\n  name: 'TimeoutError'\n}\n\nNode.js v22.21.1\n",
+    "durationMs": 31024,
+    "stamp": {
+      "head": "980d9648d2dadfda664aca92b4dfa032b91622dd",
+      "files": {
+        ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+        "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+        "README.md": "62eb4f65648691489c3d01d0c7f389f8012b20e9e228ddd534bda3769ce5f38d",
+        "docs/guida.md": "5fcd608d390aa6c125e40feb4ce30361182ccc99d99c0b25e3c0bb7ebeb7db75",
+        "docs/verifiche.md": "99e7c0cd8a2acbb22f1ba7667b4462449446ed6306b4ca2eb6e7432a3d3f5209",
+        "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+        "public/index.html": "b7a6838c3b76982991fb05598b07613185a0f61e19c706bf6585f846cd9b18ed",
+        "public/svolta.css": "437c05e12ef80babc071ec122485fa57176ee217cd06fc7f49eef1da301101b0",
+        "public/svolta.js": "91e3dec41a31997b849f040cbee996d1e5ee8790888c16664c716deacd5f7f01",
+        "src/app.mjs": "4d368778a32ca98583d1c0e7e67015bd8f943039b52df577cfaca16b25522d7a",
+        "src/archive.mjs": "1f0dc4aea4cf6d55c122c65e3f111edef4798a48c610a515e175146575a22d03",
+        "src/dates.mjs": "befb2084c723419e957dd976a1e2f9ecd5b92b5c8d768158ba99ce452d794515",
+        "src/errors.mjs": "acbb23489da8c799787caf170d2ff70a9f26c875de462e287cfc911c856baa5f",
+        "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+        "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+        "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+        "src/summary.mjs": "a58abb9c5ef8a37c51f2e6cf434faf761ca5f552fdba000708c6cc61085502e8",
+        "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+        "src/time-entries.mjs": "5a4ff445656c9f15639159e253db1e99e97c010953ee7c2198db4441f0348ebf",
+        "src/week.mjs": "f533bdaed237f9b051608355d588f3b5147653c0d81143e7b5d7148a0dee2eeb",
+        "tests/acceptance.mjs": "ee4f811515605a5cbab795c9ad4e40777774006bad8fe350c54590e1836c3235",
+        "tests/browser.mjs": "6831d64e0d524554f959084e5a3c25b86f5255a5f850da9365a824149632a952",
+        "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+      },
+      "fingerprint": "38a56da7a3b05574fa6c639721e0de80bc855ae84286ababd089dc8f1bffc1c6"
+    },
+    "scope": [],
+    "inputs": [],
+    "purpose": "probe",
+    "source": {
+      "runId": "20261020T223531-20d32b1b",
+      "throughSeq": 135,
+      "contractVersion": 1,
+      "recordedEvent": {
+        "runId": "20261020T223531-20d32b1b",
+        "seq": 39,
+        "eventId": "fa7d43d6-1069-48a6-a393-b884e255b7d7",
+        "at": "2026-10-20T22:45:01.117Z",
+        "type": "verification.deferred"
+      }
+    }
+  },
+  {
+    "id": "4be3e5cb-4e02-4c2b-b86a-fb930ac86abc",
+    "nodeId": "b356705b-0a6e-4fde-bf3c-6693e27be577",
+    "criterionId": "projects-api",
+    "contractVersion": 1,
+    "kind": "deterministic",
+    "status": "stale",
+    "createdAt": "2026-10-20T22:52:15.181Z",
+    "command": [
+      "node",
+      "tests/acceptance.mjs",
+      "projects-api"
+    ],
+    "exitCode": 0,
+    "output": "PASS empty archive\nPASS create project with stable defaults\nPASS optimistic project edit\nPASS invalid names and missing revisions do not write\nPASS project archival survives restart\nPASS unknown project does not create a record\n{\"criterion\":\"projects-api\",\"result\":\"PASS\",\"groups\":6}\n",
+    "durationMs": 1330,
+    "stamp": {
+      "head": "980d9648d2dadfda664aca92b4dfa032b91622dd",
+      "files": {
+        ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+        "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+        "README.md": "30e762ff413676b82ec2e2ce991cb7446dbe9821ea08b28af403652658da635f",
+        "docs/guida.md": "316aa74ecff637f979e88f8461d14ba66af135a195d8a41fce971cc17df015b1",
+        "docs/verifiche.md": "900d0c465ff230e798bfbd0f602ee89eeb69d0cee91e673186c2374f3de4c334",
+        "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+        "public/index.html": "c8b6f53116fbf120600f7a9996f43ca784ed417270a3507d607c34c413d59538",
+        "public/svolta.css": "3999ef493154076bb8690fb1a64ca27662191fe080433b553389016604e3de8f",
+        "public/svolta.js": "37410d9a3f801f76e5bae7fa5abcc19303e3a0bbcb7c653bfd3ec5f1f237bb8d",
+        "src/app.mjs": "4d368778a32ca98583d1c0e7e67015bd8f943039b52df577cfaca16b25522d7a",
+        "src/archive.mjs": "1f0dc4aea4cf6d55c122c65e3f111edef4798a48c610a515e175146575a22d03",
+        "src/dates.mjs": "befb2084c723419e957dd976a1e2f9ecd5b92b5c8d768158ba99ce452d794515",
+        "src/errors.mjs": "acbb23489da8c799787caf170d2ff70a9f26c875de462e287cfc911c856baa5f",
+        "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+        "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+        "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+        "src/summary.mjs": "a58abb9c5ef8a37c51f2e6cf434faf761ca5f552fdba000708c6cc61085502e8",
+        "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+        "src/time-entries.mjs": "5a4ff445656c9f15639159e253db1e99e97c010953ee7c2198db4441f0348ebf",
+        "src/week.mjs": "f533bdaed237f9b051608355d588f3b5147653c0d81143e7b5d7148a0dee2eeb",
+        "tests/acceptance.mjs": "ee4f811515605a5cbab795c9ad4e40777774006bad8fe350c54590e1836c3235",
+        "tests/browser.mjs": "6831d64e0d524554f959084e5a3c25b86f5255a5f850da9365a824149632a952",
+        "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+      },
+      "fingerprint": "5286c2c56875a19786c932f34c21bd8f26982bb0411b19557e1d0b83604882b5"
+    },
+    "scope": [],
+    "inputs": [],
+    "purpose": "probe",
+    "invalidatedReason": "Evidence is STALE: README.md, docs/guida.md, docs/verifiche.md, public/index.html, public/svolta.css, public/svolta.js. Scope: all repository files.",
+    "source": {
+      "runId": "20261020T223531-20d32b1b",
+      "throughSeq": 135,
+      "contractVersion": 1,
+      "recordedEvent": {
+        "runId": "20261020T223531-20d32b1b",
+        "seq": 52,
+        "eventId": "7aa77f68-9f70-4dff-a6b8-d507d17ee6d9",
+        "at": "2026-10-20T22:52:15.238Z",
+        "type": "verification.passed"
+      }
+    }
+  },
+  {
+    "id": "a1020e52-ab3a-466b-838e-148188d9098c",
+    "nodeId": "afd0deb4-8307-4b7f-a420-0e2c65a4fb25",
+    "criterionId": "tasks-api",
+    "contractVersion": 1,
+    "kind": "deterministic",
+    "status": "stale",
+    "createdAt": "2026-10-20T22:52:16.626Z",
+    "command": [
+      "node",
+      "tests/acceptance.mjs",
+      "tasks-api"
+    ],
+    "exitCode": 0,
+    "output": "PASS task defaults and exact fields\nPASS task edit, revision conflicts and combined filters\nPASS civil dates, invalid states and numeric validation\nPASS parallel stale writers cannot overwrite each other\nPASS archived projects disappear from general activity list\nPASS task persistence and malformed JSON\n{\"criterion\":\"tasks-api\",\"result\":\"PASS\",\"groups\":6}\n",
+    "durationMs": 1353,
+    "stamp": {
+      "head": "980d9648d2dadfda664aca92b4dfa032b91622dd",
+      "files": {
+        ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+        "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+        "README.md": "30e762ff413676b82ec2e2ce991cb7446dbe9821ea08b28af403652658da635f",
+        "docs/guida.md": "316aa74ecff637f979e88f8461d14ba66af135a195d8a41fce971cc17df015b1",
+        "docs/verifiche.md": "900d0c465ff230e798bfbd0f602ee89eeb69d0cee91e673186c2374f3de4c334",
+        "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+        "public/index.html": "c8b6f53116fbf120600f7a9996f43ca784ed417270a3507d607c34c413d59538",
+        "public/svolta.css": "3999ef493154076bb8690fb1a64ca27662191fe080433b553389016604e3de8f",
+        "public/svolta.js": "37410d9a3f801f76e5bae7fa5abcc19303e3a0bbcb7c653bfd3ec5f1f237bb8d",
+        "src/app.mjs": "4d368778a32ca98583d1c0e7e67015bd8f943039b52df577cfaca16b25522d7a",
+        "src/archive.mjs": "1f0dc4aea4cf6d55c122c65e3f111edef4798a48c610a515e175146575a22d03",
+        "src/dates.mjs": "befb2084c723419e957dd976a1e2f9ecd5b92b5c8d768158ba99ce452d794515",
+        "src/errors.mjs": "acbb23489da8c799787caf170d2ff70a9f26c875de462e287cfc911c856baa5f",
+        "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+        "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+        "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+        "src/summary.mjs": "a58abb9c5ef8a37c51f2e6cf434faf761ca5f552fdba000708c6cc61085502e8",
+        "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+        "src/time-entries.mjs": "5a4ff445656c9f15639159e253db1e99e97c010953ee7c2198db4441f0348ebf",
+        "src/week.mjs": "f533bdaed237f9b051608355d588f3b5147653c0d81143e7b5d7148a0dee2eeb",
+        "tests/acceptance.mjs": "ee4f811515605a5cbab795c9ad4e40777774006bad8fe350c54590e1836c3235",
+        "tests/browser.mjs": "6831d64e0d524554f959084e5a3c25b86f5255a5f850da9365a824149632a952",
+        "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+      },
+      "fingerprint": "5286c2c56875a19786c932f34c21bd8f26982bb0411b19557e1d0b83604882b5"
+    },
+    "scope": [],
+    "inputs": [],
+    "purpose": "probe",
+    "invalidatedReason": "Evidence is STALE: README.md, docs/guida.md, docs/verifiche.md, public/index.html, public/svolta.css, public/svolta.js. Scope: all repository files.",
+    "source": {
+      "runId": "20261020T223531-20d32b1b",
+      "throughSeq": 135,
+      "contractVersion": 1,
+      "recordedEvent": {
+        "runId": "20261020T223531-20d32b1b",
+        "seq": 54,
+        "eventId": "e79436de-e257-4439-9947-3499e875a38a",
+        "at": "2026-10-20T22:52:16.683Z",
+        "type": "verification.passed"
+      }
+    }
+  },
+  {
+    "id": "7cb7d56b-ce5a-4e0c-b874-ddc4f09b8589",
+    "nodeId": "bb31df6a-9e8b-47e6-af4c-c1dc3690bfdf",
+    "criterionId": "board-ui",
+    "contractVersion": 1,
+    "kind": "deterministic",
+    "status": "stale",
+    "createdAt": "2026-10-20T22:52:19.261Z",
+    "command": [
+      "node",
+      "tests/acceptance.mjs",
+      "board-ui"
+    ],
+    "exitCode": 0,
+    "output": "PASS create a project and task through the actual interface\nPASS edit, filter and preserve the changed activity after reopening\nPASS concurrent interface edits cannot silently overwrite another tab\nPASS literal hostile text and mobile layout\n{\"criterion\":\"board-ui\",\"result\":\"PASS\",\"groups\":4}\n",
+    "durationMs": 2539,
+    "stamp": {
+      "head": "980d9648d2dadfda664aca92b4dfa032b91622dd",
+      "files": {
+        ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+        "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+        "README.md": "30e762ff413676b82ec2e2ce991cb7446dbe9821ea08b28af403652658da635f",
+        "docs/guida.md": "316aa74ecff637f979e88f8461d14ba66af135a195d8a41fce971cc17df015b1",
+        "docs/verifiche.md": "900d0c465ff230e798bfbd0f602ee89eeb69d0cee91e673186c2374f3de4c334",
+        "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+        "public/index.html": "c8b6f53116fbf120600f7a9996f43ca784ed417270a3507d607c34c413d59538",
+        "public/svolta.css": "3999ef493154076bb8690fb1a64ca27662191fe080433b553389016604e3de8f",
+        "public/svolta.js": "37410d9a3f801f76e5bae7fa5abcc19303e3a0bbcb7c653bfd3ec5f1f237bb8d",
+        "src/app.mjs": "4d368778a32ca98583d1c0e7e67015bd8f943039b52df577cfaca16b25522d7a",
+        "src/archive.mjs": "1f0dc4aea4cf6d55c122c65e3f111edef4798a48c610a515e175146575a22d03",
+        "src/dates.mjs": "befb2084c723419e957dd976a1e2f9ecd5b92b5c8d768158ba99ce452d794515",
+        "src/errors.mjs": "acbb23489da8c799787caf170d2ff70a9f26c875de462e287cfc911c856baa5f",
+        "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+        "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+        "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+        "src/summary.mjs": "a58abb9c5ef8a37c51f2e6cf434faf761ca5f552fdba000708c6cc61085502e8",
+        "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+        "src/time-entries.mjs": "5a4ff445656c9f15639159e253db1e99e97c010953ee7c2198db4441f0348ebf",
+        "src/week.mjs": "f533bdaed237f9b051608355d588f3b5147653c0d81143e7b5d7148a0dee2eeb",
+        "tests/acceptance.mjs": "ee4f811515605a5cbab795c9ad4e40777774006bad8fe350c54590e1836c3235",
+        "tests/browser.mjs": "6831d64e0d524554f959084e5a3c25b86f5255a5f850da9365a824149632a952",
+        "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+      },
+      "fingerprint": "5286c2c56875a19786c932f34c21bd8f26982bb0411b19557e1d0b83604882b5"
+    },
+    "scope": [],
+    "inputs": [],
+    "purpose": "probe",
+    "invalidatedReason": "Evidence is STALE: README.md, docs/guida.md, docs/verifiche.md, public/index.html, public/svolta.css, public/svolta.js. Scope: all repository files.",
+    "source": {
+      "runId": "20261020T223531-20d32b1b",
+      "throughSeq": 135,
+      "contractVersion": 1,
+      "recordedEvent": {
+        "runId": "20261020T223531-20d32b1b",
+        "seq": 56,
+        "eventId": "c4e8d53b-2b51-483e-b991-bcd8d18682f3",
+        "at": "2026-10-20T22:52:19.315Z",
+        "type": "verification.passed"
+      }
+    }
+  },
+  {
+    "id": "46c6a760-9ed5-4eda-8b5e-919c222b3170",
+    "nodeId": "c1090586-648a-4597-99a7-df9e6b7e83a8",
+    "criterionId": "planning-api",
+    "contractVersion": 1,
+    "kind": "deterministic",
+    "status": "stale",
+    "createdAt": "2026-10-20T22:52:20.735Z",
+    "command": [
+      "node",
+      "tests/acceptance.mjs",
+      "planning-api"
+    ],
+    "exitCode": 0,
+    "output": "PASS civil seven-day plan and unscheduled work\nPASS Monday and impossible-date rejection\nPASS time records preserve links and task status\nPASS weekly time and full-archive task counts are distinguished\nPASS invalid time entries do not write\nPASS deleting one session updates totals without deleting others\nPASS archiving a task preserves history and restart\n{\"criterion\":\"planning-api\",\"result\":\"PASS\",\"groups\":7}\n",
+    "durationMs": 1371,
+    "stamp": {
+      "head": "980d9648d2dadfda664aca92b4dfa032b91622dd",
+      "files": {
+        ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+        "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+        "README.md": "30e762ff413676b82ec2e2ce991cb7446dbe9821ea08b28af403652658da635f",
+        "docs/guida.md": "316aa74ecff637f979e88f8461d14ba66af135a195d8a41fce971cc17df015b1",
+        "docs/verifiche.md": "900d0c465ff230e798bfbd0f602ee89eeb69d0cee91e673186c2374f3de4c334",
+        "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+        "public/index.html": "c8b6f53116fbf120600f7a9996f43ca784ed417270a3507d607c34c413d59538",
+        "public/svolta.css": "3999ef493154076bb8690fb1a64ca27662191fe080433b553389016604e3de8f",
+        "public/svolta.js": "37410d9a3f801f76e5bae7fa5abcc19303e3a0bbcb7c653bfd3ec5f1f237bb8d",
+        "src/app.mjs": "4d368778a32ca98583d1c0e7e67015bd8f943039b52df577cfaca16b25522d7a",
+        "src/archive.mjs": "1f0dc4aea4cf6d55c122c65e3f111edef4798a48c610a515e175146575a22d03",
+        "src/dates.mjs": "befb2084c723419e957dd976a1e2f9ecd5b92b5c8d768158ba99ce452d794515",
+        "src/errors.mjs": "acbb23489da8c799787caf170d2ff70a9f26c875de462e287cfc911c856baa5f",
+        "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+        "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+        "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+        "src/summary.mjs": "a58abb9c5ef8a37c51f2e6cf434faf761ca5f552fdba000708c6cc61085502e8",
+        "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+        "src/time-entries.mjs": "5a4ff445656c9f15639159e253db1e99e97c010953ee7c2198db4441f0348ebf",
+        "src/week.mjs": "f533bdaed237f9b051608355d588f3b5147653c0d81143e7b5d7148a0dee2eeb",
+        "tests/acceptance.mjs": "ee4f811515605a5cbab795c9ad4e40777774006bad8fe350c54590e1836c3235",
+        "tests/browser.mjs": "6831d64e0d524554f959084e5a3c25b86f5255a5f850da9365a824149632a952",
+        "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+      },
+      "fingerprint": "5286c2c56875a19786c932f34c21bd8f26982bb0411b19557e1d0b83604882b5"
+    },
+    "scope": [],
+    "inputs": [],
+    "purpose": "probe",
+    "invalidatedReason": "Evidence is STALE: README.md, docs/guida.md, docs/verifiche.md, public/index.html, public/svolta.css, public/svolta.js. Scope: all repository files.",
+    "source": {
+      "runId": "20261020T223531-20d32b1b",
+      "throughSeq": 135,
+      "contractVersion": 1,
+      "recordedEvent": {
+        "runId": "20261020T223531-20d32b1b",
+        "seq": 58,
+        "eventId": "8649c202-89ee-4388-9940-5ae02ba9398c",
+        "at": "2026-10-20T22:52:20.795Z",
+        "type": "verification.passed"
+      }
+    }
+  },
+  {
+    "id": "a48db97e-dc50-4373-b4cf-b4dd722e6d8c",
+    "nodeId": "c5f02a0d-ff8b-4829-adbc-558188382d1a",
+    "criterionId": "planning-ui",
+    "contractVersion": 1,
+    "kind": "deterministic",
+    "status": "recorded",
+    "createdAt": "2026-10-20T22:52:51.919Z",
+    "command": [
+      "node",
+      "tests/acceptance.mjs",
+      "planning-ui"
+    ],
+    "exitCode": 1,
+    "output": "PASS reschedule a task and see it in its actual weekly day\nnode:internal/modules/run_main:123\n    triggerUncaughtException(\n    ^\n\nlocator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for getByRole('dialog', { name: 'Registra tempo', exact: true }) to be hidden\n    64 × locator resolved to visible <dialog open=\"\" id=\"time-dialog\" aria-labelledby=\"time-dialog-heading\" aria-describedby=\"time-dialog-help time-dialog-context\">…</dialog>\n\n    at /Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020-r3/data/worktrees/20261020T223531-20d32b1b/tests/browser.mjs:24:643\n    at async check (/Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020-r3/data/worktrees/20261020T223531-20d32b1b/tests/browser.mjs:9:31)\n    at async browserCheck (/Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020-r3/data/worktrees/20261020T223531-20d32b1b/tests/browser.mjs:24:4)\n    at async file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020-r3/data/worktrees/20261020T223531-20d32b1b/tests/acceptance.mjs:56:120\n    at async appTest (/Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020-r3/data/worktrees/20261020T223531-20d32b1b/tests/harness.mjs:42:28)\n    at async file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020-r3/data/worktrees/20261020T223531-20d32b1b/tests/acceptance.mjs:56:1 {\n  log: [\n    \"  - waiting for getByRole('dialog', { name: 'Registra tempo', exact: true }) to be hidden\",\n    '    64 × locator resolved to visible <dialog open=\"\" id=\"time-dialog\" aria-labelledby=\"time-dialog-heading\" aria-describedby=\"time-dialog-help time-dialog-context\">…</dialog>'\n  ],\n  name: 'TimeoutError'\n}\n\nNode.js v22.21.1\n",
+    "durationMs": 31079,
+    "stamp": {
+      "head": "980d9648d2dadfda664aca92b4dfa032b91622dd",
+      "files": {
+        ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+        "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+        "README.md": "30e762ff413676b82ec2e2ce991cb7446dbe9821ea08b28af403652658da635f",
+        "docs/guida.md": "316aa74ecff637f979e88f8461d14ba66af135a195d8a41fce971cc17df015b1",
+        "docs/verifiche.md": "900d0c465ff230e798bfbd0f602ee89eeb69d0cee91e673186c2374f3de4c334",
+        "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+        "public/index.html": "c8b6f53116fbf120600f7a9996f43ca784ed417270a3507d607c34c413d59538",
+        "public/svolta.css": "3999ef493154076bb8690fb1a64ca27662191fe080433b553389016604e3de8f",
+        "public/svolta.js": "37410d9a3f801f76e5bae7fa5abcc19303e3a0bbcb7c653bfd3ec5f1f237bb8d",
+        "src/app.mjs": "4d368778a32ca98583d1c0e7e67015bd8f943039b52df577cfaca16b25522d7a",
+        "src/archive.mjs": "1f0dc4aea4cf6d55c122c65e3f111edef4798a48c610a515e175146575a22d03",
+        "src/dates.mjs": "befb2084c723419e957dd976a1e2f9ecd5b92b5c8d768158ba99ce452d794515",
+        "src/errors.mjs": "acbb23489da8c799787caf170d2ff70a9f26c875de462e287cfc911c856baa5f",
+        "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+        "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+        "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+        "src/summary.mjs": "a58abb9c5ef8a37c51f2e6cf434faf761ca5f552fdba000708c6cc61085502e8",
+        "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+        "src/time-entries.mjs": "5a4ff445656c9f15639159e253db1e99e97c010953ee7c2198db4441f0348ebf",
+        "src/week.mjs": "f533bdaed237f9b051608355d588f3b5147653c0d81143e7b5d7148a0dee2eeb",
+        "tests/acceptance.mjs": "ee4f811515605a5cbab795c9ad4e40777774006bad8fe350c54590e1836c3235",
+        "tests/browser.mjs": "6831d64e0d524554f959084e5a3c25b86f5255a5f850da9365a824149632a952",
+        "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+      },
+      "fingerprint": "5286c2c56875a19786c932f34c21bd8f26982bb0411b19557e1d0b83604882b5"
+    },
+    "scope": [],
+    "inputs": [],
+    "purpose": "probe",
+    "source": {
+      "runId": "20261020T223531-20d32b1b",
+      "throughSeq": 135,
+      "contractVersion": 1,
+      "recordedEvent": {
+        "runId": "20261020T223531-20d32b1b",
+        "seq": 60,
+        "eventId": "9495a916-3581-4dcc-8992-d0f664c12d81",
+        "at": "2026-10-20T22:52:51.977Z",
+        "type": "verification.deferred"
+      }
+    }
+  },
+  {
+    "id": "bae85903-02fe-448c-977f-b849831c7241",
+    "nodeId": "cbcdb354-37df-4f13-a3a9-8f8b66eb4a95",
+    "criterionId": "projects-api",
+    "contractVersion": 1,
+    "kind": "deterministic",
+    "status": "stale",
+    "createdAt": "2026-10-20T22:57:54.352Z",
+    "command": [
+      "node",
+      "tests/acceptance.mjs",
+      "projects-api"
+    ],
+    "exitCode": 0,
+    "output": "PASS empty archive\nPASS create project with stable defaults\nPASS optimistic project edit\nPASS invalid names and missing revisions do not write\nPASS project archival survives restart\nPASS unknown project does not create a record\n{\"criterion\":\"projects-api\",\"result\":\"PASS\",\"groups\":6}\n",
+    "durationMs": 1322,
+    "stamp": {
+      "head": "980d9648d2dadfda664aca92b4dfa032b91622dd",
+      "files": {
+        ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+        "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+        "README.md": "bd2229e46fcd9063dd88c40db840120897c6fad049105d3a54552e35ea4fa742",
+        "docs/guida.md": "265523fdff39113f038649cda8bb18113a205990da587d428631c85de2f3c954",
+        "docs/verifiche.md": "56c6354ccd853948940dd67c6579bef72fff630f01941d064ed58eb78da64090",
+        "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+        "public/index.html": "6fac8f98234b9a2861abc405819c28698f1dd9db91e145cde8956bbcffc79479",
+        "public/svolta.css": "f81904ebcf820f2f00c79464ff76642ab5255ae3af3899183957a915b43f646f",
+        "public/svolta.js": "80f09d7fbf932faa3d5e3caa48c40b85ed6a5743b03b6f60cb3a20f4a8e297d7",
+        "src/app.mjs": "4d368778a32ca98583d1c0e7e67015bd8f943039b52df577cfaca16b25522d7a",
+        "src/archive.mjs": "1f0dc4aea4cf6d55c122c65e3f111edef4798a48c610a515e175146575a22d03",
+        "src/dates.mjs": "befb2084c723419e957dd976a1e2f9ecd5b92b5c8d768158ba99ce452d794515",
+        "src/errors.mjs": "acbb23489da8c799787caf170d2ff70a9f26c875de462e287cfc911c856baa5f",
+        "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+        "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+        "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+        "src/summary.mjs": "a58abb9c5ef8a37c51f2e6cf434faf761ca5f552fdba000708c6cc61085502e8",
+        "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+        "src/time-entries.mjs": "5a4ff445656c9f15639159e253db1e99e97c010953ee7c2198db4441f0348ebf",
+        "src/week.mjs": "f533bdaed237f9b051608355d588f3b5147653c0d81143e7b5d7148a0dee2eeb",
+        "tests/acceptance.mjs": "ee4f811515605a5cbab795c9ad4e40777774006bad8fe350c54590e1836c3235",
+        "tests/browser.mjs": "6831d64e0d524554f959084e5a3c25b86f5255a5f850da9365a824149632a952",
+        "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+      },
+      "fingerprint": "dcc402e3656b92124b39bb00f09bf204b3791412b14a70dc6c8c09c4e824d1e7"
+    },
+    "scope": [],
+    "inputs": [],
+    "invalidatedReason": "Evidence is STALE: README.md, docs/guida.md, public/svolta.js. Scope: all repository files.",
+    "source": {
+      "runId": "20261020T223531-20d32b1b",
+      "throughSeq": 135,
+      "contractVersion": 1,
+      "recordedEvent": {
+        "runId": "20261020T223531-20d32b1b",
+        "seq": 74,
+        "eventId": "5940da7a-74f2-43ed-98c0-3a0118542d92",
+        "at": "2026-10-20T22:57:54.390Z",
+        "type": "verification.passed"
+      }
+    }
+  },
+  {
+    "id": "ab9f6bb9-f634-4e5b-86b7-696967b04419",
+    "nodeId": "3e5d864a-654e-4016-abaf-4b7a767ff3f0",
+    "criterionId": "tasks-api",
+    "contractVersion": 1,
+    "kind": "deterministic",
+    "status": "stale",
+    "createdAt": "2026-10-20T22:57:55.989Z",
+    "command": [
+      "node",
+      "tests/acceptance.mjs",
+      "tasks-api"
+    ],
+    "exitCode": 0,
+    "output": "PASS task defaults and exact fields\nPASS task edit, revision conflicts and combined filters\nPASS civil dates, invalid states and numeric validation\nPASS parallel stale writers cannot overwrite each other\nPASS archived projects disappear from general activity list\nPASS task persistence and malformed JSON\n{\"criterion\":\"tasks-api\",\"result\":\"PASS\",\"groups\":6}\n",
+    "durationMs": 1346,
+    "stamp": {
+      "head": "980d9648d2dadfda664aca92b4dfa032b91622dd",
+      "files": {
+        ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+        "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+        "README.md": "bd2229e46fcd9063dd88c40db840120897c6fad049105d3a54552e35ea4fa742",
+        "docs/guida.md": "265523fdff39113f038649cda8bb18113a205990da587d428631c85de2f3c954",
+        "docs/verifiche.md": "56c6354ccd853948940dd67c6579bef72fff630f01941d064ed58eb78da64090",
+        "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+        "public/index.html": "6fac8f98234b9a2861abc405819c28698f1dd9db91e145cde8956bbcffc79479",
+        "public/svolta.css": "f81904ebcf820f2f00c79464ff76642ab5255ae3af3899183957a915b43f646f",
+        "public/svolta.js": "80f09d7fbf932faa3d5e3caa48c40b85ed6a5743b03b6f60cb3a20f4a8e297d7",
+        "src/app.mjs": "4d368778a32ca98583d1c0e7e67015bd8f943039b52df577cfaca16b25522d7a",
+        "src/archive.mjs": "1f0dc4aea4cf6d55c122c65e3f111edef4798a48c610a515e175146575a22d03",
+        "src/dates.mjs": "befb2084c723419e957dd976a1e2f9ecd5b92b5c8d768158ba99ce452d794515",
+        "src/errors.mjs": "acbb23489da8c799787caf170d2ff70a9f26c875de462e287cfc911c856baa5f",
+        "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+        "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+        "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+        "src/summary.mjs": "a58abb9c5ef8a37c51f2e6cf434faf761ca5f552fdba000708c6cc61085502e8",
+        "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+        "src/time-entries.mjs": "5a4ff445656c9f15639159e253db1e99e97c010953ee7c2198db4441f0348ebf",
+        "src/week.mjs": "f533bdaed237f9b051608355d588f3b5147653c0d81143e7b5d7148a0dee2eeb",
+        "tests/acceptance.mjs": "ee4f811515605a5cbab795c9ad4e40777774006bad8fe350c54590e1836c3235",
+        "tests/browser.mjs": "6831d64e0d524554f959084e5a3c25b86f5255a5f850da9365a824149632a952",
+        "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+      },
+      "fingerprint": "dcc402e3656b92124b39bb00f09bf204b3791412b14a70dc6c8c09c4e824d1e7"
+    },
+    "scope": [],
+    "inputs": [],
+    "invalidatedReason": "Evidence is STALE: README.md, docs/guida.md, public/svolta.js. Scope: all repository files.",
+    "source": {
+      "runId": "20261020T223531-20d32b1b",
+      "throughSeq": 135,
+      "contractVersion": 1,
+      "recordedEvent": {
+        "runId": "20261020T223531-20d32b1b",
+        "seq": 76,
+        "eventId": "2d8bdf4a-4d5b-41e8-965c-37c59a851da0",
+        "at": "2026-10-20T22:57:56.027Z",
+        "type": "verification.passed"
+      }
+    }
+  },
+  {
+    "id": "726c81b5-0902-403e-bc7c-edbe1a756316",
+    "nodeId": "6d0551dd-f588-4855-9bd8-fbd6c6bd03bf",
+    "criterionId": "board-ui",
+    "contractVersion": 1,
+    "kind": "deterministic",
+    "status": "stale",
+    "createdAt": "2026-10-20T22:57:58.862Z",
+    "command": [
+      "node",
+      "tests/acceptance.mjs",
+      "board-ui"
+    ],
+    "exitCode": 0,
+    "output": "PASS create a project and task through the actual interface\nPASS edit, filter and preserve the changed activity after reopening\nPASS concurrent interface edits cannot silently overwrite another tab\nPASS literal hostile text and mobile layout\n{\"criterion\":\"board-ui\",\"result\":\"PASS\",\"groups\":4}\n",
+    "durationMs": 2537,
+    "stamp": {
+      "head": "980d9648d2dadfda664aca92b4dfa032b91622dd",
+      "files": {
+        ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+        "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+        "README.md": "bd2229e46fcd9063dd88c40db840120897c6fad049105d3a54552e35ea4fa742",
+        "docs/guida.md": "265523fdff39113f038649cda8bb18113a205990da587d428631c85de2f3c954",
+        "docs/verifiche.md": "56c6354ccd853948940dd67c6579bef72fff630f01941d064ed58eb78da64090",
+        "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+        "public/index.html": "6fac8f98234b9a2861abc405819c28698f1dd9db91e145cde8956bbcffc79479",
+        "public/svolta.css": "f81904ebcf820f2f00c79464ff76642ab5255ae3af3899183957a915b43f646f",
+        "public/svolta.js": "80f09d7fbf932faa3d5e3caa48c40b85ed6a5743b03b6f60cb3a20f4a8e297d7",
+        "src/app.mjs": "4d368778a32ca98583d1c0e7e67015bd8f943039b52df577cfaca16b25522d7a",
+        "src/archive.mjs": "1f0dc4aea4cf6d55c122c65e3f111edef4798a48c610a515e175146575a22d03",
+        "src/dates.mjs": "befb2084c723419e957dd976a1e2f9ecd5b92b5c8d768158ba99ce452d794515",
+        "src/errors.mjs": "acbb23489da8c799787caf170d2ff70a9f26c875de462e287cfc911c856baa5f",
+        "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+        "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+        "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+        "src/summary.mjs": "a58abb9c5ef8a37c51f2e6cf434faf761ca5f552fdba000708c6cc61085502e8",
+        "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+        "src/time-entries.mjs": "5a4ff445656c9f15639159e253db1e99e97c010953ee7c2198db4441f0348ebf",
+        "src/week.mjs": "f533bdaed237f9b051608355d588f3b5147653c0d81143e7b5d7148a0dee2eeb",
+        "tests/acceptance.mjs": "ee4f811515605a5cbab795c9ad4e40777774006bad8fe350c54590e1836c3235",
+        "tests/browser.mjs": "6831d64e0d524554f959084e5a3c25b86f5255a5f850da9365a824149632a952",
+        "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+      },
+      "fingerprint": "dcc402e3656b92124b39bb00f09bf204b3791412b14a70dc6c8c09c4e824d1e7"
+    },
+    "scope": [],
+    "inputs": [],
+    "invalidatedReason": "Evidence is STALE: README.md, docs/guida.md, public/svolta.js. Scope: all repository files.",
+    "source": {
+      "runId": "20261020T223531-20d32b1b",
+      "throughSeq": 135,
+      "contractVersion": 1,
+      "recordedEvent": {
+        "runId": "20261020T223531-20d32b1b",
+        "seq": 78,
+        "eventId": "1ccc920f-a751-49dd-a5fc-2ec844f24876",
+        "at": "2026-10-20T22:57:58.921Z",
+        "type": "verification.passed"
+      }
+    }
+  },
+  {
+    "id": "4d185f32-befe-4e3e-8814-afd49cfb7bd8",
+    "nodeId": "6954ee94-d1ca-4dca-85cd-f8200e5e865b",
+    "criterionId": "planning-api",
+    "contractVersion": 1,
+    "kind": "deterministic",
+    "status": "stale",
+    "createdAt": "2026-10-20T22:58:00.681Z",
+    "command": [
+      "node",
+      "tests/acceptance.mjs",
+      "planning-api"
+    ],
+    "exitCode": 0,
+    "output": "PASS civil seven-day plan and unscheduled work\nPASS Monday and impossible-date rejection\nPASS time records preserve links and task status\nPASS weekly time and full-archive task counts are distinguished\nPASS invalid time entries do not write\nPASS deleting one session updates totals without deleting others\nPASS archiving a task preserves history and restart\n{\"criterion\":\"planning-api\",\"result\":\"PASS\",\"groups\":7}\n",
+    "durationMs": 1379,
+    "stamp": {
+      "head": "980d9648d2dadfda664aca92b4dfa032b91622dd",
+      "files": {
+        ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+        "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+        "README.md": "bd2229e46fcd9063dd88c40db840120897c6fad049105d3a54552e35ea4fa742",
+        "docs/guida.md": "265523fdff39113f038649cda8bb18113a205990da587d428631c85de2f3c954",
+        "docs/verifiche.md": "56c6354ccd853948940dd67c6579bef72fff630f01941d064ed58eb78da64090",
+        "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+        "public/index.html": "6fac8f98234b9a2861abc405819c28698f1dd9db91e145cde8956bbcffc79479",
+        "public/svolta.css": "f81904ebcf820f2f00c79464ff76642ab5255ae3af3899183957a915b43f646f",
+        "public/svolta.js": "80f09d7fbf932faa3d5e3caa48c40b85ed6a5743b03b6f60cb3a20f4a8e297d7",
+        "src/app.mjs": "4d368778a32ca98583d1c0e7e67015bd8f943039b52df577cfaca16b25522d7a",
+        "src/archive.mjs": "1f0dc4aea4cf6d55c122c65e3f111edef4798a48c610a515e175146575a22d03",
+        "src/dates.mjs": "befb2084c723419e957dd976a1e2f9ecd5b92b5c8d768158ba99ce452d794515",
+        "src/errors.mjs": "acbb23489da8c799787caf170d2ff70a9f26c875de462e287cfc911c856baa5f",
+        "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+        "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+        "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+        "src/summary.mjs": "a58abb9c5ef8a37c51f2e6cf434faf761ca5f552fdba000708c6cc61085502e8",
+        "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+        "src/time-entries.mjs": "5a4ff445656c9f15639159e253db1e99e97c010953ee7c2198db4441f0348ebf",
+        "src/week.mjs": "f533bdaed237f9b051608355d588f3b5147653c0d81143e7b5d7148a0dee2eeb",
+        "tests/acceptance.mjs": "ee4f811515605a5cbab795c9ad4e40777774006bad8fe350c54590e1836c3235",
+        "tests/browser.mjs": "6831d64e0d524554f959084e5a3c25b86f5255a5f850da9365a824149632a952",
+        "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+      },
+      "fingerprint": "dcc402e3656b92124b39bb00f09bf204b3791412b14a70dc6c8c09c4e824d1e7"
+    },
+    "scope": [],
+    "inputs": [],
+    "invalidatedReason": "Evidence is STALE: README.md, docs/guida.md, public/svolta.js. Scope: all repository files.",
+    "source": {
+      "runId": "20261020T223531-20d32b1b",
+      "throughSeq": 135,
+      "contractVersion": 1,
+      "recordedEvent": {
+        "runId": "20261020T223531-20d32b1b",
+        "seq": 80,
+        "eventId": "bbcacb78-47a7-4151-b7dc-de22cd031719",
+        "at": "2026-10-20T22:58:00.722Z",
+        "type": "verification.passed"
+      }
+    }
+  },
+  {
+    "id": "87a85081-8320-48d9-a5f9-fd5991e2d99c",
+    "nodeId": "e606a460-047c-4555-ba22-a4ba32a17601",
+    "criterionId": "planning-ui",
+    "contractVersion": 1,
+    "kind": "deterministic",
+    "status": "failed",
+    "createdAt": "2026-10-20T22:58:32.217Z",
+    "command": [
+      "node",
+      "tests/acceptance.mjs",
+      "planning-ui"
+    ],
+    "exitCode": 1,
+    "output": "PASS reschedule a task and see it in its actual weekly day\nnode:internal/modules/run_main:123\n    triggerUncaughtException(\n    ^\n\nlocator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for getByRole('dialog', { name: 'Registra tempo', exact: true }) to be hidden\n    64 × locator resolved to visible <dialog open=\"\" id=\"time-dialog\" aria-labelledby=\"time-dialog-heading\" aria-describedby=\"time-dialog-help time-dialog-context\">…</dialog>\n\n    at /Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020-r3/data/worktrees/20261020T223531-20d32b1b/tests/browser.mjs:24:643\n    at async check (/Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020-r3/data/worktrees/20261020T223531-20d32b1b/tests/browser.mjs:9:31)\n    at async browserCheck (/Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020-r3/data/worktrees/20261020T223531-20d32b1b/tests/browser.mjs:24:4)\n    at async file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020-r3/data/worktrees/20261020T223531-20d32b1b/tests/acceptance.mjs:56:120\n    at async appTest (/Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020-r3/data/worktrees/20261020T223531-20d32b1b/tests/harness.mjs:42:28)\n    at async file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020-r3/data/worktrees/20261020T223531-20d32b1b/tests/acceptance.mjs:56:1 {\n  log: [\n    \"  - waiting for getByRole('dialog', { name: 'Registra tempo', exact: true }) to be hidden\",\n    '    64 × locator resolved to visible <dialog open=\"\" id=\"time-dialog\" aria-labelledby=\"time-dialog-heading\" aria-describedby=\"time-dialog-help time-dialog-context\">…</dialog>'\n  ],\n  name: 'TimeoutError'\n}\n\nNode.js v22.21.1\n",
+    "durationMs": 31068,
+    "stamp": {
+      "head": "980d9648d2dadfda664aca92b4dfa032b91622dd",
+      "files": {
+        ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+        "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+        "README.md": "bd2229e46fcd9063dd88c40db840120897c6fad049105d3a54552e35ea4fa742",
+        "docs/guida.md": "265523fdff39113f038649cda8bb18113a205990da587d428631c85de2f3c954",
+        "docs/verifiche.md": "56c6354ccd853948940dd67c6579bef72fff630f01941d064ed58eb78da64090",
+        "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+        "public/index.html": "6fac8f98234b9a2861abc405819c28698f1dd9db91e145cde8956bbcffc79479",
+        "public/svolta.css": "f81904ebcf820f2f00c79464ff76642ab5255ae3af3899183957a915b43f646f",
+        "public/svolta.js": "80f09d7fbf932faa3d5e3caa48c40b85ed6a5743b03b6f60cb3a20f4a8e297d7",
+        "src/app.mjs": "4d368778a32ca98583d1c0e7e67015bd8f943039b52df577cfaca16b25522d7a",
+        "src/archive.mjs": "1f0dc4aea4cf6d55c122c65e3f111edef4798a48c610a515e175146575a22d03",
+        "src/dates.mjs": "befb2084c723419e957dd976a1e2f9ecd5b92b5c8d768158ba99ce452d794515",
+        "src/errors.mjs": "acbb23489da8c799787caf170d2ff70a9f26c875de462e287cfc911c856baa5f",
+        "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+        "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+        "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+        "src/summary.mjs": "a58abb9c5ef8a37c51f2e6cf434faf761ca5f552fdba000708c6cc61085502e8",
+        "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+        "src/time-entries.mjs": "5a4ff445656c9f15639159e253db1e99e97c010953ee7c2198db4441f0348ebf",
+        "src/week.mjs": "f533bdaed237f9b051608355d588f3b5147653c0d81143e7b5d7148a0dee2eeb",
+        "tests/acceptance.mjs": "ee4f811515605a5cbab795c9ad4e40777774006bad8fe350c54590e1836c3235",
+        "tests/browser.mjs": "6831d64e0d524554f959084e5a3c25b86f5255a5f850da9365a824149632a952",
+        "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+      },
+      "fingerprint": "dcc402e3656b92124b39bb00f09bf204b3791412b14a70dc6c8c09c4e824d1e7"
+    },
+    "scope": [],
+    "inputs": [],
+    "source": {
+      "runId": "20261020T223531-20d32b1b",
+      "throughSeq": 135,
+      "contractVersion": 1,
+      "recordedEvent": {
+        "runId": "20261020T223531-20d32b1b",
+        "seq": 82,
+        "eventId": "80994f19-3b15-468d-bbed-79a94a11f643",
+        "at": "2026-10-20T22:58:32.264Z",
+        "type": "verification.failed"
+      }
+    }
+  },
+  {
+    "id": "169f6b78-3e5e-47b9-b0d3-c5e884f66040",
+    "nodeId": "c00f8746-4b23-4452-8440-dbb5be485663",
+    "criterionId": "planning-ui",
+    "contractVersion": 1,
+    "kind": "deterministic",
+    "status": "failed",
+    "createdAt": "2026-10-20T23:00:45.488Z",
+    "command": [
+      "node",
+      "tests/acceptance.mjs",
+      "planning-ui"
+    ],
+    "exitCode": 1,
+    "output": "PASS reschedule a task and see it in its actual weekly day\nnode:internal/modules/run_main:123\n    triggerUncaughtException(\n    ^\n\nlocator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for getByText('Apprendimento', { exact: true }).first() to be visible\n    64 × locator resolved to hidden <p class=\"project-name\">Apprendimento</p>\n\n    at /Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020-r3/data/worktrees/20261020T223531-20d32b1b/tests/browser.mjs:24:946\n    at async check (/Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020-r3/data/worktrees/20261020T223531-20d32b1b/tests/browser.mjs:9:31)\n    at async browserCheck (/Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020-r3/data/worktrees/20261020T223531-20d32b1b/tests/browser.mjs:24:4)\n    at async file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020-r3/data/worktrees/20261020T223531-20d32b1b/tests/acceptance.mjs:56:120\n    at async appTest (/Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020-r3/data/worktrees/20261020T223531-20d32b1b/tests/harness.mjs:42:28)\n    at async file:///Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020-r3/data/worktrees/20261020T223531-20d32b1b/tests/acceptance.mjs:56:1 {\n  log: [\n    \"  - waiting for getByText('Apprendimento', { exact: true }).first() to be visible\",\n    '    64 × locator resolved to hidden <p class=\"project-name\">Apprendimento</p>'\n  ],\n  name: 'TimeoutError'\n}\n\nNode.js v22.21.1\n",
+    "durationMs": 31207,
+    "stamp": {
+      "head": "980d9648d2dadfda664aca92b4dfa032b91622dd",
+      "files": {
+        ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+        "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+        "README.md": "66888882a54cfc1141b2b069976a7c1d83b54d28f3f65d60d61d835545e35ed4",
+        "docs/guida.md": "1674703f22a654a73d601fcabdfd0f998fd5c59a05cbe829aced1f95467e036f",
+        "docs/verifiche.md": "56c6354ccd853948940dd67c6579bef72fff630f01941d064ed58eb78da64090",
+        "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+        "public/index.html": "6fac8f98234b9a2861abc405819c28698f1dd9db91e145cde8956bbcffc79479",
+        "public/svolta.css": "f81904ebcf820f2f00c79464ff76642ab5255ae3af3899183957a915b43f646f",
+        "public/svolta.js": "b73f72b9d5cdedaed7244db32f757cbcab3f319f9cc67ca190eaf1e64deed296",
+        "src/app.mjs": "4d368778a32ca98583d1c0e7e67015bd8f943039b52df577cfaca16b25522d7a",
+        "src/archive.mjs": "1f0dc4aea4cf6d55c122c65e3f111edef4798a48c610a515e175146575a22d03",
+        "src/dates.mjs": "befb2084c723419e957dd976a1e2f9ecd5b92b5c8d768158ba99ce452d794515",
+        "src/errors.mjs": "acbb23489da8c799787caf170d2ff70a9f26c875de462e287cfc911c856baa5f",
+        "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+        "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+        "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+        "src/summary.mjs": "a58abb9c5ef8a37c51f2e6cf434faf761ca5f552fdba000708c6cc61085502e8",
+        "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+        "src/time-entries.mjs": "5a4ff445656c9f15639159e253db1e99e97c010953ee7c2198db4441f0348ebf",
+        "src/week.mjs": "f533bdaed237f9b051608355d588f3b5147653c0d81143e7b5d7148a0dee2eeb",
+        "tests/acceptance.mjs": "ee4f811515605a5cbab795c9ad4e40777774006bad8fe350c54590e1836c3235",
+        "tests/browser.mjs": "6831d64e0d524554f959084e5a3c25b86f5255a5f850da9365a824149632a952",
+        "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+      },
+      "fingerprint": "56dc1622960ba3117d02a3b15ee93a054ac230880f382fa8416ca4215f1cab38"
+    },
+    "scope": [],
+    "inputs": [],
+    "source": {
+      "runId": "20261020T223531-20d32b1b",
+      "throughSeq": 135,
+      "contractVersion": 1,
+      "recordedEvent": {
+        "runId": "20261020T223531-20d32b1b",
+        "seq": 102,
+        "eventId": "03259bff-6daa-4365-84bb-10c69a84b976",
+        "at": "2026-10-20T23:00:45.534Z",
+        "type": "verification.failed"
+      }
+    }
+  },
+  {
+    "id": "7d4e78d1-6312-4087-8cd1-bf98be6f9248",
+    "nodeId": "d280828a-b647-432a-a92f-aecb2882c731",
+    "criterionId": "planning-ui",
+    "contractVersion": 1,
+    "kind": "deterministic",
+    "status": "passed",
+    "createdAt": "2026-10-20T23:02:26.872Z",
+    "command": [
+      "node",
+      "tests/acceptance.mjs",
+      "planning-ui"
+    ],
+    "exitCode": 0,
+    "output": "PASS reschedule a task and see it in its actual weekly day\nPASS time entry changes the real week summary\nPASS weekly mobile layout and persisted sessions\n{\"criterion\":\"planning-ui\",\"result\":\"PASS\",\"groups\":3}\n",
+    "durationMs": 2453,
+    "stamp": {
+      "head": "980d9648d2dadfda664aca92b4dfa032b91622dd",
+      "files": {
+        ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+        "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+        "README.md": "66888882a54cfc1141b2b069976a7c1d83b54d28f3f65d60d61d835545e35ed4",
+        "docs/guida.md": "1674703f22a654a73d601fcabdfd0f998fd5c59a05cbe829aced1f95467e036f",
+        "docs/verifiche.md": "56c6354ccd853948940dd67c6579bef72fff630f01941d064ed58eb78da64090",
+        "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+        "public/index.html": "6fac8f98234b9a2861abc405819c28698f1dd9db91e145cde8956bbcffc79479",
+        "public/svolta.css": "f81904ebcf820f2f00c79464ff76642ab5255ae3af3899183957a915b43f646f",
+        "public/svolta.js": "426e33279a1739e4e43b488deff13b2b9817c1ea6436249a8f78f50bdeb64675",
+        "src/app.mjs": "4d368778a32ca98583d1c0e7e67015bd8f943039b52df577cfaca16b25522d7a",
+        "src/archive.mjs": "1f0dc4aea4cf6d55c122c65e3f111edef4798a48c610a515e175146575a22d03",
+        "src/dates.mjs": "befb2084c723419e957dd976a1e2f9ecd5b92b5c8d768158ba99ce452d794515",
+        "src/errors.mjs": "acbb23489da8c799787caf170d2ff70a9f26c875de462e287cfc911c856baa5f",
+        "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+        "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+        "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+        "src/summary.mjs": "a58abb9c5ef8a37c51f2e6cf434faf761ca5f552fdba000708c6cc61085502e8",
+        "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+        "src/time-entries.mjs": "5a4ff445656c9f15639159e253db1e99e97c010953ee7c2198db4441f0348ebf",
+        "src/week.mjs": "f533bdaed237f9b051608355d588f3b5147653c0d81143e7b5d7148a0dee2eeb",
+        "tests/acceptance.mjs": "ee4f811515605a5cbab795c9ad4e40777774006bad8fe350c54590e1836c3235",
+        "tests/browser.mjs": "6831d64e0d524554f959084e5a3c25b86f5255a5f850da9365a824149632a952",
+        "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+      },
+      "fingerprint": "e345b5b2df948900485f522971dc1104b80f8505aa278f9aeee9582767dca2dd"
+    },
+    "scope": [],
+    "inputs": [],
+    "source": {
+      "runId": "20261020T223531-20d32b1b",
+      "throughSeq": 135,
+      "contractVersion": 1,
+      "recordedEvent": {
+        "runId": "20261020T223531-20d32b1b",
+        "seq": 118,
+        "eventId": "18ca5ea8-6e13-4e58-a52c-91fe1d7dd53d",
+        "at": "2026-10-20T23:02:26.926Z",
+        "type": "verification.passed"
+      }
+    }
+  },
+  {
+    "id": "741155fd-9919-4749-9fb7-ef54155d4e5a",
+    "nodeId": "3ef66725-2c7d-490b-81fe-9ae32dac9c2b",
+    "criterionId": "projects-api",
+    "contractVersion": 1,
+    "kind": "deterministic",
+    "status": "passed",
+    "createdAt": "2026-10-20T23:02:28.811Z",
+    "command": [
+      "node",
+      "tests/acceptance.mjs",
+      "projects-api"
+    ],
+    "exitCode": 0,
+    "output": "PASS empty archive\nPASS create project with stable defaults\nPASS optimistic project edit\nPASS invalid names and missing revisions do not write\nPASS project archival survives restart\nPASS unknown project does not create a record\n{\"criterion\":\"projects-api\",\"result\":\"PASS\",\"groups\":6}\n",
+    "durationMs": 1335,
+    "stamp": {
+      "head": "980d9648d2dadfda664aca92b4dfa032b91622dd",
+      "files": {
+        ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+        "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+        "README.md": "66888882a54cfc1141b2b069976a7c1d83b54d28f3f65d60d61d835545e35ed4",
+        "docs/guida.md": "1674703f22a654a73d601fcabdfd0f998fd5c59a05cbe829aced1f95467e036f",
+        "docs/verifiche.md": "56c6354ccd853948940dd67c6579bef72fff630f01941d064ed58eb78da64090",
+        "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+        "public/index.html": "6fac8f98234b9a2861abc405819c28698f1dd9db91e145cde8956bbcffc79479",
+        "public/svolta.css": "f81904ebcf820f2f00c79464ff76642ab5255ae3af3899183957a915b43f646f",
+        "public/svolta.js": "426e33279a1739e4e43b488deff13b2b9817c1ea6436249a8f78f50bdeb64675",
+        "src/app.mjs": "4d368778a32ca98583d1c0e7e67015bd8f943039b52df577cfaca16b25522d7a",
+        "src/archive.mjs": "1f0dc4aea4cf6d55c122c65e3f111edef4798a48c610a515e175146575a22d03",
+        "src/dates.mjs": "befb2084c723419e957dd976a1e2f9ecd5b92b5c8d768158ba99ce452d794515",
+        "src/errors.mjs": "acbb23489da8c799787caf170d2ff70a9f26c875de462e287cfc911c856baa5f",
+        "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+        "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+        "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+        "src/summary.mjs": "a58abb9c5ef8a37c51f2e6cf434faf761ca5f552fdba000708c6cc61085502e8",
+        "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+        "src/time-entries.mjs": "5a4ff445656c9f15639159e253db1e99e97c010953ee7c2198db4441f0348ebf",
+        "src/week.mjs": "f533bdaed237f9b051608355d588f3b5147653c0d81143e7b5d7148a0dee2eeb",
+        "tests/acceptance.mjs": "ee4f811515605a5cbab795c9ad4e40777774006bad8fe350c54590e1836c3235",
+        "tests/browser.mjs": "6831d64e0d524554f959084e5a3c25b86f5255a5f850da9365a824149632a952",
+        "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+      },
+      "fingerprint": "e345b5b2df948900485f522971dc1104b80f8505aa278f9aeee9582767dca2dd"
+    },
+    "scope": [],
+    "inputs": [],
+    "source": {
+      "runId": "20261020T223531-20d32b1b",
+      "throughSeq": 135,
+      "contractVersion": 1,
+      "recordedEvent": {
+        "runId": "20261020T223531-20d32b1b",
+        "seq": 120,
+        "eventId": "16c95961-0203-4ebf-88f4-d16b1d797cdb",
+        "at": "2026-10-20T23:02:28.866Z",
+        "type": "verification.passed"
+      }
+    }
+  },
+  {
+    "id": "5ac7cdca-127f-4808-b783-9701aabd76d1",
+    "nodeId": "beebb4a9-0986-48d9-9dc8-175d79263459",
+    "criterionId": "tasks-api",
+    "contractVersion": 1,
+    "kind": "deterministic",
+    "status": "passed",
+    "createdAt": "2026-10-20T23:02:30.857Z",
+    "command": [
+      "node",
+      "tests/acceptance.mjs",
+      "tasks-api"
+    ],
+    "exitCode": 0,
+    "output": "PASS task defaults and exact fields\nPASS task edit, revision conflicts and combined filters\nPASS civil dates, invalid states and numeric validation\nPASS parallel stale writers cannot overwrite each other\nPASS archived projects disappear from general activity list\nPASS task persistence and malformed JSON\n{\"criterion\":\"tasks-api\",\"result\":\"PASS\",\"groups\":6}\n",
+    "durationMs": 1352,
+    "stamp": {
+      "head": "980d9648d2dadfda664aca92b4dfa032b91622dd",
+      "files": {
+        ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+        "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+        "README.md": "66888882a54cfc1141b2b069976a7c1d83b54d28f3f65d60d61d835545e35ed4",
+        "docs/guida.md": "1674703f22a654a73d601fcabdfd0f998fd5c59a05cbe829aced1f95467e036f",
+        "docs/verifiche.md": "56c6354ccd853948940dd67c6579bef72fff630f01941d064ed58eb78da64090",
+        "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+        "public/index.html": "6fac8f98234b9a2861abc405819c28698f1dd9db91e145cde8956bbcffc79479",
+        "public/svolta.css": "f81904ebcf820f2f00c79464ff76642ab5255ae3af3899183957a915b43f646f",
+        "public/svolta.js": "426e33279a1739e4e43b488deff13b2b9817c1ea6436249a8f78f50bdeb64675",
+        "src/app.mjs": "4d368778a32ca98583d1c0e7e67015bd8f943039b52df577cfaca16b25522d7a",
+        "src/archive.mjs": "1f0dc4aea4cf6d55c122c65e3f111edef4798a48c610a515e175146575a22d03",
+        "src/dates.mjs": "befb2084c723419e957dd976a1e2f9ecd5b92b5c8d768158ba99ce452d794515",
+        "src/errors.mjs": "acbb23489da8c799787caf170d2ff70a9f26c875de462e287cfc911c856baa5f",
+        "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+        "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+        "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+        "src/summary.mjs": "a58abb9c5ef8a37c51f2e6cf434faf761ca5f552fdba000708c6cc61085502e8",
+        "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+        "src/time-entries.mjs": "5a4ff445656c9f15639159e253db1e99e97c010953ee7c2198db4441f0348ebf",
+        "src/week.mjs": "f533bdaed237f9b051608355d588f3b5147653c0d81143e7b5d7148a0dee2eeb",
+        "tests/acceptance.mjs": "ee4f811515605a5cbab795c9ad4e40777774006bad8fe350c54590e1836c3235",
+        "tests/browser.mjs": "6831d64e0d524554f959084e5a3c25b86f5255a5f850da9365a824149632a952",
+        "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+      },
+      "fingerprint": "e345b5b2df948900485f522971dc1104b80f8505aa278f9aeee9582767dca2dd"
+    },
+    "scope": [],
+    "inputs": [],
+    "source": {
+      "runId": "20261020T223531-20d32b1b",
+      "throughSeq": 135,
+      "contractVersion": 1,
+      "recordedEvent": {
+        "runId": "20261020T223531-20d32b1b",
+        "seq": 122,
+        "eventId": "896112f4-ea42-48d3-94c5-0daa04f21591",
+        "at": "2026-10-20T23:02:30.914Z",
+        "type": "verification.passed"
+      }
+    }
+  },
+  {
+    "id": "43117f10-727c-4e72-9468-98055d56843d",
+    "nodeId": "8b4ee42f-d7eb-4d39-ac92-2ed8202596c5",
+    "criterionId": "board-ui",
+    "contractVersion": 1,
+    "kind": "deterministic",
+    "status": "passed",
+    "createdAt": "2026-10-20T23:02:34.157Z",
+    "command": [
+      "node",
+      "tests/acceptance.mjs",
+      "board-ui"
+    ],
+    "exitCode": 0,
+    "output": "PASS create a project and task through the actual interface\nPASS edit, filter and preserve the changed activity after reopening\nPASS concurrent interface edits cannot silently overwrite another tab\nPASS literal hostile text and mobile layout\n{\"criterion\":\"board-ui\",\"result\":\"PASS\",\"groups\":4}\n",
+    "durationMs": 2462,
+    "stamp": {
+      "head": "980d9648d2dadfda664aca92b4dfa032b91622dd",
+      "files": {
+        ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+        "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+        "README.md": "66888882a54cfc1141b2b069976a7c1d83b54d28f3f65d60d61d835545e35ed4",
+        "docs/guida.md": "1674703f22a654a73d601fcabdfd0f998fd5c59a05cbe829aced1f95467e036f",
+        "docs/verifiche.md": "56c6354ccd853948940dd67c6579bef72fff630f01941d064ed58eb78da64090",
+        "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+        "public/index.html": "6fac8f98234b9a2861abc405819c28698f1dd9db91e145cde8956bbcffc79479",
+        "public/svolta.css": "f81904ebcf820f2f00c79464ff76642ab5255ae3af3899183957a915b43f646f",
+        "public/svolta.js": "426e33279a1739e4e43b488deff13b2b9817c1ea6436249a8f78f50bdeb64675",
+        "src/app.mjs": "4d368778a32ca98583d1c0e7e67015bd8f943039b52df577cfaca16b25522d7a",
+        "src/archive.mjs": "1f0dc4aea4cf6d55c122c65e3f111edef4798a48c610a515e175146575a22d03",
+        "src/dates.mjs": "befb2084c723419e957dd976a1e2f9ecd5b92b5c8d768158ba99ce452d794515",
+        "src/errors.mjs": "acbb23489da8c799787caf170d2ff70a9f26c875de462e287cfc911c856baa5f",
+        "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+        "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+        "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+        "src/summary.mjs": "a58abb9c5ef8a37c51f2e6cf434faf761ca5f552fdba000708c6cc61085502e8",
+        "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+        "src/time-entries.mjs": "5a4ff445656c9f15639159e253db1e99e97c010953ee7c2198db4441f0348ebf",
+        "src/week.mjs": "f533bdaed237f9b051608355d588f3b5147653c0d81143e7b5d7148a0dee2eeb",
+        "tests/acceptance.mjs": "ee4f811515605a5cbab795c9ad4e40777774006bad8fe350c54590e1836c3235",
+        "tests/browser.mjs": "6831d64e0d524554f959084e5a3c25b86f5255a5f850da9365a824149632a952",
+        "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+      },
+      "fingerprint": "e345b5b2df948900485f522971dc1104b80f8505aa278f9aeee9582767dca2dd"
+    },
+    "scope": [],
+    "inputs": [],
+    "source": {
+      "runId": "20261020T223531-20d32b1b",
+      "throughSeq": 135,
+      "contractVersion": 1,
+      "recordedEvent": {
+        "runId": "20261020T223531-20d32b1b",
+        "seq": 124,
+        "eventId": "bf338bdd-6d00-4b22-82b2-bf1e35537aeb",
+        "at": "2026-10-20T23:02:34.213Z",
+        "type": "verification.passed"
+      }
+    }
+  },
+  {
+    "id": "727ce172-3411-4f45-a166-cbfe3f25efcc",
+    "nodeId": "8fc4eab9-9a7c-46f9-83b2-813fe218587f",
+    "criterionId": "planning-api",
+    "contractVersion": 1,
+    "kind": "deterministic",
+    "status": "passed",
+    "createdAt": "2026-10-20T23:02:36.465Z",
+    "command": [
+      "node",
+      "tests/acceptance.mjs",
+      "planning-api"
+    ],
+    "exitCode": 0,
+    "output": "PASS civil seven-day plan and unscheduled work\nPASS Monday and impossible-date rejection\nPASS time records preserve links and task status\nPASS weekly time and full-archive task counts are distinguished\nPASS invalid time entries do not write\nPASS deleting one session updates totals without deleting others\nPASS archiving a task preserves history and restart\n{\"criterion\":\"planning-api\",\"result\":\"PASS\",\"groups\":7}\n",
+    "durationMs": 1395,
+    "stamp": {
+      "head": "980d9648d2dadfda664aca92b4dfa032b91622dd",
+      "files": {
+        ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+        "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+        "README.md": "66888882a54cfc1141b2b069976a7c1d83b54d28f3f65d60d61d835545e35ed4",
+        "docs/guida.md": "1674703f22a654a73d601fcabdfd0f998fd5c59a05cbe829aced1f95467e036f",
+        "docs/verifiche.md": "56c6354ccd853948940dd67c6579bef72fff630f01941d064ed58eb78da64090",
+        "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+        "public/index.html": "6fac8f98234b9a2861abc405819c28698f1dd9db91e145cde8956bbcffc79479",
+        "public/svolta.css": "f81904ebcf820f2f00c79464ff76642ab5255ae3af3899183957a915b43f646f",
+        "public/svolta.js": "426e33279a1739e4e43b488deff13b2b9817c1ea6436249a8f78f50bdeb64675",
+        "src/app.mjs": "4d368778a32ca98583d1c0e7e67015bd8f943039b52df577cfaca16b25522d7a",
+        "src/archive.mjs": "1f0dc4aea4cf6d55c122c65e3f111edef4798a48c610a515e175146575a22d03",
+        "src/dates.mjs": "befb2084c723419e957dd976a1e2f9ecd5b92b5c8d768158ba99ce452d794515",
+        "src/errors.mjs": "acbb23489da8c799787caf170d2ff70a9f26c875de462e287cfc911c856baa5f",
+        "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+        "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+        "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+        "src/summary.mjs": "a58abb9c5ef8a37c51f2e6cf434faf761ca5f552fdba000708c6cc61085502e8",
+        "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+        "src/time-entries.mjs": "5a4ff445656c9f15639159e253db1e99e97c010953ee7c2198db4441f0348ebf",
+        "src/week.mjs": "f533bdaed237f9b051608355d588f3b5147653c0d81143e7b5d7148a0dee2eeb",
+        "tests/acceptance.mjs": "ee4f811515605a5cbab795c9ad4e40777774006bad8fe350c54590e1836c3235",
+        "tests/browser.mjs": "6831d64e0d524554f959084e5a3c25b86f5255a5f850da9365a824149632a952",
+        "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+      },
+      "fingerprint": "e345b5b2df948900485f522971dc1104b80f8505aa278f9aeee9582767dca2dd"
+    },
+    "scope": [],
+    "inputs": [],
+    "source": {
+      "runId": "20261020T223531-20d32b1b",
+      "throughSeq": 135,
+      "contractVersion": 1,
+      "recordedEvent": {
+        "runId": "20261020T223531-20d32b1b",
+        "seq": 126,
+        "eventId": "61b4b826-c919-4053-bf4a-76a51bc650a8",
+        "at": "2026-10-20T23:02:36.533Z",
+        "type": "verification.passed"
+      }
+    }
+  }
+]
+```
+
+#### Latest recorded mission state (separate from checkpoint proof)
+
+```json
+{
+  "availability": "AVAILABLE",
+  "unavailableReason": null,
+  "runId": "20261020T223531-20d32b1b",
+  "seq": 135,
+  "at": "2026-10-20T23:04:37.228Z",
+  "status": "BLOCKED",
+  "reason": "Project findings must reference actual recorded files and known evidence",
+  "contractVersion": 1,
+  "hasLaterEvents": null,
+  "criteria": [
+    {
+      "id": "projects-api",
+      "title": "Archivio progetti persistente e revisioni",
+      "command": [
+        "node",
+        "tests/acceptance.mjs",
+        "projects-api"
+      ],
+      "scope": [],
+      "timeoutMs": 120000,
+      "status": "PASSED",
+      "basis": "latest-recorded-state",
+      "sourceRunId": "20261020T223531-20d32b1b",
+      "sourceSeq": 135,
+      "contractVersion": 1,
+      "recordedCriterion": {
+        "id": "projects-api",
+        "title": "Archivio progetti persistente e revisioni",
+        "command": [
+          "node",
+          "tests/acceptance.mjs",
+          "projects-api"
+        ],
+        "scope": [],
+        "timeoutMs": 120000
+      },
+      "evidenceId": "741155fd-9919-4749-9fb7-ef54155d4e5a",
+      "evidence": {
+        "id": "741155fd-9919-4749-9fb7-ef54155d4e5a",
+        "nodeId": "3ef66725-2c7d-490b-81fe-9ae32dac9c2b",
+        "criterionId": "projects-api",
+        "contractVersion": 1,
+        "kind": "deterministic",
+        "status": "passed",
+        "createdAt": "2026-10-20T23:02:28.811Z",
+        "command": [
+          "node",
+          "tests/acceptance.mjs",
+          "projects-api"
+        ],
+        "exitCode": 0,
+        "output": "PASS empty archive\nPASS create project with stable defaults\nPASS optimistic project edit\nPASS invalid names and missing revisions do not write\nPASS project archival survives restart\nPASS unknown project does not create a record\n{\"criterion\":\"projects-api\",\"result\":\"PASS\",\"groups\":6}\n",
+        "durationMs": 1335,
+        "stamp": {
+          "head": "980d9648d2dadfda664aca92b4dfa032b91622dd",
+          "files": {
+            ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+            "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+            "README.md": "66888882a54cfc1141b2b069976a7c1d83b54d28f3f65d60d61d835545e35ed4",
+            "docs/guida.md": "1674703f22a654a73d601fcabdfd0f998fd5c59a05cbe829aced1f95467e036f",
+            "docs/verifiche.md": "56c6354ccd853948940dd67c6579bef72fff630f01941d064ed58eb78da64090",
+            "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+            "public/index.html": "6fac8f98234b9a2861abc405819c28698f1dd9db91e145cde8956bbcffc79479",
+            "public/svolta.css": "f81904ebcf820f2f00c79464ff76642ab5255ae3af3899183957a915b43f646f",
+            "public/svolta.js": "426e33279a1739e4e43b488deff13b2b9817c1ea6436249a8f78f50bdeb64675",
+            "src/app.mjs": "4d368778a32ca98583d1c0e7e67015bd8f943039b52df577cfaca16b25522d7a",
+            "src/archive.mjs": "1f0dc4aea4cf6d55c122c65e3f111edef4798a48c610a515e175146575a22d03",
+            "src/dates.mjs": "befb2084c723419e957dd976a1e2f9ecd5b92b5c8d768158ba99ce452d794515",
+            "src/errors.mjs": "acbb23489da8c799787caf170d2ff70a9f26c875de462e287cfc911c856baa5f",
+            "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+            "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+            "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+            "src/summary.mjs": "a58abb9c5ef8a37c51f2e6cf434faf761ca5f552fdba000708c6cc61085502e8",
+            "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+            "src/time-entries.mjs": "5a4ff445656c9f15639159e253db1e99e97c010953ee7c2198db4441f0348ebf",
+            "src/week.mjs": "f533bdaed237f9b051608355d588f3b5147653c0d81143e7b5d7148a0dee2eeb",
+            "tests/acceptance.mjs": "ee4f811515605a5cbab795c9ad4e40777774006bad8fe350c54590e1836c3235",
+            "tests/browser.mjs": "6831d64e0d524554f959084e5a3c25b86f5255a5f850da9365a824149632a952",
+            "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+          },
+          "fingerprint": "e345b5b2df948900485f522971dc1104b80f8505aa278f9aeee9582767dca2dd"
+        },
+        "scope": [],
+        "inputs": [],
+        "source": {
+          "runId": "20261020T223531-20d32b1b",
+          "throughSeq": 135,
+          "contractVersion": 1,
+          "recordedEvent": {
+            "runId": "20261020T223531-20d32b1b",
+            "seq": 120,
+            "eventId": "16c95961-0203-4ebf-88f4-d16b1d797cdb",
+            "at": "2026-10-20T23:02:28.866Z",
+            "type": "verification.passed"
+          }
+        }
+      },
+      "unavailableReason": null
+    },
+    {
+      "id": "tasks-api",
+      "title": "Attività, filtri e conflitti senza perdita di dati",
+      "command": [
+        "node",
+        "tests/acceptance.mjs",
+        "tasks-api"
+      ],
+      "scope": [],
+      "timeoutMs": 120000,
+      "status": "PASSED",
+      "basis": "latest-recorded-state",
+      "sourceRunId": "20261020T223531-20d32b1b",
+      "sourceSeq": 135,
+      "contractVersion": 1,
+      "recordedCriterion": {
+        "id": "tasks-api",
+        "title": "Attività, filtri e conflitti senza perdita di dati",
+        "command": [
+          "node",
+          "tests/acceptance.mjs",
+          "tasks-api"
+        ],
+        "scope": [],
+        "timeoutMs": 120000
+      },
+      "evidenceId": "5ac7cdca-127f-4808-b783-9701aabd76d1",
+      "evidence": {
+        "id": "5ac7cdca-127f-4808-b783-9701aabd76d1",
+        "nodeId": "beebb4a9-0986-48d9-9dc8-175d79263459",
+        "criterionId": "tasks-api",
+        "contractVersion": 1,
+        "kind": "deterministic",
+        "status": "passed",
+        "createdAt": "2026-10-20T23:02:30.857Z",
+        "command": [
+          "node",
+          "tests/acceptance.mjs",
+          "tasks-api"
+        ],
+        "exitCode": 0,
+        "output": "PASS task defaults and exact fields\nPASS task edit, revision conflicts and combined filters\nPASS civil dates, invalid states and numeric validation\nPASS parallel stale writers cannot overwrite each other\nPASS archived projects disappear from general activity list\nPASS task persistence and malformed JSON\n{\"criterion\":\"tasks-api\",\"result\":\"PASS\",\"groups\":6}\n",
+        "durationMs": 1352,
+        "stamp": {
+          "head": "980d9648d2dadfda664aca92b4dfa032b91622dd",
+          "files": {
+            ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+            "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+            "README.md": "66888882a54cfc1141b2b069976a7c1d83b54d28f3f65d60d61d835545e35ed4",
+            "docs/guida.md": "1674703f22a654a73d601fcabdfd0f998fd5c59a05cbe829aced1f95467e036f",
+            "docs/verifiche.md": "56c6354ccd853948940dd67c6579bef72fff630f01941d064ed58eb78da64090",
+            "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+            "public/index.html": "6fac8f98234b9a2861abc405819c28698f1dd9db91e145cde8956bbcffc79479",
+            "public/svolta.css": "f81904ebcf820f2f00c79464ff76642ab5255ae3af3899183957a915b43f646f",
+            "public/svolta.js": "426e33279a1739e4e43b488deff13b2b9817c1ea6436249a8f78f50bdeb64675",
+            "src/app.mjs": "4d368778a32ca98583d1c0e7e67015bd8f943039b52df577cfaca16b25522d7a",
+            "src/archive.mjs": "1f0dc4aea4cf6d55c122c65e3f111edef4798a48c610a515e175146575a22d03",
+            "src/dates.mjs": "befb2084c723419e957dd976a1e2f9ecd5b92b5c8d768158ba99ce452d794515",
+            "src/errors.mjs": "acbb23489da8c799787caf170d2ff70a9f26c875de462e287cfc911c856baa5f",
+            "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+            "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+            "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+            "src/summary.mjs": "a58abb9c5ef8a37c51f2e6cf434faf761ca5f552fdba000708c6cc61085502e8",
+            "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+            "src/time-entries.mjs": "5a4ff445656c9f15639159e253db1e99e97c010953ee7c2198db4441f0348ebf",
+            "src/week.mjs": "f533bdaed237f9b051608355d588f3b5147653c0d81143e7b5d7148a0dee2eeb",
+            "tests/acceptance.mjs": "ee4f811515605a5cbab795c9ad4e40777774006bad8fe350c54590e1836c3235",
+            "tests/browser.mjs": "6831d64e0d524554f959084e5a3c25b86f5255a5f850da9365a824149632a952",
+            "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+          },
+          "fingerprint": "e345b5b2df948900485f522971dc1104b80f8505aa278f9aeee9582767dca2dd"
+        },
+        "scope": [],
+        "inputs": [],
+        "source": {
+          "runId": "20261020T223531-20d32b1b",
+          "throughSeq": 135,
+          "contractVersion": 1,
+          "recordedEvent": {
+            "runId": "20261020T223531-20d32b1b",
+            "seq": 122,
+            "eventId": "896112f4-ea42-48d3-94c5-0daa04f21591",
+            "at": "2026-10-20T23:02:30.914Z",
+            "type": "verification.passed"
+          }
+        }
+      },
+      "unavailableReason": null
+    },
+    {
+      "id": "board-ui",
+      "title": "Interfaccia progetti e attività su desktop e mobile",
+      "command": [
+        "node",
+        "tests/acceptance.mjs",
+        "board-ui"
+      ],
+      "scope": [],
+      "timeoutMs": 120000,
+      "status": "PASSED",
+      "basis": "latest-recorded-state",
+      "sourceRunId": "20261020T223531-20d32b1b",
+      "sourceSeq": 135,
+      "contractVersion": 1,
+      "recordedCriterion": {
+        "id": "board-ui",
+        "title": "Interfaccia progetti e attività su desktop e mobile",
+        "command": [
+          "node",
+          "tests/acceptance.mjs",
+          "board-ui"
+        ],
+        "scope": [],
+        "timeoutMs": 120000
+      },
+      "evidenceId": "43117f10-727c-4e72-9468-98055d56843d",
+      "evidence": {
+        "id": "43117f10-727c-4e72-9468-98055d56843d",
+        "nodeId": "8b4ee42f-d7eb-4d39-ac92-2ed8202596c5",
+        "criterionId": "board-ui",
+        "contractVersion": 1,
+        "kind": "deterministic",
+        "status": "passed",
+        "createdAt": "2026-10-20T23:02:34.157Z",
+        "command": [
+          "node",
+          "tests/acceptance.mjs",
+          "board-ui"
+        ],
+        "exitCode": 0,
+        "output": "PASS create a project and task through the actual interface\nPASS edit, filter and preserve the changed activity after reopening\nPASS concurrent interface edits cannot silently overwrite another tab\nPASS literal hostile text and mobile layout\n{\"criterion\":\"board-ui\",\"result\":\"PASS\",\"groups\":4}\n",
+        "durationMs": 2462,
+        "stamp": {
+          "head": "980d9648d2dadfda664aca92b4dfa032b91622dd",
+          "files": {
+            ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+            "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+            "README.md": "66888882a54cfc1141b2b069976a7c1d83b54d28f3f65d60d61d835545e35ed4",
+            "docs/guida.md": "1674703f22a654a73d601fcabdfd0f998fd5c59a05cbe829aced1f95467e036f",
+            "docs/verifiche.md": "56c6354ccd853948940dd67c6579bef72fff630f01941d064ed58eb78da64090",
+            "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+            "public/index.html": "6fac8f98234b9a2861abc405819c28698f1dd9db91e145cde8956bbcffc79479",
+            "public/svolta.css": "f81904ebcf820f2f00c79464ff76642ab5255ae3af3899183957a915b43f646f",
+            "public/svolta.js": "426e33279a1739e4e43b488deff13b2b9817c1ea6436249a8f78f50bdeb64675",
+            "src/app.mjs": "4d368778a32ca98583d1c0e7e67015bd8f943039b52df577cfaca16b25522d7a",
+            "src/archive.mjs": "1f0dc4aea4cf6d55c122c65e3f111edef4798a48c610a515e175146575a22d03",
+            "src/dates.mjs": "befb2084c723419e957dd976a1e2f9ecd5b92b5c8d768158ba99ce452d794515",
+            "src/errors.mjs": "acbb23489da8c799787caf170d2ff70a9f26c875de462e287cfc911c856baa5f",
+            "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+            "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+            "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+            "src/summary.mjs": "a58abb9c5ef8a37c51f2e6cf434faf761ca5f552fdba000708c6cc61085502e8",
+            "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+            "src/time-entries.mjs": "5a4ff445656c9f15639159e253db1e99e97c010953ee7c2198db4441f0348ebf",
+            "src/week.mjs": "f533bdaed237f9b051608355d588f3b5147653c0d81143e7b5d7148a0dee2eeb",
+            "tests/acceptance.mjs": "ee4f811515605a5cbab795c9ad4e40777774006bad8fe350c54590e1836c3235",
+            "tests/browser.mjs": "6831d64e0d524554f959084e5a3c25b86f5255a5f850da9365a824149632a952",
+            "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+          },
+          "fingerprint": "e345b5b2df948900485f522971dc1104b80f8505aa278f9aeee9582767dca2dd"
+        },
+        "scope": [],
+        "inputs": [],
+        "source": {
+          "runId": "20261020T223531-20d32b1b",
+          "throughSeq": 135,
+          "contractVersion": 1,
+          "recordedEvent": {
+            "runId": "20261020T223531-20d32b1b",
+            "seq": 124,
+            "eventId": "bf338bdd-6d00-4b22-82b2-bf1e35537aeb",
+            "at": "2026-10-20T23:02:34.213Z",
+            "type": "verification.passed"
+          }
+        }
+      },
+      "unavailableReason": null
+    },
+    {
+      "id": "planning-api",
+      "title": "Settimana civile, sessioni e riepilogo coerente",
+      "command": [
+        "node",
+        "tests/acceptance.mjs",
+        "planning-api"
+      ],
+      "scope": [],
+      "timeoutMs": 120000,
+      "status": "PASSED",
+      "basis": "latest-recorded-state",
+      "sourceRunId": "20261020T223531-20d32b1b",
+      "sourceSeq": 135,
+      "contractVersion": 1,
+      "recordedCriterion": {
+        "id": "planning-api",
+        "title": "Settimana civile, sessioni e riepilogo coerente",
+        "command": [
+          "node",
+          "tests/acceptance.mjs",
+          "planning-api"
+        ],
+        "scope": [],
+        "timeoutMs": 120000
+      },
+      "evidenceId": "727ce172-3411-4f45-a166-cbfe3f25efcc",
+      "evidence": {
+        "id": "727ce172-3411-4f45-a166-cbfe3f25efcc",
+        "nodeId": "8fc4eab9-9a7c-46f9-83b2-813fe218587f",
+        "criterionId": "planning-api",
+        "contractVersion": 1,
+        "kind": "deterministic",
+        "status": "passed",
+        "createdAt": "2026-10-20T23:02:36.465Z",
+        "command": [
+          "node",
+          "tests/acceptance.mjs",
+          "planning-api"
+        ],
+        "exitCode": 0,
+        "output": "PASS civil seven-day plan and unscheduled work\nPASS Monday and impossible-date rejection\nPASS time records preserve links and task status\nPASS weekly time and full-archive task counts are distinguished\nPASS invalid time entries do not write\nPASS deleting one session updates totals without deleting others\nPASS archiving a task preserves history and restart\n{\"criterion\":\"planning-api\",\"result\":\"PASS\",\"groups\":7}\n",
+        "durationMs": 1395,
+        "stamp": {
+          "head": "980d9648d2dadfda664aca92b4dfa032b91622dd",
+          "files": {
+            ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+            "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+            "README.md": "66888882a54cfc1141b2b069976a7c1d83b54d28f3f65d60d61d835545e35ed4",
+            "docs/guida.md": "1674703f22a654a73d601fcabdfd0f998fd5c59a05cbe829aced1f95467e036f",
+            "docs/verifiche.md": "56c6354ccd853948940dd67c6579bef72fff630f01941d064ed58eb78da64090",
+            "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+            "public/index.html": "6fac8f98234b9a2861abc405819c28698f1dd9db91e145cde8956bbcffc79479",
+            "public/svolta.css": "f81904ebcf820f2f00c79464ff76642ab5255ae3af3899183957a915b43f646f",
+            "public/svolta.js": "426e33279a1739e4e43b488deff13b2b9817c1ea6436249a8f78f50bdeb64675",
+            "src/app.mjs": "4d368778a32ca98583d1c0e7e67015bd8f943039b52df577cfaca16b25522d7a",
+            "src/archive.mjs": "1f0dc4aea4cf6d55c122c65e3f111edef4798a48c610a515e175146575a22d03",
+            "src/dates.mjs": "befb2084c723419e957dd976a1e2f9ecd5b92b5c8d768158ba99ce452d794515",
+            "src/errors.mjs": "acbb23489da8c799787caf170d2ff70a9f26c875de462e287cfc911c856baa5f",
+            "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+            "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+            "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+            "src/summary.mjs": "a58abb9c5ef8a37c51f2e6cf434faf761ca5f552fdba000708c6cc61085502e8",
+            "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+            "src/time-entries.mjs": "5a4ff445656c9f15639159e253db1e99e97c010953ee7c2198db4441f0348ebf",
+            "src/week.mjs": "f533bdaed237f9b051608355d588f3b5147653c0d81143e7b5d7148a0dee2eeb",
+            "tests/acceptance.mjs": "ee4f811515605a5cbab795c9ad4e40777774006bad8fe350c54590e1836c3235",
+            "tests/browser.mjs": "6831d64e0d524554f959084e5a3c25b86f5255a5f850da9365a824149632a952",
+            "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+          },
+          "fingerprint": "e345b5b2df948900485f522971dc1104b80f8505aa278f9aeee9582767dca2dd"
+        },
+        "scope": [],
+        "inputs": [],
+        "source": {
+          "runId": "20261020T223531-20d32b1b",
+          "throughSeq": 135,
+          "contractVersion": 1,
+          "recordedEvent": {
+            "runId": "20261020T223531-20d32b1b",
+            "seq": 126,
+            "eventId": "61b4b826-c919-4053-bf4a-76a51bc650a8",
+            "at": "2026-10-20T23:02:36.533Z",
+            "type": "verification.passed"
+          }
+        }
+      },
+      "unavailableReason": null
+    },
+    {
+      "id": "planning-ui",
+      "title": "Pianificazione e tempo dal browser",
+      "command": [
+        "node",
+        "tests/acceptance.mjs",
+        "planning-ui"
+      ],
+      "scope": [],
+      "timeoutMs": 120000,
+      "status": "PASSED",
+      "basis": "latest-recorded-state",
+      "sourceRunId": "20261020T223531-20d32b1b",
+      "sourceSeq": 135,
+      "contractVersion": 1,
+      "recordedCriterion": {
+        "id": "planning-ui",
+        "title": "Pianificazione e tempo dal browser",
+        "command": [
+          "node",
+          "tests/acceptance.mjs",
+          "planning-ui"
+        ],
+        "scope": [],
+        "timeoutMs": 120000
+      },
+      "evidenceId": "7d4e78d1-6312-4087-8cd1-bf98be6f9248",
+      "evidence": {
+        "id": "7d4e78d1-6312-4087-8cd1-bf98be6f9248",
+        "nodeId": "d280828a-b647-432a-a92f-aecb2882c731",
+        "criterionId": "planning-ui",
+        "contractVersion": 1,
+        "kind": "deterministic",
+        "status": "passed",
+        "createdAt": "2026-10-20T23:02:26.872Z",
+        "command": [
+          "node",
+          "tests/acceptance.mjs",
+          "planning-ui"
+        ],
+        "exitCode": 0,
+        "output": "PASS reschedule a task and see it in its actual weekly day\nPASS time entry changes the real week summary\nPASS weekly mobile layout and persisted sessions\n{\"criterion\":\"planning-ui\",\"result\":\"PASS\",\"groups\":3}\n",
+        "durationMs": 2453,
+        "stamp": {
+          "head": "980d9648d2dadfda664aca92b4dfa032b91622dd",
+          "files": {
+            ".gitignore": "76e5bf79efd73d28dab918fd8fc3c76bc4c89311d4bf6a8fa1ca4822fded0fa3",
+            "BRIEF.md": "be8a77631856096abe3eecc4370651506d11ade532812a648c50f3d9d0cb71c3",
+            "README.md": "66888882a54cfc1141b2b069976a7c1d83b54d28f3f65d60d61d835545e35ed4",
+            "docs/guida.md": "1674703f22a654a73d601fcabdfd0f998fd5c59a05cbe829aced1f95467e036f",
+            "docs/verifiche.md": "56c6354ccd853948940dd67c6579bef72fff630f01941d064ed58eb78da64090",
+            "package.json": "b4cd0a98ba144ec52ab38059c5712ed5aaeb750141bf2a88ef3383249d61f6b8",
+            "public/index.html": "6fac8f98234b9a2861abc405819c28698f1dd9db91e145cde8956bbcffc79479",
+            "public/svolta.css": "f81904ebcf820f2f00c79464ff76642ab5255ae3af3899183957a915b43f646f",
+            "public/svolta.js": "426e33279a1739e4e43b488deff13b2b9817c1ea6436249a8f78f50bdeb64675",
+            "src/app.mjs": "4d368778a32ca98583d1c0e7e67015bd8f943039b52df577cfaca16b25522d7a",
+            "src/archive.mjs": "1f0dc4aea4cf6d55c122c65e3f111edef4798a48c610a515e175146575a22d03",
+            "src/dates.mjs": "befb2084c723419e957dd976a1e2f9ecd5b92b5c8d768158ba99ce452d794515",
+            "src/errors.mjs": "acbb23489da8c799787caf170d2ff70a9f26c875de462e287cfc911c856baa5f",
+            "src/projects.mjs": "3b896216037c45ae9d335d585d6caddb44d27a8ab30b56909298ea32e2428bdc",
+            "src/public.mjs": "54415785a2a0288443db6abf2c8655c8d8b2f66d73570c90566ab99c6598bc3c",
+            "src/server.mjs": "cd0a73c7ab3880a8da4bdd66887f2f9de4ec2c697100eef6dc91b0ee1afd6628",
+            "src/summary.mjs": "a58abb9c5ef8a37c51f2e6cf434faf761ca5f552fdba000708c6cc61085502e8",
+            "src/tasks.mjs": "8e252c5f36750e305d977113360aeacf08bb71ba9dc86ef6ca97a8b03e721c8c",
+            "src/time-entries.mjs": "5a4ff445656c9f15639159e253db1e99e97c010953ee7c2198db4441f0348ebf",
+            "src/week.mjs": "f533bdaed237f9b051608355d588f3b5147653c0d81143e7b5d7148a0dee2eeb",
+            "tests/acceptance.mjs": "ee4f811515605a5cbab795c9ad4e40777774006bad8fe350c54590e1836c3235",
+            "tests/browser.mjs": "6831d64e0d524554f959084e5a3c25b86f5255a5f850da9365a824149632a952",
+            "tests/harness.mjs": "122df72fd6e9dc6a0cecddc429682006893dd28a708b3a54c3c074a6ba02ca16"
+          },
+          "fingerprint": "e345b5b2df948900485f522971dc1104b80f8505aa278f9aeee9582767dca2dd"
+        },
+        "scope": [],
+        "inputs": [],
+        "source": {
+          "runId": "20261020T223531-20d32b1b",
+          "throughSeq": 135,
+          "contractVersion": 1,
+          "recordedEvent": {
+            "runId": "20261020T223531-20d32b1b",
+            "seq": 118,
+            "eventId": "18ca5ea8-6e13-4e58-a52c-91fe1d7dd53d",
+            "at": "2026-10-20T23:02:26.926Z",
+            "type": "verification.passed"
+          }
+        }
+      },
+      "unavailableReason": null
+    }
+  ]
+}
+```
+
+### Portabilità e ritorno al prodotto finito (safe-delivery)
+
+Saved outcome status: PENDING. Source run: unavailable (no linked mission).
+
+```text
+Aggiungere backup completo e ripristino atomico validato con consenso esplicito. Verificare l’integrazione di tutti i flussi e i layout mobili. Completare README e guida pratica in italiano con avvio, dati, limiti e prove effettive, distinguendo affermazioni del modello da controlli host. Risolvere soltanto lacune concrete entro l’obiettivo approvato.
+```
+
+Prerequisite outcomes: weekly-work.
+
+#### Recorded checkpoint
+
+Checkpoint receipt unavailable: no checkpoint is recorded.
+
+```json
+{
+  "status": "NOT_RECORDED",
+  "sourceRunId": null,
+  "sourceSeq": null,
+  "contractVersion": null,
+  "runStatus": null,
+  "boundaryEvent": null,
+  "unavailableReason": "No checkpoint receipt is recorded."
+}
+```
+
+#### Criteria (latest recorded state; no checkpoint proof)
+
+- backup-api: Backup completo e ripristino atomico — UNAVAILABLE; evidence ID: unavailable.
+
+```json
+{
+  "id": "backup-api",
+  "title": "Backup completo e ripristino atomico",
+  "command": [
+    "node",
+    "tests/acceptance.mjs",
+    "backup-api"
+  ],
+  "scope": [],
+  "timeoutMs": 120000,
+  "status": "UNAVAILABLE",
+  "basis": "latest-recorded-state",
+  "sourceRunId": null,
+  "sourceSeq": null,
+  "contractVersion": null,
+  "recordedCriterion": null,
+  "evidenceId": null,
+  "evidence": null,
+  "unavailableReason": "No criterion state is available at this evidence boundary."
+}
+```
+
+- backup-ui: Consenso al ripristino e interfaccia di portabilità — UNAVAILABLE; evidence ID: unavailable.
+
+```json
+{
+  "id": "backup-ui",
+  "title": "Consenso al ripristino e interfaccia di portabilità",
+  "command": [
+    "node",
+    "tests/acceptance.mjs",
+    "backup-ui"
+  ],
+  "scope": [],
+  "timeoutMs": 120000,
+  "status": "UNAVAILABLE",
+  "basis": "latest-recorded-state",
+  "sourceRunId": null,
+  "sourceSeq": null,
+  "contractVersion": null,
+  "recordedCriterion": null,
+  "evidenceId": null,
+  "evidence": null,
+  "unavailableReason": "No criterion state is available at this evidence boundary."
+}
+```
+
+#### Evidence at this boundary
+
+Evidence IDs, source run/sequence, contract versions, original timestamps and code stamps are retained below. AI assessments remain distinct from deterministic checks.
+
+```json
+[]
+```
+
+#### Latest recorded mission state (separate from checkpoint proof)
+
+```json
+{
+  "availability": "UNAVAILABLE",
+  "unavailableReason": "No mission is linked yet.",
+  "runId": null,
+  "seq": null,
+  "at": null,
+  "status": null,
+  "reason": null,
+  "contractVersion": null,
+  "hasLaterEvents": null,
+  "criteria": [
+    {
+      "id": "backup-api",
+      "title": "Backup completo e ripristino atomico",
+      "command": [
+        "node",
+        "tests/acceptance.mjs",
+        "backup-api"
+      ],
+      "scope": [],
+      "timeoutMs": 120000,
+      "status": "UNAVAILABLE",
+      "basis": "latest-recorded-state",
+      "sourceRunId": null,
+      "sourceSeq": null,
+      "contractVersion": null,
+      "recordedCriterion": null,
+      "evidenceId": null,
+      "evidence": null,
+      "unavailableReason": "No criterion state is available at this evidence boundary."
+    },
+    {
+      "id": "backup-ui",
+      "title": "Consenso al ripristino e interfaccia di portabilità",
+      "command": [
+        "node",
+        "tests/acceptance.mjs",
+        "backup-ui"
+      ],
+      "scope": [],
+      "timeoutMs": 120000,
+      "status": "UNAVAILABLE",
+      "basis": "latest-recorded-state",
+      "sourceRunId": null,
+      "sourceSeq": null,
+      "contractVersion": null,
+      "recordedCriterion": null,
+      "evidenceId": null,
+      "evidence": null,
+      "unavailableReason": "No criterion state is available at this evidence boundary."
+    }
+  ]
+}
+```
+
+## Evidence boundary and product review
+
+Checkpoint evidence is historical proof from the source mission event prefix through the recorded sourceSeq. Later recorded state is shown separately and cannot rewrite that checkpoint. Current source freshness is unobserved: this read-only report does not inspect worktrees, audit evidence or rerun checks. Each future mission needs fresh verification. AI assessments and project reviews are claims from the same integration, not independent proof or operator acceptance. A checkpoint is a technical result; product review and acceptance remain with the operator.
+
+Current source freshness: UNOBSERVED. No current source files, Git refs or evidence artifacts were inspected or verified to generate this report.

@@ -1,0 +1,24 @@
+[
+  {
+    "at": "2026-10-20T13:22:20.385Z",
+    "kind": "technical-recovery",
+    "reason": "Original parent polling replayed all three linked mission histories every 100ms; standalone measured mean callback ledger work 79.92ms, with severe visible event-loop delays. Source runtime was preserved unchanged. Paused the original delegation using normal controls, then prepared a separate immutable recovery runtime.",
+    "source": "/Users/vins/work/iterfox/.iterfox/development/continuous-delivery-review",
+    "sourceHead": "506c5ec3e58eb819869a7fe9ab7bb1f9bc77932c",
+    "runtime": "/Users/vins/work/iterfox/.iterfox/missions/continuous-project-20261020-r2/runtime-recovered",
+    "changes": [
+      "Parent monitor reads control and original authorization deadline without replaying mission history on each timer tick.",
+      "No acceptance commands, authorized paths, global limits or stored checkpoints changed."
+    ],
+    "validation": {
+      "backendPassed": 86,
+      "optionalSkipped": 7,
+      "chromeWorkflows": 11,
+      "extraBrowserDrivers": 3,
+      "typecheck": true,
+      "build": true
+    },
+    "operator": "root coding assistant; no additional user decision requested",
+    "action": "pause, replace only the host runtime with a separate fixed copy, explicitly resume the same delegation"
+  }
+]

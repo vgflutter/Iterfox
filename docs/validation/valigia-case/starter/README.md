@@ -1,0 +1,3 @@
+# Valigia
+
+Implementazione da completare.

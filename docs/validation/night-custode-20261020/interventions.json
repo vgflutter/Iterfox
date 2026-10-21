@@ -1,0 +1,9 @@
+[
+  {
+    "at": "2026-10-20T18:26:40.232Z",
+    "kind": "Assistant recovery after primary blocked",
+    "action": "Preserved original ledger and worktree, made explicitly uncertified local review snapshot and prepared a new finite delegation without modifying the original approval/runtime/checks.",
+    "primaryResult": "3/4 checkpointed; all six current checks passed; final review/integration unfinished",
+    "userPromptsAfterInitialAuthorization": 0
+  }
+]

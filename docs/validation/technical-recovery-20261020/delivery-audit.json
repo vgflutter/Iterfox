@@ -1,0 +1,25 @@
+{
+  "at": "2026-10-20T20:24:03.203Z",
+  "result": "PASS",
+  "finalBackendMatchesRealTrial": true,
+  "pinnedSourceFiles": [
+    "src/core/engine.ts",
+    "src/core/model.ts",
+    "src/core/recovery.ts",
+    "src/providers/codex.ts",
+    "src/providers/codex-session.ts",
+    "src/providers/session-processes.ts",
+    "src/providers/codex-worker.ts"
+  ],
+  "rootHead": "432801578d77dae2d0c98922bf1ef13ebf2aadec",
+  "rootStatus": "",
+  "checks": {
+    "backend": 96,
+    "optionalSkipped": 7,
+    "chrome": 11,
+    "additionalBrowserFlows": 3,
+    "recoveryTests": 10,
+    "realFaultInjectionTrials": 2
+  },
+  "liveUI": "http://127.0.0.1:4365"
+}

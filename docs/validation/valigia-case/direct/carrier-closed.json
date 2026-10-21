@@ -1,0 +1,7 @@
+{
+  "at": "2026-10-20T10:18:38.579Z",
+  "runId": "20261020T100506-418bbc4d",
+  "status": "STOPPED",
+  "purpose": "Close harness-only ledger carrier after the direct SDK process finished; no code edit, model feedback or acceptance claim.",
+  "measuredDirectStatus": "RETURNED"
+}

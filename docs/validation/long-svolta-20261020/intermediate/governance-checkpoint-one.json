@@ -1,0 +1,12 @@
+{
+  "at": "2026-10-20T22:21:38.663Z",
+  "result": "PASS",
+  "outcomes": 3,
+  "viewports": [
+    "1440x1080",
+    "390x844"
+  ],
+  "pageErrors": [],
+  "mutations": 0,
+  "phase": "checkpoint-one"
+}

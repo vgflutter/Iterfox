@@ -1,0 +1,18 @@
+{
+  "at": "2026-10-21T00:07:46.169Z",
+  "url": "http://127.0.0.1:4386",
+  "pid": 67518,
+  "checkpoint": "09feec68a2410b467f9df7a93f3d07e5d411a68b",
+  "dataDirectory": "/Users/vins/work/iterfox/.iterfox/missions/long-svolta-20261020-r4/preview-data",
+  "seededByHost": true,
+  "syntheticExamples": true,
+  "projects": 2,
+  "tasks": 4,
+  "timeEntries": 2,
+  "taskStatuses": [
+    "todo",
+    "doing",
+    "done"
+  ],
+  "applicationCodeEdited": false
+}

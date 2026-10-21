@@ -1,0 +1,17 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import * as d from '../src/domain.mjs';
+const item={id:'a',name:'Calze',quantity:3,category:'Vestiti',packed:false};
+const sample=()=>({version:1,items:[structuredClone(item)]});
+test('empty state',()=>assert.deepEqual(d.emptyList(),{version:1,items:[]}));
+test('add trims and initializes without mutating input',()=>{const s=d.emptyList();const r=d.addItem(s,{name:'  Caffè ☕  ',quantity:2});assert.equal(s.items.length,0);assert.equal(r.items.length,1);assert.equal(r.items[0].name,'Caffè ☕');assert.equal(r.items[0].category,'Generale');assert.equal(r.items[0].packed,false);assert.equal(r.items[0].quantity,2);assert.equal(typeof r.items[0].id,'string');assert(r.items[0].id.length>0);});
+test('add generates unique ids',()=>{let s=d.emptyList();for(let i=0;i<50;i++)s=d.addItem(s,{name:'Oggetto',quantity:1,category:'Varie'});assert.equal(new Set(s.items.map(i=>i.id)).size,50);});
+test('invalid names and quantities are rejected atomically',()=>{const s=sample();const before=structuredClone(s);for(const patch of [{name:''},{name:'   '},{name:'x'.repeat(81)},{quantity:0},{quantity:100},{quantity:1.5},{quantity:'2'},{quantity:NaN},{category:'x'.repeat(41)}])assert.throws(()=>d.addItem(s,{name:'Nuovo',quantity:1,category:'Varie',...patch}));assert.deepEqual(s,before);});
+test('update quantity and packed immutably',()=>{const s=sample();const r=d.updateItem(s,'a',{quantity:5,packed:true});assert.deepEqual(s,sample());assert.equal(r.items[0].quantity,5);assert.equal(r.items[0].packed,true);assert.equal(r.items[0].id,'a');assert.throws(()=>d.updateItem(s,'a',{quantity:0}));assert.throws(()=>d.updateItem(s,'a',{packed:'yes'}));});
+test('unknown ids reject update and delete',()=>{assert.throws(()=>d.updateItem(sample(),'missing',{packed:true}));assert.throws(()=>d.removeItem(sample(),'missing'));});
+test('delete preserves original',()=>{const s=sample();assert.deepEqual(d.removeItem(s,'a'),{version:1,items:[]});assert.deepEqual(s,sample());});
+test('summary counts quantity and partitions totals',()=>{assert.deepEqual(d.summary({version:1,items:[item,{...item,id:'b',quantity:2,packed:true}]}),{total:5,packed:2,remaining:3});assert.deepEqual(d.summary(d.emptyList()),{total:0,packed:0,remaining:0});});
+test('backup roundtrip preserves Unicode and ids',()=>{const s={version:1,items:[{...item,name:'日本語 <img src=x onerror=alert(1)>',category:'🧳'}]};assert.deepEqual(d.importList(d.exportList(s)),s);});
+test('reject malformed and unsupported backups',()=>{for(const text of ['{','null','[]',JSON.stringify({version:2,items:[]}),JSON.stringify({version:1,items:{}})])assert.throws(()=>d.importList(text));});
+test('validate every imported row and unique ids',()=>{for(const bad of [{...item,id:''},{...item,name:' '},{...item,quantity:'3'},{...item,quantity:0},{...item,packed:1},{...item,category:null}])assert.throws(()=>d.importList(JSON.stringify({version:1,items:[item,{...bad,id:bad.id===''?'':'b'}]})));assert.throws(()=>d.importList(JSON.stringify({version:1,items:[item,item]})));});
+test('500 row limit is enforced',()=>{const items=Array.from({length:500},(_,i)=>({...item,id:String(i)}));const s=d.importList(JSON.stringify({version:1,items}));assert.equal(s.items.length,500);assert.throws(()=>d.addItem(s,{name:'Troppo',quantity:1}));assert.throws(()=>d.importList(JSON.stringify({version:1,items:[...items,{...item,id:'501'}]})));});

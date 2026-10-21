@@ -1,0 +1,29 @@
+[
+  {
+    "stage": "weekly-work",
+    "mode": "oversee",
+    "runId": "20261020T231956-19cf8a63",
+    "nodeId": "1fa45b7f-3b59-48df-a6a7-521080c9980b",
+    "at": "2026-10-20T23:24:49.152Z",
+    "kind": "invalid-review-reference",
+    "details": {
+      "threadId": "01a15ba0-4e91-7ae3-aa42-96cff53108d9",
+      "badPath": "__iterfox_injected_missing_reference__.md",
+      "actualSha256": "1531072b44038142516278db44134932a63d42866442f77c46d6f863ea61ac07",
+      "injectedSha256": "29fe727d05d216606f08ca41ccbd1a1c0ce77b7c7b9250c0e669d7589f974b64",
+      "injectedAfterRealCompletedResponse": true
+    }
+  },
+  {
+    "stage": "safe-delivery",
+    "mode": "build",
+    "runId": "20261020T234131-6d40b050",
+    "nodeId": "direction-ef6d9f3d-8bb6-4363-a412-87edc3468192-0",
+    "at": "2026-10-20T23:46:32.781Z",
+    "kind": "lost-completed-response",
+    "details": {
+      "threadId": "01a15bb3-e2a5-7211-a89c-6fc871d1ce58",
+      "reportedTokens": 233376
+    }
+  }
+]

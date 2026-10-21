@@ -1,0 +1,31 @@
+{
+  "at": "2026-10-20T23:19:09.302Z",
+  "kind": "UNCERTIFIED snapshot after invalid project review blocked the third trial",
+  "fromDelegation": "156e137f-0bca-49f1-bc68-34fe60c1ef29",
+  "fromRun": "20261020T223531-20d32b1b",
+  "fromSeq": 135,
+  "originalStatus": "BLOCKED",
+  "criteriaPassed": 5,
+  "applicationCodeManuallyChanged": false,
+  "applicationFileHashes": {
+    "README.md": "403f3d6a55d1b122e456f7843478bb81f3158c297281b381c6bb13f0c1ca7995",
+    "src/app.mjs": "10359aaaa79ec5c1f3a0add1256457c3d428942996eb387dfed23b12bbe68867",
+    "src/archive.mjs": "c300f1b9676a8956daa5b4a7044cf008aa8eb4331524cdba15ab8a159bc7ad0a",
+    "src/dates.mjs": "0c0d322dece2361df8777fed69d5201de4a52f70f9c6185761fa823312d6e5ea",
+    "src/errors.mjs": "ce33cd7a104a3f4116efdc604a889f8a2f186e63de541417c91467339b6fe6f7",
+    "src/projects.mjs": "d7eed400f71adeab89250600c9ba2f55d129852e365593a8b9a6de871ba09a86",
+    "src/public.mjs": "a92ee000b91ba51078b41fb1fbf4c1b651504911519c71ba21683e81bbfa27b4",
+    "src/server.mjs": "441f8ab439afbc7aa64c4ffb4adaa6d6e9e7dfae02819a02a21810a589d67a9f",
+    "src/summary.mjs": "2976bca9ed9ccf7e16659b17a29db1b596f38cb8a0cd4c7c64fd575e311e387f",
+    "src/tasks.mjs": "adf26165e9111fd4a3f6a315ba2ab1d349633f98c40e671fbee6b7d16d61ba0d",
+    "src/time-entries.mjs": "96711254fa3f8b041aabe607d6a599e3149382dfbd67ee2d82a0339b45da9ae8",
+    "src/week.mjs": "dba080fdf5f21e304773b8fa191bc6ddea87d631b58a713897646346e8b54781",
+    "public/index.html": "c720c7b61081ba76a163942a3c2a4043485b5ae10d7937d493d8973466bbc5e0",
+    "public/svolta.css": "0148932edbd49499cc180a860ce94613c4fcc58cdc0a40f9945dd6f2674948e6",
+    "public/svolta.js": "1cb85d57c5268ff96ab96bd2191f621768b50f73a2d4f09a27b9557c7190da69",
+    "docs/guida.md": "537782c5877840ea10335a50bdc23cd10730036f5633cbfc84ae504535208e36",
+    "docs/verifiche.md": "8b623b7904aa0f7b98f13418ece6b7c51ab29ceae1537b5e94d8f07319ecd7bd"
+  },
+  "runtimeCommit": "5ac6eca8cbc83d6baf5990ddd039e5fce6d35520",
+  "hostTestChange": "Playwright absolute import path relocated only; all assertions and prior fixes retained"
+}

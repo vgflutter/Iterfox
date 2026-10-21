@@ -1,0 +1,28 @@
+{
+  "at": "2026-10-20T10:19:33.151Z",
+  "status": "passed",
+  "checks": [
+    {
+      "name": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1080
+      },
+      "images": 2,
+      "links": 12,
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "name": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "images": 2,
+      "links": 12,
+      "overflow": false,
+      "errors": []
+    }
+  ]
+}

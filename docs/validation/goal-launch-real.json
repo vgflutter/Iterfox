@@ -1,0 +1,163 @@
+{
+  "date": "2026-10-19",
+  "runId": "20261019T151908-975c2544",
+  "model": "gpt-6.1-sol",
+  "sdkVersion": "0.163.0",
+  "sourceCheckpoint": "8af630176cee32cd4128485ee855e4b51dc58232",
+  "deliveryBranch": "feat/goal-launcher",
+  "status": "COMPLETED",
+  "elapsedMs": 3951700,
+  "runtimeAgentTurns": 10,
+  "reportedRuntimeTokens": 7667225,
+  "implementedUnits": 6,
+  "projectReviews": [
+    {
+      "outcome": "continue",
+      "summary": "I cinque controlli host correnti sono passati. L’ispezione del sorgente individua però un recupero incompleto su mobile dopo una risposta di autorizzazione persa.",
+      "findings": [
+        {
+          "id": "mobile-run-recovery",
+          "gap": "A larghezze fino a 680px, style.css nasconde .run-list e il relativo aggiornamento, senza offrire un altro selettore delle run. Il recupero «Refresh and inspect runs» aggiorna runs, cancella newRunSession e chiude il dialogo, ma non seleziona né presenta una run. Su telefono rimane quindi visibile la run precedente oppure, al primo avvio, la schermata vuota: la run eventualmente creata non è raggiungibile. Anche le run precedenti diventano inaccessibili dopo un nuovo avvio. Riferimenti: main.tsx:307 e :1051, new-run.tsx:758, style.css:1634.",
+          "files": [
+            "src/ui/main.tsx",
+            "src/ui/new-run.tsx",
+            "src/ui/style.css"
+          ],
+          "evidenceIds": []
+        }
+      ],
+      "tasks": [
+        {
+          "title": "Completare selezione e recupero delle run su mobile",
+          "objective": "Aggiungere un accesso responsivo e accessibile alle run esistenti, con aggiornamento dell’elenco. Fare sì che «Refresh and inspect runs» presenti realmente le run recuperate e permetta di aprirne una su desktop e telefono, anche quando non esiste ancora una selezione. Conservare input e stato di recupero mentre si cerca la run; un semplice aggiornamento dell’elenco non deve cancellare silenziosamente l’esito incerto. Mostrare chiaramente anche elenco vuoto ed errori, consentendo ulteriori aggiornamenti senza ripetere l’autorizzazione. Riutilizzare API e controlli esistenti e aggiornare docs/goal-launch.md distinguendo comportamento implementato e interazioni osservate.",
+          "criterionId": "interface",
+          "findingIds": [
+            "mobile-run-recovery"
+          ],
+          "waitsFor": []
+        }
+      ],
+      "independent": false
+    },
+    {
+      "outcome": "ready",
+      "summary": "Pronto per la revisione dell’operatore. L’ispezione in sola lettura non individua ulteriori lacune concrete rispetto al goal; il recupero delle run è ora accessibile anche su mobile. I cinque controlli host correnti sono passati. Questa revisione non ha eseguito un browser né osservato l’intero percorso UI con Codex reale.",
+      "findings": [],
+      "tasks": [],
+      "independent": false
+    }
+  ],
+  "autonomouslyDiscoveredUnits": 1,
+  "hostVerificationHandoffs": 6,
+  "negativeCommandProbes": 4,
+  "verifiedCriteria": [
+    {
+      "id": "drafting",
+      "status": "PASSED"
+    },
+    {
+      "id": "types",
+      "status": "PASSED"
+    },
+    {
+      "id": "build",
+      "status": "PASSED"
+    },
+    {
+      "id": "interface",
+      "status": "PASSED"
+    },
+    {
+      "id": "proposal",
+      "status": "PASSED"
+    }
+  ],
+  "attention": {
+    "additionalHumanMessagesAfterLaunch": 0,
+    "assistantQualityFeedbackNotes": 1,
+    "description": "One assistant review note forwarded the existing operator preference for generous overnight defaults and human-readable controls; it is not presented as unassisted discovery."
+  },
+  "validation": {
+    "deliveryDefaultSuite": {
+      "passed": 58,
+      "skippedOptIn": 6,
+      "failed": 0
+    },
+    "deliveryBrowserSuite": {
+      "passed": 7,
+      "newUiStateFixtureCases": 2,
+      "fixtureScope": "Late draft IDs, input edits and mobile uncertain-launch recovery. These permanent CI cases do not call a model or start a worker; real integrations are recorded separately below."
+    },
+    "liveUiFlow": {
+      "at": "2026-10-19T16:26:21.364Z",
+      "status": "passed",
+      "model": "gpt-6.1-sol",
+      "proposalId": "04a03b1a-c5cc-48df-9c75-8cd88ba1becc",
+      "head": "35e03cb22012ac38af276b62631d3fc5685e9e4e",
+      "sourceFilesUnchanged": true,
+      "noRunBeforeAuthorization": true,
+      "editedGoalInvalidatedPreview": true,
+      "mobileOverflow": {
+        "document": false,
+        "dialog": false
+      },
+      "workerStarted": true,
+      "runId": "20261019T162616-32812c3a",
+      "stopRequested": true,
+      "stopConfirmed": true,
+      "unverifiedCriteriaRemovedForLaunchProbe": [],
+      "pageErrors": [],
+      "limitations": [
+        "The audit intentionally stops its disposable avatar run after observing the real worker thread; it does not claim that run completed.",
+        "The live draft uses established regression commands; any uncheckable proposed criteria remain unverified and are recorded separately. This does not establish general relevance or correctness for arbitrary repositories."
+      ]
+    },
+    "lostResponseMobile": {
+      "at": "2026-10-19T16:27:20.293Z",
+      "status": "passed",
+      "deliberateFault": "Real server authorization returned 201; its response was deliberately dropped before reaching the browser.",
+      "runId": "20261019T162719-7d4a553b",
+      "authorizations": 1,
+      "retainedInputs": true,
+      "existingRunRecovered": true,
+      "mobileHistoryReachable": true,
+      "noDuplicateRun": true,
+      "sourceFilesUnchanged": true,
+      "testWorkerStopped": true,
+      "pageErrors": []
+    },
+    "uiStateFixtureCases": 5,
+    "durationRoundTrips": 214
+  },
+  "realDraftProposedLimits": {
+    "maxTurns": 150,
+    "maxAttempts": 3,
+    "maxDurationMs": 28800000,
+    "maxTokens": 100000000,
+    "turnTimeoutMs": 600000,
+    "maxNoProgress": 2
+  },
+  "generatedImplementationSha256": {
+    "src/proposals/generate.ts": "69500535b0f8bb20afbc2c2891cb3427e30e4624c2759b9a29c25b3277b68c1b",
+    "src/ui/main.tsx": "e20c1526631389b0ae1fc9781d71a233787d86f0050396630b7c588aadd7af84",
+    "src/ui/style.css": "b319faee542c16cb2654eea4e1ac63727abe0f7c478a9f1c0f339808a65304f7",
+    "src/ui/launch-api.ts": "cb4919e1ad01fa78e89ee2e88ac97e1ea9353ff54ebfc28768a56161d4e53f12",
+    "src/ui/new-run.tsx": "bbd376a19fb23dbb976cec9a4cec779ef3a936235ac7917c86f098c0c51fa031",
+    "src/ui/proposal-editor.ts": "318b93f0a176c1761cf0ace7b868d15f686eb3a960bbeee88fdb0f811d52aed4",
+    "src/ui/run-browser.tsx": "038738f7068ee303a7f50f45d5e64fdb3d6d6f000076d457dac86110c355fad1"
+  },
+  "integrity": {
+    "replayMatches": true,
+    "originalRunWorktreeAndHeadPreserved": true,
+    "recordedFrozenRuntimeHashesMatch": true,
+    "trackedProtectedPathsUnchanged": true
+  },
+  "limitations": [
+    "One bounded feature-development case, not an eight-hour soak or a matched comparison with direct Codex.",
+    "The supervisor uses the same integration and makes probabilistic judgments; green regression gates are not complete goal coverage.",
+    "External browser probes intentionally start and stop disposable workers; they do not claim those avatar goals completed.",
+    "General dependency/environment provisioning for arbitrary repositories is not established; the development run used a private prepared dependency copy.",
+    "Expiry, reconnection, worker-start failure, empty/error run-list sequences and all keyboard/touch combinations are not exhaustively covered."
+  ],
+  "priorAttempts": "The previous-day session blocked twice on builder-local listener verification. Its ledgers are retained; this successful successor uses the corrected runtime."
+}

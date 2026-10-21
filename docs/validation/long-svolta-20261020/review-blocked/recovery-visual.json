@@ -1,0 +1,17 @@
+{
+  "at": "2026-10-20T23:21:32.237Z",
+  "result": "PASS",
+  "observations": [
+    {
+      "stage": "weekly-work",
+      "cause": "provider-abort",
+      "retryTimestampVisible": true,
+      "viewports": [
+        "1440x1080",
+        "390x844"
+      ],
+      "mutations": 0,
+      "pageErrors": []
+    }
+  ]
+}

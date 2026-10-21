@@ -1,0 +1,25 @@
+{
+  "at": "2026-10-21T00:11:11.661Z",
+  "result": "PASS",
+  "kind": "Fresh mobile capture after a duplicated bottom header appeared in a viewport-resize screenshot; original capture retained separately.",
+  "metrics": {
+    "brandElements": 1,
+    "header": {
+      "x": 0,
+      "y": 0,
+      "width": 390,
+      "height": 209.671875,
+      "top": 0,
+      "right": 390,
+      "bottom": 209.671875,
+      "left": 0
+    },
+    "firstTaskTop": 1809.4375,
+    "viewportHeight": 844,
+    "overflow": false,
+    "bottomElement": "TEXTAREA"
+  },
+  "mutations": 0,
+  "pageErrors": [],
+  "applicationCodeEdited": false
+}

@@ -1,0 +1,25 @@
+{
+  "at": "2026-10-20T22:33:16.660Z",
+  "finding": "Test-oracle contradiction; application currently follows public contract",
+  "contract": "BRIEF.md: overdue counts non-done active tasks due before the reference civil date",
+  "test": "tests/acceptance.mjs planning-api summary expects overdue:1 at 2026-10-21",
+  "facts": [
+    {
+      "title": "Leggere",
+      "status": "doing",
+      "dueDate": "2026-10-20",
+      "overdue": true
+    },
+    {
+      "title": "Arretrata",
+      "status": "todo",
+      "dueDate": "2026-10-18",
+      "overdue": true
+    }
+  ],
+  "correctExpectedOverdue": 2,
+  "observedApplicationOverdue": 2,
+  "originalAndContinuationTestsRemainUnchanged": true,
+  "action": "Stop the invalid-oracle trial, preserve its result; correct only expected overdue to 2 before a distinct continuation authorization, retaining original global deadline and remaining budget",
+  "appCodeEditsByAssistant": 0
+}

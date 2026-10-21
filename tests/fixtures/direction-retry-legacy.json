@@ -1,0 +1,1903 @@
+{
+  "generator": {
+    "at": "2026-10-19T21:56:49.199Z",
+    "runtime": "Frozen pre-retry runtime from the graph mission baseline",
+    "runtimeHashes": {
+      "dist/core/engine.js": "d9fe022d1da430494cadee75780c67d6eda65bc4750d9c6183342548fc7a6b01",
+      "dist/core/model.js": "bcc217bae213ae5481af0ffab92cf5579cdd8a065dc460fa7f5b7f15bfff6bfd",
+      "dist/core/workspace.js": "a0c531794db9e31bae2351da1ed760ef3bbc974caf9436ea51b9d3d8d0a35252",
+      "dist/core/store.js": "c331c63bca3d83914653b6439fa59aa2ffd90f64e9ece73c8ba93bf995cf1911",
+      "dist/providers/codex.js": "e16f527cf4e7d2f3416325f73922bf58a715c3653b07f1cdd97c21b6dcd4a995",
+      "dist/providers/provider.js": "0fddb695a0815ca17163e72ed88cc246a21f1f315dccd05538b2ca53052f28b9"
+    },
+    "provider": "explicit deterministic DEMO; no SDK/model calls",
+    "observations": "Original invalid proposal blocked; explicit legacy note/resume then superseded orientation and real Node checks completed. Pure wire projections of every recorded prefix are fixed for compatibility.",
+    "projectionOrder": "Code-unit property-name sorting; array order retained; undefined object fields omitted as in JSON."
+  },
+  "state": {
+    "id": "20261019T215647-2a1ff7d9",
+    "seq": 40,
+    "goal": "LEGACY REPLAY FIXTURE: preserve an interrupted orientation history exactly.",
+    "status": "COMPLETED",
+    "provider": "demo",
+    "repository": "/Users/vins/work/iterfox/.iterfox/missions/project-continuity-20261019/legacy-c-data-dgkweA/demo-repositories/e2286dbb",
+    "worktree": "/Users/vins/work/iterfox/.iterfox/missions/project-continuity-20261019/legacy-c-data-dgkweA/worktrees/20261019T215647-2a1ff7d9",
+    "branch": "iterfox/20261019T215647-2a1ff7d9",
+    "baseHead": "bbaef0de1061b4a30592bf96a36c500687fc5de5",
+    "contract": {
+      "goal": "LEGACY REPLAY FIXTURE: preserve an interrupted orientation history exactly.",
+      "criteria": [
+        {
+          "id": "render",
+          "title": "Avatar labels handle empty input",
+          "command": [
+            "node",
+            "--test",
+            "render.test.mjs"
+          ],
+          "scope": [
+            "avatar.mjs",
+            "render.test.mjs"
+          ],
+          "timeoutMs": 60000
+        },
+        {
+          "id": "dialogue",
+          "title": "Two avatars exchange distinct turns",
+          "command": [
+            "node",
+            "--test",
+            "dialogue.test.mjs"
+          ],
+          "scope": [
+            "avatar.mjs",
+            "dialogue.test.mjs"
+          ],
+          "timeoutMs": 60000
+        }
+      ],
+      "allowedPaths": [
+        "avatar.mjs"
+      ],
+      "protectedPaths": [
+        "render.test.mjs",
+        "dialogue.test.mjs",
+        "iterfox.json"
+      ],
+      "supervision": {
+        "mode": "project",
+        "maxReviews": 4
+      },
+      "limits": {
+        "maxTurns": 12,
+        "maxAttempts": 3,
+        "maxDurationMs": 900000,
+        "maxTokens": 500000,
+        "turnTimeoutMs": 180000,
+        "maxNoProgress": 3
+      }
+    },
+    "contracts": [
+      {
+        "goal": "LEGACY REPLAY FIXTURE: preserve an interrupted orientation history exactly.",
+        "criteria": [
+          {
+            "id": "render",
+            "title": "Avatar labels handle empty input",
+            "command": [
+              "node",
+              "--test",
+              "render.test.mjs"
+            ],
+            "scope": [
+              "avatar.mjs",
+              "render.test.mjs"
+            ],
+            "timeoutMs": 60000
+          },
+          {
+            "id": "dialogue",
+            "title": "Two avatars exchange distinct turns",
+            "command": [
+              "node",
+              "--test",
+              "dialogue.test.mjs"
+            ],
+            "scope": [
+              "avatar.mjs",
+              "dialogue.test.mjs"
+            ],
+            "timeoutMs": 60000
+          }
+        ],
+        "allowedPaths": [
+          "avatar.mjs"
+        ],
+        "protectedPaths": [
+          "render.test.mjs",
+          "dialogue.test.mjs",
+          "iterfox.json"
+        ],
+        "supervision": {
+          "mode": "project",
+          "maxReviews": 4
+        },
+        "limits": {
+          "maxTurns": 12,
+          "maxAttempts": 3,
+          "maxDurationMs": 900000,
+          "maxTokens": 500000,
+          "turnTimeoutMs": 180000,
+          "maxNoProgress": 3
+        }
+      }
+    ],
+    "contractVersion": 1,
+    "createdAt": "2026-10-19T21:56:47.683Z",
+    "updatedAt": "2026-10-19T21:56:49.175Z",
+    "nodes": [
+      {
+        "id": "cdd8603e-fa98-4a13-9b58-b26e853118ac",
+        "status": "SKIPPED",
+        "attempt": 1,
+        "files": [],
+        "evidenceIds": [],
+        "kind": "decision",
+        "role": "planner",
+        "title": "Reconcile the project direction",
+        "objective": "{\"sourceIds\":[\"223e4dbd-7c82-4321-b655-40407b227757\"],\"version\":1}",
+        "criterionId": "render",
+        "reason": "Operator handoff changed; reconcile once at an activity boundary.",
+        "startedAt": "2026-10-19T21:56:47.708Z",
+        "error": "Direction referenced an unapproved criterion or self dependency",
+        "endedAt": "2026-10-19T21:56:47.758Z",
+        "supersededBy": "33b55503-1e87-4edd-bbd1-6eca8f53b1c7",
+        "summary": "Obsolete orientation superseded by the validated current handoff; no implementation or acceptance skipped."
+      },
+      {
+        "id": "33b55503-1e87-4edd-bbd1-6eca8f53b1c7",
+        "status": "PASSED",
+        "attempt": 1,
+        "files": [],
+        "evidenceIds": [],
+        "kind": "decision",
+        "role": "planner",
+        "title": "Reconcile the project direction",
+        "objective": "{\"sourceIds\":[\"223e4dbd-7c82-4321-b655-40407b227757\",\"06e47bc2-8f40-4eba-978a-1a88f96bce83\"],\"version\":1}",
+        "criterionId": "render",
+        "reason": "Operator handoff changed; reconcile once at an activity boundary.",
+        "startedAt": "2026-10-19T21:56:47.733Z",
+        "summary": "Direction proposal mapped to the unchanged acceptance contract.",
+        "endedAt": "2026-10-19T21:56:47.756Z",
+        "result": {
+          "proposal": {
+            "focus": "EXPLICIT LEGACY FIXTURE: preserve the original approved outcome.",
+            "nextArtifact": "EXPLICIT LEGACY FIXTURE: verified labels and a distinct conversation.",
+            "assumptions": [],
+            "notes": [
+              {
+                "noteId": "223e4dbd-7c82-4321-b655-40407b227757",
+                "disposition": "applied",
+                "reason": "Explicit deterministic fixture direction.",
+                "criterionIds": []
+              },
+              {
+                "noteId": "06e47bc2-8f40-4eba-978a-1a88f96bce83",
+                "disposition": "applied",
+                "reason": "Explicit deterministic fixture direction.",
+                "criterionIds": []
+              }
+            ],
+            "tasks": [
+              {
+                "title": "Normalize labels",
+                "objective": "Handle missing and blank names.",
+                "criterionId": "render",
+                "waitsFor": []
+              },
+              {
+                "title": "Create a reply",
+                "objective": "The second speaker answers the first.",
+                "criterionId": "dialogue",
+                "waitsFor": []
+              }
+            ]
+          },
+          "sourceIds": [
+            "223e4dbd-7c82-4321-b655-40407b227757",
+            "06e47bc2-8f40-4eba-978a-1a88f96bce83"
+          ]
+        }
+      },
+      {
+        "title": "Normalize labels",
+        "objective": "Handle missing and blank names.",
+        "criterionId": "render",
+        "waitsFor": [],
+        "id": "direction-33b55503-1e87-4edd-bbd1-6eca8f53b1c7-0",
+        "kind": "task",
+        "role": "builder",
+        "status": "PASSED",
+        "reason": "Project direction v1; approved acceptance criteria unchanged.",
+        "attempt": 1,
+        "files": [
+          "avatar.mjs"
+        ],
+        "evidenceIds": [
+          "c3c0104f-0072-4def-82f7-983b98ea87de",
+          "6e888e0f-5911-455f-9f7e-335c06c16d99"
+        ],
+        "startedAt": "2026-10-19T21:56:48.044Z",
+        "summary": "DEMO fixture normalized empty avatar labels.",
+        "endedAt": "2026-10-19T21:56:48.096Z"
+      },
+      {
+        "title": "Create a reply",
+        "objective": "The second speaker answers the first.",
+        "criterionId": "dialogue",
+        "waitsFor": [],
+        "id": "direction-33b55503-1e87-4edd-bbd1-6eca8f53b1c7-1",
+        "kind": "task",
+        "role": "builder",
+        "status": "PASSED",
+        "reason": "Project direction v1; approved acceptance criteria unchanged.",
+        "attempt": 1,
+        "files": [
+          "avatar.mjs"
+        ],
+        "evidenceIds": [
+          "6981cf7e-137d-4b5c-a610-59c3946121a5"
+        ],
+        "startedAt": "2026-10-19T21:56:48.425Z",
+        "summary": "DEMO fixture changed the second dialogue turn.",
+        "endedAt": "2026-10-19T21:56:48.495Z"
+      },
+      {
+        "id": "ef41dbc6-ea45-4f28-ba18-eac87cfd62a6",
+        "status": "UNVERIFIED",
+        "attempt": 1,
+        "files": [],
+        "evidenceIds": [
+          "81771f4c-fd83-4886-b0cc-06c4aaa20d7c"
+        ],
+        "kind": "verification",
+        "role": "verifier",
+        "title": "Avatar labels handle empty input",
+        "objective": "Run approved check: [\"node\",\"--test\",\"render.test.mjs\"]",
+        "criterionId": "render",
+        "reason": "Probe while planned implementation remains; a negative observation defers correction.",
+        "startedAt": "2026-10-19T21:56:47.772Z",
+        "summary": "Avatar labels handle empty input: not yet satisfied; planned implementation remains. No failure retry or corrective model call consumed.",
+        "endedAt": "2026-10-19T21:56:47.894Z"
+      },
+      {
+        "id": "8e4e2dc9-5b5e-4750-8363-bd9147a8817c",
+        "status": "UNVERIFIED",
+        "attempt": 1,
+        "files": [],
+        "evidenceIds": [
+          "1327e20e-d760-431c-9520-01a208896cbd"
+        ],
+        "kind": "verification",
+        "role": "verifier",
+        "title": "Two avatars exchange distinct turns",
+        "objective": "Run approved check: [\"node\",\"--test\",\"dialogue.test.mjs\"]",
+        "criterionId": "dialogue",
+        "reason": "Probe while planned implementation remains; a negative observation defers correction.",
+        "startedAt": "2026-10-19T21:56:47.906Z",
+        "summary": "Two avatars exchange distinct turns: not yet satisfied; planned implementation remains. No failure retry or corrective model call consumed.",
+        "endedAt": "2026-10-19T21:56:48.027Z"
+      },
+      {
+        "id": "cef3b4f3-84a3-4075-8528-0b21272cf60f",
+        "status": "STALE",
+        "attempt": 2,
+        "files": [],
+        "evidenceIds": [
+          "c3c0104f-0072-4def-82f7-983b98ea87de"
+        ],
+        "kind": "verification",
+        "role": "verifier",
+        "title": "Avatar labels handle empty input",
+        "objective": "Run approved check: [\"node\",\"--test\",\"render.test.mjs\"]",
+        "criterionId": "render",
+        "reason": "Probe while planned implementation remains; a negative observation defers correction.",
+        "startedAt": "2026-10-19T21:56:48.123Z",
+        "summary": "Avatar labels handle empty input: approved command already passes on the recorded inputs.",
+        "endedAt": "2026-10-19T21:56:48.252Z"
+      },
+      {
+        "id": "e1b98ede-5c66-4d16-929d-35017329a90b",
+        "status": "UNVERIFIED",
+        "attempt": 2,
+        "files": [],
+        "evidenceIds": [
+          "e044db88-775f-4380-a21a-a5eb65b7616f"
+        ],
+        "kind": "verification",
+        "role": "verifier",
+        "title": "Two avatars exchange distinct turns",
+        "objective": "Run approved check: [\"node\",\"--test\",\"dialogue.test.mjs\"]",
+        "criterionId": "dialogue",
+        "reason": "Probe while planned implementation remains; a negative observation defers correction.",
+        "startedAt": "2026-10-19T21:56:48.268Z",
+        "summary": "Two avatars exchange distinct turns: not yet satisfied; planned implementation remains. No failure retry or corrective model call consumed.",
+        "endedAt": "2026-10-19T21:56:48.408Z"
+      },
+      {
+        "id": "d5c2e8e5-9f0d-4d10-a89f-591efc897662",
+        "status": "PASSED",
+        "attempt": 3,
+        "files": [],
+        "evidenceIds": [
+          "6e888e0f-5911-455f-9f7e-335c06c16d99"
+        ],
+        "kind": "verification",
+        "role": "verifier",
+        "title": "Avatar labels handle empty input",
+        "objective": "Run approved check: [\"node\",\"--test\",\"render.test.mjs\"]",
+        "criterionId": "render",
+        "reason": "Acceptance requires runtime-owned evidence for the approved verification policy.",
+        "startedAt": "2026-10-19T21:56:48.521Z",
+        "summary": "Avatar labels handle empty input: approved deterministic check satisfied on recorded inputs.",
+        "endedAt": "2026-10-19T21:56:48.659Z"
+      },
+      {
+        "id": "0a78a9d3-5185-4e7c-9029-f57486b120c7",
+        "status": "PASSED",
+        "attempt": 3,
+        "files": [],
+        "evidenceIds": [
+          "6981cf7e-137d-4b5c-a610-59c3946121a5"
+        ],
+        "kind": "verification",
+        "role": "verifier",
+        "title": "Two avatars exchange distinct turns",
+        "objective": "Run approved check: [\"node\",\"--test\",\"dialogue.test.mjs\"]",
+        "criterionId": "dialogue",
+        "reason": "Acceptance requires runtime-owned evidence for the approved verification policy.",
+        "startedAt": "2026-10-19T21:56:48.712Z",
+        "summary": "Two avatars exchange distinct turns: approved deterministic check satisfied on recorded inputs.",
+        "endedAt": "2026-10-19T21:56:48.844Z"
+      },
+      {
+        "id": "9b189e25-e843-4e5f-8cfd-a44b63aa3d0d",
+        "status": "PASSED",
+        "attempt": 1,
+        "files": [],
+        "evidenceIds": [],
+        "kind": "decision",
+        "role": "planner",
+        "title": "Review the project against its goal",
+        "objective": "{\"head\":\"bbaef0de1061b4a30592bf96a36c500687fc5de5\",\"fingerprint\":\"6e75a86192e2fac536a83c630ac18eb7407c0fecdbe5740b63ca59847ab5ba13\",\"version\":1,\"noteIds\":[\"223e4dbd-7c82-4321-b655-40407b227757\",\"06e47bc2-8f40-4eba-978a-1a88f96bce83\"],\"directionRevision\":1,\"round\":1}",
+        "reason": "A verified milestone triggers autonomous discovery of the next useful work.",
+        "criterionId": "render",
+        "startedAt": "2026-10-19T21:56:48.975Z",
+        "summary": "Explicit deterministic fixture ready for review.",
+        "endedAt": "2026-10-19T21:56:49.023Z",
+        "result": {
+          "proposal": {
+            "outcome": "ready",
+            "summary": "Explicit deterministic fixture ready for review.",
+            "findings": [],
+            "decisions": [],
+            "tasks": [],
+            "operatorQuestion": ""
+          },
+          "stamp": {
+            "head": "bbaef0de1061b4a30592bf96a36c500687fc5de5",
+            "files": {
+              "avatar.mjs": "9ade4794fe8bfba861915460c8256813c3e9ed39aee55f468d3681828bd84196",
+              "dialogue.test.mjs": "defe6717306f099f7ce97429a38102bed90283bd06d289ccf96fce2395a1572f",
+              "iterfox.json": "b32adee1dcf8d8b62038bbb5d0f18e5c7bbb544ae6a1a3ce7aeb9160b8462d1a",
+              "render.test.mjs": "9057d779a08ee810160fab51115bae2fcd85625f3624dc49ca9e48aa0944609d"
+            },
+            "fingerprint": "6e75a86192e2fac536a83c630ac18eb7407c0fecdbe5740b63ca59847ab5ba13"
+          },
+          "noteIds": [
+            "223e4dbd-7c82-4321-b655-40407b227757",
+            "06e47bc2-8f40-4eba-978a-1a88f96bce83"
+          ],
+          "directionRevision": 1
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "af4cd8ed-5258-485e-abc3-6fb6baf487f5",
+        "source": "cdd8603e-fa98-4a13-9b58-b26e853118ac",
+        "target": "33b55503-1e87-4edd-bbd1-6eca8f53b1c7",
+        "kind": "next"
+      },
+      {
+        "id": "next-33b55503-1e87-4edd-bbd1-6eca8f53b1c7-direction-33b55503-1e87-4edd-bbd1-6eca8f53b1c7-0",
+        "source": "33b55503-1e87-4edd-bbd1-6eca8f53b1c7",
+        "target": "direction-33b55503-1e87-4edd-bbd1-6eca8f53b1c7-0",
+        "kind": "next"
+      },
+      {
+        "id": "next-direction-33b55503-1e87-4edd-bbd1-6eca8f53b1c7-0-direction-33b55503-1e87-4edd-bbd1-6eca8f53b1c7-1",
+        "source": "direction-33b55503-1e87-4edd-bbd1-6eca8f53b1c7-0",
+        "target": "direction-33b55503-1e87-4edd-bbd1-6eca8f53b1c7-1",
+        "kind": "next"
+      },
+      {
+        "id": "8a04e5f8-f84e-4100-9fbf-8e63ab0a0605",
+        "source": "33b55503-1e87-4edd-bbd1-6eca8f53b1c7",
+        "target": "ef41dbc6-ea45-4f28-ba18-eac87cfd62a6",
+        "kind": "next"
+      },
+      {
+        "id": "23302058-09f6-4a49-90e7-79e62e3977d3",
+        "source": "ef41dbc6-ea45-4f28-ba18-eac87cfd62a6",
+        "target": "8e4e2dc9-5b5e-4750-8363-bd9147a8817c",
+        "kind": "next"
+      },
+      {
+        "id": "1bd35962-3cff-4a5f-b9e7-e8baf1db64ba",
+        "source": "8e4e2dc9-5b5e-4750-8363-bd9147a8817c",
+        "target": "direction-33b55503-1e87-4edd-bbd1-6eca8f53b1c7-0",
+        "kind": "next"
+      },
+      {
+        "id": "3155f6e0-5dac-41e8-94be-e471556db5c6",
+        "source": "8e4e2dc9-5b5e-4750-8363-bd9147a8817c",
+        "target": "cef3b4f3-84a3-4075-8528-0b21272cf60f",
+        "kind": "next"
+      },
+      {
+        "id": "280e1e85-ad91-4b5b-9471-f8376324e649",
+        "source": "cef3b4f3-84a3-4075-8528-0b21272cf60f",
+        "target": "e1b98ede-5c66-4d16-929d-35017329a90b",
+        "kind": "next"
+      },
+      {
+        "id": "57312bb5-ba51-488f-b7e8-751eea05b47b",
+        "source": "e1b98ede-5c66-4d16-929d-35017329a90b",
+        "target": "direction-33b55503-1e87-4edd-bbd1-6eca8f53b1c7-1",
+        "kind": "next"
+      },
+      {
+        "id": "fe00741f-0954-406c-91b9-be4219eb92f4",
+        "source": "cef3b4f3-84a3-4075-8528-0b21272cf60f",
+        "target": "d5c2e8e5-9f0d-4d10-a89f-591efc897662",
+        "kind": "next"
+      },
+      {
+        "id": "d85a57b5-84f6-4511-b2ac-d5ada68f0824",
+        "source": "e1b98ede-5c66-4d16-929d-35017329a90b",
+        "target": "0a78a9d3-5185-4e7c-9029-f57486b120c7",
+        "kind": "next"
+      },
+      {
+        "id": "f74ebacd-3dd7-40a0-8dd5-9ee10b8fa779",
+        "source": "0a78a9d3-5185-4e7c-9029-f57486b120c7",
+        "target": "9b189e25-e843-4e5f-8cfd-a44b63aa3d0d",
+        "kind": "next"
+      }
+    ],
+    "criteria": [
+      {
+        "id": "render",
+        "status": "PASSED",
+        "evidenceId": "6e888e0f-5911-455f-9f7e-335c06c16d99"
+      },
+      {
+        "id": "dialogue",
+        "status": "PASSED",
+        "evidenceId": "6981cf7e-137d-4b5c-a610-59c3946121a5"
+      }
+    ],
+    "evidence": [
+      {
+        "id": "81771f4c-fd83-4886-b0cc-06c4aaa20d7c",
+        "nodeId": "ef41dbc6-ea45-4f28-ba18-eac87cfd62a6",
+        "criterionId": "render",
+        "contractVersion": 1,
+        "kind": "deterministic",
+        "status": "recorded",
+        "createdAt": "2026-10-19T21:56:47.855Z",
+        "command": [
+          "node",
+          "--test",
+          "render.test.mjs"
+        ],
+        "exitCode": 1,
+        "output": "TAP version 13\n# Subtest: avatar rendering handles empty and missing names\nnot ok 1 - avatar rendering handles empty and missing names\n  ---\n  duration_ms: 0.243041\n  type: 'test'\n  location: '/Users/vins/work/iterfox/.iterfox/missions/project-continuity-20261019/legacy-c-data-dgkweA/worktrees/20261019T215647-2a1ff7d9/render.test.mjs:4:1'\n  failureType: 'testCodeFailure'\n  error: \"Cannot read properties of undefined (reading 'toUpperCase')\"\n  code: 'ERR_TEST_FAILURE'\n  name: 'TypeError'\n  stack: |-\n    avatarLabel (file:///Users/vins/work/iterfox/.iterfox/missions/project-continuity-20261019/legacy-c-data-dgkweA/worktrees/20261019T215647-2a1ff7d9/avatar.mjs:3:24)\n    TestContext.<anonymous> (file:///Users/vins/work/iterfox/.iterfox/missions/project-continuity-20261019/legacy-c-data-dgkweA/worktrees/20261019T215647-2a1ff7d9/render.test.mjs:6:16)\n    Test.runInAsyncScope (node:async_hooks:214:14)\n    Test.run (node:internal/test_runner/test:1047:25)\n    Test.start (node:internal/test_runner/test:944:17)\n    startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17)\n  ...\n1..1\n# tests 1\n# suites 0\n# pass 0\n# fail 1\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 30.8105\n",
+        "durationMs": 94,
+        "stamp": {
+          "head": "bbaef0de1061b4a30592bf96a36c500687fc5de5",
+          "files": {
+            "avatar.mjs": "6990824f5b00fc6f510cf7afa320973c4635fccab16ade2d21fbd6d51205c54f",
+            "render.test.mjs": "9057d779a08ee810160fab51115bae2fcd85625f3624dc49ca9e48aa0944609d"
+          },
+          "fingerprint": "fbb0659a75c1d3ed32f6bbecfbf69e7dcfe9f8dc0cead45dca43ae74e6cc36d8"
+        },
+        "scope": [
+          "avatar.mjs",
+          "render.test.mjs"
+        ],
+        "inputs": [],
+        "purpose": "probe"
+      },
+      {
+        "id": "1327e20e-d760-431c-9520-01a208896cbd",
+        "nodeId": "8e4e2dc9-5b5e-4750-8363-bd9147a8817c",
+        "criterionId": "dialogue",
+        "contractVersion": 1,
+        "kind": "deterministic",
+        "status": "recorded",
+        "createdAt": "2026-10-19T21:56:47.988Z",
+        "command": [
+          "node",
+          "--test",
+          "dialogue.test.mjs"
+        ],
+        "exitCode": 1,
+        "output": "TAP version 13\n# Subtest: conversation has two identifiable, distinct turns\nnot ok 1 - conversation has two identifiable, distinct turns\n  ---\n  duration_ms: 0.556334\n  type: 'test'\n  location: '/Users/vins/work/iterfox/.iterfox/missions/project-continuity-20261019/legacy-c-data-dgkweA/worktrees/20261019T215647-2a1ff7d9/dialogue.test.mjs:4:1'\n  failureType: 'testCodeFailure'\n  error: |-\n    Expected values to be strictly equal:\n    + actual - expected\n    \n    + 'A: Hello!\\nB: Hello!'\n    - 'A: Hello!\\nB: Hi, A!'\n                      ^\n    \n  code: 'ERR_ASSERTION'\n  name: 'AssertionError'\n  expected: |-\n    A: Hello!\n    B: Hi, A!\n  actual: |-\n    A: Hello!\n    B: Hello!\n  operator: 'strictEqual'\n  stack: |-\n    TestContext.<anonymous> (file:///Users/vins/work/iterfox/.iterfox/missions/project-continuity-20261019/legacy-c-data-dgkweA/worktrees/20261019T215647-2a1ff7d9/dialogue.test.mjs:5:10)\n    Test.runInAsyncScope (node:async_hooks:214:14)\n    Test.run (node:internal/test_runner/test:1047:25)\n    Test.start (node:internal/test_runner/test:944:17)\n    startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17)\n  ...\n1..1\n# tests 1\n# suites 0\n# pass 0\n# fail 1\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 30.636209\n",
+        "durationMs": 90,
+        "stamp": {
+          "head": "bbaef0de1061b4a30592bf96a36c500687fc5de5",
+          "files": {
+            "avatar.mjs": "6990824f5b00fc6f510cf7afa320973c4635fccab16ade2d21fbd6d51205c54f",
+            "dialogue.test.mjs": "defe6717306f099f7ce97429a38102bed90283bd06d289ccf96fce2395a1572f"
+          },
+          "fingerprint": "a085e1badfec4aeb99a772bbed8d10cac233ce9e817ebbb6d4b64eb97ecfbbb3"
+        },
+        "scope": [
+          "avatar.mjs",
+          "dialogue.test.mjs"
+        ],
+        "inputs": [],
+        "purpose": "probe"
+      },
+      {
+        "id": "c3c0104f-0072-4def-82f7-983b98ea87de",
+        "nodeId": "cef3b4f3-84a3-4075-8528-0b21272cf60f",
+        "criterionId": "render",
+        "contractVersion": 1,
+        "kind": "deterministic",
+        "status": "stale",
+        "createdAt": "2026-10-19T21:56:48.210Z",
+        "command": [
+          "node",
+          "--test",
+          "render.test.mjs"
+        ],
+        "exitCode": 0,
+        "output": "TAP version 13\n# Subtest: avatar rendering handles empty and missing names\nok 1 - avatar rendering handles empty and missing names\n  ---\n  duration_ms: 0.268125\n  type: 'test'\n  ...\n1..1\n# tests 1\n# suites 0\n# pass 1\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 30.718833\n",
+        "durationMs": 93,
+        "stamp": {
+          "head": "bbaef0de1061b4a30592bf96a36c500687fc5de5",
+          "files": {
+            "avatar.mjs": "b8aa00d4fe678a8c59b835a303c0a106acaa7805c70b818b0fe0c4b376a92df0",
+            "render.test.mjs": "9057d779a08ee810160fab51115bae2fcd85625f3624dc49ca9e48aa0944609d"
+          },
+          "fingerprint": "035310397fa1e2094562859cbc862d9c74ab0211d803383cc4d9db5cc4698de2"
+        },
+        "scope": [
+          "avatar.mjs",
+          "render.test.mjs"
+        ],
+        "inputs": [],
+        "purpose": "probe",
+        "invalidatedReason": "Evidence is STALE: avatar.mjs. Scope: avatar.mjs, render.test.mjs."
+      },
+      {
+        "id": "e044db88-775f-4380-a21a-a5eb65b7616f",
+        "nodeId": "e1b98ede-5c66-4d16-929d-35017329a90b",
+        "criterionId": "dialogue",
+        "contractVersion": 1,
+        "kind": "deterministic",
+        "status": "recorded",
+        "createdAt": "2026-10-19T21:56:48.360Z",
+        "command": [
+          "node",
+          "--test",
+          "dialogue.test.mjs"
+        ],
+        "exitCode": 1,
+        "output": "TAP version 13\n# Subtest: conversation has two identifiable, distinct turns\nnot ok 1 - conversation has two identifiable, distinct turns\n  ---\n  duration_ms: 0.582917\n  type: 'test'\n  location: '/Users/vins/work/iterfox/.iterfox/missions/project-continuity-20261019/legacy-c-data-dgkweA/worktrees/20261019T215647-2a1ff7d9/dialogue.test.mjs:4:1'\n  failureType: 'testCodeFailure'\n  error: |-\n    Expected values to be strictly equal:\n    + actual - expected\n    \n    + 'A: Hello!\\nB: Hello!'\n    - 'A: Hello!\\nB: Hi, A!'\n                      ^\n    \n  code: 'ERR_ASSERTION'\n  name: 'AssertionError'\n  expected: |-\n    A: Hello!\n    B: Hi, A!\n  actual: |-\n    A: Hello!\n    B: Hello!\n  operator: 'strictEqual'\n  stack: |-\n    TestContext.<anonymous> (file:///Users/vins/work/iterfox/.iterfox/missions/project-continuity-20261019/legacy-c-data-dgkweA/worktrees/20261019T215647-2a1ff7d9/dialogue.test.mjs:5:10)\n    Test.runInAsyncScope (node:async_hooks:214:14)\n    Test.run (node:internal/test_runner/test:1047:25)\n    Test.start (node:internal/test_runner/test:944:17)\n    startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17)\n  ...\n1..1\n# tests 1\n# suites 0\n# pass 0\n# fail 1\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 34.284291\n",
+        "durationMs": 104,
+        "stamp": {
+          "head": "bbaef0de1061b4a30592bf96a36c500687fc5de5",
+          "files": {
+            "avatar.mjs": "b8aa00d4fe678a8c59b835a303c0a106acaa7805c70b818b0fe0c4b376a92df0",
+            "dialogue.test.mjs": "defe6717306f099f7ce97429a38102bed90283bd06d289ccf96fce2395a1572f"
+          },
+          "fingerprint": "4cc5bfd0231d2444d826bb9e09e6c221c01449aece2a991108f0cb847c4a2fe5"
+        },
+        "scope": [
+          "avatar.mjs",
+          "dialogue.test.mjs"
+        ],
+        "inputs": [],
+        "purpose": "probe"
+      },
+      {
+        "id": "6e888e0f-5911-455f-9f7e-335c06c16d99",
+        "nodeId": "d5c2e8e5-9f0d-4d10-a89f-591efc897662",
+        "criterionId": "render",
+        "contractVersion": 1,
+        "kind": "deterministic",
+        "status": "passed",
+        "createdAt": "2026-10-19T21:56:48.622Z",
+        "command": [
+          "node",
+          "--test",
+          "render.test.mjs"
+        ],
+        "exitCode": 0,
+        "output": "TAP version 13\n# Subtest: avatar rendering handles empty and missing names\nok 1 - avatar rendering handles empty and missing names\n  ---\n  duration_ms: 0.24875\n  type: 'test'\n  ...\n1..1\n# tests 1\n# suites 0\n# pass 1\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 32.892417\n",
+        "durationMs": 105,
+        "stamp": {
+          "head": "bbaef0de1061b4a30592bf96a36c500687fc5de5",
+          "files": {
+            "avatar.mjs": "9ade4794fe8bfba861915460c8256813c3e9ed39aee55f468d3681828bd84196",
+            "render.test.mjs": "9057d779a08ee810160fab51115bae2fcd85625f3624dc49ca9e48aa0944609d"
+          },
+          "fingerprint": "d4321482749f8f21f1210bb24da610c3dff7eb7a3acc2f8d4ab84ce8e3cd1600"
+        },
+        "scope": [
+          "avatar.mjs",
+          "render.test.mjs"
+        ],
+        "inputs": []
+      },
+      {
+        "id": "6981cf7e-137d-4b5c-a610-59c3946121a5",
+        "nodeId": "0a78a9d3-5185-4e7c-9029-f57486b120c7",
+        "criterionId": "dialogue",
+        "contractVersion": 1,
+        "kind": "deterministic",
+        "status": "passed",
+        "createdAt": "2026-10-19T21:56:48.805Z",
+        "command": [
+          "node",
+          "--test",
+          "dialogue.test.mjs"
+        ],
+        "exitCode": 0,
+        "output": "TAP version 13\n# Subtest: conversation has two identifiable, distinct turns\nok 1 - conversation has two identifiable, distinct turns\n  ---\n  duration_ms: 0.271458\n  type: 'test'\n  ...\n1..1\n# tests 1\n# suites 0\n# pass 1\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 32.305875\n",
+        "durationMs": 104,
+        "stamp": {
+          "head": "bbaef0de1061b4a30592bf96a36c500687fc5de5",
+          "files": {
+            "avatar.mjs": "9ade4794fe8bfba861915460c8256813c3e9ed39aee55f468d3681828bd84196",
+            "dialogue.test.mjs": "defe6717306f099f7ce97429a38102bed90283bd06d289ccf96fce2395a1572f"
+          },
+          "fingerprint": "f0dc92341030f5a11178448d04f2ef93252a1e18350ee80715b33b0bd85d4ef1"
+        },
+        "scope": [
+          "avatar.mjs",
+          "dialogue.test.mjs"
+        ],
+        "inputs": []
+      }
+    ],
+    "turns": 5,
+    "tokens": 0,
+    "noProgress": 0,
+    "planReady": true,
+    "startedAt": "2026-10-19T21:56:47.683Z",
+    "notes": [
+      {
+        "text": "Preserve the old event history across recovery.",
+        "kind": "request",
+        "id": "223e4dbd-7c82-4321-b655-40407b227757",
+        "at": "2026-10-19T21:56:47.684Z"
+      },
+      {
+        "text": "Keep the original contract and correct the invalid dependency.",
+        "kind": "decision",
+        "id": "06e47bc2-8f40-4eba-978a-1a88f96bce83",
+        "at": "2026-10-19T21:56:47.710Z"
+      }
+    ],
+    "projectNeedsReview": false,
+    "finishedAt": "2026-10-19T21:56:49.175Z",
+    "direction": {
+      "focus": "EXPLICIT LEGACY FIXTURE: preserve the original approved outcome.",
+      "nextArtifact": "EXPLICIT LEGACY FIXTURE: verified labels and a distinct conversation.",
+      "assumptions": [],
+      "notes": [
+        {
+          "noteId": "223e4dbd-7c82-4321-b655-40407b227757",
+          "disposition": "applied",
+          "reason": "Explicit deterministic fixture direction.",
+          "criterionIds": []
+        },
+        {
+          "noteId": "06e47bc2-8f40-4eba-978a-1a88f96bce83",
+          "disposition": "applied",
+          "reason": "Explicit deterministic fixture direction.",
+          "criterionIds": []
+        }
+      ],
+      "tasks": [
+        {
+          "title": "Normalize labels",
+          "objective": "Handle missing and blank names.",
+          "criterionId": "render",
+          "waitsFor": []
+        },
+        {
+          "title": "Create a reply",
+          "objective": "The second speaker answers the first.",
+          "criterionId": "dialogue",
+          "waitsFor": []
+        }
+      ],
+      "revision": 1,
+      "nodeId": "33b55503-1e87-4edd-bbd1-6eca8f53b1c7",
+      "sourceIds": [
+        "223e4dbd-7c82-4321-b655-40407b227757",
+        "06e47bc2-8f40-4eba-978a-1a88f96bce83"
+      ],
+      "contractVersion": 1
+    },
+    "diff": "diff --git a/avatar.mjs b/avatar.mjs\nindex 7125090..7eda6c4 100644\n--- a/avatar.mjs\n+++ b/avatar.mjs\n@@ -1,9 +1,9 @@\n // Deliberately incomplete input normalization. This is the demo's initial bug.\n export function avatarLabel(name) {\n-  return name.trim()[0].toUpperCase();\n+  return String(name ?? '').trim()[0]?.toUpperCase() ?? '?';\n }\n \n // A conversation check exposes this second defect after the first check passes.\n export function dialogue(names) {\n-  return names.map(name => `${avatarLabel(name)}: Hello!`).join('\\n');\n+  return names.map((name, i) => i === 0 ? `${avatarLabel(name)}: Hello!` : `${avatarLabel(name)}: Hi, ${avatarLabel(names[i - 1])}!`).join('\\n');\n }",
+    "projectReviews": [
+      {
+        "outcome": "ready",
+        "summary": "Explicit deterministic fixture ready for review.",
+        "findings": [],
+        "decisions": [],
+        "tasks": [],
+        "operatorQuestion": "",
+        "stamp": {
+          "head": "bbaef0de1061b4a30592bf96a36c500687fc5de5",
+          "files": {
+            "avatar.mjs": "9ade4794fe8bfba861915460c8256813c3e9ed39aee55f468d3681828bd84196",
+            "dialogue.test.mjs": "defe6717306f099f7ce97429a38102bed90283bd06d289ccf96fce2395a1572f",
+            "iterfox.json": "b32adee1dcf8d8b62038bbb5d0f18e5c7bbb544ae6a1a3ce7aeb9160b8462d1a",
+            "render.test.mjs": "9057d779a08ee810160fab51115bae2fcd85625f3624dc49ca9e48aa0944609d"
+          },
+          "fingerprint": "6e75a86192e2fac536a83c630ac18eb7407c0fecdbe5740b63ca59847ab5ba13"
+        },
+        "noteIds": [
+          "223e4dbd-7c82-4321-b655-40407b227757",
+          "06e47bc2-8f40-4eba-978a-1a88f96bce83"
+        ],
+        "directionRevision": 1,
+        "contractVersion": 1,
+        "nodeId": "9b189e25-e843-4e5f-8cfd-a44b63aa3d0d",
+        "at": "2026-10-19T21:56:49.024Z",
+        "independent": false
+      }
+    ]
+  },
+  "events": [
+    {
+      "schemaVersion": 1,
+      "id": "34d552b8-3f62-4ad3-91e6-3752172412b2",
+      "runId": "20261019T215647-2a1ff7d9",
+      "seq": 1,
+      "at": "2026-10-19T21:56:47.683Z",
+      "type": "workflow.created",
+      "message": "Isolated workflow created from committed Git HEAD.",
+      "data": {
+        "state": {
+          "id": "20261019T215647-2a1ff7d9",
+          "seq": 0,
+          "goal": "LEGACY REPLAY FIXTURE: preserve an interrupted orientation history exactly.",
+          "status": "PREFLIGHT",
+          "provider": "demo",
+          "repository": "/Users/vins/work/iterfox/.iterfox/missions/project-continuity-20261019/legacy-c-data-dgkweA/demo-repositories/e2286dbb",
+          "worktree": "/Users/vins/work/iterfox/.iterfox/missions/project-continuity-20261019/legacy-c-data-dgkweA/worktrees/20261019T215647-2a1ff7d9",
+          "branch": "iterfox/20261019T215647-2a1ff7d9",
+          "baseHead": "bbaef0de1061b4a30592bf96a36c500687fc5de5",
+          "contract": {
+            "goal": "LEGACY REPLAY FIXTURE: preserve an interrupted orientation history exactly.",
+            "criteria": [
+              {
+                "id": "render",
+                "title": "Avatar labels handle empty input",
+                "command": [
+                  "node",
+                  "--test",
+                  "render.test.mjs"
+                ],
+                "scope": [
+                  "avatar.mjs",
+                  "render.test.mjs"
+                ],
+                "timeoutMs": 60000
+              },
+              {
+                "id": "dialogue",
+                "title": "Two avatars exchange distinct turns",
+                "command": [
+                  "node",
+                  "--test",
+                  "dialogue.test.mjs"
+                ],
+                "scope": [
+                  "avatar.mjs",
+                  "dialogue.test.mjs"
+                ],
+                "timeoutMs": 60000
+              }
+            ],
+            "allowedPaths": [
+              "avatar.mjs"
+            ],
+            "protectedPaths": [
+              "render.test.mjs",
+              "dialogue.test.mjs",
+              "iterfox.json"
+            ],
+            "supervision": {
+              "mode": "project",
+              "maxReviews": 4
+            },
+            "limits": {
+              "maxTurns": 12,
+              "maxAttempts": 3,
+              "maxDurationMs": 900000,
+              "maxTokens": 500000,
+              "turnTimeoutMs": 180000,
+              "maxNoProgress": 3
+            }
+          },
+          "contracts": [
+            {
+              "goal": "LEGACY REPLAY FIXTURE: preserve an interrupted orientation history exactly.",
+              "criteria": [
+                {
+                  "id": "render",
+                  "title": "Avatar labels handle empty input",
+                  "command": [
+                    "node",
+                    "--test",
+                    "render.test.mjs"
+                  ],
+                  "scope": [
+                    "avatar.mjs",
+                    "render.test.mjs"
+                  ],
+                  "timeoutMs": 60000
+                },
+                {
+                  "id": "dialogue",
+                  "title": "Two avatars exchange distinct turns",
+                  "command": [
+                    "node",
+                    "--test",
+                    "dialogue.test.mjs"
+                  ],
+                  "scope": [
+                    "avatar.mjs",
+                    "dialogue.test.mjs"
+                  ],
+                  "timeoutMs": 60000
+                }
+              ],
+              "allowedPaths": [
+                "avatar.mjs"
+              ],
+              "protectedPaths": [
+                "render.test.mjs",
+                "dialogue.test.mjs",
+                "iterfox.json"
+              ],
+              "supervision": {
+                "mode": "project",
+                "maxReviews": 4
+              },
+              "limits": {
+                "maxTurns": 12,
+                "maxAttempts": 3,
+                "maxDurationMs": 900000,
+                "maxTokens": 500000,
+                "turnTimeoutMs": 180000,
+                "maxNoProgress": 3
+              }
+            }
+          ],
+          "contractVersion": 1,
+          "createdAt": "2026-10-19T21:56:47.683Z",
+          "updatedAt": "2026-10-19T21:56:47.683Z",
+          "nodes": [],
+          "edges": [],
+          "criteria": [
+            {
+              "id": "render",
+              "status": "PENDING"
+            },
+            {
+              "id": "dialogue",
+              "status": "PENDING"
+            }
+          ],
+          "evidence": [],
+          "turns": 0,
+          "tokens": 0,
+          "noProgress": 0,
+          "planReady": false
+        }
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "84d66370-34a7-4383-a8bf-8a3671c5e793",
+      "runId": "20261019T215647-2a1ff7d9",
+      "seq": 2,
+      "at": "2026-10-19T21:56:47.683Z",
+      "type": "goal.accepted",
+      "message": "Operator explicitly authorized this goal, acceptance contract and limits.",
+      "data": {
+        "version": 1
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "ec7dd194-0806-4b09-aecb-1e88646129d1",
+      "runId": "20261019T215647-2a1ff7d9",
+      "seq": 3,
+      "at": "2026-10-19T21:56:47.684Z",
+      "type": "direction.noted",
+      "message": "Operator request: Preserve the old event history across recovery.",
+      "data": {
+        "noteId": "223e4dbd-7c82-4321-b655-40407b227757",
+        "note": {
+          "text": "Preserve the old event history across recovery.",
+          "kind": "request"
+        }
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "e6f9229b-789b-425e-a2fd-bc68ace4b575",
+      "runId": "20261019T215647-2a1ff7d9",
+      "seq": 4,
+      "at": "2026-10-19T21:56:47.707Z",
+      "type": "task.planned",
+      "message": "Reconcile the project direction",
+      "data": {
+        "node": {
+          "id": "cdd8603e-fa98-4a13-9b58-b26e853118ac",
+          "status": "PENDING",
+          "attempt": 1,
+          "files": [],
+          "evidenceIds": [],
+          "kind": "decision",
+          "role": "planner",
+          "title": "Reconcile the project direction",
+          "objective": "{\"sourceIds\":[\"223e4dbd-7c82-4321-b655-40407b227757\"],\"version\":1}",
+          "criterionId": "render",
+          "reason": "Operator handoff changed; reconcile once at an activity boundary."
+        }
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "0505c82f-3b37-43a6-a0f3-2f47ff22da1b",
+      "runId": "20261019T215647-2a1ff7d9",
+      "seq": 5,
+      "at": "2026-10-19T21:56:47.708Z",
+      "type": "task.started",
+      "message": "planner: Reconcile the project direction",
+      "data": {
+        "nodeId": "cdd8603e-fa98-4a13-9b58-b26e853118ac",
+        "edges": []
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "58eda1d2-cecc-4c68-b291-071ebecd7064",
+      "runId": "20261019T215647-2a1ff7d9",
+      "seq": 6,
+      "at": "2026-10-19T21:56:47.709Z",
+      "type": "task.interrupted",
+      "message": "Direction referenced an unapproved criterion or self dependency",
+      "data": {
+        "nodeId": "cdd8603e-fa98-4a13-9b58-b26e853118ac"
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "75d94711-40e9-4dee-8a25-24a87a8ab661",
+      "runId": "20261019T215647-2a1ff7d9",
+      "seq": 7,
+      "at": "2026-10-19T21:56:47.710Z",
+      "type": "workflow.blocked",
+      "message": "Direction referenced an unapproved criterion or self dependency",
+      "data": {}
+    },
+    {
+      "schemaVersion": 1,
+      "id": "2fc003db-9a56-498c-a6a0-242a9b2ffd1b",
+      "runId": "20261019T215647-2a1ff7d9",
+      "seq": 8,
+      "at": "2026-10-19T21:56:47.710Z",
+      "type": "direction.noted",
+      "message": "Operator decision: Keep the original contract and correct the invalid dependency.",
+      "data": {
+        "noteId": "06e47bc2-8f40-4eba-978a-1a88f96bce83",
+        "note": {
+          "text": "Keep the original contract and correct the invalid dependency.",
+          "kind": "decision"
+        }
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "1d611672-b53e-4d10-9f1c-f6dc76f2228b",
+      "runId": "20261019T215647-2a1ff7d9",
+      "seq": 9,
+      "at": "2026-10-19T21:56:47.711Z",
+      "type": "workflow.resumed",
+      "message": "Operator resumed within the existing acceptance contract and original limits.",
+      "data": {}
+    },
+    {
+      "schemaVersion": 1,
+      "id": "1e165c86-ff02-4d37-9c6a-b822120b0e5d",
+      "runId": "20261019T215647-2a1ff7d9",
+      "seq": 10,
+      "at": "2026-10-19T21:56:47.732Z",
+      "type": "task.planned",
+      "message": "Reconcile the project direction",
+      "data": {
+        "node": {
+          "id": "33b55503-1e87-4edd-bbd1-6eca8f53b1c7",
+          "status": "PENDING",
+          "attempt": 1,
+          "files": [],
+          "evidenceIds": [],
+          "kind": "decision",
+          "role": "planner",
+          "title": "Reconcile the project direction",
+          "objective": "{\"sourceIds\":[\"223e4dbd-7c82-4321-b655-40407b227757\",\"06e47bc2-8f40-4eba-978a-1a88f96bce83\"],\"version\":1}",
+          "criterionId": "render",
+          "reason": "Operator handoff changed; reconcile once at an activity boundary."
+        }
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "85ce3797-305a-4e72-b71c-f48d9d040d3d",
+      "runId": "20261019T215647-2a1ff7d9",
+      "seq": 11,
+      "at": "2026-10-19T21:56:47.733Z",
+      "type": "task.started",
+      "message": "planner: Reconcile the project direction",
+      "data": {
+        "nodeId": "33b55503-1e87-4edd-bbd1-6eca8f53b1c7",
+        "edges": [
+          {
+            "id": "af4cd8ed-5258-485e-abc3-6fb6baf487f5",
+            "source": "cdd8603e-fa98-4a13-9b58-b26e853118ac",
+            "target": "33b55503-1e87-4edd-bbd1-6eca8f53b1c7",
+            "kind": "next"
+          }
+        ]
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "8957f271-0b0b-4c47-b0f1-f5a612d8ac08",
+      "runId": "20261019T215647-2a1ff7d9",
+      "seq": 12,
+      "at": "2026-10-19T21:56:47.756Z",
+      "type": "task.completed",
+      "message": "Handoff consolidated; no completion or acceptance is implied.",
+      "data": {
+        "nodeId": "33b55503-1e87-4edd-bbd1-6eca8f53b1c7",
+        "summary": "Direction proposal mapped to the unchanged acceptance contract.",
+        "result": {
+          "proposal": {
+            "focus": "EXPLICIT LEGACY FIXTURE: preserve the original approved outcome.",
+            "nextArtifact": "EXPLICIT LEGACY FIXTURE: verified labels and a distinct conversation.",
+            "assumptions": [],
+            "notes": [
+              {
+                "noteId": "223e4dbd-7c82-4321-b655-40407b227757",
+                "disposition": "applied",
+                "reason": "Explicit deterministic fixture direction.",
+                "criterionIds": []
+              },
+              {
+                "noteId": "06e47bc2-8f40-4eba-978a-1a88f96bce83",
+                "disposition": "applied",
+                "reason": "Explicit deterministic fixture direction.",
+                "criterionIds": []
+              }
+            ],
+            "tasks": [
+              {
+                "title": "Normalize labels",
+                "objective": "Handle missing and blank names.",
+                "criterionId": "render",
+                "waitsFor": []
+              },
+              {
+                "title": "Create a reply",
+                "objective": "The second speaker answers the first.",
+                "criterionId": "dialogue",
+                "waitsFor": []
+              }
+            ]
+          },
+          "sourceIds": [
+            "223e4dbd-7c82-4321-b655-40407b227757",
+            "06e47bc2-8f40-4eba-978a-1a88f96bce83"
+          ]
+        }
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "28fe14ca-7faf-4ea8-9ce5-ec0da7e82081",
+      "runId": "20261019T215647-2a1ff7d9",
+      "seq": 13,
+      "at": "2026-10-19T21:56:47.756Z",
+      "type": "direction.compiled",
+      "message": "Project direction updated. Unstarted work replaced; independent work can continue while operator questions wait.",
+      "data": {
+        "nodeId": "33b55503-1e87-4edd-bbd1-6eca8f53b1c7",
+        "sourceIds": [
+          "223e4dbd-7c82-4321-b655-40407b227757",
+          "06e47bc2-8f40-4eba-978a-1a88f96bce83"
+        ]
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "eec1a238-6899-4faa-ad99-5c3c88c93645",
+      "runId": "20261019T215647-2a1ff7d9",
+      "seq": 14,
+      "at": "2026-10-19T21:56:47.758Z",
+      "type": "direction.superseded",
+      "message": "Obsolete orientation superseded by the validated current handoff; no implementation or acceptance skipped.",
+      "data": {
+        "nodeId": "cdd8603e-fa98-4a13-9b58-b26e853118ac",
+        "supersededBy": "33b55503-1e87-4edd-bbd1-6eca8f53b1c7"
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "8838fddd-7541-40e6-882c-5565914ab41f",
+      "runId": "20261019T215647-2a1ff7d9",
+      "seq": 15,
+      "at": "2026-10-19T21:56:47.772Z",
+      "type": "verification.started",
+      "message": "Checking existing coverage: Avatar labels handle empty input",
+      "data": {
+        "nodeId": "ef41dbc6-ea45-4f28-ba18-eac87cfd62a6",
+        "node": {
+          "id": "ef41dbc6-ea45-4f28-ba18-eac87cfd62a6",
+          "status": "PENDING",
+          "attempt": 1,
+          "files": [],
+          "evidenceIds": [],
+          "kind": "verification",
+          "role": "verifier",
+          "title": "Avatar labels handle empty input",
+          "objective": "Run approved check: [\"node\",\"--test\",\"render.test.mjs\"]",
+          "criterionId": "render",
+          "reason": "Probe while planned implementation remains; a negative observation defers correction."
+        },
+        "edges": [
+          {
+            "id": "8a04e5f8-f84e-4100-9fbf-8e63ab0a0605",
+            "source": "33b55503-1e87-4edd-bbd1-6eca8f53b1c7",
+            "target": "ef41dbc6-ea45-4f28-ba18-eac87cfd62a6",
+            "kind": "next"
+          }
+        ]
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "2bb53c93-2cdd-471e-8110-0775c4df4a15",
+      "runId": "20261019T215647-2a1ff7d9",
+      "seq": 16,
+      "at": "2026-10-19T21:56:47.894Z",
+      "type": "verification.deferred",
+      "message": "Avatar labels handle empty input: not yet satisfied; planned implementation remains. No failure retry or corrective model call consumed.",
+      "data": {
+        "nodeId": "ef41dbc6-ea45-4f28-ba18-eac87cfd62a6",
+        "evidence": {
+          "id": "81771f4c-fd83-4886-b0cc-06c4aaa20d7c",
+          "nodeId": "ef41dbc6-ea45-4f28-ba18-eac87cfd62a6",
+          "criterionId": "render",
+          "contractVersion": 1,
+          "kind": "deterministic",
+          "status": "recorded",
+          "createdAt": "2026-10-19T21:56:47.855Z",
+          "command": [
+            "node",
+            "--test",
+            "render.test.mjs"
+          ],
+          "exitCode": 1,
+          "output": "TAP version 13\n# Subtest: avatar rendering handles empty and missing names\nnot ok 1 - avatar rendering handles empty and missing names\n  ---\n  duration_ms: 0.243041\n  type: 'test'\n  location: '/Users/vins/work/iterfox/.iterfox/missions/project-continuity-20261019/legacy-c-data-dgkweA/worktrees/20261019T215647-2a1ff7d9/render.test.mjs:4:1'\n  failureType: 'testCodeFailure'\n  error: \"Cannot read properties of undefined (reading 'toUpperCase')\"\n  code: 'ERR_TEST_FAILURE'\n  name: 'TypeError'\n  stack: |-\n    avatarLabel (file:///Users/vins/work/iterfox/.iterfox/missions/project-continuity-20261019/legacy-c-data-dgkweA/worktrees/20261019T215647-2a1ff7d9/avatar.mjs:3:24)\n    TestContext.<anonymous> (file:///Users/vins/work/iterfox/.iterfox/missions/project-continuity-20261019/legacy-c-data-dgkweA/worktrees/20261019T215647-2a1ff7d9/render.test.mjs:6:16)\n    Test.runInAsyncScope (node:async_hooks:214:14)\n    Test.run (node:internal/test_runner/test:1047:25)\n    Test.start (node:internal/test_runner/test:944:17)\n    startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17)\n  ...\n1..1\n# tests 1\n# suites 0\n# pass 0\n# fail 1\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 30.8105\n",
+          "durationMs": 94,
+          "stamp": {
+            "head": "bbaef0de1061b4a30592bf96a36c500687fc5de5",
+            "files": {
+              "avatar.mjs": "6990824f5b00fc6f510cf7afa320973c4635fccab16ade2d21fbd6d51205c54f",
+              "render.test.mjs": "9057d779a08ee810160fab51115bae2fcd85625f3624dc49ca9e48aa0944609d"
+            },
+            "fingerprint": "fbb0659a75c1d3ed32f6bbecfbf69e7dcfe9f8dc0cead45dca43ae74e6cc36d8"
+          },
+          "scope": [
+            "avatar.mjs",
+            "render.test.mjs"
+          ],
+          "inputs": [],
+          "purpose": "probe"
+        }
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "6324ba9a-f6e5-4fd9-a93e-196ef119feb9",
+      "runId": "20261019T215647-2a1ff7d9",
+      "seq": 17,
+      "at": "2026-10-19T21:56:47.906Z",
+      "type": "verification.started",
+      "message": "Checking existing coverage: Two avatars exchange distinct turns",
+      "data": {
+        "nodeId": "8e4e2dc9-5b5e-4750-8363-bd9147a8817c",
+        "node": {
+          "id": "8e4e2dc9-5b5e-4750-8363-bd9147a8817c",
+          "status": "PENDING",
+          "attempt": 1,
+          "files": [],
+          "evidenceIds": [],
+          "kind": "verification",
+          "role": "verifier",
+          "title": "Two avatars exchange distinct turns",
+          "objective": "Run approved check: [\"node\",\"--test\",\"dialogue.test.mjs\"]",
+          "criterionId": "dialogue",
+          "reason": "Probe while planned implementation remains; a negative observation defers correction."
+        },
+        "edges": [
+          {
+            "id": "23302058-09f6-4a49-90e7-79e62e3977d3",
+            "source": "ef41dbc6-ea45-4f28-ba18-eac87cfd62a6",
+            "target": "8e4e2dc9-5b5e-4750-8363-bd9147a8817c",
+            "kind": "next"
+          }
+        ]
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "4f443a96-e7c6-4a41-8ccd-6cfe94bc0984",
+      "runId": "20261019T215647-2a1ff7d9",
+      "seq": 18,
+      "at": "2026-10-19T21:56:48.027Z",
+      "type": "verification.deferred",
+      "message": "Two avatars exchange distinct turns: not yet satisfied; planned implementation remains. No failure retry or corrective model call consumed.",
+      "data": {
+        "nodeId": "8e4e2dc9-5b5e-4750-8363-bd9147a8817c",
+        "evidence": {
+          "id": "1327e20e-d760-431c-9520-01a208896cbd",
+          "nodeId": "8e4e2dc9-5b5e-4750-8363-bd9147a8817c",
+          "criterionId": "dialogue",
+          "contractVersion": 1,
+          "kind": "deterministic",
+          "status": "recorded",
+          "createdAt": "2026-10-19T21:56:47.988Z",
+          "command": [
+            "node",
+            "--test",
+            "dialogue.test.mjs"
+          ],
+          "exitCode": 1,
+          "output": "TAP version 13\n# Subtest: conversation has two identifiable, distinct turns\nnot ok 1 - conversation has two identifiable, distinct turns\n  ---\n  duration_ms: 0.556334\n  type: 'test'\n  location: '/Users/vins/work/iterfox/.iterfox/missions/project-continuity-20261019/legacy-c-data-dgkweA/worktrees/20261019T215647-2a1ff7d9/dialogue.test.mjs:4:1'\n  failureType: 'testCodeFailure'\n  error: |-\n    Expected values to be strictly equal:\n    + actual - expected\n    \n    + 'A: Hello!\\nB: Hello!'\n    - 'A: Hello!\\nB: Hi, A!'\n                      ^\n    \n  code: 'ERR_ASSERTION'\n  name: 'AssertionError'\n  expected: |-\n    A: Hello!\n    B: Hi, A!\n  actual: |-\n    A: Hello!\n    B: Hello!\n  operator: 'strictEqual'\n  stack: |-\n    TestContext.<anonymous> (file:///Users/vins/work/iterfox/.iterfox/missions/project-continuity-20261019/legacy-c-data-dgkweA/worktrees/20261019T215647-2a1ff7d9/dialogue.test.mjs:5:10)\n    Test.runInAsyncScope (node:async_hooks:214:14)\n    Test.run (node:internal/test_runner/test:1047:25)\n    Test.start (node:internal/test_runner/test:944:17)\n    startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17)\n  ...\n1..1\n# tests 1\n# suites 0\n# pass 0\n# fail 1\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 30.636209\n",
+          "durationMs": 90,
+          "stamp": {
+            "head": "bbaef0de1061b4a30592bf96a36c500687fc5de5",
+            "files": {
+              "avatar.mjs": "6990824f5b00fc6f510cf7afa320973c4635fccab16ade2d21fbd6d51205c54f",
+              "dialogue.test.mjs": "defe6717306f099f7ce97429a38102bed90283bd06d289ccf96fce2395a1572f"
+            },
+            "fingerprint": "a085e1badfec4aeb99a772bbed8d10cac233ce9e817ebbb6d4b64eb97ecfbbb3"
+          },
+          "scope": [
+            "avatar.mjs",
+            "dialogue.test.mjs"
+          ],
+          "inputs": [],
+          "purpose": "probe"
+        }
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "bf381eab-79c7-4120-9beb-49bd3ff13b34",
+      "runId": "20261019T215647-2a1ff7d9",
+      "seq": 19,
+      "at": "2026-10-19T21:56:48.044Z",
+      "type": "task.started",
+      "message": "builder: Normalize labels",
+      "data": {
+        "nodeId": "direction-33b55503-1e87-4edd-bbd1-6eca8f53b1c7-0",
+        "edges": [
+          {
+            "id": "1bd35962-3cff-4a5f-b9e7-e8baf1db64ba",
+            "source": "8e4e2dc9-5b5e-4750-8363-bd9147a8817c",
+            "target": "direction-33b55503-1e87-4edd-bbd1-6eca8f53b1c7-0",
+            "kind": "next"
+          }
+        ]
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "93306dc7-80e1-47ed-a46f-c784bbc25363",
+      "runId": "20261019T215647-2a1ff7d9",
+      "seq": 20,
+      "at": "2026-10-19T21:56:48.068Z",
+      "type": "code.changed",
+      "message": "1 files changed by this activity.",
+      "data": {
+        "nodeId": "direction-33b55503-1e87-4edd-bbd1-6eca8f53b1c7-0",
+        "files": [
+          "avatar.mjs"
+        ],
+        "diff": "diff --git a/avatar.mjs b/avatar.mjs\nindex 7125090..ba54d0a 100644\n--- a/avatar.mjs\n+++ b/avatar.mjs\n@@ -1,6 +1,6 @@\n // Deliberately incomplete input normalization. This is the demo's initial bug.\n export function avatarLabel(name) {\n-  return name.trim()[0].toUpperCase();\n+  return String(name ?? '').trim()[0]?.toUpperCase() ?? '?';\n }\n \n // A conversation check exposes this second defect after the first check passes."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "58cfff32-92a9-431e-9a65-0bd115e6a6f8",
+      "runId": "20261019T215647-2a1ff7d9",
+      "seq": 21,
+      "at": "2026-10-19T21:56:48.096Z",
+      "type": "task.completed",
+      "message": "DEMO fixture normalized empty avatar labels.",
+      "data": {
+        "nodeId": "direction-33b55503-1e87-4edd-bbd1-6eca8f53b1c7-0",
+        "summary": "DEMO fixture normalized empty avatar labels.",
+        "files": [
+          "avatar.mjs"
+        ]
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "0e684f44-82db-4082-abd2-b4dcb118cf92",
+      "runId": "20261019T215647-2a1ff7d9",
+      "seq": 22,
+      "at": "2026-10-19T21:56:48.096Z",
+      "type": "progress.recorded",
+      "message": "Code fingerprint changed.",
+      "data": {
+        "noProgress": 0
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "3b21f473-3ca2-400f-800d-7cf6560b569f",
+      "runId": "20261019T215647-2a1ff7d9",
+      "seq": 23,
+      "at": "2026-10-19T21:56:48.123Z",
+      "type": "verification.started",
+      "message": "Checking existing coverage: Avatar labels handle empty input",
+      "data": {
+        "nodeId": "cef3b4f3-84a3-4075-8528-0b21272cf60f",
+        "node": {
+          "id": "cef3b4f3-84a3-4075-8528-0b21272cf60f",
+          "status": "PENDING",
+          "attempt": 2,
+          "files": [],
+          "evidenceIds": [],
+          "kind": "verification",
+          "role": "verifier",
+          "title": "Avatar labels handle empty input",
+          "objective": "Run approved check: [\"node\",\"--test\",\"render.test.mjs\"]",
+          "criterionId": "render",
+          "reason": "Probe while planned implementation remains; a negative observation defers correction."
+        },
+        "edges": [
+          {
+            "id": "3155f6e0-5dac-41e8-94be-e471556db5c6",
+            "source": "8e4e2dc9-5b5e-4750-8363-bd9147a8817c",
+            "target": "cef3b4f3-84a3-4075-8528-0b21272cf60f",
+            "kind": "next"
+          }
+        ]
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "c0bfbb4d-ab9d-407d-8533-0c9a26bfa4ad",
+      "runId": "20261019T215647-2a1ff7d9",
+      "seq": 24,
+      "at": "2026-10-19T21:56:48.252Z",
+      "type": "verification.passed",
+      "message": "Avatar labels handle empty input: approved command already passes on the recorded inputs.",
+      "data": {
+        "nodeId": "cef3b4f3-84a3-4075-8528-0b21272cf60f",
+        "evidence": {
+          "id": "c3c0104f-0072-4def-82f7-983b98ea87de",
+          "nodeId": "cef3b4f3-84a3-4075-8528-0b21272cf60f",
+          "criterionId": "render",
+          "contractVersion": 1,
+          "kind": "deterministic",
+          "status": "passed",
+          "createdAt": "2026-10-19T21:56:48.210Z",
+          "command": [
+            "node",
+            "--test",
+            "render.test.mjs"
+          ],
+          "exitCode": 0,
+          "output": "TAP version 13\n# Subtest: avatar rendering handles empty and missing names\nok 1 - avatar rendering handles empty and missing names\n  ---\n  duration_ms: 0.268125\n  type: 'test'\n  ...\n1..1\n# tests 1\n# suites 0\n# pass 1\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 30.718833\n",
+          "durationMs": 93,
+          "stamp": {
+            "head": "bbaef0de1061b4a30592bf96a36c500687fc5de5",
+            "files": {
+              "avatar.mjs": "b8aa00d4fe678a8c59b835a303c0a106acaa7805c70b818b0fe0c4b376a92df0",
+              "render.test.mjs": "9057d779a08ee810160fab51115bae2fcd85625f3624dc49ca9e48aa0944609d"
+            },
+            "fingerprint": "035310397fa1e2094562859cbc862d9c74ab0211d803383cc4d9db5cc4698de2"
+          },
+          "scope": [
+            "avatar.mjs",
+            "render.test.mjs"
+          ],
+          "inputs": [],
+          "purpose": "probe"
+        }
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "908193b6-a998-48d4-b5ea-f28a61af8ec9",
+      "runId": "20261019T215647-2a1ff7d9",
+      "seq": 25,
+      "at": "2026-10-19T21:56:48.268Z",
+      "type": "verification.started",
+      "message": "Checking existing coverage: Two avatars exchange distinct turns",
+      "data": {
+        "nodeId": "e1b98ede-5c66-4d16-929d-35017329a90b",
+        "node": {
+          "id": "e1b98ede-5c66-4d16-929d-35017329a90b",
+          "status": "PENDING",
+          "attempt": 2,
+          "files": [],
+          "evidenceIds": [],
+          "kind": "verification",
+          "role": "verifier",
+          "title": "Two avatars exchange distinct turns",
+          "objective": "Run approved check: [\"node\",\"--test\",\"dialogue.test.mjs\"]",
+          "criterionId": "dialogue",
+          "reason": "Probe while planned implementation remains; a negative observation defers correction."
+        },
+        "edges": [
+          {
+            "id": "280e1e85-ad91-4b5b-9471-f8376324e649",
+            "source": "cef3b4f3-84a3-4075-8528-0b21272cf60f",
+            "target": "e1b98ede-5c66-4d16-929d-35017329a90b",
+            "kind": "next"
+          }
+        ]
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "f8c58b2f-575f-4fd0-95df-c2de2777728a",
+      "runId": "20261019T215647-2a1ff7d9",
+      "seq": 26,
+      "at": "2026-10-19T21:56:48.408Z",
+      "type": "verification.deferred",
+      "message": "Two avatars exchange distinct turns: not yet satisfied; planned implementation remains. No failure retry or corrective model call consumed.",
+      "data": {
+        "nodeId": "e1b98ede-5c66-4d16-929d-35017329a90b",
+        "evidence": {
+          "id": "e044db88-775f-4380-a21a-a5eb65b7616f",
+          "nodeId": "e1b98ede-5c66-4d16-929d-35017329a90b",
+          "criterionId": "dialogue",
+          "contractVersion": 1,
+          "kind": "deterministic",
+          "status": "recorded",
+          "createdAt": "2026-10-19T21:56:48.360Z",
+          "command": [
+            "node",
+            "--test",
+            "dialogue.test.mjs"
+          ],
+          "exitCode": 1,
+          "output": "TAP version 13\n# Subtest: conversation has two identifiable, distinct turns\nnot ok 1 - conversation has two identifiable, distinct turns\n  ---\n  duration_ms: 0.582917\n  type: 'test'\n  location: '/Users/vins/work/iterfox/.iterfox/missions/project-continuity-20261019/legacy-c-data-dgkweA/worktrees/20261019T215647-2a1ff7d9/dialogue.test.mjs:4:1'\n  failureType: 'testCodeFailure'\n  error: |-\n    Expected values to be strictly equal:\n    + actual - expected\n    \n    + 'A: Hello!\\nB: Hello!'\n    - 'A: Hello!\\nB: Hi, A!'\n                      ^\n    \n  code: 'ERR_ASSERTION'\n  name: 'AssertionError'\n  expected: |-\n    A: Hello!\n    B: Hi, A!\n  actual: |-\n    A: Hello!\n    B: Hello!\n  operator: 'strictEqual'\n  stack: |-\n    TestContext.<anonymous> (file:///Users/vins/work/iterfox/.iterfox/missions/project-continuity-20261019/legacy-c-data-dgkweA/worktrees/20261019T215647-2a1ff7d9/dialogue.test.mjs:5:10)\n    Test.runInAsyncScope (node:async_hooks:214:14)\n    Test.run (node:internal/test_runner/test:1047:25)\n    Test.start (node:internal/test_runner/test:944:17)\n    startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17)\n  ...\n1..1\n# tests 1\n# suites 0\n# pass 0\n# fail 1\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 34.284291\n",
+          "durationMs": 104,
+          "stamp": {
+            "head": "bbaef0de1061b4a30592bf96a36c500687fc5de5",
+            "files": {
+              "avatar.mjs": "b8aa00d4fe678a8c59b835a303c0a106acaa7805c70b818b0fe0c4b376a92df0",
+              "dialogue.test.mjs": "defe6717306f099f7ce97429a38102bed90283bd06d289ccf96fce2395a1572f"
+            },
+            "fingerprint": "4cc5bfd0231d2444d826bb9e09e6c221c01449aece2a991108f0cb847c4a2fe5"
+          },
+          "scope": [
+            "avatar.mjs",
+            "dialogue.test.mjs"
+          ],
+          "inputs": [],
+          "purpose": "probe"
+        }
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "dced918a-be73-4e4d-8565-2a9eca35086a",
+      "runId": "20261019T215647-2a1ff7d9",
+      "seq": 27,
+      "at": "2026-10-19T21:56:48.425Z",
+      "type": "task.started",
+      "message": "builder: Create a reply",
+      "data": {
+        "nodeId": "direction-33b55503-1e87-4edd-bbd1-6eca8f53b1c7-1",
+        "edges": [
+          {
+            "id": "57312bb5-ba51-488f-b7e8-751eea05b47b",
+            "source": "e1b98ede-5c66-4d16-929d-35017329a90b",
+            "target": "direction-33b55503-1e87-4edd-bbd1-6eca8f53b1c7-1",
+            "kind": "next"
+          }
+        ]
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "dcf4cac6-495d-4063-9f7b-8e10e1fae5c0",
+      "runId": "20261019T215647-2a1ff7d9",
+      "seq": 28,
+      "at": "2026-10-19T21:56:48.454Z",
+      "type": "code.changed",
+      "message": "1 files changed by this activity.",
+      "data": {
+        "nodeId": "direction-33b55503-1e87-4edd-bbd1-6eca8f53b1c7-1",
+        "files": [
+          "avatar.mjs"
+        ],
+        "diff": "diff --git a/avatar.mjs b/avatar.mjs\nindex 7125090..7eda6c4 100644\n--- a/avatar.mjs\n+++ b/avatar.mjs\n@@ -1,9 +1,9 @@\n // Deliberately incomplete input normalization. This is the demo's initial bug.\n export function avatarLabel(name) {\n-  return name.trim()[0].toUpperCase();\n+  return String(name ?? '').trim()[0]?.toUpperCase() ?? '?';\n }\n \n // A conversation check exposes this second defect after the first check passes.\n export function dialogue(names) {\n-  return names.map(name => `${avatarLabel(name)}: Hello!`).join('\\n');\n+  return names.map((name, i) => i === 0 ? `${avatarLabel(name)}: Hello!` : `${avatarLabel(name)}: Hi, ${avatarLabel(names[i - 1])}!`).join('\\n');\n }"
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "f717e342-ed82-4f46-ba96-17ebb0857fe1",
+      "runId": "20261019T215647-2a1ff7d9",
+      "seq": 29,
+      "at": "2026-10-19T21:56:48.468Z",
+      "type": "evidence.invalidated",
+      "message": "Evidence is STALE: avatar.mjs. Scope: avatar.mjs, render.test.mjs.",
+      "data": {
+        "evidenceId": "c3c0104f-0072-4def-82f7-983b98ea87de",
+        "changed": [
+          "avatar.mjs"
+        ]
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "74b44106-e38f-422b-9aee-e60e5e02fd5b",
+      "runId": "20261019T215647-2a1ff7d9",
+      "seq": 30,
+      "at": "2026-10-19T21:56:48.495Z",
+      "type": "task.completed",
+      "message": "DEMO fixture changed the second dialogue turn.",
+      "data": {
+        "nodeId": "direction-33b55503-1e87-4edd-bbd1-6eca8f53b1c7-1",
+        "summary": "DEMO fixture changed the second dialogue turn.",
+        "files": [
+          "avatar.mjs"
+        ]
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "95457058-f5f2-4e52-ba18-05e6562c6a73",
+      "runId": "20261019T215647-2a1ff7d9",
+      "seq": 31,
+      "at": "2026-10-19T21:56:48.496Z",
+      "type": "progress.recorded",
+      "message": "Code fingerprint changed.",
+      "data": {
+        "noProgress": 0
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "99391f38-a180-4db6-8276-d9324c35511e",
+      "runId": "20261019T215647-2a1ff7d9",
+      "seq": 32,
+      "at": "2026-10-19T21:56:48.521Z",
+      "type": "verification.started",
+      "message": "Verifying: Avatar labels handle empty input",
+      "data": {
+        "nodeId": "d5c2e8e5-9f0d-4d10-a89f-591efc897662",
+        "node": {
+          "id": "d5c2e8e5-9f0d-4d10-a89f-591efc897662",
+          "status": "PENDING",
+          "attempt": 3,
+          "files": [],
+          "evidenceIds": [],
+          "kind": "verification",
+          "role": "verifier",
+          "title": "Avatar labels handle empty input",
+          "objective": "Run approved check: [\"node\",\"--test\",\"render.test.mjs\"]",
+          "criterionId": "render",
+          "reason": "Acceptance requires runtime-owned evidence for the approved verification policy."
+        },
+        "edges": [
+          {
+            "id": "fe00741f-0954-406c-91b9-be4219eb92f4",
+            "source": "cef3b4f3-84a3-4075-8528-0b21272cf60f",
+            "target": "d5c2e8e5-9f0d-4d10-a89f-591efc897662",
+            "kind": "next"
+          }
+        ]
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "3133067b-a72a-4c0d-a0d1-25e60a9b9d39",
+      "runId": "20261019T215647-2a1ff7d9",
+      "seq": 33,
+      "at": "2026-10-19T21:56:48.659Z",
+      "type": "verification.passed",
+      "message": "Avatar labels handle empty input: approved deterministic check satisfied on recorded inputs.",
+      "data": {
+        "nodeId": "d5c2e8e5-9f0d-4d10-a89f-591efc897662",
+        "evidence": {
+          "id": "6e888e0f-5911-455f-9f7e-335c06c16d99",
+          "nodeId": "d5c2e8e5-9f0d-4d10-a89f-591efc897662",
+          "criterionId": "render",
+          "contractVersion": 1,
+          "kind": "deterministic",
+          "status": "passed",
+          "createdAt": "2026-10-19T21:56:48.622Z",
+          "command": [
+            "node",
+            "--test",
+            "render.test.mjs"
+          ],
+          "exitCode": 0,
+          "output": "TAP version 13\n# Subtest: avatar rendering handles empty and missing names\nok 1 - avatar rendering handles empty and missing names\n  ---\n  duration_ms: 0.24875\n  type: 'test'\n  ...\n1..1\n# tests 1\n# suites 0\n# pass 1\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 32.892417\n",
+          "durationMs": 105,
+          "stamp": {
+            "head": "bbaef0de1061b4a30592bf96a36c500687fc5de5",
+            "files": {
+              "avatar.mjs": "9ade4794fe8bfba861915460c8256813c3e9ed39aee55f468d3681828bd84196",
+              "render.test.mjs": "9057d779a08ee810160fab51115bae2fcd85625f3624dc49ca9e48aa0944609d"
+            },
+            "fingerprint": "d4321482749f8f21f1210bb24da610c3dff7eb7a3acc2f8d4ab84ce8e3cd1600"
+          },
+          "scope": [
+            "avatar.mjs",
+            "render.test.mjs"
+          ],
+          "inputs": []
+        }
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "c6c404f3-479b-4171-a076-cf9ae51a96aa",
+      "runId": "20261019T215647-2a1ff7d9",
+      "seq": 34,
+      "at": "2026-10-19T21:56:48.712Z",
+      "type": "verification.started",
+      "message": "Verifying: Two avatars exchange distinct turns",
+      "data": {
+        "nodeId": "0a78a9d3-5185-4e7c-9029-f57486b120c7",
+        "node": {
+          "id": "0a78a9d3-5185-4e7c-9029-f57486b120c7",
+          "status": "PENDING",
+          "attempt": 3,
+          "files": [],
+          "evidenceIds": [],
+          "kind": "verification",
+          "role": "verifier",
+          "title": "Two avatars exchange distinct turns",
+          "objective": "Run approved check: [\"node\",\"--test\",\"dialogue.test.mjs\"]",
+          "criterionId": "dialogue",
+          "reason": "Acceptance requires runtime-owned evidence for the approved verification policy."
+        },
+        "edges": [
+          {
+            "id": "d85a57b5-84f6-4511-b2ac-d5ada68f0824",
+            "source": "e1b98ede-5c66-4d16-929d-35017329a90b",
+            "target": "0a78a9d3-5185-4e7c-9029-f57486b120c7",
+            "kind": "next"
+          }
+        ]
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "d7ccdc64-81d0-41da-97d9-12414066fdb7",
+      "runId": "20261019T215647-2a1ff7d9",
+      "seq": 35,
+      "at": "2026-10-19T21:56:48.844Z",
+      "type": "verification.passed",
+      "message": "Two avatars exchange distinct turns: approved deterministic check satisfied on recorded inputs.",
+      "data": {
+        "nodeId": "0a78a9d3-5185-4e7c-9029-f57486b120c7",
+        "evidence": {
+          "id": "6981cf7e-137d-4b5c-a610-59c3946121a5",
+          "nodeId": "0a78a9d3-5185-4e7c-9029-f57486b120c7",
+          "criterionId": "dialogue",
+          "contractVersion": 1,
+          "kind": "deterministic",
+          "status": "passed",
+          "createdAt": "2026-10-19T21:56:48.805Z",
+          "command": [
+            "node",
+            "--test",
+            "dialogue.test.mjs"
+          ],
+          "exitCode": 0,
+          "output": "TAP version 13\n# Subtest: conversation has two identifiable, distinct turns\nok 1 - conversation has two identifiable, distinct turns\n  ---\n  duration_ms: 0.271458\n  type: 'test'\n  ...\n1..1\n# tests 1\n# suites 0\n# pass 1\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 32.305875\n",
+          "durationMs": 104,
+          "stamp": {
+            "head": "bbaef0de1061b4a30592bf96a36c500687fc5de5",
+            "files": {
+              "avatar.mjs": "9ade4794fe8bfba861915460c8256813c3e9ed39aee55f468d3681828bd84196",
+              "dialogue.test.mjs": "defe6717306f099f7ce97429a38102bed90283bd06d289ccf96fce2395a1572f"
+            },
+            "fingerprint": "f0dc92341030f5a11178448d04f2ef93252a1e18350ee80715b33b0bd85d4ef1"
+          },
+          "scope": [
+            "avatar.mjs",
+            "dialogue.test.mjs"
+          ],
+          "inputs": []
+        }
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "73a3c505-bb6e-4b14-b7dd-3c3fa1083413",
+      "runId": "20261019T215647-2a1ff7d9",
+      "seq": 36,
+      "at": "2026-10-19T21:56:48.969Z",
+      "type": "task.planned",
+      "message": "Review the project against its goal",
+      "data": {
+        "node": {
+          "id": "9b189e25-e843-4e5f-8cfd-a44b63aa3d0d",
+          "status": "PENDING",
+          "attempt": 1,
+          "files": [],
+          "evidenceIds": [],
+          "kind": "decision",
+          "role": "planner",
+          "title": "Review the project against its goal",
+          "objective": "{\"head\":\"bbaef0de1061b4a30592bf96a36c500687fc5de5\",\"fingerprint\":\"6e75a86192e2fac536a83c630ac18eb7407c0fecdbe5740b63ca59847ab5ba13\",\"version\":1,\"noteIds\":[\"223e4dbd-7c82-4321-b655-40407b227757\",\"06e47bc2-8f40-4eba-978a-1a88f96bce83\"],\"directionRevision\":1,\"round\":1}",
+          "reason": "A verified milestone triggers autonomous discovery of the next useful work.",
+          "criterionId": "render"
+        }
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "fa8ede6c-a50c-422d-aae8-e03bf63214f1",
+      "runId": "20261019T215647-2a1ff7d9",
+      "seq": 37,
+      "at": "2026-10-19T21:56:48.975Z",
+      "type": "task.started",
+      "message": "planner: Review the project against its goal",
+      "data": {
+        "nodeId": "9b189e25-e843-4e5f-8cfd-a44b63aa3d0d",
+        "edges": [
+          {
+            "id": "f74ebacd-3dd7-40a0-8dd5-9ee10b8fa779",
+            "source": "0a78a9d3-5185-4e7c-9029-f57486b120c7",
+            "target": "9b189e25-e843-4e5f-8cfd-a44b63aa3d0d",
+            "kind": "next"
+          }
+        ]
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "27e053a5-56f4-48ec-85c4-a1642697ad8e",
+      "runId": "20261019T215647-2a1ff7d9",
+      "seq": 38,
+      "at": "2026-10-19T21:56:49.023Z",
+      "type": "task.completed",
+      "message": "Explicit deterministic fixture ready for review.",
+      "data": {
+        "nodeId": "9b189e25-e843-4e5f-8cfd-a44b63aa3d0d",
+        "summary": "Explicit deterministic fixture ready for review.",
+        "result": {
+          "proposal": {
+            "outcome": "ready",
+            "summary": "Explicit deterministic fixture ready for review.",
+            "findings": [],
+            "decisions": [],
+            "tasks": [],
+            "operatorQuestion": ""
+          },
+          "stamp": {
+            "head": "bbaef0de1061b4a30592bf96a36c500687fc5de5",
+            "files": {
+              "avatar.mjs": "9ade4794fe8bfba861915460c8256813c3e9ed39aee55f468d3681828bd84196",
+              "dialogue.test.mjs": "defe6717306f099f7ce97429a38102bed90283bd06d289ccf96fce2395a1572f",
+              "iterfox.json": "b32adee1dcf8d8b62038bbb5d0f18e5c7bbb544ae6a1a3ce7aeb9160b8462d1a",
+              "render.test.mjs": "9057d779a08ee810160fab51115bae2fcd85625f3624dc49ca9e48aa0944609d"
+            },
+            "fingerprint": "6e75a86192e2fac536a83c630ac18eb7407c0fecdbe5740b63ca59847ab5ba13"
+          },
+          "noteIds": [
+            "223e4dbd-7c82-4321-b655-40407b227757",
+            "06e47bc2-8f40-4eba-978a-1a88f96bce83"
+          ],
+          "directionRevision": 1
+        }
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "149b90a7-454d-409a-8001-398b3feb39c0",
+      "runId": "20261019T215647-2a1ff7d9",
+      "seq": 39,
+      "at": "2026-10-19T21:56:49.024Z",
+      "type": "project.reviewed",
+      "message": "Project supervisor considers the goal ready for operator review; this is an AI judgment, not independent proof.",
+      "data": {
+        "nodeId": "9b189e25-e843-4e5f-8cfd-a44b63aa3d0d"
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "71277208-3664-4e23-b5f0-0633e0a2577a",
+      "runId": "20261019T215647-2a1ff7d9",
+      "seq": 40,
+      "at": "2026-10-19T21:56:49.175Z",
+      "type": "workflow.completed",
+      "message": "All approved acceptance policies are satisfied. Consult evidence for deterministic checks and AI assessments.",
+      "data": {}
+    }
+  ],
+  "prefixCanonicalSha256": [
+    "90107303e52256447e2b4315a0b07851b83f237227ca8979c36cb083047513e9",
+    "eee4283ccacee8e34876c79c741fd08ebbc6b3037d790ab1962b0bef0d277ee5",
+    "06eaa414c8f09e23792046071732ae8be1d69d519fb98a03e5452d12df2cfe79",
+    "3821d9588e06e10132667e68c5e66ec9a486cd7ef1aac7192e0c63578cb9bf99",
+    "1d81faa8f6ec18d5c8f4eaabdf48ae77a7799a677f06004b11f82c922e770a89",
+    "eaeeea96de07f1e60d08a69891cdb6cc278ed0aa9b6acfc590bdb7455a49cb46",
+    "4df3d737c77b71d82f174c224f6303883580fb62787ba3260d3358d36a7c3786",
+    "32166f86902bb448a112aa89378fc4a33c1339ab0240c281f63e752fcf51f895",
+    "16833c3a3209baa9fa61e7bfa8c1f8eefad0d73af54e4604a632b30bda080e16",
+    "628f3242a6542c4f35a752f13efb3c7bcefe997b9efacc5c24e8f92e6fc5045d",
+    "e397d00a6cec269ec5b2a6f9d51e4d53670361fde0b7882dd12793a585570c73",
+    "f4b806981860a4a2491b125ba9b372e57d3e4749f018500e41d0edf2d5e93795",
+    "0566eee192d5821dba995afd9c19ddc641805a5a5601c4c6910e0fddf456e9f6",
+    "d82006bd940b5d237e7e203db786f6cecc2ca6d73a694b23247140fd2a6c15ad",
+    "a973cc298c844ccc96092bb94e30fb6e46bde745d608682e21557d5e57dec229",
+    "bb4bbcea5caf3934cf72c9b63d924a3fa254091ca6e694f754fbe9a539e107f1",
+    "eaecc181afb94df5d40f02c821bf9045c548624122a89285294a2ab9c4f8b93e",
+    "7f116270af921cfa5d3fa9e1234aecd3bc42a01181f9505bf7728bb409491706",
+    "1040e22fbf6126c870ea799313334a7e57904b6574ebb9e74ff36115a55e9818",
+    "c4c5fdb1383dcf3e70ca14a022a25e17257426fa9dacaf1ae2ca4157bb01a48f",
+    "6e0060e3bb06228047e6a8dec2f59bfbdc2d0d81d7aa65e86670dee6af580b40",
+    "374b73ad610cf4e2fff44c4e37eab310ea5414ffb6453a6463c3338c7028678a",
+    "1bdf1f7740fc7ea770312f1f9b73d837b50523e4479766f7b72c650cebfecf3f",
+    "81a89a20d1b59b6cde846baebcea6a15d87a87d60676395c42d9cad8aa72292b",
+    "405f779eb0fa04630182d0000d154500a12601eb087409ed9486999b24a684b3",
+    "a810c7661a9345f8d49e44f7cdda55e2ee99431503342ed87d5fc82c5bcf02be",
+    "b2cba2e7a3d4eb69fdf42bba76262c6f116d94808fc91fa2757e5754a091d3c8",
+    "08ee1c978bb5ae2f8ef45ed3fad8eb26ffcdea1f52dbd4030df446601afed898",
+    "282a5a16c2ccdfb1b92afe5a913b0b83321b1f5c78d6b53741b23b4179347a6e",
+    "f7e20901d80ba2e8c295ddfde0757041e856a887e7387ebbc7be673ae52a5aca",
+    "76e768403a0f89d1eb13eb4944a6673ed1a8255323752b88524fd5deeaaefa17",
+    "eb056f5be4d8cc1826b68e20d501d36e0fdce26397d61f061c27d2969e260f12",
+    "2142032d809cce969363b8973557669ba1b23b8b11563d47d7ad622a6080be13",
+    "ac29f9345ab669533a8c2a7d1418959012d5c285a17fee84b9df1c5a09607e90",
+    "eddb6dcea674f0a108748df242c9a67a7f392811885e4dcd6e2680b0c5658aea",
+    "ef07bb13fcfaa0b09b829ae458dc0148e3f8c07c23fbb9935851691a332d2308",
+    "a1ec76d8571a580c9d297efda3f2ef7f882be38d014a93caa0f4305308f63533",
+    "59c366c12f95eceea95c667493e94111cc22bc68350c23ad19c6c01b90415172",
+    "5aa84e776c3e37425c20352d76fa99ab3de9314608441e3c9361c10a0ebf440c",
+    "a2529134ded0c4a981cff9b3d2bd4a10ec196fd405e467093841e1c0503cbedc"
+  ]
+}

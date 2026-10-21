@@ -1,0 +1,5 @@
+(node:62864) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+Iterfox UI: http://127.0.0.1:63791
+Worker state persists independently of this page. Keep the execution host awake for Night Runs.
+PASS explicit DEMO HTML download, real checkpoint references, offline report with JavaScript disabled, native details, 390px and read-only history.

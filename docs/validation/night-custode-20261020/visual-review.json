@@ -1,0 +1,53 @@
+{
+  "at": "2026-10-20T19:16:22.333Z",
+  "verdict": "Interfaccia coerente e usabile nei flussi osservati",
+  "method": "Assistant review of actual Chrome screenshots and targeted browser interaction, separate from deterministic acceptance and same-integration Codex reviews.",
+  "observations": [
+    "Gerarchia visiva chiara, ricerca e azioni principali leggibili, stile coerente fra inventario, manutenzioni e backup.",
+    "Navigazione, schede e modulo funzionano a 390px senza scorrimento orizzontale. Il dialogo del ripristino rientra nel viewport e richiede il consenso esplicito.",
+    "I dati del file sono riepilogati prima del consenso. L’errore di JSON invalido è leggibile e disabilita il ripristino; le osservazioni non hanno modificato il database.",
+    "Il viewport mobile normale non mostra la sovrapposizione vista nella prima cattura a pagina intera con focus attivo. Gli indicatori di focus sono visibili nei flussi da tastiera."
+  ],
+  "ratings": [
+    {
+      "id": "clarity",
+      "score": 4
+    },
+    {
+      "id": "flows",
+      "score": 4
+    },
+    {
+      "id": "mobile",
+      "score": 4
+    },
+    {
+      "id": "trust",
+      "score": 4
+    },
+    {
+      "id": "finish",
+      "score": 4
+    }
+  ],
+  "limits": [
+    "Viewport mobile emulato, non un telefono fisico.",
+    "Annunci con screen reader non verificati.",
+    "Le valutazioni 1–5 sono giudizi dell’assistente, non certificazioni deterministiche."
+  ],
+  "harnessAdjustments": [
+    "La prima cattura del file invalido osservava ancora il caricamento. La cattura finale attende il messaggio di errore reale.",
+    "Un primo controllo di Tab assumeva focus sempre dentro il dialogo. La traccia mostra BODY con document.hasFocus=false quando Chrome passa alla propria interfaccia; il controllo finale ammette quel caso e verifica che i controlli di sfondo non ricevano focus.",
+    "Le immagini principali usano il viewport reale per evitare artefatti di elementi fissi nelle catture full-page dopo un cambio viewport."
+  ],
+  "evidence": [
+    "preview-browser.json",
+    "preview-error-mobile.json",
+    "mobile-focus-observation.json",
+    "app-desktop.png",
+    "app-mobile.png",
+    "app-restore-consent.png",
+    "app-restore-mobile.png",
+    "app-invalid-backup.png"
+  ]
+}

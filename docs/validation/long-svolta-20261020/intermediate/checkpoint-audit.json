@@ -1,0 +1,21 @@
+{
+  "at": "2026-10-20T22:41:14.241Z",
+  "result": "PASS",
+  "delegationStatus": "STOPPED",
+  "checkpoints": [
+    {
+      "stage": "usable-board",
+      "runId": "20261020T220700-5ec53331",
+      "sourceSeq": 81,
+      "head": "f765280cde7671df2ede74245b56dcb3e3b5496b",
+      "criteria": 3,
+      "recoveries": 0,
+      "ready": true,
+      "freshSourceFingerprint": "fdf4560566f456b5e8f9822309f40f6d4811f38c36d77e47642fd17325014a2d"
+    }
+  ],
+  "immutableAuthorization": true,
+  "protectedInputsUnchanged": true,
+  "driverUnchanged": true,
+  "externalAuditUnchanged": true
+}

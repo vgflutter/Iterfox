@@ -1,0 +1,34 @@
+{
+  "at": "2026-10-20T22:34:34.954Z",
+  "kind": "UNCERTIFIED snapshot after a declared assistant stop for a contradictory host test",
+  "fromDelegation": "ba19c3c0-677b-4354-9729-fd66916ed929",
+  "fromRun": "20261020T222034-5d68bce5",
+  "fromSeq": 63,
+  "originalStatus": "STOPPED",
+  "applicationCodeManuallyChanged": false,
+  "applicationFileHashes": {
+    "README.md": "0f4ec3e0fa3c8a9dd5adc8f36edcb4a91e8c1fe62c0f47cc847b12487d7bb3be",
+    "src/app.mjs": "10359aaaa79ec5c1f3a0add1256457c3d428942996eb387dfed23b12bbe68867",
+    "src/archive.mjs": "c300f1b9676a8956daa5b4a7044cf008aa8eb4331524cdba15ab8a159bc7ad0a",
+    "src/dates.mjs": "0c0d322dece2361df8777fed69d5201de4a52f70f9c6185761fa823312d6e5ea",
+    "src/errors.mjs": "ce33cd7a104a3f4116efdc604a889f8a2f186e63de541417c91467339b6fe6f7",
+    "src/projects.mjs": "d7eed400f71adeab89250600c9ba2f55d129852e365593a8b9a6de871ba09a86",
+    "src/public.mjs": "a92ee000b91ba51078b41fb1fbf4c1b651504911519c71ba21683e81bbfa27b4",
+    "src/server.mjs": "441f8ab439afbc7aa64c4ffb4adaa6d6e9e7dfae02819a02a21810a589d67a9f",
+    "src/summary.mjs": "2976bca9ed9ccf7e16659b17a29db1b596f38cb8a0cd4c7c64fd575e311e387f",
+    "src/tasks.mjs": "adf26165e9111fd4a3f6a315ba2ab1d349633f98c40e671fbee6b7d16d61ba0d",
+    "src/time-entries.mjs": "96711254fa3f8b041aabe607d6a599e3149382dfbd67ee2d82a0339b45da9ae8",
+    "src/week.mjs": "dba080fdf5f21e304773b8fa191bc6ddea87d631b58a713897646346e8b54781",
+    "public/index.html": "cfa8e772cb9511025aaf1a48ca6d9dac5e0ab2064081116f51544cbdaf8b7ca8",
+    "public/svolta.css": "5b160a24d5a49ce5532f6c4c219e5dc2a524cb01b70bb7a4e63a008dfef6ae90",
+    "public/svolta.js": "f49df696f7a1e64a30e5b86b59a9058fd57f311f13f0b157848a93cbe5c02f46",
+    "docs/guida.md": "99e466b6bc8c8883e3a61dfd4f42d348437f97c9fc28fd030ce29e0b03e06e4f",
+    "docs/verifiche.md": "17c826f50992f890a1af9f18ea70916af91f3ac0e01fa513832f1107abb894d5"
+  },
+  "testCorrection": {
+    "file": "tests/acceptance.mjs",
+    "beforeSha256": "9723e15b08ecb6f43bbe9310b0c8ccb99fa46e6239764e85211b865977dc11bc",
+    "afterSha256": "292079cdc1622e83651930181bb3732990dad3bf8cefa103c64f64283c576e81",
+    "change": "Only expected summary overdue count 1 -> 2. Both the todo task due Oct18 and doing task due Oct20 are before reference Oct21, as BRIEF.md requires. Application code is unchanged."
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "result": "PASS",
+  "cases": [
+    "Duplicate mission linkage is counted once in shared usage.",
+    "Missing linked history gives partial usage, unavailable proof and visible attention.",
+    "A corrupt later event cannot rewrite a readable earlier checkpoint; latest state remains unavailable.",
+    "Goal, outcome, attention, criterion, checkpoint and evidence strings remain escaped in the HTML export."
+  ]
+}

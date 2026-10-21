@@ -1,0 +1,93 @@
+{
+  "date": "2026-10-17",
+  "runtimeCommit": "5c3fbd253212ecfe243f012d4bc2f7fb225384f0",
+  "fixtureCommit": "29e92ea423932a7194e51f1eeb5c1c3e43865fca",
+  "model": "gpt-6.1-sol",
+  "reasoningEffort": "xhigh, explicitly pinned",
+  "sdk": "0.163.0",
+  "design": "One prospective follow-up on the frozen Relaybox fixture; original direct and Iterfox samples are historical references, not a new paired or randomized trial.",
+  "limits": {
+    "maxTurns": 12,
+    "maxAttempts": 3,
+    "maxDurationMs": 600000,
+    "maxTokens": 800000,
+    "turnTimeoutMs": 240000,
+    "maxNoProgress": 3
+  },
+  "followup": {
+    "status": "COMPLETED",
+    "runtimeCertifiedCriteria": 5,
+    "approvedTests": 48,
+    "approvedTestsPassed": 48,
+    "holdoutGroups": 4,
+    "holdoutGroupsPassed": 4,
+    "solveElapsedMs": 421865,
+    "reportedTokens": 424826,
+    "agentTurns": 5,
+    "manualInterventions": 0,
+    "protectedInputsIntact": true,
+    "preliminaryNegativeObservations": 12,
+    "correctiveTasks": 0,
+    "skippedTasks": 0,
+    "plannerProposedUnits": 4
+  },
+  "historicalSamples": {
+    "direct": {
+      "solveElapsedMs": 176730,
+      "reportedTokens": 147146,
+      "agentTurns": 1,
+      "testsPassed": 48,
+      "holdoutGroupsPassed": 4
+    },
+    "iterfoxBefore": {
+      "solveElapsedMs": 497010,
+      "reportedTokens": 817009,
+      "agentTurns": 9,
+      "status": "BLOCKED",
+      "runtimeCertifiedCriteria": 3,
+      "testsPassed": 48,
+      "holdoutGroupsPassed": 4
+    }
+  },
+  "eventCounts": {
+    "workflow.created": 1,
+    "goal.accepted": 1,
+    "task.planned": 5,
+    "task.started": 5,
+    "agent.thread": 5,
+    "agent.usage": 5,
+    "task.completed": 5,
+    "plan.accepted": 1,
+    "verification.started": 17,
+    "verification.deferred": 12,
+    "code.changed": 4,
+    "progress.recorded": 4,
+    "verification.passed": 5,
+    "workflow.completed": 1
+  },
+  "artifactIntegrity": {
+    "primaryReportSha256": "831aec7a5c7746023cd36ceecd646d29d99fed40ce23b78e261f93dc84798001",
+    "frozenProtocolSha256": "b45ddbc7e7a259a4dcdbf3c1fffeb2b2103f1318d9470f1de6f9d8f672e51ee4",
+    "originalProtocolSha256": "172043835218cb253a37cd2a23982eafc7d730de67b637c9d4f6417126430009",
+    "holdoutSha256": "7cc34222663cc93a3b0db7634643be49063268e432c88b5a608cbbc398dd0fa1"
+  },
+  "limitsOfConclusion": [
+    "No new direct-Codex sample was run; service conditions and stochastic model behavior can affect the historical timing comparison.",
+    "Reported tokens include input/output and cached input, not monetary cost.",
+    "The follow-up used four cohesive planned units; no runtime task skip or coalescing was needed in this particular run. Those mechanisms have separate deterministic regression coverage.",
+    "Developer review-time savings, sustained overnight use, real power loss and native Goals/Fabro comparisons remain unmeasured.",
+    "This demonstrates completion and removal of the observed scheduling pathology in one new sample, not a net advantage over direct Codex."
+  ],
+  "uiAudit": {
+    "passed": true,
+    "provider": "codex",
+    "status": "COMPLETED",
+    "certified": 5,
+    "rawNodes": 27,
+    "groupedNodes": 15,
+    "evidenceCards": 17,
+    "preliminaryObservations": 12,
+    "pageErrors": [],
+    "mobileWidth": 390
+  }
+}

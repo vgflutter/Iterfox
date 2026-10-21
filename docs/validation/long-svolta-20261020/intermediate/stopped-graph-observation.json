@@ -1,0 +1,8 @@
+{
+  "at": "2026-10-20T22:41:49.568Z",
+  "result": "UX_LIMIT",
+  "observation": "Delegation selector and Project progress correctly show STOPPED, but unfinished weekly outcome card retains its stored RUNNING stage badge. The source mission itself is STOPPED at seq63. No execution is ongoing in that trial.",
+  "screenshot": "governance-stopped-desktop.png",
+  "suggestedImprovement": "Render an effective stopped/paused state for an unfinished outcome card when its delegation is stopped/paused, while retaining persisted provenance.",
+  "runtimeOrSourceEdited": false
+}

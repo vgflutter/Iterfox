@@ -1,0 +1,33 @@
+{
+  "goal": "Build a complete, reviewable text prototype of a two-presenter evening news edition using only the supplied fictional sources. Explain why each story matters, what changed and what remains unknown. Produce a responsive standalone HTML edition preview and a local landing preview using the operator-chosen product name. No audio, video, real-time news, network or publication is included.",
+  "criteria": [
+    {
+      "id": "edition",
+      "title": "Complete source-grounded text edition",
+      "command": ["node", "--test", "tests/edition.test.mjs"],
+      "scope": ["src/edition.mjs", "sources.json"]
+    },
+    {
+      "id": "preview",
+      "title": "Responsive local edition preview",
+      "command": ["node", "--test", "tests/preview.test.mjs"],
+      "scope": ["src/edition.mjs", "src/preview.mjs", "sources.json"]
+    },
+    {
+      "id": "landing",
+      "title": "Local landing with the operator-chosen name",
+      "command": ["node", "--test", "tests/landing.test.mjs"],
+      "scope": ["src/landing.mjs"]
+    }
+  ],
+  "allowedPaths": ["src"],
+  "protectedPaths": ["sources.json", "tests", "iterfox.json"],
+  "limits": {
+    "maxTurns": 10,
+    "maxAttempts": 2,
+    "maxDurationMs": 600000,
+    "maxTokens": 500000,
+    "turnTimeoutMs": 180000,
+    "maxNoProgress": 2
+  }
+}

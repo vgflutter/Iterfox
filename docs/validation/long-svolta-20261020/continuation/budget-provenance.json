@@ -1,0 +1,35 @@
+{
+  "originalDelegation": "de2c27e8-446b-492c-9825-2f2abe2e0e57",
+  "originalAuthorizedAt": "2026-10-20T20:50:56.207Z",
+  "originalDeadline": "2026-10-21T00:50:56.207Z",
+  "originalLimits": {
+    "maxTurns": 140,
+    "maxAttempts": 4,
+    "maxDurationMs": 14400000,
+    "maxTokens": 100000000,
+    "turnTimeoutMs": 720000,
+    "maxNoProgress": 4
+  },
+  "used": {
+    "turns": 36,
+    "reportedTokens": 13694556
+  },
+  "remainingTurns": 104,
+  "remainingReportedTokens": 86305444,
+  "marginMs": 30000,
+  "incompleteTurnTokens": "Unreported by provider; no claim of a hard in-flight spend cap.",
+  "priorDelegations": [
+    {
+      "id": "de2c27e8-446b-492c-9825-2f2abe2e0e57",
+      "status": "BLOCKED"
+    },
+    {
+      "id": "ba19c3c0-677b-4354-9729-fd66916ed929",
+      "status": "STOPPED"
+    },
+    {
+      "id": "156e137f-0bca-49f1-bc68-34fe60c1ef29",
+      "status": "BLOCKED"
+    }
+  ]
+}

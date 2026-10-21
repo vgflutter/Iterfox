@@ -1,0 +1,21 @@
+{
+  "originalDelegation": "de2c27e8-446b-492c-9825-2f2abe2e0e57",
+  "originalAuthorizedAt": "2026-10-20T20:50:56.207Z",
+  "originalDeadline": "2026-10-21T00:50:56.207Z",
+  "originalLimits": {
+    "maxTurns": 140,
+    "maxAttempts": 4,
+    "maxDurationMs": 14400000,
+    "maxTokens": 100000000,
+    "turnTimeoutMs": 720000,
+    "maxNoProgress": 4
+  },
+  "used": {
+    "turns": 15,
+    "reportedTokens": 5024017
+  },
+  "remainingTurns": 125,
+  "remainingReportedTokens": 94975983,
+  "marginMs": 30000,
+  "incompleteTurnTokens": "Unreported by provider; no claim of a hard in-flight spend cap."
+}

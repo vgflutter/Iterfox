@@ -1,0 +1,32 @@
+import assert from 'node:assert/strict';
+import {readFile,writeFile} from 'node:fs/promises';
+import {createRequire} from 'node:module';
+const base='/Users/vins/work/iterfox/.iterfox/missions/technical-recovery-20261020-r2';
+const require=createRequire(base+'/runtime/package.json');
+const {chromium}=require('playwright');
+const before=JSON.parse(await readFile(base+'/events.json','utf8'));
+const browser=await chromium.launch({channel:'chrome',headless:true,chromiumSandbox:true});
+const errors=[];let mutations=0;
+try{
+ const page=await browser.newPage({viewport:{width:1440,height:1080},reducedMotion:'reduce'});
+ page.on('pageerror',e=>errors.push(e.message));
+ page.on('request',r=>{if(r.method()!=='GET'&&r.method()!=='HEAD')mutations++});
+ await page.goto('http://127.0.0.1:4365');
+ await page.getByRole('button',{name:'Morning Brief',exact:true}).click();
+ const card=page.getByRole('article',{name:'Technical recovery'});
+ await card.waitFor();
+ assert.match(await card.textContent(),/Automatic retries: 1/);
+ assert.match(await card.textContent(),/Owned session processes exited/);
+ assert.match(await card.textContent(),/Retried at/);
+ assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
+ await page.screenshot({path:base+'/brief-desktop.png',fullPage:true});
+ await page.setViewportSize({width:390,height:844});
+ await card.scrollIntoViewIfNeeded();
+ assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
+ await page.screenshot({path:base+'/brief-mobile.png'});
+ assert.deepEqual(errors,[]);assert.equal(mutations,0);
+ const events=await (await page.request.get('http://127.0.0.1:4365/api/runs/'+before[0].runId+'/events')).json();
+ assert.deepEqual(events,before,'UI is read-only; no changes to event history');
+ await writeFile(base+'/visual-review.json',JSON.stringify({result:'PASS',at:new Date().toISOString(),browser:'Installed Chrome, headless, sandbox enabled',viewports:['1440x1080','390x844'],checks:['real completed Codex run visible','one automatic retry and joined processes visible','no horizontal overflow','no page errors','no mutation requests','ledger identical after review'],physicalDevice:false},null,2));
+ console.log('PASS recovery card on real completed run, desktop/mobile, no overflow/errors/mutations, unchanged ledger.');
+}finally{await browser.close();}

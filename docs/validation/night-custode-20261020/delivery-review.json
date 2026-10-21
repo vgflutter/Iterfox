@@ -1,0 +1,15 @@
+{
+  "at": "2026-10-20T19:13:28.512Z",
+  "certifiedApplicationCheckpoint": "c11af3764f1deec8a596daa235c8dc85f983d1c8",
+  "deliveryHead": "f8fbbde6d2cb480d8db5b9e890bbf4dae9f4349c",
+  "postRunEditorialFiles": [
+    "README.md",
+    "docs/ui-backup.md",
+    "docs/ui-inventario.md",
+    "docs/ui-manutenzioni.md"
+  ],
+  "postRunApplicationCodeEdits": 0,
+  "reason": "Replace stale awaiting-check wording and clarify that Codex source review uses the same integration. No application code, criteria, dependencies or tests changed.",
+  "sourceArchive": "custode-source.zip",
+  "rootAssistantRecoveryCount": 1
+}

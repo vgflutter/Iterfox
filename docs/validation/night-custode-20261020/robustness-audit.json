@@ -1,0 +1,21 @@
+{
+  "at": "2026-10-20T19:09:12.528Z",
+  "cwd": "delivery",
+  "method": "Additional pre-completion black-box robustness audit, separate from the nine pinned audit groups and six immutable primary gates; no feedback to the primary run.",
+  "results": [
+    {
+      "name": "Italian accented upper/lower case search across all text fields",
+      "status": "PASS"
+    },
+    {
+      "name": "UTF-8 JSON survives a network chunk splitting an accented character",
+      "status": "PASS"
+    },
+    {
+      "name": "Malformed JSON root types return 4xx without changing saved state",
+      "status": "PASS"
+    }
+  ],
+  "passed": 3,
+  "total": 3
+}

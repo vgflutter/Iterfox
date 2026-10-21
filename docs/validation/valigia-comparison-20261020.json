@@ -1,0 +1,530 @@
+{
+  "schemaVersion": 1,
+  "at": "2026-10-20T10:19:28.977Z",
+  "title": "Valigia: confronto su una piccola app",
+  "verdict": "Entrambe le app soddisfano tutti i controlli: in questa prova semplice Iterfox non migliora il risultato funzionale.",
+  "sourceHead": "66c603b40c817a8c6ff88947bebe6e107a377940",
+  "protocol": {
+    "schemaVersion": 1,
+    "preparedAt": "2026-10-20T09:46:12.233Z",
+    "timezone": "Europe/Zurich",
+    "app": "Valigia",
+    "question": "Does Iterfox add measurable value for a simple standalone app compared with direct Codex on the same approved goal?",
+    "sourceHead": "66c603b40c817a8c6ff88947bebe6e107a377940",
+    "fixtureHead": "78edba0c6fed5e4592e93af95416e7caf8a0c99e",
+    "promptSha256": "f82c1efbeea689afdca5203b34ab2161fe68f5d58a71b47cceda420da27dcea4",
+    "model": "gpt-6.1-sol",
+    "reasoningEffort": "xhigh (explicitly pinned for both arms)",
+    "sdk": "0.163.0",
+    "order": [
+      "iterfox",
+      "direct"
+    ],
+    "trialCountPerArm": 1,
+    "contract": {
+      "goal": "Crea Valigia, una piccola app web locale in italiano per preparare una lista da viaggio.\nVoglio aggiungere oggetti con nome, quantità e categoria; modificare la quantità, segnare ciò che è preparato ed eliminare gli oggetti. Mostra il totale delle unità, quelle preparate e quelle rimanenti, anche mentre filtro una categoria (i totali restano globali). Conserva la lista al ricaricamento usando localStorage. Permetti di esportarla in un campo di testo JSON e reimportarla. Un backup non valido non deve cancellare o alterare la lista corrente.\nL'app deve funzionare su desktop e telefono, con etichette comprensibili, navigazione da tastiera, stato vuoto utile e messaggi d'errore visibili. Nomi Unicode e testo simile a HTML devono essere gestiti come normale testo. Se il salvataggio locale fallisce, spiega che i dati non sono salvati; l'app deve restare utilizzabile. Nessuna registrazione, rete, servizio esterno o dipendenza aggiuntiva.\nUsa i file iniziali e completa src/domain.mjs, src/app.mjs, index.html e style.css; documenta uso e limiti in README.md. I dettagli di implementazione sono una tua scelta. SPEC.md e i test definiscono il contratto osservabile. Sono già predisposti server e controlli. Puoi leggere ed eseguire i controlli disponibili e correggere il codice quanto serve. Non modificare SPEC.md, server.mjs, tests o configurazioni, non fare commit/push/deploy. Consegna una piccola app completa e utilizzabile, non un mockup. Se il browser o localhost non funzionano nella sandbox, completa il codice e dichiara la verifica non osservata: i controlli verranno eseguiti esternamente sugli stessi file.",
+      "criteria": [
+        {
+          "id": "logic",
+          "title": "Data operations, validation, summaries and backup preserve all stated invariants",
+          "command": [
+            "node",
+            "--test",
+            "tests/domain.test.mjs"
+          ],
+          "scope": [],
+          "timeoutMs": 120000
+        },
+        {
+          "id": "workflow",
+          "title": "Real Chrome completes the list, recovery and mobile workflows",
+          "command": [
+            "node",
+            "tests/browser.mjs"
+          ],
+          "scope": [],
+          "timeoutMs": 120000
+        }
+      ],
+      "allowedPaths": [
+        "src",
+        "index.html",
+        "style.css",
+        "README.md"
+      ],
+      "protectedPaths": [
+        "SPEC.md",
+        "server.mjs",
+        "tests"
+      ],
+      "supervision": {
+        "mode": "project",
+        "maxReviews": 5
+      },
+      "limits": {
+        "maxTurns": 40,
+        "maxAttempts": 3,
+        "maxDurationMs": 1200000,
+        "maxTokens": 100000000,
+        "turnTimeoutMs": 1200000,
+        "maxNoProgress": 4
+      }
+    },
+    "browserModule": "/Users/vins/work/iterfox/.iterfox/missions/app-value-20261020/runtime/node_modules/playwright/index.mjs",
+    "immutableHashes": {
+      "SPEC.md": "56dd7b6324a3f500dbed78482ed00158effeba8f59cd17d4e993282941d4cfd0",
+      "server.mjs": "c9ecea9c499aae194831ec75b4f940b29278d4b1d611f6a2d68053616092d4ec",
+      "tests/domain.test.mjs": "33f4e0b06449b1f289340a74182cf906f065367334eb3e51005c353ebb0f8024",
+      "tests/browser.mjs": "79d2b30a361cdaded4ba1ea32e97d6d7e84c13867947064aa3e79266e5c0ed9d",
+      "iterfox.json": "aaaa0de390282fbff5212c2939d6d9c6acf670e468a5a76272b573405707bc6a"
+    },
+    "runtimeHashes": {
+      "dist/core/engine.js": "e320955271ff328caeaa851dce69929364cd0cc5d162637512a252f1ef816e92",
+      "dist/core/model.js": "c84e4aa1dfc3afd3281fd02bf4a122c5feb710dc521079ccab973e5ef1e365d0",
+      "dist/providers/codex.js": "e16f527cf4e7d2f3416325f73922bf58a715c3653b07f1cdd97c21b6dcd4a995",
+      "dist/providers/codex-policy.js": "fefe39745f99e6f3e0ec2979c6477feac8583542c5715aa65237b4d65ef4a05f",
+      "dist/service.js": "de1bde02d04d5271d48dc5e25e00c62f127cf6c62b929191e19700cb335695c9"
+    },
+    "procedure": [
+      "Same committed starter, approved goal, checks, model, sandbox, tool restrictions and maximum wall-clock allowance. Sequential random arm order prevents CPU/browser contention.",
+      "Direct arm uses one normal Codex SDK objective invocation with internal tool iterations; Iterfox uses its existing planner/build/check/review loop. Both receive the same goal and full contract. Role wrappers differ by design and are archived. No special inspection failure or synthetic bug is imposed.",
+      "External checks run after each arm, with no fixes or steering based on their results. Extra audit varies data within the stated requirements and is prepared before either arm.",
+      "Measure external verified behavior, integrity, completion claim vs observed result, elapsed solve and audit time, interventions, model-call/check counts and reported token usage. Token usage is secondary, not a success criterion.",
+      "One paired trial is a case study, not evidence of statistical superiority. Native Codex Goals, the Codex app and other orchestrators are not measured.",
+      "Quality screenshots are real app output. Source/browser observations by this assistant are not user research or an independent AI reviewer."
+    ],
+    "metrics": {
+      "primary": [
+        "fixed acceptance cases passed",
+        "additional audit cases passed",
+        "post-launch operator interventions",
+        "false completion claims",
+        "useful product gaps discovered beyond green checks"
+      ],
+      "secondary": [
+        "solve elapsed milliseconds",
+        "audit elapsed milliseconds",
+        "model calls",
+        "runtime checks",
+        "reported tokens",
+        "evidence/replay completeness"
+      ]
+    },
+    "additionalAuditSha256": "b52663d7b2bd97cc8f98583f987573c8132f1ed6edc0e4aa2d241cec21d72fc7"
+  },
+  "arms": {
+    "direct": {
+      "status": "RETURNED",
+      "solveElapsedMs": 703697,
+      "auditElapsedMs": 4452,
+      "totalElapsedMs": 708176,
+      "reportedTokens": 423271,
+      "modelCalls": 1,
+      "operatorInterventionsAfterStart": 0,
+      "criteriaPassed": 2,
+      "criteriaTotal": 2,
+      "domain": {
+        "passed": 12,
+        "failed": 0,
+        "total": 12
+      },
+      "browser": {
+        "passed": 7,
+        "total": 7,
+        "observedCases": [
+          {
+            "name": "empty state and keyboard addition",
+            "passed": true
+          },
+          {
+            "name": "quantities packed counts and category filter",
+            "passed": true
+          },
+          {
+            "name": "persistence across refresh and deletion",
+            "passed": true
+          },
+          {
+            "name": "backup valid and invalid imports are atomic",
+            "passed": true
+          },
+          {
+            "name": "HTML-like Unicode names render as text",
+            "passed": true
+          },
+          {
+            "name": "390px layout and no page errors or external requests",
+            "passed": true
+          },
+          {
+            "name": "storage failure is reported and memory list still works",
+            "passed": true
+          }
+        ]
+      },
+      "additionalAudit": {
+        "exitCode": 0,
+        "output": "{\"at\":\"2026-10-20T10:16:54.866Z\",\"seed\":20261020,\"cases\":[{\"name\":\"250 deterministic mixed operations preserve quantities, identity and immutability\",\"passed\":true},{\"name\":\"import rejects invalid later rows without mutating previous data\",\"passed\":true},{\"name\":\"unreadable persisted data is visible and not overwritten merely by loading\",\"passed\":true},{\"name\":\"category filtering survives refresh and imported Unicode quantity data stays global\",\"passed\":true},{\"name\":\"invalid UI import preserves the persisted bytes as well as the visible list\",\"passed\":true},{\"name\":\"actual app desktop and 390px captures, no errors, no viewport overflow\",\"passed\":true}],\"passed\":6,\"total\":6,\"scope\":\"New deterministic data inside the same predeclared app requirements; no seeded defect or repair feedback.\"}\n",
+        "at": "2026-10-20T10:16:54.866Z",
+        "seed": 20261020,
+        "cases": [
+          {
+            "name": "250 deterministic mixed operations preserve quantities, identity and immutability",
+            "passed": true
+          },
+          {
+            "name": "import rejects invalid later rows without mutating previous data",
+            "passed": true
+          },
+          {
+            "name": "unreadable persisted data is visible and not overwritten merely by loading",
+            "passed": true
+          },
+          {
+            "name": "category filtering survives refresh and imported Unicode quantity data stays global",
+            "passed": true
+          },
+          {
+            "name": "invalid UI import preserves the persisted bytes as well as the visible list",
+            "passed": true
+          },
+          {
+            "name": "actual app desktop and 390px captures, no errors, no viewport overflow",
+            "passed": true
+          }
+        ],
+        "passed": 6,
+        "total": 6,
+        "scope": "New deterministic data inside the same predeclared app requirements; no seeded defect or repair feedback."
+      },
+      "runId": "20261020T100506-418bbc4d",
+      "worktree": "/Users/vins/work/iterfox/.iterfox/missions/app-value-20261020/direct/worktrees/20261020T100506-418bbc4d",
+      "fixtureHead": "78edba0c6fed5e4592e93af95416e7caf8a0c99e",
+      "promptSha256": "f82c1efbeea689afdca5203b34ab2161fe68f5d58a71b47cceda420da27dcea4",
+      "claim": {
+        "summary": "Valigia completata nei cinque file autorizzati: gestione lista, totali globali, localStorage, backup validato, interfaccia responsive e documentazione. Superati i 12 test del modello e i controlli di sintassi.",
+        "blocked": false,
+        "reason": "Verifica browser non osservata: localhost bloccato dalla sandbox con EPERM e Chrome non avviabile. Nessun file protetto modificato.",
+        "verificationRequest": {
+          "criterionIds": [
+            "logic",
+            "workflow"
+          ]
+        }
+      }
+    },
+    "iterfox": {
+      "status": "COMPLETED",
+      "solveElapsedMs": 981010,
+      "auditElapsedMs": 4910,
+      "totalElapsedMs": 985949,
+      "reportedTokens": 836777,
+      "modelCalls": 4,
+      "operatorInterventionsAfterStart": 0,
+      "criteriaPassed": 2,
+      "criteriaTotal": 2,
+      "domain": {
+        "passed": 12,
+        "failed": 0,
+        "total": 12
+      },
+      "browser": {
+        "passed": 7,
+        "total": 7,
+        "observedCases": [
+          {
+            "name": "empty state and keyboard addition",
+            "passed": true
+          },
+          {
+            "name": "quantities packed counts and category filter",
+            "passed": true
+          },
+          {
+            "name": "persistence across refresh and deletion",
+            "passed": true
+          },
+          {
+            "name": "backup valid and invalid imports are atomic",
+            "passed": true
+          },
+          {
+            "name": "HTML-like Unicode names render as text",
+            "passed": true
+          },
+          {
+            "name": "390px layout and no page errors or external requests",
+            "passed": true
+          },
+          {
+            "name": "storage failure is reported and memory list still works",
+            "passed": true
+          }
+        ]
+      },
+      "additionalAudit": {
+        "exitCode": 0,
+        "output": "{\"at\":\"2026-10-20T10:05:06.663Z\",\"seed\":20261020,\"cases\":[{\"name\":\"250 deterministic mixed operations preserve quantities, identity and immutability\",\"passed\":true},{\"name\":\"import rejects invalid later rows without mutating previous data\",\"passed\":true},{\"name\":\"unreadable persisted data is visible and not overwritten merely by loading\",\"passed\":true},{\"name\":\"category filtering survives refresh and imported Unicode quantity data stays global\",\"passed\":true},{\"name\":\"invalid UI import preserves the persisted bytes as well as the visible list\",\"passed\":true},{\"name\":\"actual app desktop and 390px captures, no errors, no viewport overflow\",\"passed\":true}],\"passed\":6,\"total\":6,\"scope\":\"New deterministic data inside the same predeclared app requirements; no seeded defect or repair feedback.\"}\n",
+        "at": "2026-10-20T10:05:06.663Z",
+        "seed": 20261020,
+        "cases": [
+          {
+            "name": "250 deterministic mixed operations preserve quantities, identity and immutability",
+            "passed": true
+          },
+          {
+            "name": "import rejects invalid later rows without mutating previous data",
+            "passed": true
+          },
+          {
+            "name": "unreadable persisted data is visible and not overwritten merely by loading",
+            "passed": true
+          },
+          {
+            "name": "category filtering survives refresh and imported Unicode quantity data stays global",
+            "passed": true
+          },
+          {
+            "name": "invalid UI import preserves the persisted bytes as well as the visible list",
+            "passed": true
+          },
+          {
+            "name": "actual app desktop and 390px captures, no errors, no viewport overflow",
+            "passed": true
+          }
+        ],
+        "passed": 6,
+        "total": 6,
+        "scope": "New deterministic data inside the same predeclared app requirements; no seeded defect or repair feedback."
+      },
+      "runId": "20261020T094840-aed92dac",
+      "worktree": "/Users/vins/work/iterfox/.iterfox/missions/app-value-20261020/iterfox/worktrees/20261020T094840-aed92dac",
+      "fixtureHead": "78edba0c6fed5e4592e93af95416e7caf8a0c99e",
+      "promptSha256": "f82c1efbeea689afdca5203b34ab2161fe68f5d58a71b47cceda420da27dcea4",
+      "replayMatches": true,
+      "runtimeChecks": 6,
+      "turns": 4,
+      "implementedUnits": 2,
+      "corrections": 0,
+      "projectReviews": [
+        {
+          "outcome": "ready",
+          "summary": "Non ho individuato lacune concrete rispetto all’obiettivo nei file richiesti. Le ricevute correnti riportano 12/12 test di dominio e 7/7 flussi Chrome superati. Progetto pronto per la revisione dell’operatore.",
+          "findings": [],
+          "decisions": [
+            {
+              "choice": "Conservare l’implementazione attuale senza ulteriori attività.",
+              "basis": "L’ispezione di src/domain.mjs, src/app.mjs, index.html, style.css e README.md conferma operazioni immutabili, totali globali, importazione atomica, rendering come testo, controlli accessibili e gestione degli errori di persistenza."
+            },
+            {
+              "choice": "Usare le ricevute correnti come evidenza di esecuzione.",
+              "basis": "logic: beafc800-5fc4-4077-a91a-ecb33f1bcef2; workflow: c7d43413-ae19-4ccb-92df-ac44f91aad1c. Questa revisione è stata svolta in sola lettura, senza rieseguire Chrome."
+            }
+          ],
+          "tasks": [],
+          "operatorQuestion": "",
+          "stamp": {
+            "head": "78edba0c6fed5e4592e93af95416e7caf8a0c99e",
+            "files": {
+              ".gitignore": "86806efc82ec83fcb291437a41770108318aa75109d051db39e6d77646c9f9aa",
+              "README.md": "bc6f51b15822443c25408066ad6d19e12d2edaebdf39ad8478c2ec102838a00f",
+              "SPEC.md": "5fae3c082e63cef3abdeae3b27b0f81701d4c9bebc52e5712560e8d216ec5dbd",
+              "index.html": "0655af8610b4dfbb5c3e1ff6f1e3f92a668a3dcf522520f81f2737ead92efe03",
+              "iterfox.json": "cb8253d1497630dffd5224b34524f059f07c413be50b4001cb8e4dc5fae0cf66",
+              "server.mjs": "2555f8b1516d3d0de61ea72cf39bee84fcc04e4ed065ac3912c1e18a567cb292",
+              "src/app.mjs": "25b0da1ddae6a0590f75d48485a9ba75043337528ef15a607b58a77f1e855775",
+              "src/domain.mjs": "943549ef10a1bf9b6134b17bbf20d1565f595ddca3458a8a6e6692eac031c1f7",
+              "style.css": "483d6bb18d7bff8786111dee3da0fc69e6bef2311f17e017eed37e867dd23473",
+              "tests/browser.mjs": "67e56c911e77daa759a84a73b7f52d55d8c5db7b3ad1782909a483d057fcf220",
+              "tests/domain.test.mjs": "985e0cb16e3802e8ec3898187fbe4105efea487bd354bf75e381726a495d9b89"
+            },
+            "fingerprint": "bf3c82b8a838ea7c4f36e238e2adde1cabafa7f12197b4d81aa5e1e83917ad18"
+          },
+          "noteIds": [],
+          "directionRevision": 0,
+          "contractVersion": 1,
+          "nodeId": "82b41c4f-2cc1-4ee7-a9b6-cb5319143bab",
+          "at": "2026-10-20T10:05:01.623Z",
+          "independent": false
+        }
+      ],
+      "discoveredTasks": 0,
+      "finalCriteria": [
+        {
+          "id": "logic",
+          "status": "PASSED",
+          "evidenceId": "beafc800-5fc4-4077-a91a-ecb33f1bcef2"
+        },
+        {
+          "id": "workflow",
+          "status": "PASSED",
+          "evidenceId": "c7d43413-ae19-4ccb-92df-ac44f91aad1c"
+        }
+      ]
+    }
+  },
+  "localArchive": "/Users/vins/work/iterfox/.iterfox/missions/app-value-20261020/",
+  "setup": "Common prompt, starter, fixed API/labels and acceptance authored once before either arm. Existing frozen built runtime and private dependency copy; no app dependencies or production changes.",
+  "scope": "One paired trial, one fresh SDK objective for direct Codex and the existing adaptive Iterfox project engine. Same app goal and contract, different orchestration role wrappers. No native Codex app/Goals or third-party comparison.",
+  "limitations": [
+    "A single randomized-order pair is a case study, not a statistical benchmark. Cache/model/host variability is not controlled by one pair.",
+    "The prompt is supplemented by a precise SPEC.md and fixed acceptance API/UI labels. This measures implementation with prepared criteria, not automatic discovery of complete acceptance from a vague prompt.",
+    "No defect planted in app source, no model coaching, manual repair or additional operator steering during either arm. The shared browser test deliberately simulates a localStorage quota failure; external audit failures are not fed back.",
+    "Browser checks and sample-data captures are deterministic observations of the generated apps; they do not certify visual quality or user comprehension.",
+    "The same assistant prepared the protocol and analyzed results. There is no independent AI review or blind human user study.",
+    "Cross-run continuous delegation and overnight/long-term reliability are not tested here. The earlier editorial/scheduled-publication idea is outside this experiment.",
+    "Token counts are reported input plus output, not monetary cost, unique context size or a success criterion.",
+    "Direct SDK uses a single objective with internal tool iterations; Iterfox adds planner, builder, host checks and same-integration project review. Full prompts are not byte-identical."
+  ],
+  "integrity": {
+    "promptFileSha256": "f82c1efbeea689afdca5203b34ab2161fe68f5d58a71b47cceda420da27dcea4",
+    "auditSourceSha256": "b52663d7b2bd97cc8f98583f987573c8132f1ed6edc0e4aa2d241cec21d72fc7",
+    "runnerSha256": "02bdbea397de30a5f353524479817a00123cfe3fe28061038385da0b046f0204",
+    "protectedAndRuntimeHashesVerifiedForBothArms": true
+  },
+  "presentation": {
+    "at": "2026-10-20T10:18:43.349Z",
+    "status": "passed",
+    "scope": "Post-run captures with identical sample data; scroll explicitly reset to zero. Original full-page captures and audit outcomes preserved. App source hashes unchanged.",
+    "observations": [
+      {
+        "arm": "direct",
+        "name": "desktop",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "beforeReset": {
+          "scrollY": 232,
+          "active": "import-backup",
+          "fixedLinks": [
+            {
+              "text": "Vai alla lista da viaggio",
+              "focused": false,
+              "y": -80,
+              "height": 46.5
+            }
+          ]
+        },
+        "captureScrollY": 0,
+        "errors": []
+      },
+      {
+        "arm": "direct",
+        "name": "mobile",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "beforeReset": {
+          "scrollY": 1167,
+          "active": "import-backup",
+          "fixedLinks": [
+            {
+              "text": "Vai alla lista da viaggio",
+              "focused": false,
+              "y": -80,
+              "height": 46.5
+            }
+          ]
+        },
+        "captureScrollY": 0,
+        "errors": []
+      },
+      {
+        "arm": "iterfox",
+        "name": "desktop",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "beforeReset": {
+          "scrollY": 419,
+          "active": "import-backup",
+          "fixedLinks": [
+            {
+              "text": "Vai alla lista da viaggio",
+              "focused": false,
+              "y": -64.80000305175781,
+              "height": 48
+            }
+          ]
+        },
+        "captureScrollY": 0,
+        "errors": []
+      },
+      {
+        "arm": "iterfox",
+        "name": "mobile",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "beforeReset": {
+          "scrollY": 1104,
+          "active": "import-backup",
+          "fixedLinks": [
+            {
+              "text": "Vai alla lista da viaggio",
+              "focused": false,
+              "y": -64.80000305175781,
+              "height": 48
+            }
+          ]
+        },
+        "captureScrollY": 0,
+        "errors": []
+      }
+    ]
+  },
+  "livePreviews": {
+    "pid": 82807,
+    "startedAt": "2026-10-20T10:19:03.253Z",
+    "direct": {
+      "url": "http://127.0.0.1:58933",
+      "worktree": "/Users/vins/work/iterfox/.iterfox/missions/app-value-20261020/direct/worktrees/20261020T100506-418bbc4d",
+      "runId": "20261020T100506-418bbc4d"
+    },
+    "iterfox": {
+      "url": "http://127.0.0.1:58934",
+      "worktree": "/Users/vins/work/iterfox/.iterfox/missions/app-value-20261020/iterfox/worktrees/20261020T094840-aed92dac",
+      "runId": "20261020T094840-aed92dac"
+    }
+  },
+  "postAuditIntegrity": {
+    "at": "2026-10-20T10:19:00.604Z",
+    "status": "passed",
+    "checks": [
+      {
+        "arm": "direct",
+        "sourceFingerprint": "74b2e7d47b1d64818552050f0d232ff28300487527c64ef0707bec56cb1a5322",
+        "originalHead": "78edba0c6fed5e4592e93af95416e7caf8a0c99e",
+        "immutableFilesChecked": 5,
+        "postAuditSourceUnchanged": true,
+        "administrativeLedgerStatus": "STOPPED"
+      },
+      {
+        "arm": "iterfox",
+        "sourceFingerprint": "bf3c82b8a838ea7c4f36e238e2adde1cabafa7f12197b4d81aa5e1e83917ad18",
+        "originalHead": "78edba0c6fed5e4592e93af95416e7caf8a0c99e",
+        "immutableFilesChecked": 5,
+        "postAuditSourceUnchanged": true,
+        "administrativeLedgerStatus": "COMPLETED"
+      }
+    ],
+    "frozenRuntimeModulesChecked": 5
+  },
+  "traceLimits": "Private reasoning is excluded. Direct tool output is tail-capped at 8000 characters per command; full final app source and check reports are preserved separately.",
+  "completionClaimAudit": {
+    "direct": {
+      "claimsAppComplete": true,
+      "claimsBrowserObserved": false,
+      "observedCompletionMismatch": false
+    },
+    "iterfox": {
+      "claimsCompleted": true,
+      "observedCompletionMismatch": false
+    },
+    "scope": "Only mismatches against the prepared checks and additional audit are counted; no claim of exhaustive correctness."
+  }
+}

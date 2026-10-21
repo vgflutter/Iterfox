@@ -1,0 +1,56 @@
+{
+  "at": "2026-10-20T23:24:49.152Z",
+  "actual": {
+    "outcome": "ready",
+    "summary": "Esito weekly-work pronto alla revisione: cinque ricevute correnti passed, 26 gruppi complessivi. L’ispezione non rileva lacune concrete residue nel perimetro delegato.",
+    "findings": [],
+    "decisions": [
+      {
+        "choice": "Usare esclusivamente le cinque ricevute correnti come prova dei controlli host.",
+        "basis": "projects-api: 3c82b042-9f7c-4207-8427-fb9c3406ce17; tasks-api: baae52cf-7226-4160-b412-8c863433580a; board-ui: e822bee2-e285-4dbf-b70f-eff14886d902; planning-api: 1065d21b-6b6d-4bb2-ac36-1e7177cfb9ba; planning-ui: e2fafac5-859e-4a51-877b-8def02d67b1b. Le ricevute stale restano storiche."
+      },
+      {
+        "choice": "Preservare il candidato senza ulteriori modifiche.",
+        "basis": "Esaminati src, public, README.md, docs/guida.md e docs/verifiche.md: percorso completo, conflitti, cronologia e riepilogo coerenti con la delega. Diff limitato ai tre documenti, controllo diff superato e 22 collegamenti locali riscontrati. Nessun browser avviato né PNG disponibile; gli esiti UI provengono dalle ricevute host."
+      },
+      {
+        "choice": "Lasciare backup e consegna al successivo esito host.",
+        "basis": "La delega corrente li riserva esplicitamente alla fase successiva. public/index.html, README.md e docs/guida.md dichiarano coerentemente il backup ancora indisponibile."
+      }
+    ],
+    "tasks": [],
+    "operatorQuestion": ""
+  },
+  "injected": {
+    "outcome": "ready",
+    "summary": "Esito weekly-work pronto alla revisione: cinque ricevute correnti passed, 26 gruppi complessivi. L’ispezione non rileva lacune concrete residue nel perimetro delegato.",
+    "findings": [
+      {
+        "id": "iterfox-injected-ref",
+        "gap": "Injected wire corruption: this path deliberately does not exist in the source snapshot.",
+        "files": [
+          "__iterfox_injected_missing_reference__.md"
+        ],
+        "evidenceIds": []
+      }
+    ],
+    "decisions": [
+      {
+        "choice": "Usare esclusivamente le cinque ricevute correnti come prova dei controlli host.",
+        "basis": "projects-api: 3c82b042-9f7c-4207-8427-fb9c3406ce17; tasks-api: baae52cf-7226-4160-b412-8c863433580a; board-ui: e822bee2-e285-4dbf-b70f-eff14886d902; planning-api: 1065d21b-6b6d-4bb2-ac36-1e7177cfb9ba; planning-ui: e2fafac5-859e-4a51-877b-8def02d67b1b. Le ricevute stale restano storiche."
+      },
+      {
+        "choice": "Preservare il candidato senza ulteriori modifiche.",
+        "basis": "Esaminati src, public, README.md, docs/guida.md e docs/verifiche.md: percorso completo, conflitti, cronologia e riepilogo coerenti con la delega. Diff limitato ai tre documenti, controllo diff superato e 22 collegamenti locali riscontrati. Nessun browser avviato né PNG disponibile; gli esiti UI provengono dalle ricevute host."
+      },
+      {
+        "choice": "Lasciare backup e consegna al successivo esito host.",
+        "basis": "La delega corrente li riserva esplicitamente alla fase successiva. public/index.html, README.md e docs/guida.md dichiarano coerentemente il backup ancora indisponibile."
+      }
+    ],
+    "tasks": [],
+    "operatorQuestion": ""
+  },
+  "actualSha256": "1531072b44038142516278db44134932a63d42866442f77c46d6f863ea61ac07",
+  "injectedSha256": "29fe727d05d216606f08ca41ccbd1a1c0ce77b7c7b9250c0e669d7589f974b64"
+}

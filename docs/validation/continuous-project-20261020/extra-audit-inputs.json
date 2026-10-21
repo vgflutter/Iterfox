@@ -1,0 +1,8 @@
+{
+  "at": "2026-10-20T12:50:03.973Z",
+  "files": {
+    "src/delegations/brief.ts": "8f44dacc4690d750689e7190ce05b9fa212f016862f3f52ce0fdf68bbb43aed1",
+    "src/delegations/export.ts": "b3ff3dc3801beffeff08de7ee180bb7046b5370d8f72b0bfb4eeb9d19ddedefb",
+    "src/server.ts": "f72da4c0fad958660eb1ba97e3bc4acf5e8628f0aa44f701481d4c4186e49f08"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "at": "2026-10-20T19:09:14.989Z",
+  "cwd": "delivery",
+  "method": "Post-change fault injection for the newly added uncertain-write recovery. Actual server commit followed by dropped response; separate from the preregistered twelve groups.",
+  "results": [
+    {
+      "name": "Lost inventory response: reread and close/reopen never repeat a committed write",
+      "status": "PASS"
+    },
+    {
+      "name": "Uncommitted failed creation can be explicitly retried after a read",
+      "status": "PASS"
+    },
+    {
+      "name": "Lost maintenance response: fresh read shows one saved task without resubmission",
+      "status": "PASS"
+    }
+  ],
+  "passed": 3,
+  "total": 3
+}

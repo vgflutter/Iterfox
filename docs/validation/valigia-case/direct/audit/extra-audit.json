@@ -1,0 +1,33 @@
+{
+  "at": "2026-10-20T10:16:54.866Z",
+  "seed": 20261020,
+  "cases": [
+    {
+      "name": "250 deterministic mixed operations preserve quantities, identity and immutability",
+      "passed": true
+    },
+    {
+      "name": "import rejects invalid later rows without mutating previous data",
+      "passed": true
+    },
+    {
+      "name": "unreadable persisted data is visible and not overwritten merely by loading",
+      "passed": true
+    },
+    {
+      "name": "category filtering survives refresh and imported Unicode quantity data stays global",
+      "passed": true
+    },
+    {
+      "name": "invalid UI import preserves the persisted bytes as well as the visible list",
+      "passed": true
+    },
+    {
+      "name": "actual app desktop and 390px captures, no errors, no viewport overflow",
+      "passed": true
+    }
+  ],
+  "passed": 6,
+  "total": 6,
+  "scope": "New deterministic data inside the same predeclared app requirements; no seeded defect or repair feedback."
+}

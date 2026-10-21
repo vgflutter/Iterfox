@@ -1,0 +1,7 @@
+{
+  "at": "2026-10-20T21:52:28.323Z",
+  "boundary": "Prospective observation while the immutable original trial continues; no feedback or code/test changes.",
+  "sourceObservationAt": "2026-10-20T21:50:36.873Z",
+  "observation": "The host UI probe currently expects the exact accessible label Nome progetto. The visible input has a correctly associated label Nome progetto (obbligatorio). A selector mismatch alone does not prove that creating a project is broken.",
+  "note": "Final conclusions must distinguish automation-contract wording and hidden-control selector constraints from functional defects. Preserve the frozen check and actual native outcome; do not silently alter labels or the original test."
+}

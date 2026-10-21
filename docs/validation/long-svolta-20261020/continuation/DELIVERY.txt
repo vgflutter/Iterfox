@@ -1,0 +1,8 @@
+Svolta — local delivery from Iterfox checkpoint 09feec68a2410b467f9df7a93f3d07e5d411a68b
+
+Preview: http://127.0.0.1:4386 (explicit separate synthetic data, not included in the source ZIP).
+Source ZIP: svolta-source.zip. From the extracted folder: node src/server.mjs, or npm start. Node22.13+; no npm install needed for the application. Use PORT=0 for a free loopback port and SVOLTA_DATA_DIR for a separate data folder. Host browser checks reference this experiment’s local Playwright installation; the app has no third-party runtime dependency.
+
+Final native delegation COMPLETED2/2 with7 fresh host criteria. External audit8/8. This delivery follows four distinct technical authorizations, including three assistant-prepared continuations; earlier BLOCKED/STOPPED results remain preserved. No manual application-code edits during the runs, no additional user development prompts. The source guides preserve the verification photograph written before the final native receipts; consult the checkpoint ledger/report for final provenance.
+
+Observed usability limit: at390px, task creation and filters precede the existing list, requiring substantial scrolling. No physical-device or screen-reader test. No main merge, push or public deployment.

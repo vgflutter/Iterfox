@@ -1,0 +1,217 @@
+<!doctype html><html lang="it"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="referrer" content="no-referrer"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src 'self' data:;"><title>Iterfox — la notte simulata di Custode</title><style>
+:root{font:17px/1.6 system-ui;color:#23332c;background:#f3f1ea}*{box-sizing:border-box}body{margin:0}main{max-width:1120px;margin:auto;padding:42px 24px}h1{font-size:clamp(34px,5vw,58px);line-height:1.12;letter-spacing:-.035em;max-width:930px}h2{margin-top:42px;font-size:27px}.eyebrow{font-size:13px;letter-spacing:.15em;text-transform:uppercase;color:#716146}.lead{font-size:21px;max-width:920px}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:26px 0}.metric{padding:20px;border:1px solid #dcd7cb;border-radius:14px;background:#fffdf8}.metric strong{display:block;font-size:34px;line-height:1.2}.metric span{font-size:14px}.notice{padding:18px 22px;background:#fff0d7;border-left:5px solid #a16b24;border-radius:4px}.screens{display:grid;grid-template-columns:2fr 1fr;gap:18px;align-items:start}figure{margin:0}img{max-width:100%;height:auto;border:1px solid #dcd7cb;border-radius:12px}figcaption{font-size:14px;color:#56635b}.scroll{overflow:auto}table{border-collapse:collapse;width:100%;font-size:15px}td,th{text-align:left;padding:11px 8px;border-bottom:1px solid #dcd7cb;vertical-align:top}a{color:#285b76}code{font-size:.82em;overflow-wrap:anywhere}pre{white-space:pre-wrap;word-break:break-word;font-size:12px}details{padding:13px 0;border-bottom:1px solid #dcd7cb}summary{cursor:pointer;font-weight:600}li{margin:8px 0}.muted,footer{color:#56635b}footer{font-size:14px;margin:40px 0}@media(max-width:650px){main{padding:24px 16px}.grid{grid-template-columns:repeat(2,1fr)}.screens{grid-template-columns:1fr}.lead{font-size:18px}.metric{padding:15px}}
+</style><main><p class="eyebrow">ITERFOX · PROVA REALE · 20 OTTOBRE 2026</p><h1>Un’app sviluppata mentre l’operatore è assente.</h1><p class="lead">Custode funziona. La prima delega ha prodotto tre esiti certificati e le funzionalità principali dell’app, poi si è fermata su una chiamata interrotta. Un recupero dell’assistente ha completato integrazione, guida e revisione finale.</p>
+<div class="grid"><div class="metric"><strong>3/4</strong><span>esiti certificati prima del recupero</span></div><div class="metric"><strong>0</strong><span>nuovi prompt richiesti all’utente</span></div><div class="metric"><strong>1</strong><span>recupero dell’assistente</span></div><div class="metric"><strong>12/12</strong><span>gruppi dell’audit esterno</span></div></div>
+<p class="notice"><strong>Il risultato della notte simulata resta BLOCKED, 3/4.</strong> Non è stato convertito retroattivamente in un successo. La consegna finale deriva da una seconda autorizzazione tecnica, con una finestra separata. Sono conservati il ledger originale, i worktree, il runtime, i controlli e i tre checkpoint. Il passaggio intermedio è uno snapshot manuale di revisione, non un quarto checkpoint certificato.</p>
+<h2>Il prodotto che trovi al ritorno</h2><p>Custode è un’app locale in italiano per inventario domestico, manutenzioni e backup: creazione/modifica/ricerca degli oggetti, scadenze ordinate, ricorrenze, completamento e storico, esportazione JSON e ripristino atomico con consenso. I dati persistono al riavvio. Il codice applicativo è stato scritto dai builder Codex di Iterfox; l’assistente ha preparato obiettivo, fixture e confini, senza correggere manualmente il codice applicativo. Dopo la run l’assistente ha rettificato quattro guide: risultati da leggere nelle ricevute e revisione AI della stessa integrazione, non indipendente.</p><p><a href="http://127.0.0.1:4380">Apri Custode</a> · <a href="custode-source.zip">Scarica il codice con le guide riviste</a>. L’anteprima usa dati di esempio in un archivio separato: non sono dati inseriti automaticamente dal prodotto. L’app richiede Node 22, senza dipendenze da installare.</p><div class="screens"><figure><img src="app-desktop.png" alt="Inventario Custode realmente eseguito in Chrome"><figcaption>L’app consegnata, con dati di esempio separati dalla prova.</figcaption></figure><figure><img src="app-mobile.png" alt="Custode nel viewport reale di 390 per 844 pixel"><figcaption>Vista mobile emulata a 390 × 844.</figcaption></figure></div>
+<h2>Una delega, più missioni autonome</h2><p>La preparazione tecnica ha richiesto 5.6 minuti all’assistente: brief, interfacce verificabili, sei controlli e grafo di quattro esiti. La UI non genera ancora questo insieme completo da una frase. La prima delega ha lavorato per 152.0 minuti prima del blocco, senza coaching, pause o rilanci dell’assistente. Ha creato tre checkpoint e avviato da sola la quarta missione. Le nuove missioni partivano senza prove ereditate e ripetevano i controlli cumulativi.</p><p>Dopo il blocco, l’assistente ha verificato il candidato con i dodici gruppi esterni, tutti superati, e avviato il completamento separato. Quest’ultimo è durato 17.3 minuti. Due autorizzazioni tecniche e 29 turni riportati complessivi; nessun altro prompt o decisione richiesto all’utente. Il tempo totale fra le due autorizzazioni include il periodo di blocco e non è tempo di sviluppo continuo.</p><p><a href="protocol.json">Protocollo iniziale</a> · <a href="product-brief.md">Obiettivo e interfacce congelate</a> · <a href="delegation.json">Prima delega</a> · <a href="recovery-delegation.json">Delega di completamento</a> · <a href="interventions.json">Intervento dell’assistente</a></p>
+<div class="scroll"><table><thead><tr><th>Passaggio</th><th>Ora italiana</th><th>Risultato osservato</th></tr></thead><tbody><tr><td>Delega iniziale</td><td>16:26:48</td><td>Un’autorizzazione tecnica, quattro esiti, finestra originale di quattro ore.</td></tr><tr><td>reliable-inventory</td><td>16:45:12</td><td>Checkpoint automatico con prove fresche.</td></tr><tr><td>usable-inventory</td><td>17:26:04</td><td>Checkpoint automatico con prove fresche.</td></tr><tr><td>maintenance-workflow</td><td>18:11:36</td><td>Checkpoint automatico con prove fresche.</td></tr><tr><td>Interruzione del modello</td><td>18:58:48</td><td>Tre esiti certificati; sei controlli verdi sull’ultimo candidato, ma integrazione e revisione finale non concluse. Il worker si ferma.</td></tr><tr><td>Recupero dell’assistente</td><td>20:26:40</td><td>Ledger e worktree conservati; snapshot esplicitamente non certificato, nuova delega separata.</td></tr><tr><td>Nuova autorizzazione</td><td>20:28:10</td><td>Stesso runtime e stessi sei controlli, nessuna modifica manuale al codice.</td></tr><tr><td>Consegna conclusa</td><td>20:45:29</td><td>Revisione ready, controlli freschi e checkpoint automatico della fase di completamento.</td></tr></tbody></table></div>
+<h2>Il limite emerso</h2><p>L’ultima chiamata ha registrato “The operation was aborted”. Il ledger non contiene un motivo più preciso; il limite configurato per una singola chiamata era di venti minuti. Non risultano richieste di stop o pausa dell’operatore. Il codice dell’ultimo candidato non è cambiato durante il task interrotto. Non attribuiamo quindi con certezza l’abort a rete, timeout o altra causa esterna.</p><p>Il comportamento osservato è concreto: il controller ha conservato i risultati e bloccato la delega, senza tentare un recupero autonomo. Prima di considerarlo affidabile per un’intera notte, serve recupero limitato delle interruzioni tecniche, con causa registrata, processo precedente terminato, verifica dei file e rispetto della finestra e dei permessi originali. Un limite globale esaurito o una pausa dell’operatore devono continuare a fermare il lavoro.</p>
+<h2>Come si governa la prova</h2><p><a href="http://127.0.0.1:4362">Plancia originale: 3/4, bloccata</a> · <a href="http://127.0.0.1:4363">Plancia del completamento: 1/1</a>. In <strong>Delegations → Read project brief</strong> leggi risultati, attenzione e provenienza; apri le missioni in <strong>Live Trail</strong> per attività e verifiche. Queste due fasi restano separate anche nell’interfaccia. Push, merge e pubblicazione non sono stati eseguiti.</p><p><a href="primary-project-report.html">Morning Brief originale offline</a> · <a href="project-report.html">Morning Brief del completamento offline</a>. I rapporti nativi mantengono i rispettivi stati: non riscrivono il primo blocco. I checkpoint totali sono quattro, tre nella prova originale e uno nel completamento, oltre allo snapshot di revisione esplicitamente non certificato.</p>
+<h2>Verifiche esterne e qualità</h2><p>12/12 gruppi superati sul codice consegnato: record Unicode, scritture parallele, cinquanta ricorrenze generate, completamenti concorrenti, venti importazioni corrotte, riavvio, percorsi statici, markup ostile, accenti italiani, UTF-8 frammentato e tipi JSON malformati. I nove gruppi iniziali e i tre aggiuntivi erano stati preparati prima del blocco, senza feedback al modello nella prima esecuzione.</p><ul><li><strong>PASS</strong> 48 seeded Unicode/text records and reference search</li><li><strong>PASS</strong> 24 concurrent creations do not lose or duplicate writes</li><li><strong>PASS</strong> 50 generated civil-date recurrence cases including year boundaries</li><li><strong>PASS</strong> Concurrent one-off completion stores exactly one history entry</li><li><strong>PASS</strong> Every rejected import preserves exact original backup, 20 cases</li><li><strong>PASS</strong> Exported data remains valid after deleting a task with history</li><li><strong>PASS</strong> Full dataset remains byte-for-byte equivalent after process restart</li><li><strong>PASS</strong> Static routes do not expose source, objective, tests or data</li><li><strong>PASS</strong> Literal imported markup cannot execute in desktop/mobile UI</li><li><strong>PASS</strong> Italian accented upper/lower case search across all text fields</li><li><strong>PASS</strong> UTF-8 JSON survives a network chunk splitting an accented character</li><li><strong>PASS</strong> Malformed JSON root types return 4xx without changing saved state</li></ul><p>La nuova gestione dei salvataggi incerti è stata verificata separatamente con 3/3 gruppi di guasti di rete: il server salva, la risposta viene scartata e l’interfaccia deve permettere una rilettura senza duplicare la richiesta.</p><ul><li><strong>PASS</strong> Lost inventory response: reread and close/reopen never repeat a committed write</li><li><strong>PASS</strong> Uncommitted failed creation can be explicitly retried after a read</li><li><strong>PASS</strong> Lost maintenance response: fresh read shows one saved task without resubmission</li></ul><p>Revisione visiva dell’assistente: <strong>Interfaccia coerente e usabile nei flussi osservati</strong>. È un giudizio qualitativo su schermate reali, separato dalle verifiche deterministiche e dalle revisioni AI della stessa integrazione.</p><ul><li>Gerarchia visiva chiara, ricerca e azioni principali leggibili, stile coerente fra inventario, manutenzioni e backup.</li><li>Navigazione, schede e modulo funzionano a 390px senza scorrimento orizzontale. Il dialogo del ripristino rientra nel viewport e richiede il consenso esplicito.</li><li>I dati del file sono riepilogati prima del consenso. L’errore di JSON invalido è leggibile e disabilita il ripristino; le osservazioni non hanno modificato il database.</li><li>Il viewport mobile normale non mostra la sovrapposizione vista nella prima cattura a pagina intera con focus attivo. Gli indicatori di focus sono visibili nei flussi da tastiera.</li></ul><p><a href="independent-audit.json">Audit funzionale</a> · <a href="robustness-audit.json">Robustezza aggiuntiva</a> · <a href="network-audit.json">Guasti di rete</a> · <a href="visual-review.json">Revisione visiva</a> · <a href="preview-browser.json">Consenso al ripristino e anteprima</a></p>
+<h2>Pianificazione e prove</h2><p>0 controlli finali falliti e 11 prove non superate differite perché c’era ancora implementazione pianificata. Un controllo non soddisfatto non è stato trasformato in un PASS. La causa del blocco è distinta dai risultati funzionali verdi. Le revisioni AI sono della stessa integrazione Codex, non di un valutatore indipendente.</p><details><summary>reliable-inventory — COMPLETED, 5 turni</summary><p>Run <code>20261020T142648-35f27844</code></p><p>Checkpoint <code>3baad1931f9f79aa9fc1bb724d843cd12eb88404</code></p><ul><li>Implement durable, validated inventory CRUD · PASSED<br><span class="muted">Implemented validated inventory CRUD, combined case-insensitive search, transactional SQLite persistence, bounded HTTP bodies, loopback-only listening and Italian documentation. Focused checks passed, including literal text preservation, storage failures and crash recovery. HTTP listener acceptance remains for host verification.</span></li><li>Complete combined search and resilient HTTP boundaries · PASSED<br><span class="muted">Completati i confini HTTP: percorsi anomali rifiutati, errori JSON coerenti e limite di 2 MiB. Passati 87 casi mirati in processo, inclusi ricerca combinata e rifiuti senza mutazioni. README aggiornato. HTTP reale e riavvio restano da verificare sull’host.</span></li><li>Document the implemented inventory service · PASSED<br><span class="muted">README aggiornato in italiano con avvio, variabili d’ambiente, percorso predefinito del database, esempi HTTP, persistenza e limiti attuali. Documentazione confrontata con il codice; verifiche HTTP e riavvio richieste all’host.</span></li></ul><pre>[
+  {
+    &quot;outcome&quot;: &quot;ready&quot;,
+    &quot;summary&quot;: &quot;Outcome 1 is ready for review. Source inspection found no concrete remaining inventory gap. Current host receipt 275c0ecc-4ea9-4453-b706-75117f8d2d25 reports all eight inventory acceptance groups passed.&quot;,
+    &quot;findings&quot;: [],
+    &quot;decisions&quot;: [
+      {
+        &quot;choice&quot;: &quot;Accept the documented combined search semantics.&quot;,
+        &quot;basis&quot;: &quot;src/inventory.mjs combines case-insensitive substring search across all four text fields with exact category and location filters using AND.&quot;
+      },
+      {
+        &quot;choice&quot;: &quot;Accept the inventory persistence and HTTP implementation.&quot;,
+        &quot;basis&quot;: &quot;Source inspection confirms validation before writes, transactional SQLite persistence, literal text preservation, bounded request bodies, loopback listening and JSON error handling. README.md matches the implemented behavior.&quot;
+      },
+      {
+        &quot;choice&quot;: &quot;Keep subsequent outcomes deferred.&quot;,
+        &quot;basis&quot;: &quot;The active delegation requires inventory APIs only; UI, maintenance and application backup remain assigned to later outcomes.&quot;
+      }
+    ],
+    &quot;tasks&quot;: [],
+    &quot;operatorQuestion&quot;: &quot;&quot;,
+    &quot;stamp&quot;: {
+      &quot;head&quot;: &quot;1892c983f18b7332a0c24b431b02d3ee3be3e668&quot;,
+      &quot;files&quot;: {
+        &quot;.gitignore&quot;: &quot;38af0c189b6ea42f53b44594ce1cb8fe26b4861079fe816e4babbbb8c0b33374&quot;,
+        &quot;BRIEF.md&quot;: &quot;6d924142cfafaf42c0f91215fa4a44e3c24022079e585d462081a732491bdb01&quot;,
+        &quot;README.md&quot;: &quot;bebf17f533a2182cb7fe7667499cd6bbcb0ac08a4f1a4cb4d5f9088964eeead5&quot;,
+        &quot;package.json&quot;: &quot;059e15020af9ea47307d8b9b6112991177ee25f1458b9351ea0a6c61a1bb1c1c&quot;,
+        &quot;src/errors.mjs&quot;: &quot;e80649a6029653512539fab5b2a950aa01ce047c48c709af23ead8d89f1a2cde&quot;,
+        &quot;src/inventory.mjs&quot;: &quot;abd476e31241a521120d30a65de8587b7124eef594ad1264133521509867bee8&quot;,
+        &quot;src/server.mjs&quot;: &quot;9cbbbf2a42600b0ba66c7084fbf5993bf7d8fb960869fec1171e584c5ae5aa54&quot;,
+        &quot;src/store.mjs&quot;: &quot;453ba88e0f4b39bda7fae8bbe36be8be2e5b8ee4681c5b499ed30afd92681285&quot;,
+        &quot;tests/acceptance.mjs&quot;: &quot;cd51582a782f0400fe1729ba27b4df50a388c0057f6f41ad63fed52ef8c1aaf3&quot;
+      },
+      &quot;fingerprint&quot;: &quot;d12cb9a31c5c21b24140bc8a9becea47baa0720b159ef5914369f62d078a1be3&quot;
+    },
+    &quot;noteIds&quot;: [
+      &quot;dbf99c7c-38a7-41a5-89d9-b89bfa3b496b&quot;
+    ],
+    &quot;directionRevision&quot;: 1,
+    &quot;contractVersion&quot;: 1,
+    &quot;nodeId&quot;: &quot;4d6f6daf-aecd-432f-b734-5536b74036b8&quot;,
+    &quot;at&quot;: &quot;2026-10-20T14:45:11.939Z&quot;,
+    &quot;independent&quot;: false
+  }
+]</pre></details><details><summary>usable-inventory — COMPLETED, 8 turni</summary><p>Run <code>20261020T144512-fd44a424</code></p><p>Checkpoint <code>6ca9f2e7e21e990662505af6b18850f56f0eae98</code></p><ul><li>Servire il primo percorso completo di inventario · PASSED<br><span class="muted">Implementato il primo percorso: pagina Custode con risorse locali confinate a public, elenco reale, form accessibile collegato a POST, stati vuoti/errori e layout responsive. Manutenzioni e Backup disabilitati; nessun dato dimostrativo. README e scelte progettuali aggiornati. Superati controlli statici e 34 verifiche HTTP in processo. Browser, layout effettivo e persistenza richiedono verifica host. Ricerca, modifica ed eliminazione UI restano ai task successivi.</span></li><li>Collegare ricerca e stati dell’elenco · PASSED<br><span class="muted">Collegata Cerca oggetti al filtro q dell’API, con cancellazione, protezione dalle risposte obsolete e stati distinti di caricamento, archivio vuoto, nessun risultato ed errore recuperabile. Aggiunta sempre disponibile. Controlli mirati passati; browser e layout richiedono verifica host. Modifica/eliminazione restano ai task successivi.</span></li><li>Completare modifica ed eliminazione con conferma · PASSED<br><span class="muted">Aggiunte azioni accessibili Modifica/Elimina, form precompilato con PATCH e conferma annullabile prima di DELETE. Gestiti errori, conflitti e aggiornamento della ricerca senza rimozioni anticipate. Documentazione aggiornata e controlli mirati in processo superati. Browser, layout e persistenza dopo riavvio richiedono verifica host.</span></li><li>Rendere affidabili form e feedback · PASSED<br><span class="muted">Rafforzati errori associati ai campi, conservazione dei valori, blocco degli invii duplicati e annunci accessibili. Distinti salvataggi confermati da errori di ricaricamento; preservati testo letterale e campi invariati. Passati 64 confronti Unicode UI/API e controlli mirati nel DOM simulato. Browser reale e screen reader restano da verificare sull’host.</span></li><li>Completare il layout e l’uso da tastiera · PASSED<br><span class="muted">Esaminate le schermate host e migliorati leggibilità, contrasto, layout per testi lunghi e gestione del focus nei dialoghi e durante gli aggiornamenti. Superati 27 controlli mirati in DOM simulato. Rendering, tastiera e zoom reali richiedono verifica host aggiornata. API preservata.</span></li><li>Aggiornare la guida all’inventario utilizzabile · PASSED<br><span class="muted">README aggiornato con accesso all’interfaccia, creazione, ricerca, modifica, eliminazione e recupero dagli errori. Chiariti bozze, limite loopback e funzioni ancora assenti; conservate istruzioni su avvio, API e persistenza. Confronto statico con il codice completato; browser, HTTP e riavvio restano da verificare sull’host.</span></li></ul><pre>[
+  {
+    &quot;outcome&quot;: &quot;ready&quot;,
+    &quot;summary&quot;: &quot;L’esito 2 è pronto per la revisione: codice, documentazione e schermate host esaminati. Le prove correnti passano; non emergono lacune concrete che impediscano l’uso dell’inventario.&quot;,
+    &quot;findings&quot;: [],
+    &quot;decisions&quot;: [
+      {
+        &quot;choice&quot;: &quot;Considerare completato l’inventario usabile.&quot;,
+        &quot;basis&quot;: &quot;public/index.html, public/app.js e public/styles.css implementano form accessibili, ricerca, modifica, eliminazione con conferma e stati recuperabili. Le schermate host desktop e 390px mostrano un inventario leggibile. Ricevute correnti: inventory 6680eccd-a8e6-4ded-84b5-ecba61f22bfd; inventory-ui 7c1938f0-68d7-4f98-9278-af3bdd581694. Eliminazione ed errori sono stati valutati dal sorgente, senza eseguire un nuovo browser.&quot;
+      },
+      {
+        &quot;choice&quot;: &quot;Preservare il perimetro dell’esito corrente.&quot;,
+        &quot;basis&quot;: &quot;L’API esistente è preservata; README.md descrive utilizzo, persistenza e limiti reali. Manutenzioni e Backup sono chiaramente disabilitati e restano agli esiti successivi previsti da BRIEF.md.&quot;
+      }
+    ],
+    &quot;tasks&quot;: [],
+    &quot;operatorQuestion&quot;: &quot;&quot;,
+    &quot;stamp&quot;: {
+      &quot;head&quot;: &quot;3baad1931f9f79aa9fc1bb724d843cd12eb88404&quot;,
+      &quot;files&quot;: {
+        &quot;.gitignore&quot;: &quot;38af0c189b6ea42f53b44594ce1cb8fe26b4861079fe816e4babbbb8c0b33374&quot;,
+        &quot;BRIEF.md&quot;: &quot;6d924142cfafaf42c0f91215fa4a44e3c24022079e585d462081a732491bdb01&quot;,
+        &quot;README.md&quot;: &quot;5a8b1f1d8b325d320bbc36ac0a8834c4b0019a3bfec977b39bca3633de60ead6&quot;,
+        &quot;docs/ui-inventario.md&quot;: &quot;905aa2a62347c621d7b6f1a4e54b64dacfc2562c42bbcb21bf4c7cdc66aedae1&quot;,
+        &quot;package.json&quot;: &quot;059e15020af9ea47307d8b9b6112991177ee25f1458b9351ea0a6c61a1bb1c1c&quot;,
+        &quot;public/app.js&quot;: &quot;397ab27a6eae0988d97aed19ba17c974885364625bb47bb4c6e840df287e0374&quot;,
+        &quot;public/favicon.svg&quot;: &quot;b4fddcb795fed38eb7025b73d3e941bf19b1b1407c9bd99a0d513f1f08fc424e&quot;,
+        &quot;public/index.html&quot;: &quot;4c2270f1af97317be0c956bacb4260cfb5c0df9d11a056d8bdfb80e63461e7e1&quot;,
+        &quot;public/styles.css&quot;: &quot;6fb0d98f7b09fb63521d11cceca166a699da6707b3620e2409e5e44b4fa9429e&quot;,
+        &quot;src/errors.mjs&quot;: &quot;e80649a6029653512539fab5b2a950aa01ce047c48c709af23ead8d89f1a2cde&quot;,
+        &quot;src/inventory.mjs&quot;: &quot;abd476e31241a521120d30a65de8587b7124eef594ad1264133521509867bee8&quot;,
+        &quot;src/server.mjs&quot;: &quot;b16f4a452741a827446be9a036903914f5df055959b89c564a64c79ee29bd67d&quot;,
+        &quot;src/store.mjs&quot;: &quot;453ba88e0f4b39bda7fae8bbe36be8be2e5b8ee4681c5b499ed30afd92681285&quot;,
+        &quot;tests/acceptance.mjs&quot;: &quot;cd51582a782f0400fe1729ba27b4df50a388c0057f6f41ad63fed52ef8c1aaf3&quot;
+      },
+      &quot;fingerprint&quot;: &quot;1c78a9f813a072230605bfaa7bc3c4c3f55ac59a8d386d7428a6befd9177dbdc&quot;
+    },
+    &quot;noteIds&quot;: [
+      &quot;88a59696-84ff-4f2f-9747-c0be50bb5d7f&quot;
+    ],
+    &quot;directionRevision&quot;: 1,
+    &quot;contractVersion&quot;: 1,
+    &quot;nodeId&quot;: &quot;3b93ded0-ce87-4cc1-bca5-3c8333da69b1&quot;,
+    &quot;at&quot;: &quot;2026-10-20T15:26:03.850Z&quot;,
+    &quot;independent&quot;: false
+  }
+]</pre></details><details><summary>maintenance-workflow — COMPLETED, 7 turni</summary><p>Run <code>20261020T152604-46b3d576</code></p><p>Checkpoint <code>cb513eb21a98abdc21aae66debcd93ee98c01673</code></p><ul><li>Archivio e API manutenzioni complete · PASSED<br><span class="muted">Implementato il backend manutenzioni: migrazione transazionale, CRUD validato, completamenti atomici, ricorrenze civili, storico e panoramica. Preservati inventario, riferimenti e limiti HTTP. Passati controlli mirati locali; verifiche host richieste. Documentazione aggiornata; interfaccia manutenzioni al prossimo task.</span></li><li>Programmazione e panoramica nell’interfaccia · PASSED<br><span class="muted">Attivata Manutenzioni con creazione tramite API, selezione dall’inventario completo, scadenze ordinate, conteggi e gestione recuperabile degli errori. Preservate ricerca e bozze; documentazione aggiornata. Controlli statici e mirati superati; browser da verificare sull’host. Completamento e storico UI restano ai task successivi.</span></li><li>Completamento e storico consultabile · PASSED<br><span class="muted">Collegati completamento e Storico: date validate, aggiornamento di scadenze e conteggi, distinzione tra una tantum conclusi e ricorrenti attivi. Conservati valori dopo errori, bloccati invii duplicati e separati scrittura confermata e ricaricamento fallito. Documentazione aggiornata; controlli mirati in processo superati. Browser, layout e listener richiedono verifica host.</span></li><li>Modifica ed eliminazione degli interventi · PASSED<br><span class="muted">Implementate modifica precompilata con PATCH parziali ed eliminazione con conferma esplicita. Conservati storico e bozze separate; gestiti conflitti tra finestre e risposte incerte senza ricreazioni automatiche. Documentazione aggiornata e controlli mirati in processo superati. Browser, layout e riavvio del processo richiedono verifica host.</span></li><li>Integrazione accessibile e guida aggiornata · PASSED<br><span class="muted">Completata l’integrazione: focus, ricerca e bozze preservati, dettagli leggibili nel select, conteggi accessibili e protezione dalle letture obsolete. Completamenti protetti dai conflitti di versione. README e documentazione aggiornati; Backup resta futuro. Passati controlli mirati in processo e sintassi. Schermate host esaminate; browser, manutenzioni a 390px e tastiera nativa richiedono nuova verifica host.</span></li></ul><pre>[
+  {
+    &quot;outcome&quot;: &quot;ready&quot;,
+    &quot;summary&quot;: &quot;L’esito 3 è pronto alla revisione: API validate, scadenze, completamenti, storico persistente e interfaccia integrata. L’ispezione di codice, documentazione e schermate disponibili non ha individuato lacune materiali residue. Le quattro prove host correnti sono positive.&quot;,
+    &quot;findings&quot;: [],
+    &quot;decisions&quot;: [
+      {
+        &quot;choice&quot;: &quot;Considerare completo il percorso manutenzioni.&quot;,
+        &quot;basis&quot;: &quot;src/maintenance.mjs e src/store.mjs implementano date civili, ricorrenze e storico atomico; public/app.js e public/index.html collegano creazione, modifica, eliminazione e completamento con gestione degli errori. Ricevute: c5abcff1-4f4a-419e-98f3-471c84e7ed1a e 29a94599-2a19-42ad-8aa0-fe36b8488e6b.&quot;
+      },
+      {
+        &quot;choice&quot;: &quot;Considerare preservato l’inventario entro le verifiche disponibili.&quot;,
+        &quot;basis&quot;: &quot;La migrazione conserva la tabella degli oggetti; ricerca e CRUD restano integrati. Ricevute correnti positive: e133efbc-a254-42d7-a245-b639f2cd9ef6 e ccb42a3d-2806-4e10-82fe-f6905e59c9e3.&quot;
+      },
+      {
+        &quot;choice&quot;: &quot;Limitare le conclusioni visive alle schermate osservate.&quot;,
+        &quot;basis&quot;: &quot;Esaminate maintenance-ui-desktop.png e maintenance-ui-mobile.png: la prima mostra scadenze e storico; la seconda mostra l’inventario a 390px. I dialoghi e le manutenzioni su telefono sono stati esaminati nel sorgente, senza eseguire un browser.&quot;
+      },
+      {
+        &quot;choice&quot;: &quot;Lasciare backup e ripristino alla continuazione successiva.&quot;,
+        &quot;basis&quot;: &quot;BRIEF.md li assegna all’esito 4; interfaccia e README ne indicano correttamente la disponibilità futura.&quot;
+      }
+    ],
+    &quot;tasks&quot;: [],
+    &quot;operatorQuestion&quot;: &quot;&quot;,
+    &quot;stamp&quot;: {
+      &quot;head&quot;: &quot;6ca9f2e7e21e990662505af6b18850f56f0eae98&quot;,
+      &quot;files&quot;: {
+        &quot;.gitignore&quot;: &quot;38af0c189b6ea42f53b44594ce1cb8fe26b4861079fe816e4babbbb8c0b33374&quot;,
+        &quot;BRIEF.md&quot;: &quot;6d924142cfafaf42c0f91215fa4a44e3c24022079e585d462081a732491bdb01&quot;,
+        &quot;README.md&quot;: &quot;b4adb8ae6d55b6e7b897c9e7503f979602272fb9fb86f49f737e6c4b4e18335a&quot;,
+        &quot;docs/api-manutenzioni.md&quot;: &quot;68f61042d0860ba3352578acac89426b3ce928cf65764276ace49024c4f8f3a0&quot;,
+        &quot;docs/ui-inventario.md&quot;: &quot;b56253513a73c9bca6e8c07814c9853c1613641aa658b87f23289fa5f73f41aa&quot;,
+        &quot;docs/ui-manutenzioni.md&quot;: &quot;b9280bf4f3809df0ca81c549221e303f8c2c8430718ff3edcdc0937c82ecf108&quot;,
+        &quot;package.json&quot;: &quot;059e15020af9ea47307d8b9b6112991177ee25f1458b9351ea0a6c61a1bb1c1c&quot;,
+        &quot;public/app.js&quot;: &quot;b680742d22345bd547aad5b3bd796be27bf1e5ac77c0d44f913cd49c4eee1349&quot;,
+        &quot;public/favicon.svg&quot;: &quot;b4fddcb795fed38eb7025b73d3e941bf19b1b1407c9bd99a0d513f1f08fc424e&quot;,
+        &quot;public/index.html&quot;: &quot;b85d872d30d339aedd10c735589895b9a60d2cdf2a591944abf561aa4666ce8e&quot;,
+        &quot;public/styles.css&quot;: &quot;09c6b701023e2578d3f6e891ca02fe85d4ed15d8d84be9119312f7787b48b435&quot;,
+        &quot;src/errors.mjs&quot;: &quot;e80649a6029653512539fab5b2a950aa01ce047c48c709af23ead8d89f1a2cde&quot;,
+        &quot;src/inventory.mjs&quot;: &quot;abd476e31241a521120d30a65de8587b7124eef594ad1264133521509867bee8&quot;,
+        &quot;src/maintenance.mjs&quot;: &quot;9a1576c725c755efddbda8252b18f56a8616bb838cee53501817e692f51c9994&quot;,
+        &quot;src/server.mjs&quot;: &quot;f1fef9916d2ea0dabb9305a5be372736754d5e66cb52d9a24bb0bd4d07d197cb&quot;,
+        &quot;src/store.mjs&quot;: &quot;3fa2e280d9acb4603501c345e04b105dd478bbcd388c658eb17697df140930d1&quot;,
+        &quot;tests/acceptance.mjs&quot;: &quot;cd51582a782f0400fe1729ba27b4df50a388c0057f6f41ad63fed52ef8c1aaf3&quot;
+      },
+      &quot;fingerprint&quot;: &quot;557abda9249d3e1508accfa61d02ba601c72cc25870fea40d997d107a4b2c3c0&quot;
+    },
+    &quot;noteIds&quot;: [
+      &quot;946cc48e-c48f-4b54-b7bb-537e0b841186&quot;
+    ],
+    &quot;directionRevision&quot;: 1,
+    &quot;contractVersion&quot;: 1,
+    &quot;nodeId&quot;: &quot;d4e622f0-0ed4-479a-a0fa-67da3e3d7737&quot;,
+    &quot;at&quot;: &quot;2026-10-20T16:11:35.530Z&quot;,
+    &quot;independent&quot;: false
+  }
+]</pre></details><details><summary>safe-return — BLOCKED, 4 turni</summary><p>Run <code>20261020T161136-f1baf0a7</code></p><p>Snapshot non certificato; nessun checkpoint per questo esito nella prima delega.</p><ul><li>Implementare backup completo e ripristino atomico · PASSED<br><span class="muted">Implementate GET /api/backup e POST /api/restore con snapshot coerente, validazione completa e sostituzione transazionale. Preservati testi letterali, identificativi, date, interventi eliminati e ordine dello storico. Documentati uso, recupero e limite HTTP di 2 MiB. Controlli mirati locali superati, inclusi rollback forzato e concorrenza; listener da verificare sull’host. Interfaccia Backup lasciata al task successivo.</span></li><li>Attivare download e conferma esplicita nell’interfaccia · PASSED<br><span class="muted">Attivata Backup con download JSON completo, lettura senza scritture e ripristino con riepilogo e consenso obbligatorio. Gestiti annullamento, focus, nomi file letterali, errori e invii duplicati; documentazione aggiornata. Controlli mirati locali passati. Download e tastiera nativi, layout desktop/390px e regressioni richiedono verifica host.</span></li><li>Integrare recupero degli errori e cambio di archivio · BLOCKED<br><span class="muted"></span></li><li>Consegnare una guida operativa aderente al prodotto · PENDING<br><span class="muted"></span></li></ul><pre>[]</pre></details><details><summary>complete-return — COMPLETED, 5 turni</summary><p>Run <code>20261020T182810-4cfa5d18</code></p><p>Checkpoint <code>c11af3764f1deec8a596daa235c8dc85f983d1c8</code></p><ul><li>Recover uncertain inventory writes without immediate repetition · PASSED<br><span class="muted">Implemented GET-only inventory creation recovery: drafts and search persist, and repeat creation stays blocked until a valid full-inventory read. Validation correction remains available. DELETE success now requires valid confirmation. Syntax and focused mocked-handler checks passed; host/browser verification and independent source review remain pending.</span></li><li>Apply creation recovery to new maintenance · PASSED<br><span class="muted">Added maintenance creation recovery that preserves drafts and blocks repeat creation until successful GET-only reconciliation. Users can inspect current interventions, including concluded ones, before explicitly retrying. Validation retries, item-loading recovery, version checks and restore cleanup remain intact. Syntax, markup and focused simulated checks passed; real browser behavior and host acceptance remain unverified.</span></li><li>Reconcile guidance with the preserved product and recovery changes · PASSED<br><span class="muted">Updated README and guides for creation recovery and implemented Backup, corrected stale claims, and marked inherited evidence historical. Preserved restore, archive-refresh, storage and size-limit guidance. Documentation checks passed; fresh host checks and independent source review remain pending.</span></li></ul><pre>[
+  {
+    &quot;outcome&quot;: &quot;ready&quot;,
+    &quot;summary&quot;: &quot;Read-only review against BRIEF.md found no material remaining gap. All six current host checks pass. Ready for the host’s independent ready review.&quot;,
+    &quot;findings&quot;: [],
+    &quot;decisions&quot;: [
+      {
+        &quot;choice&quot;: &quot;Preserve the focused recovery implementation.&quot;,
+        &quot;basis&quot;: &quot;public/app.js and public/index.html preserve creation drafts, block uncertain repeat creation until successful GET-only reconciliation, validate deletion confirmation, and clear prior archive state after confirmed restore. src/store.mjs and src/backup.mjs retain transactional persistence, history and validated atomic replacement.&quot;
+      },
+      {
+        &quot;choice&quot;: &quot;Accept the six current host receipts as verification evidence.&quot;,
+        &quot;basis&quot;: &quot;inventory: 4662d120-ac7a-487e-b0b8-4378d560394e; inventory-ui: 456bd0c1-aad1-4827-980a-5a5c8e89694e; maintenance: cc4cd09b-e185-49b5-8fa7-e05d94aa5926; maintenance-ui: 347ce7f1-7a27-4745-a065-2e1a763998b2; backup: 613f5d6a-01f4-4c92-984c-2afbfee21fd4; backup-ui: dfc15702-8037-482f-a4f5-c027dc7c1f82. Each is marked passed.&quot;
+      },
+      {
+        &quot;choice&quot;: &quot;Advance without additional implementation.&quot;,
+        &quot;basis&quot;: &quot;README.md and docs describe implemented recovery, backup, storage and size limits and identify inherited observations as historical. No concrete remaining product gap warrants another patch. This supervisor review did not run a browser or inspect supplied PNGs; independent review remains a host step.&quot;
+      }
+    ],
+    &quot;tasks&quot;: [],
+    &quot;operatorQuestion&quot;: &quot;&quot;,
+    &quot;stamp&quot;: {
+      &quot;head&quot;: &quot;7dc07f5cd1e3faf5ae946caf084762f72d45ebc3&quot;,
+      &quot;files&quot;: {
+        &quot;.gitignore&quot;: &quot;38af0c189b6ea42f53b44594ce1cb8fe26b4861079fe816e4babbbb8c0b33374&quot;,
+        &quot;BRIEF.md&quot;: &quot;6d924142cfafaf42c0f91215fa4a44e3c24022079e585d462081a732491bdb01&quot;,
+        &quot;README.md&quot;: &quot;9d93a8177adbbff10dcb2a11259cd395f28ad09fdd65e10989bc3c1374481315&quot;,
+        &quot;docs/api-backup.md&quot;: &quot;62f24aa7d569e8c3cb428479b0d239fb580abc1fb4c1ff8e4bae8dfcdc74745c&quot;,
+        &quot;docs/api-manutenzioni.md&quot;: &quot;6b788bfb9f68957e73a4a596abd1bba8e319daaa15ddb053cae0f0bad154f340&quot;,
+        &quot;docs/ui-backup.md&quot;: &quot;dd64f9673c976692997c4e5c1076255e01a9c4ad64711fba26f3f4b062245192&quot;,
+        &quot;docs/ui-inventario.md&quot;: &quot;75a55fabfe6aff8cf30f51d631769ded5700cb62a38ba02ecd657b9c59644e19&quot;,
+        &quot;docs/ui-manutenzioni.md&quot;: &quot;cd616dd13a6dd14b6c4c198614ab410934c5d454e9487a122cef6f0475c5ea9d&quot;,
+        &quot;package.json&quot;: &quot;059e15020af9ea47307d8b9b6112991177ee25f1458b9351ea0a6c61a1bb1c1c&quot;,
+        &quot;public/app.js&quot;: &quot;14672081434d4ecc1459afeef57af251c01fad737fa53204a3178c82dbf27430&quot;,
+        &quot;public/favicon.svg&quot;: &quot;b4fddcb795fed38eb7025b73d3e941bf19b1b1407c9bd99a0d513f1f08fc424e&quot;,
+        &quot;public/index.html&quot;: &quot;f59426340f00513517e59197efbc01b357101a1f33205a68e01ee38f0b821220&quot;,
+        &quot;public/styles.css&quot;: &quot;43808ae7f6e280c905a0b00afbc5c5a13c124fa05c223763ed8c3eb263eb164c&quot;,
+        &quot;src/backup.mjs&quot;: &quot;e6a6b58667e1fad0d9dd2e21e351eadb500cb33d06d6c7bfdb52cf91a03c4661&quot;,
+        &quot;src/errors.mjs&quot;: &quot;e80649a6029653512539fab5b2a950aa01ce047c48c709af23ead8d89f1a2cde&quot;,
+        &quot;src/inventory.mjs&quot;: &quot;abd476e31241a521120d30a65de8587b7124eef594ad1264133521509867bee8&quot;,
+        &quot;src/maintenance.mjs&quot;: &quot;9a1576c725c755efddbda8252b18f56a8616bb838cee53501817e692f51c9994&quot;,
+        &quot;src/server.mjs&quot;: &quot;ecdcd6e7ba249b28d49c399f30cfecd5d393d63c63a69a4dd72ac4b7e537561e&quot;,
+        &quot;src/store.mjs&quot;: &quot;e10978d6dc097997fd98a55f741708c02e3eaebdaa2cf5ef68b8eb0f9964b1c6&quot;,
+        &quot;tests/acceptance.mjs&quot;: &quot;cd51582a782f0400fe1729ba27b4df50a388c0057f6f41ad63fed52ef8c1aaf3&quot;
+      },
+      &quot;fingerprint&quot;: &quot;9fd6cc05a50adbb7a3e3252ac4e26a392f14c29da061643f85a454073764f4ad&quot;
+    },
+    &quot;noteIds&quot;: [
+      &quot;9078a2d6-05e4-4ea6-a7b3-58d7e30cf163&quot;
+    ],
+    &quot;directionRevision&quot;: 1,
+    &quot;contractVersion&quot;: 1,
+    &quot;nodeId&quot;: &quot;2ac049bd-5730-40f1-8191-cab8eef7939f&quot;,
+    &quot;at&quot;: &quot;2026-10-20T18:45:28.757Z&quot;,
+    &quot;independent&quot;: false
+  }
+]</pre></details><p><a href="ledger-audit.json">Audit di identità, provenienza e immutabilità</a> · <a href="primary-ended.json">Stato originale al blocco</a> · <a href="recovery-snapshot.json">Provenienza dello snapshot di recupero</a></p>
+<h2>Il valore misurato</h2><p>Il lavoro utile durante l’assenza è reale: inventario, interfaccia, manutenzioni e backup sono stati costruiti con una delega, senza una persona che rilanciasse ogni missione o scrivesse i singoli prompt. L’operatore trova codice, verifiche e checkpoint. La necessità di un recupero esterno è altrettanto reale e resta il limite operativo principale mostrato da questa prova.</p><p>Questo caso non confronta due esecuzioni equivalenti di Codex diretto e Iterfox e non dimostra una superiorità universale. Dimostra continuità utile su un progetto nuovo, con confini e verifiche predisposti, e individua il passaggio di affidabilità da completare. Non è una prova di otto ore ininterrotte o di avvio autonomo da una sola frase nella UI.</p><footer>Runtime compilato congelato dal commit 56aa2b4; modello gpt-6.1-sol, nessun override esplicito di effort. Checkpoint finale <code>c11af3764f1deec8a596daa235c8dc85f983d1c8</code>. Rettifica editoriale e identità della consegna: <a href="delivery-review.json">manifest</a>. Rapporto generato 2026-10-20T19:22:31.460Z. Le anteprime richiedono i processi locali sul Mac; questo documento resta leggibile offline.</footer></main></html>

@@ -1,0 +1,10 @@
+{
+  "at": "2026-10-20T14:26:48.302Z",
+  "preparationStartedAt": "2026-10-20T14:21:15Z",
+  "head": "1892c983f18b7332a0c24b431b02d3ee3be3e668",
+  "index": "76f21e69a7cbaf3d10065dc754f15f4c84437b06",
+  "status": "",
+  "baseline": "Prepared server responds to health only; inventory acceptance fails with HTTP 501 before model execution.",
+  "runtimeSource": "56aa2b4",
+  "data": "/Users/vins/work/iterfox/.iterfox/missions/night-custode-20261020/data"
+}

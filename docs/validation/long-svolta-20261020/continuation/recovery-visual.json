@@ -1,0 +1,30 @@
+{
+  "at": "2026-10-21T00:07:51.597Z",
+  "result": "PASS",
+  "observations": [
+    {
+      "stage": "weekly-work",
+      "cause": "invalid-review-reference",
+      "retryTimestampVisible": false,
+      "laterValidatedTimestampVisible": true,
+      "viewports": [
+        "1440x1080",
+        "390x844"
+      ],
+      "mutations": 0,
+      "pageErrors": []
+    },
+    {
+      "stage": "safe-delivery",
+      "cause": "provider-abort",
+      "retryTimestampVisible": true,
+      "laterValidatedTimestampVisible": false,
+      "viewports": [
+        "1440x1080",
+        "390x844"
+      ],
+      "mutations": 0,
+      "pageErrors": []
+    }
+  ]
+}

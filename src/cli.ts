@@ -1,0 +1,335 @@
+#!/usr/bin/env node
+import { parseArgs } from 'node:util';
+import { resolve, join, dirname, basename } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { spawn } from 'node:child_process';
+import { mkdirSync, openSync, closeSync, realpathSync, existsSync } from 'node:fs';
+import { createInterface } from 'node:readline/promises';
+import {
+  openStore,
+  loadContract,
+  preflight,
+  createRun,
+  createDemoRepository,
+  runWorker,
+  controlRun,
+  resumeRun,
+  proposeContract,
+  approveContract,
+  exportFile,
+  recoverDeadWorkers,
+  auditStoredEvidence,
+  addDirectionNote,
+  withProjectSupervision,
+} from './service.js';
+import { brief, markdownBrief } from './core/brief.js';
+import { noteInputSchema } from './core/compass.js';
+import { readFile } from 'node:fs/promises';
+
+const help = `Iterfox — Delegate the work. Wake up to evidence.
+
+  iterfox run --config iterfox.json [--repo .] [--handoff notes.txt] [--project] [--night] [--yes]
+  iterfox demo [--codex] [--night] [--yes]
+  iterfox status [run-id] [--json]
+  iterfox ui [--port 4310]
+  iterfox pause|resume|stop <run-id> [--night]
+  iterfox brief <run-id> [--json] [--out brief.md]
+  iterfox events <run-id>
+  iterfox delegation preflight --config delegation.json [--out preflight.json]
+  iterfox delegation run --config delegation.json [--preflight preflight.json] [--night] [--yes]
+  iterfox delegation status|pause|resume|stop|brief <delegation-id>
+  iterfox delegation report <delegation-id> [--format markdown|json|html] [--out file]
+  iterfox steer <run-id> --message "..." [--kind request|decision|hypothesis] [--reply-to note-id]
+  iterfox contract <run-id> --propose contract.json
+  iterfox contract <run-id> --approve --yes
+  iterfox capture <criterion-id> --config iterfox.json --out candidate.png
+  iterfox cloud doctor|run|status|pause|resume|stop|brief|fetch|ui --target cloud.json
+
+All commands accept --data <directory> (default: .iterfox in current directory).
+--yes explicitly authorizes the printed preflight or proposed contract revision.
+Night workers survive browser/terminal close, but cannot run during sleep/shutdown.
+Demo is a labeled deterministic fixture. --codex uses real Codex and credentials.
+`;
+
+export function launchWorker(id: string, dataDir: string): number {
+  mkdirSync(join(dataDir, 'logs'), { recursive: true });
+  const log = openSync(join(dataDir, 'logs', `${id}.log`), 'a', 0o600);
+  const entry = fileURLToPath(import.meta.url);
+  // Never inherit -e, --test, --inspect or other launcher execution flags.
+  const loader = entry.endsWith('.ts') ? ['--import', import.meta.resolve('tsx')] : [];
+  const child = spawn(process.execPath, [...loader, entry, 'worker', id, '--data', dataDir], {
+    detached: true,
+    stdio: ['ignore', log, log],
+    env: process.env,
+  });
+  closeSync(log);
+  child.unref();
+  if (!child.pid) throw new Error('Could not launch detached worker');
+  return child.pid;
+}
+export function launchUi(dataDir: string, port: number): number {
+  mkdirSync(join(dataDir, 'logs'), { recursive: true });
+  const log = openSync(join(dataDir, 'logs', `ui-${port}.log`), 'a', 0o600);
+  const entry = fileURLToPath(import.meta.url);
+  const loader = entry.endsWith('.ts') ? ['--import', import.meta.resolve('tsx')] : [];
+  const child = spawn(
+    process.execPath,
+    [...loader, entry, 'ui', '--data', dataDir, '--port', String(port)],
+    {
+      detached: true,
+      stdio: ['ignore', log, log],
+      env: process.env,
+    },
+  );
+  closeSync(log);
+  child.unref();
+  if (!child.pid) throw new Error('Could not launch UI service');
+  return child.pid;
+}
+async function authorize(yes: boolean, text: string): Promise<void> {
+  console.log(text);
+  if (yes) return;
+  if (!process.stdin.isTTY)
+    throw new Error(
+      'Authorization required. Inspect the preflight, then pass --yes to explicitly authorize.',
+    );
+  const input = createInterface({ input: process.stdin, output: process.stdout });
+  try {
+    if ((await input.question('Authorize this run? Type yes: ')).trim() !== 'yes')
+      throw new Error('Run not authorized');
+  } finally {
+    input.close();
+  }
+}
+async function main() {
+  if (process.argv[2] === 'delegation') {
+    const { delegationCli } = await import('./delegations/cli.js');
+    return delegationCli(process.argv.slice(3), authorize);
+  }
+  if (process.argv[2] === 'cloud') {
+    const { cloudCli } = await import('./cloud.js');
+    return cloudCli(process.argv.slice(3), authorize);
+  }
+  if (process.argv[2] === 'remote-agent') {
+    const { remoteAgent } = await import('./cloud.js');
+    return remoteAgent();
+  }
+  const { positionals, values: v } = parseArgs({
+    allowPositionals: true,
+    options: {
+      config: { type: 'string' },
+      repo: { type: 'string', default: '.' },
+      data: { type: 'string', default: '.iterfox' },
+      night: { type: 'boolean' },
+      yes: { type: 'boolean' },
+      json: { type: 'boolean' },
+      out: { type: 'string' },
+      port: { type: 'string', default: '4310' },
+      codex: { type: 'boolean' },
+      help: { type: 'boolean' },
+      propose: { type: 'string' },
+      approve: { type: 'boolean' },
+      'remote-target': { type: 'string' },
+      handoff: { type: 'string' },
+      message: { type: 'string' },
+      kind: { type: 'string', default: 'request' },
+      'reply-to': { type: 'string' },
+      project: { type: 'boolean' },
+    },
+  });
+  const [command = 'help', requestedId] = positionals;
+  if (command === 'help' || v.help) {
+    console.log(help);
+    return;
+  }
+  if (command === 'capture') {
+    if (!requestedId || !v.config || !v.out)
+      throw new Error('capture <criterion-id> requires --config and --out');
+    const contract = await loadContract(v.config);
+    const criterion = contract.criteria.find((c) => c.id === requestedId);
+    if (criterion?.verification?.kind !== 'visual')
+      throw new Error('Select an approved visual criterion');
+    const { captureVisual } = await import('./verifiers/visual.js');
+    const { writeFile } = await import('node:fs/promises');
+    const requestedOutput = resolve(v.out);
+    const output = join(realpathSync(dirname(requestedOutput)), basename(requestedOutput));
+    const repo = realpathSync(resolve(v.repo!));
+    if (output === repo || output.startsWith(repo + '/'))
+      throw new Error(
+        'Capture a candidate outside the repository; review it before copying to the baseline path.',
+      );
+    await authorize(
+      Boolean(v.yes),
+      JSON.stringify(
+        {
+          candidate: output,
+          server: criterion.verification.server,
+          url: criterion.verification.url,
+          viewport: criterion.verification.viewport,
+        },
+        null,
+        2,
+      ),
+    );
+    const capture = await captureVisual(repo, criterion, AbortSignal.timeout(criterion.timeoutMs));
+    if (capture.errors.length || capture.blockedRequests.length)
+      throw new Error('Capture encountered page errors or blocked external requests');
+    await writeFile(output, capture.screenshot, { flag: 'wx', mode: 0o600 });
+    console.log(
+      `Candidate saved: ${output}. Browser ${capture.browser}, ${capture.platform}. Review visually before approving a committed baseline.`,
+    );
+    return;
+  }
+  const dataDir = resolve(v.data!);
+  const store = openStore(dataDir);
+  try {
+    if (command === 'ui') {
+      const { serve } = await import('./server.js');
+      let launch: (id: string) => number | Promise<unknown> = (id) => launchWorker(id, dataDir);
+      if (v['remote-target']) {
+        const { targetSchema, launchRemote } = await import('./cloud.js');
+        const target = targetSchema.parse(JSON.parse(v['remote-target']));
+        if (resolve(target.data) !== dataDir)
+          throw new Error('Remote UI target must use the same ledger directory');
+        launch = (id) => launchRemote(target, 'worker', id);
+      }
+      const { launchDelegationWorker } = await import('./delegations/cli.js');
+      await serve(
+        store,
+        dataDir,
+        Number(v.port),
+        launch,
+        v['remote-target'] ? undefined : (id) => launchDelegationWorker(id, dataDir),
+      );
+      return; // server owns the store until it closes
+    }
+    if (command === 'run' || command === 'demo') {
+      if (command === 'run' && !v.config)
+        throw new Error('Provide --config <file>. See examples/avatar-lab/iterfox.json.');
+      const repo = command === 'demo' ? await createDemoRepository(dataDir) : resolve(v.repo!);
+      let contract = await loadContract(
+        command === 'demo' ? join(repo, 'iterfox.json') : resolve(v.config!),
+      );
+      if (v.project) contract = withProjectSupervision(contract);
+      const provider = command === 'demo' && !v.codex ? 'demo' : 'codex';
+      const notes = v.handoff
+        ? [noteInputSchema.parse({ text: await readFile(resolve(v.handoff), 'utf8') })]
+        : [];
+      await authorize(
+        Boolean(v.yes),
+        JSON.stringify({ ...(await preflight(repo, contract, provider)), handoff: notes }, null, 2),
+      );
+      const state = await createRun(store, dataDir, repo, contract, provider, undefined, notes);
+      console.log(`Run ${state.id}\nWorktree: ${state.worktree}`);
+      if (v.night)
+        console.log(
+          `Night worker PID ${launchWorker(state.id, dataDir)}. Logs: ${join(dataDir, 'logs', state.id + '.log')}`,
+        );
+      else {
+        const result = await runWorker(store, state.id);
+        console.log(markdownBrief(result, store.events(state.id)));
+        if (result.status !== 'COMPLETED') process.exitCode = 2;
+      }
+      return;
+    }
+    if (command === 'status') {
+      recoverDeadWorkers(store);
+      for (const s of requestedId ? [store.get(requestedId)] : store.list())
+        await auditStoredEvidence(store, s.id);
+      const runs = requestedId ? [store.get(requestedId)] : store.list();
+      console.log(
+        v.json
+          ? JSON.stringify(runs, null, 2)
+          : runs
+              .map(
+                (s) =>
+                  `${s.id}  ${s.status.padEnd(10)}  ${s.criteria.filter((c) => c.status === 'PASSED').length}/${s.criteria.length} deterministic; ${s.criteria.filter((c) => c.status === 'ASSESSED').length} AI-assessed  ${s.provider.toUpperCase()}  ${s.goal}`,
+              )
+              .join('\n') || 'No runs. Start with iterfox demo.',
+      );
+      return;
+    }
+    if (!requestedId) throw new Error('Provide a run ID; list runs with iterfox status');
+    const id = requestedId;
+    if (command === 'steer') {
+      const state = addDirectionNote(
+        store,
+        id,
+        noteInputSchema.parse({
+          text: v.message,
+          kind: v.kind,
+          ...(v['reply-to'] ? { replyTo: v['reply-to'] } : {}),
+        }),
+      );
+      console.log(
+        `Handoff saved for ${id}. ${state.status === 'RUNNING' ? 'It will be reconciled at the next activity boundary.' : 'Resume explicitly to reconcile it within the original limits.'}`,
+      );
+      return;
+    }
+    if (command === 'worker') {
+      await runWorker(store, id);
+      return;
+    }
+    if (command === 'pause' || command === 'stop') {
+      controlRun(store, id, command);
+      console.log(`${command} requested for ${id}`);
+      return;
+    }
+    if (command === 'resume') {
+      resumeRun(store, id);
+      if (v.night) console.log(`Resumed worker PID ${launchWorker(id, dataDir)}`);
+      else {
+        const result = await runWorker(store, id);
+        console.log(`${id}: ${result.status}${result.reason ? ` — ${result.reason}` : ''}`);
+        if (result.status !== 'COMPLETED') process.exitCode = 2;
+      }
+      return;
+    }
+    if (command === 'brief' || command === 'events') {
+      if (command === 'brief') await auditStoredEvidence(store, id);
+      const state = store.get(id);
+      const events = store.events(id);
+      const text =
+        command === 'events'
+          ? JSON.stringify(events, null, 2)
+          : v.json
+            ? JSON.stringify(brief(state, events), null, 2)
+            : markdownBrief(state, events);
+      if (v.out) await exportFile(v.out, text);
+      else console.log(text);
+      return;
+    }
+    if (command === 'contract') {
+      if (v.propose) {
+        proposeContract(store, id, await loadContract(v.propose));
+        console.log(JSON.stringify(store.get(id).revisionProposal, null, 2));
+        return;
+      }
+      if (v.approve) {
+        await authorize(
+          Boolean(v.yes),
+          JSON.stringify(
+            { current: store.get(id).contract, proposal: store.get(id).revisionProposal },
+            null,
+            2,
+          ),
+        );
+        approveContract(store, id);
+        console.log('Acceptance revision approved. Resume explicitly.');
+        return;
+      }
+    }
+    throw new Error(`Unknown command.\n${help}`);
+  } finally {
+    if (command !== 'ui') store.close();
+  }
+}
+if (
+  process.argv[1] &&
+  existsSync(process.argv[1]) &&
+  realpathSync(process.argv[1]) === fileURLToPath(import.meta.url)
+)
+  main().catch((e) => {
+    console.error(e instanceof Error ? e.message : e);
+    process.exitCode = 1;
+  });

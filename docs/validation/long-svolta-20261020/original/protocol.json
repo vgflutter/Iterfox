@@ -1,0 +1,111 @@
+{
+  "createdAt": "2026-10-20T20:48:03.396Z",
+  "runtimeCommit": "b6ca580",
+  "model": "gpt-6.1-sol",
+  "sdk": "0.163.0",
+  "goal": "Realizzare Svolta, app locale in italiano per piccoli progetti personali, attività, pianificazione settimanale e tempo dedicato, con backup portabile e gestione coerente degli errori. Consegnare un prodotto utilizzabile su desktop e mobile e una guida onesta. Seguire il contratto pubblico BRIEF.md. Scegliere autonomamente i dettagli reversibili; non introdurre account, servizi, dipendenze o pubblicazione.",
+  "milestones": [
+    {
+      "id": "reliable-foundation",
+      "title": "Dati affidabili per progetti e attività",
+      "outcome": "Implementare API e persistenza di progetti e attività, filtri, date e revisioni ottimistiche. Fare controllare i due criteri host e lasciare una base coerente. Non implementare ancora pianificazione, sessioni o backup. Interfaccia minima solo se serve per avviare l’app.",
+      "criterionIds": [
+        "projects-api",
+        "tasks-api"
+      ],
+      "dependsOn": []
+    },
+    {
+      "id": "usable-board",
+      "title": "Un flusso attività che si usa davvero",
+      "outcome": "Costruire il flusso visuale Progetti e Attività: inserimento, modifica, filtri, gestione dei conflitti fra schede senza perdere gli input, testo non fidato letterale e layout mobile. Preservare le API già verificate. Le funzioni Settimana, Riepilogo e Backup possono ancora mostrare uno stato non disponibile esplicito.",
+      "criterionIds": [
+        "board-ui"
+      ],
+      "dependsOn": [
+        "reliable-foundation"
+      ]
+    },
+    {
+      "id": "weekly-work",
+      "title": "Dalla lista al piano settimanale e al tempo reale",
+      "outcome": "Aggiungere pianificazione settimanale, sessioni di tempo con cronologia, riepilogo coerente e relativi flussi browser, preservando attività e conflitti. Gestire date civili senza spostamenti da fuso orario. Backup rimane il prossimo esito.",
+      "criterionIds": [
+        "planning-api",
+        "planning-ui"
+      ],
+      "dependsOn": [
+        "usable-board"
+      ]
+    },
+    {
+      "id": "safe-delivery",
+      "title": "Portabilità e ritorno al prodotto finito",
+      "outcome": "Aggiungere backup completo e ripristino atomico validato con consenso esplicito. Verificare l’integrazione di tutti i flussi e i layout mobili. Completare README e guida pratica in italiano con avvio, dati, limiti e prove effettive, distinguendo affermazioni del modello da controlli host. Risolvere soltanto lacune concrete entro l’obiettivo approvato.",
+      "criterionIds": [
+        "backup-api",
+        "backup-ui"
+      ],
+      "dependsOn": [
+        "weekly-work"
+      ]
+    }
+  ],
+  "windowHours": 4,
+  "initialPromptCount": 1,
+  "followUpUserPromptsExpected": 0,
+  "manualApplicationEditsAfterAuthorizationAllowed": false,
+  "manualResumeAllowed": false,
+  "contractChangesAfterAuthorizationAllowed": false,
+  "faults": [
+    {
+      "stage": "usable-board",
+      "mode": "build",
+      "trigger": "First observed allowed source edit during the first build; if the response completes before an edit is observed, discard the response at its usage receipt and mark that fallback honestly."
+    },
+    {
+      "stage": "weekly-work",
+      "mode": "oversee",
+      "trigger": "Abort the first read-only project review 1.5 seconds after actual thread.started."
+    },
+    {
+      "stage": "safe-delivery",
+      "mode": "build",
+      "trigger": "Lose the first actual builder structured response after its turn.completed usage receipt."
+    }
+  ],
+  "success": [
+    "four native checkpointed outcomes",
+    "fresh cumulative acceptance 2,3,5,7 criteria",
+    "all three faults recorded and handled without manual resume",
+    "original shared authorization/limits preserved",
+    "runtime and protected inputs unchanged",
+    "useful desktop/mobile app plus portable data and honest guide"
+  ],
+  "externalAuditPrepared": [
+    "civil-week boundaries around DST and year end",
+    "seeded parallel creates and stale-update races",
+    "UTF-8 request body split inside multibyte characters",
+    "literal SQL-like query terms",
+    "static routes do not expose source/data",
+    "backup invariants under seeded malformed graphs",
+    "actual browser end-to-end review at 1440 and 390px"
+  ],
+  "nonClaims": [
+    "No paired direct-Codex comparison in this trial",
+    "No claim that every possible defect is covered",
+    "Duration is measured work, not artificially prolonged to fill the window",
+    "Fault injection is deliberate and separate from natural failures"
+  ],
+  "protectedInputHashes": {
+    "BRIEF.md": "4b0d5c8467bf7ca91ddef6c89d3f077fab4121c3245404d97cf19dc681e250cb",
+    "package.json": "860de3ed7de7d0b08bc8e01ded1fcc61403a77b4918a1f1178802d9af60a8cc1",
+    ".gitignore": "d7374edf9ed6b2549bc7b02c7bd49e8031bae04000b61a59e57dc2f8f375a52d",
+    "tests/harness.mjs": "67c21916ab5cc5da82310c2abd7c84bd42e73ef65acf5e93afe9c6ce129db8d1",
+    "tests/acceptance.mjs": "9723e15b08ecb6f43bbe9310b0c8ccb99fa46e6239764e85211b865977dc11bc",
+    "tests/browser.mjs": "91d0c735d934707dce7b495c2815058a123ed1fe7008327a6e4d6a97f030cac6"
+  },
+  "registeredAt": "2026-10-20T20:50:55.882Z",
+  "driverSha256": "eeaa95ec7047137d080d2382dc92f3ab93528dcd3b00313dd5f1c11b37274086",
+  "externalAuditSha256": "f63379d3b63b0f25e23bc234027b0a6c3f225208d255ac6e7d62afcc4598c9af"
+}

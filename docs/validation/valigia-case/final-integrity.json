@@ -1,0 +1,23 @@
+{
+  "at": "2026-10-20T10:19:00.604Z",
+  "status": "passed",
+  "checks": [
+    {
+      "arm": "direct",
+      "sourceFingerprint": "74b2e7d47b1d64818552050f0d232ff28300487527c64ef0707bec56cb1a5322",
+      "originalHead": "78edba0c6fed5e4592e93af95416e7caf8a0c99e",
+      "immutableFilesChecked": 5,
+      "postAuditSourceUnchanged": true,
+      "administrativeLedgerStatus": "STOPPED"
+    },
+    {
+      "arm": "iterfox",
+      "sourceFingerprint": "bf3c82b8a838ea7c4f36e238e2adde1cabafa7f12197b4d81aa5e1e83917ad18",
+      "originalHead": "78edba0c6fed5e4592e93af95416e7caf8a0c99e",
+      "immutableFilesChecked": 5,
+      "postAuditSourceUnchanged": true,
+      "administrativeLedgerStatus": "COMPLETED"
+    }
+  ],
+  "frozenRuntimeModulesChecked": 5
+}
